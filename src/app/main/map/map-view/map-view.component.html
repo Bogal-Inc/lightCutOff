@@ -1,6 +1,4 @@
-<div class="container-fluid">
-    <h1>Bienvenue sur electricity</h1>
-
+<div class="full-height">
     <agm-map [latitude]='currentPositionMap?.latitude' [longitude]='currentPositionMap?.longitude' [zoom]="zoom" (mapClick)="actuMarker($event.coords.lat, $event.coords.lng)">
         <agm-marker [latitude]="currentPosition?.latitude" [longitude]="currentPosition?.longitude" [opacity]="currentPosition?.alpha"></agm-marker>
     </agm-map>
