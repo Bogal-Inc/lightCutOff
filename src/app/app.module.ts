@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -18,7 +19,7 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
     AppRoutingModule,
     StoreModule.forRoot({}, {}),
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: environment.GOOGLE_MAPS_API_KEY
     })
   ],
   providers: [],
