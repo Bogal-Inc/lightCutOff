@@ -2,7 +2,7 @@
 
     <h1>Angular Google Maps with Places Search Example</h1>
 
-    <agm-map [latitude]='latitude' [longitude]='longitude' [zoom]="zoom">
-        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    <agm-map [latitude]='currentPositionMap?.latitude' [longitude]='currentPositionMap?.longitude' [zoom]="zoom" (mapClick)="actuMarker($event.coords.lat, $event.coords.lng)">
+        <agm-marker [latitude]="currentPosition?.latitude" [longitude]="currentPosition?.longitude" [opacity]="currentPosition?.alpha"></agm-marker>
     </agm-map>
 </div>

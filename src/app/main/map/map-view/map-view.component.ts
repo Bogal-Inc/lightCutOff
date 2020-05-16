@@ -1,3 +1,4 @@
+import { IMarker } from './../../../core/models/marker.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,17 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./map-view.component.scss']
 })
 export class MapViewComponent implements OnInit {
-  latitude;
-  longitude;
-  zoom = 15;
+  currentPosition: IMarker;
+  currentPositionMap: IMarker;
+  zoom: number;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    this.zoom = 15;
     navigator.geolocation.getCurrentPosition( position => {
-      this.latitude = +position.coords.latitude;
-      this.longitude = +position.coords.longitude;
+      this.currentPosition = {
+        latitude: +position.coords.latitude,
+        longitude: +position.coords.longitude,
+        alpha: 1
+      };
+      this.currentPositionMap = {
+        latitude: +position.coords.latitude,
+        longitude: +position.coords.longitude,
+        alpha: 1
+      };
     });
+  }
+
+  actuMarker(latitude: number, longitude: number)  {
+    this.currentPosition = {
+      latitude,
+      longitude,
+      alpha: 1
+    };
   }
 
 }
