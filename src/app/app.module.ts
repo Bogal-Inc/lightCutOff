@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { AgmCoreModule } from '@agm/core';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
     StoreModule.forRoot({}, {}),
     AgmCoreModule.forRoot({
       apiKey: environment.GOOGLE_MAPS_API_KEY
-    })
+    }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

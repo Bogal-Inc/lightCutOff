@@ -1,5 +1,6 @@
-<div class="full-height">
-    <agm-map [latitude]='currentPositionMap?.latitude' [longitude]='currentPositionMap?.longitude' [zoom]="zoom" (mapClick)="actuMarker($event.coords.lat, $event.coords.lng)">
-        <agm-marker [latitude]="currentPosition?.latitude" [longitude]="currentPosition?.longitude" [opacity]="currentPosition?.alpha"></agm-marker>
+<div>
+    <agm-map [latitude]='currentPositionMap?.latitude' [longitude]='currentPositionMap?.longitude' [zoom]="zoom" (mapClick)="currentMarker($event.coords.lat, $event.coords.lng)">
+        <agm-marker [latitude]="currentPosition?.latitude" [longitude]="currentPosition?.longitude" [opacity]="currentPosition?.alpha" [markerDraggable]="true" (markerClick)="selectCurrentMarker($event)"></agm-marker>
     </agm-map>
+    <app-select-current-marker *ngIf="selectedCurrentMarker"></app-select-current-marker>
 </div>

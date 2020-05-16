@@ -1,0 +1,46 @@
+<div class="cuttoff">
+    <div class="cuttoff__box">
+        <h5 class="text-center">Informations additionelles</h5>
+        <form [formGroup]="cutOffForm" (ngSubmit)="onSubmit()">
+            <div class="form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="startDate" ngbDatepicker #sd="ngbDatepicker" formControlName="startDate" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="sd.toggle()" type="button"></button>
+                        </div>
+                    </div>
+                    <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                        <div *ngIf="f.startDate.errors.required">erreur</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <ngb-timepicker *ngIf="startDate" formControlName="startHour" [ngClass]="{ 'is-invalid': submitted && f.startHour.errors }"></ngb-timepicker>
+                    <div *ngIf="submitted && f.startHour.errors" class="invalid-feedback">
+                        <div *ngIf="f.startHour.errors.required">erreur</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" formControlName="endDate" placeholder="endDate" ngbDatepicker #ed="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="ed.toggle()" type="button"></button>
+                        </div>
+                    </div>
+                    <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+                        <div *ngIf="f.endDate.errors.required">erreur</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <ngb-timepicker *ngIf="endDate" formControlName="endHour" [ngClass]="{ 'is-invalid': submitted && f.endHour.errors }"></ngb-timepicker>
+                    <div *ngIf="submitted && f.endHour.errors" class="invalid-feedback">
+                        <div *ngIf="f.endHour.errors.required">erreur</div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit">Enregistrer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

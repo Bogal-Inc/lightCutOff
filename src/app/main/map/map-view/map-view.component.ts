@@ -1,6 +1,8 @@
 import { IMarker } from './../../../core/models/marker.model';
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
@@ -10,8 +12,12 @@ export class MapViewComponent implements OnInit {
   currentPosition: IMarker;
   currentPositionMap: IMarker;
   zoom: number;
+  selectedCurrentMarker = false;
 
-  constructor() {}
+
+  constructor(
+
+  ) {}
 
   ngOnInit(): void {
     this.zoom = 15;
@@ -29,7 +35,7 @@ export class MapViewComponent implements OnInit {
     });
   }
 
-  actuMarker(latitude: number, longitude: number)  {
+  currentMarker(latitude: number, longitude: number)  {
     this.currentPosition = {
       latitude,
       longitude,
@@ -37,4 +43,12 @@ export class MapViewComponent implements OnInit {
     };
   }
 
+  selectCurrentMarker(event) {
+    if(this.selectedCurrentMarker) {
+      this.selectedCurrentMarker = false;
+    } else {
+      this.selectedCurrentMarker = true;
+    }
+
+  }
 }
