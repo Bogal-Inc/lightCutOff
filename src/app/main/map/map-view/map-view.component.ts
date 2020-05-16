@@ -6,14 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./map-view.component.scss']
 })
 export class MapViewComponent implements OnInit {
-  marklatitude = 3.8381993;
-  marklongitude = 11.4907126;
-  latitude = 7.369722;
-  longitude = 12.354722;
+  latitude;
+  longitude;
+  zoom = 15;
 
   constructor() { }
 
   ngOnInit(): void {
+    navigator.geolocation.getCurrentPosition( position => {
+      this.latitude = +position.coords.latitude;
+      this.longitude = +position.coords.longitude;
+    });
   }
 
 }
