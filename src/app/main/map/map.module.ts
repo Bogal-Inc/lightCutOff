@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { MapRoutingModule } from './map-routing.module';
 import { MapViewComponent } from './map-view/map-view.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MapViewComponent } from './map-view/map-view.component';
   imports: [
     CommonModule,
     MapRoutingModule,
-    SharedModule
+    SharedModule,
+    AgmCoreModule,
   ]
 })
 export class MapModule { }

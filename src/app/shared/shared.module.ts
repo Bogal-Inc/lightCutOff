@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AgmCoreModule } from '@agm/core';
+import { MainFooterComponent } from './main-footer/main-footer.component';
+import { MainHeaderComponent } from './main-header/main-header.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MainFooterComponent,
+    MainHeaderComponent
+  ],
   imports: [
     CommonModule,
-    AgmCoreModule
   ],
   exports: [
-    AgmCoreModule
+    MainFooterComponent,
+    MainHeaderComponent
   ]
 })
 export class SharedModule { }

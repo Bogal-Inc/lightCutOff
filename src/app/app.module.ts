@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -17,6 +18,7 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     StoreModule.forRoot({}, {}),
     AgmCoreModule.forRoot({
       apiKey: environment.GOOGLE_MAPS_API_KEY
