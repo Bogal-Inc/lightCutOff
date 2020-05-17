@@ -7,7 +7,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="startDate" ngbDatepicker #sd="ngbDatepicker" formControlName="startDate" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary calendar" (click)="sd.toggle()" type="button"></button>
+                            <button class="btn btn-outline-secondary" (click)="sd.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
                         </div>
                     </div>
                     <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
@@ -24,7 +24,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" formControlName="endDate" placeholder="endDate" ngbDatepicker #ed="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary calendar" (click)="ed.toggle()" type="button"></button>
+                            <button class="btn btn-outline-secondary" (click)="ed.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
                         </div>
                     </div>
                     <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
