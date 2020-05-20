@@ -1,6 +1,10 @@
 <div>
-    <agm-map [latitude]='currentPositionMap?.latitude' [longitude]='currentPositionMap?.longitude' [zoom]="zoom" (mapClick)="currentMarker($event.coords.lat, $event.coords.lng)">
-        <agm-marker [label]="'Position actuelle'" [latitude]="currentPosition?.latitude" [longitude]="currentPosition?.longitude" [opacity]="currentPosition?.alpha" [markerDraggable]="true" (markerClick)="selectCurrentMarker($event)"></agm-marker>
+    <agm-map [streetViewControl]="false" [latitude]='currentPosition?.latitude' [longitude]='currentPosition?.longitude' [zoom]="zoom" (mapClick)="currentMarker($event.coords.lat, $event.coords.lng)">
+        <agm-marker [label]="'Position actuelle'" [latitude]="currentPosition?.latitude" [longitude]="currentPosition?.longitude" [opacity]="currentPosition?.alpha" [markerDraggable]="true" (markerClick)="selectCurrentMarker($event)">
+            <agm-info-window [disableAutoPan]="false" #infoWindow>
+                <app-select-current-marker *ngIf="selectedCurrentMarker"></app-select-current-marker>
+            </agm-info-window>
+        </agm-marker>
+        <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" [opacity]="marker.alpha" (markerClick)="selectMarker($event)"></agm-marker>
     </agm-map>
-    <app-select-current-marker *ngIf="selectedCurrentMarker"></app-select-current-marker>
 </div>
