@@ -1,6 +1,6 @@
 <div>
     <agm-map [streetViewControl]="map?.streetViewControl" [latitude]='map?.latitude' [longitude]='map?.longitude' [zoom]="map?.zoom" (mapClick)="currentMarker($event.coords.lat, $event.coords.lng)">
-        <agm-marker [label]="currentPosition?.title" [latitude]="currentPosition?.latitude" [longitude]="currentPosition?.longitude" [opacity]="currentPosition?.alpha" [markerDraggable]="currentPosition?.draggable">
+        <agm-marker [label]="currentPosition?.title" [latitude]="currentPosition?.position.lat" [longitude]="currentPosition?.position.lng" [opacity]="currentPosition?.alpha" [markerDraggable]="currentPosition?.draggable">
             <agm-info-window [disableAutoPan]="false" #infoWindow>
                 <app-select-current-marker></app-select-current-marker>
             </agm-info-window>

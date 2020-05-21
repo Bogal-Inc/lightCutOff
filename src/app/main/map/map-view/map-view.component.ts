@@ -1,6 +1,5 @@
-import { Marker } from './../../../core/models/marker.model';
 import { Component, OnInit } from '@angular/core';
-import { MapsAPILoader } from '@agm/core';
+import { MapsAPILoader, MarkerOptions, LatLngLiteral } from '@agm/core';
 
 
 @Component({
@@ -9,7 +8,7 @@ import { MapsAPILoader } from '@agm/core';
   styleUrls: ['./map-view.component.scss']
 })
 export class MapViewComponent implements OnInit {
-  currentPosition: Marker;
+  currentPosition: MarkerOptions;
   map: Mapper;
   markers = [
     // These are all just random coordinates from https://www.random.org/geographic-coordinates/
@@ -26,24 +25,24 @@ export class MapViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.mapsApiLoader.load().then(() => {
-      this.initMap();
-    });
+    this.initMap();
   }
 
   private initMap() {
-    navigator.geolocation.getCurrentPosition( position => {
-      const lgt = +position.coords.longitude;
-      const lat = +position.coords.latitude;
+    this.mapsApiLoader.load().then(() => {
+      navigator.geolocation.getCurrentPosition( position => {
+        const lng = +position.coords.longitude;
+        const lat = +position.coords.latitude;
 
-      this.map = {
-        latitude: lat,
-        longitude: lgt,
-        zoom: 13,
-        streetViewControl: false
-      };
+        this.map = {
+          latitude: lat,
+          longitude: lng,
+          zoom: 13,
+          streetViewControl: false
+        };
 
-      this.currentPosition = this.initCurrentMarker(lat, lgt);
+        this.currentPosition = this.initCurrentMarker({lat, lng});
+      });
     });
   }
 
@@ -51,15 +50,15 @@ export class MapViewComponent implements OnInit {
     console.log("hello world")
   }
 
-  currentMarker(latitude: number, longitude: number)  {
-    this.currentPosition = this.initCurrentMarker(latitude, longitude);
+  currentMarker(coords: LatLngLiteral)  {
+    this.currentPosition = this.initCurrentMarker(coords);
   }
 
-  private initCurrentMarker(latitude: number, longitude: number): Marker {
+  private initCurrentMarker(coords: LatLngLiteral): MarkerOptions {
     return {
-      latitude,
-      longitude,
-      alpha: 1,
+      position: coords,
+      opacity: 1,
+      clickable: true,
       draggable: true,
       title: 'Votre position'
     };
