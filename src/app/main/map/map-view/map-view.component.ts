@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MapsAPILoader, MarkerOptions, LatLngLiteral } from '@agm/core';
+import { SelectCurrentMarkerComponent } from './../components/select-current-marker/select-current-marker.component';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { MapsAPILoader } from '@agm/core';
 
 
 @Component({
@@ -7,9 +8,16 @@ import { MapsAPILoader, MarkerOptions, LatLngLiteral } from '@agm/core';
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.scss']
 })
-export class MapViewComponent implements OnInit {
-  currentPosition: MarkerOptions;
-  map: Mapper;
+export class MapViewComponent implements OnInit, AfterViewInit {
+  @ViewChild('mapContainer', {static: false})
+  private gmap: ElementRef;
+  @ViewChild(SelectCurrentMarkerComponent, {read: ElementRef})
+  private formLightCutOff: ElementRef;
+  private map: google.maps.Map;
+  private mapOptions: google.maps.MapOptions;
+  private coordinates: google.maps.LatLng;
+
+  markerCurrentPosition: google.maps.Marker;
   markers = [
     // These are all just random coordinates from https://www.random.org/geographic-coordinates/
     { lat: 4.0520564, lng: 9.7618687, alpha: 0.5 },
@@ -25,42 +33,47 @@ export class MapViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initMap();
   }
 
-  private initMap() {
+  ngAfterViewInit() {
+    this.mapInitializer();
+  }
+
+  private mapInitializer() {
     this.mapsApiLoader.load().then(() => {
       navigator.geolocation.getCurrentPosition( position => {
         const lng = +position.coords.longitude;
         const lat = +position.coords.latitude;
+        this.coordinates = new google.maps.LatLng(lat, lng);
 
-        this.map = {
-          latitude: lat,
-          longitude: lng,
-          zoom: 13,
+        this.mapOptions = {
+          center: this.coordinates,
+          zoom: 12,
+          backgroundColor: '#eaeaea',
+          mapTypeControl: false,
           streetViewControl: false
         };
 
-        this.currentPosition = this.initCurrentMarker({lat, lng});
+        this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
+        this.addMarkerToMap({
+          position: this.coordinates,
+          map: this.map,
+          label: 'Votre position'
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: this.formLightCutOff.nativeElement
+        });
+
+        this.markerCurrentPosition.addListener('click', function() {
+          infoWindow.open(this.getMap(), this);
+        });
       });
     });
   }
 
-  selectMarker(event) {
-    console.log("hello world")
-  }
-
-  currentMarker(coords: LatLngLiteral)  {
-    this.currentPosition = this.initCurrentMarker(coords);
-  }
-
-  private initCurrentMarker(coords: LatLngLiteral): MarkerOptions {
-    return {
-      position: coords,
-      opacity: 1,
-      clickable: true,
-      draggable: true,
-      title: 'Votre position'
-    };
+  private addMarkerToMap(markerOption: google.maps.MarkerOptions) {
+    this.markerCurrentPosition = new google.maps.Marker(markerOption);
+    this.markerCurrentPosition.setMap(this.map);
   }
 }

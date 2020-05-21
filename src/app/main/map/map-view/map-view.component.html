@@ -1,10 +1,18 @@
-<div>
-    <agm-map [streetViewControl]="map?.streetViewControl" [latitude]='map?.latitude' [longitude]='map?.longitude' [zoom]="map?.zoom" (mapClick)="currentMarker($event.coords.lat, $event.coords.lng)">
-        <agm-marker [label]="currentPosition?.title" [latitude]="currentPosition?.position.lat" [longitude]="currentPosition?.position.lng" [opacity]="currentPosition?.alpha" [markerDraggable]="currentPosition?.draggable">
+<!-- <div>
+    <agm-map [streetViewControl]="map?.streetViewControl" [latitude]='map?.latitude' [longitude]='map?.longitude' [zoom]="map?.zoom" (mapClick)="currentMarker($event.coords)">
+        <agm-marker [label]="currentPosition?.title" [latitude]="currentPosition?.position.lat" [longitude]="currentPosition?.position.lng" [opacity]="currentPosition?.opacity" [markerDraggable]="currentPosition?.draggable">
             <agm-info-window [disableAutoPan]="false" #infoWindow>
                 <app-select-current-marker></app-select-current-marker>
             </agm-info-window>
         </agm-marker>
         <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" [opacity]="marker.alpha" (markerClick)="selectMarker($event)"></agm-marker>
     </agm-map>
+</div> -->
+<div class="map-container">
+    <div #mapContainer id="map" class="map-container__map">
+        <div class="spinner-grow text-primary map-container__map__loader" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 </div>
+<app-select-current-marker></app-select-current-marker>

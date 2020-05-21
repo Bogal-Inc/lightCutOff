@@ -1,3 +1,16 @@
-agm-map {
+.map-container {
     height: 500px;
+    width: 100%;
+    &__map {
+        height: inherit;
+        width: inherit;
+        &__loader {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
 }
