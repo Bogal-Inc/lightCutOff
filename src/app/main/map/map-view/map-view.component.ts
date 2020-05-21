@@ -49,7 +49,8 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
         this.addCurrentMarkerToMap({
           position: this.coordinates,
-          label: 'Votre position'
+          label: 'Votre position',
+          draggable: true
         });
 
         // const markerCurrentPosition = new MarkerClusterer(
