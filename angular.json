@@ -34,7 +34,6 @@
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",
                             "node_modules/bootstrap/dist/js/bootstrap.min.js",
-                            "node_modules/@google/markerclusterer/src/markerclusterer.js",
                             "node_modules/bootstrap/dist/js/bootstrap.min.js"
                         ]
                     },
