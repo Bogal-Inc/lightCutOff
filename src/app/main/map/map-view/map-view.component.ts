@@ -1,12 +1,13 @@
-import MarkerClusterer, { MarkerClustererOptions } from '@google/markerclusterer'
+// import * as MarkerClusterer from '@google/markerclustererplus';
 import { SelectCurrentMarkerComponent } from './../components/select-current-marker/select-current-marker.component';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 
+
 @Component({
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
-  styleUrls: ['./map-view.component.scss']
+  styleUrls: ['./map-view.component.scss'],
 })
 export class MapViewComponent implements OnInit, AfterViewInit {
   @ViewChild('mapContainer', {static: false})
@@ -16,6 +17,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private map: google.maps.Map;
   private mapOptions: google.maps.MapOptions;
   private coordinates: google.maps.LatLng;
+  // private markerCluster: MarkerClusterer;
 
   markerCurrentPosition: google.maps.Marker;
   markers = [
@@ -32,32 +34,31 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     private mapsApiLoader: MapsAPILoader,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   ngAfterViewInit() {
     this.mapInitializer();
   }
 
-  private mapInitializer() {
+  mapInitializer() {
     this.mapsApiLoader.load().then(() => {
       navigator.geolocation.getCurrentPosition( position => {
         const lng = +position.coords.longitude;
         const lat = +position.coords.latitude;
         this.coordinates = new google.maps.LatLng(lat, lng);
-
         this.initMap();
 
-        this.addCurrentMarkerToMap({
-          position: this.coordinates,
-          label: 'Votre position',
-          draggable: true
-        });
-
-        // const markerCurrentPosition = new MarkerClusterer(
+        // this.markerCluster = new MarkerClusterer(
         //   this.map,
-        //   this.markers,
-        //   {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+        //   [],
+        //   {imagePath: 'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m'}
         // );
+
+        this.initCurrentMarkerToMap(this.getCurrentMarkerOption());
+
+        // this.addEventListner();
 
         this.generateMarkerExple();
       });
@@ -76,7 +77,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
   }
 
-  private addCurrentMarkerToMap(markerOption: google.maps.MarkerOptions) {
+  private initCurrentMarkerToMap(markerOption: google.maps.MarkerOptions) {
     this.markerCurrentPosition = new google.maps.Marker(markerOption);
     this.markerCurrentPosition.setMap(this.map);
 
@@ -97,6 +98,15 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         opacity: 0.5
       });
       marker.setMap(this.map);
+      // this.markerCluster.addMarker(marker);
     }
+  }
+
+  private getCurrentMarkerOption(): google.maps.MarkerOptions {
+    return {
+      position: this.coordinates,
+      label: 'Votre position',
+      draggable: true
+    };
   }
 }
