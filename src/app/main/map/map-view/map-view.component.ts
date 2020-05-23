@@ -3,6 +3,7 @@ import { SelectCurrentMarkerComponent } from './../components/select-current-mar
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 
+declare const MarkerClusterer: any;
 
 @Component({
   selector: 'app-map-view',
@@ -18,26 +19,15 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private mapOptions: google.maps.MapOptions;
   private coordinates: google.maps.LatLng;
   isFormLightCutOf = false;
-  // private markerCluster: MarkerClusterer;
+  private markerCluster: any;
 
   markerCurrentPosition: google.maps.Marker;
-  markers = [
-    // These are all just random coordinates from https://www.random.org/geographic-coordinates/
-    { lat: 4.0520564, lng: 9.7618687 },
-    { lat: 4.0530564, lng: 9.7628687 },
-    { lat: 4.0540564, lng: 9.7638687 },
-    { lat: 4.0550564, lng: 9.7648687 },
-    { lat: 4.0560564, lng: 9.7658687 },
-    { lat: 4.0570564, lng: 9.7668687 }
-  ];
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
   ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
     this.mapInitializer();
@@ -52,15 +42,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         this.initMap();
         this.isFormLightCutOf = true;
 
-        // this.markerCluster = new MarkerClusterer(
-        //   this.map,
-        //   [],
-        //   {imagePath: 'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m'}
-        // );
-
         this.initCurrentMarkerToMap(this.getCurrentMarkerOption());
-
-        // this.addEventListner();
 
         this.generateMarkerExple();
       });
@@ -93,15 +75,49 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private generateMarkerExple() {
-    for (let i = 0; i < this.markers.length; i++) {
-      const coords = new google.maps.LatLng(this.markers[i].lat, this.markers[i].lng);
+
+    const locations = [
+      // These are all just random coordinates from https://www.random.org/geographic-coordinates/
+      { lat: 4.0520564, lng: 9.7618687 },
+      { lat: 4.0530564, lng: 9.7628687 },
+      { lat: 4.0540564, lng: 9.7638687 },
+      { lat: 4.0550564, lng: 9.7648687 },
+      { lat: 4.0560564, lng: 9.7658687 },
+      { lat: 4.0570564, lng: 9.7668687 },
+      { lat: 4.0520564, lng: 9.7618687 },
+      { lat: 4.0530564, lng: 9.7628687 },
+      { lat: 4.0540564, lng: 9.7638687 },
+      { lat: 4.0550564, lng: 9.7648687 },
+      { lat: 4.0560564, lng: 9.7658687 },
+      { lat: 4.0570564, lng: 9.7668687 },
+      { lat: 4.0520564, lng: 9.7618687 },
+      { lat: 4.0530564, lng: 9.7628687 },
+      { lat: 4.0540564, lng: 9.7638687 },
+      { lat: 4.0550564, lng: 9.7648687 },
+      { lat: 4.0560564, lng: 9.7658687 },
+      { lat: 4.0570564, lng: 9.7668687 },
+      { lat: 4.0520564, lng: 9.7618687 },
+      { lat: 4.0530564, lng: 9.7628687 },
+      { lat: 4.0540564, lng: 9.7638687 },
+      { lat: 4.0550564, lng: 9.7648687 },
+      { lat: 4.0560564, lng: 9.7658687 },
+      { lat: 4.0570564, lng: 9.7668687 }
+    ];
+    const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    const markers = locations.map((location, i) => {
       const marker = new google.maps.Marker({
-        position: coords,
-        opacity: 0.5
+        position: location,
+        label: labels[i % labels.length]
       });
-      marker.setMap(this.map);
-      // this.markerCluster.addMarker(marker);
-    }
+      return marker;
+    });
+
+    this.markerCluster = new MarkerClusterer(
+      this.map,
+      markers,
+      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+    );
   }
 
   private getCurrentMarkerOption(): google.maps.MarkerOptions {
