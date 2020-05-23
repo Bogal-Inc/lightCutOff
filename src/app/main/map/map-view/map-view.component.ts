@@ -17,6 +17,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private map: google.maps.Map;
   private mapOptions: google.maps.MapOptions;
   private coordinates: google.maps.LatLng;
+  isFormLightCutOf = false;
   // private markerCluster: MarkerClusterer;
 
   markerCurrentPosition: google.maps.Marker;
@@ -49,6 +50,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         const lat = +position.coords.latitude;
         this.coordinates = new google.maps.LatLng(lat, lng);
         this.initMap();
+        this.isFormLightCutOf = true;
 
         // this.markerCluster = new MarkerClusterer(
         //   this.map,
@@ -92,8 +94,8 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   private generateMarkerExple() {
     for (let i = 0; i < this.markers.length; i++) {
-      let coords = new google.maps.LatLng(this.markers[i].lat, this.markers[i].lng);
-      let marker = new google.maps.Marker({
+      const coords = new google.maps.LatLng(this.markers[i].lat, this.markers[i].lng);
+      const marker = new google.maps.Marker({
         position: coords,
         opacity: 0.5
       });
