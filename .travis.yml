@@ -2,11 +2,11 @@ dist: trusty
 sudo: false
 
 addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
+  chrome: stable
+
+branches:
+  only:
+    - develop
 
 cache:
   directories:
@@ -20,4 +20,6 @@ install:
   - npm install
 
 script:
-  - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+  - ng lint
+  - ng build
+  # - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox

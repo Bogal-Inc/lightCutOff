@@ -1,6 +1,6 @@
 {
     "name": "lightcutoff",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
@@ -12,7 +12,6 @@
     "private": true,
     "dependencies": {
         "@agm/core": "^1.1.0",
-        "@agm/js-marker-clusterer": "^1.1.0",
         "@angular/animations": "~10.0.0-next.4",
         "@angular/cdk": "^9.2.3",
         "@angular/common": "~10.0.0-next.4",
@@ -24,7 +23,6 @@
         "@angular/platform-browser": "~10.0.0-next.4",
         "@angular/platform-browser-dynamic": "~10.0.0-next.4",
         "@angular/router": "~10.0.0-next.4",
-        "@google/markerclustererplus": "^5.0.3",
         "@ng-bootstrap/ng-bootstrap": "^6.1.0",
         "@ngrx/store": "^9.1.2",
         "bootstrap": "^4.5.0",
