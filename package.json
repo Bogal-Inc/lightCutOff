@@ -10,7 +10,11 @@
         "test": "npm run config && ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
+<<<<<<< HEAD
         "postbuild": "npm run build:heroku"
+=======
+        "postbuild": "ng build --aot --configuration=staging --env=${environment}"
+>>>>>>> 5a96b47... fix conflict
     },
     "private": true,
     "dependencies": {
