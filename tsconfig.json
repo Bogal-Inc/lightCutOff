@@ -7,7 +7,7 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
@@ -16,8 +16,10 @@
       "dom"
     ],
     "types": [
-      "googlemaps"
-    ]
+      "googlemaps",
+      "node"
+    ],
+    "typeRoots": [ "../node_modules/@types" ]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
