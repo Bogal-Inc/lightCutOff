@@ -9,7 +9,7 @@
         "test": "npm run config && ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "postbuild": "ng build --aot --configuration=staging --env=${environment}"
+        "postbuild": "ng build --aot --configuration=staging"
     },
     "private": true,
     "dependencies": {
