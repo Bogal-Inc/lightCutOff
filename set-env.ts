@@ -1,6 +1,6 @@
 import { writeFile } from 'fs';
 
-declare var require: any
+declare var require: any;
 
 // Configure Angular `environment.ts` file path
 let targetPath = null;
