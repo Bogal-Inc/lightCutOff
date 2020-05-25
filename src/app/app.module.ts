@@ -9,8 +9,6 @@ import { StoreModule } from '@ngrx/store';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -27,8 +25,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
       apiKey: environment.googleMapsApiKey
     }),
     NgbModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
   ],
   providers: [
     GoogleMapsAPIWrapper

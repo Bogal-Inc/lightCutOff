@@ -1,7 +1,10 @@
-// import * as MarkerClusterer from '@google/markerclustererplus';
+import { ReportService } from './../../../store/report/report.service';
 import { SelectCurrentMarkerComponent } from './../components/select-current-marker/select-current-marker.component';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
+import { Report } from 'src/app/core/models/report.model';
+import { Subscription } from 'rxjs';
+import * as firebase from 'firebase/app';
 
 declare const MarkerClusterer: any;
 
@@ -20,14 +23,23 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private coordinates: google.maps.LatLng;
   isFormLightCutOf = false;
   private markerCluster: any;
-
   markerCurrentPosition: google.maps.Marker;
+  reports: Report[];
+  reportSubscription: Subscription;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
+    private reportService: ReportService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.reportSubscription = this.reportService.reportsSubject.subscribe(
+      (reports: Report[]) => {
+        this.reports = reports;
+      }
+    );
+    this.reportService.emitReports();
+  }
 
   ngAfterViewInit() {
     this.mapInitializer();
