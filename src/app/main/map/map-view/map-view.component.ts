@@ -1,10 +1,9 @@
+import { Position } from './../../../core/models/report.model';
 import { ReportService } from './../../../store/report/report.service';
 import { SelectCurrentMarkerComponent } from './../components/select-current-marker/select-current-marker.component';
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { Report } from 'src/app/core/models/report.model';
-import { Subscription } from 'rxjs';
-import * as firebase from 'firebase/app';
 
 declare const MarkerClusterer: any;
 
@@ -13,19 +12,18 @@ declare const MarkerClusterer: any;
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.scss'],
 })
-export class MapViewComponent implements OnInit, AfterViewInit {
+export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('mapContainer', {static: false})
   private gmap: ElementRef;
   @ViewChild(SelectCurrentMarkerComponent, {read: ElementRef})
   private formLightCutOff: ElementRef;
   private map: google.maps.Map;
   private mapOptions: google.maps.MapOptions;
-  private coordinates: google.maps.LatLng;
+  coordinates: google.maps.LatLng;
   isFormLightCutOf = false;
   private markerCluster: any;
   markerCurrentPosition: google.maps.Marker;
   reports: Report[];
-  reportSubscription: Subscription;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
@@ -33,16 +31,16 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.reportSubscription = this.reportService.reportsSubject.subscribe(
-      (reports: Report[]) => {
-        this.reports = reports;
-      }
-    );
-    this.reportService.emitReports();
+    // this.reportService.getReports().subscribe(data => {
+    //   console.log(data);
+    // });
   }
 
   ngAfterViewInit() {
     this.mapInitializer();
+  }
+
+  ngOnDestroy() {
   }
 
   mapInitializer() {
@@ -50,7 +48,10 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       navigator.geolocation.getCurrentPosition( position => {
         const lng = +position.coords.longitude;
         const lat = +position.coords.latitude;
+        localStorage.setItem('lightCutOffCoords', JSON.stringify({lng, lat}));
+
         this.coordinates = new google.maps.LatLng(lat, lng);
+
         this.initMap();
         this.isFormLightCutOf = true;
 

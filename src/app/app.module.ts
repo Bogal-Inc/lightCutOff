@@ -28,7 +28,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     }),
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   providers: [
     GoogleMapsAPIWrapper
