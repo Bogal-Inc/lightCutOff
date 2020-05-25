@@ -1,10 +1,15 @@
-export class Report {
+export interface Position {
+  latitude: number;
+  longitude: number;
+}
+
+export interface Report {
   createdAt: string;
   updatedAt: string;
   deletedAt: string;
   reportedAt: string;
   restoredAt: string;
-  position: google.maps.LatLng;
+  position: Position;
   acceptLangage: string;
   userAgent: string;
 }
