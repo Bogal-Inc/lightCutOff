@@ -8,7 +8,8 @@
         "build": "npm run config && ng build",
         "test": "npm run config && ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "postbuild": "ng build --aot --configuration=staging --env=${environment}"
     },
     "private": true,
     "dependencies": {
@@ -31,6 +32,7 @@
         "colors": "^1.4.0",
         "dotenv": "^8.2.0",
         "firebase": "^7.14.5",
+        "express": "^4.17.1",
         "jquery": "^3.5.1",
         "ng2-validation": "^4.2.0",
         "ngx-toastr": "^12.0.1",
@@ -60,5 +62,9 @@
         "ts-node": "^8.10.1",
         "tslint": "~6.1.0",
         "typescript": "~3.8.3"
+    },
+    "engines": {
+        "node": "12.16.2",
+        "npm": "6.14.4"
     }
 }
