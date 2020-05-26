@@ -6,6 +6,7 @@ import { ReportService } from 'src/app/store/report/report.service';
 import * as uuid from 'uuid';
 import { ngbToFbTimestamp } from 'src/app/core/_helper/ngbToFbTimestamp.cast';
 import { isValidReportedDate } from 'src/app/core/_helper/isValidReportedDate.validator';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class SelectCurrentMarkerComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private reportService: ReportService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -76,6 +78,7 @@ export class SelectCurrentMarkerComponent implements OnInit {
       userAgent: 'test_userAgent'
     }).then(
       resp => {
+        this.toastr.success('Merci', 'Rapport ajouté');
         this.reportFormsubmitted = false;
         this.reportForm.reset();
       }
