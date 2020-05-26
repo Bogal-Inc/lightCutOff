@@ -11,6 +11,8 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -29,6 +31,12 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      preventDuplicates: true,
+      progressBar: true
+    })
   ],
   providers: [
     GoogleMapsAPIWrapper
