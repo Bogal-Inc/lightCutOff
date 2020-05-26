@@ -63,6 +63,26 @@
                                     "maximumError": "10kb"
                                 }
                             ]
+                        },
+                        "staging": {
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": {
+                                "hidden": true,
+                                "scripts": true,
+                                "styles": true
+                            },
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "fileReplacements": [{
+                                "replace": "apps/manage-app/src/environments/environment.ts",
+                                "with": "apps/manage-app/src/environments/environment.staging.ts"
+                            }],
+                            "serviceWorker": true
                         }
                     }
                 },
