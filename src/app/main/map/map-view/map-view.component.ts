@@ -1,6 +1,6 @@
 import { Position } from './../../../core/models/report.model';
 import { ReportService } from './../../../store/report/report.service';
-import { SelectCurrentMarkerComponent } from './../components/select-current-marker/select-current-marker.component';
+import { ReportRecovredFormComponent } from '../components/report-recovred-form/report-recovred-form.component';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { Report } from 'src/app/core/models/report.model';
@@ -18,7 +18,7 @@ declare const MarkerClusterer: any;
 export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('mapContainer', {static: false})
   private gmap: ElementRef;
-  @ViewChild(SelectCurrentMarkerComponent, {read: ElementRef})
+  @ViewChild(ReportRecovredFormComponent, {read: ElementRef})
   private formLightCutOff: ElementRef;
   private map: google.maps.Map;
   private mapOptions: google.maps.MapOptions;

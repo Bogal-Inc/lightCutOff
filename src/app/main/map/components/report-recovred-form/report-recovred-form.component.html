@@ -2,13 +2,14 @@
     <div class="cuttoff__box">
         <h5 class="text-center">Faites un rapport</h5>
         <hr class="mb-4">
+        <p>Quant est-ce que vous n'avez plus eu d'énergie électrique?</p>
         <form [formGroup]="reportForm" (ngSubmit)="onSubmitReport()">
             <div class="form">
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="date de la coupure" ngbDatepicker #sd="ngbDatepicker" formControlName="reportedAt" [ngClass]="{ 'is-invalid': reportFormsubmitted && f.reportedAt.errors }">
+                        <input type="text" class="form-control form-control-sm" placeholder="date" ngbDatepicker #sd="ngbDatepicker" formControlName="reportedAt" [ngClass]="{ 'is-invalid': reportFormsubmitted && f.reportedAt.errors }">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" (click)="sd.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+                            <button class="btn btn-sm btn-outline-secondary" (click)="sd.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
                         </div>
                     </div>
                     <div *ngIf="reportFormsubmitted && f.reportedAt.errors" class="invalid-feedback">
@@ -16,13 +17,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <ngb-timepicker formControlName="reportedHour" [ngClass]="{ 'is-invalid': reportFormsubmitted && f.reportedHour.errors }"></ngb-timepicker>
+                    <ngb-timepicker [spinners]="true" [size]="'small'" formControlName="reportedHour" [ngClass]="{ 'is-invalid': reportFormsubmitted && f.reportedHour.errors }"></ngb-timepicker>
                     <div *ngIf="reportFormsubmitted && f.reportedHour.errors" class="invalid-feedback">
                         <div *ngIf="f.reportedHour.errors.required">une heure est requise</div>
                     </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary" type="submit">Enregistrer</button>
+                    <button class="btn btn-small btn-primary" type="submit">Enregistrer</button>
                 </div>
             </div>
         </form>
