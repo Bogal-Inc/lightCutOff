@@ -3,6 +3,7 @@
         <div class="spinner-grow text-primary map-container__map__loader" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-        <app-select-current-marker [class.d-none]="!isFormLightCutOf"></app-select-current-marker>
+        <app-select-current-marker (reportSubmit)="onReportSubmit($event)" [position]="position" [class.d-none]="!isFormLightCutOf">
+        </app-select-current-marker>
     </div>
 </div>

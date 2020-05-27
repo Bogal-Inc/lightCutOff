@@ -4,6 +4,9 @@ import { SelectCurrentMarkerComponent } from './../components/select-current-mar
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { Report } from 'src/app/core/models/report.model';
+import * as uuid from 'uuid';
+import { ngbToDate } from 'src/app/core/_helper/ngbToFbTimestamp.cast';
+import { ToastrService } from 'ngx-toastr';
 
 declare const MarkerClusterer: any;
 
@@ -24,31 +27,33 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private markerCluster: any;
   markerCurrentPosition: google.maps.Marker;
   reports: Report[];
+  position: Position;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
-    private reportService: ReportService
+    private reportService: ReportService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
     // this.reportService.getReports().subscribe(data => {
     //   console.log(data);
     // });
-  }
-
-  ngAfterViewInit() {
     this.mapInitializer();
   }
 
-  ngOnDestroy() {
+  ngAfterViewInit() {
+    // this.mapInitializer();
   }
+
+  ngOnDestroy() { }
 
   mapInitializer() {
     this.mapsApiLoader.load().then(() => {
       navigator.geolocation.getCurrentPosition( position => {
         const lng = +position.coords.longitude;
         const lat = +position.coords.latitude;
-        localStorage.setItem('lightCutOffCoords', JSON.stringify({lng, lat}));
+        this.position = {lng, lat};
 
         this.coordinates = new google.maps.LatLng(lat, lng);
 
@@ -60,6 +65,26 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.generateMarkerExple();
       });
     });
+  }
+
+  onReportSubmit(event) {
+    const now = new Date();
+
+    this.reportService.createReport({
+      id: uuid.v4(),
+      acceptLangage: 'test_acceptLangage',
+      createdAt: now,
+      deletedAt: now,
+      position: this.position,
+      reportedAt: ngbToDate(event.reportedAt, event.reportedHour),
+      restoredAt: now,
+      updatedAt: now,
+      userAgent: 'test_userAgent'
+    }).then(
+      resp => {
+        this.toastr.success('Merci', 'Rapport ajouté');
+      }
+    );
   }
 
   private initMap() {
