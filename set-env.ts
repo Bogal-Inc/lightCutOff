@@ -3,10 +3,16 @@ import { writeFile } from 'fs';
 declare var require: any
 
 // Configure Angular `environment.ts` file path
-const targetPath = './src/environments/environment.ts';
+let targetPath = null;
 // Load node modules
 const colors = require('colors');
 require('dotenv').config();
+
+if (process.env.PRODUCTION === 'true') {
+  targetPath = './src/environments/environment.prod.ts';
+} else {
+  targetPath = './src/environments/environment.ts';
+}
 
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
