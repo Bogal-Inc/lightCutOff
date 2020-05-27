@@ -4,12 +4,13 @@
     "scripts": {
         "ng": "ng",
         "config": "ts-node set-env.ts",
-        "start": "npm run config && ng serve",
-        "build": "npm run config && ng build",
+        "start": "node server.js",
+        "build": "npm run config && ng build --aot",
+        "build:heroku": "npm run config && ng build --aot --prod",
         "test": "npm run config && ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "postbuild": "ng build --aot --configuration=staging"
+        "postbuild": "npm run build:heroku"
     },
     "private": true,
     "dependencies": {
