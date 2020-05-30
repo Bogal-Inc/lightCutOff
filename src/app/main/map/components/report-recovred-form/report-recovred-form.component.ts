@@ -1,5 +1,5 @@
 import { Report } from '../../../../core/models/report.model';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -12,58 +12,67 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ReportRecovredFormComponent implements OnInit {
   @Output() reportSubmit: EventEmitter<Report> = new EventEmitter<Report>();
+  @Output() recovredSubmit: EventEmitter<any> = new EventEmitter<any>();
+  @Input() lastReport: Report;
+  @Input() formLoader: boolean;
 
   reportForm: FormGroup;
-  reportFormsubmitted = false;
-  // restoreForm: FormGroup;
-
-  reportedAt: NgbDateStruct;
-  restoredAt: NgbDateStruct;
+  reportFormSubmitted = false;
+  recovredForm: FormGroup;
+  recovredFormSubmitted = false;
 
   constructor(
     private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.initForm();
-    this.onChanges();
+    this.initReportForm();
+    this.initRecovredForm();
   }
 
-  private initForm() {
-    const coords = JSON.parse(localStorage.getItem('lightCutOffCoords'));
+  private initReportForm() {
+    // const coords = JSON.parse(localStorage.getItem('lightCutOffCoords'));
     this.reportForm = this.formBuilder.group({
       reportedAt: ['', [Validators.required]],
       reportedHour: ['', [Validators.required]]
     });
-    // this.restoreForm = this.formBuilder.group({
-    //   restoredAt: ['', [Validators.required]],
-    //   restoredHour: ['', [Validators.required]],
-    // },
-    // {
-    //   validator: isValidReportedDate('reportedAt', 'restoredAt', 'reportedHour', 'restoredHour')
-    // });
+  }
+
+  private initRecovredForm() {
+    this.recovredForm = this.formBuilder.group({
+      recovredAt: ['', [Validators.required]],
+      recovredHour: ['', [Validators.required]],
+      reportId: ['', [Validators.required]],
+    });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.reportForm.controls; }
+  get fReport() { return this.reportForm.controls; }
+  get fRecovred() { return this.recovredForm.controls; }
 
   onSubmitReport() {
-    this.reportFormsubmitted = true;
+    this.reportFormSubmitted = true;
 
     // stop here if form is invalid
     if (this.reportForm.invalid) {
       return;
     }
 
+    this.formLoader = true;
     const report = this.reportForm.value;
     this.reportSubmit.emit(report);
-    this.reportForm.reset();
+
   }
 
-  private onChanges(): void {
-    this.reportForm.valueChanges.subscribe(val => {
-      this.reportedAt = val.reportedAt;
-      this.restoredAt = val.restoredAt;
-    });
+  onSubmitRecovred() {
+    this.recovredFormSubmitted = true;
+
+    // stop here if form is invalid
+    if (this.recovredForm.invalid) {
+      return;
+    }
+
+    const report = this.recovredForm.value;
+    this.recovredSubmit.emit(report);
   }
 }

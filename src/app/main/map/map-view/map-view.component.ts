@@ -7,6 +7,7 @@ import { Report } from 'src/app/core/models/report.model';
 import * as uuid from 'uuid';
 import { ngbToDate } from 'src/app/core/_helper/ngbToFbTimestamp.cast';
 import { ToastrService } from 'ngx-toastr';
+import { compareDate } from 'src/app/core/_helper/compareDate.validator';
 
 declare const MarkerClusterer: any;
 
@@ -22,18 +23,20 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private formLightCutOff: ElementRef;
   private map: google.maps.Map;
   private mapOptions: google.maps.MapOptions;
-  coordinates: google.maps.LatLng;
-  isFormLightCutOf = false;
   private markerCluster: any;
+  isFormLightCutOf = false;
+  private coordinates: google.maps.LatLng;
   markerCurrentPosition: google.maps.Marker;
   reports: Report[];
-  position: Position;
+  private position: Position;
+  lastReport: Report;
+  formLoader: boolean;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
     private reportService: ReportService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // this.reportService.getReports().subscribe(data => {
@@ -58,7 +61,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           this.coordinates = new google.maps.LatLng(lat, lng);
 
           this.initMap();
-          this.initCurrentMarkerToMap(this.getCurrentMarkerOption());
+          this.initCurrentMarkerToMap({
+            position: this.coordinates,
+            label: 'Votre position',
+            draggable: true
+          });
           this.generateMarkerExple();
           this.reloadCurrentPosition();
         }, () => {
@@ -72,20 +79,44 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onReportSubmit(event) {
     const now = new Date();
-
-    this.reportService.createReport({
+    const report = {
       id: uuid.v4(),
-      acceptLangage: 'test_acceptLangage',
       createdAt: now,
       deletedAt: now,
       position: this.position,
       reportedAt: ngbToDate(event.reportedAt, event.reportedHour),
-      restoredAt: now,
+      recovredAt: now,
       updatedAt: now,
-      userAgent: 'test_userAgent'
-    }).then(
+    };
+
+    this.reportService.createReport(report).then(
       resp => {
+        this.formLoader = false;
+        this.lastReport = report;
+        this.lastReport.url = resp.path.valueOf();
+        this.markerCurrentPosition.setDraggable(false);
         this.toastr.success('Merci', 'Rapport ajouté');
+      }
+    );
+  }
+
+  onRecovredSubmit(event) {
+    this.formLoader = true;
+    this.lastReport.recovredAt = ngbToDate(event.recovredAt, event.recovredHour);
+    this.lastReport.updatedAt = new Date();
+
+    if (!compareDate(this.lastReport.recovredAt, this.lastReport.reportedAt)) {
+      this.formLoader = false;
+      this.toastr.error('La date de créatioon du rapport doit être supérieur à la date de fin', 'Erreur');
+      return ;
+    }
+
+    this.reportService.updateReport(this.lastReport).then(
+      resp => {
+        this.formLoader = false;
+        this.lastReport = null;
+        this.markerCurrentPosition.setDraggable(true);
+        this.toastr.success('Merci', 'Rapport modifié');
       }
     );
   }
@@ -120,8 +151,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       content: this.formLightCutOff.nativeElement
     });
 
-    this.markerCurrentPosition.addListener('click', function() {
-      infoWindow.open(this.getMap(), this);
+    google.maps.event.addListener(this.markerCurrentPosition, 'click', (data) => {
+      infoWindow.open(this.markerCurrentPosition.getMap(), this.markerCurrentPosition);
     });
   }
 

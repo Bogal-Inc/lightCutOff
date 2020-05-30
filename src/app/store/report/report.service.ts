@@ -21,4 +21,9 @@ export class ReportService {
   getReports() {
     return this.firestore.collection('reports').snapshotChanges();
   }
+
+  updateReport(report: Report){
+    delete report.id;
+    return this.firestore.doc(report.url).update(report);
+  }
 }

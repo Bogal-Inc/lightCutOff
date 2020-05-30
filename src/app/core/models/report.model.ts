@@ -12,8 +12,7 @@ export interface Report {
   updatedAt: Date;
   deletedAt: Date;
   reportedAt: Date;
-  restoredAt: Date;
+  recovredAt: Date;
   position: Position;
-  acceptLangage: string;
-  userAgent: string;
+  url?: string;
 }
