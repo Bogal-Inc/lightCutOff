@@ -39,31 +39,34 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     // this.reportService.getReports().subscribe(data => {
     //   console.log(data);
     // });
-    this.mapInitializer();
   }
 
   ngAfterViewInit() {
-    // this.mapInitializer();
+    this.mapInitializer();
   }
 
   ngOnDestroy() { }
 
   mapInitializer() {
     this.mapsApiLoader.load().then(() => {
-      navigator.geolocation.getCurrentPosition( position => {
-        const lng = +position.coords.longitude;
-        const lat = +position.coords.latitude;
-        this.position = {lng, lat};
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition( position => {
+          const lng = +position.coords.longitude;
+          const lat = +position.coords.latitude;
+          this.position = {lng, lat};
+          this.isFormLightCutOf = true;
+          this.coordinates = new google.maps.LatLng(lat, lng);
 
-        this.coordinates = new google.maps.LatLng(lat, lng);
-
-        this.initMap();
-        this.isFormLightCutOf = true;
-
-        this.initCurrentMarkerToMap(this.getCurrentMarkerOption());
-
-        this.generateMarkerExple();
-      });
+          this.initMap();
+          this.initCurrentMarkerToMap(this.getCurrentMarkerOption());
+          this.generateMarkerExple();
+          this.reloadCurrentPosition();
+        }, () => {
+          this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
+        } );
+      } else {
+        this.toastr.error('Votre navigateur ne supporte Geolocation');
+      }
     });
   }
 
@@ -85,6 +88,16 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.toastr.success('Merci', 'Rapport ajouté');
       }
     );
+  }
+
+  private reloadCurrentPosition(){
+    google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (data) => {
+      const pos = this.markerCurrentPosition.getPosition();
+      const lng = pos.lng();
+      const lat = pos.lat();
+      this.position = {lng, lat};
+      this.coordinates = new google.maps.LatLng(lat, lng);
+    });
   }
 
   private initMap() {
@@ -113,7 +126,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private generateMarkerExple() {
-
     const locations = [
       // These are all just random coordinates from https://www.random.org/geographic-coordinates/
       { lat: 4.0520564, lng: 9.7618687 },
