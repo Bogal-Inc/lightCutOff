@@ -6,8 +6,8 @@ addons:
 
 branches:
   only:
+    - master
     - develop
-    - deploy-heroku
 
 cache:
   directories:
