@@ -1,6 +1,6 @@
-const express = require('express');
-const path = require('path');
-const ngApp = express();
+var express = require('express');
+var path = require('path');
+var ngApp = express();
 
 
 ngApp.use(express.static('./dist/lightcutoff'));
