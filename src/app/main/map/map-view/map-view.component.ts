@@ -24,6 +24,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private map: google.maps.Map;
   private mapOptions: google.maps.MapOptions;
   private markerCluster: any;
+  private infoWindow: google.maps.InfoWindow;
   isFormLightCutOf = false;
   private coordinates: google.maps.LatLng;
   markerCurrentPosition: google.maps.Marker;
@@ -78,15 +79,15 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onReportSubmit(event) {
-    const now = new Date();
     const report = {
       id: uuid.v4(),
-      createdAt: now,
-      deletedAt: now,
+      createdAt: ngbToDate(),
+      deletedAt: null,
       position: this.position,
       reportedAt: ngbToDate(event.reportedAt, event.reportedHour),
-      recovredAt: now,
-      updatedAt: now,
+      recovredAt: null,
+      updatedAt: null,
+      url: null
     };
 
     this.reportService.createReport(report).then(
@@ -103,7 +104,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   onRecovredSubmit(event) {
     this.formLoader = true;
     this.lastReport.recovredAt = ngbToDate(event.recovredAt, event.recovredHour);
-    this.lastReport.updatedAt = new Date();
+    this.lastReport.updatedAt = ngbToDate();
 
     if (!compareDate(this.lastReport.recovredAt, this.lastReport.reportedAt)) {
       this.formLoader = false;
@@ -116,6 +117,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.formLoader = false;
         this.lastReport = null;
         this.markerCurrentPosition.setDraggable(true);
+        this.infoWindow.close();
         this.toastr.success('Merci', 'Rapport modifié');
       }
     );
@@ -147,12 +149,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.markerCurrentPosition = new google.maps.Marker(markerOption);
     this.markerCurrentPosition.setMap(this.map);
 
-    const infoWindow = new google.maps.InfoWindow({
-      content: this.formLightCutOff.nativeElement
+    this.infoWindow = new google.maps.InfoWindow({
+      content: this.formLightCutOff.nativeElement,
     });
 
     google.maps.event.addListener(this.markerCurrentPosition, 'click', (data) => {
-      infoWindow.open(this.markerCurrentPosition.getMap(), this.markerCurrentPosition);
+      this.infoWindow.open(this.markerCurrentPosition.getMap(), this.markerCurrentPosition);
     });
   }
 
