@@ -9,10 +9,10 @@ export interface Position {
 export interface Report {
   id: string;
   createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
+  updatedAt?: Date;
+  deletedAt?: Date;
   reportedAt: Date;
-  recovredAt: Date;
+  recovredAt?: Date;
   position: Position;
   url?: string;
 }
