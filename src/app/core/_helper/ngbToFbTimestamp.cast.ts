@@ -6,7 +6,7 @@ export function ngbToDate(ngbDate?: NgbDateStruct, ngbHours?: any): Date {
   if (ngbDate) {
     jsDate = new Date(
       ngbDate.year,
-      ngbDate.month,
+      ngbDate.month - 1,
       ngbDate.day,
       ngbHours.hour,
       ngbHours.minute
@@ -22,7 +22,7 @@ export function ngbToDate(ngbDate?: NgbDateStruct, ngbHours?: any): Date {
     );
   }
 
-  return jsDate;
+  return jsDate.toISOString();
 }
 
 
