@@ -2,7 +2,6 @@ import { Report } from '../../../../core/models/report.model';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -58,10 +57,9 @@ export class ReportRecovredFormComponent implements OnInit {
       return;
     }
 
-    this.formLoader = true;
     const report = this.reportForm.value;
     this.reportSubmit.emit(report);
-
+    this.reportForm.reset();
   }
 
   onSubmitRecovred() {
@@ -74,5 +72,6 @@ export class ReportRecovredFormComponent implements OnInit {
 
     const report = this.recovredForm.value;
     this.recovredSubmit.emit(report);
+    this.recovredForm.reset();
   }
 }

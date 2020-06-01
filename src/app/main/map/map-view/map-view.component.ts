@@ -79,6 +79,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onReportSubmit(event) {
+    this.formLoader = true;
     const report = {
       id: uuid.v4(),
       createdAt: ngbToDate(),
