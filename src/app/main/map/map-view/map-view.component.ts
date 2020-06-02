@@ -25,7 +25,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private mapOptions: google.maps.MapOptions;
   private markerCluster: any;
   private infoWindow: google.maps.InfoWindow;
-  private coordinates: google.maps.LatLng;
   markerCurrentPosition: google.maps.Marker;
   isFormLightCutOf = false;
   markers: any[];
@@ -52,19 +51,22 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mapsApiLoader.load().then(() => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition( position => {
-          this.getPosition(position);
+          this.isFormLightCutOf = true;
+          this.position = {
+            lng: +position.coords.longitude,
+            lat: +position.coords.latitude
+          };
 
           this.initMap();
 
           this.initCurrentMarker({
-            position: this.coordinates,
+            position: this.position,
             label: 'Votre position',
             draggable: true
           });
-
-          this.reloadCurrentPosition();
-
           this.initOtherMarkers();
+
+          this.addEvents();
         }, () => {
           this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
         } );
@@ -122,28 +124,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  private getPosition(position: any) {
-    const lng = +position.coords.longitude;
-    const lat = +position.coords.latitude;
-    this.position = {lng, lat};
-    this.isFormLightCutOf = true;
-    this.coordinates = new google.maps.LatLng(lat, lng);
-  }
-
-  private reloadCurrentPosition(){
-    google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (data) => {
-      const pos = this.markerCurrentPosition.getPosition();
-      const lng = pos.lng();
-      const lat = pos.lat();
-      this.position = {lng, lat};
-      this.coordinates = new google.maps.LatLng(lat, lng);
-    });
-  }
-
   private initMap() {
     this.mapOptions = {
-      center: this.coordinates,
+      center: this.position,
       zoom: 12,
+      disableDoubleClickZoom: true,
       backgroundColor: '#eaeaea',
       mapTypeControl: false,
       streetViewControl: false
@@ -210,5 +195,33 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         </div>
       </div>
     `;
+  }
+
+  private addEvents() {
+    this.onDragableGetPosition();
+    this.onDblClickUserMarker();
+  }
+
+  private onDragableGetPosition(){
+    google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (data) => {
+      const pos = this.markerCurrentPosition.getPosition();
+      this.position = {lng: pos.lng(), lat: pos.lat()};
+    });
+  }
+
+  private onDblClickUserMarker() {
+    google.maps.event.addListener(this.map, 'dblclick', (data) => {
+      this.markerCurrentPosition.setMap(null);
+      this.position = {
+        lng: +data.latLng.lng(),
+        lat: +data.latLng.lat()
+      };
+
+      this.initCurrentMarker({
+        position: this.position,
+        label: 'Votre position',
+        draggable: true
+      });
+    });
   }
 }
