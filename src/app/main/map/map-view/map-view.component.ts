@@ -25,9 +25,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private mapOptions: google.maps.MapOptions;
   private markerCluster: any;
   private infoWindow: google.maps.InfoWindow;
-  isFormLightCutOf = false;
   private coordinates: google.maps.LatLng;
   markerCurrentPosition: google.maps.Marker;
+  isFormLightCutOf = false;
   markers: any[];
   reports: Report[];
   private position: Position;
@@ -37,7 +37,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private mapsApiLoader: MapsAPILoader,
     private reportService: ReportService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void { }
@@ -52,19 +52,18 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mapsApiLoader.load().then(() => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition( position => {
-          const lng = +position.coords.longitude;
-          const lat = +position.coords.latitude;
-          this.position = {lng, lat};
-          this.isFormLightCutOf = true;
-          this.coordinates = new google.maps.LatLng(lat, lng);
+          this.getPosition(position);
 
           this.initMap();
-          this.initCurrentMarkerToMap({
+
+          this.initCurrentMarker({
             position: this.coordinates,
             label: 'Votre position',
             draggable: true
           });
+
           this.reloadCurrentPosition();
+
           this.initOtherMarkers();
         }, () => {
           this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
@@ -74,6 +73,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     });
   }
+
+
 
   onReportSubmit(event) {
     this.formLoader = true;
@@ -121,6 +122,14 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
+  private getPosition(position: any) {
+    const lng = +position.coords.longitude;
+    const lat = +position.coords.latitude;
+    this.position = {lng, lat};
+    this.isFormLightCutOf = true;
+    this.coordinates = new google.maps.LatLng(lat, lng);
+  }
+
   private reloadCurrentPosition(){
     google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (data) => {
       const pos = this.markerCurrentPosition.getPosition();
@@ -143,7 +152,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
   }
 
-  private initCurrentMarkerToMap(markerOption: google.maps.MarkerOptions) {
+  private initCurrentMarker(markerOption: google.maps.MarkerOptions) {
     this.markerCurrentPosition = new google.maps.Marker(markerOption);
     this.markerCurrentPosition.setMap(this.map);
 
@@ -160,22 +169,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.reportService.getReports().subscribe(data => {
       this.markers = data.map(e => {
         const report = e.payload.doc.data() as Report;
-
-        const currentMareker = new google.maps.Marker({
-            position: report.position
-        });
-        currentMareker.setMap(this.map);
-
-        const currentInfoWindow = new google.maps.InfoWindow({
-          content: `{
-            <b>lng</b>: ${report.position.lng},
-            lat: ${report.position.lat}
-          }`
-        });
-        currentMareker.addListener('mouseover', () => currentInfoWindow.open(this.map, currentMareker));
-        currentMareker.addListener('mouseout', () => currentInfoWindow.close());
-
-        return currentMareker;
+        return this.factoryOldMarkers(report);
       });
       this.markerCluster = new MarkerClusterer(
         this.map,
@@ -183,5 +177,38 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
       );
     });
+  }
+
+  private factoryOldMarkers(report: Report): google.maps.Marker {
+    const currentMareker = new google.maps.Marker({
+        position: report.position,
+        map: this.map
+    });
+
+    const currentInfoWindow = new google.maps.InfoWindow({
+      content: this.getContentMarherInformations(report)
+    });
+    currentMareker.addListener('mouseover', () => currentInfoWindow.open(this.map, currentMareker));
+    currentMareker.addListener('mouseout', () => currentInfoWindow.close());
+
+    return currentMareker;
+  }
+
+  private getContentMarherInformations(report: Report): string {
+    return `
+      <div class="marker-details">
+        <div class="marker-details_header">
+          Rapport
+          <h3>Title</h3>
+        </div>
+        <div class="marker-details_body">
+          <ul>
+            <li>Coupe le: ${new Date(report.reportedAt).toUTCString()}</li>
+            <li>Remis le: ${(report.recovredAt) ? new Date(report.recovredAt)?.toUTCString() : 'Aucune notification'}</li>
+            <li>Position: { lng: ${report.position.lng} lat: ${report.position.lat}}</li>
+          </ul>
+        </div>
+      </div>
+    `;
   }
 }
