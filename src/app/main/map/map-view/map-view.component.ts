@@ -28,6 +28,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   isFormLightCutOf = false;
   private coordinates: google.maps.LatLng;
   markerCurrentPosition: google.maps.Marker;
+  markers: any[];
   reports: Report[];
   private position: Position;
   lastReport: Report;
@@ -39,11 +40,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private toastr: ToastrService
   ) { }
 
-  ngOnInit(): void {
-    // this.reportService.getReports().subscribe(data => {
-    //   console.log(data);
-    // });
-  }
+  ngOnInit(): void { }
 
   ngAfterViewInit() {
     this.mapInitializer();
@@ -67,8 +64,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
             label: 'Votre position',
             draggable: true
           });
-          this.generateMarkerExple();
           this.reloadCurrentPosition();
+          this.initOtherMarkers();
         }, () => {
           this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
         } );
@@ -159,56 +156,32 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  private generateMarkerExple() {
-    const locations = [
-      // These are all just random coordinates from https://www.random.org/geographic-coordinates/
-      { lat: 4.0520564, lng: 9.7618687 },
-      { lat: 4.0530564, lng: 9.7628687 },
-      { lat: 4.0540564, lng: 9.7638687 },
-      { lat: 4.0550564, lng: 9.7648687 },
-      { lat: 4.0560564, lng: 9.7658687 },
-      { lat: 4.0570564, lng: 9.7668687 },
-      { lat: 4.0520564, lng: 9.7618687 },
-      { lat: 4.0530564, lng: 9.7628687 },
-      { lat: 4.0540564, lng: 9.7638687 },
-      { lat: 4.0550564, lng: 9.7648687 },
-      { lat: 4.0560564, lng: 9.7658687 },
-      { lat: 4.0570564, lng: 9.7668687 },
-      { lat: 4.0520564, lng: 9.7618687 },
-      { lat: 4.0530564, lng: 9.7628687 },
-      { lat: 4.0540564, lng: 9.7638687 },
-      { lat: 4.0550564, lng: 9.7648687 },
-      { lat: 4.0560564, lng: 9.7658687 },
-      { lat: 4.0570564, lng: 9.7668687 },
-      { lat: 4.0520564, lng: 9.7618687 },
-      { lat: 4.0530564, lng: 9.7628687 },
-      { lat: 4.0540564, lng: 9.7638687 },
-      { lat: 4.0550564, lng: 9.7648687 },
-      { lat: 4.0560564, lng: 9.7658687 },
-      { lat: 4.0570564, lng: 9.7668687 }
-    ];
-    const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  private initOtherMarkers() {
+    this.reportService.getReports().subscribe(data => {
+      this.markers = data.map(e => {
+        const report = e.payload.doc.data() as Report;
 
-    const markers = locations.map((location, i) => {
-      const marker = new google.maps.Marker({
-        position: location,
-        label: labels[i % labels.length]
+        const currentMareker = new google.maps.Marker({
+            position: report.position
+        });
+        currentMareker.setMap(this.map);
+
+        const currentInfoWindow = new google.maps.InfoWindow({
+          content: `{
+            <b>lng</b>: ${report.position.lng},
+            lat: ${report.position.lat}
+          }`
+        });
+        currentMareker.addListener('mouseover', () => currentInfoWindow.open(this.map, currentMareker));
+        currentMareker.addListener('mouseout', () => currentInfoWindow.close());
+
+        return currentMareker;
       });
-      return marker;
+      this.markerCluster = new MarkerClusterer(
+        this.map,
+        this.markers,
+        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+      );
     });
-
-    this.markerCluster = new MarkerClusterer(
-      this.map,
-      markers,
-      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
-    );
-  }
-
-  private getCurrentMarkerOption(): google.maps.MarkerOptions {
-    return {
-      position: this.coordinates,
-      label: 'Votre position',
-      draggable: true
-    };
   }
 }
