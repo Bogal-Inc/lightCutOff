@@ -7,12 +7,14 @@ import { MapViewComponent } from './map-view/map-view.component';
 import { AgmCoreModule } from '@agm/core';
 import { ReportRecovredFormComponent } from './components/report-recovred-form/report-recovred-form.component';
 import { FormsModule } from '@angular/forms';
+import { SearchPlaceFormComponent } from './components/search-place-form/search-place-form.component';
 
 
 @NgModule({
   declarations: [
     MapViewComponent,
-    ReportRecovredFormComponent
+    ReportRecovredFormComponent,
+    SearchPlaceFormComponent,
   ],
   imports: [
     CommonModule,

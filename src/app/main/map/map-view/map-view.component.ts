@@ -1,5 +1,5 @@
-import { Position } from './../../../core/models/report.model';
-import { ReportService } from './../../../store/report/report.service';
+import { Position } from 'src/app/core/models/report.model';
+import { ReportService } from 'src/app/store/report/report.service';
 import { ReportRecovredFormComponent } from '../components/report-recovred-form/report-recovred-form.component';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
@@ -25,9 +25,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private mapOptions: google.maps.MapOptions;
   private markerCluster: any;
   private infoWindow: google.maps.InfoWindow;
-  isFormLightCutOf = false;
-  private coordinates: google.maps.LatLng;
   markerCurrentPosition: google.maps.Marker;
+  isFormLightCutOf = false;
   markers: any[];
   reports: Report[];
   private position: Position;
@@ -37,7 +36,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private mapsApiLoader: MapsAPILoader,
     private reportService: ReportService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void { }
@@ -52,20 +51,22 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mapsApiLoader.load().then(() => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition( position => {
-          const lng = +position.coords.longitude;
-          const lat = +position.coords.latitude;
-          this.position = {lng, lat};
           this.isFormLightCutOf = true;
-          this.coordinates = new google.maps.LatLng(lat, lng);
+          this.position = {
+            lng: +position.coords.longitude,
+            lat: +position.coords.latitude
+          };
 
           this.initMap();
-          this.initCurrentMarkerToMap({
-            position: this.coordinates,
+
+          this.initCurrentMarker({
+            position: this.position,
             label: 'Votre position',
             draggable: true
           });
-          this.reloadCurrentPosition();
           this.initOtherMarkers();
+
+          this.addEvents();
         }, () => {
           this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
         } );
@@ -74,6 +75,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     });
   }
+
+
 
   onReportSubmit(event) {
     this.formLoader = true;
@@ -121,20 +124,31 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  private reloadCurrentPosition(){
-    google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (data) => {
-      const pos = this.markerCurrentPosition.getPosition();
-      const lng = pos.lng();
-      const lat = pos.lat();
-      this.position = {lng, lat};
-      this.coordinates = new google.maps.LatLng(lat, lng);
+  onSearchPlace(event) {
+    const service = new google.maps.places.PlacesService(this.map);
+    const request = {
+      query: event.query,
+      fields: ['name', 'geometry'],
+    };
+
+    service.findPlaceFromQuery(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        // for (let i = 0; i < results.length; i++) {
+        //   const location = results[0].geometry.location;
+        // }
+        this.map.setCenter(results[0].geometry.location);
+        this.map.setZoom(14);
+      }else {
+        this.toastr.error('La place rechercher est introuvable', 'Erreur')
+      }
     });
   }
 
   private initMap() {
     this.mapOptions = {
-      center: this.coordinates,
+      center: this.position,
       zoom: 12,
+      disableDoubleClickZoom: true,
       backgroundColor: '#eaeaea',
       mapTypeControl: false,
       streetViewControl: false
@@ -143,7 +157,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
   }
 
-  private initCurrentMarkerToMap(markerOption: google.maps.MarkerOptions) {
+  private initCurrentMarker(markerOption: google.maps.MarkerOptions) {
+    if (this.markerCurrentPosition) {
+      this.markerCurrentPosition.setMap(null);
+      this.markerCurrentPosition = null;
+    }
+
     this.markerCurrentPosition = new google.maps.Marker(markerOption);
     this.markerCurrentPosition.setMap(this.map);
 
@@ -160,28 +179,73 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.reportService.getReports().subscribe(data => {
       this.markers = data.map(e => {
         const report = e.payload.doc.data() as Report;
-
-        const currentMareker = new google.maps.Marker({
-            position: report.position
-        });
-        currentMareker.setMap(this.map);
-
-        const currentInfoWindow = new google.maps.InfoWindow({
-          content: `{
-            <b>lng</b>: ${report.position.lng},
-            lat: ${report.position.lat}
-          }`
-        });
-        currentMareker.addListener('mouseover', () => currentInfoWindow.open(this.map, currentMareker));
-        currentMareker.addListener('mouseout', () => currentInfoWindow.close());
-
-        return currentMareker;
+        return this.factoryOldMarkers(report);
       });
       this.markerCluster = new MarkerClusterer(
         this.map,
         this.markers,
         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
       );
+    });
+  }
+
+  private factoryOldMarkers(report: Report): google.maps.Marker {
+    const currentMareker = new google.maps.Marker({
+        position: report.position,
+        map: this.map
+    });
+
+    const currentInfoWindow = new google.maps.InfoWindow({
+      content: this.getContentMarherInformations(report)
+    });
+    currentMareker.addListener('mouseover', () => currentInfoWindow.open(this.map, currentMareker));
+    currentMareker.addListener('mouseout', () => currentInfoWindow.close());
+
+    return currentMareker;
+  }
+
+  private getContentMarherInformations(report: Report): string {
+    return `
+      <div class="marker-details">
+        <div class="marker-details_header">
+          Rapport
+          <h3>Title</h3>
+        </div>
+        <div class="marker-details_body">
+          <ul>
+            <li>Coupe le: ${new Date(report.reportedAt).toUTCString()}</li>
+            <li>Remis le: ${(report.recovredAt) ? new Date(report.recovredAt)?.toUTCString() : 'Aucune notification'}</li>
+            <li>Position: { lng: ${report.position.lng} lat: ${report.position.lat}}</li>
+          </ul>
+        </div>
+      </div>
+    `;
+  }
+
+  private addEvents() {
+    this.onDragableGetPosition();
+    this.onDblClickUserMarker();
+  }
+
+  private onDragableGetPosition(){
+    google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (data) => {
+      const pos = this.markerCurrentPosition.getPosition();
+      this.position = {lng: pos.lng(), lat: pos.lat()};
+    });
+  }
+
+  private onDblClickUserMarker() {
+    google.maps.event.addListener(this.map, 'dblclick', (data) => {
+      this.position = {
+        lng: +data.latLng.lng(),
+        lat: +data.latLng.lat()
+      };
+
+      this.initCurrentMarker({
+        position: this.position,
+        label: 'Votre position',
+        draggable: true
+      });
     });
   }
 }
