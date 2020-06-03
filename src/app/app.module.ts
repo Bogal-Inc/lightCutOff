@@ -27,7 +27,10 @@ import { GoogleMapsModule } from '@angular/google-maps';
     SharedModule,
     StoreModule.forRoot({}, {}),
     AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsApiKey
+      apiKey: environment.googleMapsApiKey,
+      region: 'CM',
+      language: 'fr',
+      libraries: ['places']
     }),
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
