@@ -1,5 +1,5 @@
-import { Position } from './../../../core/models/report.model';
-import { ReportService } from './../../../store/report/report.service';
+import { Position } from 'src/app/core/models/report.model';
+import { ReportService } from 'src/app/store/report/report.service';
 import { ReportRecovredFormComponent } from '../components/report-recovred-form/report-recovred-form.component';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
@@ -124,6 +124,26 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
+  onSearchPlace(event) {
+    const service = new google.maps.places.PlacesService(this.map);
+    const request = {
+      query: event.query,
+      fields: ['name', 'geometry'],
+    };
+
+    service.findPlaceFromQuery(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        // for (let i = 0; i < results.length; i++) {
+        //   const location = results[0].geometry.location;
+        // }
+        this.map.setCenter(results[0].geometry.location);
+        this.map.setZoom(14);
+      }else {
+        this.toastr.error('La place rechercher est introuvable', 'Erreur')
+      }
+    });
+  }
+
   private initMap() {
     this.mapOptions = {
       center: this.position,
@@ -138,6 +158,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initCurrentMarker(markerOption: google.maps.MarkerOptions) {
+    if (this.markerCurrentPosition) {
+      this.markerCurrentPosition.setMap(null);
+      this.markerCurrentPosition = null;
+    }
+
     this.markerCurrentPosition = new google.maps.Marker(markerOption);
     this.markerCurrentPosition.setMap(this.map);
 
@@ -211,7 +236,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private onDblClickUserMarker() {
     google.maps.event.addListener(this.map, 'dblclick', (data) => {
-      this.markerCurrentPosition.setMap(null);
       this.position = {
         lng: +data.latLng.lng(),
         lat: +data.latLng.lat()

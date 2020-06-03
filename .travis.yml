@@ -6,7 +6,6 @@ addons:
 
 branches:
   only:
-    - master
     - develop
 
 cache:
