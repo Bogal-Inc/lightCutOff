@@ -6,6 +6,11 @@
 export const environment = {
   production: false,
   googleMapsApiKey: 'YOUR_GOOGLE_MAP_API_KEY',
+  markerColor: {
+    user: 'user_image',
+    cut: 'cut_image',
+    recovred: 'recovred_image',
+  },
   firebase: {
     apiKey: 'YOUR_API_KEY',
     authDomain: 'YOUR_AUTH_DOMAIN',

@@ -8,6 +8,7 @@ import * as uuid from 'uuid';
 import { ngbToDate } from 'src/app/core/_helper/ngbToFbTimestamp.cast';
 import { ToastrService } from 'ngx-toastr';
 import { compareDate } from 'src/app/core/_helper/compareDate.validator';
+import { environment } from 'src/environments/environment';
 
 declare const MarkerClusterer: any;
 
@@ -59,11 +60,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
           this.initMap();
 
-          this.initCurrentMarker({
-            position: this.position,
-            label: 'Votre position',
-            draggable: true
-          });
+          this.initCurrentMarker(this.getUserMarkerOption());
           this.initOtherMarkers();
 
           this.addEvents();
@@ -139,7 +136,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.map.setCenter(results[0].geometry.location);
         this.map.setZoom(14);
       }else {
-        this.toastr.error('La place rechercher est introuvable', 'Erreur')
+        this.toastr.error('La place rechercher est introuvable', 'Erreur');
       }
     });
   }
@@ -181,6 +178,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         const report = e.payload.doc.data() as Report;
         return this.factoryOldMarkers(report);
       });
+
       this.markerCluster = new MarkerClusterer(
         this.map,
         this.markers,
@@ -192,6 +190,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private factoryOldMarkers(report: Report): google.maps.Marker {
     const currentMareker = new google.maps.Marker({
         position: report.position,
+        icon: {
+          url: environment.markerColor.cut
+        },
         map: this.map
     });
 
@@ -241,11 +242,18 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         lat: +data.latLng.lat()
       };
 
-      this.initCurrentMarker({
-        position: this.position,
-        label: 'Votre position',
-        draggable: true
-      });
+      this.initCurrentMarker(this.getUserMarkerOption());
     });
+  }
+
+  private getUserMarkerOption() {
+    return {
+      position: this.position,
+      label: 'Votre position',
+      icon: {
+        url: environment.markerColor.user
+      },
+      draggable: true
+    };
   }
 }

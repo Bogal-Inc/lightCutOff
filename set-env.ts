@@ -20,6 +20,11 @@ if (environment === 'staging') {
 const envConfigFile = `export const environment = {
   production: '${process.env.PRODUCTION}',
   googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
+  markerColor: {
+    user: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    cut: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+    recovred: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png',
+  },
   firebase: {
     apiKey: '${process.env.FIREBASE_API_KEY}',
     authDomain: '${process.env.FIREBASE_AUTH_DOMAIN}',
