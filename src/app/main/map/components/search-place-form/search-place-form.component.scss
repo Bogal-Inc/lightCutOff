@@ -1,0 +1,10 @@
+.search-place {
+    &__bloc {
+        background-color: white;
+        &__form {
+            .input-group {
+                width: 100%;
+            }
+        }
+    }
+}
