@@ -1,9 +1,9 @@
 <div class="container-fluid">
-    <div class="row  justify-content-center search-place">
+    <div class="row justify-content-center search-place" [@searchBarUpDown]="searchBarDownUp ? 'down' : 'up'">
         <div class="col-md-5 search-place__bloc">
             <form class="form-inline search-place__bloc__form" [formGroup]="searchPlaceForm" (ngSubmit)="onSubmit()">
                 <div class="input-group">
-                    <input type="text" formControlName="query" class="form-control" placeholder="Rechercher une place">
+                    <input type="text" formControlName="query" class="form-control" placeholder="Rechercher une place" #inputSearch>
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-success">
                       <i class="fas fa-search"></i>
@@ -11,6 +11,18 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="btn-search" [@btnSearchBarUpDown]="searchBarDownUp ? 'down' : 'up'">
+            <a (click)="onActiveSearch()" *ngIf="!activeSearchBar">
+            Retrouver une place
+            <i class="fas fa-angle-down"></i>
+          </a>
+            <a (click)="onDectiveSearch()" *ngIf="activeSearchBar">
+            Fermer
+            <i class="fas fa-angle-up"></i>
+          </a>
         </div>
     </div>
 </div>

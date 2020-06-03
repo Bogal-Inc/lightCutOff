@@ -24,6 +24,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     SharedModule,
     StoreModule.forRoot({}, {}),
     AgmCoreModule.forRoot({
@@ -35,7 +36,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    BrowserAnimationsModule,
     GoogleMapsModule,
     ToastrModule.forRoot({
       timeOut: 10000,

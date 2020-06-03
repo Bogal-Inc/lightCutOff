@@ -1,10 +1,29 @@
+input[type=text]:focus {
+    box-shadow: none;
+}
+
 .search-place {
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
     &__bloc {
-        background-color: white;
+        padding: 10px;
         &__form {
             .input-group {
                 width: 100%;
             }
         }
     }
+}
+
+.btn-search {
+    position: absolute;
+    background-color: white;
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
 }
