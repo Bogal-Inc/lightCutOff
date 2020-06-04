@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Position } from 'src/app/core/models/report.model';
 import { ReportService } from 'src/app/store/report/report.service';
 import { ReportRecovredFormComponent } from '../components/report-recovred-form/report-recovred-form.component';
@@ -8,7 +9,7 @@ import * as uuid from 'uuid';
 import { ngbToDate } from 'src/app/core/_helper/ngbToFbTimestamp.cast';
 import { ToastrService } from 'ngx-toastr';
 import { compareDate } from 'src/app/core/_helper/compareDate.validator';
-import { environment } from 'src/environments/environment';
+
 
 declare const MarkerClusterer: any;
 
@@ -145,10 +146,10 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       zoom: 12,
       restriction: {
         latLngBounds: {
-          east: +environment.coordsCameroon.east,
-          north: +environment.coordsCameroon.north,
-          south: +environment.coordsCameroon.south,
-          west: +environment.coordsCameroon.west
+          east: environment.coordsCameroon.east,
+          north: environment.coordsCameroon.north,
+          south: environment.coordsCameroon.south,
+          west: environment.coordsCameroon.west
         },
         strictBounds: true
       },

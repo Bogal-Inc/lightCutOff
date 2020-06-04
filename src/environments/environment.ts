@@ -6,6 +6,12 @@
 export const environment = {
   production: false,
   googleMapsApiKey: 'YOUR_GOOGLE_MAP_API_KEY',
+  coordsCameroon: {
+    east: 0,
+    north: 0,
+    south: 0,
+    west: 0
+  },
   markerColor: {
     user: 'user_image',
     cut: 'cut_image',
