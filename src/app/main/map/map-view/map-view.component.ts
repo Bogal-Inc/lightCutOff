@@ -73,8 +73,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-
-
   onReportSubmit(event) {
     this.formLoader = true;
     const report = {
@@ -145,6 +143,15 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mapOptions = {
       center: this.position,
       zoom: 12,
+      restriction: {
+        latLngBounds: {
+          east: +environment.coordsCameroon.east,
+          north: +environment.coordsCameroon.north,
+          south: +environment.coordsCameroon.south,
+          west: +environment.coordsCameroon.west
+        },
+        strictBounds: true
+      },
       disableDoubleClickZoom: true,
       backgroundColor: '#eaeaea',
       mapTypeControl: false,
