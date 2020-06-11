@@ -1,10 +1,13 @@
-<app-search-place-form (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>
-<div class="map-container">
-    <div #mapContainer id="map" class="map-container__map">
-        <div class="spinner-grow text-primary map-container__map__loader" role="status">
-            <span class="sr-only">Loading...</span>
+<div class="full-height">
+    <app-search-place-form (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>
+    <app-map-legend></app-map-legend>
+    <div class="map-container">
+        <div #mapContainer id="map" class="map-container__map">
+            <div class="spinner-grow text-primary map-container__map__loader" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <app-report-recovred-form (recovredSubmit)="onRecovredSubmit($event)" (reportSubmit)="onReportSubmit($event)" [class.d-none]="!isFormLightCutOf" [lastReport]="lastReport" [formLoader]="formLoader">
+            </app-report-recovred-form>
         </div>
-        <app-report-recovred-form (recovredSubmit)="onRecovredSubmit($event)" (reportSubmit)="onReportSubmit($event)" [class.d-none]="!isFormLightCutOf" [lastReport]="lastReport" [formLoader]="formLoader">
-        </app-report-recovred-form>
     </div>
 </div>

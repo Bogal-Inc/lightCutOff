@@ -27,11 +27,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private mapOptions: google.maps.MapOptions;
   private markerCluster: any;
   private infoWindow: google.maps.InfoWindow;
+  private position: Position;
   markerCurrentPosition: google.maps.Marker;
   isFormLightCutOf = false;
   markers: any[];
   reports: Report[];
-  private position: Position;
   lastReport: Report;
   formLoader: boolean;
 

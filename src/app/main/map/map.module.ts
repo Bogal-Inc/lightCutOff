@@ -8,6 +8,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ReportRecovredFormComponent } from './components/report-recovred-form/report-recovred-form.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPlaceFormComponent } from './components/search-place-form/search-place-form.component';
+import { MapLegendComponent } from './components/map-legend/map-legend.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SearchPlaceFormComponent } from './components/search-place-form/search-
     MapViewComponent,
     ReportRecovredFormComponent,
     SearchPlaceFormComponent,
+    MapLegendComponent,
   ],
   imports: [
     CommonModule,
