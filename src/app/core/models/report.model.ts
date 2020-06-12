@@ -8,6 +8,7 @@ export interface Position {
 
 export interface Report {
   id: string;
+  user: string;
   createdAt: Date;
   updatedAt?: Date;
   deletedAt?: Date;

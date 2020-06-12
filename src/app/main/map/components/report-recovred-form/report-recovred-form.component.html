@@ -42,7 +42,6 @@
         <p>Rapport emis le: {{lastReport?.reportedAt | date: 'medium'}}</p>
         <p>Quant est-ce que vous n'avez plus eu d'énergie électrique?</p>
         <form [formGroup]="recovredForm" (ngSubmit)="onSubmitRecovred()">
-            <input type="hidden" [ngModel]="lastReport?.id" formControlName="reportId">
             <div class="form">
                 <div class="form-group">
                     <div class="input-group">
