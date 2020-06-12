@@ -41,7 +41,6 @@ export class ReportRecovredFormComponent implements OnInit {
     this.recovredForm = this.formBuilder.group({
       recovredAt: ['', [Validators.required]],
       recovredHour: ['', [Validators.required]],
-      reportId: ['', [Validators.required]],
     });
   }
 
