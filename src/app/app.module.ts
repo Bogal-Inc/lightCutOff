@@ -14,6 +14,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ReportModule } from './main/report/report.module';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ToastrModule.forRoot({
       timeOut: 10000,
       progressBar: true
-    })
+    }),
+    ReportModule
   ],
   providers: [
     GoogleMapsAPIWrapper

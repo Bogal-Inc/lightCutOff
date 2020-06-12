@@ -12,6 +12,14 @@ const routes: Routes = [
         m => m.MapModule
       ),
   },
+  {
+    path: 'report',
+    component: MainLayoutComponent,
+    loadChildren: () =>
+      import('./main/report/report.module').then(
+        m => m.ReportModule
+      ),
+  },
 ];
 
 @NgModule({
