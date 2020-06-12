@@ -1,3 +1,4 @@
+import { MapLegendComponent } from './../components/map-legend/map-legend.component';
 import { environment } from 'src/environments/environment';
 import { Position } from 'src/app/core/models/report.model';
 import { ReportService } from 'src/app/store/report/report.service';
@@ -23,6 +24,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private gmap: ElementRef;
   @ViewChild(ReportRecovredFormComponent, {read: ElementRef})
   private formLightCutOff: ElementRef;
+  @ViewChild(MapLegendComponent, {read: ElementRef})
+  private legends: ElementRef;
   private map: google.maps.Map;
   private mapOptions: google.maps.MapOptions;
   private markerCluster: any;
@@ -30,7 +33,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private position: Position;
   markerCurrentPosition: google.maps.Marker;
   isFormLightCutOf = false;
-  markers: any[];
   reports: Report[];
   lastReport: Report;
   formLoader: boolean;
@@ -63,6 +65,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
           this.initCurrentMarker(this.getUserMarkerOption());
           this.initOtherMarkers();
+
+          this.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(this.legends.nativeElement);
 
           this.addEvents();
         }, () => {
@@ -181,25 +185,35 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initOtherMarkers() {
+    const markCut = [];
+    const markRec = [];
     this.reportService.getReports().subscribe(data => {
-      this.markers = data.map(e => {
+      data.map(e => {
         const report = e.payload.doc.data() as Report;
-        return this.factoryOldMarkers(report);
+        if (report.recovredAt === null){
+          markCut.push(this.factoryOldMarkers(report));
+        } else {
+          markRec.push(this.factoryOldMarkers(report));
+        }
       });
 
-      this.markerCluster = new MarkerClusterer(
-        this.map,
-        this.markers,
-        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
-      );
+      this.addMarkersToCluster(markCut);
     });
+  }
+
+  private addMarkersToCluster(markers) {
+    this.markerCluster = new MarkerClusterer(
+      this.map,
+      markers,
+      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+    );
   }
 
   private factoryOldMarkers(report: Report): google.maps.Marker {
     const currentMareker = new google.maps.Marker({
         position: report.position,
         icon: {
-          url: environment.markerColor.cut
+          url: (report.recovredAt === null) ? environment.markerColor.cut : environment.markerColor.recovred
         },
         map: this.map
     });

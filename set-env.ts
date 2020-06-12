@@ -29,7 +29,7 @@ const envConfigFile = `export const environment = {
   markerColor: {
     user: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
     cut: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-    recovred: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png',
+    recovred: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
   },
   firebase: {
     apiKey: '${process.env.FIREBASE_API_KEY}',

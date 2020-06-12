@@ -1,10 +1,13 @@
 <div class="legend">
-    <div class="list-group-flush legend__bloc">
-        <a class="list-group-item legend__bloc__title">
-            <h5 class="list-group-item-heading">Légende</h5>
-        </a>
-        <a *ngFor="let legend of legends" class="list-group-item legend__bloc__li">
-            <img [src]="legend.icon" alt="icon.name" class="legend__bloc__li__icon">{{legend.name}}
-        </a>
+    <div class="legend__bloc">
+        <ul class="legend__bloc__ul">
+            <li class="legend__bloc__ul__title">
+                <h5 class="list-group-item-heading">Légende</h5>
+            </li>
+            <li *ngFor="let legend of legends" class="legend__bloc__ul__li">
+                <img [src]="legend.icon" alt="icon.name" class="legend__bloc__ul__li__icon">{{legend.name}}
+            </li>
+        </ul>
+
     </div>
 </div>
