@@ -1,4 +1,3 @@
-import { AuthService } from './../../../core/services/auth.service';
 import { MapLegendComponent } from './../components/map-legend/map-legend.component';
 import { environment } from 'src/environments/environment';
 import { Position } from 'src/app/core/models/report.model';
@@ -12,7 +11,6 @@ import { ngbToDate } from 'src/app/core/_helper/ngbToFbTimestamp.cast';
 import { ToastrService } from 'ngx-toastr';
 import { compareDate } from 'src/app/core/_helper/compareDate.validator';
 import { AngularFireAuth } from '@angular/fire/auth';
-
 
 declare const MarkerClusterer: any;
 
@@ -43,7 +41,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private mapsApiLoader: MapsAPILoader,
     private reportService: ReportService,
     private toastr: ToastrService,
-    private authService: AuthService,
     private angularFireAuth: AngularFireAuth
   ) { }
 
@@ -51,7 +48,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.mapInitializer();
-    this.authService.anonymousAuth();
   }
 
   ngOnDestroy() { }

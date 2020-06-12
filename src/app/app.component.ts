@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './core/services/auth.service';
 
 
 @Component({
@@ -9,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'lightcutoff';
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.anonymousAuth();
+  }
 }
