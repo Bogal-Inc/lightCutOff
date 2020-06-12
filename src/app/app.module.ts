@@ -2,7 +2,7 @@ import { SharedModule } from './shared/shared.module';
 import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
@@ -37,6 +37,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     GoogleMapsModule,
+    AngularFireAuthModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       progressBar: true
