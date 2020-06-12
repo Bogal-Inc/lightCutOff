@@ -1,14 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: lightCutOff CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,31 +20,9 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
-      run: echo Hello, world!
+      run: npm install
 
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-    - name: Deploy to Heroku
-      uses: AkhileshNS/heroku-deploy@v3.0.4
-      with:
-        # This will be used for authentication. You can find it in your heroku homepage account settings
-        heroku_api_key: c37cb87c-f114-419e-871d-80beb45bd2c8
-        # Email that you use with heroku
-        heroku_email: willkoua@gmail.com
-        # The appname to use for deploying/updating
-        heroku_app_name: lightcutoff
-        # An optional buildpack to use when creating the heroku application
-        buildpack: # optional
-        # The branch that you would like to deploy to Heroku
-        branch: # optional, default is HEAD
-        # Set this to true if you don't want to use --force when switching branches
-        dontuseforce: # optional
-        # Will deploy using Dockerfile in project root.
-        usedocker: # optional
-        # Type of heroku process (web, worker, etc). This option only makes sense when usedocker enabled
-        docker_heroku_process_type: # optional, default is web
-        # Set if your app is located in a subdirectory.
-        appdir: # optional, default is
+        npm run lint

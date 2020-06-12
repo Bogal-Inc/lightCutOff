@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/willkoua/lightCutOff.svg?branch=develop)](https://travis-ci.org/willkoua/lightCutOff)
+![lightCutOff CI](https://github.com/willkoua/lightCutOff/workflows/lightCutOff%20CI/badge.svg?branch=develop)
 ![](https://img.shields.io/badge/language-angular-red.svg)
 ![](https://img.shields.io/badge/node-green.svg)
 
