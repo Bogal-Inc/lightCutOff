@@ -72,7 +72,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           this.initOtherMarkers();
 
           this.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(this.legends.nativeElement);
-
           this.addEvents();
         }, () => {
           this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
