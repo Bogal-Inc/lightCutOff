@@ -4,7 +4,7 @@ export function ngbToDate(ngbDate?: NgbDateStruct, ngbHours?: any): Date {
   let jsDate = null;
 
   if (ngbDate) {
-    jsDate = new Date(
+    jsDate = Date.UTC(
       ngbDate.year,
       ngbDate.month - 1,
       ngbDate.day,
@@ -13,7 +13,7 @@ export function ngbToDate(ngbDate?: NgbDateStruct, ngbHours?: any): Date {
     );
   } else {
     const now = new Date();
-    jsDate = new Date(
+    jsDate = Date.UTC(
       now.getFullYear(),
       now.getMonth() - 1,
       now.getDate(),
@@ -22,7 +22,7 @@ export function ngbToDate(ngbDate?: NgbDateStruct, ngbHours?: any): Date {
     );
   }
 
-  return jsDate.toISOString();
+  return new Date(jsDate);
 }
 
 

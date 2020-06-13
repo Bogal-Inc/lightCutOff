@@ -1,4 +1,4 @@
-import { firestore } from 'firebase';
+import { Doc, defaultDoc } from './Doc';
 
 
 export interface Position {
@@ -6,14 +6,17 @@ export interface Position {
   lng: number;
 }
 
-export interface Report {
-  id: string;
-  user: string;
-  createdAt: Date;
-  updatedAt?: Date;
-  deletedAt?: Date;
-  reportedAt: Date;
-  recovredAt?: Date;
+export interface Report extends Doc {
+  reportedAt: Date | any;
+  recovredAt?: Date | any;
   position: Position;
   url?: string;
 }
+
+export const defaultReport = {
+  ...defaultDoc,
+  reportedAt: null,
+  recovredAt: null,
+  position: null,
+  url: null,
+} as Report;

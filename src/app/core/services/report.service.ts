@@ -1,29 +1,64 @@
+import { DocumentReference } from '@firebase/firestore-types';
+import { BaseService } from './base.service';
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Report } from 'src/app/core/models/report.model';
+import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
+import { Report, defaultReport } from 'src/app/core/models/report.model';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
+import { Const } from 'src/environments/const';
+import * as uuid from 'uuid';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ReportService {
+export class ReportService extends BaseService {
   reports: Report[] = [];
 
   constructor(
-    private firestore: AngularFirestore
+    protected angularFireAuth: AngularFireAuth,
+    protected angularFirestore: AngularFirestore
   ) {
-    this.getReports();
+    super(angularFireAuth, angularFirestore);
   }
 
-  createReport(report: Report) {
-    return this.firestore.collection('reports').add(report);
+  getReports(isDeleted: boolean = false): Observable<Report[]> {
+    return this.col$<Report>(
+      `${Const.collections.reports}`,
+      ref => {
+        return ref.where('_isDelete', '==', false);
+      }
+    );
   }
 
-  getReports() {
-    return this.firestore.collection('reports').snapshotChanges();
+  async addReport(report): Promise<DocumentReference<DocumentData>>{
+    const ref = await this.add<Report>(
+      `${Const.collections.reports}`,
+      {
+        ...defaultReport,
+        id: uuid.v4(),
+        reportedAt: report.reportedAt,
+        position: this.geopoint(report.position.lat, report.position.lng),
+        _createdBy: this.user,
+        _createdAt: this.timestamp,
+      } as unknown as Report
+    );
+    return ref;
+  }
+
+  deleteReport(reportId: string) {
+    const partialReport = {
+      _isDeleted: true,
+      _deletedAt: this.timestamp,
+      _deletedBy: this.user
+    } as unknown as Report;
+    this.update(
+      `${Const.collections.reports}/${reportId}`,
+      partialReport
+    );
   }
 
   updateReport(report: Report){
     delete report.id;
-    return this.firestore.doc(report.url).update(report);
+    return this.angularFirestore.doc(report.url).update(report);
   }
 }

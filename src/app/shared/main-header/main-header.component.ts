@@ -15,7 +15,7 @@ export class MainHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.angularFireAuth.onAuthStateChanged(user => {
-      if(user) {
+      if (user) {
         this.userId = user.uid;
       }
     });

@@ -1,16 +1,17 @@
+import { BaseService } from './../../../core/services/base.service';
 import { MapLegendComponent } from './../components/map-legend/map-legend.component';
-import { environment } from 'src/environments/environment';
 import { Position } from 'src/app/core/models/report.model';
 import { ReportService } from 'src/app/core/services/report.service';
 import { ReportRecovredFormComponent } from '../components/report-recovred-form/report-recovred-form.component';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { Report } from 'src/app/core/models/report.model';
-import * as uuid from 'uuid';
 import { ngbToDate } from 'src/app/core/_helper/ngbToFbTimestamp.cast';
 import { ToastrService } from 'ngx-toastr';
 import { compareDate } from 'src/app/core/_helper/compareDate.validator';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Const } from 'src/environments/const';
+
 
 declare const MarkerClusterer: any;
 
@@ -34,7 +35,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   markerCurrentPosition: google.maps.Marker;
   isFormLightCutOf = false;
   reports: Report[];
-  lastReport: Report;
+  lastReport: any;
   formLoader: boolean;
 
   constructor(
@@ -79,50 +80,32 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onReportSubmit(event) {
-    this.angularFireAuth.onAuthStateChanged(user => {
-      if (user) {
-        const isAnonymous = user.isAnonymous;
+    this.formLoader = true;
+    const report = {
+      position: this.position,
+      reportedAt: ngbToDate(event.reportedAt, event.reportedHour),
+    };
 
-        this.formLoader = true;
-        const report = {
-          id: uuid.v4(),
-          user: user.uid,
-          createdAt: ngbToDate(),
-          deletedAt: null,
-          position: this.position,
-          reportedAt: ngbToDate(event.reportedAt, event.reportedHour),
-          recovredAt: null,
-          updatedAt: null,
-          url: null
-        };
+    this.reportService.addReport(report).then(
+      resp => {
+        this.formLoader = false;
+        this.lastReport = report;
+        this.lastReport.url = resp.path.valueOf();
 
-        this.reportService.createReport(report).then(
-          resp => {
-            this.formLoader = false;
-            this.lastReport = report;
-            this.lastReport.url = resp.path.valueOf();
-
-            this.reportService.updateReport(this.lastReport).then(
-              () => {
-                this.markerCurrentPosition.setDraggable(false);
-                this.toastr.success('Merci', 'Rapport ajouté');
-              }
-            );
+        this.reportService.updateReport(this.lastReport).then(
+          () => {
+            this.markerCurrentPosition.setDraggable(false);
+            this.toastr.success('Merci', 'Rapport ajouté');
           }
         );
-      } else {
-        this.toastr.error(
-          'Une erreur est survenue dans le système. Actualiser votre page ou alors contactez nos services',
-          'erreur'
-        );
       }
-    });
+    );
   }
 
   onRecovredSubmit(event) {
     this.formLoader = true;
     this.lastReport.recovredAt = ngbToDate(event.recovredAt, event.recovredHour);
-    this.lastReport.updatedAt = ngbToDate();
+    this.lastReport._updatedAt = ngbToDate();
 
     if (!compareDate(this.lastReport.recovredAt, this.lastReport.reportedAt)) {
       this.formLoader = false;
@@ -167,10 +150,10 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       zoom: 12,
       restriction: {
         latLngBounds: {
-          east: environment.coordsCameroon.east,
-          north: environment.coordsCameroon.north,
-          south: environment.coordsCameroon.south,
-          west: environment.coordsCameroon.west
+          east: Const.coordsCameroon.east,
+          north: Const.coordsCameroon.north,
+          south: Const.coordsCameroon.south,
+          west: Const.coordsCameroon.west
         },
         strictBounds: true
       },
@@ -213,8 +196,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     const markCut = [];
     const markRec = [];
     this.reportService.getReports().subscribe(data => {
-      data.map(e => {
-        const report = e.payload.doc.data() as Report;
+
+      data.forEach(report => {
         if (report.recovredAt === null){
           markCut.push(this.factoryOldMarkers(report));
         } else {
@@ -236,9 +219,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private factoryOldMarkers(report: Report): google.maps.Marker {
     const currentMareker = new google.maps.Marker({
-        position: report.position,
+        position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
         icon: {
-          url: (report.recovredAt === null) ? environment.markerColor.cut : environment.markerColor.recovred
+          url: (report.recovredAt === null) ? Const.markerColor.cut : Const.markerColor.recovred
         },
         map: this.map
     });
@@ -298,7 +281,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       position: this.position,
       label: 'Votre position',
       icon: {
-        url: environment.markerColor.user
+        url: Const.markerColor.user
       },
       draggable: true
     };
