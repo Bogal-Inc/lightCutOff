@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Const } from 'src/environments/const';
 
 @Component({
   selector: 'app-map-legend',
@@ -11,15 +12,15 @@ export class MapLegendComponent implements OnInit {
   legends = [
     {
       name: 'Votre position',
-      icon: environment.markerColor.user
+      icon: Const.markerColor.user
     },
     {
       name: 'Pas d\'électricité',
-      icon: environment.markerColor.cut
+      icon: Const.markerColor.cut
     },
     {
       name: 'Electricité remise',
-      icon: environment.markerColor.recovred
+      icon:  Const.markerColor.recovred
     }
   ];
 
