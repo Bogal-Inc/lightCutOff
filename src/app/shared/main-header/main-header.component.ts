@@ -1,3 +1,4 @@
+import { SimpleUser } from './../../core/models/user';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -7,7 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./main-header.component.scss']
 })
 export class MainHeaderComponent implements OnInit {
-  userId: string;
+  currentUser: SimpleUser;
 
   constructor(
     private angularFireAuth: AngularFireAuth
@@ -16,7 +17,7 @@ export class MainHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.angularFireAuth.onAuthStateChanged(user => {
       if (user) {
-        this.userId = user.uid;
+        this.currentUser = { id: user.uid } as SimpleUser;
       }
     });
   }

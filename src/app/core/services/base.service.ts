@@ -26,6 +26,10 @@ export class BaseService {
     protected angularFireAuth: AngularFireAuth,
     protected angularFirestore: AngularFirestore
   ) {
+    this.onAnonymous();
+  }
+
+  private onAnonymous() {
     this.angularFireAuth.onAuthStateChanged(user => {
       if (user) {
         this.user = { id: user.uid } as SimpleUser;
