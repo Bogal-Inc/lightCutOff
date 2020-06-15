@@ -1,8 +1,9 @@
-import { BaseService } from './../../../core/services/base.service';
+import { LoadingComponent } from './../../../shared/loading/loading.component';
+import { UpdateFormReportComponent } from './../components/update-form-report/update-form-report.component';
+import { CreateFormReportComponent } from './../components/create-form-report/create-form-report.component';
 import { MapLegendComponent } from './../components/map-legend/map-legend.component';
 import { Position } from 'src/app/core/models/report.model';
 import { ReportService } from 'src/app/core/services/report.service';
-import { ReportRecovredFormComponent } from '../components/report-recovred-form/report-recovred-form.component';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { Report } from 'src/app/core/models/report.model';
@@ -11,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 import { compareDate } from 'src/app/core/_helper/compareDate.validator';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Const } from 'src/environments/const';
-
 
 declare const MarkerClusterer: any;
 
@@ -23,8 +23,12 @@ declare const MarkerClusterer: any;
 export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('mapContainer', {static: false})
   private gmap: ElementRef;
-  @ViewChild(ReportRecovredFormComponent, {read: ElementRef})
-  private formLightCutOff: ElementRef;
+  @ViewChild(CreateFormReportComponent, {read: ElementRef})
+  private createReportFormElt: ElementRef;
+  @ViewChild(UpdateFormReportComponent, {read: ElementRef})
+  private updateReportFormElt: ElementRef;
+  @ViewChild(LoadingComponent, {read: ElementRef})
+  private loadingElt: ElementRef;
   @ViewChild(MapLegendComponent, {read: ElementRef})
   private legends: ElementRef;
   private map: google.maps.Map;
@@ -79,12 +83,13 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  onReportSubmit(event) {
+  onCreateReport(event) {
     this.formLoader = true;
     const report = {
       position: this.position,
       reportedAt: ngbToDate(event.reportedAt, event.reportedHour),
     };
+    this.infoWindow.setContent(this.loadingElt.nativeElement);
 
     this.reportService.addReport(report).then(
       resp => {
@@ -98,11 +103,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
             this.toastr.success('Merci', 'Rapport ajouté');
           }
         );
+        this.infoWindow.setContent(this.updateReportFormElt.nativeElement);
       }
     );
   }
 
-  onRecovredSubmit(event) {
+  onRecovredReport(event) {
     this.formLoader = true;
     this.lastReport.recovredAt = ngbToDate(event.recovredAt, event.recovredHour);
     this.lastReport._updatedAt = ngbToDate();
@@ -112,6 +118,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       this.toastr.error('La date de créatioon du rapport doit être supérieur à la date de fin', 'Erreur');
       return ;
     }
+    this.infoWindow.setContent(this.loadingElt.nativeElement);
 
     this.reportService.updateReport(this.lastReport).then(
       () => {
@@ -119,6 +126,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.lastReport = null;
         this.markerCurrentPosition.setDraggable(true);
         this.infoWindow.close();
+        this.infoWindow.unbindAll();
+        this.initCurrentInfoWindow(this.createReportFormElt.nativeElement);
         this.toastr.success('Merci', 'Rapport modifié');
       }
     );
@@ -177,17 +186,20 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.angularFireAuth.onAuthStateChanged(user => {
       if (user){
-        this.infoWindow = new google.maps.InfoWindow({
-          content: this.formLightCutOff.nativeElement
-        });
+        this.initCurrentInfoWindow(this.createReportFormElt.nativeElement);
       } else {
-        this.infoWindow = new google.maps.InfoWindow({
-          content: 'Vous n\'avez pas pu être identifié. Pour faire un rapport vous devez l\'être.'
-        });
+        this.initCurrentInfoWindow('Vous n\'avez pas pu être identifié. Pour faire un rapport vous devez l\'être.');
       }
     });
 
-    google.maps.event.addListener(this.markerCurrentPosition, 'click', (data) => {
+
+  }
+
+  private initCurrentInfoWindow(content) {
+    this.infoWindow = new google.maps.InfoWindow({
+      content
+    });
+    google.maps.event.addListener(this.markerCurrentPosition, 'click', () => {
       this.infoWindow.open(this.markerCurrentPosition.getMap(), this.markerCurrentPosition);
     });
   }
