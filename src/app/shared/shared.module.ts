@@ -4,12 +4,14 @@ import { MainFooterComponent } from './main-footer/main-footer.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
   declarations: [
     MainFooterComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -19,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   exports: [
     MainFooterComponent,
     MainHeaderComponent,
+    LoadingComponent,
     ReactiveFormsModule,
     NgbModule
   ]
