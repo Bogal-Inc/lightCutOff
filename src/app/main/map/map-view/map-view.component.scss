@@ -1,8 +1,7 @@
 .map-container {
-    height: 90vh;
+    min-height: 85vh;
     width: 100%;
     &__map {
-        height: inherit;
-        width: inherit;
+        min-height: inherit;
     }
 }
