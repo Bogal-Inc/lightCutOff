@@ -41,6 +41,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   reports: Report[];
   lastReport: any;
   formLoader: boolean;
+  isLoader = true;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
@@ -61,6 +62,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mapsApiLoader.load().then(() => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition( position => {
+          this.isLoader = true;
           this.isFormLightCutOf = true;
           this.position = {
             lng: +position.coords.longitude,
@@ -84,7 +86,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onCreateReport(event) {
-    this.formLoader = true;
+    this.formLoader = false;
     const report = {
       position: this.position,
       reportedAt: ngbToDate(event.reportedAt, event.reportedHour),

@@ -3,9 +3,7 @@
 
     <div class="map-container">
         <div #mapContainer id="map" class="map-container__map">
-            <div class="spinner-grow text-primary map-container__map__loader" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+            <app-loading [show]="isLoader"></app-loading>
             <app-map-legend [class.d-none]="!isFormLightCutOf"></app-map-legend>
             <!-- <app-report-recovred-form [lastReport]="lastReport" [formLoader]="formLoader">
             </app-report-recovred-form> -->
