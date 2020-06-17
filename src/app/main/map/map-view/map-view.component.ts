@@ -297,7 +297,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       icon: {
         url: Const.markerColor.user
       },
-      draggable: true
+      draggable: true,
+      zIndex: 2000
     };
   }
 }
