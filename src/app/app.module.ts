@@ -16,7 +16,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ReportModule } from './main/report/report.module';
 import { HttpClientModule } from '@angular/common/http';
-import { GeneralModule } from './main/general/general.module';
 
 
 @NgModule({
@@ -47,7 +46,6 @@ import { GeneralModule } from './main/general/general.module';
       progressBar: true
     }),
     ReportModule,
-    GeneralModule
   ],
   providers: [
     GoogleMapsAPIWrapper
