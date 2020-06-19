@@ -22,19 +22,33 @@
     </button>
     </div>
     <div class="modal-body">
-        <!-- <form>
-      <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-          </div>
-        </div>
-      </div>
-    </form> -->
+        <form [formGroup]="contactUsForm" (ngSubmit)="onSendMail()">
+            <div class="form-group">
+                <label for="email">* Email:</label>
+                <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">un email est requis</div>
+                </div>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="subject">* Sujet:</label>
+                <input type="text" class="form-control" id="subject" formControlName="subject" aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
+                <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
+                    <div *ngIf="f.subject.errors.required">un sujet est requis</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="body">* Message:</label>
+                <textarea type="text" class="form-control" id="body" formControlName="body" aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': submitted && f.body.errors }"></textarea>
+                <div *ngIf="submitted && f.body.errors" class="invalid-feedback">
+                    <div *ngIf="f.body.errors.required">un message est requis</div>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>
+        <button type="button" class="btn btn-outline-primary" (click)="onSendMail()" [disabled]="submitted">Envoyer</button>
     </div>
 </ng-template>

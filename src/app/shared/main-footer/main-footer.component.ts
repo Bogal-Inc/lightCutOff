@@ -1,5 +1,8 @@
+import { ToastrService } from 'ngx-toastr';
+import { MailService } from './../../core/services/mail.service';
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main-footer',
@@ -9,14 +12,23 @@ import {NgbModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bo
 })
 export class MainFooterComponent implements OnInit {
   closeResult = '';
+  contactUsForm: FormGroup;
+  submitted = false;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(
+    private modalService: NgbModal,
+    private formBuilder: FormBuilder,
+    private mailService: MailService,
+    private toastService: ToastrService,
+    config: NgbModalConfig,
+  ) {
     config.backdrop = 'static';
     config.keyboard = false;
     config.centered = true;
   }
 
   ngOnInit(): void {
+    this.initContactUsForm();
   }
 
   open(content) {
@@ -24,6 +36,39 @@ export class MainFooterComponent implements OnInit {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  onSendMail() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.contactUsForm.invalid) {
+      return;
+    }
+
+    this.mailService.sendMail(this.contactUsForm.value).subscribe(
+      data => {
+        if (data === 'Sended'){
+            this.toastService.success('Message envoyé');
+        } else {
+          this.toastService.error('Votre message n\'a pas été envoyé');
+        }
+        this.submitted = false;
+        this.contactUsForm.reset();
+      }
+    );
+  }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.contactUsForm.controls; }
+
+  private initContactUsForm() {
+    // const coords = JSON.parse(localStorage.getItem('lightCutOffCoords'));
+    this.contactUsForm = this.formBuilder.group({
+      email: ['', [Validators.required]],
+      subject: ['', [Validators.required]],
+      body: ['', [Validators.required]]
     });
   }
 
