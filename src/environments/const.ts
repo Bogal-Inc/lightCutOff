@@ -1,4 +1,5 @@
 export const Const = {
+  sendMail: 'https://us-central1-lightcutoff.cloudfunctions.net/sendMail',
   collections: {
     users: 'users',
     reports: 'reports'
@@ -9,9 +10,12 @@ export const Const = {
     south: 1.6559,
     west: 8.3936001
   },
+  emailService: {
+    support: 'willkoua@gmaill.com'
+  },
   markerColor: {
     user: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
     cut: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-    recovred: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+    recovred: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
   },
 };
