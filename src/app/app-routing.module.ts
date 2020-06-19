@@ -20,6 +20,14 @@ const routes: Routes = [
         m => m.ReportModule
       ),
   },
+  {
+    path: '',
+    component: MainLayoutComponent,
+    loadChildren: () =>
+      import('./main/general/general.module').then(
+        m => m.GeneralModule
+      ),
+  },
 ];
 
 @NgModule({
