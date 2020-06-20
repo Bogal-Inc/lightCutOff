@@ -6,7 +6,6 @@ import { MapRoutingModule } from './map-routing.module';
 import { MapViewComponent } from './map-view/map-view.component';
 import { AgmCoreModule } from '@agm/core';
 import { CreateFormReportComponent } from './components/create-form-report/create-form-report.component';
-import { FormsModule } from '@angular/forms';
 import { SearchPlaceFormComponent } from './components/search-place-form/search-place-form.component';
 import { MapLegendComponent } from './components/map-legend/map-legend.component';
 import { UpdateFormReportComponent } from './components/update-form-report/update-form-report.component';
@@ -25,7 +24,6 @@ import { UpdateFormReportComponent } from './components/update-form-report/updat
     MapRoutingModule,
     SharedModule,
     AgmCoreModule,
-    FormsModule
   ],
   entryComponents: [ UpdateFormReportComponent ]
 })

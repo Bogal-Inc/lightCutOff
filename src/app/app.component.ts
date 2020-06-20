@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
-
+import { DateTimeAdapter } from 'ng-pick-datetime';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,9 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    dateTimeAdapter: DateTimeAdapter<any>
   ) {
+    dateTimeAdapter.setLocale('fr-FR');
     this.authService.anonymousAuth();
   }
 

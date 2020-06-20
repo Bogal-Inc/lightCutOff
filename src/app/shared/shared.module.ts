@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainFooterComponent } from './main-footer/main-footer.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingComponent } from './loading/loading.component';
 import { TimestampPipe } from '../core/pipes/timestamp.pipe';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [
@@ -16,8 +16,11 @@ import { TimestampPipe } from '../core/pipes/timestamp.pipe';
     TimestampPipe,
   ],
   imports: [
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     NgbModule
   ],
   exports: [
@@ -28,7 +31,14 @@ import { TimestampPipe } from '../core/pipes/timestamp.pipe';
     TimestampPipe,
 
     ReactiveFormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    FormsModule,
     NgbModule
-  ]
+  ],
+  providers: [
+    // use french locale
+    {provide: OWL_DATE_TIME_LOCALE, useValue: 'fr'},
+  ],
 })
 export class SharedModule { }
