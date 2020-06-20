@@ -1,6 +1,10 @@
+import { Report } from 'src/app/core/models/report.model';
+import { ReportService } from './../../../../core/services/report.service';
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Report } from 'src/app/core/models/report.model';
+import { ngbToDate } from 'src/app/core/_helper/date.helper';
+import { compareDate } from 'src/app/core/_helper/date.helper';
 
 @Component({
   selector: 'app-update-form-report',
@@ -9,12 +13,14 @@ import { Report } from 'src/app/core/models/report.model';
 })
 export class UpdateFormReportComponent implements OnInit {
   @Output() recovredSubmit: EventEmitter<any> = new EventEmitter<any>();
-  @Input() lastReport: Report;
+  @Input() report: Report;
   submitted = false;
   recovredForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private reportService: ReportService,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -39,9 +45,24 @@ export class UpdateFormReportComponent implements OnInit {
       return;
     }
 
-    const report = this.recovredForm.value;
-    this.recovredSubmit.emit(report);
-    this.recovredForm.reset();
+    const reportFormValue = this.recovredForm.value;
+    this.report.recovredAt = ngbToDate(reportFormValue.recovredAt, reportFormValue.recovredHour);
+    this.report._updatedAt = ngbToDate();
+
+    if (!compareDate(new Date(this.report.recovredAt), new Date(this.report.reportedAt))) {
+      this.toastrService.error('La date de fin d\'un rapport doit être plus récente que celle de création');
+      this.submitted = false;
+      return ;
+    }
+
+    this.reportService.updateReport(this.report).then(
+      () => {
+        this.submitted = false;
+        this.recovredForm.reset();
+        this.toastrService.success('Merci', 'Rapport modifié');
+      },
+      () => this.submitted = false
+    );
   }
 
 }

@@ -1,8 +1,8 @@
-<div class="cuttoff">
-    <div class="cuttoff__box">
+<div class="cuttoff" *ngIf="report?.reportedAt; else elseReport">
+    <div class="cuttoff__box" *ngIf="!report?.recovredAt; else elseRecovred">
         <h5 class="text-center">Rapport de fin</h5>
         <hr class="mb-4">
-        <p>Rapport emis le: {{lastReport?.reportedAt | date: 'medium'}}</p>
+        <p>Emis le: <b>{{report?.reportedAt | timestamp}}</b></p>
         <p>Quant est-ce que vous n'avez plus eu d'énergie électrique?</p>
         <form [formGroup]="recovredForm" (ngSubmit)="onSubmitRecovred()">
             <div class="form">
@@ -24,9 +24,19 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary" type="submit">Enregistrer</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="submitted">Enregistrer</button>
                 </div>
             </div>
         </form>
     </div>
+    <ng-template #elseRecovred>
+        <div class="alert alert-success" role="alert">
+            <i class="far fa-2x fa-smile-beam"></i> Merci pour votre contribution.
+        </div>
+    </ng-template>
 </div>
+<ng-template #elseReport>
+    <div class="alert alert-danger" role="alert">
+        Une erreur est survenue. Il semblerait que certains éléments n'ont pas pu être chargées. Actualiser la page pour modifier votre rapport.
+    </div>
+</ng-template>

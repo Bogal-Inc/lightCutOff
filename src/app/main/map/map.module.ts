@@ -26,6 +26,7 @@ import { UpdateFormReportComponent } from './components/update-form-report/updat
     SharedModule,
     AgmCoreModule,
     FormsModule
-  ]
+  ],
+  entryComponents: [ UpdateFormReportComponent ]
 })
 export class MapModule { }

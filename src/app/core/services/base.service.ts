@@ -1,5 +1,5 @@
+import { SimpleUser } from './../models/user.model';
 import { Injectable } from '@angular/core';
-import { SimpleUser } from '../models/user';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
@@ -10,8 +10,8 @@ import {
 import { DocumentReference } from '@firebase/firestore-types';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
-import { filter, first, map } from 'rxjs/operators';
-import { Doc } from '../models/Doc';
+import { first, map } from 'rxjs/operators';
+import { Doc } from '../models/doc.model';
 
 type CollectionPredicate<T> = string | AngularFirestoreCollection<T>;
 type DocPredicate<T> = string | AngularFirestoreDocument<T>;

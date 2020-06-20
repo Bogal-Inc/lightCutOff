@@ -1,15 +1,22 @@
+import { Position, Report } from 'src/app/core/models/report.model';
 import { LoadingComponent } from './../../../shared/loading/loading.component';
 import { UpdateFormReportComponent } from './../components/update-form-report/update-form-report.component';
 import { CreateFormReportComponent } from './../components/create-form-report/create-form-report.component';
 import { MapLegendComponent } from './../components/map-legend/map-legend.component';
-import { Position } from 'src/app/core/models/report.model';
 import { ReportService } from 'src/app/core/services/report.service';
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+  OnDestroy,
+  ComponentFactoryResolver,
+  ViewContainerRef
+} from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
-import { Report } from 'src/app/core/models/report.model';
-import { ngbToDate } from 'src/app/core/_helper/ngbToFbTimestamp.cast';
+import { ngbToDate } from 'src/app/core/_helper/date.helper';
 import { ToastrService } from 'ngx-toastr';
-import { compareDate } from 'src/app/core/_helper/compareDate.validator';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Const } from 'src/environments/const';
 
@@ -25,16 +32,16 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private gmap: ElementRef;
   @ViewChild(CreateFormReportComponent, {read: ElementRef})
   private createReportFormElt: ElementRef;
-  @ViewChild(UpdateFormReportComponent, {read: ElementRef})
-  private updateReportFormElt: ElementRef;
   @ViewChild(LoadingComponent, {read: ElementRef})
   private loadingElt: ElementRef;
   @ViewChild(MapLegendComponent, {read: ElementRef})
   private legends: ElementRef;
+  @ViewChild('messagecontainer', { read: ViewContainerRef })
+  private adHost: ViewContainerRef;
   private map: google.maps.Map;
   private mapOptions: google.maps.MapOptions;
   private markerCluster: any;
-  private infoWindow: google.maps.InfoWindow;
+  private markerCurrentInfoWindow: google.maps.InfoWindow;
   private position: Position;
   markerCurrentPosition: google.maps.Marker;
   isFormLightCutOf = false;
@@ -47,6 +54,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private mapsApiLoader: MapsAPILoader,
     private reportService: ReportService,
     private toastr: ToastrService,
+    private componentFactoryResolver: ComponentFactoryResolver,
     private angularFireAuth: AngularFireAuth
   ) { }
 
@@ -62,7 +70,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mapsApiLoader.load().then(() => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition( position => {
-          this.isLoader = true;
+          this.isLoader = false;
           this.isFormLightCutOf = true;
           this.position = {
             lng: +position.coords.longitude,
@@ -70,11 +78,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           };
 
           this.initMap();
-
           this.initCurrentMarker(this.getUserMarkerOption());
           this.initOtherMarkers();
-
-          this.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(this.legends.nativeElement);
           this.addEvents();
         }, () => {
           this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
@@ -86,12 +91,15 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onCreateReport(event) {
-    this.formLoader = false;
+    this.isLoader = true;
+    this.formLoader = true;
     const report = {
       position: this.position,
       reportedAt: ngbToDate(event.reportedAt, event.reportedHour),
+      _createdAt: ngbToDate(event.reportedAt, event.reportedHour)
     };
-    this.infoWindow.setContent(this.loadingElt.nativeElement);
+
+    this.markerCurrentInfoWindow.setContent(this.loadingElt.nativeElement);
 
     this.reportService.addReport(report).then(
       resp => {
@@ -101,36 +109,13 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.reportService.updateReport(this.lastReport).then(
           () => {
+            const recovredFromElement = this.getUpdateRecovedComponent(this.lastReport);
+            this.markerCurrentInfoWindow.setContent(recovredFromElement);
             this.markerCurrentPosition.setDraggable(false);
+            this.markerCurrentPosition.setOpacity(0);
             this.toastr.success('Merci', 'Rapport ajouté');
           }
         );
-        this.infoWindow.setContent(this.updateReportFormElt.nativeElement);
-      }
-    );
-  }
-
-  onRecovredReport(event) {
-    this.formLoader = true;
-    this.lastReport.recovredAt = ngbToDate(event.recovredAt, event.recovredHour);
-    this.lastReport._updatedAt = ngbToDate();
-
-    if (!compareDate(this.lastReport.recovredAt, this.lastReport.reportedAt)) {
-      this.formLoader = false;
-      this.toastr.error('La date de créatioon du rapport doit être supérieur à la date de fin', 'Erreur');
-      return ;
-    }
-    this.infoWindow.setContent(this.loadingElt.nativeElement);
-
-    this.reportService.updateReport(this.lastReport).then(
-      () => {
-        this.formLoader = false;
-        this.lastReport = null;
-        this.markerCurrentPosition.setDraggable(true);
-        this.infoWindow.close();
-        this.infoWindow.unbindAll();
-        this.initCurrentInfoWindow(this.createReportFormElt.nativeElement);
-        this.toastr.success('Merci', 'Rapport modifié');
       }
     );
   }
@@ -175,6 +160,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     };
 
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
+    this.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(this.legends.nativeElement);
   }
 
   private initCurrentMarker(markerOption: google.maps.MarkerOptions) {
@@ -188,21 +174,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.angularFireAuth.onAuthStateChanged(user => {
       if (user){
-        this.initCurrentInfoWindow(this.createReportFormElt.nativeElement);
+        this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, this.createReportFormElt.nativeElement);
       } else {
-        this.initCurrentInfoWindow('Vous n\'avez pas pu être identifié. Pour faire un rapport vous devez l\'être.');
+        const content = 'Vous n\'avez pas pu être identifié. Pour faire un rapport vous devez l\'être.';
+        this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, content);
       }
-    });
-
-
-  }
-
-  private initCurrentInfoWindow(content) {
-    this.infoWindow = new google.maps.InfoWindow({
-      content
-    });
-    google.maps.event.addListener(this.markerCurrentPosition, 'click', () => {
-      this.infoWindow.open(this.markerCurrentPosition.getMap(), this.markerCurrentPosition);
     });
   }
 
@@ -210,7 +186,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     const markCut = [];
     const markRec = [];
     this.reportService.getReports().subscribe(data => {
-
       data.forEach(report => {
         if (report.recovredAt === null){
           markCut.push(this.factoryOldMarkers(report));
@@ -232,6 +207,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private factoryOldMarkers(report: Report): google.maps.Marker {
+    let content = null;
     const currentMareker = new google.maps.Marker({
         position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
         icon: {
@@ -240,13 +216,48 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         map: this.map
     });
 
-    const currentInfoWindow = new google.maps.InfoWindow({
-      content: this.getContentMarherInformations(report)
-    });
-    currentMareker.addListener('mouseover', () => currentInfoWindow.open(this.map, currentMareker));
-    currentMareker.addListener('mouseout', () => currentInfoWindow.close());
+    if (report.recovredAt) {
+      content = this.getContentMarherInformations(report);
+      this.initOverInfoWindowMarker(currentMareker, content);
+    } else {
+      content = this.getUpdateRecovedComponent(report);
+      this.initClickInfoWindow(currentMareker, content);
+    }
 
     return currentMareker;
+  }
+
+  private initClickInfoWindow(marker, content) {
+    const infoWindow = new google.maps.InfoWindow({
+      content
+    });
+    google.maps.event.addListener(marker, 'click', () => {
+      infoWindow.open(marker.getMap(), marker);
+    });
+
+    return infoWindow;
+  }
+
+  private initOverInfoWindowMarker(mareker, content) {
+    const infoWindow = new google.maps.InfoWindow({
+      content
+    });
+
+    mareker.addListener('mouseover', () => infoWindow.open(this.map, mareker));
+    mareker.addListener('mouseout', () => infoWindow.close());
+  }
+
+  private getUpdateRecovedComponent(report: Report): any {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(UpdateFormReportComponent);
+
+    const viewContainerRef = this.adHost;
+    // viewContainerRef.clear();
+    const componentRef = viewContainerRef.createComponent(componentFactory);
+    (componentRef.instance as UpdateFormReportComponent).report = report;
+    componentRef.hostView.detectChanges();
+    const { nativeElement } = componentRef.location;
+
+    return nativeElement;
   }
 
   private getContentMarherInformations(report: Report): string {
@@ -258,8 +269,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         </div>
         <div class="marker-details_body">
           <ul>
-            <li>Coupe le: ${new Date(report.reportedAt).toUTCString()}</li>
-            <li>Remis le: ${(report.recovredAt) ? new Date(report.recovredAt)?.toUTCString() : 'Aucune notification'}</li>
+            <li>Coupé le: ${new Date(report.reportedAt.seconds * 1000).toUTCString()}</li>
+            <li>Remis le: ${new Date(report.recovredAt.seconds * 1000).toUTCString()}</li>
             <li>Position: { lng: ${report.position.lng} lat: ${report.position.lat}}</li>
           </ul>
         </div>

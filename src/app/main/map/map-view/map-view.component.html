@@ -5,11 +5,9 @@
         <div #mapContainer id="map" class="map-container__map">
             <app-loading [show]="isLoader"></app-loading>
             <app-map-legend [class.d-none]="!isFormLightCutOf"></app-map-legend>
-            <!-- <app-report-recovred-form [lastReport]="lastReport" [formLoader]="formLoader">
-            </app-report-recovred-form> -->
             <app-loading [show]="formLoader"></app-loading>
             <app-create-form-report (reportSubmit)="onCreateReport($event)" [class.d-none]="!isFormLightCutOf"></app-create-form-report>
-            <app-update-form-report (recovredSubmit)="onRecovredReport($event)" [class.d-none]="!isFormLightCutOf" [lastReport]="lastReport"></app-update-form-report>
+            <ng-template #messagecontainer></ng-template>
         </div>
     </div>
 </div>
