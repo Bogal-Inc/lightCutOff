@@ -5,13 +5,15 @@ import { MainHeaderComponent } from './main-header/main-header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingComponent } from './loading/loading.component';
+import { TimestampPipe } from '../core/pipes/timestamp.pipe';
 
 
 @NgModule({
   declarations: [
     MainFooterComponent,
     MainHeaderComponent,
-    LoadingComponent
+    LoadingComponent,
+    TimestampPipe,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,9 @@ import { LoadingComponent } from './loading/loading.component';
     MainFooterComponent,
     MainHeaderComponent,
     LoadingComponent,
+
+    TimestampPipe,
+
     ReactiveFormsModule,
     NgbModule
   ]

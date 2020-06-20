@@ -1,4 +1,4 @@
-import { SimpleUser } from './../../core/models/user';
+import { SimpleUser } from './../../core/models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 
