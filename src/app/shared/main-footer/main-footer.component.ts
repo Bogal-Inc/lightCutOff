@@ -1,8 +1,10 @@
 import { ToastrService } from 'ngx-toastr';
 import { MailService } from './../../core/services/mail.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-footer',
@@ -10,7 +12,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./main-footer.component.scss'],
   providers: [NgbModalConfig, NgbModal]
 })
-export class MainFooterComponent implements OnInit {
+export class MainFooterComponent implements OnInit, OnDestroy {
+  private unsubscribe$ = new Subject<void>();
   closeResult = '';
   contactUsForm: FormGroup;
   submitted = false;
@@ -25,6 +28,10 @@ export class MainFooterComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
     config.centered = true;
+  }
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   ngOnInit(): void {
@@ -47,7 +54,9 @@ export class MainFooterComponent implements OnInit {
       return;
     }
 
-    this.mailService.sendMail(this.contactUsForm.value).subscribe(
+    this.mailService.sendMail(this.contactUsForm.value)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe(
       data => {
         if (data === 'Sended'){
             this.toastService.success('Message envoyé');
