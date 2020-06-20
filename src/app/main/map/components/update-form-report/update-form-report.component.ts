@@ -1,9 +1,7 @@
 import { Report } from 'src/app/core/models/report.model';
 import { ReportService } from './../../../../core/services/report.service';
 import { ToastrService } from 'ngx-toastr';
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ngbToDate } from 'src/app/core/_helper/date.helper';
+import { Component, OnInit, Input } from '@angular/core';
 import { compareDate } from 'src/app/core/_helper/date.helper';
 
 @Component({
@@ -12,56 +10,45 @@ import { compareDate } from 'src/app/core/_helper/date.helper';
   styleUrls: ['./update-form-report.component.scss']
 })
 export class UpdateFormReportComponent implements OnInit {
-  @Output() recovredSubmit: EventEmitter<any> = new EventEmitter<any>();
-  @Input() report: Report;
-  submitted = false;
-  recovredForm: FormGroup;
+  // tslint:disable-next-line: variable-name
+  private _report: Report;
+
+  @Input() set report(value: Report){
+    this._report = value;
+    this.min = (this.report) ? new Date(this.report.reportedAt.seconde * 1000) : new Date(2019, 12, 31);
+  }
+  get report() {
+    return this._report;
+  }
+
+  datetime: any;
+  min: Date;
+  max: Date;
 
   constructor(
-    private formBuilder: FormBuilder,
     private reportService: ReportService,
     private toastrService: ToastrService
-  ) { }
-
-  ngOnInit(): void {
-    this.initRecovredForm();
+  ) {
+    this.min = new Date(2019, 12, 31);
+    this.max = new Date();
   }
 
-  private initRecovredForm() {
-    this.recovredForm = this.formBuilder.group({
-      recovredAt: ['', [Validators.required]],
-      recovredHour: ['', [Validators.required]],
-    });
-  }
-
-  get f() { return this.recovredForm.controls; }
-
+  ngOnInit(): void { }
 
   onSubmitRecovred() {
-    this.submitted = true;
 
-    // stop here if form is invalid
-    if (this.recovredForm.invalid) {
-      return;
-    }
-
-    const reportFormValue = this.recovredForm.value;
-    this.report.recovredAt = ngbToDate(reportFormValue.recovredAt, reportFormValue.recovredHour);
-    this.report._updatedAt = ngbToDate();
-
-    if (!compareDate(new Date(this.report.recovredAt), new Date(this.report.reportedAt))) {
+    if (!compareDate(this.datetime, new Date(this.report.reportedAt))) {
       this.toastrService.error('La date de fin d\'un rapport doit être plus récente que celle de création');
-      this.submitted = false;
       return ;
     }
 
+    this.report.recovredAt = this.datetime;
+    this.report._updatedAt = this.datetime;
+
     this.reportService.updateReport(this.report).then(
       () => {
-        this.submitted = false;
-        this.recovredForm.reset();
         this.toastrService.success('Merci', 'Rapport modifié');
-      },
-      () => this.submitted = false
+      }
     );
   }
 
