@@ -1,4 +1,4 @@
-import { Doc, defaultDoc } from './Doc';
+import { Doc, defaultDoc } from './doc.model';
 
 
 export interface Position {
@@ -7,8 +7,8 @@ export interface Position {
 }
 
 export interface Report extends Doc {
-  reportedAt: Date | any;
-  recovredAt?: Date | any;
+  reportedAt: Date | firebase.firestore.Timestamp | any;
+  recovredAt?: Date | firebase.firestore.Timestamp | any;
   position: Position;
   url?: string;
 }

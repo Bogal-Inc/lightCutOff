@@ -1,13 +1,12 @@
-import { SimpleUser } from './user';
-import { ɵINTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
+import { SimpleUser } from './user.model';
 
 export interface Doc {
   id?: string;
-  _createdAt?: Date | any;
+  _createdAt?: Date | firebase.firestore.Timestamp | any;
   _createdBy?: SimpleUser;
-  _updatedAt?: Date | any;
+  _updatedAt?: Date | firebase.firestore.Timestamp | any;
   _updatedBy?: SimpleUser;
-  _deletedAt?: Date | any;
+  _deletedAt?: Date | firebase.firestore.Timestamp | any;
   _deletedBy?: SimpleUser;
   _isDelete: boolean;
 }

@@ -1,4 +1,4 @@
-import { Doc } from './Doc';
+import { Doc } from './doc.model';
 
 export interface SimpleUser {
   id: string;
