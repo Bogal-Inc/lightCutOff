@@ -95,9 +95,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.formLoader = true;
     const report = {
       position: this.position,
-      reportedAt: ngbToDate(event.reportedAt, event.reportedHour),
-      _createdAt: ngbToDate(event.reportedAt, event.reportedHour)
-    };
+      reportedAt: event,
+      _createdAt: event
+    } as Report;
 
     this.markerCurrentInfoWindow.setContent(this.loadingElt.nativeElement);
 

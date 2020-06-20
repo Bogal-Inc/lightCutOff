@@ -12,38 +12,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CreateFormReportComponent implements OnInit {
   @Output() reportSubmit: EventEmitter<Report> = new EventEmitter<Report>();
   @Input() lastReport: Report;
-  reportForm: FormGroup;
   submitted = false;
+  min = new Date(2019, 12, 31);
+  max = new Date();
+  datetime: any;
 
-  constructor(
-    private formBuilder: FormBuilder
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.initReportForm();
   }
-
-  private initReportForm() {
-    // const coords = JSON.parse(localStorage.getItem('lightCutOffCoords'));
-    this.reportForm = this.formBuilder.group({
-      reportedAt: ['', [Validators.required]],
-      reportedHour: ['', [Validators.required]]
-    });
-  }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.reportForm.controls; }
 
   onSubmitReport() {
     this.submitted = true;
 
-    // stop here if form is invalid
-    if (this.reportForm.invalid) {
-      return;
-    }
-
-    const report = this.reportForm.value;
-    this.reportSubmit.emit(report);
-    this.reportForm.reset();
+    this.reportSubmit.emit(this.datetime);
   }
 }
