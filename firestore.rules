@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Matches any document in the reports collection as well as any document
+    // in a subcollection.
+    match /reports/{report}/{document=**} {
+      // Allow anonymous read on invitation
+      allow read, write
+    }
+  }
+}
