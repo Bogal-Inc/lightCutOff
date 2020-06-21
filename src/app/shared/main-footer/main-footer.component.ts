@@ -1,3 +1,4 @@
+import { Const } from 'src/environments/const';
 import { ToastrService } from 'ngx-toastr';
 import { MailService } from './../../core/services/mail.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -5,6 +6,7 @@ import {NgbModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bo
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-main-footer',
@@ -17,6 +19,7 @@ export class MainFooterComponent implements OnInit, OnDestroy {
   closeResult = '';
   contactUsForm: FormGroup;
   submitted = false;
+  appTitle = Const.app.title;
 
   constructor(
     private modalService: NgbModal,

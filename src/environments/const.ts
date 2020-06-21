@@ -1,4 +1,7 @@
 export const Const = {
+  app: {
+    title: 'lightCutOff'
+  },
   sendMail: 'https://us-central1-lightcutoff.cloudfunctions.net/sendMail',
   collections: {
     users: 'users',
