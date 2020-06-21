@@ -16,6 +16,7 @@ export const Const = {
   markerColor: {
     user: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
     cut: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+    cutUser: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png',
     recovred: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
   },
 };

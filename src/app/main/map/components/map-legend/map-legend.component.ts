@@ -19,6 +19,10 @@ export class MapLegendComponent implements OnInit {
       icon: Const.markerColor.cut
     },
     {
+      name: 'Votre rapport pas fermé',
+      icon: Const.markerColor.cutUser
+    },
+    {
       name: 'Electricité remise',
       icon:  Const.markerColor.recovred
     }

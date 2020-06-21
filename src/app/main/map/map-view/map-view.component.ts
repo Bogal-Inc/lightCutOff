@@ -188,14 +188,19 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     const markRec = [];
     this.reportService.getReports().subscribe(data => {
       data.forEach(report => {
+        const marker = this.factoryOldMarkers(report);
+
         if (report.recovredAt === null){
-          markCut.push(this.factoryOldMarkers(report));
+          if (marker){
+            markCut.push(this.factoryOldMarkers(report));
+            this.addMarkersToCluster(markCut);
+          }
         } else {
-          markRec.push(this.factoryOldMarkers(report));
+          if (marker){
+            markRec.push(this.factoryOldMarkers(report));
+          }
         }
       });
-
-      this.addMarkersToCluster(markCut);
     });
   }
 
@@ -208,20 +213,24 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private factoryOldMarkers(report: Report): google.maps.Marker {
-    let content = null;
-    const currentMareker = new google.maps.Marker({
-        position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
-        icon: {
-          url: (report.recovredAt === null) ? Const.markerColor.cut : Const.markerColor.recovred
-        },
-        map: this.map
-    });
+    this.angularFireAuth.onAuthStateChanged(user => {
+      let content = null;
+      const currentMareker = new google.maps.Marker({
+          position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
+          icon: {
+            url: (report.recovredAt === null) ?
+              (user.uid === report._createdBy.id) ?
+                Const.markerColor.cutUser :
+                Const.markerColor.cut :
+              Const.markerColor.recovred
+          },
+          map: this.map
+      });
 
-    if (report.recovredAt) {
-      content = this.getContentMarherInformations(report);
-      this.initOverInfoWindowMarker(currentMareker, content);
-    } else {
-      this.angularFireAuth.onAuthStateChanged(user => {
+      if (report.recovredAt) {
+        content = this.getContentMarherInformations(report);
+        this.initOverInfoWindowMarker(currentMareker, content);
+      } else {
         if (user.uid === report._createdBy.id){
           content = this.getUpdateRecovedComponent(report);
           this.initClickInfoWindow(currentMareker, content);
@@ -229,10 +238,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           content = this.getContentMarherInformations(report);
           this.initOverInfoWindowMarker(currentMareker, content);
         }
-      });
-    }
+      }
 
-    return currentMareker;
+      return currentMareker;
+    });
+    return null;
   }
 
   private initClickInfoWindow(marker, content) {
