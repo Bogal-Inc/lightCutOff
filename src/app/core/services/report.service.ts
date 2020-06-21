@@ -57,7 +57,7 @@ export class ReportService extends BaseService {
     );
   }
 
-  updateReport(report: Report){
+  updateReport(report: Report): Promise<void>{
     delete report.id;
     return this.angularFirestore.doc(report.url).update(report);
   }

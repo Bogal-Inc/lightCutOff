@@ -15,7 +15,6 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
-import { ngbToDate } from 'src/app/core/_helper/date.helper';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Const } from 'src/environments/const';
@@ -58,7 +57,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private angularFireAuth: AngularFireAuth
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
     this.mapInitializer();
@@ -67,27 +66,29 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() { }
 
   mapInitializer() {
-    this.mapsApiLoader.load().then(() => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition( position => {
-          this.isLoader = false;
-          this.isFormLightCutOf = true;
-          this.position = {
-            lng: +position.coords.longitude,
-            lat: +position.coords.latitude
-          };
+    this.mapsApiLoader.load().then(
+      () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition( position => {
+            this.isLoader = false;
+            this.isFormLightCutOf = true;
+            this.position = {
+              lng: +position.coords.longitude,
+              lat: +position.coords.latitude
+            };
 
-          this.initMap();
-          this.initCurrentMarker(this.getUserMarkerOption());
-          this.initOtherMarkers();
-          this.addEvents();
-        }, () => {
-          this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
-        } );
-      } else {
-        this.toastr.error('Votre navigateur ne supporte Geolocation');
-      }
-    });
+            this.initMap();
+            this.initCurrentMarker(this.getUserMarkerOption());
+            this.initOtherMarkers();
+            this.addEvents();
+          },
+          () => {
+            this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
+          } );
+        } else {
+          this.toastr.error('Votre navigateur ne supporte Geolocation');
+        }
+      });
   }
 
   onCreateReport(event) {
@@ -220,8 +221,15 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       content = this.getContentMarherInformations(report);
       this.initOverInfoWindowMarker(currentMareker, content);
     } else {
-      content = this.getUpdateRecovedComponent(report);
-      this.initClickInfoWindow(currentMareker, content);
+      this.angularFireAuth.onAuthStateChanged(user => {
+        if (user.uid === report._createdBy.id){
+          content = this.getUpdateRecovedComponent(report);
+          this.initClickInfoWindow(currentMareker, content);
+        } else {
+          content = this.getContentMarherInformations(report);
+          this.initOverInfoWindowMarker(currentMareker, content);
+        }
+      });
     }
 
     return currentMareker;
@@ -270,7 +278,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         <div class="marker-details_body">
           <ul>
             <li>Coupé le: ${new Date(report.reportedAt.seconds * 1000).toUTCString()}</li>
-            <li>Remis le: ${new Date(report.recovredAt.seconds * 1000).toUTCString()}</li>
+            ${
+              (report.recovredAt) ?
+                  '<li>Remis le: ' + new Date(report.recovredAt.seconds * 1000).toUTCString() + '</li>' :
+                  ''
+            }
             <li>Position: { lng: ${report.position.lng} lat: ${report.position.lat}}</li>
           </ul>
         </div>

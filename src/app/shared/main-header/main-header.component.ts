@@ -21,5 +21,4 @@ export class MainHeaderComponent implements OnInit {
       }
     });
   }
-
 }
