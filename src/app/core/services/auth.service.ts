@@ -1,4 +1,4 @@
-import { SimpleUser } from './../doc.model.ts/user.model';
+import { SimpleUser } from '@Models/user.model';
 import { Const } from 'src/environments/const';
 import { BaseService } from './base.service';
 import { Injectable } from '@angular/core';

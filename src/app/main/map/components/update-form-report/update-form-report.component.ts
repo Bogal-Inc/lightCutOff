@@ -1,8 +1,8 @@
 import { Report } from 'src/app/core/models/report.model';
-import { ReportService } from './../../../../core/services/report.service';
+import { ReportService } from '@Services/report.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit, Input } from '@angular/core';
-import { compareDate } from 'src/app/core/_helper/date.helper';
+import { compareDate } from '@Helpers/date.helper';
 
 @Component({
   selector: 'app-update-form-report',

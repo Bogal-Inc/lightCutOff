@@ -1,8 +1,5 @@
-import { Report } from '../../../../core/models/report.model';
+import { Report } from '@Models/report.model';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 
 @Component({
   selector: 'app-create-form-report',

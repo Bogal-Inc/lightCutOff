@@ -1,4 +1,4 @@
-import { SimpleUser } from './../models/user.model';
+import { SimpleUser } from '@Models/user.model';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
@@ -11,7 +11,7 @@ import { DocumentReference } from '@firebase/firestore-types';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
-import { Doc } from '../models/doc.model';
+import { Doc } from '@Models/doc.model';
 
 type CollectionPredicate<T> = string | AngularFirestoreCollection<T>;
 type DocPredicate<T> = string | AngularFirestoreDocument<T>;

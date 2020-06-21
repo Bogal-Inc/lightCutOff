@@ -2,7 +2,7 @@ import { DocumentReference } from '@firebase/firestore-types';
 import { BaseService } from './base.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
-import { Report, defaultReport } from 'src/app/core/models/report.model';
+import { Report, defaultReport } from '@Models/report.model';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { Const } from 'src/environments/const';

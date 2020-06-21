@@ -1,17 +1,16 @@
-import { AuthService } from './../../../core/services/auth.service';
-import { Position, Report } from 'src/app/core/models/report.model';
+import { AuthService } from '@Services/auth.service';
+import { Position, Report } from '@Models/report.model';
 import { LoadingComponent } from './../../../shared/loading/loading.component';
 import { UpdateFormReportComponent } from './../components/update-form-report/update-form-report.component';
 import { CreateFormReportComponent } from './../components/create-form-report/create-form-report.component';
 import { MapLegendComponent } from './../components/map-legend/map-legend.component';
-import { ReportService } from 'src/app/core/services/report.service';
+import { ReportService } from '@Services/report.service';
 import {
   Component,
   OnInit,
   AfterViewInit,
   ViewChild,
   ElementRef,
-  OnDestroy,
   ComponentFactoryResolver,
   ViewContainerRef
 } from '@angular/core';
@@ -26,7 +25,7 @@ declare const MarkerClusterer: any;
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.scss'],
 })
-export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
+export class MapViewComponent implements OnInit, AfterViewInit {
   @ViewChild('mapContainer', {static: false})
   private gmap: ElementRef;
   @ViewChild(CreateFormReportComponent, {read: ElementRef})
@@ -62,8 +61,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.mapInitializer();
   }
-
-  ngOnDestroy() { }
 
   mapInitializer() {
     this.mapsApiLoader.load().then(
