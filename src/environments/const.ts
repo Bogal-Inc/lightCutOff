@@ -2,6 +2,9 @@ export const Const = {
   app: {
     title: 'lightCutOff'
   },
+  user: {
+    localstorage: 'lightCutOffUser'
+  },
   sendMail: 'https://us-central1-lightcutoff.cloudfunctions.net/sendMail',
   collections: {
     users: 'users',

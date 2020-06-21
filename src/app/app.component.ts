@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   ) {
     dateTimeAdapter.setLocale('fr-FR');
     this.authService.anonymousAuth();
+    this.authService.getAnonymousUser();
   }
 
   ngOnInit() { }

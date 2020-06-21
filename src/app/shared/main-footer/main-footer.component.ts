@@ -76,7 +76,6 @@ export class MainFooterComponent implements OnInit, OnDestroy {
   get f() { return this.contactUsForm.controls; }
 
   private initContactUsForm() {
-    // const coords = JSON.parse(localStorage.getItem('lightCutOffCoords'));
     this.contactUsForm = this.formBuilder.group({
       email: ['', [Validators.required]],
       subject: ['', [Validators.required]],

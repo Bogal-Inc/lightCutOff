@@ -1,3 +1,4 @@
+import { AuthService } from './../../core/services/auth.service';
 import { SimpleUser } from './../../core/models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -13,14 +14,10 @@ export class MainHeaderComponent implements OnInit {
   appTitle = Const.app.title;
 
   constructor(
-    private angularFireAuth: AngularFireAuth
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.angularFireAuth.onAuthStateChanged(user => {
-      if (user) {
-        this.currentUser = { id: user.uid } as SimpleUser;
-      }
-    });
+    this.currentUser = this.authService.getUser();
   }
 }

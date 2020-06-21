@@ -1,3 +1,4 @@
+import { AuthService } from './../../../core/services/auth.service';
 import { Position, Report } from 'src/app/core/models/report.model';
 import { LoadingComponent } from './../../../shared/loading/loading.component';
 import { UpdateFormReportComponent } from './../components/update-form-report/update-form-report.component';
@@ -16,7 +17,6 @@ import {
 } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { ToastrService } from 'ngx-toastr';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Const } from 'src/environments/const';
 
 declare const MarkerClusterer: any;
@@ -54,7 +54,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private reportService: ReportService,
     private toastr: ToastrService,
     private componentFactoryResolver: ComponentFactoryResolver,
-    private angularFireAuth: AngularFireAuth
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {}
@@ -173,38 +173,36 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.markerCurrentPosition = new google.maps.Marker(markerOption);
     this.markerCurrentPosition.setMap(this.map);
 
-    this.angularFireAuth.onAuthStateChanged(user => {
-      if (user){
-        this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, this.createReportFormElt.nativeElement);
-      } else {
-        const content = 'Vous n\'avez pas pu être identifié. Pour faire un rapport vous devez l\'être.';
-        this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, content);
-      }
-    });
+    if (this.authService.getUser()){
+      this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, this.createReportFormElt.nativeElement);
+    } else {
+      const content = 'Vous n\'avez pas pu être identifié. Pour faire un rapport vous devez l\'être.';
+      this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, content);
+    }
   }
 
   private initOtherMarkers() {
     const markCut = [];
     const markRec = [];
-    this.reportService.getReports().subscribe(data => {
-      data.forEach(report => {
-        const marker = this.factoryOldMarkers(report);
-
-        if (report.recovredAt === null){
-          if (marker){
-            markCut.push(this.factoryOldMarkers(report));
-            this.addMarkersToCluster(markCut);
+    this.reportService.getReports()
+      .subscribe(data => {
+        data.forEach(report => {
+          const marker = this.factoryOldMarkers(report);
+          if (report.recovredAt === null){
+            if (marker){
+              markCut.push(this.factoryOldMarkers(report));
+              this.addMarkersToCluster(markCut);
+            }
+          } else {
+            if (marker){
+              markRec.push(this.factoryOldMarkers(report));
+            }
           }
-        } else {
-          if (marker){
-            markRec.push(this.factoryOldMarkers(report));
-          }
-        }
+        });
       });
-    });
   }
 
-  private addMarkersToCluster(markers) {
+  private addMarkersToCluster(markers: google.maps.Marker[]) {
     this.markerCluster = new MarkerClusterer(
       this.map,
       markers,
@@ -213,36 +211,33 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private factoryOldMarkers(report: Report): google.maps.Marker {
-    this.angularFireAuth.onAuthStateChanged(user => {
-      let content = null;
-      const currentMareker = new google.maps.Marker({
-          position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
-          icon: {
-            url: (report.recovredAt === null) ?
-              (user.uid === report._createdBy.id) ?
-                Const.markerColor.cutUser :
-                Const.markerColor.cut :
-              Const.markerColor.recovred
-          },
-          map: this.map
-      });
+    let content = null;
+    const currentMareker = new google.maps.Marker({
+        position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
+        icon: {
+          url: (report.recovredAt === null) ?
+            (this.authService.getUser().id === report._createdBy.id) ?
+              Const.markerColor.cutUser :
+              Const.markerColor.cut :
+            Const.markerColor.recovred
+        },
+        map: this.map
+    });
 
-      if (report.recovredAt) {
+    if (report.recovredAt) {
+      content = this.getContentMarherInformations(report);
+      this.initOverInfoWindowMarker(currentMareker, content);
+    } else {
+      if (this.authService.getUser().id === report._createdBy.id){
+        content = this.getUpdateRecovedComponent(report);
+        this.initClickInfoWindow(currentMareker, content);
+      } else {
         content = this.getContentMarherInformations(report);
         this.initOverInfoWindowMarker(currentMareker, content);
-      } else {
-        if (user.uid === report._createdBy.id){
-          content = this.getUpdateRecovedComponent(report);
-          this.initClickInfoWindow(currentMareker, content);
-        } else {
-          content = this.getContentMarherInformations(report);
-          this.initOverInfoWindowMarker(currentMareker, content);
-        }
       }
+    }
 
-      return currentMareker;
-    });
-    return null;
+    return currentMareker;
   }
 
   private initClickInfoWindow(marker, content) {
