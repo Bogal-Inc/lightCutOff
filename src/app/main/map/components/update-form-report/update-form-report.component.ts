@@ -37,7 +37,7 @@ export class UpdateFormReportComponent implements OnInit {
 
   onSubmitRecovred() {
 
-    if (!compareDate(this.datetime, new Date(this.report.reportedAt))) {
+    if (!this.isDate(this.report.reportedAt)) {
       this.toastrService.error('La date de fin d\'un rapport doit être plus récente que celle de création');
       return ;
     }
@@ -50,6 +50,19 @@ export class UpdateFormReportComponent implements OnInit {
         this.toastrService.success('Merci', 'Rapport modifié');
       }
     );
+  }
+
+  private isDate(reportedDate: any): boolean {
+    if (reportedDate.seconds) {
+      if (!compareDate(this.datetime, new Date(reportedDate.seconds))) {
+        return false;
+      }
+    } else {
+      if (!compareDate(this.datetime, new Date(reportedDate))) {
+        return false;
+      }
+    }
+    return true;
   }
 
 }
