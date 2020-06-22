@@ -21,11 +21,13 @@ export class ReportService extends BaseService {
     super(angularFireAuth, angularFirestore);
   }
 
-  getReports(isDeleted: boolean = false): Observable<Report[]> {
+  getReports(isDeleted: boolean = false, isVisible: boolean = false): Observable<Report[]> {
     return this.col$<Report>(
       `${Const.collections.reports}`,
       ref => {
-        return ref.where('_isDelete', '==', false);
+        const response = ref.where('_isDelete', '==', isDeleted);
+        response.where('_isVisible', '==', isVisible);
+        return response;
       }
     );
   }
