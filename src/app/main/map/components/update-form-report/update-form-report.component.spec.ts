@@ -5,6 +5,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ToastrModule } from 'ngx-toastr';
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
+import { FormsModule } from '@angular/forms';
 
 describe('UpdateFormReportComponent', () => {
   let component: UpdateFormReportComponent;
@@ -14,12 +16,19 @@ describe('UpdateFormReportComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ UpdateFormReportComponent ],
       imports: [
+        FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         ToastrModule.forRoot({
           timeOut: 10000,
           progressBar: true
         }),
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule,
+      ],
+      providers: [
+        // use french locale
+        {provide: OWL_DATE_TIME_LOCALE, useValue: 'fr'},
       ],
     })
     .compileComponents();
