@@ -1,12 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ReportService } from './report.service';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
-describe('MarkerService', () => {
+describe('ReportService', () => {
   let service: ReportService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+      ],
+    });
     service = TestBed.inject(ReportService);
   });
 
