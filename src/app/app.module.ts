@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -29,7 +28,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    StoreModule.forRoot({}, {}),
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsApiKey,
       region: 'CM',
