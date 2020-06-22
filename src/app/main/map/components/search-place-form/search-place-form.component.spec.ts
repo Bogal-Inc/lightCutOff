@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchPlaceFormComponent } from './search-place-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SearchPlaceFormComponent', () => {
   let component: SearchPlaceFormComponent;
@@ -8,7 +10,12 @@ describe('SearchPlaceFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchPlaceFormComponent ]
+      declarations: [ SearchPlaceFormComponent ],
+      imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
   }));
