@@ -1,7 +1,6 @@
-import { AuthService } from './../../core/services/auth.service';
-import { SimpleUser } from './../../core/models/user.model';
+import { AuthService } from '@Services/auth.service';
+import { SimpleUser } from '@Models/user.model';
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Const } from 'src/environments/const';
 
 @Component({
