@@ -1,6 +1,6 @@
 import { Const } from 'src/environments/const';
 import { ToastrService } from 'ngx-toastr';
-import { MailService } from './../../core/services/mail.service';
+import { MailService } from '@Services/mail.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
