@@ -1,14 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { CreateFormReportComponent } from './create-form-report.component';
 
-describe('ReportRecovredFormComponent', () => {
+describe('CreateFormReportComponent', () => {
   let component: CreateFormReportComponent;
   let fixture: ComponentFixture<CreateFormReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateFormReportComponent ]
+      declarations: [ CreateFormReportComponent ],
+      imports: [FormsModule]
     })
     .compileComponents();
   }));
