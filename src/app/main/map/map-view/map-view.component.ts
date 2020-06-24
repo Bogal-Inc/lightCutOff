@@ -184,18 +184,13 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     this.reportService.getReports()
       .subscribe(data => {
         data.forEach(report => {
-          const marker = this.factoryOldMarkers(report);
           if (report.recovredAt === null){
-            if (marker){
-              markCut.push(this.factoryOldMarkers(report));
-              this.addMarkersToCluster(markCut);
-            }
+            markCut.push(this.factoryOldMarkers(report));
           } else {
-            if (marker){
-              markRec.push(this.factoryOldMarkers(report));
-            }
+            markRec.push(this.factoryOldMarkers(report));
           }
         });
+        this.addMarkersToCluster(markCut);
       });
   }
 
