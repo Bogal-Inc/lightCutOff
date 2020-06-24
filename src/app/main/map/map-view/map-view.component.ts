@@ -1,3 +1,4 @@
+import { ReportInfosComponent } from './../components/report-infos/report-infos.component';
 import { AuthService } from '@Services/auth.service';
 import { Position, Report } from '@Models/report.model';
 import { LoadingComponent } from './../../../shared/loading/loading.component';
@@ -36,6 +37,8 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private legends: ElementRef;
   @ViewChild('recovredFormReport', { read: ViewContainerRef })
   private recovredFormReport: ViewContainerRef;
+  @ViewChild('infosReport', { read: ViewContainerRef })
+  private infosReport: ViewContainerRef;
   private map: google.maps.Map;
   private mapOptions: google.maps.MapOptions;
   private markerCluster: any;
@@ -217,14 +220,14 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     });
 
     if (report.recovredAt) {
-      content = this.getContentMarherInformations(report);
+      content = this.createInfoReportComponent(report);
       this.initOverInfoWindowMarker(currentMareker, content);
     } else {
       if (this.authService.getUser().id === report._createdBy.id){
         content = this.createRecovredComponent(report);
         this.initClickInfoWindow(currentMareker, content);
       } else {
-        content = this.getContentMarherInformations(report);
+        content = this.createInfoReportComponent(report);
         this.initOverInfoWindowMarker(currentMareker, content);
       }
     }
@@ -264,26 +267,16 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     return nativeElement;
   }
 
-  private getContentMarherInformations(report: Report): string {
-    return `
-      <div class="marker-details">
-        <div class="marker-details_header">
-          Rapport
-          <h3>Title</h3>
-        </div>
-        <div class="marker-details_body">
-          <ul>
-            <li>Coupé le: ${new Date(report.reportedAt.seconds * 1000).toUTCString()}</li>
-            ${
-              (report.recovredAt) ?
-                  '<li>Remis le: ' + new Date(report.recovredAt.seconds * 1000).toUTCString() + '</li>' :
-                  ''
-            }
-            <li>Position: { lng: ${report.position.lng} lat: ${report.position.lat}}</li>
-          </ul>
-        </div>
-      </div>
-    `;
+  private createInfoReportComponent(report: Report): any {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ReportInfosComponent);
+
+    const viewContainerRef = this.infosReport;
+    const componentRef = viewContainerRef.createComponent(componentFactory);
+    (componentRef.instance as ReportInfosComponent).data = report;
+    componentRef.hostView.detectChanges();
+    const { nativeElement } = componentRef.location;
+
+    return nativeElement;
   }
 
   private addEventsUserMarker() {

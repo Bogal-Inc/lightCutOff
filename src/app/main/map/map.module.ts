@@ -9,6 +9,7 @@ import { CreateFormReportComponent } from './components/create-form-report/creat
 import { SearchPlaceFormComponent } from './components/search-place-form/search-place-form.component';
 import { MapLegendComponent } from './components/map-legend/map-legend.component';
 import { UpdateFormReportComponent } from './components/update-form-report/update-form-report.component';
+import { ReportInfosComponent } from './components/report-infos/report-infos.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { UpdateFormReportComponent } from './components/update-form-report/updat
     SearchPlaceFormComponent,
     MapLegendComponent,
     UpdateFormReportComponent,
+    ReportInfosComponent,
   ],
   imports: [
     CommonModule,
