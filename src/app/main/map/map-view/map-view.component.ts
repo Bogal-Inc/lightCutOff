@@ -260,7 +260,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
     const viewContainerRef = this.recovredFormReport;
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    (componentRef.instance as UpdateFormReportComponent).report = report;
+    (componentRef.instance as UpdateFormReportComponent).data = report;
     componentRef.hostView.detectChanges();
     const { nativeElement } = componentRef.location;
 

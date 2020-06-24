@@ -1,3 +1,4 @@
+import { TimestampPipe } from '@Pipes/timestamp.pipe';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReportInfosComponent } from './report-infos.component';
@@ -8,7 +9,10 @@ describe('ReportInfosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReportInfosComponent ]
+      declarations: [
+        ReportInfosComponent,
+        TimestampPipe
+      ],
     })
     .compileComponents();
   }));

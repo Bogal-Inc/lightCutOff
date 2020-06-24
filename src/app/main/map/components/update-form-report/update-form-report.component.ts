@@ -1,26 +1,17 @@
-import { Report } from 'src/app/core/models/report.model';
 import { ReportService } from '@Services/report.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit, Input } from '@angular/core';
 import { compareDate } from '@Helpers/date.helper';
+import { BaseComponent } from '@Models/baseComponent.model';
+import { Report } from '@Models/report.model';
 
 @Component({
   selector: 'app-update-form-report',
   templateUrl: './update-form-report.component.html',
   styleUrls: ['./update-form-report.component.scss']
 })
-export class UpdateFormReportComponent implements OnInit {
-  // tslint:disable-next-line: variable-name
-  private _report: Report;
-
-  @Input() set report(value: Report){
-    this._report = value;
-    this.min = (this.report) ? new Date(this.report.reportedAt.seconde * 1000) : new Date(2019, 12, 31);
-  }
-  get report() {
-    return this._report;
-  }
-
+export class UpdateFormReportComponent implements OnInit, BaseComponent {
+  data: Report;
   datetime: any;
   min: Date;
   max: Date;
@@ -28,24 +19,23 @@ export class UpdateFormReportComponent implements OnInit {
   constructor(
     private reportService: ReportService,
     private toastrService: ToastrService
-  ) {
-    this.min = new Date(2019, 12, 31);
+  ) { }
+
+  ngOnInit(): void {
+    this.min = (this.data) ? new Date(this.data.reportedAt.seconds * 1000) : new Date(2019, 12, 31);
     this.max = new Date();
   }
 
-  ngOnInit(): void { }
-
   onSubmitRecovred() {
-
-    if (!this.isDate(this.report.reportedAt)) {
+    if (!this.isDate(this.data.reportedAt)) {
       this.toastrService.error('La date de fin d\'un rapport doit être plus récente que celle de création');
       return ;
     }
 
-    this.report.recovredAt = this.datetime;
-    this.report._updatedAt = this.datetime;
+    this.data.recovredAt = this.datetime;
+    this.data._updatedAt = this.datetime;
 
-    this.reportService.updateReport(this.report).then(
+    this.reportService.updateReport(this.data).then(
       () => {
         this.toastrService.success('Merci', 'Rapport modifié');
       }
@@ -64,5 +54,4 @@ export class UpdateFormReportComponent implements OnInit {
     }
     return true;
   }
-
 }
