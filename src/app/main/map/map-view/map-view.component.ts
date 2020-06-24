@@ -34,8 +34,8 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private loadingElt: ElementRef;
   @ViewChild(MapLegendComponent, {read: ElementRef})
   private legends: ElementRef;
-  @ViewChild('messagecontainer', { read: ViewContainerRef })
-  private adHost: ViewContainerRef;
+  @ViewChild('recovredFormReport', { read: ViewContainerRef })
+  private recovredFormReport: ViewContainerRef;
   private map: google.maps.Map;
   private mapOptions: google.maps.MapOptions;
   private markerCluster: any;
@@ -76,8 +76,8 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
             this.initMap();
             this.initCurrentMarker(this.getUserMarkerOption());
-            this.initOtherMarkers();
-            this.addEvents();
+            this.LoadReports();
+            this.addEventsUserMarker();
           },
           () => {
             this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
@@ -88,7 +88,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       });
   }
 
-  onCreateReport(event) {
+  onCreateReport(event: any) {
     this.isLoader = true;
     this.formLoader = true;
     const report = {
@@ -107,7 +107,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
         this.reportService.updateReport(this.lastReport).then(
           () => {
-            const recovredFromElement = this.getUpdateRecovedComponent(this.lastReport);
+            const recovredFromElement = this.createRecovredComponent(this.lastReport);
             this.markerCurrentInfoWindow.setContent(recovredFromElement);
             this.markerCurrentPosition.setDraggable(false);
             this.markerCurrentPosition.setOpacity(0);
@@ -178,7 +178,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private initOtherMarkers() {
+  private LoadReports() {
     const markCut = [];
     const markRec = [];
     this.reportService.getReports()
@@ -221,7 +221,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       this.initOverInfoWindowMarker(currentMareker, content);
     } else {
       if (this.authService.getUser().id === report._createdBy.id){
-        content = this.getUpdateRecovedComponent(report);
+        content = this.createRecovredComponent(report);
         this.initClickInfoWindow(currentMareker, content);
       } else {
         content = this.getContentMarherInformations(report);
@@ -232,7 +232,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     return currentMareker;
   }
 
-  private initClickInfoWindow(marker, content) {
+  private initClickInfoWindow(marker: google.maps.Marker, content: any): google.maps.InfoWindow {
     const infoWindow = new google.maps.InfoWindow({
       content
     });
@@ -243,7 +243,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     return infoWindow;
   }
 
-  private initOverInfoWindowMarker(mareker, content) {
+  private initOverInfoWindowMarker(mareker: google.maps.Marker, content: any) {
     const infoWindow = new google.maps.InfoWindow({
       content
     });
@@ -252,11 +252,10 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     mareker.addListener('mouseout', () => infoWindow.close());
   }
 
-  private getUpdateRecovedComponent(report: Report): any {
+  private createRecovredComponent(report: Report): any {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(UpdateFormReportComponent);
 
-    const viewContainerRef = this.adHost;
-    // viewContainerRef.clear();
+    const viewContainerRef = this.recovredFormReport;
     const componentRef = viewContainerRef.createComponent(componentFactory);
     (componentRef.instance as UpdateFormReportComponent).report = report;
     componentRef.hostView.detectChanges();
@@ -287,19 +286,19 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     `;
   }
 
-  private addEvents() {
-    this.onDragableGetPosition();
-    this.onDblClickUserMarker();
+  private addEventsUserMarker() {
+    this.addEventDragableUserMarker();
+    this.addEventDblClickUserMarker();
   }
 
-  private onDragableGetPosition(){
+  private addEventDragableUserMarker(){
     google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (data) => {
       const pos = this.markerCurrentPosition.getPosition();
       this.position = {lng: pos.lng(), lat: pos.lat()};
     });
   }
 
-  private onDblClickUserMarker() {
+  private addEventDblClickUserMarker() {
     google.maps.event.addListener(this.map, 'dblclick', (data) => {
       this.position = {
         lng: +data.latLng.lng(),
