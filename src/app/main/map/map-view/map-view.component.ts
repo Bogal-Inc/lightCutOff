@@ -44,6 +44,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private markerCluster: any;
   private markerCurrentInfoWindow: google.maps.InfoWindow;
   private position: Position;
+  isError = false;
   markerCurrentPosition: google.maps.Marker;
   isFormLightCutOf = false;
   reports: Report[];
@@ -88,6 +89,9 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         } else {
           this.toastr.error('Votre navigateur ne supporte Geolocation');
         }
+      },
+        () => {
+          this.isError = true;
       });
   }
 
