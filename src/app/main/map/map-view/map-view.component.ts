@@ -4,7 +4,6 @@ import { Position, Report } from '@Models/report.model';
 import { LoadingComponent } from './../../../shared/loading/loading.component';
 import { UpdateFormReportComponent } from './../components/update-form-report/update-form-report.component';
 import { CreateFormReportComponent } from './../components/create-form-report/create-form-report.component';
-import { MapLegendComponent } from './../components/map-legend/map-legend.component';
 import { ReportService } from '@Services/report.service';
 import {
   Component,
@@ -18,6 +17,7 @@ import {
 import { MapsAPILoader } from '@agm/core';
 import { ToastrService } from 'ngx-toastr';
 import { Const } from 'src/environments/const';
+import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
 
 declare const MarkerClusterer: any;
 

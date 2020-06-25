@@ -7,11 +7,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingComponent } from './loading/loading.component';
 import { TimestampPipe } from '../core/pipes/timestamp.pipe';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
+import { MapLegendComponent } from './map-legend/map-legend.component';
 
 @NgModule({
   declarations: [
     MainFooterComponent,
     MainHeaderComponent,
+    MapLegendComponent,
     LoadingComponent,
     TimestampPipe,
   ],
@@ -27,6 +29,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from
     MainFooterComponent,
     MainHeaderComponent,
     LoadingComponent,
+    MapLegendComponent,
 
     TimestampPipe,
 
