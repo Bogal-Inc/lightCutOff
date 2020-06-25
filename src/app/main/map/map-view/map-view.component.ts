@@ -156,7 +156,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
           south: Const.coordsCameroon.south,
           west: Const.coordsCameroon.west
         },
-        strictBounds: true
+        // strictBounds: true
       },
       disableDoubleClickZoom: true,
       backgroundColor: '#eaeaea',
