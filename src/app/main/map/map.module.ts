@@ -7,7 +7,6 @@ import { MapViewComponent } from './map-view/map-view.component';
 import { AgmCoreModule } from '@agm/core';
 import { CreateFormReportComponent } from './components/create-form-report/create-form-report.component';
 import { SearchPlaceFormComponent } from './components/search-place-form/search-place-form.component';
-import { MapLegendComponent } from './components/map-legend/map-legend.component';
 import { UpdateFormReportComponent } from './components/update-form-report/update-form-report.component';
 import { ReportInfosComponent } from './components/report-infos/report-infos.component';
 
@@ -17,7 +16,6 @@ import { ReportInfosComponent } from './components/report-infos/report-infos.com
     MapViewComponent,
     CreateFormReportComponent,
     SearchPlaceFormComponent,
-    MapLegendComponent,
     UpdateFormReportComponent,
     ReportInfosComponent,
   ],

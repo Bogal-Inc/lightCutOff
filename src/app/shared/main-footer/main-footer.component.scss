@@ -1,5 +1,14 @@
 .footer {
     &__line {
         text-align: center;
+        &__menu {
+            &__link {
+                color: #007bff;
+                cursor: pointer;
+            }
+            &__link:hover {
+                color: black;
+            }
+        }
     }
 }

@@ -134,7 +134,6 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   /**
    * Search place in map
-   * @param event
    */
   onSearchPlace(event) {
     const service = new google.maps.places.PlacesService(this.map);

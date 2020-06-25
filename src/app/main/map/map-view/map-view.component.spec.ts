@@ -1,7 +1,5 @@
-import { MainFooterComponent } from './../../../shared/main-footer/main-footer.component';
 import { UpdateFormReportComponent } from './../components/update-form-report/update-form-report.component';
 import { CreateFormReportComponent } from './../components/create-form-report/create-form-report.component';
-import { MapLegendComponent } from './../components/map-legend/map-legend.component';
 import { LoadingComponent } from './../../../shared/loading/loading.component';
 import { SearchPlaceFormComponent } from './../components/search-place-form/search-place-form.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -17,6 +15,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
+import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
 
 describe('MapViewComponent', () => {
   let component: MapViewComponent;
