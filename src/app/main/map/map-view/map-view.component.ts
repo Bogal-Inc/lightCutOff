@@ -98,6 +98,13 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   onCreateReport(event: any) {
     this.isLoader = true;
     this.formLoader = true;
+    if (!this.isMarkerCountry()) {
+      this.isLoader = false;
+      this.formLoader = false;
+      this.toastr.error('Vous ne pouvez pas creer de rapport hors du territoire Camerounais', 'Error');
+      return;
+    }
+
     const report = {
       position: this.position,
       reportedAt: event,
@@ -125,6 +132,10 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     );
   }
 
+  /**
+   * Search place in map
+   * @param event
+   */
   onSearchPlace(event) {
     const service = new google.maps.places.PlacesService(this.map);
     const request = {
@@ -143,6 +154,30 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         this.toastr.error('La place rechercher est introuvable', 'Erreur');
       }
     });
+  }
+
+  /**
+   * detect country for current position
+   */
+  private isMarkerCountry(): boolean {
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({location: this.position}, (results, status) => {
+      if (status === 'OK') {
+
+        if (results[1]) {
+          const resultCountry = results[1].formatted_address.split(',', 2);
+          if (resultCountry[1] === 'Cameroun' || resultCountry[1] === 'Cameroon') {
+            return true;
+          }
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    });
+    return false;
   }
 
   private initMap() {
