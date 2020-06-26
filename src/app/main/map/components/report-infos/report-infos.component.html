@@ -1,18 +1,16 @@
 <div class="marker-details" *ngIf="data">
-    <div class="marker-details_header">
-        Rapport
-        <h3>Title</h3>
+    <div class="marker-details__header">
+
+        <h6>Rapport</h6>
     </div>
-    <div class="marker-details_body">
-        <ul>
-            <li>Coupé le: {{ data.reportedAt?.seconds | timestamp }}</li>
-            <li *ngIf="data.recovredAt">Remis le: {{ data.recovredAt?.seconds | timestamp }}</li>
-            <li>Position:
-                <ul>
-                    <li>Longitude: {{ data?.position.lng }}</li>
-                    <li>Lattitude: {{ data?.position.lat }}</li>
-                </ul>
-            </li>
+    <div class="marker-details__body">
+        <ul class="list-unstyled">
+            <li><b>Signalez le:</b> {{ data.reportedAt?.seconds | timestamp }}</li>
+            <li *ngIf="data.recovredAt"><b>Remis le:</b> {{ data.recovredAt?.seconds | timestamp }}</li>
         </ul>
+    </div>
+    <div class="marker-details__footer">
+        <small>lng: {{ data?.position.lng }}</small>&nbsp;&nbsp;
+        <small>lat: {{ data?.position.lat }}</small>
     </div>
 </div>

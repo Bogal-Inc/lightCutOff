@@ -1,7 +1,7 @@
 import { SharedModule } from './shared/shared.module';
 import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReportModule,
   ],
   providers: [
-    GoogleMapsAPIWrapper
+    GoogleMapsAPIWrapper,
+    {provide: LOCALE_ID, useValue: 'fr' }
   ],
   bootstrap: [AppComponent]
 })
