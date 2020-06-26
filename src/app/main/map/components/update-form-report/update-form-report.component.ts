@@ -28,7 +28,7 @@ export class UpdateFormReportComponent implements OnInit, BaseComponent {
 
   onSubmitRecovred() {
     if (!this.isDate(this.data.reportedAt)) {
-      this.toastrService.error('La date de fin d\'un rapport doit être plus récente que celle de création');
+      this.toastrService.error('La date de fin d\'un signalement doit être plus récente que celle de création');
       return ;
     }
 
@@ -37,7 +37,7 @@ export class UpdateFormReportComponent implements OnInit, BaseComponent {
 
     this.reportService.updateReport(this.data).then(
       () => {
-        this.toastrService.success('Merci', 'Rapport modifié');
+        this.toastrService.success('Merci', 'Signalement modifié');
       }
     );
   }

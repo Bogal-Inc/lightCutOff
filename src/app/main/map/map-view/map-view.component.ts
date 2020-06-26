@@ -165,7 +165,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
             this.markerCurrentInfoWindow.setContent(recovredFromElement);
             this.markerCurrentPosition.setDraggable(false);
             this.markerCurrentPosition.setOpacity(0);
-            this.toastr.success('Merci', 'Rapport ajouté');
+            this.toastr.success('Merci', 'Signalement ajouté');
           }
         );
       }
@@ -207,7 +207,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     if (this.authService.getUser()){
       this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, this.createReportFormElt.nativeElement);
     } else {
-      const content = 'Vous n\'avez pas pu être identifié. Pour faire un rapport vous devez l\'être.';
+      const content = 'Vous n\'avez pas pu être identifié. Pour faire un signalement vous devez l\'être.';
       this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, content);
     }
   }

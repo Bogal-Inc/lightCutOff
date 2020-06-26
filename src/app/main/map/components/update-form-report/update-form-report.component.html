@@ -1,9 +1,9 @@
 <div class="recovred" *ngIf="data?.reportedAt; else elseReport">
     <div *ngIf="!data?.recovredAt; else elseRecovred">
-        <h5 class="text-center">Rapport de fin</h5>
+        <h5 class="text-center">Signalez une fin de coupure</h5>
         <hr class="mb-4">
-        <p>Emis le: <b>{{data.reportedAt?.seconds | timestamp}}</b></p>
-        <p>Quant est-ce que vous n'avez plus eu d'énergie électrique?</p>
+        <p>Signalez le: <b>{{data.reportedAt?.seconds | timestamp}}</b></p>
+        <p>Quant est-ce que vous n'avez plus eu de lumière?</p>
         <div class="onSubmitRecovred()__form">
             <div class="form-group">
                 <div class="input-group">
@@ -32,6 +32,6 @@
 </ng-template>
 <ng-template #elseReport>
     <div class="alert alert-danger" role="alert">
-        Une erreur est survenue. Il semblerait que certains éléments n'ont pas pu être chargées. Actualiser la page pour modifier votre rapport.
+        Une erreur est survenue. Il semblerait que certains éléments n'ont pas pu être chargées. Actualisé la page pour modifier votre signalement.
     </div>
 </ng-template>

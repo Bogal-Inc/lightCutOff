@@ -1,5 +1,5 @@
 <div class="report" *ngIf="!lastReport">
-    <h5 class="text-center">Faites un rapport</h5>
+    <h5 class="text-center">Signalez une coupure</h5>
     <hr class="mb-4">
     <p>Quant est-ce que vous n'avez plus eu d'énergie électrique?</p>
     <div class="report__form">
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="text-center">
-            <button class="btn btn-small btn-primary" (click)="onSubmitReport()" [disabled]="!datetime">Enregistrer</button>
+            <button class="btn btn-small btn-primary" (click)="onSubmitReport()" [disabled]="!datetime">Signalez</button>
         </div>
     </div>
 </div>
