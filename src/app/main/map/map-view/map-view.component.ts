@@ -96,46 +96,29 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   onCreateReport(event: any) {
-    this.isLoader = true;
-    this.formLoader = true;
-    if (!this.isMarkerCountry()) {
-      this.isLoader = false;
-      this.formLoader = false;
-      this.toastr.error('Vous ne pouvez pas creer de rapport hors du territoire Camerounais', 'Error');
-      return;
-    }
+    const geocoder = new google.maps.Geocoder();
+    const errorMessage = 'Vous ne pouvez pas creer de rapport hors du territoire Camerounais';
 
-    const report = {
-      position: this.position,
-      reportedAt: event,
-      _createdAt: event
-    } as Report;
-
-    this.markerCurrentInfoWindow.setContent(this.loadingElt.nativeElement);
-
-    this.reportService.addReport(report).then(
-      resp => {
-        this.formLoader = false;
-        this.lastReport = report;
-        this.lastReport.url = resp.path.valueOf();
-
-        this.reportService.updateReport(this.lastReport).then(
-          () => {
-            const recovredFromElement = this.createRecovredComponent(this.lastReport);
-            this.markerCurrentInfoWindow.setContent(recovredFromElement);
-            this.markerCurrentPosition.setDraggable(false);
-            this.markerCurrentPosition.setOpacity(0);
-            this.toastr.success('Merci', 'Rapport ajouté');
+    geocoder.geocode({location: this.position}, (results, status) => {
+      if (status === 'OK') {
+        if (results[1]) {
+          const resultCountry = results[1].formatted_address.split(', ');
+          if (resultCountry.find(elt => elt === 'Cameroun')  || resultCountry.find(elt => elt === 'Cameroon')) {
+            this.createReport(event);
+          } else {
+            this.toastr.error(errorMessage, 'Error');
           }
-        );
+        } else {
+          this.toastr.error(errorMessage, 'Error');
+        }
       }
-    );
+    });
   }
 
   /**
    * Search place in map
    */
-  onSearchPlace(event) {
+  onSearchPlace(event: { query: any; }) {
     const service = new google.maps.places.PlacesService(this.map);
     const request = {
       query: event.query,
@@ -158,25 +141,35 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   /**
    * detect country for current position
    */
-  private isMarkerCountry(): boolean {
-    const geocoder = new google.maps.Geocoder();
+  private createReport(query) {
+    this.isLoader = true;
+    this.formLoader = true;
 
-    geocoder.geocode({location: this.position}, (results, status) => {
-      if (status === 'OK') {
+    const report = {
+      position: this.position,
+      reportedAt: query,
+      _createdAt: query
+    } as Report;
 
-        if (results[1]) {
-          const resultCountry = results[1].formatted_address.split(',', 2);
-          if (resultCountry[1] === 'Cameroun' || resultCountry[1] === 'Cameroon') {
-            return true;
+    this.markerCurrentInfoWindow.setContent(this.loadingElt.nativeElement);
+
+    this.reportService.addReport(report).then(
+      resp => {
+        this.formLoader = false;
+        this.lastReport = report;
+        this.lastReport.url = resp.path.valueOf();
+
+        this.reportService.updateReport(this.lastReport).then(
+          () => {
+            const recovredFromElement = this.createRecovredComponent(this.lastReport);
+            this.markerCurrentInfoWindow.setContent(recovredFromElement);
+            this.markerCurrentPosition.setDraggable(false);
+            this.markerCurrentPosition.setOpacity(0);
+            this.toastr.success('Merci', 'Rapport ajouté');
           }
-        } else {
-          return false;
-        }
-      } else {
-        return false;
+        );
       }
-    });
-    return false;
+    );
   }
 
   private initMap() {
