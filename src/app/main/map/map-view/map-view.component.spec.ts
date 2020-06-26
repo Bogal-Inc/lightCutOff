@@ -16,6 +16,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
+import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 
 describe('MapViewComponent', () => {
   let component: MapViewComponent;
@@ -30,6 +31,7 @@ describe('MapViewComponent', () => {
         MapLegendComponent,
         CreateFormReportComponent,
         UpdateFormReportComponent,
+        NgbTooltip
       ],
       imports: [
         NoopAnimationsModule,
@@ -53,7 +55,7 @@ describe('MapViewComponent', () => {
         }),
       ],
       providers: [
-        // use french locale
+        NgbTooltipConfig,
         {provide: OWL_DATE_TIME_LOCALE, useValue: 'fr'},
       ],
     })

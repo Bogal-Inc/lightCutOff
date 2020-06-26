@@ -1,11 +1,16 @@
 <div class="report" *ngIf="!lastReport">
     <h5 class="text-center">Signalez une coupure</h5>
     <hr class="mb-4">
-    <p>Quant est-ce que vous n'avez plus eu d'énergie électrique?</p>
+    <div class="alert alert-success text-center">
+        Assurez-vous que vous êtes bien positionnez sur la map
+    </div>
+    <div class="mb-2">
+        Quant est-ce que vous n'avez plus eu d'énergie électrique?
+    </div>
     <div class="report__form">
         <div class="form-group">
             <div class="input-group">
-                <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [min]="min" [max]="max" placeholder="Date Time" class="form-control form-control-sm" [(ngModel)]="datetime" #ctrl="ngModel">
+                <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [min]="min" [max]="max" placeholder="Date et heure de la coupure" class="form-control form-control-sm" [(ngModel)]="datetime" #ctrl="ngModel">
                 <owl-date-time #dt></owl-date-time>
                 <div class="text-danger">
                     <div *ngIf="datetime?.invalid && datetime?.errors.owlDateTimeMin">

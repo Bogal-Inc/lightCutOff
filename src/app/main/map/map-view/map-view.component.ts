@@ -12,19 +12,23 @@ import {
   ViewChild,
   ElementRef,
   ComponentFactoryResolver,
-  ViewContainerRef
+  ViewContainerRef,
+  ViewEncapsulation
 } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { ToastrService } from 'ngx-toastr';
 import { Const } from 'src/environments/const';
 import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
+import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 
 declare const MarkerClusterer: any;
 
 @Component({
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./map-view.component.scss'],
+  providers: [NgbTooltipConfig]
 })
 export class MapViewComponent implements OnInit, AfterViewInit {
   @ViewChild('mapContainer', {static: false})
@@ -35,6 +39,8 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private loadingElt: ElementRef;
   @ViewChild(MapLegendComponent, {read: ElementRef})
   private legends: ElementRef;
+  @ViewChild('btnAddReport', {static: false})
+  private btnAddReport: ElementRef;
   @ViewChild('recovredFormReport', { read: ViewContainerRef })
   private recovredFormReport: ViewContainerRef;
   @ViewChild('infosReport', { read: ViewContainerRef })
@@ -44,6 +50,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private markerCluster: any;
   private markerCurrentInfoWindow: google.maps.InfoWindow;
   private position: Position;
+  @ViewChild('tleft') public tooltip: NgbTooltip;
   isError = false;
   markerCurrentPosition: google.maps.Marker;
   isFormLightCutOf = false;
@@ -57,10 +64,16 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     private reportService: ReportService,
     private toastr: ToastrService,
     private componentFactoryResolver: ComponentFactoryResolver,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    config: NgbTooltipConfig
+  ) {
+    config.placement = 'left';
+    config.closeDelay = 3000;
+   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   ngAfterViewInit() {
     this.mapInitializer();
@@ -82,6 +95,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
             this.initCurrentMarker(this.getUserMarkerOption());
             this.LoadReports();
             this.addEventsUserMarker();
+            this.initTooltip();
           },
           () => {
             this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
@@ -136,6 +150,17 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         this.toastr.error('La place rechercher est introuvable', 'Erreur');
       }
     });
+  }
+
+  openInfoWindowCreateReport() {
+    google.maps.event.trigger(this.markerCurrentPosition, 'click');
+  }
+
+  private initTooltip() {
+    this.tooltip.open();
+    setTimeout(() => {
+      this.tooltip.close();
+    }, 5000);
   }
 
   /**
@@ -193,6 +218,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
     this.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(this.legends.nativeElement);
+    this.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(this.btnAddReport.nativeElement);
   }
 
   private initCurrentMarker(markerOption: google.maps.MarkerOptions) {

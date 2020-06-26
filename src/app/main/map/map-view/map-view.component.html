@@ -9,12 +9,24 @@
             <app-create-form-report (reportSubmit)="onCreateReport($event)" [class.d-none]="!isFormLightCutOf"></app-create-form-report>
             <ng-template #recovredFormReport></ng-template>
             <ng-template #infosReport></ng-template>
+            <div [class.d-none]="!isFormLightCutOf" class="map-container__btn" #btnAddReport>
+                <button [ngbTooltip]="tooltipContent" tooltipClass="tooltip-content" class="btn btn-success btn-lg map-container__btn__add" #tleft="ngbTooltip" (click)="openInfoWindowCreateReport()">
+                  <i class="fas fa-plus"></i>
+                </button>
+            </div>
         </div>
-        <div class="d-flex justify-content-center mt-5" *ngIf="isError">
-            <div class="mt-5">
-                <div class="mt-5 alert alert-danger text-danger" role="alert">
-                    La map n'a pas pu être chargée. Veillez vous assurez que vous etes bien connecté à internet.
-                </div>
+    </div>
+
+    <ng-template #tooltipContent>
+        <div class="mt-3">
+            Signalez une coupure de lumière
+        </div>
+    </ng-template>
+
+    <div class="d-flex justify-content-center mt-5" *ngIf="isError">
+        <div class="mt-5">
+            <div class="mt-5 alert alert-danger text-danger" role="alert">
+                La map n'a pas pu être chargée. Veillez vous assurez que vous etes bien connecté à internet.
             </div>
         </div>
     </div>
