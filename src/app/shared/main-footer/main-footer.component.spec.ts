@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainFooterComponent } from './main-footer.component';
@@ -23,10 +24,8 @@ describe('MainFooterComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         HttpClientModule,
-        ToastrModule.forRoot({
-          timeOut: 10000,
-          progressBar: true
-        }),
+        TranslateModule.forRoot(),
+        ToastrModule.forRoot(),
       ],
       declarations: [ MainFooterComponent ]
     })

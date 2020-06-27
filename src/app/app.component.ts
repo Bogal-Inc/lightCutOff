@@ -15,7 +15,7 @@ const log = new Logger('app.component');
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = Const.app.title;
+  title = 'lightcutoff';
 
   constructor(
     private authService: AuthService,
