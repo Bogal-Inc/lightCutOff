@@ -14,8 +14,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ReportModule } from './main/report/report.module';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule, TranslateCompiler } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
+import { I18nService } from '@Services/i18n.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,17 @@ import { HttpClientModule } from '@angular/common/http';
       timeOut: 10000,
       progressBar: true
     }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      compiler: {
+        provide: TranslateCompiler,
+        useClass: TranslateMessageFormatCompiler
+      }
+    }),
     ReportModule,
   ],
   providers: [
@@ -51,4 +65,10 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
