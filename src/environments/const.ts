@@ -25,4 +25,6 @@ export const Const = {
     cutUser: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png',
     recovred: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
   },
+  defaultLanguage: 'fr',
+  supportedLanguages: ['fr', 'en'],
 };
