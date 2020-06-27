@@ -1,3 +1,4 @@
+import { I18nService } from '@Services/i18n.service';
 import { Const } from 'src/environments/const';
 import { ToastrService } from 'ngx-toastr';
 import { MailService } from '@Services/mail.service';
@@ -20,12 +21,14 @@ export class MainFooterComponent implements OnInit, OnDestroy {
   contactUsForm: FormGroup;
   submitted = false;
   appTitle = Const.app.title;
+  isFr: boolean;
 
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private mailService: MailService,
     private toastService: ToastrService,
+    private i18nService: I18nService,
     config: NgbModalConfig,
   ) {
     config.backdrop = 'static';
@@ -39,6 +42,9 @@ export class MainFooterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initContactUsForm();
+    const currentLang = this.i18nService.language;
+    this.isFr = (currentLang === 'fr') ? true : false;
+
   }
 
   open(content) {
@@ -70,6 +76,17 @@ export class MainFooterComponent implements OnInit, OnDestroy {
         this.contactUsForm.reset();
       }
     );
+  }
+
+  toggleLang() {
+    if (this.i18nService.language === 'fr'){
+      this.i18nService.language = 'en';
+      this.isFr = true;
+    } else {
+      this.i18nService.language = 'fr';
+      this.isFr = false;
+    }
+
   }
 
   // convenience getter for easy access to form fields

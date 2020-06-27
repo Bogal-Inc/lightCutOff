@@ -18,7 +18,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule, TranslateCompiler } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
-import { I18nService } from '@Services/i18n.service';
+import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
+
 
 @NgModule({
   declarations: [
@@ -59,9 +60,13 @@ import { I18nService } from '@Services/i18n.service';
     }),
     ReportModule,
   ],
+  exports: [
+    TranslateModule
+  ],
   providers: [
     GoogleMapsAPIWrapper,
-    {provide: LOCALE_ID, useValue: 'fr' }
+    {provide: LOCALE_ID, useValue: 'fr' },
+    {provide: MESSAGE_FORMAT_CONFIG, useValue: { locales: ['fr', 'en'] } }
   ],
   bootstrap: [AppComponent]
 })
