@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if (environment.production) {
+      log.debug('mode production active');
       Logger.enableProductionMode();
     }
     log.debug('init');

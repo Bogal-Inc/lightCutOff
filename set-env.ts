@@ -18,7 +18,8 @@ if (environment === 'staging') {
 
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
-  production: '${process.env.PRODUCTION}',
+  production: ${process.env.PRODUCTION},
+  environement: '${process.env.ENVIRONMENT}',
   googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
   firebase: {
     apiKey: '${process.env.FIREBASE_API_KEY}',
