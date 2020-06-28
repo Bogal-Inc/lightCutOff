@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { ReportInfosComponent } from './../components/report-infos/report-infos.component';
 import { AuthService } from '@Services/auth.service';
 import { Position, Report } from '@Models/report.model';
@@ -67,6 +68,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     private toastr: ToastrService,
     private componentFactoryResolver: ComponentFactoryResolver,
     private authService: AuthService,
+    private translateService: TranslateService,
     config: NgbTooltipConfig
   ) {
     config.placement = 'left';
@@ -102,21 +104,20 @@ export class MapViewComponent implements OnInit, AfterViewInit {
           },
           () => {
             log.error('error geolocalization');
-            this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
+            this.toastr.error(this.translateService.instant('main.map-view.error_geolocalize_not_work'));
           } );
         } else {
           log.error('Your browser does not support Geolocation');
-          this.toastr.error('Votre navigateur ne supporte Geolocation');
+          this.toastr.error(this.translateService.instant('main.map-view.error_geolocalize_no_browser'));
         }
       },
-        () => {
-          this.isError = true;
-      });
+        () => this.isError = true
+      );
   }
 
   onCreateReport(event: any) {
     const geocoder = new google.maps.Geocoder();
-    const errorMessage = 'Vous ne pouvez pas creer de rapport hors du territoire Camerounais';
+    const errorMessage = this.translateService.instant('main.map-view.error_no_cameroon');
 
     geocoder.geocode({location: this.position}, (results, status) => {
       if (status === 'OK') {
@@ -157,7 +158,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         this.map.setZoom(14);
       }else {
         log.error('your place not found');
-        this.toastr.error('La place rechercher est introuvable', 'Erreur');
+        this.toastr.error('main.map-view.no_place');
       }
     });
   }
@@ -169,7 +170,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private initTooltip() {
     this.tooltip.open();
     setTimeout(() => {
-      log.debug('tooltip close after 3 seconds')
+      log.debug('tooltip close after 3 seconds');
       this.tooltip.close();
     }, 5000);
   }
@@ -203,7 +204,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
             this.markerCurrentInfoWindow.setContent(recovredFromElement);
             this.markerCurrentPosition.setDraggable(false);
             this.markerCurrentPosition.setOpacity(0);
-            this.toastr.success('Merci', 'Signalement ajouté');
+            this.toastr.success(this.translateService.instant('main.map-view.signalement_add'));
           },
           err => log.error('report not update', err)
         );
@@ -370,6 +371,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private addEventDragableUserMarker(){
+    log.debug('add event draggable to current marker');
     google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (data) => {
       const pos = this.markerCurrentPosition.getPosition();
       this.position = {lng: pos.lng(), lat: pos.lat()};
@@ -377,6 +379,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private addEventDblClickUserMarker() {
+    log.debug('add event click to current marker');
     google.maps.event.addListener(this.map, 'dblclick', (data) => {
       this.position = {
         lng: +data.latLng.lng(),
