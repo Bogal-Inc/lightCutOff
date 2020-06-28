@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Const } from 'src/environments/const';
+import { Logger } from '@Services/logger.service';
+
+const log = new Logger('map-legend.component');
 
 @Component({
   selector: 'app-map-legend',
@@ -30,6 +33,7 @@ export class MapLegendComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    log.debug('init');
   }
 
 }
