@@ -3,13 +3,13 @@
         <div class="d-flex justify-content-start footer__line">
             <ul class="nav footer__line__menu">
                 <li class="nav-item">
-                    <a class="nav-link footer__line__menu__link" (click)="open(content)">Contactez-nous</a>
+                    <a class="nav-link footer__line__menu__link" (click)="open(content)">{{ 'shared.main-footer.contactus' | translate}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link footer__line__menu__link" href="/aboutus">À propos</a>
+                    <a class="nav-link footer__line__menu__link" href="/aboutus">{{ 'shared.main-footer.about' | translate}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link footer__line__menu__link" href="/tuto">Tutoriel</a>
+                    <a class="nav-link footer__line__menu__link" href="/tuto">{{ 'shared.main-footer.tutorial' | translate}}</a>
 
                 </li>
             </ul>
@@ -28,39 +28,38 @@
 
 <ng-template #content let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+        <h4 class="modal-title" id="modal-basic-title">{{ 'shared.main-footer.modal.title' | translate}}</h4>
+        <a class="close" role="button" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </a>
     </div>
     <div class="modal-body">
         <form [formGroup]="contactUsForm" (ngSubmit)="onSendMail()">
             <div class="form-group">
-                <label for="email">* Email:</label>
+                <label for="email">* {{ 'shared.main-footer.modal.email' | translate}}:</label>
                 <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required">un email est requis</div>
+                    <div *ngIf="f.email.errors.required">{{ 'shared.main-footer.modal.email_required' | translate}}</div>
                 </div>
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
-                <label for="subject">* Sujet:</label>
+                <label for="subject">* {{ 'shared.main-footer.modal.subject' | translate}}:</label>
                 <input type="text" class="form-control" id="subject" formControlName="subject" aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
                 <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
-                    <div *ngIf="f.subject.errors.required">un sujet est requis</div>
+                    <div *ngIf="f.subject.errors.required">{{ 'shared.main-footer.modal.subject_required' | translate}}</div>
                 </div>
             </div>
             <div class="form-group">
-                <label for="body">* Message:</label>
+                <label for="body">* {{ 'shared.main-footer.modal.message' | translate}}:</label>
                 <textarea type="text" class="form-control" id="body" formControlName="body" aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': submitted && f.body.errors }"></textarea>
                 <div *ngIf="submitted && f.body.errors" class="invalid-feedback">
-                    <div *ngIf="f.body.errors.required">un message est requis</div>
+                    <div *ngIf="f.body.errors.required">{{ 'shared.main-footer.modal.message_required' | translate}}</div>
                 </div>
             </div>
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Fermer</button>
-        <button type="button" class="btn btn-outline-primary" (click)="onSendMail()" [disabled]="submitted">Envoyer</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">{{ 'shared.main-footer.modal.close' | translate}}</button>
+        <button type="button" class="btn btn-outline-primary" (click)="onSendMail()" [disabled]="submitted">{{ 'shared.main-footer.modal.send' | translate}}</button>
     </div>
 </ng-template>

@@ -1,3 +1,20 @@
 {
-    "loading": "Chargement en cours"
+    "shared": {
+        "main-footer": {
+            "contactus": "Contactez-nous",
+            "about": "A propos",
+            "tutorial": "Tutoriel",
+            "modal": {
+                "title": "Contactez-nous",
+                "email": "Email",
+                "email_required": "Un email est requis",
+                "subject": "Sujet",
+                "subject_required": "Sujet requis",
+                "message": "Message",
+                "message_required": "Message requis",
+                "close": "Fermer",
+                "send": "Envoyer"
+            }
+        }
+    }
 }
