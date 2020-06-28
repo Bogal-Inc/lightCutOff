@@ -1,5 +1,16 @@
 {
     "shared": {
+        "main-header": {
+            "home": "Accueil",
+            "report": "Rapport"
+        },
+        "map-legend": {
+            "title": "Légende",
+            "your_position": "Votre position",
+            "no_energie": "Pas d'électricité",
+            "your_no_energy": "Votre signalement de coupure",
+            "energy_recovred": "Electricité remise"
+        },
         "main-footer": {
             "contactus": "Contactez-nous",
             "about": "A propos",

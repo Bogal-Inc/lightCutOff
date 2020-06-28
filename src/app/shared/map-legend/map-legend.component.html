@@ -2,7 +2,7 @@
     <div class="legend__bloc">
         <ul class="list-unstyled legend__bloc__ul">
             <li class="legend__bloc__ul__title">
-                <h5 class="list-group-item-heading">Légende</h5>
+                <h5 class="list-group-item-heading">{{"map-legend.title" | translate}}</h5>
             </li>
             <li *ngFor="let legend of legends" class="legend__bloc__ul__li">
                 <img [src]="legend.icon" alt="icon.name" class="legend__bloc__ul__li__icon">{{legend.name}}

@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
@@ -13,24 +14,24 @@ export class MapLegendComponent implements OnInit {
 
   legends = [
     {
-      name: 'Votre position',
+      name: this.translateService.instant('shared.map-legend.your_position'),
       icon: Const.markerColor.user
     },
     {
-      name: 'Pas d\'électricité',
+      name: this.translateService.instant('shared.map-legend.no_energie'),
       icon: Const.markerColor.cut
     },
     {
-      name: 'Votre rapport pas fermé',
+      name: this.translateService.instant('shared.map-legend.your_no_energy'),
       icon: Const.markerColor.cutUser
     },
     {
-      name: 'Electricité remise',
+      name: this.translateService.instant('shared.map-legend.energy_recovred'),
       icon:  Const.markerColor.recovred
     }
   ];
 
-  constructor() { }
+  constructor(private translateService: TranslateService) { }
 
   ngOnInit(): void {
     log.debug('init');
