@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
 import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('MapViewComponent', () => {
   let component: MapViewComponent;
@@ -47,6 +48,7 @@ describe('MapViewComponent', () => {
           timeOut: 10000,
           progressBar: true
         }),
+        TranslateModule.forRoot(),
         AgmCoreModule.forRoot({
           apiKey: environment.googleMapsApiKey,
           region: 'CM',

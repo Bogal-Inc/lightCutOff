@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainHeaderComponent } from './main-header.component';
 import { AngularFireModule } from '@angular/fire';
@@ -14,6 +15,7 @@ describe('MainHeaderComponent', () => {
       imports: [
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
+        TranslateModule.forRoot()
       ],
     })
     .compileComponents();

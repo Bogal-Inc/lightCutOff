@@ -1,5 +1,8 @@
 {
     "shared": {
+        "loading": {
+            "loading": "Chargement..."
+        },
         "main-header": {
             "home": "Accueil",
             "report": "Rapport"

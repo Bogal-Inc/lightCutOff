@@ -26,6 +26,7 @@ describe('MainFooterComponent', () => {
         HttpClientModule,
         TranslateModule.forRoot(),
         ToastrModule.forRoot(),
+        TranslateModule.forRoot()
       ],
       declarations: [ MainFooterComponent ]
     })
