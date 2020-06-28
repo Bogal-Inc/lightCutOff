@@ -20,8 +20,10 @@ import { ToastrService } from 'ngx-toastr';
 import { Const } from 'src/environments/const';
 import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
 import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { Logger } from '@Services/logger.service';
 
 declare const MarkerClusterer: any;
+const log = new Logger('map-view.component');
 
 @Component({
   selector: 'app-map-view',
@@ -72,7 +74,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit(): void {
-
+    log.debug('init');
   }
 
   ngAfterViewInit() {
@@ -84,6 +86,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       () => {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition( position => {
+            log.debug('position user found');
             this.isLoader = false;
             this.isFormLightCutOf = true;
             this.position = {
@@ -98,9 +101,11 @@ export class MapViewComponent implements OnInit, AfterViewInit {
             this.initTooltip();
           },
           () => {
+            log.error('error geolocalization');
             this.toastr.error('Le service de geolocalisation ne fonctionne pas', 'Actualisez');
           } );
         } else {
+          log.error('Your browser does not support Geolocation');
           this.toastr.error('Votre navigateur ne supporte Geolocation');
         }
       },
@@ -118,11 +123,14 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         if (results[1]) {
           const resultCountry = results[1].formatted_address.split(', ');
           if (resultCountry.find(elt => elt === 'Cameroun')  || resultCountry.find(elt => elt === 'Cameroon')) {
+            log.debug('current user found in Camoeroon');
             this.createReport(event);
           } else {
+            log.error('current user no found in Camoeroon');
             this.toastr.error(errorMessage, 'Error');
           }
         } else {
+          log.error('error when found user in Camoeroon');
           this.toastr.error(errorMessage, 'Error');
         }
       }
@@ -141,12 +149,14 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
     service.findPlaceFromQuery(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
+        log.error('your place found');
         // for (let i = 0; i < results.length; i++) {
         //   const location = results[0].geometry.location;
         // }
         this.map.setCenter(results[0].geometry.location);
         this.map.setZoom(14);
       }else {
+        log.error('your place not found');
         this.toastr.error('La place rechercher est introuvable', 'Erreur');
       }
     });
@@ -159,6 +169,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private initTooltip() {
     this.tooltip.open();
     setTimeout(() => {
+      log.debug('tooltip close after 3 seconds')
       this.tooltip.close();
     }, 5000);
   }
@@ -180,24 +191,29 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
     this.reportService.addReport(report).then(
       resp => {
+        log.debug('report create');
         this.formLoader = false;
         this.lastReport = report;
         this.lastReport.url = resp.path.valueOf();
 
         this.reportService.updateReport(this.lastReport).then(
           () => {
+            log.debug('report update');
             const recovredFromElement = this.createRecovredComponent(this.lastReport);
             this.markerCurrentInfoWindow.setContent(recovredFromElement);
             this.markerCurrentPosition.setDraggable(false);
             this.markerCurrentPosition.setOpacity(0);
             this.toastr.success('Merci', 'Signalement ajouté');
-          }
+          },
+          err => log.error('report not update', err)
         );
-      }
+      },
+      err => log.error('report not create', err)
     );
   }
 
   private initMap() {
+    log.debug('init map');
     this.mapOptions = {
       center: this.position,
       zoom: 12,
@@ -222,6 +238,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private initCurrentMarker(markerOption: google.maps.MarkerOptions) {
+    log.debug('init current marker');
     if (this.markerCurrentPosition) {
       this.markerCurrentPosition.setMap(null);
       this.markerCurrentPosition = null;
@@ -231,8 +248,10 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     this.markerCurrentPosition.setMap(this.map);
 
     if (this.authService.getUser()){
+      log.debug('add to current marker reported form in infos window');
       this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, this.createReportFormElt.nativeElement);
     } else {
+      log.debug('current user are not identifiert');
       const content = 'Vous n\'avez pas pu être identifié. Pour faire un signalement vous devez l\'être.';
       this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, content);
     }
@@ -244,6 +263,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     this.reportService.getReports()
       .subscribe(data => {
         data.forEach(report => {
+          log.debug('load reports');
           if (report.recovredAt === null){
             markCut.push(this.factoryOldMarkers(report));
           } else {
@@ -251,10 +271,13 @@ export class MapViewComponent implements OnInit, AfterViewInit {
           }
         });
         this.addMarkersToCluster(markCut);
-      });
+      },
+      err => log.error('report not load', err)
+      );
   }
 
   private addMarkersToCluster(markers: google.maps.Marker[]) {
+    log.debug('create clusters');
     this.markerCluster = new MarkerClusterer(
       this.map,
       markers,
@@ -263,6 +286,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private factoryOldMarkers(report: Report): google.maps.Marker {
+    log.debug('factory marker', report);
     let content = null;
     const currentMareker = new google.maps.Marker({
         position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
@@ -293,6 +317,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private initClickInfoWindow(marker: google.maps.Marker, content: any): google.maps.InfoWindow {
+    log.debug('init event click on marker');
     const infoWindow = new google.maps.InfoWindow({
       content
     });
@@ -304,6 +329,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private initOverInfoWindowMarker(mareker: google.maps.Marker, content: any) {
+    log.debug('init event over on marker');
     const infoWindow = new google.maps.InfoWindow({
       content
     });
@@ -313,6 +339,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private createRecovredComponent(report: Report): any {
+    log.debug('create recovred form component');
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(UpdateFormReportComponent);
 
     const viewContainerRef = this.recovredFormReport;
@@ -325,6 +352,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private createInfoReportComponent(report: Report): any {
+    log.debug('create info report component');
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ReportInfosComponent);
 
     const viewContainerRef = this.infosReport;
