@@ -7,7 +7,9 @@ import {NgbModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bo
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Logger } from '@Services/logger.service';
 
+const log = new Logger('loading.component');
 
 @Component({
   selector: 'app-main-footer',
@@ -44,18 +46,22 @@ export class MainFooterComponent implements OnInit, OnDestroy {
     this.initContactUsForm();
     const currentLang = this.i18nService.language;
     this.isFr = (currentLang === 'fr') ? true : false;
-
+    log.debug('init');
   }
 
   open(content) {
+    log.debug('open close');
     this.modalService.open(content).result.then((result) => {
+      log.debug('open modal');
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
+      log.error('close modal');
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
   onSendMail() {
+    log.debug('onSendMail call');
     this.submitted = true;
 
     // stop here if form is invalid
@@ -68,8 +74,10 @@ export class MainFooterComponent implements OnInit, OnDestroy {
     .subscribe(
       data => {
         if (data === 'Sended'){
+            log.debug('send mail');
             this.toastService.success('Message envoyé');
         } else {
+          log.error('error send mail');
           this.toastService.error('Votre message n\'a pas été envoyé');
         }
         this.submitted = false;
@@ -79,10 +87,13 @@ export class MainFooterComponent implements OnInit, OnDestroy {
   }
 
   toggleLang() {
+    log.debug('call toggleLang');
     if (this.i18nService.language === 'fr'){
+      log.debug('active lang en');
       this.i18nService.language = 'en';
       this.isFr = true;
     } else {
+      log.debug('active lang Fr');
       this.i18nService.language = 'fr';
       this.isFr = false;
     }

@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Logger } from '@Services/logger.service';
+
+const log = new Logger('loading.component');
 
 @Component({
   selector: 'app-loading',
@@ -8,9 +11,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LoadingComponent implements OnInit {
   @Input() show: boolean;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    log.debug('init');
   }
 
 }
