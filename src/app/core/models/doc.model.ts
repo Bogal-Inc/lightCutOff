@@ -9,7 +9,6 @@ export interface Doc {
   _deletedAt?: Date | firebase.firestore.Timestamp | any;
   _deletedBy?: SimpleUser;
   _isDelete: boolean;
-  _isVisible: boolean;
 }
 
 export const defaultDoc = {
@@ -26,6 +25,5 @@ export const defaultDoc = {
   _deletedBy: {
     id:  null
   },
-  _isDelete: false,
-  _isVisible: false
+  _isDelete: false
 } as Doc;
