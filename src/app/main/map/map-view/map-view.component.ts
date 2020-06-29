@@ -22,6 +22,7 @@ import { Const } from 'src/environments/const';
 import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
 import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { Logger } from '@Services/logger.service';
+import { convertSecondsToDate, dayDiff } from '@Helpers/date.helper';
 
 declare const MarkerClusterer: any;
 const log = new Logger('map-view.component');
@@ -259,19 +260,22 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private LoadReports() {
-    const markCut = [];
-    const markRec = [];
+    const reportsStarted = [];
+    const reportsEnded = [];
     this.reportService.getReports()
       .subscribe(data => {
         data.forEach(report => {
           log.debug('load reports');
           if (report.recovredAt === null){
-            markCut.push(this.factoryOldMarkers(report));
+            reportsStarted.push(this.factoryOldMarkers(report));
           } else {
-            markRec.push(this.factoryOldMarkers(report));
+            const dateREcovred = convertSecondsToDate(report.recovredAt.seconds);
+            if (dayDiff(dateREcovred, new Date()) <= 1) {
+              reportsEnded.push(this.factoryOldMarkers(report));
+            }
           }
         });
-        this.addMarkersToCluster(markCut);
+        this.addMarkersToCluster(reportsStarted);
       },
       err => log.error('report not load', err)
       );
