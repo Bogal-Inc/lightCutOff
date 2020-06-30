@@ -1,11 +1,11 @@
 <div class="report" *ngIf="!lastReport">
-    <h5 class="text-center">Signalez une coupure</h5>
+    <h5 class="text-center">{{ "main.create-form-report.title" | translate }}</h5>
     <hr class="mb-4">
     <div class="alert alert-warning text-center">
-        <i class="fas fa-info-circle"></i> Assurez-vous que vous êtes bien positionnez sur la map
+        <i class="fas fa-info-circle"></i> {{ "main.create-form-report.warning_message" | translate }}
     </div>
     <div class="mb-2">
-        Quant est-ce que vous n'avez plus eu d'énergie électrique?
+        {{ "main.create-form-report.label_date" | translate }}
     </div>
     <div class="report__form">
         <div class="form-group">
@@ -23,7 +23,9 @@
             </div>
         </div>
         <div class="text-center">
-            <button class="btn btn-small btn-primary" (click)="onSubmitReport()" [disabled]="!datetime">Signalez</button>
+            <button class="btn btn-small btn-primary" (click)="onSubmitReport()" [disabled]="!datetime">
+              {{ "main.create-form-report.button_submit" | translate }}
+            </button>
         </div>
     </div>
 </div>

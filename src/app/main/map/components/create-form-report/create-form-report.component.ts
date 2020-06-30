@@ -9,7 +9,6 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 export class CreateFormReportComponent implements OnInit {
   @Output() reportSubmit: EventEmitter<Report> = new EventEmitter<Report>();
   @Input() lastReport: Report;
-  submitted = false;
   min = new Date(2019, 12, 31);
   max = new Date();
   datetime: any;
@@ -20,8 +19,6 @@ export class CreateFormReportComponent implements OnInit {
   }
 
   onSubmitReport() {
-    this.submitted = true;
-
     this.reportSubmit.emit(this.datetime);
   }
 }
