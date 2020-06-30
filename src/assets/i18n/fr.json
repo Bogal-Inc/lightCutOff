@@ -6,7 +6,7 @@
             "error_no_cameroon": "Vous ne pouvez pas creer de rapport hors du territoire Camerounais",
             "error_no_pace": "La place rechercher est introuvable",
             "signalement_add": "Signalement ajouté",
-            "alert_no_energy": "Signalez une coupure de lumière",
+            "signal_no_energy": "Signalez une coupure de lumière où vous vous trouvez",
             "map_no_load": "La map n'a pas pu être chargée. Veillez vous assurez que vous etes bien connecté à internet"
         },
         "create-form-report": {
