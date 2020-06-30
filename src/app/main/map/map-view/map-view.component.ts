@@ -376,18 +376,20 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   private addEventDragableUserMarker(){
     log.debug('add event draggable to current marker');
-    google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (data) => {
-      const pos = this.markerCurrentPosition.getPosition();
-      this.position = {lng: pos.lng(), lat: pos.lat()};
+    google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (e) => {
+      this.position = {
+        lng: e.latLng.lng(),
+        lat: e.latLng.lat()
+      };
     });
   }
 
   private addEventDblClickUserMarker() {
     log.debug('add event click to current marker');
-    google.maps.event.addListener(this.map, 'dblclick', (data) => {
+    google.maps.event.addListener(this.map, 'dblclick', (e) => {
       this.position = {
-        lng: +data.latLng.lng(),
-        lat: +data.latLng.lat()
+        lng: +e.latLng.lng(),
+        lat: +e.latLng.lat()
       };
 
       this.initCurrentMarker(this.getUserMarkerOption());
