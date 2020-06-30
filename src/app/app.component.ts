@@ -35,9 +35,10 @@ export class AppComponent implements OnInit {
     log.debug('init');
 
     // Setup translations
+    const defaultLang = localStorage.getItem(Const.app.lang.localstorage_title);
     this.i18nService.init(
-      Const.defaultLanguage,
-      Const.supportedLanguages
+      defaultLang ? defaultLang : Const.app.lang.fr,
+      [Const.app.lang.fr, Const.app.lang.en]
     );
    }
 }

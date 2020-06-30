@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { CreateFormReportComponent } from './create-form-report.component';
@@ -14,6 +15,7 @@ describe('CreateFormReportComponent', () => {
         FormsModule,
         OwlDateTimeModule,
         OwlNativeDateTimeModule,
+        TranslateModule.forRoot()
       ],
       providers: [
         // use french locale

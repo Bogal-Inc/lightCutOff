@@ -23,7 +23,7 @@ export class MainFooterComponent implements OnInit, OnDestroy {
   contactUsForm: FormGroup;
   submitted = false;
   appTitle = Const.app.title;
-  isFr: boolean;
+  currentLang: string;
 
   constructor(
     private modalService: NgbModal,
@@ -44,8 +44,7 @@ export class MainFooterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initContactUsForm();
-    const currentLang = this.i18nService.language;
-    this.isFr = (currentLang === 'fr') ? true : false;
+    this.currentLang = this.i18nService.language;
     log.debug('init');
   }
 
@@ -88,16 +87,15 @@ export class MainFooterComponent implements OnInit, OnDestroy {
 
   toggleLang() {
     log.debug('call toggleLang');
-    if (this.i18nService.language === 'fr'){
+    if (this.i18nService.language === Const.app.lang.fr){
       log.debug('active lang en');
-      this.i18nService.language = 'en';
-      this.isFr = true;
+      this.i18nService.language = Const.app.lang.en;
+      this.currentLang = Const.app.lang.en;
     } else {
       log.debug('active lang Fr');
-      this.i18nService.language = 'fr';
-      this.isFr = false;
+      this.i18nService.language = Const.app.lang.fr;
+      this.currentLang = Const.app.lang.fr;
     }
-
   }
 
   // convenience getter for easy access to form fields

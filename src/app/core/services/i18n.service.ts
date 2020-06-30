@@ -27,7 +27,7 @@ export function extract(s: string) {
 @Injectable({ providedIn: 'root' })
 export class I18nService {
   /** Key to store current language of application in local storage. */
-  private languageStorageKey = Const.app.title + 'XLanguage';
+  private languageStorageKey = Const.app.lang.localstorage_title;
 
   defaultLanguage: string;
   supportedLanguages: string[];
