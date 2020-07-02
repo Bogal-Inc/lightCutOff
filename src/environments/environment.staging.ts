@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  environment: 'dev',
+  environment: 'staging',
   googleMapsApiKey: 'googleMapsApiKey',
   firebase: {
     apiKey: 'apiKey',

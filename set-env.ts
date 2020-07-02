@@ -8,18 +8,20 @@ require('dotenv').config();
 
 const environment = process.env.ENVIRONMENT;
 // Configure Angular `environment.ts` file path
-let targetPath = null;
+let targetPath = './src/environments/';
 
-if (environment === 'staging') {
-  targetPath = './src/environments/environment.staging.ts';
+if (environment === 'prod') {
+  targetPath += 'environment.prod.ts';
+} else if (environment === 'staging')  {
+  targetPath += '/environment.staging.ts';
 } else {
-  targetPath = './src/environments/environment.ts';
+  targetPath += '/environment.ts';
 }
 
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
   production: ${process.env.PRODUCTION},
-  environement: '${process.env.ENVIRONMENT}',
+  environment: '${process.env.ENVIRONMENT}',
   googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
   firebase: {
     apiKey: '${process.env.FIREBASE_API_KEY}',
@@ -34,13 +36,19 @@ const envConfigFile = `export const environment = {
 };
 `;
 
-console.log(colors.magenta('The file `environment.' + environment + '.ts` will be written with the following content: \n'));
+console.log(colors.magenta('The file environment will be written with the following content: \n'));
 console.log(colors.grey(envConfigFile));
 
-writeFile(targetPath, envConfigFile, (err) => {
+writeFile(
+  targetPath,
+  envConfigFile,
+  {
+    flag: 'w+'
+  },
+  (err) => {
    if (err) {
        throw console.error(err);
    } else {
-       console.log(colors.magenta(`Angular environment.${environment}.ts file generated correctly at ${targetPath} \n`));
+       console.log(colors.magenta(`Angular environment file generated correctly at ${targetPath} \n`));
    }
 });
