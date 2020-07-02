@@ -19,6 +19,7 @@ import { TranslateLoader, TranslateModule, TranslateCompiler } from '@ngx-transl
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
       }
     }),
     ReportModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   exports: [
     TranslateModule
