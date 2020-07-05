@@ -23,7 +23,8 @@
         },
         "main-header": {
             "home": "Accueil",
-            "report": "Rapport"
+            "report": "Rapport",
+            "offline": "Hors ligne"
         },
         "map-legend": {
             "title": "Légende",

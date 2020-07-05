@@ -4,7 +4,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="/">
-            <img src="../../../assets/static/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy"> {{appTitle}}<small class="badge badge-pill badge-danger beta">Beta</small>
+            <img src="../../../assets/static/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+          {{appTitle}}
+          <span class="badge badge-pill badge-danger beta">Beta</span>
+          <span *ngIf="!online" class="badge badge-pill badge-danger beta">
+            {{ 'shared.main-header.offline' | translate }}
+          </span>
         </a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">

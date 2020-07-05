@@ -5,6 +5,7 @@ import { DateTimeAdapter } from 'ng-pick-datetime';
 import { Logger } from '@Services/logger.service';
 import { environment } from 'src/environments/environment';
 import { I18nService } from '@Services/i18n.service';
+import {ConnectionService} from '@Services/connection.service';
 
 /** Initialize Logger */
 const log = new Logger('app.component');
