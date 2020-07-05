@@ -15,7 +15,7 @@
         "test:ci": "ng test --watch=false --code-coverage --browsers=ChromeHeadlessNoSandbox",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "postbuild": "npm run build:heroku"
+        "heroku-postbuild": "npm run build:heroku"
     },
     "private": true,
     "dependencies": {

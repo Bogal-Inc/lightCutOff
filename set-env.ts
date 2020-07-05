@@ -13,9 +13,9 @@ let targetPath = './src/environments/';
 if (environment === 'prod') {
   targetPath += 'environment.prod.ts';
 } else if (environment === 'staging')  {
-  targetPath += '/environment.staging.ts';
+  targetPath += 'environment.staging.ts';
 } else {
-  targetPath += '/environment.ts';
+  targetPath += 'environment.ts';
 }
 
 // `environment.ts` file structure
