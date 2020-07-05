@@ -28,18 +28,18 @@
   ],
   "dataGroups": [
     {
-      "name": "local-api",
+      "name": "local",
       "urls": [
         "http://localhost:8080/**"
       ],
       "cacheConfig": {
         "maxSize": 100,
         "maxAge": "1d",
-        "strategy": "freshness"
+        "strategy": "performance"
       }
     },
     {
-      "name": "giphy-api",
+      "name": "prod",
       "urls": [
         "https://firestore.googleapis.com/**"
       ],

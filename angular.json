@@ -23,6 +23,12 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "aot": true,
+                        "allowedCommonJsDependencies": [
+                          "@firebase/database",
+                          "@firebase/util",
+                          "firebase/app",
+                          "@firebase/component"
+                        ],
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
@@ -55,7 +61,7 @@
                             "buildOptimizer": true,
                             "budgets": [{
                                     "type": "initial",
-                                    "maximumWarning": "2mb",
+                                    "maximumWarning": "5mb",
                                     "maximumError": "5mb"
                                 },
                                 {
