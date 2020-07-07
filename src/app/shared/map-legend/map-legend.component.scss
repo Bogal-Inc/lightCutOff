@@ -1,6 +1,5 @@
 .legend {
     background-color: rgba(255, 255, 255, 0.5);
-    margin: 10px;
     border: 1px solid #eaeaea;
     z-index: 1000;
     &__bloc {
@@ -13,4 +12,8 @@
             }
         }
     }
+}
+
+.btn-group, .legend {
+  margin: 10px;
 }

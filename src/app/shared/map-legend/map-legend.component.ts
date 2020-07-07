@@ -30,6 +30,7 @@ export class MapLegendComponent implements OnInit {
       icon:  Const.markerColor.recovred
     }
   ];
+  showlegend = true;
 
   constructor(private translateService: TranslateService) { }
 
@@ -37,4 +38,11 @@ export class MapLegendComponent implements OnInit {
     log.debug('init');
   }
 
+  showLegend() {
+    if (this.showlegend) {
+      this.showlegend = false;
+    } else {
+      this.showlegend = true;
+    }
+  }
 }

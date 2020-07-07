@@ -235,7 +235,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     };
 
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
-    this.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(this.legends.nativeElement);
+    this.map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(this.legends.nativeElement);
     this.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(this.btnAddReport.nativeElement);
   }
 
