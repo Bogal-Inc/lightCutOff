@@ -6,6 +6,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {ToastrModule} from 'ngx-toastr';
 
 
 describe('AppComponent', () => {
@@ -18,6 +19,10 @@ describe('AppComponent', () => {
         OwlDateTimeModule,
         OwlNativeDateTimeModule,
         TranslateModule.forRoot(),
+        ToastrModule.forRoot({
+          timeOut: 10000,
+          progressBar: true
+        }),
       ],
       declarations: [
         AppComponent
