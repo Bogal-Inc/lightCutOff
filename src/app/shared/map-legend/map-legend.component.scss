@@ -1,17 +1,18 @@
 .legend {
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 1px solid #eaeaea;
-    z-index: 1000;
-    &__bloc {
-        &__ul {
-            padding: 10px;
-            &__li {
-                &__title {
-                    text-align: center;
-                }
-            }
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #eaeaea;
+  z-index: 1000;
+  &__bloc {
+    &__ul {
+      padding: 10px;
+      margin-bottom: 0;
+      &__li {
+        &__title {
+          text-align: center;
         }
+      }
     }
+  }
 }
 
 .btn-group, .legend {
