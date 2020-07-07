@@ -7,7 +7,7 @@
       <li class="legend__bloc__ul__title">
         <h5 class="list-group-item-heading">{{"shared.map-legend.title" | translate}}</h5>
       </li>
-      <li *ngFor="let legend of legends" class="legend__bloc__ul__li">
+      <li *ngFor="let legend of legends" class="mb-2 legend__bloc__ul__li">
         <img [src]="legend.icon" alt="icon.name" class="legend__bloc__ul__li__icon">{{legend.name}}
       </li>
     </ul>
