@@ -23,7 +23,9 @@
     },
     "search-place-form": {
       "placeholder": "Rechercher une ville, un quartier, une place",
-      "btn_label": "Rechercher une place"
+      "btn_label": "Rechercher une place",
+      "find_district": "Retrouver un quartier",
+      "close": "Fermer"
     }
   },
   "shared": {

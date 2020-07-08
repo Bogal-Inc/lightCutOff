@@ -16,11 +16,11 @@
     <div class="row justify-content-center">
         <div class="btn-search" [@btnSearchBarUpDown]="searchBarDownUp ? 'down' : 'up'">
             <a (click)="onActiveSearch()" *ngIf="!activeSearchBar">
-            Retrouver un quartier
+            {{'main.search-place-form.find_district' | translate}}
             <i class="fas fa-angle-down"></i>
           </a>
             <a (click)="onDectiveSearch()" *ngIf="activeSearchBar">
-            Fermer
+              {{'main.search-place-form.close' | translate}}
             <i class="fas fa-angle-up"></i>
           </a>
         </div>
