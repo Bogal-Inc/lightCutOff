@@ -27,6 +27,7 @@
                           "@firebase/database",
                           "@firebase/util",
                           "@firebase/app",
+                          "firebase/app",
                           "@firebase/component"
                         ],
                         "assets": [
