@@ -3,11 +3,11 @@
         <div class="col-md-5 search-place__bloc">
             <form class="form-inline search-place__bloc__form" [formGroup]="searchPlaceForm" (ngSubmit)="onSubmit()">
                 <div class="input-group">
-                    <input type="text" formControlName="query" class="form-control" placeholder="Rechercher une ville, un quartier, une place" #inputSearch>
+                    <input type="text" formControlName="query" class="form-control" attr.placeholder="{{'main.search-place-form.placeholder' | translate}}" #inputSearch>
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-success">
-                      <i class="fas fa-search"></i>
-                    </button>
+                        <button type="submit" class="btn btn-success" attr.aria-label="{{'main.search-place-form.btn_label' | translate}}">
+                          <i class="fas fa-search"></i>
+                        </button>
                     </div>
                 </div>
             </form>

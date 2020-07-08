@@ -5,20 +5,25 @@
   },
   "main": {
     "map-view": {
-        "error_geolocalize_not_work": "Le service de geolocalisation ne fonctionne pas",
-        "error_geolocalize_no_browser": "Votre navigateur ne supporte Geolocation",
-        "error_no_cameroon": "Vous ne pouvez pas creer de rapport hors du territoire Camerounais",
-        "error_no_pace": "La place rechercher est introuvable",
-        "signalement_add": "Signalement ajouté",
-        "signal_no_energy": "Signalez une coupure de lumière où vous vous trouvez",
-        "map_no_load": "La map n'a pas pu être chargée. Veillez vous assurez que vous etes bien connecté à internet"
+      "error_geolocalize_not_work": "Le service de geolocalisation ne fonctionne pas",
+      "error_geolocalize_no_browser": "Votre navigateur ne supporte Geolocation",
+      "error_no_cameroon": "Vous ne pouvez pas creer de rapport hors du territoire Camerounais",
+      "error_no_pace": "La place rechercher est introuvable",
+      "signalement_add": "Signalement ajouté",
+      "signal_no_energy": "Signalez une coupure de lumière où vous vous trouvez",
+      "map_no_load": "La map n'a pas pu être chargée. Veillez vous assurez que vous etes bien connecté à internet",
+      "btn_add_report": "Ajouter un rapport"
     },
     "create-form-report": {
-        "title": "Signalez une coupure",
-        "warning_message": "Assurez-vous que vous êtes bien positionnez sur la map",
-        "label_date": "Quant est-ce que vous n'avez plus eu d'énergie électrique?",
-        "input_date_placeholder": "Date et heure de la coupure",
-        "button_submit": "Signalez"
+      "title": "Signalez une coupure",
+      "warning_message": "Assurez-vous que vous êtes bien positionnez sur la map",
+      "label_date": "Quant est-ce que vous n'avez plus eu d'énergie électrique?",
+      "input_date_placeholder": "Date et heure de la coupure",
+      "button_submit": "Signalez"
+    },
+    "search-place-form": {
+      "placeholder": "Rechercher une ville, un quartier, une place",
+      "btn_label": "Rechercher une place"
     }
   },
   "shared": {

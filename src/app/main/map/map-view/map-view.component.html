@@ -10,7 +10,7 @@
             <ng-template #recovredFormReport></ng-template>
             <ng-template #infosReport></ng-template>
             <div [class.d-none]="!isFormLightCutOf" class="map-container__btn" #btnAddReport>
-                <button [ngbTooltip]="tooltipContent" tooltipClass="tooltip-content" class="btn btn-success btn-lg map-container__btn__add" #tleft="ngbTooltip" (click)="openInfoWindowCreateReport()">
+                <button [ngbTooltip]="tooltipContent" tooltipClass="tooltip-content" class="btn btn-success btn-lg map-container__btn__add" #tleft="ngbTooltip" (click)="openInfoWindowCreateReport()" attr.aria-label="{{'main.map-view.btn_add_report' | translate}}">
                   <i class="fas fa-plus"></i>
                 </button>
             </div>
