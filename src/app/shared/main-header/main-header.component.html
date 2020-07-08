@@ -13,11 +13,13 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">{{"shared.main-header.home" | translate}} <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          {{"shared.main-header.home" | translate}}
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/report">{{"shared.main-header.report" | translate}}</a>
+        <a class="nav-link" routerLink="/report" routerLinkActive="active">{{"shared.main-header.report" | translate}}</a>
       </li>
     </ul>
   </div>

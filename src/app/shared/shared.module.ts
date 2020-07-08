@@ -9,6 +9,7 @@ import { TimestampPipe } from '../core/pipes/timestamp.pipe';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 import { MapLegendComponent } from './map-legend/map-legend.component';
 import { TranslateModule } from '@ngx-translate/core';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
     TranslateModule,
     NgbModule
   ],
