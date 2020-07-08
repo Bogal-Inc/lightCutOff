@@ -13,7 +13,6 @@ const log = new Logger('main-header.component');
   styleUrls: ['./main-header.component.scss']
 })
 export class MainHeaderComponent implements OnInit {
-  currentUser: SimpleUser;
   appTitle = Const.app.title;
   online: boolean;
 
@@ -31,6 +30,5 @@ export class MainHeaderComponent implements OnInit {
       log.debug(logMessage);
       this.online = online;
     });
-    this.currentUser = this.authService.getUser();
   }
 }
