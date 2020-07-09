@@ -1,0 +1,23 @@
+<div class="reports">
+  <div *ngIf="(reports$ | async) !== undefined; else datatableEmpty">
+    <h4 class="text-center reports__title">Rapports de l'annee</h4>
+    <ag-grid-angular
+      class="ag-theme-alpine reports__datatable"
+      [rowData]="reports$ | async"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+    >
+    </ag-grid-angular>
+    <div class="text-center">
+      <a href="">{{'report.dashboard.view_all' | translate}}</a>
+    </div>
+  </div>
+
+  <ng-template #datatableEmpty>
+    <div class="alert alert-warning text-center" role="alert">
+      <fa-icon [icon]="faExclamationCircle"></fa-icon>
+    </div>
+  </ng-template>
+</div>
+
+
