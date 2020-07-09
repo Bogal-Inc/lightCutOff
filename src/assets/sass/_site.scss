@@ -3,6 +3,4 @@ Please use this file to style all basic item like link (a),
 paragraph (p) or list (ul, ol)
 *****/
 
-.full-height {
-    min-height: 85vh;
-}
+app-container{display:flex;min-height:100vh;flex-direction:column;margin:0}
