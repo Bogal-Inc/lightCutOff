@@ -1,6 +1,5 @@
 import { AuthService } from '@Services/auth.service';
-import { SimpleUser } from '@Models/user.model';
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
 import {ConnectionService} from '@Services/connection.service';
