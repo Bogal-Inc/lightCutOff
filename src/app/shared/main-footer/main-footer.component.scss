@@ -1,14 +1,19 @@
 .footer {
+  background-color: var(--dark);
+  color: var(--gray);
     &__line {
         text-align: center;
         &__menu {
-            &__link {
-                color: #007bff;
-                cursor: pointer;
-            }
-            &__link:hover {
-                color: black;
-            }
+
+
         }
     }
+
+  .nav-item a {
+    color:  rgba(255,255,255,.5);
+    cursor: pointer;
+  }
+  .nav-item a:hover {
+    color: var(--white);
+  }
 }
