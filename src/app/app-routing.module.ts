@@ -13,11 +13,11 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'report',
+    path: 'statistics',
     component: MainLayoutComponent,
     loadChildren: () =>
-      import('./main/report/report.module').then(
-        m => m.ReportModule
+      import('./main/statistics/statistics.module').then(
+        m => m.StatisticsModule
       ),
   },
   {
