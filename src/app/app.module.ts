@@ -17,12 +17,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
 import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainLayoutComponent,
+    AdminLayoutComponent,
   ],
   imports: [
     BrowserModule,

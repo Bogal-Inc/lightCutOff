@@ -1,6 +1,7 @@
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'statistics',
-    component: MainLayoutComponent,
+    component: AdminLayoutComponent,
     loadChildren: () =>
       import('./main/statistics/statistics.module').then(
         m => m.StatisticsModule
