@@ -1,17 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import {ReportService} from '@Services/report.service';
 import {Observable} from 'rxjs';
 import {Report} from '@Models/report.model';
-import {convertSecondsToDate} from '@Helpers/date.helper';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import {convertSecondsToDate} from '@Helpers/date.helper';
+import {ReportService} from '@Services/report.service';
+
 
 @Component({
-  selector: 'app-report-datatable',
-  templateUrl: './report-datatable.component.html',
-  styleUrls: ['./report-datatable.component.scss']
+  selector: 'app-view-reports',
+  templateUrl: './view-reports.component.html',
+  styleUrls: ['./view-reports.component.scss']
 })
-export class ReportDatatableComponent implements OnInit {
+export class ViewReportsComponent implements OnInit {
   faExclamationCircle = faExclamationCircle;
+  reports$: Observable<Report[]>;
+  defaultColDef = {
+    flex: 1,
+    sortable: true,
+    filter: true,
+    floatingFilter: true,
+  };
   columnDefs = [
     {
       headerName: 'Signalé le',
@@ -34,8 +42,6 @@ export class ReportDatatableComponent implements OnInit {
       valueFormatter: this.positionLatFormatter
     }
   ];
-
-  reports$: Observable<Report[]>;
 
   constructor(
     private reportService: ReportService
