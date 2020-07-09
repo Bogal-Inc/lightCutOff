@@ -1,0 +1,17 @@
+<div class="card mb-3" [class]="card?.style" *ngIf="card; else elsecard">
+  <div class="card-body">
+    <div class="row no-gutter">
+      <div class="col-md-2 d-flex align-items-center">
+        <fa-icon size="4x" [icon]="card.icon"></fa-icon>
+      </div>
+      <div class="col-md-10">
+        <h5 class="card-title pl-3">{{card.title}}</h5>
+        <p class="card-text text-center card-number">{{card.body}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #elsecard>
+  <div class="text-center"><fa-icon [spin]="'spin'" [size]="'4x'" [icon]="faSpinner"></fa-icon></div>
+</ng-template>
