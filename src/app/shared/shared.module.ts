@@ -10,6 +10,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from
 import { MapLegendComponent } from './map-legend/map-legend.component';
 import { TranslateModule } from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     RouterModule,
     TranslateModule,
+    FontAwesomeModule,
     NgbModule
   ],
   exports: [
@@ -42,6 +44,7 @@ import {RouterModule} from '@angular/router';
     OwlNativeDateTimeModule,
     FormsModule,
     TranslateModule,
+    FontAwesomeModule,
     NgbModule
   ],
   providers: [
