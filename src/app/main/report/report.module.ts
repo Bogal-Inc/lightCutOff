@@ -6,15 +6,18 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardComponent } from './components/card/card.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { ReportDatatableComponent } from './components/report-datatable/report-datatable.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, CardComponent],
+  declarations: [DashboardComponent, CardComponent, ReportDatatableComponent],
   imports: [
     CommonModule,
     ReportRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    AgGridModule.withComponents([])
   ]
 })
 export class ReportModule { }
