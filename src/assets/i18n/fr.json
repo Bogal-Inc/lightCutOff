@@ -26,7 +26,9 @@
       "btn_label": "Rechercher une place",
       "find_district": "Retrouver un quartier",
       "close": "Fermer"
-    },
+    }
+  },
+  "report": {
     "dashboard": {
       "card_reports_all_title": "Total rapports",
       "card_reports_current_year_title": "Rapports annuel",

@@ -4,6 +4,9 @@ import {Report} from '@Models/report.model';
 import {convertSecondsToDate} from '@Helpers/date.helper';
 import { faChartLine, faChartPie, faChartArea } from '@fortawesome/free-solid-svg-icons';
 import {TranslateService} from '@ngx-translate/core';
+import {Logger} from '@Services/logger.service';
+
+const log = new Logger('dashboard.component');
 
 @Component({
   selector: 'app-report-list',
@@ -22,6 +25,8 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    log.debug('init');
+
     this.initCardDashbord();
   }
 
@@ -39,21 +44,21 @@ export class DashboardComponent implements OnInit {
         );
 
         this.cardReportsAll = {
-          title: this.translateService.instant('main.dashboard.card_reports_all_title'),
+          title: this.translateService.instant('report.dashboard.card_reports_all_title'),
           body: this.reports.length,
           icon: faChartLine,
           style: 'bg-success'
         };
 
         this.card2ReportsCurrentYear = {
-          title: this.translateService.instant('main.dashboard.card_reports_all_title'),
+          title: this.translateService.instant('report.dashboard.card_reports_all_title'),
           body: reportsCurrentYear.length,
           icon: faChartPie,
           style: 'bg-danger'
         };
 
         this.cardReportsCurrentMonth = {
-          title: this.translateService.instant('main.dashboard.card_reports_all_title'),
+          title: this.translateService.instant('report.dashboard.card_reports_all_title'),
           body: reportsCurrentMonth.length,
           icon: faChartArea,
           style: 'bg-warning'
