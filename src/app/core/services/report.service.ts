@@ -32,6 +32,10 @@ export class ReportService extends BaseService {
     );
   }
 
+  getReportsAll(): Observable<Report[]> {
+    return this.col$<Report>(`${Const.collections.reports}`);
+  }
+
   async addReport(report): Promise<DocumentReference<DocumentData>>{
     const ref = await this.add<Report>(
       `${Const.collections.reports}`,

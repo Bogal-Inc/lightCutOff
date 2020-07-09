@@ -1,1 +1,10 @@
-<p>report-list works!</p>
+<h1 class="mt-4 text-center">Dashboard</h1>
+<hr>
+<div class="container full-height">
+
+  <div class="row">
+    <app-card class="col-xs-3 col-md-4" [card]="cardReportsAll"></app-card>
+    <app-card class="col-xs-3 col-md-4" [card]="card2ReportsCurrentYear"></app-card>
+    <app-card class="col-xs-3 col-md-4" [card]="cardReportsCurrentMonth"></app-card>
+  </div>
+</div>
