@@ -1,0 +1,20 @@
+<div class="container-fluid full-height-reports">
+  <h2 class="text-center mt-5">Rapports</h2>
+
+  <div class="row mt-5 reports">
+    <div class="col reports__datatable" *ngIf="(reports$ | async) !== undefined; else datatableEmpty">
+      <ag-grid-angular
+        class="ag-theme-alpine reports__datatable__table"
+        [rowData]="reports$ | async"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+      >
+      </ag-grid-angular>
+    </div>
+    <ng-template #datatableEmpty>
+      <div class="alert alert-warning text-center" role="alert">
+        <fa-icon [icon]="faExclamationCircle"></fa-icon>
+      </div>
+    </ng-template>
+  </div>
+</div>

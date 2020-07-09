@@ -1,0 +1,13 @@
+.full-height-reports {
+  min-height: 80vh;
+}
+
+.reports {
+  max-height: 300px;
+  &__datatable {
+    &__table {
+      width: 100%;
+      height: 400px;
+    }
+  }
+}

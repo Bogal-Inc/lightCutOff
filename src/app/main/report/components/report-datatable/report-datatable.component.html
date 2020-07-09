@@ -5,11 +5,10 @@
       class="ag-theme-alpine reports__datatable"
       [rowData]="reports$ | async"
       [columnDefs]="columnDefs"
-      [defaultColDef]="defaultColDef"
     >
     </ag-grid-angular>
     <div class="text-center">
-      <a href="">{{'report.dashboard.view_all' | translate}}</a>
+      <a [routerLink]="['/report/view']">{{'report.dashboard.view_all' | translate}}</a>
     </div>
   </div>
 
