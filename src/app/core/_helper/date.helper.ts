@@ -42,7 +42,7 @@ export function dayDiff(dateOld, dateNew): number {
 }
 
 export function convertSecondsToDate(seconds: number): Date {
-  const firstDate = new Date(1970, 0, 1);
-  firstDate.setSeconds(seconds);
-  return firstDate;
+  const date = new Date(1970, 0, 1);
+  date.setSeconds(seconds);
+  return date;
 }
