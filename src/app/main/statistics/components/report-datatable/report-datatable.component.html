@@ -1,6 +1,6 @@
 <div class="reports">
   <div *ngIf="(reports$ | async) !== undefined; else datatableEmpty">
-    <h4 class="text-center reports__title"></h4>
+    <h4 class="text-center reports__title">{{'statistics.reports-datatable.title' | translate}}</h4>
     <ag-grid-angular
       class="ag-theme-alpine reports__datatable"
       [rowData]="reports$ | async"

@@ -30,7 +30,7 @@
   },
   "statistics": {
     "reports-datatable": {
-      "titl": "Rapports annuel",
+      "title": "Rapports annuel",
       "view_all": "Voir plus >>"
     },
     "dashboard": {
