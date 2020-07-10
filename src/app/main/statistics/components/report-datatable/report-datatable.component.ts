@@ -12,6 +12,9 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 })
 export class ReportDatatableComponent implements OnInit {
   faExclamationCircle = faExclamationCircle;
+  defaultColDef = {
+    flex: 1
+  };
   columnDefs = [
     {
       headerName: 'Signalé le',
@@ -24,14 +27,12 @@ export class ReportDatatableComponent implements OnInit {
       valueFormatter: this.dateFormatter
     },
     {
-      headerName: 'Longitude',
-      field: 'position',
-      valueFormatter: this.positionLngFormatter
+      headerName: 'Ville',
+      field: 'country',
     },
     {
-      headerName: 'Lattitude',
-      field: 'position',
-      valueFormatter: this.positionLatFormatter
+      headerName: 'Pays',
+      field: 'country',
     }
   ];
 
@@ -47,23 +48,8 @@ export class ReportDatatableComponent implements OnInit {
 
   private dateFormatter(param) {
     if (param.value){
-      return convertSecondsToDate(param.value.seconds);
+      return convertSecondsToDate(param.value.seconds).toLocaleString();
     }
     return undefined;
   }
-
-  private positionLngFormatter(param) {
-    if (param.value){
-      return param.value.lng;
-    }
-    return undefined;
-  }
-
-  private positionLatFormatter(param) {
-    if (param.value){
-      return param.value.lat;
-    }
-    return undefined;
-  }
-
 }

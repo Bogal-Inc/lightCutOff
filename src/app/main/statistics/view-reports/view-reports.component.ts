@@ -40,6 +40,19 @@ export class ViewReportsComponent implements OnInit {
       headerName: 'Lattitude',
       field: 'position',
       valueFormatter: this.positionLatFormatter
+    },
+    {
+      headerName: 'Adresse',
+      field: 'addresses',
+      valueFormatter: this.addressFormatter
+    },
+    {
+      headerName: 'Ville',
+      field: 'city',
+    },
+    {
+      headerName: 'Pays',
+      field: 'country',
     }
   ];
 
@@ -68,6 +81,13 @@ export class ViewReportsComponent implements OnInit {
   private positionLatFormatter(param) {
     if (param.value){
       return param.value.lat;
+    }
+    return undefined;
+  }
+
+  private addressFormatter(param) {
+    if (param.value){
+      return param.value[0].label;
     }
     return undefined;
   }
