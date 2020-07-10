@@ -1,17 +1,19 @@
-<h1 class="mt-4 text-center">Dashboard</h1>
-<hr>
-<div class="container full-height">
-  <!--    card stats-->
-  <div class="row mt-5">
-    <app-card class="col" [card]="cardReportsAll"></app-card>
-    <app-card class="col" [card]="card2ReportsCurrentYear"></app-card>
-    <app-card class="col" [card]="cardReportsCurrentMonth"></app-card>
-  </div>
-  <!--    data table -->
-  <div class="row mt-5">
-    <div class="col"></div>
-    <div class="col">
-      <app-report-datatable></app-report-datatable>
+<div class="dashboard">
+  <h1 class="pt-4 text-center">Dashboard</h1>
+  <hr>
+  <div class="container-fluid">
+    <!--    card stats-->
+    <div class="row mt-5">
+      <app-card class="col" [card]="cardReportsAll"></app-card>
+      <app-card class="col" [card]="card2ReportsCurrentYear"></app-card>
+      <app-card class="col" [card]="cardReportsCurrentMonth"></app-card>
+    </div>
+    <!--    data table -->
+    <div class="row mt-5">
+      <div class="col"></div>
+      <div class="col">
+        <app-report-datatable></app-report-datatable>
+      </div>
     </div>
   </div>
 </div>
