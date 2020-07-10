@@ -53,7 +53,7 @@ export class ViewReportsComponent implements OnInit {
 
   private dateFormatter(param) {
     if (param.value){
-      return convertSecondsToDate(param.value.seconds);
+      return convertSecondsToDate(param.value.seconds).toLocaleString();
     }
     return undefined;
   }
