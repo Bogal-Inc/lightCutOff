@@ -191,8 +191,8 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
     const report = {
       addresses,
-      country: location[0],
-      city: location[1],
+      country: location[1],
+      city: location[0],
       position: this.position,
       reportedAt: query,
       _createdAt: query

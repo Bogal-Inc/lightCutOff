@@ -28,7 +28,7 @@ export class ReportDatatableComponent implements OnInit {
     },
     {
       headerName: 'Ville',
-      field: 'country',
+      field: 'city',
     },
     {
       headerName: 'Pays',
