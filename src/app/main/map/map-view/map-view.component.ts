@@ -1,7 +1,7 @@
 import { TranslateService } from '@ngx-translate/core';
 import { ReportInfosComponent } from './../components/report-infos/report-infos.component';
 import { AuthService } from '@Services/auth.service';
-import { Position, Report } from '@Models/report.model';
+import {Address, Position, Report} from '@Models/report.model';
 import { LoadingComponent } from './../../../shared/loading/loading.component';
 import { UpdateFormReportComponent } from './../components/update-form-report/update-form-report.component';
 import { CreateFormReportComponent } from './../components/create-form-report/create-form-report.component';
@@ -66,7 +66,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   constructor(
     private mapsApiLoader: MapsAPILoader,
     private reportService: ReportService,
-    private toastr: ToastrService,
+    private toastrService: ToastrService,
     private componentFactoryResolver: ComponentFactoryResolver,
     private authService: AuthService,
     private translateService: TranslateService,
@@ -105,11 +105,11 @@ export class MapViewComponent implements OnInit, AfterViewInit {
           },
           () => {
             log.error('error geolocalization');
-            this.toastr.error(this.translateService.instant('main.map-view.error_geolocalize_not_work'));
+            this.toastrService.error(this.translateService.instant('main.map-view.error_geolocalize_not_work'));
           } );
         } else {
           log.error('Your browser does not support Geolocation');
-          this.toastr.error(this.translateService.instant('main.map-view.error_geolocalize_no_browser'));
+          this.toastrService.error(this.translateService.instant('main.map-view.error_geolocalize_no_browser'));
         }
       },
         () => this.isError = true
@@ -119,21 +119,30 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   onCreateReport(event: any) {
     const geocoder = new google.maps.Geocoder();
     const errorMessage = this.translateService.instant('main.map-view.error_no_cameroon');
+    let result = null;
 
     geocoder.geocode({location: this.position}, (results, status) => {
       if (status === 'OK') {
-        if (results[1]) {
-          const resultCountry = results[1].formatted_address.split(', ');
-          if (resultCountry.find(elt => elt === 'Cameroun')  || resultCountry.find(elt => elt === 'Cameroon')) {
+        result = results[1];
+        if (result) {
+          const locality = this.getLocality(result);
+          console.log(locality);
+          const country = locality[1];
+
+          if (country === 'Cameroun' || country === 'Cameroon') {
             log.debug('current user found in Camoeroon');
-            this.createReport(event);
+            this.createReport(
+              event,
+              this.getAddresses(results),
+              locality
+            );
           } else {
-            log.error('current user no found in Camoeroon');
-            this.toastr.error(errorMessage, 'Error');
+            log.error('current user no found in Camoeroon', result);
+            this.toastrService.error(errorMessage, 'Error');
           }
         } else {
-          log.error('error when found user in Camoeroon');
-          this.toastr.error(errorMessage, 'Error');
+          log.error('No result found', result);
+          this.toastrService.error(errorMessage, 'Error');
         }
       }
     });
@@ -151,7 +160,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
     service.findPlaceFromQuery(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        log.error('your place found');
+        log.debug('your place found');
         // for (let i = 0; i < results.length; i++) {
         //   const location = results[0].geometry.location;
         // }
@@ -159,7 +168,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         this.map.setZoom(14);
       }else {
         log.error('your place not found');
-        this.toastr.error('main.map-view.no_place');
+        this.toastrService.error('main.map-view.no_place');
       }
     });
   }
@@ -176,14 +185,14 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     }, 5000);
   }
 
-  /**
-   * detect country for current position
-   */
-  private createReport(query) {
+  private createReport(query, addresses, location) {
     this.isLoader = true;
     this.formLoader = true;
 
     const report = {
+      addresses,
+      country: location[0],
+      city: location[1],
       position: this.position,
       reportedAt: query,
       _createdAt: query
@@ -205,12 +214,41 @@ export class MapViewComponent implements OnInit, AfterViewInit {
             this.markerCurrentInfoWindow.setContent(recovredFromElement);
             this.markerCurrentPosition.setDraggable(false);
             this.markerCurrentPosition.setOpacity(0);
-            this.toastr.success(this.translateService.instant('main.map-view.signalement_add'));
+            this.toastrService.success(this.translateService.instant('main.map-view.signalement_add'));
           },
           err => log.error('report not update', err)
         );
       },
       err => log.error('report not create', err)
+    );
+  }
+
+  /**
+   * return country and city
+   *
+   */
+  private getLocality(address): string[] {
+    const resultCountry = address.formatted_address.split(', ');
+    const country = resultCountry[resultCountry.length - 1];
+    const city = resultCountry[resultCountry.length - 2];
+    return [city, country];
+  }
+
+  /**
+   * format address from google map API
+   *
+   */
+  private getAddresses(addresses): Address[] {
+    // delete last element for array
+    addresses.pop();
+    return addresses.map(
+      (data) => {
+        return {
+          label: data.formatted_address,
+          types: data.types,
+          placeId: data.place_id
+        };
+      }
     );
   }
 
