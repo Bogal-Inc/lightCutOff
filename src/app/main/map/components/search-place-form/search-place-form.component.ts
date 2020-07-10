@@ -22,10 +22,10 @@ import {
         transform: 'translateY(97%)'
       })),
       transition('up => down', [
-        animate('1s')
+        animate('0.5s')
       ]),
       transition('down => up', [
-        animate('1s')
+        animate('0.5s')
       ]),
     ]),
     trigger('btnSearchBarUpDown', [
@@ -36,10 +36,10 @@ import {
         transform: 'translateY(133.5%)'
       })),
       transition('up => down', [
-        animate('1s')
+        animate('0.5s')
       ]),
       transition('down => up', [
-        animate('1s')
+        animate('0.5s')
       ]),
     ])
   ]
@@ -68,7 +68,6 @@ export class SearchPlaceFormComponent implements OnInit {
   }
 
   get f() { return this.searchPlaceForm.controls; }
-
 
   onSubmit() {
     this.submitted = true;
