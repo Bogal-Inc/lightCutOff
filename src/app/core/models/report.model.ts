@@ -12,7 +12,13 @@ export interface Address {
   placeId: string;
 }
 
+export enum ReportSatus {
+  CUT = 'cut',
+  RECOVRED = 'recovred'
+}
+
 export interface Report extends Doc {
+  status: ReportSatus;
   addresses: Address[];
   country: string;
   city: string;
@@ -24,6 +30,7 @@ export interface Report extends Doc {
 
 export const defaultReport = {
   ...defaultDoc,
+  status: ReportSatus.CUT,
   addresses: null,
   country: null,
   city: null,

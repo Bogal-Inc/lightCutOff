@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {Report} from '@Models/report.model';
+import {Report, ReportSatus} from '@Models/report.model';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import {convertSecondsToDate} from '@Helpers/date.helper';
 import {ReportService} from '@Services/report.service';
@@ -22,6 +22,19 @@ export class ViewReportsComponent implements OnInit {
   };
   columnDefs = [
     {
+      headerName: '',
+      field: 'status',
+      maxWidth: 50,
+      filter: false,
+      cellRenderer: (params) => {
+        if (params.value === ReportSatus.CUT){
+          return '<span class="fas fa-circle text-danger"></span>';
+        } else {
+          return '<span class="fas fa-circle text-success"></span>';
+        }
+      }
+    },
+    {
       headerName: 'Signalé le',
       field: 'reportedAt',
       valueFormatter: this.dateFormatter
@@ -30,16 +43,6 @@ export class ViewReportsComponent implements OnInit {
       headerName: 'Revenu le',
       field: 'recovredAt',
       valueFormatter: this.dateFormatter
-    },
-    {
-      headerName: 'Longitude',
-      field: 'position',
-      valueFormatter: this.positionLngFormatter
-    },
-    {
-      headerName: 'Lattitude',
-      field: 'position',
-      valueFormatter: this.positionLatFormatter
     },
     {
       headerName: 'Adresse',
@@ -67,20 +70,6 @@ export class ViewReportsComponent implements OnInit {
   private dateFormatter(param) {
     if (param.value){
       return convertSecondsToDate(param.value.seconds).toLocaleString();
-    }
-    return undefined;
-  }
-
-  private positionLngFormatter(param) {
-    if (param.value){
-      return param.value.lng;
-    }
-    return undefined;
-  }
-
-  private positionLatFormatter(param) {
-    if (param.value){
-      return param.value.lat;
     }
     return undefined;
   }

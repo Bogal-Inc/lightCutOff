@@ -1,9 +1,9 @@
-import { ReportService } from '@Services/report.service';
-import { ToastrService } from 'ngx-toastr';
-import { Component, OnInit, Input } from '@angular/core';
-import { compareDate } from '@Helpers/date.helper';
-import { BaseComponent } from '@Models/baseComponent.model';
-import { Report } from '@Models/report.model';
+import {ReportService} from '@Services/report.service';
+import {ToastrService} from 'ngx-toastr';
+import {Component, OnInit} from '@angular/core';
+import {compareDate} from '@Helpers/date.helper';
+import {BaseComponent} from '@Models/baseComponent.model';
+import {Report, ReportSatus} from '@Models/report.model';
 
 @Component({
   selector: 'app-update-form-report',
@@ -34,6 +34,7 @@ export class UpdateFormReportComponent implements OnInit, BaseComponent {
 
     this.data.recovredAt = this.datetime;
     this.data._updatedAt = this.datetime;
+    this.data.status = ReportSatus.RECOVRED;
 
     this.reportService.updateReport(this.data).then(
       () => {
