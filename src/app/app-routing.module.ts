@@ -14,7 +14,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'statistics',
+    path: '',
     component: AdminLayoutComponent,
     loadChildren: () =>
       import('./main/statistics/statistics.module').then(

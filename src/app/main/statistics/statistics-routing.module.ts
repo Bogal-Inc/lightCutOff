@@ -6,11 +6,11 @@ import {ViewReportsComponent} from './view-reports/view-reports.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: DashboardComponent,
   },
   {
-    path: 'view',
+    path: 'reports',
     component: ViewReportsComponent,
   },
 ];
