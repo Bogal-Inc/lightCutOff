@@ -4,14 +4,14 @@
   <div class="container-fluid">
     <!--    card stats-->
     <div class="row d-flex justify-content-center mt-5">
-      <app-card class="col-3" [card]="cardReportsAll"></app-card>
-      <app-card class="col-3" [card]="card2ReportsCurrentYear"></app-card>
-      <app-card class="col-3" [card]="cardReportsCurrentMonth"></app-card>
+      <app-card class="col-xs-3 col-md-3" [card]="cardReportsAll"></app-card>
+      <app-card class="col-xs-3 col-md-3" [card]="card2ReportsCurrentYear"></app-card>
+      <app-card class="col-xs-3 col-md-3" [card]="cardReportsCurrentMonth"></app-card>
     </div>
     <!--    data table -->
     <div class="row mt-5">
-      <div class="col"></div>
-      <div class="col">
+      <div class="col-xs-12 col-md-6"></div>
+      <div class="col-xs-12 col-md-6">
         <app-report-datatable></app-report-datatable>
       </div>
     </div>
