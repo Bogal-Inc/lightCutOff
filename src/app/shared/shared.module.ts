@@ -11,6 +11,7 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
 import { TranslateModule } from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AdminNavComponent } from './admin-nav/admin-nav.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MapLegendComponent,
     LoadingComponent,
     TimestampPipe,
+    AdminNavComponent,
   ],
   imports: [
     OwlDateTimeModule,
@@ -45,7 +47,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     TranslateModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+    AdminNavComponent
   ],
   providers: [
     // use french locale
