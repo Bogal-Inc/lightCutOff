@@ -10,6 +10,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { ReportDatatableComponent } from './components/report-datatable/report-datatable.component';
 import { ViewReportsComponent } from './view-reports/view-reports.component';
 import { ReportDetailsComponent } from './components/report-details/report-details.component';
+import {TimestampPipe} from '@Pipes/timestamp.pipe';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ReportDetailsComponent } from './components/report-details/report-detai
     SharedModule,
     FormsModule,
     AgGridModule.withComponents([])
-  ]
+  ],
+  providers: [ TimestampPipe ]
 })
 export class StatisticsModule { }

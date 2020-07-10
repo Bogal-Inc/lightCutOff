@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Report, ReportSatus} from '@Models/report.model';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-import {convertSecondsToDate} from '@Helpers/date.helper';
 import {ReportService} from '@Services/report.service';
+import {TimestampPipe} from '@Pipes/timestamp.pipe';
 
 
 @Component({
@@ -40,12 +40,20 @@ export class ViewReportsComponent implements OnInit {
     {
       headerName: 'Signalé le',
       field: 'reportedAt',
-      valueFormatter: this.dateFormatter
+      cellRenderer: (params) => {
+        if (params.value){
+          return this.timestampPipe.transform(params.value.seconds);
+        }
+      }
     },
     {
       headerName: 'Revenu le',
       field: 'recovredAt',
-      valueFormatter: this.dateFormatter
+      cellRenderer: (params) => {
+        if (params.value){
+          return this.timestampPipe.transform(params.value.seconds);
+        }
+      }
     },
     {
       headerName: 'Adresse',
@@ -64,18 +72,12 @@ export class ViewReportsComponent implements OnInit {
   rowSelection = 'single';
 
   constructor(
-    private reportService: ReportService
+    private reportService: ReportService,
+    private timestampPipe: TimestampPipe
   ) { }
 
   ngOnInit(): void {
     this.reports$ = this.reportService.getReportsAll();
-  }
-
-  private dateFormatter(param) {
-    if (param.value){
-      return convertSecondsToDate(param.value.seconds).toLocaleString();
-    }
-    return undefined;
   }
 
   private addressFormatter(param) {
