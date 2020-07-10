@@ -53,6 +53,10 @@
       "your_no_energy": "Votre signalement de coupure",
       "energy_recovred": "Electricité remise"
     },
+    "admin-nav": {
+      "dashboard": "Dashboard",
+      "reports": "Rapports"
+    },
     "main-footer": {
       "contactus": "Contactez-nous",
       "about": "A propos",

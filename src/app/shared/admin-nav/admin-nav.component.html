@@ -1,0 +1,46 @@
+<nav class="col-md-2 d-none d-md-block bg-black sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>Core</span>
+        <a class="d-flex align-items-center text-muted" href="#">
+          <span class="fas fa-plus"></span>
+        </a>
+      </h6>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <i class="fa fa-home"></i> {{'shared.admin-nav.dashboard' | translate}}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="reports" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <i class="fa fa-file"></i> {{'shared.admin-nav.reports' | translate}}
+        </a>
+      </li>
+    </ul>
+
+
+    <ul class="nav flex-column mb-2 d-none">
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span> Current month
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span> Last quarter
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span> Social engagement
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span> Year-end sale
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
