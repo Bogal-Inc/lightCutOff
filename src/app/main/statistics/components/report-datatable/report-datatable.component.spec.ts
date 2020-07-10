@@ -4,6 +4,7 @@ import { ReportDatatableComponent } from './report-datatable.component';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../../../../environments/environment';
 import {TranslateModule} from '@ngx-translate/core';
+import {TimestampPipe} from '@Pipes/timestamp.pipe';
 
 describe('ReportDatatableComponent', () => {
   let component: ReportDatatableComponent;
@@ -15,7 +16,8 @@ describe('ReportDatatableComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         TranslateModule.forRoot()
       ],
-      declarations: [ ReportDatatableComponent ]
+      declarations: [ ReportDatatableComponent ],
+      providers: [TimestampPipe]
     })
     .compileComponents();
   }));
