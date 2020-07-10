@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminNavComponent } from './admin-nav.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('AdminNavComponent', () => {
   let component: AdminNavComponent;
@@ -8,6 +9,9 @@ describe('AdminNavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        TranslateModule.forRoot(),
+      ],
       declarations: [ AdminNavComponent ]
     })
     .compileComponents();
