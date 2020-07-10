@@ -126,7 +126,6 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         result = results[1];
         if (result) {
           const locality = this.getLocality(result);
-          console.log(locality);
           const country = locality[1];
 
           if (country === 'Cameroun' || country === 'Cameroon') {

@@ -25,29 +25,5 @@
         ]
       }
     }
-  ],
-  "dataGroups": [
-    {
-      "name": "local",
-      "urls": [
-        "http://localhost:8080/**"
-      ],
-      "cacheConfig": {
-        "maxSize": 100,
-        "maxAge": "1d",
-        "strategy": "performance"
-      }
-    },
-    {
-      "name": "prod",
-      "urls": [
-        "https://firestore.googleapis.com/**"
-      ],
-      "cacheConfig": {
-        "maxSize": 100,
-        "maxAge": "1d",
-        "strategy": "performance"
-      }
-    }
   ]
 }
