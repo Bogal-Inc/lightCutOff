@@ -11,7 +11,7 @@ export class TimestampPipe extends DatePipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): any {
     registerLocaleData(localeFr, 'fr');
-    return super.transform(+value * 1000, 'medium');
+    return super.transform(+value * 1000, 'medium').toLocaleString();
   }
 
 }
