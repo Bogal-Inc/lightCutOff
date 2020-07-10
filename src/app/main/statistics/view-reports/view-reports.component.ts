@@ -12,8 +12,11 @@ import {ReportService} from '@Services/report.service';
   styleUrls: ['./view-reports.component.scss']
 })
 export class ViewReportsComponent implements OnInit {
+  private gridApi;
   faExclamationCircle = faExclamationCircle;
   reports$: Observable<Report[]>;
+  detailReportLightRight = false;
+  reportSelected: any;
   defaultColDef = {
     flex: 1,
     sortable: true,
@@ -58,6 +61,7 @@ export class ViewReportsComponent implements OnInit {
       field: 'country',
     }
   ];
+  rowSelection = 'single';
 
   constructor(
     private reportService: ReportService
@@ -81,4 +85,17 @@ export class ViewReportsComponent implements OnInit {
     return undefined;
   }
 
+  onRowSelected(event: any) {
+    const selectedRows = this.gridApi.getSelectedRows();
+    this.detailReportLightRight = true;
+    this.reportSelected = selectedRows;
+  }
+
+  onGridReady(params) {
+    this.gridApi = params.api;
+  }
+
+  close(event: any) {
+    this.detailReportLightRight = false;
+  }
 }

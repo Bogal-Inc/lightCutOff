@@ -4,11 +4,19 @@
 
   <div class="container-fluid">
     <div class="col reports__datatable" *ngIf="(reports$ | async) !== undefined; else datatableEmpty">
+      <app-report-details
+        (showDetail)="close($event)"
+        [detailReportLightRight]="detailReportLightRight"
+        [report]="reportSelected"
+        class="d-flex justify-content-end"></app-report-details>
       <ag-grid-angular
         class="ag-theme-alpine reports__datatable__table"
         [rowData]="reports$ | async"
         [columnDefs]="columnDefs"
         [defaultColDef]="defaultColDef"
+        [rowSelection]="rowSelection"
+        (gridReady)="onGridReady($event)"
+        (selectionChanged)="onRowSelected($event)"
       >
       </ag-grid-angular>
     </div>

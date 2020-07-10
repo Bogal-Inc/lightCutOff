@@ -1,0 +1,46 @@
+<div class="report" [@detailReportLightRight]="detailReportLightRight ? 'right' : 'left'">
+  <div class="report__alert report__alert-error" [class.d-none]="!reportStatus"></div>
+  <div class="report__alert report__alert-success" [class.d-none]="reportStatus"></div>
+  <div class="col-md-12">
+    <div class="report__header">
+      <a (click)="closeDetails()" [@btnDetailReportLightRight]="detailReportLightRight ? 'right' : 'left'">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </a>
+      <h3 class=" text-center report__title">Detail rapport</h3>
+      <div>
+        <ul class="list-inline text-center">
+          <li class="list-inline-item">{{report?.country}}</li>
+          <li class="list-inline-item">{{report?.city}}</li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="report__body">
+      <div class="report__body__content1">
+        <ul class="list-unstyled">
+          <li>Signalée le: {{report?.reportedAt?.seconds | timestamp}}</li>
+          <li *ngIf="report?.recovredAt">Revenu le: {{report?.recovredAt?.seconds | timestamp}}</li>
+          <li *ngIf="!report?.recovredAt" class="text-danger">Toujours pas revenue</li>
+          <li>
+            Details sur le lieu de signalement
+            <ul>
+              <li *ngFor="let address of report?.addresses">
+                {{address.label}}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="report__body__content2">
+        <small>
+          <ul class="list-inline">
+            <li class="list-inline-item">position: </li>
+            <li class="list-inline-item">longitude: {{report?.position.lng}}</li>
+            <li class="list-inline-item">Latitude: {{report?.position.lat}}</li>
+          </ul>
+        </small>
+      </div>
+    </div>
+    <div class="report-footer"></div>
+  </div>
+</div>

@@ -9,10 +9,11 @@ import { CardComponent } from './components/card/card.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { ReportDatatableComponent } from './components/report-datatable/report-datatable.component';
 import { ViewReportsComponent } from './view-reports/view-reports.component';
+import { ReportDetailsComponent } from './components/report-details/report-details.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, CardComponent, ReportDatatableComponent, ViewReportsComponent],
+  declarations: [DashboardComponent, CardComponent, ReportDatatableComponent, ViewReportsComponent, ReportDetailsComponent],
   imports: [
     CommonModule,
     StatisticsRoutingModule,
