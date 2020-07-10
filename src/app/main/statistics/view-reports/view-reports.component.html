@@ -1,7 +1,8 @@
-<div class="container-fluid full-height-reports">
-  <h2 class="text-center mt-5">Rapports</h2>
+<div class="main-statistics">
+  <h1 class="text-center pt-4">{{'shared.admin-nav.reports' | translate}}</h1>
+  <hr>
 
-  <div class="row mt-5 reports">
+  <div class="container-fluid">
     <div class="col reports__datatable" *ngIf="(reports$ | async) !== undefined; else datatableEmpty">
       <ag-grid-angular
         class="ag-theme-alpine reports__datatable__table"
