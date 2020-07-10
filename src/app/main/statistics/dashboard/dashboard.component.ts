@@ -44,21 +44,21 @@ export class DashboardComponent implements OnInit {
         );
 
         this.cardReportsAll = {
-          title: this.translateService.instant('report.dashboard.card_reports_all_title'),
+          title: this.translateService.instant('statistics.dashboard.card_reports_all_title'),
           body: this.reports.length,
           icon: faChartLine,
           style: 'bg-success'
         };
 
         this.card2ReportsCurrentYear = {
-          title: this.translateService.instant('report.dashboard.card_reports_all_title'),
+          title: this.translateService.instant('statistics.dashboard.card_reports_all_title'),
           body: reportsCurrentYear.length,
           icon: faChartPie,
           style: 'bg-danger'
         };
 
         this.cardReportsCurrentMonth = {
-          title: this.translateService.instant('report.dashboard.card_reports_all_title'),
+          title: this.translateService.instant('statistics.dashboard.card_reports_all_title'),
           body: reportsCurrentMonth.length,
           icon: faChartArea,
           style: 'bg-warning'

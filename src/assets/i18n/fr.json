@@ -28,12 +28,16 @@
       "close": "Fermer"
     }
   },
-  "report": {
+  "statistics": {
+    "reports-datatable": {
+      "titl": "Rapports annuel",
+      "view_all": "Voir plus >>"
+    },
     "dashboard": {
       "card_reports_all_title": "Total rapports",
       "card_reports_current_year_title": "Rapports annuel",
       "card_reports_current_month_title": "Rapports mensuel",
-      "view_all": "Voir plus >>",
+
       "no_datatable": "Aucune donnée disponible pour cette année."
     }
   },
