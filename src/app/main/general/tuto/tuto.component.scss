@@ -1,9 +1,11 @@
 .tuto {
-    &__alert {
-        width: 100%;
-    }
-    &__menu {
-        position: fixed;
-        width: 100%;
-    }
+  background-color: var(--white);
+  padding: 0 20px;
+  &__alert {
+      width: 100%;
+  }
+  &__menu {
+      position: fixed;
+      width: 100%;
+  }
 }
