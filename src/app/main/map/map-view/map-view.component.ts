@@ -95,7 +95,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
             this.position = {
               lng: +position.coords.longitude,
               lat: +position.coords.latitude
-            };
+            } as Position;
 
             this.initMap();
             this.initCurrentMarker(this.getUserMarkerOption());
@@ -417,7 +417,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       this.position = {
         lng: e.latLng.lng(),
         lat: e.latLng.lat()
-      };
+      } as Position;
     });
   }
 
@@ -427,8 +427,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       this.position = {
         lng: +e.latLng.lng(),
         lat: +e.latLng.lat()
-      };
-
+      } as Position;
       this.initCurrentMarker(this.getUserMarkerOption());
     });
   }

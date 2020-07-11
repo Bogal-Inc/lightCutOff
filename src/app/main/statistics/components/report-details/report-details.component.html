@@ -16,12 +16,12 @@
     </div>
     <hr>
     <div class="report__body">
-      <div class="report__body__content1">
+      <div class="mb-5 report__body__content1">
         <ul class="list-unstyled">
-          <li>Signalée le: {{report?.reportedAt?.seconds | timestamp}}</li>
-          <li *ngIf="report?.recovredAt">Revenu le: {{report?.recovredAt?.seconds | timestamp}}</li>
-          <li *ngIf="!report?.recovredAt" class="text-danger">Toujours pas revenue</li>
-          <li>
+          <li class="mb-lg-3">Signalée le: {{report?.reportedAt?.seconds | timestamp}}</li>
+          <li class="mb-lg-3" *ngIf="report?.recovredAt">Revenu le: {{report?.recovredAt?.seconds | timestamp}}</li>
+          <li class="mb-lg-3 text-danger" *ngIf="!report?.recovredAt">Toujours pas revenue</li>
+          <li class="mb-lg-3">
             Details sur le lieu de signalement
             <ul>
               <li *ngFor="let address of report?.addresses">
@@ -34,7 +34,6 @@
       <div class="report__body__content2">
         <small>
           <ul class="list-inline">
-            <li class="list-inline-item">position: </li>
             <li class="list-inline-item">longitude: {{report?.position.lng}}</li>
             <li class="list-inline-item">Latitude: {{report?.position.lat}}</li>
           </ul>
