@@ -35,7 +35,7 @@ jobs:
         node-version: '13.12.0'
 
     - name: Install dependances
-      run: npm ci
+      run: npm install
 
     - name: Dotenv Action
       uses: c-py/action-dotenv-to-setenv@v1
