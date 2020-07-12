@@ -33,6 +33,14 @@
       "input_date_placeholder": "Date et heure de la coupure",
       "button_submit": "Signalez"
     },
+    "update-form-report": {
+      "title": "Signalez une fin de coupure",
+      "signal_that": "Signalez le:",
+      "label": "Quant est-ce que vous n'avez plus eu de lumière?",
+      "btn_submit": "Cloturer",
+      "contribute_thanks": "Merci pour votre contribution.",
+      "error_load_form": "Une erreur est survenue. Il semblerait que certains éléments n'ont pas pu être chargées. Actualisé la page pour modifier votre signalement."
+    },
     "search-place-form": {
       "placeholder": "Rechercher une ville, un quartier, une place",
       "btn_label": "Rechercher une place",

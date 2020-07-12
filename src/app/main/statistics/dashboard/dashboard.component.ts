@@ -18,42 +18,7 @@ export class DashboardComponent implements OnInit {
   card2ReportsCurrentYear: any;
   cardReportsCurrentMonth: any;
   reports: Report[];
-  chartSettings: {
-    barChartData: any,
-    barChartType: string,
-    barChartOptions: any,
-  };
   reportsCurrentYear: Report[];
-  barChartLabels = [
-    this.translateService.instant('app.january'),
-    this.translateService.instant('app.february'),
-    this.translateService.instant('app.march'),
-    this.translateService.instant('app.april'),
-    this.translateService.instant('app.may'),
-    this.translateService.instant('app.june'),
-    this.translateService.instant('app.july'),
-    this.translateService.instant('app.august'),
-    this.translateService.instant('app.september'),
-    this.translateService.instant('app.october'),
-    this.translateService.instant('app.november'),
-    this.translateService.instant('app.december'),
-  ];
-  backgroundColor = [
-    'rgba(255, 99, 132, 0.2)',
-    'rgba(54, 162, 235, 0.2)',
-    'rgba(255, 206, 86, 0.2)',
-    'rgba(75, 192, 192, 0.2)',
-    'rgba(153, 102, 255, 0.2)',
-    'rgba(255, 159, 64, 0.2)'
-  ];
-  borderColor = [
-    'rgba(255, 99, 132, 1)',
-    'rgba(54, 162, 235, 1)',
-    'rgba(255, 206, 86, 1)',
-    'rgba(75, 192, 192, 1)',
-    'rgba(153, 102, 255, 1)',
-    'rgba(255, 159, 64, 1)'
-  ];
 
   constructor(
     private reportService: ReportService,

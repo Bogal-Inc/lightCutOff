@@ -1,37 +1,42 @@
 <div class="recovred" *ngIf="data?.reportedAt; else elseReport">
-    <div *ngIf="!data?.recovredAt; else elseRecovred">
-        <h5 class="text-center">Signalez une fin de coupure</h5>
-        <hr class="mb-4">
-        <p>Signalez le: <b>{{data.reportedAt?.seconds | timestamp}}</b></p>
-        <p>Quant est-ce que vous n'avez plus eu de lumière?</p>
-        <div class="onSubmitRecovred()__form">
-            <div class="form-group">
-                <div class="input-group">
-                    <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [min]="min" [max]="max" placeholder="Date Time" class="form-control form-control-sm" [(ngModel)]="datetime" #ctrl="ngModel">
-                    <owl-date-time #dt></owl-date-time>
-                    <div class="text-danger">
-                        <div *ngIf="datetime?.invalid && datetime?.errors.owlDateTimeMin">
-                            Date Time value must after {{min | date: 'medium'}}
-                        </div>
-                        <div *ngIf="datetime?.invalid && datetime?.errors.owlDateTimeMax">
-                            Date Time value must before {{max | date: 'medium'}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-                <button class="btn btn-primary" type="submit" (click)="onSubmitRecovred()" [disabled]="!datetime">Enregistrer</button>
-            </div>
+  <div *ngIf="!data?.recovredAt; else elseRecovred">
+    <h5 class="text-center">{{'main.update-form-report.title' | translate}}</h5>
+    <hr class="mb-4">
+    <p>
+      {{'main.update-form-report.signal_that' | translate}}
+      <b>{{data.reportedAt?.seconds | timestamp}}</b>
+    </p>
+    <p>{{'main.update-form-report.label' | translate}}</p>
+    <div class="onSubmitRecovred()__form">
+      <div class="form-group">
+        <div class="input-group">
+          <input
+            [owlDateTimeTrigger]="dt"
+            [owlDateTime]="dt"
+            [min]="min" [max]="max"
+            class="form-control form-control-sm"
+            [(ngModel)]="datetime" #ctrl="ngModel">
+          <owl-date-time #dt></owl-date-time>
         </div>
+      </div>
+      <div class="text-center">
+        <button
+          class="btn btn-primary"
+          type="submit"
+          (click)="onSubmitRecovred()"
+          [disabled]="!datetime">{{'main.update-form-report.btn_submit' | translate}}</button>
+      </div>
     </div>
+  </div>
 </div>
 <ng-template #elseRecovred>
-    <div class="alert alert-success" role="alert">
-        <span>Merci pour votre contribution.</span>&nbsp;&nbsp;<i class="far fa-2x fa-smile-beam"></i>
-    </div>
+  <div class="alert alert-success" role="alert">
+    <span>{{'main.update-form-report.contribute_thanks' | translate}}</span>&nbsp;&nbsp;
+    <i class="far fa-2x fa-smile-beam"></i>
+  </div>
 </ng-template>
 <ng-template #elseReport>
-    <div class="alert alert-danger" role="alert">
-        Une erreur est survenue. Il semblerait que certains éléments n'ont pas pu être chargées. Actualisé la page pour modifier votre signalement.
-    </div>
+  <div class="alert alert-danger" role="alert">
+    {{'main.update-form-report.error_load_form' | translate}}
+  </div>
 </ng-template>

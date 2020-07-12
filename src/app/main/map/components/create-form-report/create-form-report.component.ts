@@ -16,6 +16,7 @@ export class CreateFormReportComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.datetime = this.max;
   }
 
   onSubmitReport() {

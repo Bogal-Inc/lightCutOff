@@ -24,6 +24,7 @@ export class UpdateFormReportComponent implements OnInit, BaseComponent {
   ngOnInit(): void {
     this.min = (this.data) ? new Date(this.data.reportedAt.seconds * 1000) : new Date(2019, 12, 31);
     this.max = new Date();
+    this.datetime = this.max;
   }
 
   onSubmitRecovred() {

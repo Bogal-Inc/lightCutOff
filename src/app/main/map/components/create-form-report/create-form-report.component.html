@@ -10,16 +10,14 @@
     <div class="report__form">
         <div class="form-group">
             <div class="input-group">
-                <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [min]="min" [max]="max" placeholder="Date et heure de la coupure" class="form-control form-control-sm" [(ngModel)]="datetime" #ctrl="ngModel">
+                <input
+                  [owlDateTimeTrigger]="dt"
+                  [owlDateTime]="dt"
+                  [min]="min"
+                  [max]="max"
+                  class="form-control form-control-sm"
+                  [(ngModel)]="datetime" #ctrl="ngModel">
                 <owl-date-time #dt></owl-date-time>
-                <div class="text-danger">
-                    <div *ngIf="datetime?.invalid && datetime?.errors.owlDateTimeMin">
-                        Date Time value must after {{min | date: 'medium'}}
-                    </div>
-                    <div *ngIf="datetime?.invalid && datetime?.errors.owlDateTimeMax">
-                        Date Time value must before {{max | date: 'medium'}}
-                    </div>
-                </div>
             </div>
         </div>
         <div class="text-center">
