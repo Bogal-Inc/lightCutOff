@@ -11,8 +11,8 @@ import { ReportDatatableComponent } from './components/report-datatable/report-d
 import { ViewReportsComponent } from './view-reports/view-reports.component';
 import { ReportDetailsComponent } from './components/report-details/report-details.component';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
-import { ChartComponent } from './components/chart/chart.component';
 import {ChartModule} from 'angular2-chartjs';
+import {DashboardChartComponent} from './components/dashboard-chart/dashboard-chart.component';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import {ChartModule} from 'angular2-chartjs';
     ReportDatatableComponent,
     ViewReportsComponent,
     ReportDetailsComponent,
-    ChartComponent
+    DashboardChartComponent
   ],
   imports: [
     CommonModule,

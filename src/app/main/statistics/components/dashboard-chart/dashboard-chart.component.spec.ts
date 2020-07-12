@@ -1,31 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChartComponent } from './chart.component';
+import { DashboardChartComponent } from './dashboard-chart.component';
 import {TranslateModule} from '@ngx-translate/core';
 
-describe('ChartComponent', () => {
-  let component: ChartComponent;
-  let fixture: ComponentFixture<ChartComponent>;
+describe('DashboardChart', () => {
+  let component: DashboardChartComponent;
+  let fixture: ComponentFixture<DashboardChartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot(),
       ],
-      declarations: [ ChartComponent ]
+      declarations: [ DashboardChartComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChartComponent);
+    fixture = TestBed.createComponent(DashboardChartComponent);
     component = fixture.componentInstance;
     component.chartSettings = {
       barChartData: [],
       barChartType: 'bar',
       barChartOptions: {},
     };
-    component.title = 'test';
     fixture.detectChanges();
   });
 

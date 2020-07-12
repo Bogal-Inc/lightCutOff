@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
     barChartType: string,
     barChartOptions: any,
   };
+  reportsCurrentYear: Report[];
   barChartLabels = [
     this.translateService.instant('app.january'),
     this.translateService.instant('app.february'),
@@ -70,25 +71,13 @@ export class DashboardComponent implements OnInit {
         const currentDate = new Date();
         this.reports = reports;
 
-        const reportsCurrentYear = this.reports.filter(
+        this.reportsCurrentYear = this.reports.filter(
           (report) => (convertSecondsToDate(report.reportedAt.seconds).getFullYear() === currentDate.getFullYear())
         );
         const reportsCurrentMonth = this.reports.filter(
           (report) => (convertSecondsToDate(report.reportedAt.seconds).getMonth() === currentDate.getMonth())
         );
-        this.initDashboardCards(reportsCurrentYear, reportsCurrentMonth);
-        this.chartSettings = {
-          barChartData: {
-            labels: this.barChartLabels,
-            datasets: this.getReportByMonth(reportsCurrentYear)
-          },
-          barChartType: 'bar',
-          barChartOptions: {
-            scaleShowVerticalLines: false,
-            responsive: true,
-            // legend: this.legends
-          },
-        };
+        this.initDashboardCards(this.reportsCurrentYear, reportsCurrentMonth);
       }
     );
   }
@@ -114,50 +103,5 @@ export class DashboardComponent implements OnInit {
       icon: faChartArea,
       style: 'bg-warning'
     };
-  }
-
-  private getReportCityByMonth(city: string): number[] {
-    const months = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    this.reports.map(
-      report => {
-        const currentMonth = new Date(report.reportedAt.seconds * 1000).getMonth();
-
-        if (report.city === city){
-          months.forEach(
-            (mt, index, self) => {
-              if ((index + 1) === currentMonth) {
-                self[index] += 1;
-              }
-            }
-          );
-        }
-      });
-    return months;
-  }
-
-  private getCities(reports: Report[]): string[] {
-    const cities = reports.map(
-      (report) => {
-        return report.city;
-      }
-    );
-
-    return Array.from(new Set(cities));
-  }
-
-  private getReportByMonth(reports: Report[]){
-    const cities = this.getCities(reports);
-
-
-    return cities.map(
-      (city, index) => {
-        return {
-          data: this.getReportCityByMonth(city),
-          label: city,
-          backgroundColor: this.backgroundColor[index],
-          borderColor: this.borderColor[index],
-        };
-      }
-    );
   }
 }
