@@ -11,16 +11,26 @@ import { ReportDatatableComponent } from './components/report-datatable/report-d
 import { ViewReportsComponent } from './view-reports/view-reports.component';
 import { ReportDetailsComponent } from './components/report-details/report-details.component';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
+import { ChartsModule } from 'ng2-charts';
+import { ChartComponent } from './components/chart/chart.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, CardComponent, ReportDatatableComponent, ViewReportsComponent, ReportDetailsComponent],
+  declarations: [
+    DashboardComponent,
+    CardComponent,
+    ReportDatatableComponent,
+    ViewReportsComponent,
+    ReportDetailsComponent,
+    ChartComponent
+  ],
   imports: [
     CommonModule,
     StatisticsRoutingModule,
     SharedModule,
     FormsModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    ChartsModule
   ],
   providers: [ TimestampPipe ]
 })
