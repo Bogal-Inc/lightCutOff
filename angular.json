@@ -44,7 +44,6 @@
                           "node_modules/jquery/dist/jquery.min.js",
                           "node_modules/bootstrap/dist/js/bootstrap.min.js",
                           "node_modules/bootstrap/dist/js/bootstrap.min.js",
-                          "node_modules/chart.js/dist/chart.js"
                         ]
                     },
                     "configurations": {
@@ -63,8 +62,8 @@
                             "buildOptimizer": true,
                             "budgets": [{
                                     "type": "initial",
-                                    "maximumWarning": "5mb",
-                                    "maximumError": "5mb"
+                                    "maximumWarning": "10mb",
+                                    "maximumError": "10mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",

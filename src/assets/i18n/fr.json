@@ -1,7 +1,19 @@
 {
   "app": {
     "fail-precondition": "Plusieurs onglets ouverts, la persistance ne peut être activée",
-    "no-implement": "Votre navigateur ne prend pas en charge toutes les fonctionnalités requises pour activer la persistance"
+    "no-implement": "Votre navigateur ne prend pas en charge toutes les fonctionnalités requises pour activer la persistance",
+    "january": "Janvier",
+    "february": "Février",
+    "march": "Mars",
+    "april": "Avril",
+    "may": "Mai",
+    "june": "Juin",
+    "july": "Juillet",
+    "august": "Août",
+    "september": "Septembre",
+    "october": "Octobre",
+    "november": "Novembre",
+    "december": "Decembre"
   },
   "main": {
     "map-view": {
@@ -37,7 +49,8 @@
       "card_reports_all_title": "Total rapports",
       "card_reports_current_year_title": "Rapports annuel",
       "card_reports_current_month_title": "Rapports mensuel",
-      "no_datatable": "Aucune donnée disponible pour cette année."
+      "no_datatable": "Aucune donnée disponible pour cette année.",
+      "chart_title": "Rapports crées pour l'année {year}"
     }
   },
   "shared": {
