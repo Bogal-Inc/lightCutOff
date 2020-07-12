@@ -1,0 +1,10 @@
+<div style="display: block">
+  <h4 class="text-center">{{title | translate: {year: year} }}</h4>
+  <canvas baseChart
+          [datasets]="chartSettings.barChartData"
+          [labels]="chartSettings.barChartLabels"
+          [options]="chartSettings.barChartOptions"
+          [legend]="chartSettings.barChartLegend"
+          [chartType]="chartSettings.barChartType">
+  </canvas>
+</div>
