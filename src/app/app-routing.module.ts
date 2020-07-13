@@ -23,6 +23,14 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: AdminLayoutComponent,
+    loadChildren: () =>
+      import('./main/report/report.module').then(
+        m => m.ReportModule
+      ),
+  },
+  {
+    path: '',
     component: MainLayoutComponent,
     loadChildren: () =>
       import('./main/general/general.module').then(

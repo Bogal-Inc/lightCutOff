@@ -1,4 +1,9 @@
-<div style="display: block">
+<div>
   <h4 class="text-center">{{'statistics.dashboard.chart_title' | translate: {year: year} }}</h4>
-  <chart [type]="chartSettings.barChartType" [data]="chartSettings.barChartData" [options]="chartSettings.barChartOptions"></chart>
+  <chart
+
+    [type]="chartSettings.barChartType"
+    [data]="chartSettings.barChartData"
+    [options]="chartSettings.barChartOptions">
+  </chart>
 </div>

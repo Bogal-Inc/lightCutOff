@@ -4,7 +4,8 @@ import {Report, ReportSatus} from '@Models/report.model';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import {ReportService} from '@Services/report.service';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
-
+import { isMobile } from '@Helpers/mobile-confirm.helper';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-view-reports',
@@ -73,14 +74,15 @@ export class ViewReportsComponent implements OnInit {
 
   constructor(
     private reportService: ReportService,
-    private timestampPipe: TimestampPipe
+    private timestampPipe: TimestampPipe,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.reports$ = this.reportService.getReportsAll();
   }
 
-  private addressFormatter(param) {
+  addressFormatter(param) {
     if (param.value){
       return param.value[0].label;
     }
@@ -91,6 +93,9 @@ export class ViewReportsComponent implements OnInit {
     const selectedRows = this.gridApi.getSelectedRows();
     this.detailReportLightRight = true;
     this.reportSelected = selectedRows;
+    if (isMobile()) {
+      this.router.navigate(['report/'])
+    }
   }
 
   onGridReady(params) {
@@ -99,5 +104,9 @@ export class ViewReportsComponent implements OnInit {
 
   close(event: any) {
     this.detailReportLightRight = false;
+  }
+
+  isMobiled() {
+    return isMobile();
   }
 }

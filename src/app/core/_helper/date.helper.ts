@@ -1,5 +1,7 @@
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
+
+// TODO: fonction a supprimer
 export function ngbToDate(ngbDate?: NgbDateStruct, ngbHours?: any): Date {
   let jsDate = null;
 
