@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ViewReportsComponent} from './view-reports/view-reports.component';
+import {ReportDetailsMobileComponent} from './report-details-mobile/report-details-mobile.component';
 
 
 const routes: Routes = [
@@ -9,8 +10,8 @@ const routes: Routes = [
     component: ViewReportsComponent,
   },
   {
-    path: 'report/:id',
-    component: ViewReportsComponent,
+    path: 'report',
+    component: ReportDetailsMobileComponent,
   },
 ];
 

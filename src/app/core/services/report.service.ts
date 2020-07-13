@@ -63,6 +63,13 @@ export class ReportService extends BaseService {
     );
   }
 
+  getReport(reportId: string): Observable<Report> {
+    return this.doc$<Report>(
+      `${Const.collections.reports}/${reportId}`
+    );
+  }
+
+// TODO: sans doute a refactor pour changer le call du doc
   updateReport(report: Report): Promise<void>{
     delete report.id;
     return this.angularFirestore.doc(report.url).update(report);
