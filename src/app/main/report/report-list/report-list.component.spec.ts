@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewReportsComponent } from './view-reports.component';
+import { ReportListComponent } from './report-list.component';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../../../environments/environment';
 import {TranslateModule} from '@ngx-translate/core';
@@ -11,9 +11,9 @@ import {AgGridModule} from 'ag-grid-angular';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 
-describe('ViewReportsComponent', () => {
-  let component: ViewReportsComponent;
-  let fixture: ComponentFixture<ViewReportsComponent>;
+describe('ReportListComponent', () => {
+  let component: ReportListComponent;
+  let fixture: ComponentFixture<ReportListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,7 +25,7 @@ describe('ViewReportsComponent', () => {
         NoopAnimationsModule
       ],
       declarations: [
-        ViewReportsComponent,
+        ReportListComponent,
         ReportDetailsComponent,
         TimestampPipe
       ],
@@ -35,7 +35,7 @@ describe('ViewReportsComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewReportsComponent);
+    fixture = TestBed.createComponent(ReportListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

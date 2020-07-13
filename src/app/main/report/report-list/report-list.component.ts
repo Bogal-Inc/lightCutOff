@@ -9,10 +9,10 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-view-reports',
-  templateUrl: './view-reports.component.html',
-  styleUrls: ['./view-reports.component.scss']
+  templateUrl: './report-list.component.html',
+  styleUrls: ['./report-list.component.scss']
 })
-export class ViewReportsComponent implements OnInit {
+export class ReportListComponent implements OnInit {
   private gridApi;
   faExclamationCircle = faExclamationCircle;
   reports$: Observable<Report[]>;
