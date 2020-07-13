@@ -1,5 +1,5 @@
 import { SharedModule } from 'src/app/shared/shared.module';
-import {LOCALE_ID, NgModule} from '@angular/core';
+import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MapRoutingModule } from './map-routing.module';
@@ -8,10 +8,9 @@ import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
 import { CreateFormReportComponent } from './components/create-form-report/create-form-report.component';
 import { SearchPlaceFormComponent } from './components/search-place-form/search-place-form.component';
 import { UpdateFormReportComponent } from './components/update-form-report/update-form-report.component';
-import { ReportInfosComponent } from './components/report-infos/report-infos.component';
 import {environment} from '../../../environments/environment';
 import {GoogleMapsModule} from '@angular/google-maps';
-import {MESSAGE_FORMAT_CONFIG} from 'ngx-translate-messageformat-compiler';
+import {MarkerDetailsComponent} from './components/marker-details/marker-details.component';
 
 
 @NgModule({
@@ -20,7 +19,7 @@ import {MESSAGE_FORMAT_CONFIG} from 'ngx-translate-messageformat-compiler';
     CreateFormReportComponent,
     SearchPlaceFormComponent,
     UpdateFormReportComponent,
-    ReportInfosComponent,
+    MarkerDetailsComponent,
   ],
   imports: [
     CommonModule,

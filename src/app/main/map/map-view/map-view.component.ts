@@ -1,10 +1,10 @@
 import { TranslateService } from '@ngx-translate/core';
-import { ReportInfosComponent } from './../components/report-infos/report-infos.component';
+import { MarkerDetailsComponent} from '../components/marker-details/marker-details.component';
 import { AuthService } from '@Services/auth.service';
 import {Address, Position, Report} from '@Models/report.model';
-import { LoadingComponent } from './../../../shared/loading/loading.component';
-import { UpdateFormReportComponent } from './../components/update-form-report/update-form-report.component';
-import { CreateFormReportComponent } from './../components/create-form-report/create-form-report.component';
+import { LoadingComponent } from '../../../shared/loading/loading.component';
+import { UpdateFormReportComponent } from '../components/update-form-report/update-form-report.component';
+import { CreateFormReportComponent } from '../components/create-form-report/create-form-report.component';
 import { ReportService } from '@Services/report.service';
 import {
   Component,
@@ -395,11 +395,11 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   private createInfoReportComponent(report: Report): any {
     log.debug('create info report component');
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ReportInfosComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MarkerDetailsComponent);
 
     const viewContainerRef = this.infosReport;
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    (componentRef.instance as ReportInfosComponent).data = report;
+    (componentRef.instance as MarkerDetailsComponent).data = report;
     componentRef.hostView.detectChanges();
     const { nativeElement } = componentRef.location;
 

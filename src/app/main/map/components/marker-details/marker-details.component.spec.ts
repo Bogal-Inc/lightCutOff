@@ -1,16 +1,16 @@
 import { TimestampPipe } from '@Pipes/timestamp.pipe';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReportInfosComponent } from './report-infos.component';
+import { MarkerDetailsComponent } from './marker-details.component';
 
-describe('ReportInfosComponent', () => {
-  let component: ReportInfosComponent;
-  let fixture: ComponentFixture<ReportInfosComponent>;
+describe('MarkerDetailsComponent', () => {
+  let component: MarkerDetailsComponent;
+  let fixture: ComponentFixture<MarkerDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ReportInfosComponent,
+        MarkerDetailsComponent,
         TimestampPipe
       ],
     })
@@ -18,7 +18,7 @@ describe('ReportInfosComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReportInfosComponent);
+    fixture = TestBed.createComponent(MarkerDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

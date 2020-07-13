@@ -4,10 +4,10 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-report-infos',
-  templateUrl: './report-infos.component.html',
-  styleUrls: ['./report-infos.component.scss']
+  templateUrl: './marker-details.component.html',
+  styleUrls: ['./marker-details.component.scss']
 })
-export class ReportInfosComponent implements BaseComponent, OnInit {
+export class MarkerDetailsComponent implements BaseComponent, OnInit {
   data: Report;
 
   constructor() { }
