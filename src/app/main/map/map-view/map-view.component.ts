@@ -3,7 +3,6 @@ import { MarkerDetailsComponent} from '../components/marker-details/marker-detai
 import { AuthService } from '@Services/auth.service';
 import {Address, Position, Report} from '@Models/report.model';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
-import { UpdateFormReportComponent } from '../components/update-form-report/update-form-report.component';
 import { ReportService } from '@Services/report.service';
 import {
   Component,
@@ -23,6 +22,7 @@ import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { Logger } from '@Services/logger.service';
 import { convertSecondsToDate, dayDiff } from '@Helpers/date.helper';
 import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';
+import {MarkerRecovredReportComponent} from '../components/marker-recovred-report/marker-recovred-report.component';
 
 declare const MarkerClusterer: any;
 const log = new Logger('map-view.component');
@@ -382,11 +382,11 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   private createRecovredComponent(report: Report): any {
     log.debug('create recovred form component');
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(UpdateFormReportComponent);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MarkerRecovredReportComponent);
 
     const viewContainerRef = this.recovredFormReport;
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    (componentRef.instance as UpdateFormReportComponent).data = report;
+    (componentRef.instance as MarkerRecovredReportComponent).data = report;
     componentRef.hostView.detectChanges();
     const { nativeElement } = componentRef.location;
 

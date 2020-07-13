@@ -7,10 +7,10 @@ import {Report, ReportSatus} from '@Models/report.model';
 
 @Component({
   selector: 'app-update-form-report',
-  templateUrl: './update-form-report.component.html',
-  styleUrls: ['./update-form-report.component.scss']
+  templateUrl: './marker-recovred-report.component.html',
+  styleUrls: ['./marker-recovred-report.component.scss']
 })
-export class UpdateFormReportComponent implements OnInit, BaseComponent {
+export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
   data: Report;
   datetime: any;
   min: Date;

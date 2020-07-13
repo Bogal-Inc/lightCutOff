@@ -6,11 +6,11 @@ import { MapRoutingModule } from './map-routing.module';
 import { MapViewComponent } from './map-view/map-view.component';
 import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
 import { SearchPlaceFormComponent } from './components/search-place-form/search-place-form.component';
-import { UpdateFormReportComponent } from './components/update-form-report/update-form-report.component';
 import {environment} from '../../../environments/environment';
 import {GoogleMapsModule} from '@angular/google-maps';
 import {MarkerDetailsComponent} from './components/marker-details/marker-details.component';
 import {MarkerCreateReportComponent} from './components/marker-create-report/marker-create-report.component';
+import {MarkerRecovredReportComponent} from './components/marker-recovred-report/marker-recovred-report.component';
 
 
 @NgModule({
@@ -18,8 +18,8 @@ import {MarkerCreateReportComponent} from './components/marker-create-report/mar
     MapViewComponent,
     MarkerCreateReportComponent,
     SearchPlaceFormComponent,
-    UpdateFormReportComponent,
     MarkerDetailsComponent,
+    MarkerRecovredReportComponent
   ],
   imports: [
     CommonModule,
@@ -37,6 +37,6 @@ import {MarkerCreateReportComponent} from './components/marker-create-report/mar
   providers: [
     GoogleMapsAPIWrapper
   ],
-  entryComponents: [ UpdateFormReportComponent ]
+  entryComponents: [ MarkerRecovredReportComponent ]
 })
 export class MapModule { }

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateFormReportComponent } from './update-form-report.component';
+import { MarkerRecovredReportComponent } from './marker-recovred-report.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -8,13 +8,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 import { FormsModule } from '@angular/forms';
 
-describe('UpdateFormReportComponent', () => {
-  let component: UpdateFormReportComponent;
-  let fixture: ComponentFixture<UpdateFormReportComponent>;
+describe('MarkerRecovredReportComponent', () => {
+  let component: MarkerRecovredReportComponent;
+  let fixture: ComponentFixture<MarkerRecovredReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateFormReportComponent ],
+      declarations: [ MarkerRecovredReportComponent ],
       imports: [
         FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
@@ -35,7 +35,7 @@ describe('UpdateFormReportComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateFormReportComponent);
+    fixture = TestBed.createComponent(MarkerRecovredReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
