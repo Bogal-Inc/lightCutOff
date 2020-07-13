@@ -1,16 +1,16 @@
 import { TranslateModule } from '@ngx-translate/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { CreateFormReportComponent } from './create-form-report.component';
+import { MarkerCreateReportComponent } from './marker-create-report.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 
-describe('CreateFormReportComponent', () => {
-  let component: CreateFormReportComponent;
-  let fixture: ComponentFixture<CreateFormReportComponent>;
+describe('MarkerCreateReportComponent', () => {
+  let component: MarkerCreateReportComponent;
+  let fixture: ComponentFixture<MarkerCreateReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateFormReportComponent ],
+      declarations: [ MarkerCreateReportComponent ],
       imports: [
         FormsModule,
         OwlDateTimeModule,
@@ -26,7 +26,7 @@ describe('CreateFormReportComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateFormReportComponent);
+    fixture = TestBed.createComponent(MarkerCreateReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

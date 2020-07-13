@@ -4,7 +4,6 @@ import { AuthService } from '@Services/auth.service';
 import {Address, Position, Report} from '@Models/report.model';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { UpdateFormReportComponent } from '../components/update-form-report/update-form-report.component';
-import { CreateFormReportComponent } from '../components/create-form-report/create-form-report.component';
 import { ReportService } from '@Services/report.service';
 import {
   Component,
@@ -23,6 +22,7 @@ import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.compone
 import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { Logger } from '@Services/logger.service';
 import { convertSecondsToDate, dayDiff } from '@Helpers/date.helper';
+import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';
 
 declare const MarkerClusterer: any;
 const log = new Logger('map-view.component');
@@ -37,7 +37,7 @@ const log = new Logger('map-view.component');
 export class MapViewComponent implements OnInit, AfterViewInit {
   @ViewChild('mapContainer', {static: false})
   private gmap: ElementRef;
-  @ViewChild(CreateFormReportComponent, {read: ElementRef})
+  @ViewChild(MarkerCreateReportComponent, {read: ElementRef})
   private createReportFormElt: ElementRef;
   @ViewChild(LoadingComponent, {read: ElementRef})
   private loadingElt: ElementRef;
