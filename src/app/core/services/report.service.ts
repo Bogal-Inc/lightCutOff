@@ -6,7 +6,6 @@ import { Report, defaultReport } from '@Models/report.model';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { Const } from 'src/environments/const';
-import * as uuid from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +40,6 @@ export class ReportService extends BaseService {
       `${Const.collections.reports}`,
       {
         ...defaultReport,
-        id: uuid.v4(),
         reportedAt: report.reportedAt,
         position: this.geopoint(report.position.lat, report.position.lng),
         _createdBy: this.user,
@@ -69,9 +67,12 @@ export class ReportService extends BaseService {
     );
   }
 
-// TODO: sans doute a refactor pour changer le call du doc
   updateReport(report: Report): Promise<void>{
-    delete report.id;
-    return this.angularFirestore.doc(report.url).update(report);
+    const partialReport = {
+      ...report,
+      _updatedAt: this.timestamp,
+      _UpdatedBy: this.user
+    } as unknown as Report;
+    return this.update<Report>(`${Const.collections.reports}/${report.id}`, partialReport);
   }
 }

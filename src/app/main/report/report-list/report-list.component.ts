@@ -92,9 +92,9 @@ export class ReportListComponent implements OnInit {
   onRowSelected(event: any) {
     const selectedRows = this.gridApi.getSelectedRows();
     this.detailReportLightRight = true;
-    this.reportSelected = selectedRows[0];
+    this.reportSelected = selectedRows;
     if (isMobile()) {
-      const reportId = this.reportSelected.url.split('/')[1];
+      const reportId = this.reportSelected[0].url.split('/')[1];
       this.router.navigate(['/report'], { queryParams: {id: reportId} });
     }
   }

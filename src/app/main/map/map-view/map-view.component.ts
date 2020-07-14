@@ -194,7 +194,6 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       city: location[0],
       position: this.position,
       reportedAt: query,
-      _createdAt: query
     } as Report;
 
     this.markerCurrentInfoWindow.setContent(this.loadingElt.nativeElement);
@@ -204,11 +203,10 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         log.debug('report create');
         this.formLoader = false;
         this.lastReport = report;
-        this.lastReport.url = resp.path.valueOf();
+        this.lastReport.id = resp.path.valueOf().split('/')[1];
 
         this.reportService.updateReport(this.lastReport).then(
           () => {
-            log.debug('report update');
             const recovredFromElement = this.createRecovredComponent(this.lastReport);
             this.markerCurrentInfoWindow.setContent(recovredFromElement);
             this.markerCurrentPosition.setDraggable(false);
