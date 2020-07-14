@@ -94,7 +94,8 @@ export class ReportListComponent implements OnInit {
     this.detailReportLightRight = true;
     this.reportSelected = selectedRows;
     if (isMobile()) {
-      const reportId = this.reportSelected[0].url.split('/')[1];
+      console.log(this.reportSelected)
+      const reportId = this.reportSelected[0].id;
       this.router.navigate(['/report'], { queryParams: {id: reportId} });
     }
   }

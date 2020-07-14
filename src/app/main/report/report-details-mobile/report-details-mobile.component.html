@@ -1,1 +1,45 @@
-<p>report-details-mobile works!</p>
+<div class="main-admin">
+  <div class="report">
+    <div class="col-md-12">
+      <div class="report__header">
+
+        <h3 class=" text-center report__title">Detail rapport</h3>
+        <div>
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">{{report?.country}}</li>
+            <li class="list-inline-item">{{report?.city}}</li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="report__body">
+        <div class="mb-5 report__body__content1">
+          <ul class="list-unstyled">
+            <li class="mb-lg-3">Signalée le: {{report?.reportedAt?.seconds | timestamp}}</li>
+            <li class="mb-lg-3" *ngIf="report?.recovredAt">Revenu le: {{report?.recovredAt?.seconds | timestamp}}</li>
+            <li class="mb-lg-3 text-danger" *ngIf="!report?.recovredAt">Toujours pas revenue</li>
+            <li class="mb-lg-3">
+              Details sur le lieu de signalement
+              <ul>
+                <li *ngFor="let address of report?.addresses">
+                  {{address.label}}
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="report__body__content2">
+          <small>
+            <ul class="list-inline">
+              <li class="list-inline-item">longitude: {{report?.position.lng}}</li>
+              <li class="list-inline-item">Latitude: {{report?.position.lat}}</li>
+            </ul>
+          </small>
+        </div>
+      </div>
+      <div class="report-footer"></div>
+    </div>
+  </div>
+
+
+</div>

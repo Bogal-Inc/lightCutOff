@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ReportService} from '@Services/report.service';
+import {Report} from '@Models/report.model';
+import {Logger} from '@Services/logger.service';
+import {isMobile} from '@Helpers/mobile-confirm.helper';
+
+const log = new Logger('map-view.component');
 
 @Component({
   selector: 'app-report-details-mobile',
@@ -8,20 +13,29 @@ import {ReportService} from '@Services/report.service';
   styleUrls: ['./report-details-mobile.component.scss']
 })
 export class ReportDetailsMobileComponent implements OnInit {
+  report: Report;
 
   constructor(
     private actiavteRoute: ActivatedRoute,
-    private reportService: ReportService
+    private reportService: ReportService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.getReport()
+    log.debug('init');
+
+    if (!isMobile()) {
+      this.router.navigate(['/reports']);
+    }
+
+    this.getReport();
   }
 
   getReport(){
     const reportId = this.actiavteRoute.snapshot.queryParamMap.get('id');
     this.reportService.getReport(reportId).subscribe(
-      report => console.log(report)
+      data => this.report = data,
+      err => log.error('report not found', err)
     );
   }
 
