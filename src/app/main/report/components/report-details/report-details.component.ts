@@ -10,31 +10,26 @@ import {Report, ReportSatus} from '@Models/report.model';
   animations: [
     trigger('detailReportLightRight', [
       state('right', style({
+        display: 'block',
         transform: 'translateX(0%)'
       })),
       state('left', style({
         transform: 'translateX(130%)'
       })),
-      transition('right => left', [
+      transition('* => *', [
         animate('0.5s')
-      ]),
-      transition('left => right', [
-        animate('0.5s')
-      ]),
+      ])
     ]),
     trigger('btnDetailReportLightRight', [
       state('right', style({
         transform: 'translateX(0%)'
       })),
       state('left', style({
-        transform: 'translateX(100%)'
+        transform: 'translateX(100%)',
       })),
-      transition('right => left', [
+      transition('* => *', [
         animate('0.5s')
-      ]),
-      transition('left => right', [
-        animate('0.5s')
-      ]),
+      ])
     ])
   ]
 })
