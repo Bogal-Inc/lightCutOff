@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {Report} from '@Models/report.model';
 
-
 @Component({
   selector: 'app-chart',
   templateUrl: './dashboard-chart.component.html',

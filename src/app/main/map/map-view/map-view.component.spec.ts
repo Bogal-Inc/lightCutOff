@@ -1,7 +1,5 @@
-import { UpdateFormReportComponent } from './../components/update-form-report/update-form-report.component';
-import { CreateFormReportComponent } from './../components/create-form-report/create-form-report.component';
-import { LoadingComponent } from './../../../shared/loading/loading.component';
-import { SearchPlaceFormComponent } from './../components/search-place-form/search-place-form.component';
+import { LoadingComponent } from '../../../shared/loading/loading.component';
+import { SearchPlaceFormComponent } from '../components/search-place-form/search-place-form.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MapViewComponent } from './map-view.component';
@@ -30,8 +28,6 @@ describe('MapViewComponent', () => {
         SearchPlaceFormComponent,
         LoadingComponent,
         MapLegendComponent,
-        CreateFormReportComponent,
-        UpdateFormReportComponent,
         NgbTooltip
       ],
       imports: [

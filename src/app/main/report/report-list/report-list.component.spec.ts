@@ -9,6 +9,8 @@ import {ReportDetailsComponent} from '../components/report-details/report-detail
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {AgGridModule} from 'ag-grid-angular';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
 
 
 describe('ReportListComponent', () => {
@@ -22,14 +24,17 @@ describe('ReportListComponent', () => {
         TranslateModule.forRoot(),
         FontAwesomeModule,
         AgGridModule.withComponents([]),
-        NoopAnimationsModule
+        NoopAnimationsModule,
+        RouterModule.forRoot([]),
       ],
       declarations: [
         ReportListComponent,
         ReportDetailsComponent,
         TimestampPipe
       ],
-      providers: [TimestampPipe]
+      providers: [
+        TimestampPipe
+      ]
     })
     .compileComponents();
   }));

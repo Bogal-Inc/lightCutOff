@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReportDetailsMobileComponent } from './report-details-mobile.component';
+import {RouterModule} from '@angular/router';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../../../../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {timestamp} from 'rxjs/operators';
+import {TimestampPipe} from '@Pipes/timestamp.pipe';
 
 describe('ReportDetailsMobileComponent', () => {
   let component: ReportDetailsMobileComponent;
@@ -8,7 +14,16 @@ describe('ReportDetailsMobileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReportDetailsMobileComponent ]
+      imports: [
+        RouterModule.forRoot([]),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+      ],
+      declarations: [
+        ReportDetailsMobileComponent,
+        TimestampPipe
+      ],
+      providers: [TimestampPipe]
     })
     .compileComponents();
   }));

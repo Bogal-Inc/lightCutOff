@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardChartComponent } from './dashboard-chart.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {ChartModule} from 'angular2-chartjs';
 
 describe('DashboardChart', () => {
   let component: DashboardChartComponent;
@@ -11,6 +12,7 @@ describe('DashboardChart', () => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot(),
+        ChartModule
       ],
       declarations: [ DashboardChartComponent ]
     })
@@ -25,6 +27,7 @@ describe('DashboardChart', () => {
       barChartType: 'bar',
       barChartOptions: {},
     };
+    component.reportsCurrentYear = [];
     fixture.detectChanges();
   });
 

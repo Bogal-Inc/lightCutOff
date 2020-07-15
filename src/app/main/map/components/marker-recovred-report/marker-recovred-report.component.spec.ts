@@ -7,6 +7,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { ToastrModule } from 'ngx-toastr';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 import { FormsModule } from '@angular/forms';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('MarkerRecovredReportComponent', () => {
   let component: MarkerRecovredReportComponent;
@@ -19,6 +20,7 @@ describe('MarkerRecovredReportComponent', () => {
         FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
+        TranslateModule.forRoot(),
         ToastrModule.forRoot({
           timeOut: 10000,
           progressBar: true
