@@ -5,7 +5,7 @@ import {Report} from '@Models/report.model';
 import {Logger} from '@Services/logger.service';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
 
-const log = new Logger('map-view.component');
+const log = new Logger('report-details-mobile.component');
 
 @Component({
   selector: 'app-report-details-mobile',

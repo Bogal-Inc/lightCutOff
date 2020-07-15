@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Const } from 'src/environments/const';
+import {Logger} from '@Services/logger.service';
+
+const log = new Logger('tuto.component');
 
 @Component({
   selector: 'app-tuto',
@@ -12,6 +15,7 @@ export class TutoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    log.debug('init');
   }
 
 }

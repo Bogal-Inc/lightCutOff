@@ -6,6 +6,9 @@ import {ReportService} from '@Services/report.service';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import { isMobile } from '@Helpers/mobile-confirm.helper';
 import {Router} from '@angular/router';
+import {Logger} from '@Services/logger.service';
+
+const log = new Logger('router-list.component');
 
 @Component({
   selector: 'app-view-reports',
@@ -79,6 +82,7 @@ export class ReportListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    log.debug('init');
     this.reports$ = this.reportService.getReportsAll();
   }
 
@@ -93,8 +97,8 @@ export class ReportListComponent implements OnInit {
     const selectedRows = this.gridApi.getSelectedRows();
     this.detailReportLightRight = true;
     this.reportSelected = selectedRows;
+
     if (isMobile()) {
-      console.log(this.reportSelected)
       const reportId = this.reportSelected[0].id;
       this.router.navigate(['/report'], { queryParams: {id: reportId} });
     }
