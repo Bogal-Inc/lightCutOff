@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {isMobile} from '@Helpers/mobile-confirm.helper';
 
 @Component({
   selector: 'app-admin-layout',
@@ -10,6 +11,10 @@ export class AdminLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  isMobiled() {
+    return isMobile();
   }
 
 }

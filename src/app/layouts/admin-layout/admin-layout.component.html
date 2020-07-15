@@ -1,11 +1,11 @@
-<div class="app-container">
+<div class="app-container admin">
   <app-main-header></app-main-header>
 
-  <div class="container-fluid">
-    <app-admin-nav></app-admin-nav>
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <div class="admin__body">
+    <app-admin-nav *ngIf="!isMobiled()"></app-admin-nav>
+    <div [class.admin__body__main]="!isMobiled()">
       <router-outlet></router-outlet>
       <app-main-footer></app-main-footer>
-    </main>
+    </div>
   </div>
 </div>
