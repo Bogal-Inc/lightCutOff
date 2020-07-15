@@ -43,6 +43,11 @@
   background-color: black;
 }
 
+.sidebar .nav-link:hover {
+  color: var(--white) !important;
+  background-color: black;
+}
+
 .sidebar .nav-link:hover .feather,
 .sidebar .nav-link.active .feather {
   color: inherit;
