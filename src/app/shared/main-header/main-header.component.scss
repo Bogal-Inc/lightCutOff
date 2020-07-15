@@ -3,4 +3,13 @@ nav {
     .beta {
         font-size: .5em;
     }
+  .dropdown-menu a {
+    font-weight: 500;
+    color: var(--gray) !important;
+  }
+
+  .dropdown-menu a:hover {
+    color: var(--white) !important;
+    background-color: black;
+  }
 }

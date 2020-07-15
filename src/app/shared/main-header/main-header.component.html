@@ -18,8 +18,19 @@
           {{"shared.main-header.home" | translate}}
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">{{"shared.main-header.statistics" | translate}}</a>
+      <li class="nav-item dropdown">
+        <a  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          class="nav-link dropdown-toggle">
+          {{"shared.main-header.statistics" | translate}}
+        </a>
+        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+          <a routerLink="/dashboard" class="dropdown-item">
+            {{'shared.admin-nav.dashboard' | translate}}
+          </a>
+          <a class="dropdown-item" routerLink="reports">
+            {{'shared.admin-nav.reports' | translate}}
+          </a>
+        </div>
       </li>
     </ul>
   </div>
