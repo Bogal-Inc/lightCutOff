@@ -12,7 +12,7 @@
         "build:prod": "npm run clean && npm run config -- && ng build --aot --prod --source-map=false",
         "build:heroku": "npm run clean && npm run config -- && ng build --aot --configuration=staging --prod",
         "build:ci": "npm run clean && npm run config -- && ng build --aot --prod --source-map=false --base-href lightcutoff",
-        "test": "ng test --code-coverage",
+        "test": "ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage --source-map=false",
         "test:ci": "ng test --watch=false --code-coverage --browsers=ChromeHeadlessNoSandbox",
         "lint": "ng lint",
         "e2e": "ng e2e",
