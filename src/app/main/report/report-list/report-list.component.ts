@@ -21,12 +21,7 @@ export class ReportListComponent implements OnInit {
   reports$: Observable<Report[]>;
   detailReportLightRight = false;
   reportSelected: any;
-  defaultColDef = {
-    flex: 1,
-    sortable: true,
-    filter: true,
-    floatingFilter: true,
-  };
+  defaultColDef: any;
   columnDefs = [
     {
       headerName: '',
@@ -83,6 +78,8 @@ export class ReportListComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
+
+    this.datatableMobilConfig();
     this.reports$ = this.reportService.getReportsAll();
   }
 
@@ -110,6 +107,23 @@ export class ReportListComponent implements OnInit {
 
   close(event: any) {
     this.detailReportLightRight = false;
+  }
+
+  datatableMobilConfig() {
+    if (!isMobile()){
+      this.defaultColDef = {
+        flex: 1,
+        sortable: true,
+        filter: true,
+        floatingFilter: true,
+      };
+    } else {
+      this.defaultColDef = {
+        sortable: true,
+        filter: true,
+        floatingFilter: true,
+      };
+    }
   }
 
   isMobiled() {
