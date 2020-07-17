@@ -1,11 +1,12 @@
-import { DocumentReference } from '@firebase/firestore-types';
-import { BaseService } from './base.service';
-import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentData } from '@angular/fire/firestore';
-import { Report, defaultReport } from '@Models/report.model';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
-import { Const } from 'src/environments/const';
+import {DocumentReference} from '@firebase/firestore-types';
+import {BaseService} from './base.service';
+import {Injectable} from '@angular/core';
+import {AngularFirestore, DocumentData} from '@angular/fire/firestore';
+import {defaultReport, Report} from '@Models/report.model';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {Observable} from 'rxjs';
+import {Const} from 'src/environments/const';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -25,14 +26,19 @@ export class ReportService extends BaseService {
       `${Const.collections.reports}`,
       ref => {
         const response = ref.where('_isDelete', '==', isDeleted);
-        response.where('_isVisible', '==', isVisible);
+        response
+          .where('_isVisible', '==', isVisible)
+          .orderBy('reportedAt', 'desc');
         return response;
       }
     );
   }
 
   getReportsAll(): Observable<Report[]> {
-    return this.col$<Report>(`${Const.collections.reports}`);
+    return this.col$<Report>(`${Const.collections.reports}`,
+      ref => {
+        return ref.orderBy('reportedAt', 'desc');
+      });
   }
 
   async addReport(report): Promise<DocumentReference<DocumentData>>{
