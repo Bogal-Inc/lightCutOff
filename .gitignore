@@ -52,3 +52,6 @@ src/environments/environment.staging.ts
 src/environments/environment.ts
 
 /report.*
+
+firebase-debug.log
+.firebase/*
