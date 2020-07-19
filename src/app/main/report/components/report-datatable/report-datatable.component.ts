@@ -34,7 +34,7 @@ export class ReportDatatableComponent implements OnInit {
       field: 'reportedAt',
       cellRenderer: (params) => {
         if (params.value){
-          return this.timestampPipe.transform(params.value.seconds);
+          return this.timestampPipe.transform(params.value.toDate());
         }
       }
     },
@@ -43,7 +43,7 @@ export class ReportDatatableComponent implements OnInit {
       field: 'recovredAt',
       cellRenderer: (params) => {
         if (params.value){
-          return this.timestampPipe.transform(params.value.seconds);
+          return this.timestampPipe.transform(params.value.toDate());
         }
       }
     },

@@ -4,8 +4,8 @@
     </div>
     <div class="marker-details__body">
         <ul class="list-unstyled">
-            <li><b>Signalez le:</b> {{ data.reportedAt?.seconds | timestamp }}</li>
-            <li *ngIf="data.recovredAt"><b>Remis le:</b> {{ data.recovredAt?.seconds | timestamp }}</li>
+            <li><b>Signalez le:</b> {{ data.reportedAt.toDate() | timestamp }}</li>
+            <li *ngIf="data.recovredAt"><b>Remis le:</b> {{ data.recovredAt.toDate() | timestamp }}</li>
         </ul>
     </div>
     <div class="marker-details__footer">

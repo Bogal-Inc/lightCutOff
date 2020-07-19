@@ -6,7 +6,6 @@ import {defaultReport, Report} from '@Models/report.model';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Observable} from 'rxjs';
 import {Const} from 'src/environments/const';
-import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'

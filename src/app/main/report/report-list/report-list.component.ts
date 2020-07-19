@@ -22,6 +22,7 @@ export class ReportListComponent implements OnInit {
   detailReportLightRight = false;
   reportSelected: any;
   defaultColDef: any;
+
   columnDefs = [
     {
       headerName: '',
@@ -41,7 +42,7 @@ export class ReportListComponent implements OnInit {
       field: 'reportedAt',
       cellRenderer: (params) => {
         if (params.value){
-          return this.timestampPipe.transform(params.value.seconds);
+          return this.timestampPipe.transform(params.value.toDate());
         }
       }
     },
@@ -50,7 +51,7 @@ export class ReportListComponent implements OnInit {
       field: 'recovredAt',
       cellRenderer: (params) => {
         if (params.value){
-          return this.timestampPipe.transform(params.value.seconds);
+          return this.timestampPipe.transform(params.value.toDate());
         }
       }
     },

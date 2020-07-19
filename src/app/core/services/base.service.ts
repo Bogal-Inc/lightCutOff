@@ -91,8 +91,12 @@ export class BaseService {
   /// Write Data
   /// **************
   /// Firebase Server Timestamp
-  protected get timestamp() {
+  get timestamp() {
     return firebase.firestore.FieldValue.serverTimestamp();
+  }
+
+  fromDate(date: Date): firebase.firestore.Timestamp {
+    return firebase.firestore.Timestamp.fromDate(date);
   }
 
   protected set<T extends Doc>(ref: DocPredicate<T>, data: any) {

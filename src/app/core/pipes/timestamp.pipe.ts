@@ -1,17 +1,29 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
+import {I18nService} from '@Services/i18n.service';
 
 
 @Pipe({
   name: 'timestamp'
 })
-export class TimestampPipe extends DatePipe implements PipeTransform {
+export class TimestampPipe implements PipeTransform {
+  constructor(
+    private i18nService: I18nService
+  ) {}
 
   transform(value: unknown, ...args: unknown[]): any {
-    registerLocaleData(localeFr, 'fr');
-    return super.transform(+value * 1000, 'medium');
+    const dateFormat = new Intl.DateTimeFormat(
+      this.i18nService.language,
+      {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+
+    // @ts-ignore
+    return dateFormat.format(value);
   }
 
 }

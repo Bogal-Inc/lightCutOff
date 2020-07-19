@@ -33,8 +33,8 @@ export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
       return ;
     }
 
-    this.data.recovredAt = this.datetime;
-    this.data._updatedAt = this.datetime;
+    this.data.recovredAt = this.reportService.fromDate(new Date(this.datetime));
+    this.data._updatedAt = this.reportService.timestamp;
     this.data.status = ReportSatus.RECOVRED;
 
     this.reportService.updateReport(this.data).then(
