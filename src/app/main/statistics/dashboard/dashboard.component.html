@@ -11,14 +11,27 @@
     <!--    data table -->
     <div class="row mt-5">
       <div class="col-xs-12 col-md-6">
-        <app-chart style="width: 100%"
+        <app-chart-week
           *ngIf="reportsCurrentYear"
           [reportsCurrentYear]="reportsCurrentYear"
-        ></app-chart>
+        ></app-chart-week>
+<!--        <app-chart-->
+<!--          *ngIf="reportsCurrentYear"-->
+<!--          [reportsCurrentYear]="reportsCurrentYear"-->
+<!--        ></app-chart>-->
       </div>
       <div class="col-xs-12 col-md-6">
         <app-report-datatable></app-report-datatable>
       </div>
     </div>
+
+<!--    <div class="row">-->
+<!--      <div class="col-md-12">-->
+<!--        <app-chart-week-->
+<!--          *ngIf="reportsCurrentYear"-->
+<!--          [reportsCurrentYear]="reportsCurrentYear"-->
+<!--        ></app-chart-week>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </div>
