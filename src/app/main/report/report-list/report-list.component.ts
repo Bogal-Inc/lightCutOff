@@ -81,7 +81,11 @@ export class ReportListComponent implements OnInit {
     log.debug('init');
 
     this.datatableMobilConfig();
-    this.reports$ = this.reportService.getReportsAll();
+    const now = new Date();
+    this.reports$ = this.reportService.getReports({
+      isDeleted: false,
+      datestart: new Date(now.getFullYear())
+    });
   }
 
   addressFormatter(param) {

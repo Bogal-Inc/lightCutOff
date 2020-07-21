@@ -7,6 +7,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {Observable} from 'rxjs';
 import {Const} from 'src/environments/const';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,24 +21,22 @@ export class ReportService extends BaseService {
     super(angularFireAuth, angularFirestore);
   }
 
-  getReports(isDeleted: boolean = false, isVisible: boolean = false): Observable<Report[]> {
+  getReports(params: {
+               isDeleted: boolean,
+                datestart: Date
+             }): Observable<Report[]> {
     return this.col$<Report>(
       `${Const.collections.reports}`,
       ref => {
-        const response = ref.where('_isDelete', '==', isDeleted);
-        response
-          .where('_isVisible', '==', isVisible)
-          .orderBy('reportedAt', 'desc');
-        return response;
+        const responses = ref.where('_isDelete', '==', params.isDeleted);
+
+        if (params.datestart) {
+          responses.where('reportedAt', '>', params.datestart);
+        }
+
+        return responses.orderBy('reportedAt', 'desc');
       }
     );
-  }
-
-  getReportsAll(): Observable<Report[]> {
-    return this.col$<Report>(`${Const.collections.reports}`,
-      ref => {
-        return ref.orderBy('reportedAt', 'desc');
-      });
   }
 
   async addReport(report): Promise<DocumentReference<DocumentData>>{

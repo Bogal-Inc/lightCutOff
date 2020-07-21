@@ -193,7 +193,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       country: location[1],
       city: location[0],
       position: this.position,
-      reportedAt: this.reportService.fromDate(new Date(query)),
+      reportedAt: new Date(query),
     } as Report;
 
     this.markerCurrentInfoWindow.setContent(this.loadingElt.nativeElement);
@@ -297,7 +297,11 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private LoadReports() {
     const reportsStarted = [];
     const reportsEnded = [];
-    this.reportService.getReports()
+    const now = new Date();
+    this.reportService.getReports({
+      isDeleted: false,
+      datestart: new Date(now.getFullYear())
+    })
       .subscribe(data => {
         data.forEach(report => {
           log.debug('load reports');

@@ -31,7 +31,11 @@ export class DashboardComponent implements OnInit {
   }
 
   private async initCardDashbord() {
-    this.reportService.getReportsAll().subscribe(
+    const now = new Date();
+    this.reportService.getReports({
+      isDeleted: false,
+      datestart: new Date(now.getFullYear())
+    }).subscribe(
       reports => {
         const currentDate = new Date();
         this.reports = reports;
