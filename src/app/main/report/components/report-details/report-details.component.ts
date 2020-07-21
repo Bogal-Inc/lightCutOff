@@ -39,6 +39,7 @@ export class ReportDetailsComponent implements OnInit, OnChanges {
   @Input() report: Report;
   reportStatus: boolean;
   faTimes = faTimes;
+
   constructor() { }
 
   ngOnInit(): void { }

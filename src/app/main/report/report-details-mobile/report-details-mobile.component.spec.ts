@@ -5,8 +5,8 @@ import {RouterModule} from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {timestamp} from 'rxjs/operators';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
+import {TranslateModule, TranslateService, TranslateStore} from '@ngx-translate/core';
 
 describe('ReportDetailsMobileComponent', () => {
   let component: ReportDetailsMobileComponent;
@@ -18,12 +18,16 @@ describe('ReportDetailsMobileComponent', () => {
         RouterModule.forRoot([]),
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
+        TranslateModule.forRoot()
       ],
       declarations: [
         ReportDetailsMobileComponent,
         TimestampPipe
       ],
-      providers: [TimestampPipe]
+      providers: [
+        TranslateService,
+        TimestampPipe
+      ]
     })
     .compileComponents();
   }));

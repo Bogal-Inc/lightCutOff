@@ -28,7 +28,6 @@ export class ChartWeekComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.initChart();
   }
 
