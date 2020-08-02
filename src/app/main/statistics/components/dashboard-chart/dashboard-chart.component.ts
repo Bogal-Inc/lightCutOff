@@ -70,13 +70,12 @@ export class DashboardChartComponent implements OnInit {
     const months = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.reportsCurrentYear.map(
       report => {
-        const currentMonth = new Date(report.reportedAt.seconds * 1000).getMonth();
-
         if (report.city === city){
           months.forEach(
             (mt, index, self) => {
+              const currentMonth = report.reportedAt.toDate().getMonth();
               if ((index + 1) === currentMonth) {
-                self[index] += 1;
+                self[index + 1] += 1;
               }
             }
           );
