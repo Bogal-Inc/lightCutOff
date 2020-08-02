@@ -82,7 +82,7 @@ export class ChartWeekComponent implements OnInit {
 
     this.reportsCurrentYear.filter(
       data => {
-        if (date.getDate() === data.reportedAt.toDate().getDate()) {
+        if (date.toDateString() === data.reportedAt.toDate().toDateString()) {
           reports += 1;
         }
       }
