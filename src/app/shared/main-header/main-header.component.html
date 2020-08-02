@@ -1,17 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/" attr.aria-label="{{'shared.main-header.home' | translate}}">
-    <img src="../../../assets/static/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="logo" loading="lazy">
+    <img src="../../../assets/static/images/logo.png"
+         width="30" height="30" class="d-inline-block align-top"
+         alt="logo" loading="lazy">
     {{appTitle}}
     <span class="badge badge-pill badge-danger beta">Beta</span>
     <span *ngIf="!online" class="badge badge-pill badge-danger beta">
       {{ 'shared.main-header.offline' | translate }}
     </span>
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+  <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
         <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
