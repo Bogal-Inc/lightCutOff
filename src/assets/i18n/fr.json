@@ -20,8 +20,21 @@
     "about": {
       "title": "À propos"
     },
+    "team": {
+      "title": "Équipe",
+      "developer": "Développeur",
+      "founder": "fondateur",
+      "marketing": "marketing"
+    },
     "whatwedo": {
-      "title": "Que faisons nous"
+      "title": "Que faisons nous",
+      "collect_data": "Collected de données",
+      "local_cut_off": "Localiser les coupures d'électricité",
+      "charts_data": "Statistiques sur les données",
+      "users_notifications": "Notifier les utilisateurs"
+    },
+    "contactus": {
+      "title": "Contactez-nous"
     }
   },
   "main": {

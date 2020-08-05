@@ -2,7 +2,7 @@
   background-color: var(--white);
 
   &__section-header {
-    background: center/contain no-repeat url("../../../../assets/static/images/background_home_section_1.jpg");
+    background: center/contain no-repeat url("../../../../assets/static/images/home/background_home_section_1.jpg");
     background-size: cover;
 
     &__body {
@@ -18,12 +18,25 @@
   }
 
   &__section-about {
-    min-height: 50vh;
+    padding-top: 3%;
+  }
+
+  &__section-contactus {
+    background: right center no-repeat url("../../../../assets/static/images/home/bg2.svg");
+  }
+
+  &__section-whatwedo, &__section-team, &__section-contactus {
+    padding-top: 3%;
   }
 }
 
 .section_1 {
   height: 900px;
+}
+
+.box-shadow {
+  padding: 10px;
+  box-shadow: 5px 10px 8px 10px #888888;
 }
 
 @media (max-width: 575px){

@@ -1,5 +1,5 @@
-<div class="home">
-  <section class="position-relative home__section-header">
+<div class="pb-5 home">
+  <section class="mb-5 position-relative home__section-header">
     <div class="home__section-header__body">
       <div class="d-flex align-items-center justify-content-center home__section-header__body__logo section_1">
         <div class="text-center">
@@ -14,27 +14,128 @@
     </div>
   </section>
 
-  <section class="home__section-about">
-    <div class="pt-5 home__section-about__body w-100 h-100">
+<!-- about us section-->
+  <section class="mb-lg-5 home__section-about">
+    <div class="home__section-about__body w-100 h-100">
       <div class="d-flex align-items-center justify-content-center w-100 h-100">
-        <div class="w-50">
+        <div class="container">
           <h2 class="mb-5 text-center">{{'core.about.title' | translate}}</h2>
-          <div>
-            <p class="text-justify">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-              into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-              release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-              software like Aldus PageMaker including versions of Lorem Ipsum
-            </p>
+          <div class="row">
+            <div class="col-md-3">
+              <img src="../../../../assets/static/images/home/aboutus.svg" class="rounded w-100" alt="...">
+            </div>
+            <div class="col-md-9">
+              <p class="text-justify">
+                Le projet <b>lightCutOff</b> vise à aider à faire un état des lieux de
+                la situation au sujet de la fourniture d'énergie électrique sur l'ensemble du territoire national du
+                Cameroun. Ceci à des fins de permettre à des tiers d'exploiter ces données dans des cadres particuliers
+                comme la recherche ou aider à la decision d'emmenager ou non à une place.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="home__section-footer"></section>
+<!--  what we do section-->
+  <section class="mb-lg-5 home__section-whatwedo">
+    <div class="home__section-whatwedo__body w-100 h-100">
+      <h2 class="mb-5 text-center">{{'core.whatwedo.title' | translate}}</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 text-center">
+            <div class=" pb-4">
+              <img src="../../../../assets/static/images/home/data_collect.svg"
+                   class="rounded w-100" alt="{{'core.whatwedo.collect_data' | translate}}">
+            </div>
+            <h4>{{'core.whatwedo.collect_data' | translate}}</h4>
+          </div>
+          <div class="col-md-3 text-center">
+            <div class="text-center pb-4">
+              <img src="../../../../assets/static/images/home/map.svg"
+                   class="rounded w-100" alt="{{'core.whatwedo.local_cut_off' | translate}}">
+            </div>
+            <h4>{{'core.whatwedo.local_cut_off' | translate}}</h4>
+          </div>
+          <div class="col-md-3 text-center">
+            <div class="text-center pb-4">
+              <img src="../../../../assets/static/images/home/grahic_chart.svg"
+                   class="rounded w-100" alt="{{'core.whatwedo.charts_data' | translate}}">
+            </div>
+            <h4>{{'core.whatwedo.charts_data' | translate}}</h4>
+          </div>
+          <div class="col-md-3 text-center">
+            <div class="text-center pb-4">
+              <img src="../../../../assets/static/images/home/notification.svg"
+                   class="rounded w-100" alt="{{'core.whatwedo.users_notifications' | translate}}">
+            </div>
+            <h4>{{'core.whatwedo.users_notifications' | translate}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!--  team section-->
+  <section class="mb-lg-5 home__section-team">
+    <div class="home__section-team__body w-100 h-100">
+      <h2 class="mb-5 text-center">{{'core.team.title' | translate}}</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <div class=" pb-4">
+              <img src="../../../../assets/static/images/home/unknow_user.png"
+                   class="rounded w-100" alt="{{'core.whatwedo.collect_data' | translate}}">
+            </div>
+            <div>
+              <h4>Kouagnia Willy</h4>
+              <i>{{'core.team.developer' | translate}}, {{'core.team.founder' | translate}}</i>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="text-center pb-4">
+              <img src="../../../../assets/static/images/home/unknow_user.png"
+                   class="rounded w-100" alt="{{'core.whatwedo.local_cut_off' | translate}}">
+            </div>
+            <div>
+              <h4>Jaures Tchapet</h4>
+              <i>{{'core.team.developer' | translate}}</i>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="text-center pb-4">
+              <img src="../../../../assets/static/images/home/unknow_user.png"
+                   class="rounded w-100" alt="{{'core.whatwedo.charts_data' | translate}}">
+            </div>
+            <div>
+              <h4>Tchanang Landry</h4>
+              <i>{{'core.team.developer' | translate}}, {{'core.team.marketing' | translate}}</i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact us section-->
+  <section class="mb-lg-5 home__section-contactus">
+    <div class="home__section-contactus__body w-100 h-100">
+      <div class="d-flex align-items-center justify-content-center w-100 h-100">
+        <div class="container">
+          <h2 class="mb-5 text-center">{{'core.contactus.title' | translate}}</h2>
+          <div class="row">
+            <div class="col-md-3">
+              <img src="../../../../assets/static/images/home/contact_us.svg" class="rounded w-100" alt="...">
+            </div>
+            <div class="col-md-9">
+              <app-contact-us></app-contact-us>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <ng-template #content let-modal>
