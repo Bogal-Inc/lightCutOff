@@ -1,10 +1,10 @@
 <div class="home">
-  <section class="home__section-header">
+  <section class="position-relative home__section-header">
     <div class="home__section-header__body">
-      <div class="d-flex align-items-center justify-content-center w-100 h-100 home__section-header__body__logo">
+      <div class="d-flex align-items-center home__section-header__body__logo section_1">
         <div class="text-center">
           <img src="../../../../assets/static/images/logo.png" alt="logo" class="mb-3">
-          <h1 class="mb-3 display-1">LIGHTCUTOFF</h1>
+          <h1 class="mb-3 display-1 font-size-title">LIGHTCUTOFF</h1>
           <button class="mb-3 btn btn-success" (click)="toggleVideo()">
             <fa-icon [icon]="faPlay"></fa-icon>
             <span *ngIf="!showVideo"> {{'core.btn_show_video' | translate}}</span>
@@ -21,7 +21,7 @@
   </section>
 
   <section class="home__section-about">
-    <div class="pt-5 home__section-about__body">
+    <div class="pt-5 home__section-about__body w-100 h-100">
       <div class="d-flex align-items-center justify-content-center w-100 h-100">
         <div class="w-50">
           <h2 class="mb-5 text-center">{{'core.about.title' | translate}}</h2>
@@ -36,6 +36,13 @@
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home__section-whatwedo">
+    <div class="pt-5 home__section-about__body w-100 h-100">
+      <div class="d-flex align-items-center justify-content-center w-100 h-100">
       </div>
     </div>
   </section>
