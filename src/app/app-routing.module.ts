@@ -9,6 +9,14 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     loadChildren: () =>
+      import('./main/general/general.module').then(
+        m => m.GeneralModule
+      ),
+  },
+  {
+    path: '',
+    component: MainLayoutComponent,
+    loadChildren: () =>
       import('./main/map/map.module').then(
         m => m.MapModule
       ),
@@ -28,15 +36,7 @@ const routes: Routes = [
       import('./main/report/report.module').then(
         m => m.ReportModule
       ),
-  },
-  {
-    path: '',
-    component: MainLayoutComponent,
-    loadChildren: () =>
-      import('./main/general/general.module').then(
-        m => m.GeneralModule
-      ),
-  },
+  }
 ];
 
 @NgModule({

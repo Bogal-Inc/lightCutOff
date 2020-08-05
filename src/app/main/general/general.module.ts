@@ -5,10 +5,11 @@ import { GeneralRoutingModule } from './general-routing.module';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TutoComponent } from './tuto/tuto.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
-  declarations: [AboutUsComponent, TutoComponent],
+  declarations: [AboutUsComponent, TutoComponent, HomeComponent],
   imports: [
     CommonModule,
     GeneralRoutingModule,
