@@ -39,6 +39,10 @@
   box-shadow: 5px 10px 8px 10px #888888;
 }
 
+#modal-video {
+  background: center/contain no-repeat url("../../../../assets/static/images/loading.svg");
+}
+
 @media (max-width: 575px){
   .section_1 {
     height: 500px;
