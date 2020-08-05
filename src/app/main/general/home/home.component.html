@@ -1,0 +1,22 @@
+<div class="home">
+  <section class="home__section-header">
+    <div class="home__section-header__body">
+      <div class="d-flex align-items-center justify-content-center w-100 h-100 home__section-header__body__logo">
+        <div class="text-center">
+          <img src="../../../../assets/static/images/logo.png" alt="logo" class="mb-3">
+          <h1 class="mb-3 display-1">LIGHTCUTOFF</h1>
+          <button class="mb-3 btn btn-success" (click)="toggleVideo()">
+            <fa-icon [icon]="faPlay"></fa-icon>
+            <span *ngIf="!showVideo"> {{'core.btn_show_video' | translate}}</span>
+            <span *ngIf="showVideo"> {{'core.btn_close_video' | translate}}</span>
+          </button>
+          <div class="embed-responsive embed-responsive-4by3" *ngIf="showVideo">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="home__section-service"></section>
+  <section class="home__section-footer"></section>
+</div>

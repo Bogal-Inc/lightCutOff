@@ -15,6 +15,10 @@
     "november": "Novembre",
     "december": "Decembre"
   },
+  "core": {
+    "btn_show_video": "Regarder notre video introductive",
+    "btn_close_video": "Fermer video"
+  },
   "main": {
     "map-view": {
       "error_geolocalize_not_work": "Le service de geolocalisation ne fonctionne pas",
