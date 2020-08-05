@@ -1,0 +1,33 @@
+<div class="contact">
+  <form [formGroup]="contactUsForm" (ngSubmit)="onSendMail()">
+    <div class="form-group">
+      <label for="email">* {{ 'shared.main-footer.modal.email' | translate}}:</label>
+      <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp"
+             [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">{{ 'shared.main-footer.modal.email_required' | translate}}</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="subject">* {{ 'shared.main-footer.modal.subject' | translate}}:</label>
+      <input type="text" class="form-control" id="subject" formControlName="subject" aria-describedby="emailHelp"
+             [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
+      <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
+        <div *ngIf="f.subject.errors.required">{{ 'shared.main-footer.modal.subject_required' | translate}}</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="body">* {{ 'shared.main-footer.modal.message' | translate}}:</label>
+      <textarea type="text" class="form-control" id="body" formControlName="body" aria-describedby="emailHelp"
+                [ngClass]="{ 'is-invalid': submitted && f.body.errors }"></textarea>
+      <div *ngIf="submitted && f.body.errors" class="invalid-feedback">
+        <div *ngIf="f.body.errors.required">{{ 'shared.main-footer.modal.message_required' | translate}}</div>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-outline-primary" (click)="onSendMail()" [disabled]="submitted">
+      {{ 'shared.main-footer.modal.send' | translate }}
+    </button>
+
+  </form>
+</div>

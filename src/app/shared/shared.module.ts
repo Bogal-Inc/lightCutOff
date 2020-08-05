@@ -12,6 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AdminNavComponent } from './admin-nav/admin-nav.component';
     LoadingComponent,
     TimestampPipe,
     AdminNavComponent,
+    ContactUsComponent,
   ],
   imports: [
     OwlDateTimeModule,
@@ -33,23 +35,24 @@ import { AdminNavComponent } from './admin-nav/admin-nav.component';
     FontAwesomeModule,
     NgbModule
   ],
-  exports: [
-    MainFooterComponent,
-    MainHeaderComponent,
-    LoadingComponent,
-    MapLegendComponent,
+    exports: [
+        MainFooterComponent,
+        MainHeaderComponent,
+        LoadingComponent,
+        MapLegendComponent,
 
-    TimestampPipe,
+        TimestampPipe,
 
-    ReactiveFormsModule,
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
-    FormsModule,
-    TranslateModule,
-    FontAwesomeModule,
-    NgbModule,
-    AdminNavComponent
-  ],
+        ReactiveFormsModule,
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule,
+        FormsModule,
+        TranslateModule,
+        FontAwesomeModule,
+        NgbModule,
+        AdminNavComponent,
+        ContactUsComponent
+    ],
   providers: [
     // use french locale
     {provide: OWL_DATE_TIME_LOCALE, useValue: 'fr'},
