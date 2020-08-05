@@ -17,7 +17,10 @@
   },
   "core": {
     "btn_show_video": "Regarder notre video introductive",
-    "btn_close_video": "Fermer video"
+    "btn_close_video": "Fermer video",
+    "about": {
+      "title": "À propos"
+    }
   },
   "main": {
     "map-view": {

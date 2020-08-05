@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
 import {faPlay} from '@fortawesome/free-solid-svg-icons';
 

@@ -11,12 +11,34 @@
             <span *ngIf="showVideo"> {{'core.btn_close_video' | translate}}</span>
           </button>
           <div class="embed-responsive embed-responsive-4by3" *ngIf="showVideo">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+            <iframe class="embed-responsive-item"
+                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+                    allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="home__section-service"></section>
+
+  <section class="home__section-about">
+    <div class="pt-5 home__section-about__body">
+      <div class="d-flex align-items-center justify-content-center w-100 h-100">
+        <div class="w-50">
+          <h2 class="mb-5 text-center">{{'core.about.title' | translate}}</h2>
+          <div>
+            <p class="text-justify">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+              into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+              release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+              software like Aldus PageMaker including versions of Lorem Ipsum
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="home__section-footer"></section>
 </div>
