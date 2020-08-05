@@ -1,15 +1,9 @@
-.nav {
-  position: fixed;
-  width: 100%;
-}
-
 .home {
   background-color: var(--white);
 
   &__section-header {
     background: center/contain no-repeat url("../../../../assets/static/images/background_home_section_1.jpg");
     background-size: cover;
-    margin-top: -1;
 
     &__body {
       position: relative;
@@ -19,11 +13,6 @@
       &__logo {
         background-color: rgba(0, 0, 0, 0.5);
         color: var(--white);
-
-        div {
-          margin-left: auto;
-          margin-right: auto;
-        }
       }
     }
   }
@@ -43,6 +32,6 @@
   }
 
   .font-size-title {
-    font-size: 3em;
+    font-size: 2em;
   }
 }

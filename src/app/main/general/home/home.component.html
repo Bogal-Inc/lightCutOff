@@ -1,20 +1,14 @@
 <div class="home">
   <section class="position-relative home__section-header">
     <div class="home__section-header__body">
-      <div class="d-flex align-items-center home__section-header__body__logo section_1">
+      <div class="d-flex align-items-center justify-content-center home__section-header__body__logo section_1">
         <div class="text-center">
-          <img src="../../../../assets/static/images/logo.png" alt="logo" class="mb-3">
+          <img src="../../../../assets/static/images/logo.png" alt="lightcutoff logo" class="mb-3">
           <h1 class="mb-3 display-1 font-size-title">LIGHTCUTOFF</h1>
-          <button class="mb-3 btn btn-success" (click)="toggleVideo()">
+          <button class="mb-3 btn btn-success" (click)="openModal(content)">
             <fa-icon [icon]="faPlay"></fa-icon>
-            <span *ngIf="!showVideo"> {{'core.btn_show_video' | translate}}</span>
-            <span *ngIf="showVideo"> {{'core.btn_close_video' | translate}}</span>
+            {{'core.btn_show_video' | translate}}
           </button>
-          <div class="embed-responsive embed-responsive-4by3" *ngIf="showVideo">
-            <iframe class="embed-responsive-item"
-                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
-                    allowfullscreen></iframe>
-          </div>
         </div>
       </div>
     </div>
@@ -40,12 +34,13 @@
     </div>
   </section>
 
-  <section class="home__section-whatwedo">
-    <div class="pt-5 home__section-about__body w-100 h-100">
-      <div class="d-flex align-items-center justify-content-center w-100 h-100">
-      </div>
-    </div>
-  </section>
-
   <section class="home__section-footer"></section>
 </div>
+
+<ng-template #content let-modal>
+  <div class="embed-responsive embed-responsive-4by3">
+    <iframe class="embed-responsive-item"
+            src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+            allowfullscreen></iframe>
+  </div>
+</ng-template>
