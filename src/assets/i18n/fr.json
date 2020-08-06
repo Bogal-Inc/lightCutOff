@@ -103,7 +103,8 @@
     },
     "admin-nav": {
       "dashboard": "Tableau",
-      "reports": "Rapports"
+      "reports": "Rapports",
+      "menu": "Menu"
     },
     "main-footer": {
       "contactus": "Contactez-nous",

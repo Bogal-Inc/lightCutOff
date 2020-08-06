@@ -31,7 +31,7 @@ export class MainHeaderComponent implements OnInit {
 
     // fixed header or not
     const url = this.router.url;
-    this.fixedTop = (url.split('/')[1] === '');
+    this.fixedTop = (url.split('/')[1] === '') || (url.split('/')[1] === 'dashboard');
   }
 
   isOnlineStatus() {

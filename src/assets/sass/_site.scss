@@ -9,14 +9,9 @@ body {
   background-color: var(--dark);
 }
 
-app-container{
-  display:flex;
-  min-height:100vh;
-  flex-direction:column;
-  margin:0;
-}
-
 .main-admin{
   min-height: 85vh;
+  padding-top: 3%;
+  padding-bottom: 5%;
   background-color: var(--white);
 }

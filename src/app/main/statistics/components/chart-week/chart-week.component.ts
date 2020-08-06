@@ -83,8 +83,9 @@ export class ChartWeekComponent implements OnInit {
         reports.push(this.getDayData(date, close));
       }
     );
+
     return {
-      label: close ? 'Report close' : 'Report open',
+      label: close ? 'Report close' : 'Report in progress',
       data: reports,
       backgroundColor: this.backgroundColor[colorIndex],
       borderColor: this.borderColor[colorIndex],
