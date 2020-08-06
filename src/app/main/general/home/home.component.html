@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center justify-content-center home__section-header__body__logo section_1">
         <div class="text-center">
           <img src="../../../../assets/static/images/logo.png" alt="{{ projectTitle }} logo" class="mb-3">
-          <h1 class="mb-3 display-1 font-size-title"><b>{{ projectTitle }}</b></h1>
+          <h1 class="mb-3 display-1 font-size-title"><b>{{ projectTitle | uppercase }}</b></h1>
           <button class="mb-3 btn btn-success" (click)="openModal(content)">
             <fa-icon [icon]="faPlay"></fa-icon>
             {{'core.btn_show_video' | translate}}
