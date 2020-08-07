@@ -1,6 +1,14 @@
 .home {
   background-color: var(--white);
 
+  .home__section {
+    margin-bottom: 100px;
+  }
+
+  &__section-whatwedo {
+    margin-bottom: 120px !important;
+  }
+
   &__section-header {
     background: center/contain no-repeat url("../../../../assets/static/images/home/background_home_section_1.jpg");
     background-size: cover;
@@ -17,18 +25,12 @@
     }
   }
 
-  &__section-about {
-    padding-top: 3%;
-  }
-
   &__section-contactus {
     background: right center no-repeat url("../../../../assets/static/images/home/bg2.svg");
   }
-
-  &__section-whatwedo, &__section-team, &__section-contactus {
-    padding-top: 3%;
-  }
 }
+
+
 
 .section_1 {
   height: 1000px;

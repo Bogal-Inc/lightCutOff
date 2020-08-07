@@ -16,25 +16,35 @@
     "december": "Decembre"
   },
   "core": {
-    "btn_show_video": "Tout savoir du projet",
-    "about": {
-      "title": "À propos"
-    },
-    "team": {
-      "title": "Équipe",
-      "developer": "Développeur",
-      "founder": "fondateur",
-      "marketing": "marketing"
-    },
-    "whatwedo": {
-      "title": "Que faisons nous",
-      "collect_data": "Collecter des données",
-      "local_cut_off": "Localiser les coupures d'électricité",
-      "charts_data": "Statistiques sur les données",
-      "users_notifications": "Notifier les utilisateurs"
-    },
-    "contactus": {
-      "title": "Contactez-nous"
+    "home": {
+      "btn_show_video": "Tout savoir du projet",
+      "about": {
+        "title": "À propos",
+        "content": "Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux de la situation au sujet de la fourniture d'énergie électrique sur l'ensemble du territoire national dû Cameroun. Ceci à des fins de permettre à des tiers d'exploiter ces données dans des cadres particuliers comme la recherche ou aider à la décision d'emménager ou non à une place.",
+        "btn_next": "Allez dans à propos"
+      },
+      "app_example": {
+        "title": "Quelques exemples d'application",
+        "research": "La Recherche",
+        "deplace": "Se déplacer pour travailler dans une zone où il y a pas de coupure",
+        "to_move_out": "Habiter une zone à faible fréquence de coupure"
+      },
+      "team": {
+        "title": "Équipe",
+        "developer": "Développeur",
+        "founder": "fondateur",
+        "marketing": "marketing"
+      },
+      "whatwedo": {
+        "title": "Que faisons nous",
+        "collect_data": "Collecter des données",
+        "local_cut_off": "Localiser les coupures d'électricité",
+        "charts_data": "Statistiques sur les données",
+        "users_notifications": "Notifier les utilisateurs"
+      },
+      "contactus": {
+        "title": "Contactez-nous"
+      }
     }
   },
   "main": {

@@ -1,5 +1,5 @@
 <div class="pb-5 home">
-  <section class="mb-5 position-relative home__section-header">
+  <section class="home__section position-relative home__section-header">
     <div class="home__section-header__body">
       <div class="d-flex align-items-center justify-content-center home__section-header__body__logo section_1">
         <div class="text-center">
@@ -7,7 +7,7 @@
           <h1 class="mb-3 display-1 font-size-title"><b>{{ projectTitle | uppercase }}</b></h1>
           <button class="mb-3 btn btn-success" (click)="openModal(content)">
             <fa-icon [icon]="faPlay"></fa-icon>
-            {{'core.btn_show_video' | translate}}
+            {{'core.home.btn_show_video' | translate}}
           </button>
         </div>
       </div>
@@ -15,22 +15,25 @@
   </section>
 
 <!-- about us section-->
-  <section class="mb-lg-5 home__section-about">
+  <section class="home__section home__section-about">
     <div class="home__section-about__body w-100 h-100">
       <div class="d-flex align-items-center justify-content-center w-100 h-100">
         <div class="container">
-          <h2 class="mb-5 text-center">{{'core.about.title' | translate}}</h2>
+          <h1 class="mb-5 text-center">{{'core.home.about.title' | translate}}</h1>
           <div class="row">
             <div class="col-md-3">
               <img src="../../../../assets/static/images/home/aboutus.svg" class="rounded w-100" alt="aboutus logo">
             </div>
             <div class="col-md-9">
-              <p class="text-justify">
-                Le projet <b>{{ projectTitle }}</b> vise à aider à faire un état des lieux de la situation au sujet de la fourniture
-                d'énergie électrique sur l'ensemble du territoire national dû Cameroun. Ceci à des fins de permettre
-                à des tiers d'exploiter ces données dans des cadres particuliers comme la recherche ou aider à la
-                décision d'emménager ou non à une place.
-              </p>
+              <div>
+                <p class="text-justify"
+                   [innerHTML]="'core.home.about.content' | translate: { projectTitle: projectTitle }"></p>
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-outline-info" routerLink="/aboutus">
+                  {{'core.home.about.btn_next' | translate}}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -39,38 +42,70 @@
   </section>
 
 <!--  what we do section-->
-  <section class="mb-lg-5 home__section-whatwedo">
+  <section class="home__section home__section-whatwedo">
     <div class="home__section-whatwedo__body w-100 h-100">
-      <h2 class="mb-5 text-center">{{'core.whatwedo.title' | translate}}</h2>
+      <h1 class="mb-5 text-center">{{'core.home.whatwedo.title' | translate}}</h1>
       <div class="container">
         <div class="row">
           <div class="col-md-3 text-center">
             <div class=" pb-4">
               <img src="../../../../assets/static/images/home/data_collect.svg"
-                   class="rounded w-100" alt="{{'core.whatwedo.collect_data' | translate}}">
+                   class="rounded w-100" alt="{{'core.home.whatwedo.collect_data' | translate}} logo">
             </div>
-            <h4>{{'core.whatwedo.collect_data' | translate}}</h4>
+            <h4>{{'core.home.whatwedo.collect_data' | translate}}</h4>
           </div>
           <div class="col-md-3 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/map.svg"
-                   class="rounded w-100" alt="{{'core.whatwedo.local_cut_off' | translate}}">
+                   class="rounded w-100" alt="{{'core.home.whatwedo.local_cut_off' | translate}} logo">
             </div>
-            <h4>{{'core.whatwedo.local_cut_off' | translate}}</h4>
+            <h4>{{'core.home.whatwedo.local_cut_off' | translate}}</h4>
           </div>
           <div class="col-md-3 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/grahic_chart.svg"
-                   class="rounded w-100" alt="{{'core.whatwedo.charts_data' | translate}}">
+                   class="rounded w-100" alt="{{'core.home.whatwedo.charts_data' | translate}} logo">
             </div>
-            <h4>{{'core.whatwedo.charts_data' | translate}}</h4>
+            <h4>{{'core.home.whatwedo.charts_data' | translate}}</h4>
           </div>
           <div class="col-md-3 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/notification.svg"
-                   class="rounded w-100" alt="{{'core.whatwedo.users_notifications' | translate}}">
+                   class="rounded w-100" alt="{{'core.home.whatwedo.users_notifications' | translate}} logo">
             </div>
-            <h4>{{'core.whatwedo.users_notifications' | translate}}</h4>
+            <h4>{{'core.home.whatwedo.users_notifications' | translate}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--  Applications example -->
+  <section class="home__section home__section-example">
+    <div class="home__section-whatwedo__body w-100 h-100">
+      <h1 class="mb-5 text-center">{{'core.home.app_example.title' | translate}}</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <div class=" pb-4">
+              <img src="../../../../assets/static/images/home/research.svg"
+                   class="rounded w-100" alt="{{'core.home.app_example.research' | translate}} logo">
+            </div>
+            <h4>{{'core.home.app_example.research' | translate}}</h4>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="text-center pb-4">
+              <img src="../../../../assets/static/images/home/work.svg"
+                   class="rounded w-100" alt="{{'core.home.app_example.deplace' | translate}} logo">
+            </div>
+            <h4>{{'core.home.app_example.deplace' | translate}}</h4>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="text-center pb-4">
+              <img src="../../../../assets/static/images/home/demenage.svg"
+                   class="rounded w-100" alt="{{'core.home.app_example.to_move_out' | translate}} logo">
+            </div>
+            <h4>{{'core.home.app_example.to_move_out' | translate}}</h4>
           </div>
         </div>
       </div>
@@ -78,39 +113,39 @@
   </section>
 
 <!--  team section-->
-  <section class="mb-lg-5 home__section-team">
+  <section class="home__section home__section-team">
     <div class="home__section-team__body w-100 h-100">
-      <h2 class="mb-5 text-center">{{'core.team.title' | translate}}</h2>
+      <h1 class="mb-5 text-center">{{'core.home.team.title' | translate}}</h1>
       <div class="container">
         <div class="row">
           <div class="col-md-4 text-center">
             <div class=" pb-4">
               <img src="../../../../assets/static/images/home/unknow_user.png"
-                   class="rounded w-100" alt="{{'core.whatwedo.collect_data' | translate}}">
+                   class="rounded w-100" alt="{{'core.home.whatwedo.collect_data' | translate}}">
             </div>
             <div>
               <h4>Kouagnia Willy</h4>
-              <i>{{'core.team.developer' | translate}}, {{'core.team.founder' | translate}}</i>
+              <i>{{'core.team.developer' | translate}}, {{'core.home.team.founder' | translate}}</i>
             </div>
           </div>
           <div class="col-md-4 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/unknow_user.png"
-                   class="rounded w-100" alt="{{'core.whatwedo.local_cut_off' | translate}}">
+                   class="rounded w-100" alt="{{'core.home.whatwedo.local_cut_off' | translate}}">
             </div>
             <div>
               <h4>Jaures Tchapet</h4>
-              <i>{{'core.team.developer' | translate}}</i>
+              <i>{{'core.home.team.developer' | translate}}</i>
             </div>
           </div>
           <div class="col-md-4 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/unknow_user.png"
-                   class="rounded w-100" alt="{{'core.whatwedo.charts_data' | translate}}">
+                   class="rounded w-100" alt="{{'core.home.whatwedo.charts_data' | translate}}">
             </div>
             <div>
               <h4>Tchanang Landry</h4>
-              <i>{{'core.team.developer' | translate}}, {{'core.team.marketing' | translate}}</i>
+              <i>{{'core.home.team.developer' | translate}}, {{'core.home.team.marketing' | translate}}</i>
             </div>
           </div>
         </div>
@@ -119,11 +154,11 @@
   </section>
 
   <!-- contact us section-->
-  <section class="mb-lg-5 home__section-contactus">
+  <section class="home__section home__section-contactus">
     <div class="home__section-contactus__body w-100 h-100">
       <div class="d-flex align-items-center justify-content-center w-100 h-100">
         <div class="container">
-          <h2 class="mb-5 text-center">{{'core.contactus.title' | translate}}</h2>
+          <h1 class="mb-5 text-center">{{'core.home.contactus.title' | translate}}</h1>
           <div class="row">
             <div class="col-md-3">
               <img src="../../../../assets/static/images/home/contact_us.svg" class="rounded w-100" alt="contact us logo">
