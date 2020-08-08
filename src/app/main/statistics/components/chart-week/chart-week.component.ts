@@ -40,11 +40,25 @@ export class ChartWeekComponent implements OnInit {
     this.initChart();
   }
 
+  private last7Days(format = false) {
+    const result = [];
+    for (let i = 0; i < 7; i++) {
+      const d = new Date();
+      d.setDate(d.getDate() - i);
+      if (format) {
+        result.push(this.dateFormat.format(d));
+      } else {
+        result.push(d);
+      }
+    }
+    return result;
+  }
+
   private initChart() {
     this.year = new Date().getFullYear();
     this.chartSettings = {
       barChartData: {
-        labels: this.getCurrentWeekDates(true),
+        labels: this.last7Days(true).reverse(),
         datasets: [
           this.initDataOfWeek(true),
           this.initDataOfWeek(false)
@@ -58,23 +72,8 @@ export class ChartWeekComponent implements OnInit {
     };
   }
 
-  private getCurrentWeekDates(label = false): Date[]{
-    const curr = new Date();
-    const week = [];
-
-    for (let i = 1; i <= 7; i++) {
-      const first = curr.getDay() - curr.getDay() + i;
-      if (label) {
-        week.push(this.dateFormat.format(new Date(curr.setDate(first))));
-      } else {
-        week.push(new Date(curr.setDate(first)));
-      }
-    }
-    return week;
-  }
-
   private initDataOfWeek(close = true): any {
-    const daysOfWeek = this.getCurrentWeekDates();
+    const daysOfWeek = this.last7Days().reverse();
     const reports = [];
     const colorIndex = (close) ? 1 : 0;
 
