@@ -56,7 +56,8 @@
       "signalement_add": "Signalement ajouté",
       "signal_no_energy": "Signalez une coupure de lumière où vous vous trouvez",
       "map_no_load": "La map n'a pas pu être chargée. Veillez vous assurez que vous etes bien connecté à internet",
-      "btn_add_report": "Ajouter un rapport"
+      "btn_add_report": "Ajouter un rapport",
+      "no_place": "Votre place n'a pas été trouvée"
     },
     "create-form-report": {
       "title": "Signalez une coupure",

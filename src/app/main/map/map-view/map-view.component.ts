@@ -163,11 +163,12 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         // for (let i = 0; i < results.length; i++) {
         //   const location = results[0].geometry.location;
         // }
+        console.log(results);
         this.map.setCenter(results[0].geometry.location);
         this.map.setZoom(14);
       }else {
         log.error('your place not found');
-        this.toastrService.error('main.map-view.no_place');
+        this.toastrService.error(this.translateService.instant('main.map-view.no_place'));
       }
     });
   }
@@ -255,12 +256,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       center: this.position,
       zoom: 12,
       restriction: {
-        latLngBounds: {
-          east: Const.coordsCameroon.east,
-          north: Const.coordsCameroon.north,
-          south: Const.coordsCameroon.south,
-          west: Const.coordsCameroon.west
-        },
+        latLngBounds: Const.coordsCameroon,
         // strictBounds: true
       },
       disableDoubleClickZoom: true,

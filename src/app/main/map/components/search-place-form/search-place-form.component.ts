@@ -67,6 +67,15 @@ export class SearchPlaceFormComponent implements OnInit {
     });
   }
 
+  initAutocompletePlace() {
+    new google.maps.places.Autocomplete(
+      this.inputSearch.nativeElement,
+      {
+        componentRestrictions: {country: 'cmr'}
+      }
+      ).getPlace();
+  }
+
   get f() { return this.searchPlaceForm.controls; }
 
   onSubmit() {
