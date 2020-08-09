@@ -20,7 +20,7 @@ import { Const } from 'src/environments/const';
 import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
 import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { Logger } from '@Services/logger.service';
-import { convertSecondsToDate, dayDiff } from '@Helpers/date.helper';
+import { dayDiff } from '@Helpers/date.helper';
 import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';
 import {MarkerRecovredReportComponent} from '../components/marker-recovred-report/marker-recovred-report.component';
 
@@ -300,7 +300,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
           if (report.recovredAt === null){
             reportsStarted.push(this.factoryOldMarkers(report));
           } else {
-            const dateREcovred = convertSecondsToDate(report.recovredAt.seconds);
+            const dateREcovred = report.recovredAt.toDate();
             if (dayDiff(dateREcovred, new Date()) <= 1) {
               reportsEnded.push(this.factoryOldMarkers(report));
             }

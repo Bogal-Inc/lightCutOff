@@ -17,12 +17,6 @@ export function dayDiff(dateOld, dateNew): number {
   return secondsNew - secondsOld;
 }
 
-export function convertSecondsToDate(seconds: number): Date {
-  const date = new Date(1970, 0, 1);
-  date.setSeconds(seconds);
-  return date;
-}
-
 export function fromDate(date: Date): firebase.firestore.Timestamp {
   return firebase.firestore.Timestamp.fromDate(date);
 }

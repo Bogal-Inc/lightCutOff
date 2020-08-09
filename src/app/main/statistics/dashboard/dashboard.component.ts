@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ReportService} from '@Services/report.service';
 import {Report} from '@Models/report.model';
-import {convertSecondsToDate} from '@Helpers/date.helper';
 import { faChartLine, faChartPie, faChartArea } from '@fortawesome/free-solid-svg-icons';
 import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
