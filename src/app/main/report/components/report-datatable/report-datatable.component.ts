@@ -69,7 +69,7 @@ export class ReportDatatableComponent implements OnInit {
     const now = new Date();
     this.reports$ = this.reportService.getReports({
       isDeleted: false,
-      datestart: new Date(now.getFullYear())
+      datestart: new Date(now.getFullYear() + '/1/1')
     });
   }
 }

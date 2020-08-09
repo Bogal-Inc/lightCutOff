@@ -159,11 +159,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
     service.findPlaceFromQuery(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        log.debug('your place found');
-        // for (let i = 0; i < results.length; i++) {
-        //   const location = results[0].geometry.location;
-        // }
-        console.log(results);
+        log.debug(results[0].geometry.location, 'place found');
         this.map.setCenter(results[0].geometry.location);
         this.map.setZoom(14);
       }else {

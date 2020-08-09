@@ -92,7 +92,7 @@
       "card_reports_current_month_title": "Rapports mensuel",
       "no_datatable": "Aucune donnée disponible pour cette année.",
       "chart_title": "Rapports crées pour l'année {year}",
-      "chart_title_week": "Rapports hebdomadaire"
+      "chart_title_week": "Rapports des 7 derniers jours"
     }
   },
   "shared": {

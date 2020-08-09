@@ -4,9 +4,7 @@
   <div class="container-fluid">
     <!--    card stats-->
     <div class="row d-flex justify-content-center mt-5">
-      <app-card class="col-xs-3 col-md-3" [card]="cardReportsAll"></app-card>
-      <app-card class="col-xs-3 col-md-3" [card]="card2ReportsCurrentYear"></app-card>
-      <app-card class="col-xs-3 col-md-3" [card]="cardReportsCurrentMonth"></app-card>
+      <app-card class="col-xs-3 col-md-3" *ngFor="let card of cards" [card]="card"></app-card>
     </div>
     <!--    data table -->
     <div class="row mt-5">
