@@ -341,8 +341,9 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       this.initOverInfoWindowMarker(currentMareker, content);
     } else {
       if (this.authService.getUser().id === report._createdBy.id){
-        content = this.createRecovredComponent(report);
-        this.initClickInfoWindow(currentMareker, content);
+        const info = this.initClickInfoWindow(currentMareker, content);
+        content = this.createRecovredComponent(report, info);
+        info.setContent(content);
       } else {
         content = this.createInfoReportComponent(report);
         this.initOverInfoWindowMarker(currentMareker, content);
@@ -352,7 +353,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     return currentMareker;
   }
 
-  private initClickInfoWindow(marker: google.maps.Marker, content: any): google.maps.InfoWindow {
+  private initClickInfoWindow(marker: google.maps.Marker, content = null): google.maps.InfoWindow {
     log.debug('init event click on marker');
     const infoWindow = new google.maps.InfoWindow({
       content
@@ -374,13 +375,16 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     mareker.addListener('mouseout', () => infoWindow.close());
   }
 
-  private createRecovredComponent(report: Report): any {
+  private createRecovredComponent(report: Report, info = null): any {
     log.debug('create recovred form component');
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MarkerRecovredReportComponent);
-
     const viewContainerRef = this.recovredFormReport;
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    (componentRef.instance as MarkerRecovredReportComponent).data = report;
+
+    (componentRef.instance as MarkerRecovredReportComponent).data = {
+      report,
+      markerCurrentInfoWindow: (info) ? info : this.markerCurrentInfoWindow
+    };
     componentRef.hostView.detectChanges();
     const { nativeElement } = componentRef.location;
 
@@ -390,9 +394,9 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private createInfoReportComponent(report: Report): any {
     log.debug('create info report component');
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MarkerDetailsComponent);
-
     const viewContainerRef = this.infosReport;
     const componentRef = viewContainerRef.createComponent(componentFactory);
+
     (componentRef.instance as MarkerDetailsComponent).data = report;
     componentRef.hostView.detectChanges();
     const { nativeElement } = componentRef.location;

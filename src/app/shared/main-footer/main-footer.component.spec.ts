@@ -25,8 +25,7 @@ describe('MainFooterComponent', () => {
         AngularFireDatabaseModule,
         HttpClientModule,
         TranslateModule.forRoot(),
-        ToastrModule.forRoot(),
-        TranslateModule.forRoot()
+        ToastrModule.forRoot()
       ],
       declarations: [ MainFooterComponent ]
     })

@@ -3,7 +3,8 @@ import {ToastrService} from 'ngx-toastr';
 import {Component, OnInit} from '@angular/core';
 import {compareDate} from '@Helpers/date.helper';
 import {BaseComponent} from '@Models/baseComponent.model';
-import {Report, ReportSatus} from '@Models/report.model';
+import {ReportSatus} from '@Models/report.model';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-update-form-report',
@@ -11,35 +12,40 @@ import {Report, ReportSatus} from '@Models/report.model';
   styleUrls: ['./marker-recovred-report.component.scss']
 })
 export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
-  data: Report;
+  data: any;
   datetime: any;
   min: Date;
   max: Date;
 
   constructor(
     private reportService: ReportService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {
-    this.min = (this.data) ? new Date(this.data.reportedAt.seconds * 1000) : new Date(2019, 12, 31);
+    this.min = (this.data.report) ?
+      new Date(this.data.report.reportedAt.seconds * 1000) :
+      new Date(2019, 12, 31);
     this.max = new Date();
     this.datetime = this.max;
   }
 
   onSubmitRecovred() {
-    if (!this.isDate(this.data.reportedAt)) {
-      this.toastrService.error('La date de fin d\'un signalement doit être plus récente que celle de création');
+    if (!this.isDate(this.data.report.reportedAt)) {
+      this.toastrService.error(this.translateService.instant('main.update-form-report.error_date_old'));
       return ;
     }
 
-    this.data.recovredAt = this.reportService.fromDate(new Date(this.datetime));
-    this.data._updatedAt = this.reportService.timestamp;
-    this.data.status = ReportSatus.RECOVRED;
+    this.data.report.recovredAt = this.reportService.fromDate(new Date(this.datetime));
+    this.data.report._updatedAt = this.reportService.timestamp;
+    this.data.report.status = ReportSatus.RECOVRED;
 
-    this.reportService.updateReport(this.data).then(
+    this.reportService.updateReport(this.data.report).then(
       () => {
-        this.toastrService.success('Merci', 'Signalement modifié');
+        this.toastrService.success(
+          this.translateService.instant('main.update-form-report.thanks'),
+          this.translateService.instant('main.update-form-report.success_recovred'));
       }
     );
   }
@@ -55,5 +61,9 @@ export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
       }
     }
     return true;
+  }
+
+  closeInfoRecovred() {
+    this.data.markerCurrentInfoWindow.close();
   }
 }

@@ -1,10 +1,10 @@
-<div class="recovred" *ngIf="data?.reportedAt; else elseReport">
-  <div *ngIf="!data?.recovredAt; else elseRecovred">
+<div class="recovred" *ngIf="data.report?.reportedAt; else elseReport">
+  <div *ngIf="!data.report?.recovredAt; else elseRecovred">
     <h5 class="text-center">{{'main.update-form-report.title' | translate}}</h5>
     <hr class="mb-4">
     <p>
       {{'main.update-form-report.signal_that' | translate}}
-      <b>{{data.reportedAt?.seconds | timestamp}}</b>
+      <b>{{data.report.reportedAt?.seconds | timestamp}}</b>
     </p>
     <p>{{'main.update-form-report.label' | translate}}</p>
     <div class="onSubmitRecovred()__form">
@@ -21,10 +21,15 @@
       </div>
       <div class="text-center">
         <button
-          class="btn btn-primary"
+          class="btn btn-success"
           type="submit"
           (click)="onSubmitRecovred()"
           [disabled]="!datetime">{{'main.update-form-report.btn_submit' | translate}}</button>
+        &nbsp; &nbsp; &nbsp;
+        <button
+          class="btn btn-outline-secondary"
+          (click)="closeInfoRecovred()"
+          [disabled]="!datetime">{{'main.update-form-report.close' | translate}}</button>
       </div>
     </div>
   </div>

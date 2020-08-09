@@ -64,15 +64,19 @@
       "warning_message": "Assurez-vous que vous êtes bien positionnez sur la map",
       "label_date": "Quant est-ce que vous n'avez plus eu d'énergie électrique?",
       "input_date_placeholder": "Date et heure de la coupure",
-      "button_submit": "Signalez"
+      "button_submit": "Signaler"
     },
     "update-form-report": {
       "title": "Signalez une fin de coupure",
       "signal_that": "Signalez le:",
       "label": "Quant est-ce que vous n'avez plus eu de lumière?",
-      "btn_submit": "Cloturer",
+      "btn_submit": "Signaler",
+      "close": "Fermer",
       "contribute_thanks": "Merci pour votre contribution.",
-      "error_load_form": "Une erreur est survenue. Il semblerait que certains éléments n'ont pas pu être chargées. Actualisé la page pour modifier votre signalement."
+      "success_recovred": "Coupure termineé",
+      "thanks": "Merci",
+      "error_load_form": "Une erreur est survenue. Il semblerait que certains éléments n'ont pas pu être chargées. Actualisé la page pour modifier votre signalement.",
+      "error_date_old": "La date de fin d'un signalement doit être plus récente que celle de création"
     },
     "search-place-form": {
       "placeholder": "Rechercher une ville, un quartier, une place",

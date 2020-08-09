@@ -39,6 +39,10 @@ describe('MarkerRecovredReportComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MarkerRecovredReportComponent);
     component = fixture.componentInstance;
+    component.data = {
+      report: null,
+      markerCurrentInfoWindow: null
+    };
     fixture.detectChanges();
   });
 
