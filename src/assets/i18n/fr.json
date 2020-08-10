@@ -57,7 +57,9 @@
       "signal_no_energy": "Signalez une coupure de lumière où vous vous trouvez",
       "map_no_load": "La map n'a pas pu être chargée. Veillez vous assurez que vous etes bien connecté à internet",
       "btn_add_report": "Ajouter un rapport",
-      "no_place": "Votre place n'a pas été trouvée"
+      "no_place": "Votre place n'a pas été trouvée",
+      "your_position": "Votre position",
+      "error_no_user": "Vous n'avez pas pu être identifié. Pour faire un signalement vous devez l'être."
     },
     "create-form-report": {
       "title": "Signalez une coupure",
@@ -83,6 +85,15 @@
       "btn_label": "Rechercher une place",
       "find_district": "Retrouver un quartier",
       "close": "Fermer"
+    },
+    "marker-details": {
+      "title": "Rapport",
+      "report_that": "Signalez le:",
+      "recovred_that":"Remis le:"
+    },
+    "main-footer": {
+      "message_send": "Message envoyé",
+      "error_message_send": "Votre message n'a pas été envoyé"
     }
   },
   "statistics": {
@@ -97,6 +108,26 @@
       "no_datatable": "Aucune donnée disponible pour cette année.",
       "chart_title": "Rapports crées pour l'année {year}",
       "chart_title_week": "Rapports des 7 derniers jours"
+    }
+  },
+  "report": {
+    "report-details": {
+      "title": "Rapport détails",
+      "report_that": "Signalez le:",
+      "recovred_that":"Remis le:",
+      "no_return": "Toujours pas revenue",
+      "report_places": "Details sur le lieu de signalement",
+      "longitude": "Longitude:",
+      "latitude": "Latitude:"
+    },
+    "report-details-mobile": {
+      "title": "Rapport détails",
+      "report_that": "Signalez le:",
+      "recovred_that":"Remis le:",
+      "no_return": "Toujours pas revenue",
+      "longitude": "Longitude:",
+      "latitude": "Latitude:",
+      "report_places": "Details sur le lieu de signalement"
     }
   },
   "shared": {

@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Logger } from '@Services/logger.service';
+import {TranslateService} from '@ngx-translate/core';
 
 const log = new Logger('loading.component');
 
@@ -31,6 +32,7 @@ export class MainFooterComponent implements OnInit, OnDestroy {
     private mailService: MailService,
     private toastService: ToastrService,
     private i18nService: I18nService,
+    private translateService: TranslateService,
     config: NgbModalConfig,
   ) {
     config.backdrop = 'static';
@@ -74,10 +76,10 @@ export class MainFooterComponent implements OnInit, OnDestroy {
       data => {
         if (data === 'Sended'){
             log.debug('send mail');
-            this.toastService.success('Message envoyé');
+            this.toastService.success(this.translateService.instant('main.main-footer.message_send'));
         } else {
           log.error('error send mail');
-          this.toastService.error('Votre message n\'a pas été envoyé');
+          this.toastService.error(this.translateService.instant('main.main-footer.error_message_send'));
         }
         this.submitted = false;
         this.contactUsForm.reset();

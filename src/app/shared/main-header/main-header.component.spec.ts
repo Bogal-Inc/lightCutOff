@@ -5,9 +5,6 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import {RouterTestingModule} from '@angular/router/testing';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {Router} from '@angular/router';
-import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 
 describe('MainHeaderComponent', () => {

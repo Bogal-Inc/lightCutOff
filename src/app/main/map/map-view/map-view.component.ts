@@ -281,7 +281,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
       this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, this.createReportFormElt.nativeElement);
     } else {
       log.debug('current user are not identifiert');
-      const content = 'Vous n\'avez pas pu être identifié. Pour faire un signalement vous devez l\'être.';
+      const content = this.translateService.instant('main.map-view.error_no_user');
       this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, content);
     }
   }
@@ -433,7 +433,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   private getUserMarkerOption() {
     return {
       position: this.position,
-      label: 'Votre position',
+      label: this.translateService.instant('main.map-view.your_position'),
       icon: {
         url: Const.markerColor.user
       },
