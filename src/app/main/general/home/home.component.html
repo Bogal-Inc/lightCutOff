@@ -5,9 +5,14 @@
         <div class="text-center">
           <img src="../../../../assets/static/images/logo.png" alt="{{ projectTitle }} logo" class="mb-3">
           <h1 class="mb-3 display-1 font-size-title"><b>{{ projectTitle | uppercase }}</b></h1>
-          <button class="mb-3 btn btn-success" (click)="openModal(content)">
+          <button class="mb-3 btn btn-lg btn-success" (click)="openModal(content)">
             <fa-icon [icon]="faPlay"></fa-icon>
-            {{'core.home.btn_show_video' | translate}}
+            {{'core.home.btn_show_video' | translate: { projectTitle: projectTitle } }}
+          </button>
+          &nbsp;&nbsp;&nbsp;
+          <button class="mb-3 btn btn-lg btn-success" routerLink="/map">
+            <fa-icon [icon]="faMapMarker"></fa-icon>
+            {{"core.home.btn_map" | translate}}
           </button>
         </div>
       </div>

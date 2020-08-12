@@ -17,7 +17,8 @@
   },
   "core": {
     "home": {
-      "btn_show_video": "Tout savoir du projet",
+      "btn_show_video": "Tout savoir de {projectTitle}",
+      "btn_map": "Aller sur notre carte",
       "about": {
         "title": "À propos",
         "content": "Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux de la situation au sujet de la fourniture d'énergie électrique sur l'ensemble du territoire national dû Cameroun. Ceci à des fins de permettre à des tiers d'exploiter ces données dans des cadres particuliers comme la recherche ou aider à la décision d'emménager ou non à une place.",

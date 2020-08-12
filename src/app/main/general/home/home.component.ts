@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
-import {faPlay} from '@fortawesome/free-solid-svg-icons';
+import {faPlay, faMapMarker} from '@fortawesome/free-solid-svg-icons';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Const } from 'src/environments/const';
 
@@ -15,6 +15,7 @@ const log = new Logger('home.component');
 export class HomeComponent implements OnInit {
   projectTitle = Const.app.title;
   faPlay = faPlay;
+  faMapMarker = faMapMarker;
   closeResult = '';
 
   constructor(
