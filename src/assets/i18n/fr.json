@@ -131,6 +131,20 @@
       "report_places": "Details sur le lieu de signalement"
     }
   },
+  "general": {
+    "aboutus": {
+      "title_page": "A propos",
+      "title": "Qui sommes nous?",
+      "slogan": "Voici tout à propos du projet",
+      "title_history": "La petite histoire",
+      "text_history_1": "l'histoire du projet <strong>{projectTitle}</strong> à débuté avec une des plus longues coupures d'électricité que j'ai connue depuis que je vis au Cameroun. Ca fait déjà quelques années que j'habite Yaoundé, et j'ai vécu une des expériences les plus perturbantes de ma vie à propos des coupures lumière. En effet, Nous n'avons pas eu de lumière pendant plusieurs jours. Ne vous y détromper pas, les coupures de lumière sont fréquentes dans ma ville (mon pays aussi) mais, pour moi, cela là était une première.",
+      "text_history_2": "Malheureusement pour moi, la coupure était très étendue et travaillant de la maison, je n'avais aucun moyen de savoir quelles zones étaient touchées ou non, j'ai perdu ainsi plusieurs jours de travail.",
+      "title_objectif": "Nos objectifs",
+      "text_obj_1": "Le projet <strong>{projectTitle}</strong> sur lequel nous travaillons, vise à aider à faire un état des lieux de la situation au sujet des coupures d'énergie électrique sur l'ensemble du territoire national. Ceci à des fins de permettre à des tiers d'exploiter ces données pour faire par exemple de la recherche, pour pouvoir se déplacer pour travailler, ou même trouver un logement en fonction des tendances de coupures.",
+      "text_obj_2": "Ainsi, le projet <strong>{projectTitle}</strong> permettra de donner aux populations des nformations sur la fourniture en énergie électrique dans le pays.",
+      "text_obj_3": "Nous avons grand espoir que le projet pourra aider un grand nombre de personnes dont l'activité est régie par l'absence ou non d'énergie électrique."
+    }
+  },
   "shared": {
     "loading": {
       "loading": "Chargement..."

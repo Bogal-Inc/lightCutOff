@@ -2,40 +2,27 @@
     <div class="container">
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-3">Qui sommes nous?</h1>
-          <p class="lead">Voici tout à propos du projet <strong>{{projectTitle}}</strong>.</p>
+          <h1 class="display-3">{{'general.aboutus.title_page' | translate}}</h1>
+          <p class="lead">{{'general.aboutus.slogan' | translate}} <strong>{{projectTitle}}</strong>.</p>
         </div>
       </div>
 
       <div class="row text-justify aboutus__content">
-        <h3 class="display-4">La petite histoire</h3>
-        <p class="lead">
-          l'histoire du projet <strong>{{projectTitle}}</strong> à débuté avec une des plus longues coupures
-          d'électricité que j'ai connue depuis que je vis au Cameroun. Ca fait déjà quelques années que j'habite Yaoundé,
-          et j'ai vécu une des expériences les plus perturbantes de ma vie à propos des coupures lumière. En effet,
-          Nous n'avons pas eu de lumière pendant plusieurs jours. Ne vous y détromper pas, les coupures de lumière
-          sont fréquentes dans ma ville (mon pays aussi) mais, pour moi, cela là était une première.
+        <h3 class="display-4">{{'general.aboutus.title_history' | translate}}</h3>
+        <p class="lead" [innerHTML] = "'general.aboutus.text_history_1' | translate: {projectTitle: projectTitle}">
         </p>
         <p class="lead">
-          Malheureusement pour moi, la coupure était très étendue et travaillant de la maison, je n'avais aucun moyen
-          de savoir quelles zones étaient touchées ou non, j'ai perdu ainsi plusieurs jours de travail.
+          {{'general.aboutus.text_history_2' | translate: {projectTitle: projectTitle} }}
         </p>
 
-        <h3 class="display-4">Nos objectifs</h3>
-        <p class="lead">
-          Le projet <strong>{{projectTitle}}</strong> sur lequel nous travaillons, vise à aider à faire un état des lieux
-          de la situation au sujet des coupures d'énergie électrique sur l'ensemble du territoire national. Ceci à
-          des fins de permettre à des tiers d'exploiter ces données pour faire par exemple de la recherche, pour pouvoir
-          se déplacer pour travailler, ou même trouver un logement en fonction des tendances de coupures.
+        <h3 class="display-4">{{'general.aboutus.title_objectif' | translate }}</h3>
+        <p class="lead" [innerHTML] = "'general.aboutus.text_obj_1' | translate: {projectTitle: projectTitle}">
         </p>
-        <p class="lead">
-          Ainsi, le projet <strong>{{projectTitle}}</strong> permettra de donner aux populations des
-          informations sur la fourniture en énergie électrique dans le pays.
+        <p class="lead" [innerHTML] = "'general.aboutus.text_obj_2' | translate: {projectTitle: projectTitle}">
         </p>
 
         <p class="lead">
-          Nous avons grand espoir que le projet pourra aider un grand nombre de personnes dont l'activité est régie
-          par l'absence ou non d'énergie électrique.
+          {{'general.aboutus.text_obj_3' | translate}}
         </p>
       </div>
     </div>
