@@ -5,7 +5,7 @@
         <div class="text-center">
           <img src="../../../../assets/static/images/logo.png" alt="{{ projectTitle }} logo" class="mb-3">
           <h1 class="mb-3 display-1 font-size-title"><b>{{ projectTitle | uppercase }}</b></h1>
-          <button class="mb-3 btn btn-lg btn-success" (click)="openModal(content)">
+          <button class="mb-3 btn btn-lg btn-dark" (click)="openModal(content)">
             <fa-icon [icon]="faPlay"></fa-icon>
             {{'core.home.btn_show_video' | translate: { projectTitle: projectTitle } }}
           </button>
@@ -130,7 +130,7 @@
             </div>
             <div>
               <h4>Kouagnia Willy</h4>
-              <i>{{'core.team.developer' | translate}}, {{'core.home.team.founder' | translate}}</i>
+              <i>{{'core.home.team.developer' | translate}}, {{'core.home.team.founder' | translate}}</i>
             </div>
           </div>
           <div class="col-md-4 text-center">
@@ -166,7 +166,8 @@
           <h1 class="mb-5 text-center">{{'core.home.contactus.title' | translate}}</h1>
           <div class="row">
             <div class="col-md-3">
-              <img src="../../../../assets/static/images/home/contact_us.svg" class="rounded w-100" alt="contact us logo">
+              <img src="../../../../assets/static/images/home/contact_us.svg"
+                   class="rounded w-100" alt="{{'core.home.contactus.title' | translate}} logo">
             </div>
             <div class="col-md-9">
               <app-contact-us></app-contact-us>
