@@ -3,8 +3,8 @@ import {Logger} from '@Services/logger.service';
 import {faPlay, faMapMarker} from '@fortawesome/free-solid-svg-icons';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Const } from 'src/environments/const';
-import {Title} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
+import {MetaService} from '@Services/meta.service';
 
 const log = new Logger('home.component');
 
@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private titleService: Title,
     private translateService: TranslateService,
+    private metaService: MetaService,
     config: NgbModalConfig
   ) {
     config.centered = true;
@@ -33,12 +33,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
 
-    this.titleService.setTitle(
-      this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page')
-    );
+    this.metaService.initMetatoHome('core.home.title_page');
   }
 
   openModal(content) {
     this.modalService.open(content);
   }
+
+
 }

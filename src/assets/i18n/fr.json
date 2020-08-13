@@ -151,6 +151,9 @@
       "text_obj_1": "Le projet <strong>{projectTitle}</strong> sur lequel nous travaillons, vise à aider à faire un état des lieux de la situation au sujet des coupures d'énergie électrique sur l'ensemble du territoire national. Ceci à des fins de permettre à des tiers d'exploiter ces données pour faire par exemple de la recherche, pour pouvoir se déplacer pour travailler, ou même trouver un logement en fonction des tendances de coupures.",
       "text_obj_2": "Ainsi, le projet <strong>{projectTitle}</strong> permettra de donner aux populations des nformations sur la fourniture en énergie électrique dans le pays.",
       "text_obj_3": "Nous avons grand espoir que le projet pourra aider un grand nombre de personnes dont l'activité est régie par l'absence ou non d'énergie électrique."
+    },
+    "tuto": {
+      "title_page": "Tutoriel, apprentissage de comment utiliser notre outil"
     }
   },
   "shared": {

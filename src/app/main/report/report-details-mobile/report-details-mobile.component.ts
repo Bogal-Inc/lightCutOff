@@ -7,6 +7,7 @@ import {isMobile} from '@Helpers/mobile-confirm.helper';
 import {TranslateService} from '@ngx-translate/core';
 import {Title} from '@angular/platform-browser';
 import {Const} from '../../../../environments/const';
+import {MetaService} from '@Services/meta.service';
 
 const log = new Logger('report-details-mobile.component');
 
@@ -23,7 +24,7 @@ export class ReportDetailsMobileComponent implements OnInit {
     private actiavteRoute: ActivatedRoute,
     private reportService: ReportService,
     private translateService: TranslateService,
-    private titleService: Title,
+    private metaService: MetaService,
     private router: Router
   ) { }
 
@@ -34,10 +35,7 @@ export class ReportDetailsMobileComponent implements OnInit {
       this.router.navigate(['/reports']);
     }
 
-    this.titleService.setTitle(
-      this.projectTitle + ' - ' + this.translateService.instant('report.report-details-mobile.title_page')
-    );
-
+    this.metaService.initMetatoAboutUs('report.report-details-mobile.title_page');
     this.getReport();
   }
 

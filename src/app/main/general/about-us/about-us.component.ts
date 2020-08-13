@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Const } from 'src/environments/const';
 import {Logger} from '@Services/logger.service';
-import {Title} from '@angular/platform-browser';
-import {TranslateService} from '@ngx-translate/core';
+import {MetaService} from '@Services/meta.service';
 
 const log = new Logger('about-us.component');
 
@@ -15,16 +14,13 @@ export class AboutUsComponent implements OnInit {
   projectTitle = Const.app.title;
 
   constructor(
-    private titleService: Title,
-    private translateService: TranslateService
+    private metaService: MetaService
   ) { }
 
   ngOnInit(): void {
     log.debug('init');
 
-    this.titleService.setTitle(
-      this.projectTitle + ' - ' + this.translateService.instant('general.aboutus.title_page')
-    );
+    this.metaService.initMetatoAboutUs('general.aboutus.title_page');
   }
 
 }
