@@ -11,7 +11,7 @@
         "build:cordova": "npm run config -- && ng build --aot --prod --source-map=false --base-href . --output-path ../lightcutoffApp/www/",
         "build:prod": "npm run clean && npm run config -- && ng build --aot --prod --source-map=false --base-href .",
         "build:heroku": "npm run clean && npm run config -- && ng build --aot --configuration=staging --prod",
-        "build:ci": "npm run clean && npm run config -- && ng build --aot --prod --source-map=false --base-href lightcutoff",
+        "build:ci": "npm run clean && npm run config -- && ng build --aot --prod --source-map=false --base-href .",
         "test": "ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage --source-map=false",
         "test:ci": "ng test --watch=false --code-coverage --browsers=ChromeHeadlessNoSandbox",
         "lint": "ng lint",

@@ -11,7 +11,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    name: Build and Test
+    name: Run OS
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -47,18 +47,3 @@ jobs:
       run: npm run lint
     - name: Test
       run: npm run test:ci
-    - name: Build
-      run: npm run build:ci
-
-    - name: Archive build
-      if: success()
-      uses: actions/upload-artifact@v1
-      with:
-        name: deploy_dist
-        path: dist
-    - name: Archive code coverage result
-      if: success()
-      uses: actions/upload-artifact@v1
-      with:
-        name: deploy_coverage
-        path: coverage

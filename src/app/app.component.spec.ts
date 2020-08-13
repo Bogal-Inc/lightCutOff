@@ -7,6 +7,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {ToastrModule} from 'ngx-toastr';
+import {Const} from '../environments/const';
 
 
 describe('AppComponent', () => {
@@ -39,6 +40,6 @@ describe('AppComponent', () => {
   it(`should have as title 'lightcutoff'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('lightcutoff');
+    expect(app.title).toEqual(Const.app.title);
   });
 });
