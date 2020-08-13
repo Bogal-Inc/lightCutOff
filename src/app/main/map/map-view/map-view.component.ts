@@ -23,6 +23,7 @@ import { Logger } from '@Services/logger.service';
 import { dayDiff } from '@Helpers/date.helper';
 import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';
 import {MarkerRecovredReportComponent} from '../components/marker-recovred-report/marker-recovred-report.component';
+import {Title} from '@angular/platform-browser';
 
 declare const MarkerClusterer: any;
 const log = new Logger('map-view.component');
@@ -62,6 +63,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   lastReport: any;
   formLoader: boolean;
   isLoader = true;
+  projectTitle = Const.app.title;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
@@ -70,6 +72,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     private componentFactoryResolver: ComponentFactoryResolver,
     private authService: AuthService,
     private translateService: TranslateService,
+    private titleService: Title,
     config: NgbTooltipConfig
   ) {
     config.placement = 'left';
@@ -78,6 +81,10 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     log.debug('init');
+
+    this.titleService.setTitle(
+      this.projectTitle + ' - ' + this.translateService.instant('main.map-view.title_page')
+    );
   }
 
   ngAfterViewInit() {

@@ -4,6 +4,8 @@ import {Report} from '@Models/report.model';
 import { faChartLine, faChartPie, faChartArea } from '@fortawesome/free-solid-svg-icons';
 import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
+import {Title} from '@angular/platform-browser';
+import {Const} from '../../../../environments/const';
 
 const log = new Logger('dashboard.component');
 
@@ -18,14 +20,21 @@ export class DashboardComponent implements OnInit {
   reports: Report[];
   reportsCurrentYear: Report[];
   cards: any;
+  projectTitle = Const.app.title;
 
   constructor(
     private reportService: ReportService,
     private translateService: TranslateService,
+    private titleService: Title,
   ) { }
 
   ngOnInit(): void {
     log.debug('init');
+
+    this.titleService.setTitle(
+      this.projectTitle + ' - ' + this.translateService.instant('statistics.dashboard.title_page')
+    );
+
     this.initCardDashbord();
   }
 

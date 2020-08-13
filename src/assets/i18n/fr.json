@@ -13,10 +13,12 @@
     "september": "Septembre",
     "october": "Octobre",
     "november": "Novembre",
-    "december": "Decembre"
+    "december": "Decembre",
+    "meta_description": "Lightcutoff est un projet qui a pour but de collecter des données sur la fourniture d'énergie électrique au Cameroun, ces données sont essentiellement fournies par les personnes directement concernées par ces coupures (la population)."
   },
   "core": {
     "home": {
+      "title_page": "Site officiel",
       "btn_show_video": "Tout savoir de {projectTitle}",
       "btn_map": "Aller sur notre carte",
       "about": {
@@ -50,6 +52,7 @@
   },
   "main": {
     "map-view": {
+      "title_page": "Carte",
       "error_geolocalize_not_work": "Le service de geolocalisation ne fonctionne pas",
       "error_geolocalize_no_browser": "Votre navigateur ne supporte Geolocation",
       "error_no_cameroon": "Vous ne pouvez pas creer de rapport hors du territoire Camerounais",
@@ -103,6 +106,7 @@
       "view_all": "Voir plus >>"
     },
     "dashboard": {
+      "title_page": "Tableau de bord",
       "card_reports_all_title": "Total rapports",
       "card_reports_current_year_title": "Rapports annuel",
       "card_reports_current_month_title": "Rapports mensuel",
@@ -121,7 +125,11 @@
       "longitude": "Longitude:",
       "latitude": "Latitude:"
     },
+    "report-list": {
+      "title_page": "Liste des signalements"
+    },
     "report-details-mobile": {
+      "title_page": "détails du marqueur",
       "title": "Rapport détails",
       "report_that": "Signalez le:",
       "recovred_that":"Remis le:",

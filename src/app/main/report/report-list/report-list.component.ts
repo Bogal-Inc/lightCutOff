@@ -7,6 +7,9 @@ import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import { isMobile } from '@Helpers/mobile-confirm.helper';
 import {Router} from '@angular/router';
 import {Logger} from '@Services/logger.service';
+import {TranslateService} from '@ngx-translate/core';
+import {Title} from '@angular/platform-browser';
+import {Const} from '../../../../environments/const';
 
 const log = new Logger('router-list.component');
 
@@ -22,7 +25,7 @@ export class ReportListComponent implements OnInit {
   detailReportLightRight = false;
   reportSelected: any;
   defaultColDef: any;
-
+  projectTitle = Const.app.title;
   columnDefs = [
     {
       headerName: '',
@@ -74,7 +77,9 @@ export class ReportListComponent implements OnInit {
   constructor(
     private reportService: ReportService,
     private timestampPipe: TimestampPipe,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService,
+    private titleService: Title,
   ) { }
 
   ngOnInit(): void {
@@ -86,6 +91,10 @@ export class ReportListComponent implements OnInit {
       isDeleted: false,
       datestart: new Date(now.getFullYear())
     });
+
+    this.titleService.setTitle(
+      this.projectTitle + ' - ' + this.translateService.instant('report.report-list.title_page')
+    );
   }
 
   addressFormatter(param) {

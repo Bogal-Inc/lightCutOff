@@ -4,6 +4,9 @@ import {ReportService} from '@Services/report.service';
 import {Report} from '@Models/report.model';
 import {Logger} from '@Services/logger.service';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
+import {TranslateService} from '@ngx-translate/core';
+import {Title} from '@angular/platform-browser';
+import {Const} from '../../../../environments/const';
 
 const log = new Logger('report-details-mobile.component');
 
@@ -14,10 +17,13 @@ const log = new Logger('report-details-mobile.component');
 })
 export class ReportDetailsMobileComponent implements OnInit {
   report: Report;
+  projectTitle = Const.app.title;
 
   constructor(
     private actiavteRoute: ActivatedRoute,
     private reportService: ReportService,
+    private translateService: TranslateService,
+    private titleService: Title,
     private router: Router
   ) { }
 
@@ -27,6 +33,10 @@ export class ReportDetailsMobileComponent implements OnInit {
     if (!isMobile()) {
       this.router.navigate(['/reports']);
     }
+
+    this.titleService.setTitle(
+      this.projectTitle + ' - ' + this.translateService.instant('report.report-details-mobile.title_page')
+    );
 
     this.getReport();
   }
