@@ -20,7 +20,7 @@ export class AboutUsComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
 
-    this.metaService.initMetatoAboutUs('general.aboutus.title_page');
+    this.metaService.initMetatoAboutUs('core.aboutus.title_page');
   }
 
 }
