@@ -26,9 +26,13 @@ export const Const = {
     support: 'willkoua@gmaill.com'
   },
   markerColor: {
-    user: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-    cut: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
-    cutUser: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png',
-    recovred: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
+    // user: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    // cut: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
+    // cutUser: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png',
+    // recovred: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
+    user: '../assets/static/images/markers/marker_blue.svg',
+    cut: '../assets/static/images/markers/marker_red.svg',
+    cutUser: '../assets/static/images/markers/marker_orange.svg',
+    recovred: '../assets/static/images/markers/marker_green.svg'
   }
 };
