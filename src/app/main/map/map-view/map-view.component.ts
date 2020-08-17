@@ -12,7 +12,7 @@ import {
   ElementRef,
   ComponentFactoryResolver,
   ViewContainerRef,
-  ViewEncapsulation
+  ViewEncapsulation, OnDestroy
 } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
 import { ToastrService } from 'ngx-toastr';
@@ -20,11 +20,11 @@ import { Const } from 'src/environments/const';
 import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
 import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { Logger } from '@Services/logger.service';
-import { dayDiff } from '@Helpers/date.helper';
 import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';
 import {MarkerRecovredReportComponent} from '../components/marker-recovred-report/marker-recovred-report.component';
-import {Title} from '@angular/platform-browser';
 import {MetaService} from '@Services/meta.service';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 declare const MarkerClusterer: any;
 const log = new Logger('map-view.component');
@@ -36,7 +36,7 @@ const log = new Logger('map-view.component');
   styleUrls: ['./map-view.component.scss'],
   providers: [NgbTooltipConfig]
 })
-export class MapViewComponent implements OnInit, AfterViewInit {
+export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('mapContainer', {static: false})
   private gmap: ElementRef;
   @ViewChild(MarkerCreateReportComponent, {read: ElementRef})
@@ -65,6 +65,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   formLoader: boolean;
   isLoader = true;
   projectTitle = Const.app.title;
+  unsubsscribe$ = new Subject<void>();
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
@@ -88,6 +89,11 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.mapInitializer();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubsscribe$.next();
+    this.unsubsscribe$.complete();
   }
 
   mapInitializer() {
@@ -127,7 +133,9 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     const errorMessage = this.translateService.instant('main.map-view.error_no_cameroon');
     let result = null;
 
-    geocoder.geocode({location: this.position}, (results, status) => {
+    geocoder.geocode(
+      {location: this.position},
+      (results, status) => {
       if (status === 'OK') {
         result = results[1];
         if (result) {
@@ -293,26 +301,20 @@ export class MapViewComponent implements OnInit, AfterViewInit {
   }
 
   private LoadReports() {
-    const reportsStarted = [];
-    const reportsEnded = [];
+    log.debug('load reports');
+
     const now = new Date();
+
     this.reportService.getReports({
       isDeleted: false,
       datestart: new Date(now.getFullYear())
     })
-      .subscribe(data => {
-        data.forEach(report => {
-          log.debug('load reports');
-          if (report.recovredAt === null){
-            reportsStarted.push(this.factoryOldMarkers(report));
-          } else {
-            const dateREcovred = report.recovredAt.toDate();
-            if (dayDiff(dateREcovred, new Date()) <= 1) {
-              reportsEnded.push(this.factoryOldMarkers(report));
-            }
-          }
-        });
-        this.addMarkersToCluster(reportsStarted);
+      .pipe(takeUntil(this.unsubsscribe$))
+      .subscribe(reports => {
+          const reportsMarkers = reports.map(report => {
+            return this.factoryOldMarkers(report);
+          });
+          this.addMarkersToCluster(reportsMarkers);
       },
       err => log.error('report not load', err)
       );
@@ -320,6 +322,7 @@ export class MapViewComponent implements OnInit, AfterViewInit {
 
   private addMarkersToCluster(markers: google.maps.Marker[]) {
     log.debug('create clusters');
+
     this.markerCluster = new MarkerClusterer(
       this.map,
       markers,
