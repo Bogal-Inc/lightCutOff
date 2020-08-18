@@ -1,21 +1,29 @@
 <div class="marker-details" *ngIf="data">
     <div class="marker-details__header">
-        <h6>{{'main.marker-details.title' | translate}}</h6>
+      <h6>{{'main.marker-details.title' | translate}}</h6>
     </div>
     <div class="marker-details__body">
         <ul class="list-unstyled">
-            <li>
-                <b>{{'main.marker-details.report_that' | translate}}
-                </b> {{ data.reportedAt.toDate() | timestamp }}
-            </li>
-            <li
-              *ngIf="data.recovredAt"><b>{{'main.marker-details.recovred_that' | translate}}
-              </b> {{ data.recovredAt.toDate() | timestamp }}
-            </li>
+          <li>
+              <b>{{'main.marker-details.report_that' | translate}}</b>
+              {{ data.reportedAt.toDate() | timestamp }}
+          </li>
+          <li *ngIf="data.recovredAt">
+            <b>{{'main.marker-details.recovred_that' | translate}}</b>
+            {{ data.recovredAt.toDate() | timestamp }}
+          </li>
+          <li class="mt-2">
+            <h6>{{'main.marker-details.info_locations' | translate}}</h6>
+            <ul>
+              <li *ngFor="let address of data?.addresses">
+                {{address.label}}
+              </li>
+            </ul>
+          </li>
         </ul>
     </div>
     <div class="marker-details__footer">
-        <small>lng: {{ data?.position.lng }}</small>&nbsp;&nbsp;
-        <small>lat: {{ data?.position.lat }}</small>
+      <small><b>{{'main.marker-details.lng' | translate}}</b> {{ data?.position.lng }}</small>&nbsp;&nbsp;
+      <small><b>{{'main.marker-details.lat' | translate}}</b> {{ data?.position.lat }}</small>
     </div>
 </div>

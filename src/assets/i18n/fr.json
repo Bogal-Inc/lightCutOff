@@ -141,7 +141,10 @@
     "marker-details": {
       "title": "Rapport",
       "report_that": "Signalez le:",
-      "recovred_that":"Remis le:"
+      "recovred_that":"Remis le:",
+      "info_locations": "Informations de localisations",
+      "lat": "Lattitude:",
+      "lng": "Longitude:"
     },
     "main-footer": {
       "message_send": "Message envoyé",
