@@ -66,6 +66,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   isLoader = true;
   projectTitle = Const.app.title;
   unsubsscribe$ = new Subject<void>();
+  reportsMarkers: any;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
@@ -129,6 +130,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onCreateReport(event: any) {
+    log.debug('create report');
+
     const geocoder = new google.maps.Geocoder();
     const errorMessage = this.translateService.instant('main.map-view.error_no_cameroon');
     let result = null;
@@ -143,7 +146,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           const country = locality[1];
 
           if (country === 'Cameroun' || country === 'Cameroon') {
-            log.debug('current user found in Camoeroon');
             this.createReport(
               event,
               this.getAddresses(results),
@@ -208,7 +210,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     } as Report;
 
     this.markerCurrentInfoWindow.setContent(this.loadingElt.nativeElement);
-
     this.reportService.addReport(report).then(
       resp => {
         log.debug('report create');
@@ -224,7 +225,10 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
             this.markerCurrentPosition.setOpacity(0);
             this.toastrService.success(this.translateService.instant('main.map-view.signalement_add'));
           },
-          err => log.error('report not update', err)
+          err => {
+            log.error('report not update', err);
+            this.formLoader = false;
+          }
         );
       },
       err => log.error('report not create', err)
@@ -300,6 +304,25 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  // Sets the map on all markers in the array.
+  private setMapOnAll(map: google.maps.Map | null) {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.reportsMarkers.length; i++) {
+      this.reportsMarkers[i].setMap(map);
+    }
+  }
+
+  // Removes the markers from the map, but keeps them in the array.
+  private clearMarkers() {
+    this.setMapOnAll(null);
+  }
+
+  // Deletes all markers in the array by removing references to them.
+  private deleteMarkers() {
+    this.clearMarkers();
+    this.reportsMarkers = [];
+  }
+
   private LoadReports() {
     log.debug('load reports');
 
@@ -311,10 +334,10 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     })
       .pipe(takeUntil(this.unsubsscribe$))
       .subscribe(reports => {
-          const reportsMarkers = reports.map(report => {
-            return this.factoryOldMarkers(report);
-          });
-          this.addMarkersToCluster(reportsMarkers);
+        this.reportsMarkers = reports.map(report => {
+          return this.markerFactory(report);
+        });
+        this.addMarkersToCluster(this.reportsMarkers);
       },
       err => log.error('report not load', err)
       );
@@ -330,8 +353,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  private factoryOldMarkers(report: Report): google.maps.Marker {
-    log.debug('factory marker', report);
+  private markerFactory(report: Report): google.maps.Marker {
+    log.debug('Marker factory', report);
+
     let content = null;
     const currentMareker = new google.maps.Marker({
         position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
