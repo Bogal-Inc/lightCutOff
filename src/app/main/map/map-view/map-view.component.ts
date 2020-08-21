@@ -531,4 +531,22 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       backdrop: 'static'
     });
   }
+
+  private initPolygon(coordsPolygon){
+    const polygon = new google.maps.Polygon({
+      paths: coordsPolygon,
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.5,
+      strokeWeight: 3,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35
+    });
+    // this.addEventUserMarker(polygon, 'dblclick');
+
+    polygon.setMap(this.map);
+  }
+
+  private isWithinPoly(polygon, marker){
+    return google.maps.geometry.poly.containsLocation(marker.getPosition(), polygon);
+  }
 }
