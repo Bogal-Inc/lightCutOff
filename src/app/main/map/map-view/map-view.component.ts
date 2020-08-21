@@ -118,6 +118,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
             this.LoadReports();
             this.addEventsUserMarker();
             this.initTooltip();
+            this.initPolygon(Const.cityCoords.efoulan);
           },
           () => {
             log.error('error geolocalization');
@@ -361,5 +362,23 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.initMarkerUser(this.mapService.markerUserOption());
       }
     });
+  }
+
+  private initPolygon(coordsPolygon) {
+    const polygon = new google.maps.Polygon({
+      paths: coordsPolygon,
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.5,
+      strokeWeight: 3,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35
+    });
+    this.addEventUserMarker(polygon, 'dblclick');
+
+    polygon.setMap(this.map);
+  }
+
+  private isWithinPoly(polygon, marker){
+    return google.maps.geometry.poly.containsLocation(marker.getPosition(), polygon);
   }
 }
