@@ -1,32 +1,33 @@
-import { TranslateService } from '@ngx-translate/core';
-import { MarkerDetailsComponent} from '../components/marker-details/marker-details.component';
-import { AuthService } from '@Services/auth.service';
-import {Address, Position, Report} from '@Models/report.model';
-import { LoadingComponent } from '../../../shared/loading/loading.component';
-import { ReportService } from '@Services/report.service';
+import {TranslateService} from '@ngx-translate/core';
+import {MarkerDetailsComponent} from '../components/marker-details/marker-details.component';
+import {AuthService} from '@Services/auth.service';
+import {Report} from '@Models/report.model';
+import {LoadingComponent} from '../../../shared/loading/loading.component';
+import {ReportService} from '@Services/report.service';
 import {
-  Component,
-  OnInit,
   AfterViewInit,
-  ViewChild,
-  ElementRef,
+  Component,
   ComponentFactoryResolver,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
   ViewContainerRef,
-  ViewEncapsulation, OnDestroy
+  ViewEncapsulation
 } from '@angular/core';
-import { MapsAPILoader } from '@agm/core';
-import { ToastrService } from 'ngx-toastr';
-import { Const } from 'src/environments/const';
-import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
-import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
-import { Logger } from '@Services/logger.service';
+import {MapsAPILoader} from '@agm/core';
+import {ToastrService} from 'ngx-toastr';
+import {Const} from 'src/environments/const';
+import {MapLegendComponent} from 'src/app/shared/map-legend/map-legend.component';
+import {NgbTooltip, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {Logger} from '@Services/logger.service';
 import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';
 import {MarkerRecovredReportComponent} from '../components/marker-recovred-report/marker-recovred-report.component';
 import {MetaService} from '@Services/meta.service';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {MapService} from '@Services/map.service';
 
-declare const MarkerClusterer: any;
 const log = new Logger('map-view.component');
 
 @Component({
@@ -52,16 +53,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('infosReport', { read: ViewContainerRef })
   private infosReport: ViewContainerRef;
   private map: google.maps.Map;
-  private mapOptions: google.maps.MapOptions;
-  private markerCluster: any;
   private markerCurrentInfoWindow: google.maps.InfoWindow;
-  private position: Position;
   @ViewChild('tleft') public tooltip: NgbTooltip;
   isError = false;
   markerCurrentPosition: google.maps.Marker;
   isFormLightCutOf = false;
   reports: Report[];
-  lastReport: any;
   formLoader: boolean;
   isLoader = true;
   projectTitle = Const.app.title;
@@ -76,6 +73,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private authService: AuthService,
     private translateService: TranslateService,
     private metaService: MetaService,
+    private mapService: MapService,
     config: NgbTooltipConfig
   ) {
     config.placement = 'left';
@@ -105,13 +103,18 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
             log.debug('position user found');
             this.isLoader = false;
             this.isFormLightCutOf = true;
-            this.position = {
+            this.mapService.position = {
               lng: +position.coords.longitude,
               lat: +position.coords.latitude
-            } as Position;
+            };
 
-            this.initMap();
-            this.initCurrentMarker(this.getUserMarkerOption());
+            this.map = this.mapService.initMap(
+              this.gmap.nativeElement,
+              this.legends.nativeElement,
+              this.btnAddReport.nativeElement
+            );
+            this.mapService.map = this.map;
+            this.initMarkerUser(this.mapService.markerUserOption());
             this.LoadReports();
             this.addEventsUserMarker();
             this.initTooltip();
@@ -137,18 +140,18 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     let result = null;
 
     geocoder.geocode(
-      {location: this.position},
+      {location: this.mapService.position},
       (results, status) => {
       if (status === 'OK') {
         result = results[1];
         if (result) {
-          const locality = this.getLocality(result);
+          const locality = this.mapService.getLocality(result);
           const country = locality[1];
 
           if (country === 'Cameroun' || country === 'Cameroon') {
             this.createReport(
               event,
-              this.getAddresses(results),
+              this.mapService.getAddresses(results),
               locality
             );
           } else {
@@ -205,7 +208,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       addresses,
       country: location[1],
       city: location[0],
-      position: this.position,
+      position: this.mapService.position,
       reportedAt: new Date(query),
     } as Report;
 
@@ -214,12 +217,20 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       resp => {
         log.debug('report create');
         this.formLoader = false;
-        this.lastReport = report;
-        this.lastReport.id = resp.path.valueOf().split('/')[1];
+        report.id = resp.path.valueOf().split('/')[1];
 
-        this.reportService.updateReport(this.lastReport).then(
+        this.reportService.updateReport(report).then(
           () => {
-            const recovredFromElement = this.createRecovredComponent(this.lastReport);
+            const data = {
+              report,
+              markerCurrentInfoWindow: this.markerCurrentInfoWindow
+            };
+            const recovredFromElement = this.mapService.createComponent(
+              data,
+              MarkerRecovredReportComponent,
+              this.recovredFormReport
+            );
+
             this.markerCurrentInfoWindow.setContent(recovredFromElement);
             this.markerCurrentPosition.setDraggable(false);
             this.markerCurrentPosition.setOpacity(0);
@@ -235,56 +246,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  /**
-   * return country and city
-   *
-   */
-  private getLocality(address): string[] {
-    const resultCountry = address.formatted_address.split(', ');
-    const country = resultCountry[resultCountry.length - 1];
-    const city = resultCountry[resultCountry.length - 2];
-    return [city, country];
-  }
-
-  /**
-   * format address from google map API
-   *
-   */
-  private getAddresses(addresses): Address[] {
-    // delete last element for array
-    addresses.pop();
-    return addresses.map(
-      (data) => {
-        return {
-          label: data.formatted_address,
-          types: data.types,
-          placeId: data.place_id
-        };
-      }
-    );
-  }
-
-  private initMap() {
-    log.debug('init map');
-    this.mapOptions = {
-      center: this.position,
-      zoom: 12,
-      restriction: {
-        latLngBounds: Const.coordsCameroon,
-        // strictBounds: true
-      },
-      disableDoubleClickZoom: true,
-      backgroundColor: '#eaeaea',
-      mapTypeControl: false,
-      streetViewControl: false
-    };
-
-    this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
-    this.map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(this.legends.nativeElement);
-    this.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(this.btnAddReport.nativeElement);
-  }
-
-  private initCurrentMarker(markerOption: google.maps.MarkerOptions) {
+  private initMarkerUser(markerOption: google.maps.MarkerOptions) {
     log.debug('init current marker');
     if (this.markerCurrentPosition) {
       this.markerCurrentPosition.setMap(null);
@@ -304,25 +266,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  // Sets the map on all markers in the array.
-  private setMapOnAll(map: google.maps.Map | null) {
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.reportsMarkers.length; i++) {
-      this.reportsMarkers[i].setMap(map);
-    }
-  }
-
-  // Removes the markers from the map, but keeps them in the array.
-  private clearMarkers() {
-    this.setMapOnAll(null);
-  }
-
-  // Deletes all markers in the array by removing references to them.
-  private deleteMarkers() {
-    this.clearMarkers();
-    this.reportsMarkers = [];
-  }
-
   private LoadReports() {
     log.debug('load reports');
 
@@ -337,20 +280,10 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.reportsMarkers = reports.map(report => {
           return this.markerFactory(report);
         });
-        this.addMarkersToCluster(this.reportsMarkers);
+        this.mapService.addMarkersToCluster(this.reportsMarkers);
       },
       err => log.error('report not load', err)
       );
-  }
-
-  private addMarkersToCluster(markers: google.maps.Marker[]) {
-    log.debug('create clusters');
-
-    this.markerCluster = new MarkerClusterer(
-      this.map,
-      markers,
-      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
-    );
   }
 
   private markerFactory(report: Report): google.maps.Marker {
@@ -370,15 +303,19 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     if (report.recovredAt) {
-      content = this.createInfoReportComponent(report);
+      content = this.mapService.createComponent(report, MarkerDetailsComponent, this.infosReport);
       this.initOverInfoWindowMarker(currentMareker, content);
     } else {
       if (this.authService.getUser().id === report._createdBy.id){
         const info = this.initClickInfoWindow(currentMareker, content);
-        content = this.createRecovredComponent(report, info);
+        const data = {
+          report,
+          markerCurrentInfoWindow: (info) ? info : this.markerCurrentInfoWindow
+        };
+        content = this.mapService.createComponent(data, MarkerRecovredReportComponent, this.recovredFormReport);
         info.setContent(content);
       } else {
-        content = this.createInfoReportComponent(report);
+        content = this.mapService.createComponent(report, MarkerDetailsComponent, this.infosReport);
         this.initOverInfoWindowMarker(currentMareker, content);
       }
     }
@@ -408,70 +345,21 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     mareker.addListener('mouseout', () => infoWindow.close());
   }
 
-  private createRecovredComponent(report: Report, info = null): any {
-    log.debug('create recovred form component');
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MarkerRecovredReportComponent);
-    const viewContainerRef = this.recovredFormReport;
-    const componentRef = viewContainerRef.createComponent(componentFactory);
-
-    (componentRef.instance as MarkerRecovredReportComponent).data = {
-      report,
-      markerCurrentInfoWindow: (info) ? info : this.markerCurrentInfoWindow
-    };
-    componentRef.hostView.detectChanges();
-    const { nativeElement } = componentRef.location;
-
-    return nativeElement;
-  }
-
-  private createInfoReportComponent(report: Report): any {
-    log.debug('create info report component');
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(MarkerDetailsComponent);
-    const viewContainerRef = this.infosReport;
-    const componentRef = viewContainerRef.createComponent(componentFactory);
-
-    (componentRef.instance as MarkerDetailsComponent).data = report;
-    componentRef.hostView.detectChanges();
-    const { nativeElement } = componentRef.location;
-
-    return nativeElement;
-  }
-
   private addEventsUserMarker() {
-    this.addEventDragableUserMarker();
-    this.addEventDblClickUserMarker();
+    this.addEventUserMarker(this.markerCurrentPosition, 'dragend');
+    this.addEventUserMarker(this.map, 'dblclick');
   }
 
-  private addEventDragableUserMarker(){
-    log.debug('add event draggable to current marker');
-    google.maps.event.addListener(this.markerCurrentPosition, 'dragend', (e) => {
-      this.position = {
+  private addEventUserMarker(eltOnEvent, event) {
+    google.maps.event.addListener(eltOnEvent, event, (e) => {
+      this.mapService.position = {
         lng: e.latLng.lng(),
         lat: e.latLng.lat()
-      } as Position;
-    });
-  }
+      };
 
-  private addEventDblClickUserMarker() {
-    log.debug('add event click to current marker');
-    google.maps.event.addListener(this.map, 'dblclick', (e) => {
-      this.position = {
-        lng: +e.latLng.lng(),
-        lat: +e.latLng.lat()
-      } as Position;
-      this.initCurrentMarker(this.getUserMarkerOption());
+      if (event === 'dblclick') {
+        this.initMarkerUser(this.mapService.markerUserOption());
+      }
     });
-  }
-
-  private getUserMarkerOption() {
-    return {
-      position: this.position,
-      label: this.translateService.instant('main.map-view.your_position'),
-      icon: {
-        url: Const.markerColor.user
-      },
-      draggable: true,
-      zIndex: 2000
-    };
   }
 }
