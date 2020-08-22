@@ -18,6 +18,7 @@ import {
 import {MapsAPILoader} from '@agm/core';
 import {ToastrService} from 'ngx-toastr';
 import {Const} from 'src/environments/const';
+import {geoDataCameroun} from '../../../../environments/geo-data';
 import {MapLegendComponent} from 'src/app/shared/map-legend/map-legend.component';
 import {NgbTooltip, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Logger} from '@Services/logger.service';
@@ -108,17 +109,18 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
               lat: +position.coords.latitude
             };
 
-            this.map = this.mapService.initMap(
+            this.mapService.map  = this.mapService.initMap(
               this.gmap.nativeElement,
               this.legends.nativeElement,
               this.btnAddReport.nativeElement
             );
-            this.mapService.map = this.map;
+            this.map = this.mapService.map;
+
             this.initMarkerUser(this.mapService.markerUserOption());
             this.LoadReports();
             this.addEventsUserMarker();
             this.initTooltip();
-            this.initPolygon(Const.cityCoords.efoulan);
+            // this.initPolygon(geoDataCameroun.yaounde.biyemAssi);
           },
           () => {
             log.error('error geolocalization');
