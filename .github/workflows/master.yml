@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: lightCutOff CI
+name: master CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -14,7 +14,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    name: Run OS
+    name: run os
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -40,11 +40,11 @@ jobs:
       - name: Install dependances
         run: npm ci
 
-      - name: Dotenv Action
-        uses: c-py/action-dotenv-to-setenv@v1
-        env: # Or as an environment variable
-          ENVIRONMENT: 'prod',
-          PRODUCTION: true,
+      - name: Create .env file
+        uses: SpicyPizza/create-envfile@v1.0
+        with:
+          ENVIRONMENT: ${{ secrets.ENVIRONMENT }},
+          PRODUCTION: ${{ secrets.PRODUCTION }},
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }},
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }},
           FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }},
@@ -54,6 +54,7 @@ jobs:
           FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }},
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }},
           FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }},
+          file_name: .env
 
       - name: Lint
         run: npm run lint
@@ -61,5 +62,3 @@ jobs:
         run: npm run test:ci
       - name: Build
         run: npm run build:ci
-      - name: firebase deploy
-        run: firebase deploy
