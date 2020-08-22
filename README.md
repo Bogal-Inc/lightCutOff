@@ -1,4 +1,4 @@
-![lightCutOff CI](https://github.com/willkoua/lightCutOff/workflows/push/badge.svg?branch=develop)
+![lightCutOff CI](https://github.com/willkoua/lightCutOff/workflows/lightCutOff%20CI/badge.svg)
 ![](https://img.shields.io/badge/language-angular-red.svg)
 ![](https://img.shields.io/badge/node-green.svg)
 
