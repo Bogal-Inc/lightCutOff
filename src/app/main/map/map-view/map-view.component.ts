@@ -17,7 +17,12 @@ import {
 import {MapsAPILoader} from '@agm/core';
 import {ToastrService} from 'ngx-toastr';
 import {Const} from 'src/environments/const';
+<<<<<<< HEAD
 import {MapLegendComponent} from 'src/app/main/map/components/map-legend/map-legend.component';
+=======
+import {geoDataCameroun} from '../../../../environments/geo-data';
+import {MapLegendComponent} from 'src/app/shared/map-legend/map-legend.component';
+>>>>>>> 0bd5c46... add district coords
 import {NgbModal, NgbTooltip, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Logger} from '@Services/logger.service';
 import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';
@@ -390,6 +395,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       reportStatus: (reportStatus) ? currentReportStatus : null,
       datestart: new Date(now.getFullYear(), 1, 1)
     })
+<<<<<<< HEAD
       .pipe(
         takeUntil(this.unsubsscribe$)
       )
@@ -419,6 +425,30 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           this.addClusters(this.reports);
         },
       err => log.error('report not load', err));
+=======
+      .pipe(takeUntil(this.unsubsscribe$))
+      .subscribe(reports => {
+        this.reportsMarkers = reports.map(report => {
+          return this.markerFactory(report);
+        });
+
+        const polygons = [
+          geoDataCameroun.yaounde.biyemAssi,
+          geoDataCameroun.yaounde.citeVerte,
+          geoDataCameroun.yaounde.efoulan,
+        ];
+        this.initPolygon('/assets/static/geo-json/yaounde.geojson.json');
+
+        // this.reportsMarkers.map(
+        //   (marker) => {
+        //     console.log('eeeeeeeeeeeeeeeeeeeeeeeeeee', this.isWithinPoly(polygon, marker));
+        //   });
+
+        this.mapService.addMarkersToCluster(this.reportsMarkers);
+      },
+      err => log.error('report not load', err)
+      );
+>>>>>>> 0bd5c46... add district coords
   }
 
   private addClusters(reports) {
@@ -544,6 +574,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     // this.addEventUserMarker(polygon, 'dblclick');
 
     polygon.setMap(this.map);
+
+    // this.map.data.loadGeoJson(coordsPolygons);
   }
 
   private isWithinPoly(polygon, marker){

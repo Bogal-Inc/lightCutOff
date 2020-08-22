@@ -43,7 +43,10 @@ import { MapMenuHistoryComponent } from './components/map-menu/components/map-me
       apiKey: environment.googleMapsApiKey,
       region: 'CM',
       language: 'fr',
-      libraries: ['places']
+      libraries: [
+        'places',
+        'geometry'
+      ]
     }),
     GoogleMapsModule,
   ],
