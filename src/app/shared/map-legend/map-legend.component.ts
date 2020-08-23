@@ -2,6 +2,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
+import { isMobile } from '@Helpers/mobile-confirm.helper';
 
 const log = new Logger('map-legend.component');
 
@@ -36,6 +37,8 @@ export class MapLegendComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
+
+    this.showlegend = !isMobile();
   }
 
   showLegend() {
