@@ -3,7 +3,9 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Biyem-assi"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -22,7 +24,9 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Cité verte"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -50,7 +54,9 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Efoulan"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
