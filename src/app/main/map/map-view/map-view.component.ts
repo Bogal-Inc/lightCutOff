@@ -1,7 +1,7 @@
 import {TranslateService} from '@ngx-translate/core';
 import {MarkerDetailsComponent} from '../components/marker-details/marker-details.component';
 import {AuthService} from '@Services/auth.service';
-import {Report} from '@Models/report.model';
+import {Position, Report} from '@Models/report.model';
 import {LoadingComponent} from '../../../shared/loading/loading.component';
 import {ReportService} from '@Services/report.service';
 import {
@@ -55,7 +55,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private map: google.maps.Map;
   private markerCurrentInfoWindow: google.maps.InfoWindow;
   @ViewChild('tleft') public tooltip: NgbTooltip;
-  isError = false;
+  isErrorMapActive = false;
   markerCurrentPosition: google.maps.Marker;
   isFormLightCutOf = false;
   reports: Report[];
@@ -101,35 +101,25 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition( position => {
             log.debug('position user found');
-            this.isLoader = false;
-            this.isFormLightCutOf = true;
-            this.mapService.position = {
+
+            this.initMap({
               lng: +position.coords.longitude,
               lat: +position.coords.latitude
-            };
-            this.map = this.mapService.initMap(
-              this.gmap.nativeElement,
-              this.legends.nativeElement,
-              this.btnAddReport.nativeElement
-            );
-            this.mapService.map = this.map;
-            this.initMarkerUser(this.mapService.markerUserOption());
-            this.LoadReports();
-            this.addEventsUserMarker();
-            this.initTooltip();
+            });
           },
           () => {
-            log.error('error geolocalization');
-            this.toastrService.error(this.translateService.instant('main.map-view.error_geolocalize_not_work'));
-          } );
+            log.error('geolocalization no active or no connect');
+            this.initMap(Const.coordsDefault);
+          });
         } else {
           log.error('Your browser does not support Geolocation');
-          this.toastrService.error(this.translateService.instant('main.map-view.error_geolocalize_no_browser'));
+          this.toastrService.info(this.translateService.instant('main.map-view.error_geolocalize_no_browser'));
+          this.initMap(Const.coordsDefault);
         }
       },
         () => {
           log.error('Map not load');
-          this.isError = true;
+          this.isErrorMapActive = true;
           this.isLoader = false;
         }
       );
@@ -247,6 +237,22 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       },
       err => log.error('report not create', err)
     );
+  }
+
+  private initMap(position: Position){
+    this.isLoader = false;
+    this.isFormLightCutOf = true;
+    this.mapService.position = position;
+    this.map = this.mapService.initMap(
+      this.gmap.nativeElement,
+      this.legends.nativeElement,
+      this.btnAddReport.nativeElement
+    );
+    this.mapService.map = this.map;
+    this.initMarkerUser(this.mapService.markerUserOption());
+    this.LoadReports();
+    this.addEventsUserMarker();
+    this.initTooltip();
   }
 
   private initMarkerUser(markerOption: google.maps.MarkerOptions) {

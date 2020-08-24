@@ -22,6 +22,10 @@ export const Const = {
     south: 1.6559,
     west: 8.3936001
   },
+  coordsDefault: {
+    lng: 11.48022226405379,
+    lat: 3.843249609352396
+  },
   emailService: {
     support: 'willkoua@gmaill.com'
   },

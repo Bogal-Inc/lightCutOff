@@ -1,7 +1,7 @@
 <div>
-  <app-search-place-form *ngIf="!isError" (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>
+  <app-search-place-form *ngIf="!isErrorMapActive" (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>
 
-  <div class="d-flex justify-content-center mt-5" *ngIf="isError">
+  <div class="d-flex justify-content-center mt-5" *ngIf="isErrorMapActive">
     <div class="mt-5">
       <div class="mt-5 alert alert-danger text-danger" role="alert">
         {{"main.map-view.map_no_load" | translate}}
