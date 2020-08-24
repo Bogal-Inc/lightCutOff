@@ -12,8 +12,8 @@ const log = new Logger('tuto.component');
   styleUrls: ['./tuto.component.scss']
 })
 export class TutoComponent implements OnInit {
-  projectTitle = Const.app.title;
-  faInfoCircle = faInfoCircle;
+  readonly projectTitle = Const.app.title;
+  readonly faInfoCircle = faInfoCircle;
 
   constructor(
     private metaService: MetaService

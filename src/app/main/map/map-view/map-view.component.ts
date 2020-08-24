@@ -55,13 +55,13 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private map: google.maps.Map;
   private markerCurrentInfoWindow: google.maps.InfoWindow;
   @ViewChild('tleft') public tooltip: NgbTooltip;
+  readonly projectTitle = Const.app.title;
   isErrorMapActive = false;
   markerCurrentPosition: google.maps.Marker;
   isFormLightCutOf = false;
   reports: Report[];
   formLoader: boolean;
   isLoader = true;
-  projectTitle = Const.app.title;
   unsubsscribe$ = new Subject<void>();
   reportsMarkers: any;
 

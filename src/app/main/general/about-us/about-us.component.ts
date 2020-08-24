@@ -11,7 +11,7 @@ const log = new Logger('about-us.component');
   styleUrls: ['./about-us.component.scss']
 })
 export class AboutUsComponent implements OnInit {
-  projectTitle = Const.app.title;
+  readonly projectTitle = Const.app.title;
 
   constructor(
     private metaService: MetaService
