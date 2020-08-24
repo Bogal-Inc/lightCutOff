@@ -7,7 +7,7 @@ import {Const} from '../../../environments/const';
   providedIn: 'root'
 })
 export class MetaService {
-  projectTitle = Const.app.title;
+  readonly projectTitle = Const.app.title;
 
   constructor(
     private translateService: TranslateService,

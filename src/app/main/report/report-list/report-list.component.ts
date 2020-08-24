@@ -21,12 +21,12 @@ const log = new Logger('router-list.component');
 })
 export class ReportListComponent implements OnInit {
   private gridApi;
+  readonly projectTitle = Const.app.title;
   faExclamationCircle = faExclamationCircle;
   reports$: Observable<Report[]>;
   detailReportLightRight = false;
   reportSelected: any;
   defaultColDef: any;
-  projectTitle = Const.app.title;
   columnDefs = [
     {
       headerName: '',

@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   reports: Report[];
   reportsCurrentYear: Report[];
   cards: any;
-  projectTitle = Const.app.title;
+  readonly projectTitle = Const.app.title;
 
   constructor(
     private reportService: ReportService,

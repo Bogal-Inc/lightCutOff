@@ -15,9 +15,9 @@ const log = new Logger('home.component');
   providers: [NgbModalConfig, NgbModal]
 })
 export class HomeComponent implements OnInit {
-  projectTitle = Const.app.title;
-  faPlay = faPlay;
-  faMapMarker = faMapMarker;
+  readonly projectTitle = Const.app.title;
+  readonly faPlay = faPlay;
+  readonly faMapMarker = faMapMarker;
   closeResult = '';
 
   constructor(

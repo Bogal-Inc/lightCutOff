@@ -18,7 +18,7 @@ const log = new Logger('report-details-mobile.component');
 })
 export class ReportDetailsMobileComponent implements OnInit {
   report: Report;
-  projectTitle = Const.app.title;
+  readonly projectTitle = Const.app.title;
 
   constructor(
     private actiavteRoute: ActivatedRoute,
