@@ -130,29 +130,29 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const geocoder = new google.maps.Geocoder();
     const errorMessage = this.translateService.instant('main.map-view.error_no_cameroon');
-    let result = null;
+    let googleLocation = null;
 
     geocoder.geocode(
       {location: this.mapService.position},
-      (results, status) => {
+      (googleLocations, status) => {
       if (status === 'OK') {
-        result = results[1];
-        if (result) {
-          const locality = this.mapService.getLocality(result);
+        googleLocation = googleLocations[1];
+
+        if (googleLocation) {
+          const locality = this.mapService.getLocality(googleLocation);
           const country = locality[1];
 
           if (country === 'Cameroun' || country === 'Cameroon') {
             this.createReport(
               event,
-              this.mapService.getAddresses(results),
-              locality
+              this.mapService.getAddresses(googleLocations, locality)
             );
           } else {
-            log.error('current user no found in Camoeroon', result);
+            log.error('current user no found in Camoeroon', googleLocation);
             this.toastrService.error(errorMessage, 'Error');
           }
         } else {
-          log.error('No result found', result);
+          log.error('No result found', googleLocation);
           this.toastrService.error(errorMessage, 'Error');
         }
       }
@@ -193,14 +193,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     }, 5000);
   }
 
-  private createReport(query, addresses, location) {
+  private createReport(query, location) {
     this.isLoader = true;
     this.formLoader = true;
 
     const report = {
-      addresses,
-      country: location[1],
-      city: location[0],
+      location,
       position: this.mapService.position,
       reportedAt: new Date(query),
     } as Report;

@@ -1,8 +1,9 @@
 import {ComponentFactoryResolver, Injectable, ViewContainerRef} from '@angular/core';
 import {Const} from '../../../environments/const';
-import {Address, Position} from '@Models/report.model';
+import {GoogleInfosLoaction, Location, Position} from '@Models/report.model';
 import {TranslateService} from '@ngx-translate/core';
 import {MarkerRecovredReportComponent} from '../../main/map/components/marker-recovred-report/marker-recovred-report.component';
+import {Cameroon} from '../../../environments/countries/cameroon';
 
 declare const MarkerClusterer: any;
 
@@ -61,16 +62,41 @@ export class MapService {
    * format address from google map API
    *
    */
-  getAddresses(addresses): Address[] {
+  getAddresses(googleLocations, location): Location {
     // delete last element for array
-    addresses.pop();
-    return addresses.map(
+    googleLocations.pop();
+
+    const googleInfos = googleLocations.map(
       (data) => {
         return {
-          label: data.formatted_address,
-          types: data.types,
-          placeId: data.place_id
+            label: data.formatted_address,
+            types: data.types
         };
+      }
+    );
+
+    return {
+      country: location[1],
+      region: location[0],
+      department: '',
+      city: '',
+      district: '',
+      googleInfos
+    };
+  }
+
+  private getRegion(regionBrut: string) {
+    Cameroon.regions.forEach(
+      region => {
+        return (regionBrut.indexOf(region)) ? region : null;
+      }
+    );
+  }
+
+  private getDepartment(departmentBrut: string) {
+    Cameroon.regions.forEach(
+      region => {
+        return (departmentBrut.indexOf(region)) ? region : null;
       }
     );
   }
