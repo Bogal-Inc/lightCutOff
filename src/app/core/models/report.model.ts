@@ -6,10 +6,18 @@ export interface Position {
   lng: number;
 }
 
-export interface Address {
+export interface GoogleInfosLoaction {
   label: string;
   types: string[];
-  placeId: string;
+}
+
+export interface Location {
+  country: string;
+  region: string;
+  department: string;
+  city: string;
+  district: string;
+  googleInfos: GoogleInfosLoaction[];
 }
 
 export enum ReportSatus {
@@ -19,9 +27,7 @@ export enum ReportSatus {
 
 export interface Report extends Doc {
   status: ReportSatus;
-  addresses: Address[];
-  country: string;
-  city: string;
+  location: Location;
   reportedAt: Date | firebase.firestore.Timestamp | any;
   recovredAt?: Date | firebase.firestore.Timestamp | any;
   position: Position;
@@ -31,7 +37,7 @@ export interface Report extends Doc {
 export const defaultReport = {
   ...defaultDoc,
   status: ReportSatus.CUT,
-  addresses: null,
+  location: null,
   country: null,
   city: null,
   reportedAt: null,
