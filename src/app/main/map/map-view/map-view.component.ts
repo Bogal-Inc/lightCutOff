@@ -107,7 +107,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
               lng: +position.coords.longitude,
               lat: +position.coords.latitude
             };
-
             this.map = this.mapService.initMap(
               this.gmap.nativeElement,
               this.legends.nativeElement,
@@ -128,7 +127,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           this.toastrService.error(this.translateService.instant('main.map-view.error_geolocalize_no_browser'));
         }
       },
-        () => this.isError = true
+        () => {
+          log.error('Map not load');
+          this.isError = true;
+          this.isLoader = false;
+        }
       );
   }
 
