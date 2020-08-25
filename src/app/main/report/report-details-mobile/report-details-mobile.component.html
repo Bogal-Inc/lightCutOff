@@ -6,8 +6,8 @@
         <h3 class=" text-center report__title">{{'report.report-details.title' | translate}}</h3>
         <div>
           <ul class="list-inline text-center">
-            <li class="list-inline-item">{{report?.country}}</li>
-            <li class="list-inline-item">{{report?.city}}</li>
+            <li class="list-inline-item">{{report?.location.country}}</li>
+            <li class="list-inline-item">{{report?.location.city}}</li>
           </ul>
         </div>
       </div>
@@ -21,7 +21,7 @@
             <li class="mb-lg-3">
               {{'report.report-details.report_places' | translate}}
               <ul>
-                <li *ngFor="let address of report?.addresses">
+                <li *ngFor="let address of report?.location.addresses">
                   {{address.label}}
                 </li>
               </ul>
@@ -40,6 +40,4 @@
       <div class="report-footer"></div>
     </div>
   </div>
-
-
 </div>

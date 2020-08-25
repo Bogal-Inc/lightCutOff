@@ -5,7 +5,6 @@ import {Report} from '@Models/report.model';
 import {Logger} from '@Services/logger.service';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
 import {TranslateService} from '@ngx-translate/core';
-import {Title} from '@angular/platform-browser';
 import {Const} from '../../../../environments/const';
 import {MetaService} from '@Services/meta.service';
 

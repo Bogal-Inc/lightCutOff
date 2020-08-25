@@ -6,18 +6,16 @@ export interface Position {
   lng: number;
 }
 
-export interface GoogleInfosLoaction {
-  label: string;
-  types: string[];
-}
 
 export interface Location {
   country: string;
   region: string;
   department: string;
   city: string;
-  district: string;
-  googleInfos: GoogleInfosLoaction[];
+  neighborhood: string;
+  addresses: any[];
+  others: any[];
+  googleData: any[];
 }
 
 export enum ReportSatus {
@@ -37,9 +35,12 @@ export interface Report extends Doc {
 export const defaultReport = {
   ...defaultDoc,
   status: ReportSatus.CUT,
-  location: null,
-  country: null,
-  city: null,
+  location: {
+    department: null,
+    neighborhood: null,
+    addresses: [],
+    others: []
+  },
   reportedAt: null,
   recovredAt: null,
   position: null,
