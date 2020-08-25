@@ -8,7 +8,6 @@ import { isMobile } from '@Helpers/mobile-confirm.helper';
 import {Router} from '@angular/router';
 import {Logger} from '@Services/logger.service';
 import {TranslateService} from '@ngx-translate/core';
-import {Title} from '@angular/platform-browser';
 import {Const} from '../../../../environments/const';
 import {MetaService} from '@Services/meta.service';
 
@@ -60,17 +59,32 @@ export class ReportListComponent implements OnInit {
       }
     },
     {
-      headerName: 'Adresse',
-      field: 'addresses',
-      valueFormatter: this.addressFormatter
+      headerName: 'Région',
+      field: 'location',
+      cellRenderer: (params) => {
+        return params.value.region;
+      }
+    },
+    {
+      headerName: 'Departement',
+      field: 'location',
+      cellRenderer: (params) => {
+        return params.value.department;
+      }
     },
     {
       headerName: 'Ville',
-      field: 'city',
+      field: 'location',
+      cellRenderer: (params) => {
+        return params.value.city;
+      }
     },
     {
-      headerName: 'Pays',
-      field: 'country',
+      headerName: 'Quartier',
+      field: 'location',
+      cellRenderer: (params) => {
+        return params.value.neighborhood;
+      }
     }
   ];
   rowSelection = 'single';
@@ -93,13 +107,6 @@ export class ReportListComponent implements OnInit {
       datestart: new Date(now.getFullYear())
     });
     this.metaService.initMetatoAboutUs('report.report-list.title_page');
-  }
-
-  addressFormatter(param) {
-    if (param.value){
-      return param.value[0].label;
-    }
-    return undefined;
   }
 
   onRowSelected(event: any) {
