@@ -15,6 +15,25 @@
           <li class="mt-2">
             <h6>{{'main.marker-details.info_locations' | translate}}</h6>
             <ul>
+              <li>
+                <b>{{'main.marker-details.country' | translate}}</b>
+                {{data.location.country}}
+              </li>
+              <li>
+                <b>{{'main.marker-details.department' | translate}}</b>
+                {{data.location.department}}
+              </li>
+              <li>
+                <b>{{'main.marker-details.city' | translate}}</b>
+                {{data.location.city}}
+              </li>
+              <li>
+                <b>{{'main.marker-details.neighborhood' | translate}}</b>
+                {{data.location.neighborhood}}
+              </li>
+            </ul>
+            <b>{{'main.marker-details.address' | translate}}</b>
+            <ul>
               <li *ngFor="let address of data?.location.addresses">
                 {{address.label}}
               </li>

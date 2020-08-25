@@ -168,7 +168,7 @@ export class MapService {
     return locationTmp;
   }
 
-  private getRegion(regionBrut: string) {
+  private getRegion(regionBrut) {
     let region = regionBrut.split(', ')[0];
     region = region.split(' ')[2];
 
@@ -183,7 +183,7 @@ export class MapService {
     return region;
   }
 
-  private getDataLocation(dataLocation: string) {
+  private getDataLocation(dataLocation) {
     const resultCountry = dataLocation.split(', ');
     return resultCountry[resultCountry.length - 2];
   }

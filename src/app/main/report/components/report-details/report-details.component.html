@@ -32,6 +32,25 @@
           <li class="mb-lg-3">
             {{'report.report-details.report_places' | translate}}
             <ul>
+              <li>
+                <b>{{'report.report-details.country' | translate}}</b>
+                {{report?.location.country}}
+              </li>
+              <li>
+                <b>{{'report.report-details.department' | translate}}</b>
+                {{report?.location.department}}
+              </li>
+              <li>
+                <b>{{'report.report-details.city' | translate}}</b>
+                {{report?.location.city}}
+              </li>
+              <li>
+                <b>{{'report.report-details.neighborhood' | translate}}</b>
+                {{report?.location.neighborhood}}
+              </li>
+            </ul>
+            <b>{{'report.report-details.address' | translate}}</b>
+            <ul>
               <li *ngFor="let address of report?.location.addresses">
                 {{address.label}}
               </li>

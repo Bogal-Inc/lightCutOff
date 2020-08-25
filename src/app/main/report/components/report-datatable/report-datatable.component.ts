@@ -48,12 +48,18 @@ export class ReportDatatableComponent implements OnInit {
       }
     },
     {
-      headerName: 'Ville',
-      field: 'city',
+      headerName: 'Departement',
+      field: 'location',
+      cellRenderer: (params) => {
+        return params.value.department;
+      }
     },
     {
-      headerName: 'Pays',
-      field: 'country',
+      headerName: 'Ville',
+      field: 'location',
+      cellRenderer: (params) => {
+        return params.value.city;
+      }
     }
   ];
 
