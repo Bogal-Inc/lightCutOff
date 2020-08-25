@@ -70,7 +70,7 @@ export class DashboardChartComponent implements OnInit {
     const months = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.reportsCurrentYear.map(
       report => {
-        if (report.city === city){
+        if (report.location.city === city){
           months.forEach(
             (mt, index, self) => {
               const currentMonth = report.reportedAt.toDate().getMonth();
@@ -103,7 +103,7 @@ export class DashboardChartComponent implements OnInit {
   private getCities(reports: Report[]): string[] {
     const cities = reports.map(
       (report) => {
-        return report.city;
+        return report.location.city;
       }
     );
 

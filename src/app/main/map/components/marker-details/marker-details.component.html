@@ -15,7 +15,7 @@
           <li class="mt-2">
             <h6>{{'main.marker-details.info_locations' | translate}}</h6>
             <ul>
-              <li *ngFor="let address of data?.addresses">
+              <li *ngFor="let address of data?.location.addresses">
                 {{address.label}}
               </li>
             </ul>

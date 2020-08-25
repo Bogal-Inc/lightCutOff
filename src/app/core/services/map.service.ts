@@ -1,9 +1,8 @@
 import {ComponentFactoryResolver, Injectable, ViewContainerRef} from '@angular/core';
 import {Const} from '../../../environments/const';
-import {GoogleInfosLoaction, Location, Position} from '@Models/report.model';
+import {Location, Position} from '@Models/report.model';
 import {TranslateService} from '@ngx-translate/core';
 import {MarkerRecovredReportComponent} from '../../main/map/components/marker-recovred-report/marker-recovred-report.component';
-import {Cameroon} from '../../../environments/countries/cameroon';
 
 declare const MarkerClusterer: any;
 
@@ -66,39 +65,23 @@ export class MapService {
     // delete last element for array
     googleLocations.pop();
 
-    const googleInfos = googleLocations.map(
-      (data) => {
-        return {
-            label: data.formatted_address,
-            types: data.types
-        };
-      }
-    );
-
-    return {
+    let locationTmp = {
       country: location[1],
-      region: location[0],
-      department: '',
-      city: '',
-      district: '',
-      googleInfos
+      region: null,
+      department: null,
+      city: null,
+      neighborhood: null,
+      addresses: [],
+      others: [],
+      googleData: [],
     };
-  }
-
-  private getRegion(regionBrut: string) {
-    Cameroon.regions.forEach(
-      region => {
-        return (regionBrut.indexOf(region)) ? region : null;
+    googleLocations.forEach(
+      locate => {
+        locationTmp = this.intiLocation(locate, locationTmp);
       }
     );
-  }
 
-  private getDepartment(departmentBrut: string) {
-    Cameroon.regions.forEach(
-      region => {
-        return (departmentBrut.indexOf(region)) ? region : null;
-      }
-    );
+    return locationTmp;
   }
 
   /**
@@ -141,5 +124,67 @@ export class MapService {
     const { nativeElement } = componentRef.location;
 
     return nativeElement;
+  }
+
+  private intiLocation(locate, locationTmp) {
+    let locateType = locate.types[0];
+
+    if (locateType === 'political') {
+      locateType = locate.types[1];
+    }
+
+    const label = locate.formatted_address;
+    const address = {
+      label,
+      type: locate.types
+    };
+
+    if (locateType === 'administrative_area_level_1') {
+      locationTmp.region = this.getRegion(label);
+    } else if (locateType === 'administrative_area_level_2') {
+      locationTmp.department = this.getDataLocation(label);
+    }else if (locateType === 'locality') {
+      locationTmp.city = this.getDataLocation(label);
+    }else if (locateType === 'sublocality') {
+      locationTmp.neighborhood = label.split(', ')[0];
+    }else if (locateType === 'neighborhood') {
+      locationTmp.neighborhood = label.split(', ')[0];
+    }else if (locateType === 'street_address') {
+      locationTmp.addresses.push(address);
+    }else if (locateType === 'route') {
+      locationTmp.addresses.push(address);
+      if (locationTmp.neighborhood === null) {
+        locationTmp.neighborhood = label.split(', ')[0];
+      }
+    } else {
+      locationTmp.others.push(address);
+      if (locationTmp.neighborhood === null) {
+        locationTmp.neighborhood = label.split(', ')[0];
+      }
+    }
+
+    locationTmp.googleData.push(address);
+
+    return locationTmp;
+  }
+
+  private getRegion(regionBrut: string) {
+    let region = regionBrut.split(', ')[0];
+    region = region.split(' ')[2];
+
+    if (region.indexOf('\'') > 0) {
+      region = region.split('\'')[1];
+    }
+
+    if (region === 'Ctre') {
+      return 'Centre';
+    }
+
+    return region;
+  }
+
+  private getDataLocation(dataLocation: string) {
+    const resultCountry = dataLocation.split(', ');
+    return resultCountry[resultCountry.length - 2];
   }
 }
