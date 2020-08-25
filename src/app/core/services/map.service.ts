@@ -1,6 +1,6 @@
 import {ComponentFactoryResolver, Injectable, ViewContainerRef} from '@angular/core';
 import {Const} from '../../../environments/const';
-import {Address, Position} from '@Models/report.model';
+import {Location, Position} from '@Models/report.model';
 import {TranslateService} from '@ngx-translate/core';
 import {MarkerRecovredReportComponent} from '../../main/map/components/marker-recovred-report/marker-recovred-report.component';
 
@@ -61,18 +61,27 @@ export class MapService {
    * format address from google map API
    *
    */
-  getAddresses(addresses): Address[] {
+  getAddresses(googleLocations, location): Location {
     // delete last element for array
-    addresses.pop();
-    return addresses.map(
-      (data) => {
-        return {
-          label: data.formatted_address,
-          types: data.types,
-          placeId: data.place_id
-        };
+    googleLocations.pop();
+
+    let locationTmp = {
+      country: location[1],
+      region: null,
+      department: null,
+      city: null,
+      neighborhood: null,
+      addresses: [],
+      others: [],
+      googleData: [],
+    };
+    googleLocations.forEach(
+      locate => {
+        locationTmp = this.intiLocation(locate, locationTmp);
       }
     );
+
+    return locationTmp;
   }
 
   /**
@@ -115,5 +124,67 @@ export class MapService {
     const { nativeElement } = componentRef.location;
 
     return nativeElement;
+  }
+
+  private intiLocation(locate, locationTmp) {
+    let locateType = locate.types[0];
+
+    if (locateType === 'political') {
+      locateType = locate.types[1];
+    }
+
+    const label = locate.formatted_address;
+    const address = {
+      label,
+      type: locate.types
+    };
+
+    if (locateType === 'administrative_area_level_1') {
+      locationTmp.region = this.getRegion(label);
+    } else if (locateType === 'administrative_area_level_2') {
+      locationTmp.department = this.getDataLocation(label);
+    }else if (locateType === 'locality') {
+      locationTmp.city = this.getDataLocation(label);
+    }else if (locateType === 'sublocality') {
+      locationTmp.neighborhood = label.split(', ')[0];
+    }else if (locateType === 'neighborhood') {
+      locationTmp.neighborhood = label.split(', ')[0];
+    }else if (locateType === 'street_address') {
+      locationTmp.addresses.push(address);
+    }else if (locateType === 'route') {
+      locationTmp.addresses.push(address);
+      if (locationTmp.neighborhood === null) {
+        locationTmp.neighborhood = label.split(', ')[0];
+      }
+    } else {
+      locationTmp.others.push(address);
+      if (locationTmp.neighborhood === null) {
+        locationTmp.neighborhood = label.split(', ')[0];
+      }
+    }
+
+    locationTmp.googleData.push(address);
+
+    return locationTmp;
+  }
+
+  private getRegion(regionBrut) {
+    let region = regionBrut.split(', ')[0];
+    region = region.split(' ')[2];
+
+    if (region.indexOf('\'') > 0) {
+      region = region.split('\'')[1];
+    }
+
+    if (region === 'Ctre') {
+      return 'Centre';
+    }
+
+    return region;
+  }
+
+  private getDataLocation(dataLocation) {
+    const resultCountry = dataLocation.split(', ');
+    return resultCountry[resultCountry.length - 2];
   }
 }
