@@ -50,8 +50,14 @@
         <div class="report__body__content2">
           <small>
             <ul class="list-inline">
-              <li class="list-inline-item">{{'report.report-details.longitude' | translate}} {{report?.position.lng}}</li>
-              <li class="list-inline-item">{{'report.report-details.latitude' | translate}} {{report?.position.lat}}</li>
+              <li class="list-inline-item">
+                <b>{{'report.report-details.longitude' | translate}}</b>
+                {{report?.position.lng}}
+              </li>
+              <li class="list-inline-item">
+                <b>{{'report.report-details.latitude' | translate}}</b>
+                {{report?.position.lat}}
+              </li>
             </ul>
           </small>
         </div>

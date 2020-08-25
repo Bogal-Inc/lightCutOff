@@ -348,8 +348,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       content
     });
 
-    mareker.addListener('mouseover', () => infoWindow.open(this.map, mareker));
-    mareker.addListener('mouseout', () => infoWindow.close());
+    mareker.addListener('click', () => infoWindow.open(this.map, mareker));
+    // mareker.addListener('mouseover', () => infoWindow.open(this.map, mareker));
+    // mareker.addListener('mouseout', () => infoWindow.close());
   }
 
   private addEventsUserMarker() {

@@ -14,7 +14,7 @@
     "october": "Octobre",
     "november": "Novembre",
     "december": "Decembre",
-    "meta_description": "Lightcutoff est un projet qui a pour but de collecter des données sur la fourniture d'énergie électrique au Cameroun, ces données sont essentiellement fournies par les personnes directement concernées par ces coupures (la population)."
+    "meta_description": "Lightcutoff est un projet qui a pour but de collecter des données sur la fourniture d'énergie électrique au Cameroun, ces données sont essentiellement fournies par des personnes directement concernées par ces coupures (la population)."
   },
   "core": {
     "home": {
@@ -23,7 +23,7 @@
       "btn_map": "Aller sur notre carte",
       "about": {
         "title": "À propos",
-        "content": "Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux de la situation au sujet de la fourniture d'énergie électrique sur l'ensemble du territoire national dû Cameroun. Ceci à des fins de permettre à des tiers d'exploiter ces données dans des cadres particuliers comme la recherche ou aider à la décision d'emménager ou non à une place.",
+        "content": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux sur la fourniture d'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'exploiter ces données dans des domaines tel que la recherche ou l'aide à choisir un lieu d'habitation.",
         "btn_next": "Allez dans à propos"
       },
       "app_example": {
