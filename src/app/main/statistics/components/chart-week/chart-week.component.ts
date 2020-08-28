@@ -60,8 +60,8 @@ export class ChartWeekComponent implements OnInit {
       barChartData: {
         labels: this.last7Days(true).reverse(),
         datasets: [
-          this.initDataOfWeek(true),
-          this.initDataOfWeek(false)
+          this.getDataset(true),
+          this.getDataset(false)
         ]
       },
       barChartType: 'line',
@@ -72,7 +72,7 @@ export class ChartWeekComponent implements OnInit {
     };
   }
 
-  private initDataOfWeek(close = true): any {
+  private getDataset(close = true): any {
     const daysOfWeek = this.last7Days().reverse();
     const reports = [];
     const colorIndex = (close) ? 1 : 0;
@@ -87,21 +87,19 @@ export class ChartWeekComponent implements OnInit {
       label: close ? 'Report close' : 'Report in progress',
       data: reports,
       backgroundColor: this.backgroundColor[colorIndex],
-      borderColor: this.borderColor[colorIndex],
+      borderColor: this.borderColor[colorIndex]
     };
   }
 
   private getDayData(date: Date, close: boolean): number {
     let reports = 0;
 
-    this.reportsCurrentYear.filter(
+    this.reportsCurrentYear.map(
       data => {
-        if (date.toDateString() === data.reportedAt.toDate().toDateString()) {
-          if (close && data.recovredAt !== null) {
-            reports += 1;
-          } else if (!close && data.recovredAt === null)  {
-            reports += 1;
-          }
+        if (close && date.toDateString() === data.reportedAt.toDate().toDateString()) {
+          reports += 1;
+        } else if (!close && date.toDateString() === data.recovredAt?.toDate().toDateString())  {
+          reports += 1;
         }
       }
     );
