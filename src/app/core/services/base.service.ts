@@ -87,18 +87,6 @@ export class BaseService {
       );
   }
 
-  /// **************
-  /// Write Data
-  /// **************
-  /// Firebase Server Timestamp
-  get timestamp() {
-    return firebase.firestore.FieldValue.serverTimestamp();
-  }
-
-  fromDate(date: Date): firebase.firestore.Timestamp {
-    return firebase.firestore.Timestamp.fromDate(date);
-  }
-
   protected set<T extends Doc>(ref: DocPredicate<T>, data: any) {
     return this.doc(ref).set({
       ...data,
@@ -131,10 +119,6 @@ export class BaseService {
     });
   }
 
-  protected geopoint(lat: number, lng: number) {
-    return new firebase.firestore.GeoPoint(lat, lng);
-  }
-
   /// If doc exists update, otherwise set
   protected upsert<T>(ref: DocPredicate<Doc>, data: any) {
     const doc = this.doc(ref)
@@ -144,5 +128,25 @@ export class BaseService {
     return doc.then(snap => {
       return snap.payload.exists ? this.update(ref, data) : this.set(ref, data);
     });
+  }
+
+  protected get analytics() {
+    return firebase.analytics();
+  }
+
+  protected geopoint(lat: number, lng: number) {
+    return new firebase.firestore.GeoPoint(lat, lng);
+  }
+
+  /// **************
+  /// Write Data
+  /// **************
+  /// Firebase Server Timestamp
+  get timestamp() {
+    return firebase.firestore.FieldValue.serverTimestamp();
+  }
+
+  fromDate(date: Date): firebase.firestore.Timestamp {
+    return firebase.firestore.Timestamp.fromDate(date);
   }
 }

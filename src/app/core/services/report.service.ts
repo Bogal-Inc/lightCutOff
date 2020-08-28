@@ -25,6 +25,8 @@ export class ReportService extends BaseService {
                isDeleted: boolean,
                 datestart: Date
              }): Observable<Report[]> {
+    this.analytics.logEvent('collect_report');
+
     return this.col$<Report>(
       `${Const.collections.reports}`,
       ref => {
@@ -40,6 +42,8 @@ export class ReportService extends BaseService {
   }
 
   async addReport(report): Promise<DocumentReference<DocumentData>>{
+    this.analytics.logEvent('add_report');
+
     const ref = await this.add<Report>(
       `${Const.collections.reports}`,
       {
@@ -66,12 +70,16 @@ export class ReportService extends BaseService {
   }
 
   getReport(reportId: string): Observable<Report> {
+    this.analytics.logEvent('get_report');
+
     return this.doc$<Report>(
       `${Const.collections.reports}/${reportId}`
     );
   }
 
   updateReport(report: Report): Promise<void>{
+    this.analytics.logEvent('update_report');
+
     const partialReport = {
       ...report,
       _updatedAt: this.timestamp,
