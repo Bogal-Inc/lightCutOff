@@ -553,6 +553,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.map.data.loadGeoJson(coordsPolygons);
     this.map.data.addListener('dblclick', (event) => {
       console.log(event.feature.getProperty('name'));
+
+      this.mapService.position = {
+        lng: event.latLng.lng(),
+        lat: event.latLng.lat()
+      };
+      this.initMarkerUser(this.mapService.markerUserOption());
     });
   }
 
