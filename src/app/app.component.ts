@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     }
     log.debug('init');
 
-    firebase.analytics();
+    // firebase.analytics();
     this.initCacheSystem();
 
     // Setup translations

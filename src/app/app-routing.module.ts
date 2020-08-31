@@ -2,9 +2,18 @@ import { MainLayoutComponent } from './layouts/main-layout/main-layout.component
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
+import {EmptyLayoutComponent} from './layouts/empty-layout/empty-layout.component';
 
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: EmptyLayoutComponent,
+  //   loadChildren: () =>
+  //     import('./main/maintenance/maintenance.module').then(
+  //       m => m.MaintenanceModule
+  //     ),
+  // },
   {
     path: '',
     component: MainLayoutComponent,

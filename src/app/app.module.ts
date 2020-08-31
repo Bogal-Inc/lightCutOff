@@ -18,6 +18,7 @@ import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-comp
 import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { EmptyLayoutComponent } from './layouts/empty-layout/empty-layout.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     AppComponent,
     MainLayoutComponent,
     AdminLayoutComponent,
+    EmptyLayoutComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+.maintenance {
+  height: 100%;
+
+  &__header {
+    padding: 10px 0 0 20px;
+
+    &__logo{
+      font-size: 2em;
+    }
+  }
+
+  &__body {
+    height: 100%;
+    padding: 10px;
+    background: center/contain no-repeat url("../../../../assets/static/images/maintenance_1.svg");
+  }
+}
