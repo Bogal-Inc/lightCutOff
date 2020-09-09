@@ -267,11 +267,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (this.authService.getUser()){
       log.debug('add to current marker reported form in infos window');
-      this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, this.createReportFormElt.nativeElement);
+      this.markerCurrentInfoWindow = this.addInfoWindow(this.markerCurrentPosition, this.createReportFormElt.nativeElement);
     } else {
-      log.debug('current user are not identifiert');
+      log.debug('current user are not identifier');
       const content = this.translateService.instant('main.map-view.error_no_user');
-      this.markerCurrentInfoWindow = this.initClickInfoWindow(this.markerCurrentPosition, content);
+      this.markerCurrentInfoWindow = this.addInfoWindow(this.markerCurrentPosition, content);
     }
   }
 
@@ -313,46 +313,45 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (report.recovredAt) {
       content = this.mapService.createComponent(report, MarkerDetailsComponent, this.infosReport);
-      this.initOverInfoWindowMarker(currentMareker, content);
+      this.addInfoWindow(currentMareker, content);
     } else {
       if (this.authService.getUser().id === report._createdBy.id){
-        const info = this.initClickInfoWindow(currentMareker, content);
+        const info = this.addInfoWindow(currentMareker, content);
         const data = {
           report,
           markerCurrentInfoWindow: (info) ? info : this.markerCurrentInfoWindow
         };
+        // update report marker
         content = this.mapService.createComponent(data, MarkerRecovredReportComponent, this.recovredFormReport);
         info.setContent(content);
+        info.setZIndex(1000);
+        // show report informations
+        content = this.mapService.createComponent(report, MarkerDetailsComponent, this.infosReport);
+        this.addInfoWindow(currentMareker, content, 'hover');
       } else {
         content = this.mapService.createComponent(report, MarkerDetailsComponent, this.infosReport);
-        this.initOverInfoWindowMarker(currentMareker, content);
+        this.addInfoWindow(currentMareker, content);
       }
     }
 
     return currentMareker;
   }
 
-  private initClickInfoWindow(marker: google.maps.Marker, content = null): google.maps.InfoWindow {
-    log.debug('init event click on marker');
+  private addInfoWindow(marker: google.maps.Marker, content = null, event= 'click'): google.maps.InfoWindow {
+    log.debug('init infowindow on marker');
     const infoWindow = new google.maps.InfoWindow({
       content
     });
-    google.maps.event.addListener(marker, 'click', () => {
-      infoWindow.open(marker.getMap(), marker);
-    });
+    const markerMap = marker.getMap();
+
+    if (event === 'click') {
+      google.maps.event.addListener(marker, event, () => infoWindow.open(markerMap, marker) );
+    } else if (event === 'hover') {
+      google.maps.event.addListener(marker, 'mouseover', () => infoWindow.open(markerMap, marker));
+      google.maps.event.addListener(marker, 'mouseout', () => infoWindow.close());
+    }
 
     return infoWindow;
-  }
-
-  private initOverInfoWindowMarker(mareker: google.maps.Marker, content: any) {
-    log.debug('init event over on marker');
-    const infoWindow = new google.maps.InfoWindow({
-      content
-    });
-
-    mareker.addListener('click', () => infoWindow.open(this.map, mareker));
-    // mareker.addListener('mouseover', () => infoWindow.open(this.map, mareker));
-    // mareker.addListener('mouseout', () => infoWindow.close());
   }
 
   private addEventsUserMarker() {
