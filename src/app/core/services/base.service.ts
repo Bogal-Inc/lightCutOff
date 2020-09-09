@@ -130,10 +130,6 @@ export class BaseService {
     });
   }
 
-  protected get analytics() {
-    return firebase.analytics();
-  }
-
   protected geopoint(lat: number, lng: number) {
     return new firebase.firestore.GeoPoint(lat, lng);
   }

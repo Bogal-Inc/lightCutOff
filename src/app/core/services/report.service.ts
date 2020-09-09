@@ -6,6 +6,7 @@ import {defaultReport, Report} from '@Models/report.model';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Observable} from 'rxjs';
 import {Const} from 'src/environments/const';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 
 @Injectable({
@@ -16,7 +17,8 @@ export class ReportService extends BaseService {
 
   constructor(
     protected angularFireAuth: AngularFireAuth,
-    protected angularFirestore: AngularFirestore
+    protected angularFirestore: AngularFirestore,
+    private analytics: AngularFireAnalytics
   ) {
     super(angularFireAuth, angularFirestore);
   }

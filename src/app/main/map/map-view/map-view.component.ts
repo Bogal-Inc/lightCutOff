@@ -27,6 +27,7 @@ import {MetaService} from '@Services/meta.service';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {MapService} from '@Services/map.service';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 const log = new Logger('map-view.component');
 
@@ -74,6 +75,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private translateService: TranslateService,
     private metaService: MetaService,
     private mapService: MapService,
+    private analytics: AngularFireAnalytics,
     config: NgbTooltipConfig
   ) {
     config.placement = 'left';

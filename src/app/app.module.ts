@@ -19,6 +19,7 @@ import { MESSAGE_FORMAT_CONFIG } from 'ngx-translate-messageformat-compiler';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { EmptyLayoutComponent } from './layouts/empty-layout/empty-layout.component';
+import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { EmptyLayoutComponent } from './layouts/empty-layout/empty-layout.compon
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireAnalyticsModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       progressBar: true
