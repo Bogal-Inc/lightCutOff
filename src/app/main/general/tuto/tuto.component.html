@@ -1,4 +1,4 @@
-<div class="tuto">
+<div class="tuto" *ngIf="projectTitle != null">
     <div class="container">
       <div class="jumbotron jumbotron-fluid" id="start">
         <div class="container">
@@ -21,13 +21,19 @@
         <div class="col-md-9">
           <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
             <div class="mb-5">
-              <h3 class="display-4">{{'core.tuto.title_presentation' | translate}}</h3>
+              <div>
+                <h4 class="display-4">{{'core.tuto.title_presentation' | translate}}</h4>
 
+                <p>
+                  {{'core.tuto.text_presentation' | translate: {projectTitle:projectTitle} }}
+                  <img src="./assets/static/images/tuto/presentation.png" alt="exemple de carte" class="w-100">
+                </p>
+              </div>
               <div>
                 <h4 class="display-5">{{'core.tuto.title_legend' | translate}}</h4>
                 <p class="lead">{{'core.tuto.legend_intro' | translate}}</p>
                 <app-map-legend></app-map-legend>
-                <p class="lead"> {{'core.tuto.legend_text_1' | translate}}</p>
+<!--                <p class="lead"> {{'core.tuto.legend_text_1' | translate}}</p>-->
                 <ul>
                   <li [innerHTML]="'core.tuto.legend_text_2' | translate"></li>
                   <li [innerHTML]="'core.tuto.legend_text_3' | translate"></li>
@@ -52,7 +58,7 @@
                 {{'core.tuto.begin_text_1' | translate}}
                 <img src="./../../../../assets/static/images/marker_blue.png"
                      class="rounded mx-auto d-block" alt="marker bleu">
-                {{'core.tuto.begin_text_1' | translate}}
+                {{'core.tuto.begin_text_2' | translate}}
                 <img src="./../../../../assets/static/images/place_reseach.png" width="100%"
                      class="rounded mx-auto d-block" alt="place research">
                 {{'core.tuto.begin_text_3' | translate}}
@@ -60,7 +66,7 @@
             </div>
 
             <div class="mb-5">
-              <h3 class="display-4" id="add-report">{{ 'core.tuto.add_report_1' | translate }}</h3>
+              <h3 class="display-4" id="add-report">{{ 'core.tuto.title_report_signal' | translate }}</h3>
               <p class="lead">
                 {{ 'core.tuto.begin_text_4' | translate: {projectTitle:projectTitle} }}
                 <img src="./../../../../assets/static/images/form_add.png" width="30%"
@@ -69,7 +75,7 @@
             </div>
 
             <div class="mb-5">
-              <h3 class="display-4" id="signal-report">{{ 'core.tuto.title_report_signal' | translate }}</h3>
+<!--              <h3 class="display-4" id="signal-report">{{ 'core.tuto.title_report_signal' | translate }}</h3>-->
               <p class="lead">
                 {{ 'core.tuto.report_signal_text_1' | translate }}
                 <br>

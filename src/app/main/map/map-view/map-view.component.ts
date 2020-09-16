@@ -84,7 +84,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     log.debug('init');
-    this.analytics.logEvent('map_page')
+    this.analytics.logEvent('map_page');
 
     this.metaService.initMetaMapView('main.map-view.title_page');
   }
