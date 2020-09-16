@@ -6,6 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
 import {Const} from '../../../../environments/const';
 import {MetaService} from '@Services/meta.service';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 const log = new Logger('dashboard.component');
 
@@ -25,11 +26,13 @@ export class DashboardComponent implements OnInit {
   constructor(
     private reportService: ReportService,
     private translateService: TranslateService,
-    private metaService: MetaService
+    private metaService: MetaService,
+    private analytics: AngularFireAnalytics
   ) { }
 
   ngOnInit(): void {
     log.debug('init');
+    this.analytics.logEvent('dashboard_page');
 
     this.metaService.initMetatoAboutUs('statistics.dashboard.title_page');
     this.initCardDashbord();

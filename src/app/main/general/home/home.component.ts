@@ -5,6 +5,7 @@ import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Const } from 'src/environments/const';
 import {TranslateService} from '@ngx-translate/core';
 import {MetaService} from '@Services/meta.service';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 const log = new Logger('home.component');
 
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
     private modalService: NgbModal,
     private translateService: TranslateService,
     private metaService: MetaService,
+    private analytics: AngularFireAnalytics,
     config: NgbModalConfig
   ) {
     config.centered = true;
@@ -32,13 +34,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
+    this.analytics.logEvent('home_page');
 
     this.metaService.initMetatoHome('core.home.title_page');
   }
 
   openModal(content) {
+    this.analytics.logEvent('tutorial_video');
     this.modalService.open(content);
   }
-
-
 }

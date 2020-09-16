@@ -84,6 +84,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     log.debug('init');
+    this.analytics.logEvent('map_page')
 
     this.metaService.initMetaMapView('main.map-view.title_page');
   }
@@ -129,6 +130,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onCreateReport(event: any) {
     log.debug('create report');
+    this.analytics.logEvent('create_report');
 
     const geocoder = new google.maps.Geocoder();
     const errorMessage = this.translateService.instant('main.map-view.error_no_cameroon');
@@ -165,6 +167,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
    * Search place in map
    */
   onSearchPlace(event: { query: any; }) {
+    this.analytics.logEvent('map_search');
+
     const service = new google.maps.places.PlacesService(this.map);
     const request = {
       query: event.query,
@@ -184,6 +188,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   openInfoWindowCreateReport() {
+    this.analytics.logEvent('plus_button_add_report');
+
     google.maps.event.trigger(this.markerCurrentPosition, 'click');
   }
 

@@ -7,6 +7,7 @@ import {isMobile} from '@Helpers/mobile-confirm.helper';
 import {TranslateService} from '@ngx-translate/core';
 import {Const} from '../../../../environments/const';
 import {MetaService} from '@Services/meta.service';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 const log = new Logger('report-details-mobile.component');
 
@@ -24,11 +25,13 @@ export class ReportDetailsMobileComponent implements OnInit {
     private reportService: ReportService,
     private translateService: TranslateService,
     private metaService: MetaService,
-    private router: Router
+    private router: Router,
+    private analytics: AngularFireAnalytics
   ) { }
 
   ngOnInit(): void {
     log.debug('init');
+    this.analytics.logEvent('report_details_mobile_page');
 
     if (!isMobile()) {
       this.router.navigate(['/reports']);

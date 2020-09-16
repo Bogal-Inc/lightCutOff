@@ -10,6 +10,7 @@ import {Logger} from '@Services/logger.service';
 import {TranslateService} from '@ngx-translate/core';
 import {Const} from '../../../../environments/const';
 import {MetaService} from '@Services/meta.service';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 const log = new Logger('router-list.component');
 
@@ -94,11 +95,13 @@ export class ReportListComponent implements OnInit {
     private timestampPipe: TimestampPipe,
     private router: Router,
     private translateService: TranslateService,
-    private metaService: MetaService
+    private metaService: MetaService,
+    private analytics: AngularFireAnalytics
   ) { }
 
   ngOnInit(): void {
     log.debug('init');
+    this.analytics.logEvent('report_list_page');
 
     this.datatableMobilConfig();
     const now = new Date();
@@ -110,6 +113,8 @@ export class ReportListComponent implements OnInit {
   }
 
   onRowSelected(event: any) {
+    this.analytics.logEvent('report_selected');
+
     const selectedRows = this.gridApi.getSelectedRows();
     this.detailReportLightRight = true;
     this.reportSelected = selectedRows;

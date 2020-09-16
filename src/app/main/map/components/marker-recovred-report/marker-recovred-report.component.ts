@@ -5,6 +5,7 @@ import {compareDate} from '@Helpers/date.helper';
 import {BaseComponent} from '@Models/baseComponent.model';
 import {ReportSatus} from '@Models/report.model';
 import {TranslateService} from '@ngx-translate/core';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 @Component({
   selector: 'app-update-form-report',
@@ -20,7 +21,8 @@ export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
   constructor(
     private reportService: ReportService,
     private toastrService: ToastrService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private analytics: AngularFireAnalytics,
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +34,8 @@ export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
   }
 
   onSubmitRecovred() {
+    this.analytics.logEvent('recovred_report');
+
     if (!this.isDate(this.data.report.reportedAt)) {
       this.toastrService.error(this.translateService.instant('main.update-form-report.error_date_old'));
       return ;
