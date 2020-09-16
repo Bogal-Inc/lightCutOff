@@ -1,52 +1,243 @@
 {
-    "main": {
-        "map-view": {
-            "error_geolocalize_not_work": "Le service de geolocalisation ne fonctionne pas",
-            "error_geolocalize_no_browser": "Votre navigateur ne supporte Geolocation",
-            "error_no_cameroon": "Vous ne pouvez pas creer de rapport hors du territoire Camerounais",
-            "error_no_pace": "La place rechercher est introuvable",
-            "signalement_add": "Signalement ajouté",
-            "signal_no_energy": "Signalez une coupure de lumière où vous vous trouvez",
-            "map_no_load": "La map n'a pas pu être chargée. Veillez vous assurez que vous etes bien connecté à internet"
-        },
-        "create-form-report": {
-            "title": "Signalez une coupure",
-            "warning_message": "Assurez-vous que vous êtes bien positionnez sur la map",
-            "label_date": "Quant est-ce que vous n'avez plus eu d'énergie électrique?",
-            "input_date_placeholder": "Date et heure de la coupure",
-            "button_submit": "Signalez"
-        }
+  "app": {
+    "fail-precondition": "Several tabs open, persistence cannot be enabled",
+    "no-implement": "Your browser does not support all the features required to enable persistence",
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December",
+    "meta_description": "Lightcutoff is a project that aims to collect data on the supply of electrical energy in Cameroon, these data are mainly provided by people directly concerned by these cuts (the population)."
+  },
+  "core": {
+    "home": {
+      "title_page": "Official website",
+      "btn_show_video": "All about {projectTitle}",
+      "btn_map": "Go to our map",
+      "about": {
+        "title": "About us",
+        "content": "In <b>Cameroon</b>, access to public resources such as electricity and water is not easy. Some regions may even be deprived of them for several days or even weeks. The <b>{projectTitle}</b> project aims to help make an inventory of the state of the art on the supply of electrical energy in <b>Cameroon</b>. This in order to allow third parties to exploit this data in areas such as research or help in choosing a place to live.",
+        "btn_next": "Go to about us"
+      },
+      "app_example": {
+        "title": "Some application examples",
+        "research": "Research",
+        "deplace": "To move to work in an area where there is no power outage",
+        "to_move_out": "Living in a low cut-off frequency area"
+      },
+      "team": {
+        "title": "Team",
+        "developer": "Developer",
+        "founder": "Founder",
+        "marketing": "Marketing"
+      },
+      "whatwedo": {
+        "title": "What do we do",
+        "collect_data": "Collect data",
+        "local_cut_off": "Locate power outages",
+        "charts_data": "Statistics on data",
+        "users_notifications": "Notify users"
+      },
+      "contactus": {
+        "title": "Contact us"
+      }
     },
-    "shared": {
-        "loading": {
-            "loading": "Loading..."
-        },
-        "main-header": {
-            "home": "Home",
-            "report": "Rapport"
-        },
-        "map-legend": {
-            "title": "Légende",
-            "your_position": "Votre position",
-            "no_energie": "Pas d'électricité",
-            "your_no_energy": "Votre signalement de coupure",
-            "energy_recovred": "Electricité remise"
-        },
-        "main-footer": {
-            "contactus": "Contactez-nous",
-            "about": "A propos",
-            "tutorial": "Tutoriel",
-            "modal": {
-                "title": "Contactez-nous",
-                "email": "Email",
-                "email_required": "Un email est requis",
-                "subject": "Sujet",
-                "subject_required": "Sujet requis",
-                "message": "Message",
-                "message_required": "Message requis",
-                "close": "Fermer",
-                "send": "Envoyer"
-            }
-        }
+    "aboutus": {
+      "title_page": "About us",
+      "title": "Who are we?",
+      "slogan": "This is all about the project",
+      "title_history": "The little story",
+      "text_history_1": "The story of the project <strong>{projectTitle}</strong> started with one of the longest power cuts I have experienced since I have been living in Cameroon. I've been living in Yaoundé for a few years now, and I had one of the most disturbing experiences of my life about the power cuts. Indeed, we had no light for several days. Don't be mistaken, light cuts are frequent in my city (my country too) but, for me, this was a first.",
+      "text_history_2": "Unfortunately for me, the cut was very extensive and working from home, I had no way of knowing which areas were affected or not, so I lost several days of work.",
+      "title_objectif": "Our objectives",
+      "text_obj_1": "The project <strong>{projectTitle}</strong> on which we are working, aims to help make an inventory of the situation regarding the power cuts throughout the country. This for the purpose of allowing third parties to exploit this data to do research, for example, to be able to travel to work, or even find housing according to the trends of cuts.",
+      "text_obj_2": "Thus, the project <strong>{projectTitle}</strong> will make it possible to provide the population with information on the supply of electrical energy in the country.",
+      "text_obj_3": "We have great hope that the project will be able to help a large number of people whose activity is governed by the absence or not of electrical energy."
+    },
+    "tuto": {
+      "title_page": "Tutorial, learning how to use our tool",
+      "prin_title": "Learn how to use {projectTitle}",
+      "report_alert_2": "In this tutorial we consider that <b>a report</b> is also <b>a report</b> <b>an alert</b> and vice versa.",
+      "report_alert_1": "For the moment, the project map {projectTitle} is only available in Cameroon. This means that no report will be accepted if it is made outside Cameroon.",
+      "title_presentation": "Presentation",
+      "title_legend": "Legend",
+      "title_begin": "Let's start",
+      "title_report_signal": "Report a power outage",
+      "title_add_report": "Add a report",
+      "legend_intro": "To begin with, here is the legend of our map.",
+      "legend_text_1": "As you can see, there's a specific record for each situation. We have:",
+      "legend_text_2": "<span class=\"text-primary\"><b>Marqueur bleu:</b></span> To report your position on the map.",
+      "legend_text_3": "<span class=\"text-danger\"><b>Marqueur rouge:</b></span> Represents a light cut reported by another user.",
+      "legend_text_4": "<span class=\"text-warning\"><b>Marqueur orange:</b></span>Represents a light cut reported by yourself.",
+      "legend_text_5": "<span class=\"text-success\"><b>Marqueur vert:</b></span>Represents the end of a cut reported by you or another user.",
+      "title_cluster": "Clusters",
+      "title_after_signal": "After your report",
+      "cluster_text_1": "a cluster is an area with a large number of markers. Depending on the number of markers, we have several types of clusters.",
+      "cluster_text_2": "Clusters are classified according to the number of markers in the area. Thus, the order of colors ranges from blue for a relatively small number to purple for a very large number of markers.",
+      "begin_text_1": "When you arrive on our map, you will be geolocated and your position will be represented by a blue marker.",
+      "begin_text_2": "It is possible that your position is not exactly accurate, so to improve it we have provided a search module that will allow you to better locate yourself in the map.",
+      "begin_text_3": "If it turns out that you have to move your blue marker over a very long distance, you don't necessarily have to drag it all the way. A double click on a place on the map will suffice.",
+      "begin_text_4": "As you probably know, {projectTitle} aims to collect data on power cuts in Cameroon. To be able to add a report, just click once on your blue marker and a form will appear. All you have to do is choose a date and time corresponding to the power cut.",
+      "add_report_1": "As you probably know, {projectTitle} aims to collect data on power cuts in Cameroon. To add a report, simply click once on your blue marker and a form will appear. All you have to do is choose a date and time corresponding to the power outage.",
+      "report_signal_text_1": "After creating a report, there are 2 possibilities:",
+      "report_signal_text_2": "You are reporting a current outage, so after saving the previous report, a new form is presented to you, but you are not obliged to fill it in. You will notice an orange marker that indicates a cut in progress that you have reported and that your only source was closing.",
+      "report_signal_text_3": "To close an issued cut report, simply click on a marker, click on the corresponding orange marker and fill in the form.",
+      "report_signal_text_4": "Another form is offered to complete your report. Just after you have created it. It will ask you for the date and time of the end of the break. By filling in and sending the form you will then operate at the closure of the outage report.",
+      "after_signal_text_1": "After closing an issued report (section: Reporting a power failure), you will see a green marker. To let users know that your previous outage report is no longer valid. The situation has returned to normal (power restored).",
+      "menu_intro": "Introduction",
+      "menu_begin": "Let's get started",
+      "menu_add_report": "Add a report",
+      "menu_add_signal": "Report a power outage",
+      "menu_after_signal": "After your report"
     }
+  },
+  "main": {
+    "map-view": {
+      "title_page": "Map",
+      "error_geolocalize_not_work": "The geolocalization service does not work",
+      "error_geolocalize_no_browser": "Your browser does not support Geolocation",
+      "error_no_cameroon": "You cannot create a report outside Cameroonian territory",
+      "error_no_pace": "The place to search is not found",
+      "signalement_add": "Report added",
+      "signal_no_energy": "Report a light cut off where you are",
+      "map_no_load": "The map could not be loaded. Please make sure you are connected to the internet",
+      "btn_add_report": "Add a report",
+      "no_place": "Your place was not found",
+      "your_position": "Your position",
+      "error_no_user": "You could not be identified. To make a report you must be logged in."
+    },
+    "create-form-report": {
+      "title": "Report a power outage",
+      "warning_message": "Make sure you are well positioned on the map",
+      "label_date": "When did you run out of electricity?",
+      "input_date_placeholder": "Date and time of the power outage",
+      "button_submit": "Report"
+    },
+    "update-form-report": {
+      "title": "Report end of power outage",
+      "signal_that": "Report that:",
+      "label": "When did you run out of light?",
+      "btn_submit": "Report",
+      "close": "Close",
+      "contribute_thanks": "Thank you for your contribution.",
+      "success_recovred": "Cut off complete",
+      "thanks": "Thank you",
+      "error_load_form": "An error has occurred. It seems that some elements could not be loaded. Please refresh the page to modify your report.",
+      "error_date_old": "The end date of a report must be more recent than the creation date"
+    },
+    "search-place-form": {
+      "placeholder": "Search for a city, a neighborhood, a place",
+      "btn_label": "Search for a place",
+      "find_district": "Find a district",
+      "close": "Close"
+    },
+    "marker-details": {
+      "title": "Report",
+      "report_that": "Reported on:",
+      "recovred_that":"Recovered on:",
+      "info_locations": "Localizations",
+      "country": "Country:",
+      "city": "City:",
+      "department": "Department:",
+      "neighborhood": "Neighborhood:",
+      "address": "Address:",
+      "lat": "Latitude:",
+      "lng": "Longitude:"
+    },
+    "main-footer": {
+      "message_send": "Message sent",
+      "error_message_send": "Your message has not been sent"
+    }
+  },
+  "statistics": {
+    "reports-datatable": {
+      "title": "Annual reports",
+      "view_all": "See more >>"
+    },
+    "dashboard": {
+      "title_page": "Dashboard",
+      "card_reports_all_title": "Total reports",
+      "card_reports_current_year_title": "Annual reports",
+      "card_reports_current_month_title": "Monthly reports",
+      "no_datatable": "No data available for this year.",
+      "chart_title": "Reports created for the year {year}",
+      "chart_title_week": "Cut-off and restart reports"
+    }
+  },
+  "report": {
+    "report-details": {
+      "title": "Report details",
+      "report_that": "Report on:",
+      "recovred_that":"Recovered on:",
+      "no_return": "Still ongoing",
+      "report_places": "Localization",
+      "country": "Country:",
+      "city": "City:",
+      "department": "Department:",
+      "neighborhood": "Neighborhood:",
+      "address": "Address:",
+      "longitude": "Longitude:",
+      "latitude": "Latitude:"
+    },
+    "report-list": {
+      "title_page": "Reporting list"
+    },
+    "report-details-mobile": {
+      "title_page": "Marker details",
+      "title": "Report details",
+      "report_that": "Reported on:",
+      "recovred_that":"Recovered on:",
+      "no_return": "Still ongoing",
+      "longitude": "Longitude:",
+      "latitude": "Latitude:",
+      "report_places": "Reporting localization details"
+    }
+  },
+  "shared": {
+    "loading": {
+      "loading": "Uploading..."
+    },
+    "main-header": {
+      "home": "Home",
+      "map": "Map",
+      "statistics": "Statistics",
+      "offline": "Offline"
+    },
+    "map-legend": {
+      "title": "Legend",
+      "your_position": "Your position",
+      "no_energie": "Report of power failure",
+      "your_no_energy": "Your report of power failure",
+      "energy_recovred": "Electricity recovered "
+    },
+    "admin-nav": {
+      "dashboard": "Chart",
+      "reports": "Reports",
+      "menu": "Menu"
+    },
+    "main-footer": {
+      "contactus": "Contact us",
+      "about": "About us",
+      "tutorial": "Tutorial",
+      "modal": {
+        "title": "Contact us",
+        "email": "Email",
+        "email_required": "Email is required",
+        "subject": "Subject",
+        "subject_required": "Subject required",
+        "message": "Message",
+        "message_required": "Message required",
+        "close": "Close",
+        "send": "Sent"
+      }
+    }
+  }
 }
+

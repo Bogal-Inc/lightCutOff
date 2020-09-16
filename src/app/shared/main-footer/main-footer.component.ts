@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Logger } from '@Services/logger.service';
 import {TranslateService} from '@ngx-translate/core';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 const log = new Logger('loading.component');
 
@@ -33,6 +34,7 @@ export class MainFooterComponent implements OnInit, OnDestroy {
     private toastService: ToastrService,
     private i18nService: I18nService,
     private translateService: TranslateService,
+    private analytics: AngularFireAnalytics,
     config: NgbModalConfig,
   ) {
     config.backdrop = 'static';
@@ -89,6 +91,8 @@ export class MainFooterComponent implements OnInit, OnDestroy {
 
   toggleLang() {
     log.debug('call toggleLang');
+    this.analytics.logEvent('switch_lang');
+
     if (this.i18nService.language === Const.app.lang.fr){
       log.debug('active lang en');
       this.i18nService.language = Const.app.lang.en;

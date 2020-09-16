@@ -16,17 +16,22 @@
                     <a class="nav-link footer__line__menu__link" href="/tuto">
                       {{ 'shared.main-footer.tutorial' | translate}}
                     </a>
-
                 </li>
             </ul>
         </div>
         <div class="d-flex justify-content-end">
             <ul class="nav">
                 <li *ngIf="currentLang === 'en'" class="nav-item">
-                  <a (click)="toggleLang()" class="nav-link" href="#">Francais</a>
+                  <a (click)="toggleLang()" class="nav-link">
+                    <img src="./../../../assets/static/icons/france.png" alt="flag_french" class="lang-flag">
+                    Francais
+                  </a>
                 </li>
                 <li *ngIf="currentLang === 'fr'" class="nav-item">
-                  <a (click)="toggleLang()" class="nav-link" href="#">English</a>
+                  <a (click)="toggleLang()" class="nav-link">
+                    <img src="./../../../assets/static/icons/england.png" alt="flag_england" class="lang-flag">
+                    English
+                  </a>
                 </li>
             </ul>
         </div>
