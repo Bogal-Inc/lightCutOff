@@ -3,6 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TutoComponent } from './tuto.component';
 import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
 import { TranslateModule } from '@ngx-translate/core';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../../../../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 describe('TutoComponent', () => {
   let component: TutoComponent;
@@ -11,7 +14,9 @@ describe('TutoComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        TranslateModule.forRoot()
+        TranslateModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule
       ],
       declarations: [
         TutoComponent,

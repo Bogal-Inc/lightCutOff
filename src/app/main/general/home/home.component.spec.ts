@@ -5,6 +5,9 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../../../../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -17,7 +20,9 @@ describe('HomeComponent', () => {
         ReactiveFormsModule,
         FormsModule,
         RouterTestingModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule
       ],
       declarations: [ HomeComponent ]
     })
