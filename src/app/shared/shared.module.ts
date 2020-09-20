@@ -13,6 +13,7 @@ import {RouterModule} from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { DownloadAppComponent } from './download-app/download-app.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     TimestampPipe,
     AdminNavComponent,
     ContactUsComponent,
+    DownloadAppComponent,
   ],
   imports: [
     OwlDateTimeModule,

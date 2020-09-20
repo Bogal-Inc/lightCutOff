@@ -1,9 +1,10 @@
+<app-download-app></app-download-app>
 <footer class="footer">
     <div class="d-flex justify-content-between">
         <div class="d-flex justify-content-start footer__line">
             <ul class="nav footer__line__menu">
                 <li class="nav-item">
-                    <a class="nav-link footer__line__menu__link" (click)="open(content)">
+                    <a class="nav-link footer__line__menu__link" (click)="open(contactus)">
                       {{ 'shared.main-footer.contactus' | translate}}
                     </a>
                 </li>
@@ -41,7 +42,7 @@
     </div>
 </footer>
 
-<ng-template #content let-modal>
+<ng-template #contactus let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">{{ 'shared.main-footer.modal.title' | translate}}</h4>
         <a class="close" role="button" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -91,3 +92,4 @@
                 [disabled]="submitted">{{ 'shared.main-footer.modal.send' | translate}}</button>
     </div>
 </ng-template>
+

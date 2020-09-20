@@ -1,0 +1,20 @@
+.download{
+  position: fixed;
+  background-color: var(--primary);
+  color: white;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+
+  &__title{
+    h4{
+      font-weight: bolder;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) and (orientation: portrait){
+  .download {
+    bottom: 0;
+  }
+}

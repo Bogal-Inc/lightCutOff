@@ -202,6 +202,12 @@
     }
   },
   "shared": {
+    "download-app": {
+      "title": "Vous utilisez un mobile?",
+      "body": "Télécharger {lightcutoff} pour une navigation et un accès plus facile",
+      "button_download": "Télécharger",
+      "button_close": "Fermé"
+    },
     "loading": {
       "loading": "Chargement..."
     },

@@ -1,6 +1,6 @@
 export const Const = {
   app: {
-    title: 'lightCutOff',
+    title: 'LightCutOff',
     lang: {
       localstorage_title: 'lightCutOffXLanguage',
       defaultLanguage: 'fr',

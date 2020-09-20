@@ -1,0 +1,22 @@
+<div class="download" *ngIf="show()">
+  <div class="download__title">
+    <a class="close" role="button" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </a>
+    <h4>{{'shared.download-app.title' | translate}}</h4>
+  </div>
+  <div class="download__body">
+    <p>
+      {{'shared.download-app.body' | translate: {lightcutoff: appTitle} }}
+    </p>
+  </div>
+  <div class="d-flex justify-content-center download__footer">
+    <button type="button" class="btn btn-light" (click)="download()">
+      {{'shared.download-app.button_download' | translate}}
+    </button>
+    &nbsp;
+    <button type="button" class="btn btn-secondary" (click)="close()">
+      {{'shared.download-app.button_close' | translate}}
+    </button>
+  </div>
+</div>

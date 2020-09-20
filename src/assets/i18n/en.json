@@ -202,6 +202,12 @@
     }
   },
   "shared": {
+    "download-app": {
+      "title": "Do you use a mobile?",
+      "body": "Download {lightcutoff} for easier navigation and access",
+      "button_download": "Download",
+      "button_close": "Close"
+    },
     "loading": {
       "loading": "Uploading..."
     },

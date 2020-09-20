@@ -2,7 +2,7 @@ import { I18nService } from '@Services/i18n.service';
 import { Const } from 'src/environments/const';
 import { ToastrService } from 'ngx-toastr';
 import { MailService } from '@Services/mail.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewInit, ComponentFactoryResolver, HostListener} from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -10,6 +10,8 @@ import { takeUntil } from 'rxjs/operators';
 import { Logger } from '@Services/logger.service';
 import {TranslateService} from '@ngx-translate/core';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {isMobile} from '@Helpers/mobile-confirm.helper';
+import {DownloadAppComponent} from '../download-app/download-app.component';
 
 const log = new Logger('loading.component');
 
@@ -35,36 +37,36 @@ export class MainFooterComponent implements OnInit, OnDestroy {
     private i18nService: I18nService,
     private translateService: TranslateService,
     private analytics: AngularFireAnalytics,
+    private componentFactoryResolver: ComponentFactoryResolver,
     config: NgbModalConfig,
   ) {
     config.backdrop = 'static';
     config.keyboard = false;
     config.centered = true;
   }
+
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 
   ngOnInit(): void {
+    log.debug('init');
     this.initContactUsForm();
     this.currentLang = this.i18nService.language;
-    log.debug('init');
   }
 
   open(content) {
-    log.debug('open close');
     this.modalService.open(content).result.then((result) => {
-      log.debug('open modal');
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      log.error('close modal');
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
 
   onSendMail() {
     log.debug('onSendMail call');
+
     this.submitted = true;
 
     // stop here if form is invalid
