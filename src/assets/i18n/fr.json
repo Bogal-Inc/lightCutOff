@@ -19,11 +19,11 @@
   "core": {
     "home": {
       "title_page": "Site officiel",
-      "btn_show_video": "Tout savoir de {projectTitle}",
-      "btn_map": "Aller sur notre carte",
+      "btn_show_video": "Comment utiliser {projectTitle}",
+      "btn_map": "Signaler nous une coupure",
       "about": {
         "title": "À propos",
-        "content": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux sur la fourniture d'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'exploiter ces données dans des domaines tel que la recherche ou l'aide à choisir un lieu d'habitation.",
+        "content": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
         "btn_next": "Allez dans à propos"
       },
       "app_example": {
@@ -40,9 +40,9 @@
       },
       "whatwedo": {
         "title": "Que faisons nous",
-        "collect_data": "Collecter des données",
+        "collect_data": "Compiler des données",
         "local_cut_off": "Localiser les coupures d'électricité",
-        "charts_data": "Statistiques sur les données",
+        "charts_data": "Étude des données",
         "users_notifications": "Notifier les utilisateurs"
       },
       "contactus": {
@@ -54,10 +54,10 @@
       "title": "Qui sommes nous?",
       "slogan": "Voici tout à propos du projet",
       "title_history": "La petite histoire",
-      "text_history_1": "l'histoire du projet <strong>{projectTitle}</strong> à débuté avec une des plus longues coupures d'électricité que j'ai connue depuis que je vis au Cameroun. Ca fait déjà quelques années que j'habite Yaoundé, et j'ai vécu une des expériences les plus perturbantes de ma vie à propos des coupures lumière. En effet, Nous n'avons pas eu de lumière pendant plusieurs jours. Ne vous y détromper pas, les coupures de lumière sont fréquentes dans ma ville (mon pays aussi) mais, pour moi, cela là était une première.",
+      "text_history_1": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. La plateforme <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
       "text_history_2": "Malheureusement pour moi, la coupure était très étendue et travaillant de la maison, je n'avais aucun moyen de savoir quelles zones étaient touchées ou non, j'ai perdu ainsi plusieurs jours de travail.",
-      "title_objectif": "Nos objectifs",
-      "text_obj_1": "Le projet <strong>{projectTitle}</strong> sur lequel nous travaillons, vise à aider à faire un état des lieux de la situation au sujet des coupures d'énergie électrique sur l'ensemble du territoire national. Ceci à des fins de permettre à des tiers d'exploiter ces données pour faire par exemple de la recherche, pour pouvoir se déplacer pour travailler, ou même trouver un logement en fonction des tendances de coupures.",
+      "title_objectif": "Notre objectif",
+      "text_obj_1": "La plateforme <strong>{projectTitle}</strong> vise à aider à faire un état des lieux sur les coupures d'énergie électrique dans le pays. Ceci en s'appuyant sur les consommateurs. Dans le but d'aider ces dernièrs à s'adapter aux divers interruptions.",
       "text_obj_2": "Ainsi, le projet <strong>{projectTitle}</strong> permettra de donner aux populations des nformations sur la fourniture en énergie électrique dans le pays.",
       "text_obj_3": "Nous avons grand espoir que le projet pourra aider un grand nombre de personnes dont l'activité est régie par l'absence ou non d'énergie électrique."
     },
@@ -90,7 +90,7 @@
       "report_signal_text_1": "Après avoir créé un rapport, il y a 2 possibilités:",
       "report_signal_text_2": "Vous signalez une coupure en cours: après avoir enregistré le rapport précédent, un nouveau formulaire vous est présenté mais, vous n'êtes pas dans l'obligation de le remplir. Vous remarquerez un marqueur orange qui signale une coupure en cours que vous avez signalé et que vous seul pouvez signaler fini.",
       "report_signal_text_3": "Pour fermer un rapport de coupure émis, il vous suffit de cliquer sur le marqueur orange correspondant et remplir le formulaire.",
-      "report_signal_text_4": "Un autre formulaire vous est proposé pour terminer votre rapport: Juste après que vous ayez crée un rapport, il vous ai proposé un nouveau formulaire. En remplissant et en envoyant ce formulaire, vous opérerez alors à la fermeture du rapport de coupure initié plus tôt.",
+      "report_signal_text_4": "Un autre formulaire vous est proposé pour terminer votre rapport: Juste après que vous ayez crée un rapport, il vous est proposé un nouveau formulaire. En remplissant et en envoyant ce formulaire, vous fermez le rapport de coupure initié plus tôt.",
       "after_signal_text_1": "Après la fermeture d'un rapport émis (section: Signaler une coupure), vous verrez un marqueur vert. Pour signifier aux utilisateurs que votre signalement de coupure précédant n'est plus. La situation est revenue à la normale (électricité remise).",
       "menu_intro": "Introduction",
       "menu_begin": "Commençons",

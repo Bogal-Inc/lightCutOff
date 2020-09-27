@@ -6,12 +6,12 @@
           <img src="../../../../assets/static/images/logo.png" alt="{{ projectTitle }} logo" class="mb-3">
           <h1 class="mb-3 display-1 font-size-title"><b>{{ projectTitle | uppercase }}</b></h1>
           <button class="mb-3 btn btn-lg btn-dark" (click)="openModal(content)">
-            <fa-icon [icon]="faPlay"></fa-icon>
+            <fa-icon [icon]="faPlayCircle"></fa-icon>
             {{'core.home.btn_show_video' | translate: { projectTitle: projectTitle } }}
           </button>
           &nbsp;&nbsp;&nbsp;
-          <button class="mb-3 btn btn-lg btn-success" routerLink="/map">
-            <fa-icon [icon]="faMapMarker"></fa-icon>
+          <button class="mb-3 btn btn-lg btn-danger" routerLink="/map">
+            <fa-icon [icon]="faBullhorn"></fa-icon>
             {{"core.home.btn_map" | translate}}
           </button>
         </div>
@@ -32,7 +32,7 @@
             <div class="col-md-9">
               <div>
                 <p class="text-justify"
-                   [innerHTML]="'core.home.about.content' | translate: { projectTitle: projectTitle }"></p>
+                   [innerHTML]="'core.aboutus.text_history_1' | translate: { projectTitle: projectTitle }"></p>
               </div>
               <div class="text-center">
                 <button type="button" class="btn btn-outline-info" routerLink="/aboutus">
@@ -53,19 +53,21 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3 text-center">
-            <div class=" pb-4">
-              <img src="../../../../assets/static/images/home/data_collect.svg"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.collect_data' | translate}} logo">
-            </div>
-            <h4>{{'core.home.whatwedo.collect_data' | translate}}</h4>
-          </div>
-          <div class="col-md-3 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/map.svg"
                    class="rounded w-100" alt="{{'core.home.whatwedo.local_cut_off' | translate}} logo">
             </div>
             <h4>{{'core.home.whatwedo.local_cut_off' | translate}}</h4>
           </div>
+
+          <div class="col-md-3 text-center">
+            <div class=" pb-4">
+              <img src="../../../../assets/static/images/home/data_collect.svg"
+                   class="rounded w-100" alt="{{'core.home.whatwedo.collect_data' | translate}} logo">
+            </div>
+            <h4>{{'core.home.whatwedo.collect_data' | translate}}</h4>
+          </div>
+
           <div class="col-md-3 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/grahic_chart.svg"
@@ -129,7 +131,7 @@
                    class="rounded w-100" alt="{{'core.home.whatwedo.collect_data' | translate}}">
             </div>
             <div>
-              <h4>Kouagnia Willy</h4>
+              <h4>Willy Kouagnia</h4>
               <i>{{'core.home.team.developer' | translate}}, {{'core.home.team.founder' | translate}}</i>
             </div>
           </div>
@@ -149,7 +151,7 @@
                    class="rounded w-100" alt="{{'core.home.whatwedo.charts_data' | translate}}">
             </div>
             <div>
-              <h4>Tchanang Landry</h4>
+              <h4>Yvan Ngassa</h4>
               <i>{{'core.home.team.developer' | translate}}, {{'core.home.team.marketing' | translate}}</i>
             </div>
           </div>

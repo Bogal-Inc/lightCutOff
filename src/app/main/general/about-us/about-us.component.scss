@@ -1,4 +1,9 @@
 .aboutus {
   background-color: var(--white);
   padding: 0 20px;
+  min-height: 85vh;
+
+  &__content {
+    padding: 0 40px;
+  }
 }

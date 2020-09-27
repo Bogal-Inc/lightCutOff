@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
-import {faPlay, faMapMarker} from '@fortawesome/free-solid-svg-icons';
+import {faPlayCircle, faMapMarker, faBullhorn} from '@fortawesome/free-solid-svg-icons';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Const } from 'src/environments/const';
 import {TranslateService} from '@ngx-translate/core';
@@ -17,8 +17,9 @@ const log = new Logger('home.component');
 })
 export class HomeComponent implements OnInit {
   readonly projectTitle = Const.app.title;
-  readonly faPlay = faPlay;
+  readonly faPlayCircle = faPlayCircle;
   readonly faMapMarker = faMapMarker;
+  readonly faBullhorn = faBullhorn
   closeResult = '';
 
   constructor(

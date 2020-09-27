@@ -20,10 +20,10 @@
     "home": {
       "title_page": "Official website",
       "btn_show_video": "All about {projectTitle}",
-      "btn_map": "Go to our map",
+      "btn_map": "Report a light cut",
       "about": {
         "title": "About us",
-        "content": "In <b>Cameroon</b>, access to public resources such as electricity and water is not easy. Some regions may even be deprived of them for several days or even weeks. The <b>{projectTitle}</b> project aims to help make an inventory of the state of the art on the supply of electrical energy in <b>Cameroon</b>. This in order to allow third parties to exploit this data in areas such as research or help in choosing a place to live.",
+        "content": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
         "btn_next": "Go to about us"
       },
       "app_example": {
@@ -40,9 +40,9 @@
       },
       "whatwedo": {
         "title": "What do we do",
-        "collect_data": "Collect data",
+        "collect_data": "Compile data",
         "local_cut_off": "Locate power outages",
-        "charts_data": "Statistics on data",
+        "charts_data": "Data analysis",
         "users_notifications": "Notify users"
       },
       "contactus": {
@@ -54,10 +54,10 @@
       "title": "Who are we?",
       "slogan": "This is all about the project",
       "title_history": "The little story",
-      "text_history_1": "The story of the project <strong>{projectTitle}</strong> started with one of the longest power cuts I have experienced since I have been living in Cameroon. I've been living in Yaoundé for a few years now, and I had one of the most disturbing experiences of my life about the power cuts. Indeed, we had no light for several days. Don't be mistaken, light cuts are frequent in my city (my country too) but, for me, this was a first.",
+      "text_history_1": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer en fonction de la situation.",
       "text_history_2": "Unfortunately for me, the cut was very extensive and working from home, I had no way of knowing which areas were affected or not, so I lost several days of work.",
-      "title_objectif": "Our objectives",
-      "text_obj_1": "The project <strong>{projectTitle}</strong> on which we are working, aims to help make an inventory of the situation regarding the power cuts throughout the country. This for the purpose of allowing third parties to exploit this data to do research, for example, to be able to travel to work, or even find housing according to the trends of cuts.",
+      "title_objectif": "Our objective",
+      "text_obj_1": "La plateforme <strong>{projectTitle}</strong> vise à aider à faire un état des lieux sur les coupures d'énergie électrique dans le pays. Ceci en s'appuyant sur les consommateurs. Dans le but d'aider ces dernièrs à s'adapter aux divers interruptions.",
       "text_obj_2": "Thus, the project <strong>{projectTitle}</strong> will make it possible to provide the population with information on the supply of electrical energy in the country.",
       "text_obj_3": "We have great hope that the project will be able to help a large number of people whose activity is governed by the absence or not of electrical energy."
     },
@@ -67,7 +67,7 @@
       "report_alert_2": "In this tutorial we consider that <b>a report</b> is also <b>a report</b>, <b>an alert</b> and vice versa.",
       "report_alert_1": "For the moment, {projectTitle} is only available in Cameroon. This means that no report will be accepted if it is made outside Cameroon.",
       "title_presentation": "Presentation",
-      "text_presentation": "{projectTitle} a pour objectif d’aider les utilisaturs d'énergie électrique à s’adapter aux contraintes liées aux coupures de courant électrique. Ceci au moyen d'une carte interactive qui leur permettrait de signaler toute coupure ou remise d'énergie électrique à l'endroit où ils se trouvent.",
+      "text_presentation": "{projectTitle} is designed to help power users adapt to the constraints of power outages. This is done by means of an interactive map that would allow them to report any power outage or power restoration at their location.",
       "title_legend": "Legend",
       "title_begin": "Let's start",
       "title_report_signal": "Report a power outage",
@@ -85,12 +85,12 @@
       "begin_text_1": "When you arrive on our map, you will be geolocated and your position will be represented by a blue marker.",
       "begin_text_2": "It is possible that your position is not exactly accurate, so to improve it we have provided a search module that will allow you to better locate yourself in the map.",
       "begin_text_3": "If it turns out that you have to move your blue marker over a very long distance, you don't necessarily have to drag it all the way. A double click on a place on the map will suffice.",
-      "begin_text_4": "Pour pouvoir ajouter un rapport, il vous suffit de cliquer une fois sur le votre marqueur bleu et un formulaire apparait. Il vous suffira de choisir une date et une heure correspondante à la coupure.",
-      "add_report_1": "Signalez une coupure",
+      "begin_text_4": "To add a report, simply click once on your blue marker and a form will appear. All you have to do is choose a date and time corresponding to a power outage.",
+      "add_report_1": "Report a power outage.",
       "report_signal_text_1": "After creating a report, there are 2 possibilities:",
-      "report_signal_text_2": "Vous signalez une coupure en cours: après avoir enregistré le rapport précédent, un nouveau formulaire vous est présenté mais, vous n'êtes pas dans l'obligation de le remplir. Vous remarquerez un marqueur orange qui signale une coupure en cours que vous avez signalé et que vous seul pouvez signaler fini.",
-      "report_signal_text_3": "Pour fermer un rapport de coupure émis, il vous suffit de cliquer sur le marqueur orange correspondant et remplir le formulaire.",
-      "report_signal_text_4": "Un autre formulaire vous est proposé pour terminer votre rapport: Juste après que vous ayez crée un rapport, il vous ai proposé un nouveau formulaire. En remplissant et en envoyant ce formulaire, vous opérerez alors à la fermeture du rapport de coupure initié plus tôt.",
+      "report_signal_text_2": "You report a current outage: after saving the previous report, you are presented with a new form, but you are not obliged to fill it in. You will notice an orange marker that indicates a power outage in progress that you have reported and that only you can report finished.",
+      "report_signal_text_3": "To close an issued outage report, simply click on the corresponding orange marker and fill in the form.",
+      "report_signal_text_4": "Another form is offered to you to complete your report: Just after you have created a report, a new form is presented to you. By filling out and sending this form, you close the power outage report initiated earlier.",
       "after_signal_text_1": "After closing an issued report (section: Reporting a power failure), you will see a green marker. To let users know that your previous outage report is no longer valid. The situation has returned to normal (power restored).",
       "menu_intro": "Introduction",
       "menu_begin": "Let's get started",
