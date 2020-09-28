@@ -11,6 +11,8 @@ import {GoogleMapsModule} from '@angular/google-maps';
 import {MarkerDetailsComponent} from './components/marker-details/marker-details.component';
 import {MarkerCreateReportComponent} from './components/marker-create-report/marker-create-report.component';
 import {MarkerRecovredReportComponent} from './components/marker-recovred-report/marker-recovred-report.component';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { TutoModalComponent } from './components/tuto-modal/tuto-modal.component';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import {MarkerRecovredReportComponent} from './components/marker-recovred-report
     MarkerCreateReportComponent,
     SearchPlaceFormComponent,
     MarkerDetailsComponent,
-    MarkerRecovredReportComponent
+    MarkerRecovredReportComponent,
+    TutoModalComponent,
   ],
   imports: [
     CommonModule,
@@ -35,8 +38,11 @@ import {MarkerRecovredReportComponent} from './components/marker-recovred-report
     GoogleMapsModule,
   ],
   providers: [
-    GoogleMapsAPIWrapper
+    GoogleMapsAPIWrapper,
+    NgbActiveModal
   ],
-  entryComponents: [ MarkerRecovredReportComponent ]
+  entryComponents: [
+    MarkerRecovredReportComponent,
+  ]
 })
 export class MapModule { }

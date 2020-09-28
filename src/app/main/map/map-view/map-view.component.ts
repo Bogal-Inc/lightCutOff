@@ -19,7 +19,7 @@ import {MapsAPILoader} from '@agm/core';
 import {ToastrService} from 'ngx-toastr';
 import {Const} from 'src/environments/const';
 import {MapLegendComponent} from 'src/app/shared/map-legend/map-legend.component';
-import {NgbTooltip, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbTooltip, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Logger} from '@Services/logger.service';
 import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';
 import {MarkerRecovredReportComponent} from '../components/marker-recovred-report/marker-recovred-report.component';
@@ -28,6 +28,7 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {MapService} from '@Services/map.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {TutoModalComponent} from '../components/tuto-modal/tuto-modal.component';
 
 const log = new Logger('map-view.component');
 
@@ -36,7 +37,7 @@ const log = new Logger('map-view.component');
   templateUrl: './map-view.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./map-view.component.scss'],
-  providers: [NgbTooltipConfig]
+  providers: [NgbTooltipConfig],
 })
 export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('mapContainer', {static: false})
@@ -53,9 +54,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private recovredFormReport: ViewContainerRef;
   @ViewChild('infosReport', { read: ViewContainerRef })
   private infosReport: ViewContainerRef;
+  @ViewChild('tleft') public tooltip: NgbTooltip;
   private map: google.maps.Map;
   private markerCurrentInfoWindow: google.maps.InfoWindow;
-  @ViewChild('tleft') public tooltip: NgbTooltip;
   readonly projectTitle = Const.app.title;
   isErrorMapActive = false;
   markerCurrentPosition: google.maps.Marker;
@@ -76,6 +77,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private metaService: MetaService,
     private mapService: MapService,
     private analytics: AngularFireAnalytics,
+    private modalService: NgbModal,
     config: NgbTooltipConfig
   ) {
     config.placement = 'left';
@@ -90,12 +92,25 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
+    const tutoPassed = localStorage.getItem('tutoPassed');
+
     this.mapInitializer();
+    if (tutoPassed === null || tutoPassed === '0') {
+      this.openTutoModal();
+    }
   }
 
   ngOnDestroy(): void {
     this.unsubsscribe$.next();
     this.unsubsscribe$.complete();
+  }
+
+  openTutoModal() {
+    this.modalService.open(TutoModalComponent, {
+      centered: true,
+      size: 'lg',
+      backdrop: 'static'
+    });
   }
 
   mapInitializer() {

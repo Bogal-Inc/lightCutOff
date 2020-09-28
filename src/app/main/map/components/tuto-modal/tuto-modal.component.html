@@ -1,0 +1,110 @@
+<div class="modal-header">
+  <h3 class="modal-title text-center">{{nextStep[currentStep].title}}</h3>
+  <button type="button" class="close" aria-label="Close" *ngIf="tutoFinish()"
+          (click)="tutoEnd()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body text-center">
+  <div class="tuto">
+<!--    etape 1 introduction-->
+    <section *ngIf="nextStep[0].status" class="tuto__step-1">
+      <div class="tuto___step-1__bloc">
+        <p>
+          {{'main.tuto-modal.step_1_text_1' | translate: {lightcutoff: projectTitle} }}
+        </p>
+        <p [innerHTML]="'main.tuto-modal.step_1_text_2' | translate"></p>
+      </div>
+    </section>
+
+<!--    etape 2 add report-->
+    <section *ngIf="nextStep[1].status" class="tuto__step-2">
+      <h5>{{'main.tuto-modal.step_2_title' | translate }}</h5>
+      <div class="row tuto__step-2__bloc">
+        <div class="col-md-6">
+          <img src="./../../../../assets/static/images/tuto/marker_blue.png"
+               [alt]="'main.tuto-modal.step_2_img_1' | translate" width="86%"
+               class="img-thumbnail">
+          <div class="text-center" [innerHTML]="'main.tuto-modal.step_2_text_1' | translate"></div>
+        </div>
+        <div class="col-md-6">
+          <img src="./../../../../assets/static/images/tuto/form_signal_report.png"
+               [alt]="'main.tuto-modal.step_2_img_2' | translate" class="img-thumbnail">
+          <div class="text-center" [innerHTML]="'main.tuto-modal.step_2_text_2' | translate"></div>
+        </div>
+      </div>
+    </section>
+
+<!--    etape 2 add report-->
+    <section *ngIf="nextStep[2].status" class="tuto__step-3">
+      <h5>{{'main.tuto-modal.step_3_title' | translate }}</h5>
+      <div class="tuto__step-3__bloc">
+        <div class="row tuto__step-2__bloc">
+          <div class="col-md-6">
+            <img src="./../../../../assets/static/images/tuto/button_plus.png"
+                 [alt]="'main.tuto-modal.step_2_img_3' | translate" width="95%" class="img-thumbnail">
+            <div class="text-center" [innerHTML]="'main.tuto-modal.step_3_text_1' | translate"></div>
+          </div>
+          <div class="col-md-6">
+            <img src="./../../../../assets/static/images/tuto/form_signal_report.png"
+                 [alt]="'main.tuto-modal.step_2_img_4' | translate" class="img-thumbnail">
+            <div class="text-center" [innerHTML]="'main.tuto-modal.step_3_text_2' | translate"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!--    update report-->
+    <section *ngIf="nextStep[3].status" class="tuto__step-3">
+      <div class="tuto__step-3__bloc">
+        <div class="row tuto__step-3__bloc">
+          <div class="col-md-6">
+            <img src="./../../../../assets/static/images/tuto/marker_orange.png"
+                 [alt]="'main.tuto-modal.step_3_img_1' | translate" width="92.5%"
+                 class="img-thumbnail">
+            <div class="text-center" [innerHTML]="'main.tuto-modal.step_4_text_1' | translate"></div>
+          </div>
+          <div class="col-md-6">
+            <img src="./../../../../assets/static/images/tuto/form_signal_recovery.png"
+                 [alt]="'main.tuto-modal.step_3_img_2' | translate" class="img-thumbnail">
+            <div class="text-center" [innerHTML]="'main.tuto-modal.step_4_text_2' | translate"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!--    show information-->
+    <section *ngIf="nextStep[4].status" class="tuto__step-4">
+      <div class="tuto__step-4__bloc">
+        <div class="row tuto__step-4__bloc">
+          <div class="col-md-4">
+            <img src="./../../../../assets/static/images/tuto/marker_green_infos.png"
+                 [alt]="'main.tuto-modal.step_4_img_1' | translate" width="92.5%" class="img-thumbnail">
+            <div class="text-center" [innerHTML]="'main.tuto-modal.step_5_text_1' | translate"></div>
+          </div>
+          <div class="col-md-4">
+            <img src="./../../../../assets/static/images/tuto/marker_red_infos.png"
+                 [alt]="'main.tuto-modal.step_4_img_2' | translate" class="img-thumbnail">
+            <div class="text-center" [innerHTML]="'main.tuto-modal.step_5_text_2' | translate"></div>
+          </div>
+          <div class="col-md-4">
+            <img src="./../../../../assets/static/images/tuto/marker_orange_infos.png"
+                 [alt]="'main.tuto-modal.step_4_img_3' | translate" class="img-thumbnail">
+            <div class="text-center" [innerHTML]="'main.tuto-modal.step_5_text_3' | translate"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button *ngIf="!tutoFinish()" type="button" class="btn btn-success" (click)="tutoNext()">
+    {{'main.tuto-modal.button_next' | translate}}
+  </button>
+  <button *ngIf="tutoFinish()" type="button" class="btn btn-danger" (click)="tutoEnd()">
+    {{'main.tuto-modal.button_end' | translate}}
+  </button>
+</div>
+

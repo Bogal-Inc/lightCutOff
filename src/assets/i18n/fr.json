@@ -155,6 +155,36 @@
     "main-footer": {
       "message_send": "Message envoyé",
       "error_message_send": "Votre message n'a pas été envoyé"
+    },
+    "tuto-modal": {
+      "step_1_text_1": "Découvrer quelques astuces pour utiliser {lightcutoff}",
+      "step_1_text_2": "Vous pouvez cliquer sur <b>suivant</b> pour passer les étapes.",
+      "step_1_header": "Bienvenue sur notre tutoriel",
+      "step_2_title": "1ere méthode: Cliquer sur le marqueur bleu.",
+      "step_2_text_1": "<b>Cliqué</b> sur le marqueur bleu (qui signal votre position).",
+      "step_2_text_2": "Vous allez avoir accès à un <b>formulaire pour signaler une coupure</b>.",
+      "step_2_img_1": "marqueur bleu",
+      "step_2_img_2": "formulaire de signalement d'une coupure de lumière",
+      "step_2_img_3": "bouton plus",
+      "step_2_img_4": "formulaire de signalement d'une coupure de lumière",
+      "step_2_header": "Etape 1: Faite un signalement de coupure de lumiere",
+      "step_3_title": "2e methode: Cliqué sur le bouton 'plus' vert",
+      "step_3_text_1": "<b>Cliqué</b> sur le bouton <b>plus</b> (qui signal votre position).",
+      "step_3_text_2": "Vous allez avoir accès a un <b>formulaire pour signaler une coupure</b>.",
+      "step_3_img_1": "marqueur orange",
+      "step_3_header": "Etape 2: Finaliser un rapport de coupure de lumiere",
+      "step_3_img_2": "formulaire de signalement d'une remise de lumière",
+      "step_4_text_1": "<b>Cliqué</b> sur le marqueur orange",
+      "step_4_text_2": "Vous allez avoir accès a un <b>formulaire pour signaler que la lumière est revenue</b>",
+      "step_4_img_1": "informations marqueur vert",
+      "step_4_img_2": "informations marqueur rouge",
+      "step_4_img_3": "informations marqueur orange",
+      "step_4_header": "Etape 3: Afficher les informations de coupure",
+      "step_5_text_1": "<b>Cliqué</b> sur le marqueur vert",
+      "step_5_text_2": "<b>Cliqué</b> sur le marqueur rouge",
+      "step_5_text_3": "<b>Survolé</b> sur le marqueur orange",
+      "button_next": "Suivant",
+      "button_end": "Terminer"
     }
   },
   "statistics": {
