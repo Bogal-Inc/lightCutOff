@@ -274,6 +274,15 @@
         "close": "Fermer",
         "send": "Envoyer"
       }
+    },
+    "cookie": {
+      "header": "Cookies utilisés sur le site!",
+      "message": "Ce site Web utilise des cookies pour vous garantir la meilleure expérience sur notre site Web.",
+      "dismiss": "Je l'ai!",
+      "allow": "Autorise les cookies",
+      "deny": "Décliner",
+      "link": "En savoir plus",
+      "policy": "Politique relative aux cookies"
     }
   }
 }

@@ -17,6 +17,7 @@ if (environment === 'prod') {
   envConfigFile = `export const environment = {
                     production: ${process.env.PRODUCTION},
                     environment: '${process.env.ENVIRONMENT}',
+                    domain: '${process.env.DOMAIN_PROD}',
                     googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
                     firebase: {
                       apiKey: '${process.env.FIREBASE_API_KEY}',
@@ -35,6 +36,7 @@ if (environment === 'prod') {
   envConfigFile = `export const environment = {
                     production: ${process.env.PRODUCTION},
                     environment: '${process.env.ENVIRONMENT}',
+                    domain: '${process.env.DOMAIN_PROD}',
                     googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
                     firebase: {
                       apiKey: '${process.env.FIREBASE_API_KEY_DEV}',
@@ -53,6 +55,7 @@ if (environment === 'prod') {
   envConfigFile = `export const environment = {
                     production: ${process.env.PRODUCTION},
                     environment: '${process.env.ENVIRONMENT}',
+                    domain: '${process.env.DOMAIN_DEV}',
                     googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
                     firebase: {
                       apiKey: '${process.env.FIREBASE_API_KEY_DEV}',

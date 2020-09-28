@@ -1,5 +1,5 @@
 import { Const } from 'src/environments/const';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { AuthService } from '@Services/auth.service';
 import { DateTimeAdapter } from 'ng-pick-datetime';
 import { Logger } from '@Services/logger.service';
@@ -8,6 +8,8 @@ import { I18nService } from '@Services/i18n.service';
 import {ToastrService} from 'ngx-toastr';
 import {TranslateService} from '@ngx-translate/core';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {NgcCookieConsentService} from 'ngx-cookieconsent';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 const firebase = require('firebase/app');
 /** Initialize Logger */
@@ -27,6 +29,8 @@ export class AppComponent implements OnInit {
     private toastrService: ToastrService,
     private translateService: TranslateService,
     private angularFirestore: AngularFirestore,
+    private ccService: NgcCookieConsentService,
+    private analytics: AngularFireAnalytics,
     dateTimeAdapter: DateTimeAdapter<any>
   ) {
     dateTimeAdapter.setLocale('fr-FR');
@@ -49,6 +53,36 @@ export class AppComponent implements OnInit {
       defaultLang ? defaultLang : Const.app.lang.fr,
       [Const.app.lang.fr, Const.app.lang.en]
     );
+
+    this.initCookiesConsient();
+  }
+
+  private initCookiesConsient() {
+    this.translateService//
+      .get([
+        'shared.cookie.header',
+        'shared.cookie.message',
+        'shared.cookie.dismiss',
+        'shared.cookie.allow',
+        'shared.cookie.deny',
+        'shared.cookie.link',
+        'shared.cookie.policy'
+      ])
+      .subscribe(data => {
+
+        this.ccService.getConfig().content = this.ccService.getConfig().content || {} ;
+        // Override default messages with the translated ones
+        this.ccService.getConfig().content.header = data['shared.cookie.header'];
+        this.ccService.getConfig().content.message = data['shared.cookie.message'];
+        this.ccService.getConfig().content.dismiss = data['shared.cookie.dismiss'];
+        this.ccService.getConfig().content.allow = data['shared.cookie.allow'];
+        this.ccService.getConfig().content.deny = data['shared.cookie.deny'];
+        this.ccService.getConfig().content.link = data['shared.cookie.link'];
+        this.ccService.getConfig().content.policy = data['shared.cookie.policy'];
+
+        this.ccService.destroy(); // remove previous cookie bar (with default messages)
+        this.ccService.init(this.ccService.getConfig()); // update config with translated messages
+      });
   }
 
   private initCacheSystem() {
