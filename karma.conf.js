@@ -17,6 +17,8 @@ module.exports = function(config) {
         ],
         files: [
             { pattern: './node_modules/jquery/dist/jquery.min.js', watched: false },
+          './node_modules/cookieconsent/build/cookieconsent.min.js',
+          './node_modules/cookieconsent/build/cookieconsent.min.css'
         ],
         client: {
             clearContext: false // leave Jasmine Spec Runner output visible in browser

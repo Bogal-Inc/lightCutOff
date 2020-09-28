@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TutoModalComponent } from './tuto-modal.component';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('TutoModalComponent', () => {
   let component: TutoModalComponent;
@@ -8,7 +10,13 @@ describe('TutoModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TutoModalComponent ]
+      imports: [
+        TranslateModule.forRoot()
+      ],
+      declarations: [ TutoModalComponent ],
+      providers: [
+        NgbActiveModal
+      ]
     })
     .compileComponents();
   }));

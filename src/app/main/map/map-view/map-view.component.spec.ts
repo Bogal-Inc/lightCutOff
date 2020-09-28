@@ -16,6 +16,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from
 import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
 import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
+import {NgcCookieConsentModule} from 'ngx-cookieconsent';
 
 describe('MapViewComponent', () => {
   let component: MapViewComponent;

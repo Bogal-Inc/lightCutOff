@@ -8,7 +8,24 @@ import { environment } from 'src/environments/environment';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {ToastrModule} from 'ngx-toastr';
 import {Const} from '../environments/const';
+import {NgcCookieConsentConfig, NgcCookieConsentModule, NgcCookieConsentService} from 'ngx-cookieconsent';
 
+const cookieConfig: NgcCookieConsentConfig = {
+  cookie: {
+    // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+    domain: 'localhost'
+  },
+  palette: {
+    popup: {
+      background: '#000'
+    },
+    button: {
+      background: '#f1d600'
+    }
+  },
+  theme: 'edgeless',
+  type: 'opt-out'
+};
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -19,6 +36,7 @@ describe('AppComponent', () => {
         AngularFireDatabaseModule,
         OwlDateTimeModule,
         OwlNativeDateTimeModule,
+        NgcCookieConsentModule.forRoot(cookieConfig),
         TranslateModule.forRoot(),
         ToastrModule.forRoot({
           timeOut: 10000,
@@ -27,7 +45,7 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent
-      ],
+      ]
     }).compileComponents();
   }));
 

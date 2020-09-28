@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DownloadAppComponent } from './download-app.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../../../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 describe('DownloadAppComponent', () => {
   let component: DownloadAppComponent;
@@ -8,6 +11,10 @@ describe('DownloadAppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+      ],
       declarations: [ DownloadAppComponent ]
     })
     .compileComponents();
