@@ -52,14 +52,10 @@
     "aboutus": {
       "title_page": "About us",
       "title": "Who are we?",
-      "slogan": "This is all about the project",
-      "title_history": "The little story",
-      "text_history_1": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer en fonction de la situation.",
-      "text_history_2": "Unfortunately for me, the cut was very extensive and working from home, I had no way of knowing which areas were affected or not, so I lost several days of work.",
-      "title_objectif": "Our objective",
+      "title_obj_1": "Our objective",
+      "title_obj_2": "How?",
       "text_obj_1": "La plateforme <strong>{projectTitle}</strong> vise à aider à faire un état des lieux sur les coupures d'énergie électrique dans le pays. Ceci en s'appuyant sur les consommateurs. Dans le but d'aider ces dernièrs à s'adapter aux divers interruptions.",
-      "text_obj_2": "Thus, the project <strong>{projectTitle}</strong> will make it possible to provide the population with information on the supply of electrical energy in the country.",
-      "text_obj_3": "We have great hope that the project will be able to help a large number of people whose activity is governed by the absence or not of electrical energy."
+      "text_obj_2": "Our strategy is to provide an interactive map from where our users can report light cuts when they start and also when they end and thus inform the community."
     },
     "tuto": {
       "title_page": "Tutorial, learning how to use our tool",

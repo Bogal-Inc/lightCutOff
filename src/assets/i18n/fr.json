@@ -52,14 +52,11 @@
     "aboutus": {
       "title_page": "A propos",
       "title": "Qui sommes nous?",
-      "slogan": "Voici tout à propos du projet",
-      "title_history": "La petite histoire",
       "text_history_1": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. La plateforme <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
-      "text_history_2": "Malheureusement pour moi, la coupure était très étendue et travaillant de la maison, je n'avais aucun moyen de savoir quelles zones étaient touchées ou non, j'ai perdu ainsi plusieurs jours de travail.",
-      "title_objectif": "Notre objectif",
-      "text_obj_1": "La plateforme <strong>{projectTitle}</strong> vise à aider à faire un état des lieux sur les coupures d'énergie électrique dans le pays. Ceci en s'appuyant sur les consommateurs. Dans le but d'aider ces dernièrs à s'adapter aux divers interruptions.",
-      "text_obj_2": "Ainsi, le projet <strong>{projectTitle}</strong> permettra de donner aux populations des nformations sur la fourniture en énergie électrique dans le pays.",
-      "text_obj_3": "Nous avons grand espoir que le projet pourra aider un grand nombre de personnes dont l'activité est régie par l'absence ou non d'énergie électrique."
+      "title_obj_1": "Notre objectif",
+      "title_obj_2": "Comment?",
+      "text_obj_1": "Notre but est d'aider la population à mieux s'adapter aux interruptions d'électricité. Nous voulons les aider à trouver des alternatives et ainsi poursuivre leurs activités.",
+      "text_obj_2": "Notre stratégie est de proposer une carte interactive d'où nos utilisateurs pourraient signaler des coupures de lumière quand elles commencent et aussi quand elles se terminent et ainsi informer la communauté."
     },
     "tuto": {
       "title_page": "Tutoriel, apprentissage de comment utiliser notre outil",
