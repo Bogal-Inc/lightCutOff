@@ -92,12 +92,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    const tutoPassed = localStorage.getItem('tutoPassed');
-
     this.mapInitializer();
-    if (tutoPassed === null || tutoPassed === '0') {
-      this.openTutoModal();
-    }
+    this.openTutoModal();
   }
 
   ngOnDestroy(): void {
@@ -106,6 +102,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   openTutoModal() {
+    const tutoPassed = localStorage.getItem('tutoPassed');
+    if (tutoPassed !== null || tutoPassed !== '0') {
+      return;
+    }
+
     this.modalService.open(TutoModalComponent, {
       centered: true,
       size: 'lg',
@@ -182,6 +183,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
    * Search place in map
    */
   onSearchPlace(event: { query: any; }) {
+    log.debug('map search');
     this.analytics.logEvent('map_search');
 
     const service = new google.maps.places.PlacesService(this.map);
