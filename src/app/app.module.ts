@@ -30,10 +30,11 @@ const cookieConfig: NgcCookieConsentConfig = {
   },
   palette: {
     popup: {
-      background: '#000'
+      background: '#3c404d',
+      text: '#d6d6d6'
     },
     button: {
-      background: '#f1d600'
+      background: '#8bed4f'
     }
   },
   theme: 'edgeless',

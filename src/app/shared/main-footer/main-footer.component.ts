@@ -66,6 +66,7 @@ export class MainFooterComponent implements OnInit, OnDestroy {
 
   onSendMail() {
     log.debug('onSendMail call');
+    this.analytics.logEvent('send_contact_us');
 
     this.submitted = true;
 
@@ -93,14 +94,15 @@ export class MainFooterComponent implements OnInit, OnDestroy {
 
   toggleLang() {
     log.debug('call toggleLang');
-    this.analytics.logEvent('switch_lang');
 
     if (this.i18nService.language === Const.app.lang.fr){
       log.debug('active lang en');
+      this.analytics.logEvent('switch_lang_en');
       this.i18nService.language = Const.app.lang.en;
       this.currentLang = Const.app.lang.en;
     } else {
       log.debug('active lang Fr');
+      this.analytics.logEvent('switch_lang_fr');
       this.i18nService.language = Const.app.lang.fr;
       this.currentLang = Const.app.lang.fr;
     }

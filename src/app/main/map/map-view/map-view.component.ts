@@ -102,6 +102,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   openTutoModal() {
+    log.debug('open tutorial modal');
     const tutoPassed = localStorage.getItem('tutoPassed');
     if (tutoPassed !== null || tutoPassed !== '0') {
       return;
@@ -127,7 +128,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
             });
           },
           () => {
-            log.error('geolocalization no active or no connect');
+            log.error('geolocalization no actived or no application not connected');
             this.initMap(Const.coordsDefault);
           });
         } else {

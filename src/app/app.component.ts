@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     private toastrService: ToastrService,
     private translateService: TranslateService,
     private angularFirestore: AngularFirestore,
-    private ccService: NgcCookieConsentService,
+    // private ccService: NgcCookieConsentService,
     private analytics: AngularFireAnalytics,
     dateTimeAdapter: DateTimeAdapter<any>
   ) {
@@ -54,36 +54,36 @@ export class AppComponent implements OnInit {
       [Const.app.lang.fr, Const.app.lang.en]
     );
 
-    this.initCookiesConsient();
+    // this.initCookiesConsient();
   }
 
-  private initCookiesConsient() {
-    this.translateService//
-      .get([
-        'shared.cookie.header',
-        'shared.cookie.message',
-        'shared.cookie.dismiss',
-        'shared.cookie.allow',
-        'shared.cookie.deny',
-        'shared.cookie.link',
-        'shared.cookie.policy'
-      ])
-      .subscribe(data => {
-
-        this.ccService.getConfig().content = this.ccService.getConfig().content || {} ;
-        // Override default messages with the translated ones
-        this.ccService.getConfig().content.header = data['shared.cookie.header'];
-        this.ccService.getConfig().content.message = data['shared.cookie.message'];
-        this.ccService.getConfig().content.dismiss = data['shared.cookie.dismiss'];
-        this.ccService.getConfig().content.allow = data['shared.cookie.allow'];
-        this.ccService.getConfig().content.deny = data['shared.cookie.deny'];
-        this.ccService.getConfig().content.link = data['shared.cookie.link'];
-        this.ccService.getConfig().content.policy = data['shared.cookie.policy'];
-
-        this.ccService.destroy(); // remove previous cookie bar (with default messages)
-        this.ccService.init(this.ccService.getConfig()); // update config with translated messages
-      });
-  }
+  // private initCookiesConsient() {
+  //   this.translateService//
+  //     .get([
+  //       'shared.cookie.header',
+  //       'shared.cookie.message',
+  //       'shared.cookie.dismiss',
+  //       'shared.cookie.allow',
+  //       'shared.cookie.deny',
+  //       'shared.cookie.link',
+  //       'shared.cookie.policy'
+  //     ])
+  //     .subscribe(data => {
+  //
+  //       this.ccService.getConfig().content = this.ccService.getConfig().content || {} ;
+  //       // Override default messages with the translated ones
+  //       this.ccService.getConfig().content.header = data['shared.cookie.header'];
+  //       this.ccService.getConfig().content.message = data['shared.cookie.message'];
+  //       this.ccService.getConfig().content.dismiss = data['shared.cookie.dismiss'];
+  //       this.ccService.getConfig().content.allow = data['shared.cookie.allow'];
+  //       this.ccService.getConfig().content.deny = data['shared.cookie.deny'];
+  //       this.ccService.getConfig().content.link = data['shared.cookie.link'];
+  //       this.ccService.getConfig().content.policy = data['shared.cookie.policy'];
+  //
+  //       this.ccService.destroy(); // remove previous cookie bar (with default messages)
+  //       this.ccService.init(this.ccService.getConfig()); // update config with translated messages
+  //     });
+  // }
 
   private initCacheSystem() {
     const settings = {
