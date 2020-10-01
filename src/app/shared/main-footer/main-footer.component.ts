@@ -128,5 +128,4 @@ export class MainFooterComponent implements OnInit, OnDestroy {
       return `with: ${reason}`;
     }
   }
-
 }
