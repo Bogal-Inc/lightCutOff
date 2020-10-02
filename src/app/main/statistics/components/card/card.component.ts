@@ -10,10 +10,15 @@ export class CardComponent implements OnInit {
   @Input() card: {
     title: string;
     body: string;
-    icon: string;
+    icon: any;
     style: string;
   };
   faSpinner = faSpinner;
+
+  get style_text(): string {
+    const color =  this.card.style.split('-')[2];
+    return 'text-' + color;
+  }
 
   constructor() { }
 
