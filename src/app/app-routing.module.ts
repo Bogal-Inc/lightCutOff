@@ -32,6 +32,14 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: MainLayoutComponent,
+    loadChildren: () =>
+      import('./main/user/user.module').then(
+        m => m.UserModule
+      ),
+  },
+  {
+    path: '',
     component: AdminLayoutComponent,
     loadChildren: () =>
       import('./main/statistics/statistics.module').then(
