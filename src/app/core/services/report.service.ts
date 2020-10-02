@@ -24,17 +24,22 @@ export class ReportService extends BaseService {
 
   getReports(params: {
                isDeleted: boolean,
-                datestart: Date
+                datestart?: Date,
+                limit?: number
              }): Observable<Report[]> {
 
     return this.col$<Report>(
       `${Const.collections.reports}`,
       ref => {
+
         let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
         query = query.where('_isDelete', '==', params.isDeleted);
 
         if (params.datestart) {
           query = query.orderBy('reportedAt', 'desc').endAt(params.datestart);
+        }
+        if (params.limit) {
+          query = query.limit(params.limit);
         }
 
         return query;

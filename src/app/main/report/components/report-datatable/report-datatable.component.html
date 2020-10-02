@@ -1,23 +1,37 @@
-<div class="reports">
-  <div *ngIf="(reports$ | async) !== undefined; else datatableEmpty">
-    <h4 class="text-center reports__title">{{'statistics.reports-datatable.title' | translate}}</h4>
+
+<div class="card shadow mb-4 border-bottom-success">
+  <!-- Card Header - Dropdown -->
+  <div
+    class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+    >
+    <h6 class="m-0 font-weight-bold text-dark">{{'statistics.reports-datatable.title' | translate}}</h6>
+<!--    <div ngbDropdown class="dropdown no-arrow" >-->
+<!--      <a id="dropdownMenuLink" ngbDropdownToggle></a>-->
+
+<!--      <div ngbDropdownMenu aria-labelledby="dropdownMenuLink">-->
+<!--&lt;!&ndash;        <div class="dropdown-header">Dropdown Header:</div>&ndash;&gt;-->
+<!--        <a ngbDropdownItem>Action - 1</a>-->
+<!--        <a ngbDropdownItem>Another Action</a>-->
+<!--        <a ngbDropdownItem>Something else is here</a>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+  <!-- Card Body -->
+  <div class="card-body">
     <ag-grid-angular
       class="ag-theme-alpine reports__datatable"
-      [rowData]="reports$ | async"
+      [rowData]="reports"
       [columnDefs]="columnDefs"
       [defaultColDef]="defaultColDef"
     >
     </ag-grid-angular>
-    <div class="text-center">
-      <a routerLink="/reports">{{'statistics.reports-datatable.view_all' | translate}}</a>
-    </div>
   </div>
-
-  <ng-template #datatableEmpty>
-    <div class="alert alert-warning text-center" role="alert">
-      <fa-icon [icon]="faExclamationCircle"></fa-icon>
-    </div>
-  </ng-template>
 </div>
+
+<ng-template #datatableEmpty>
+  <div class="alert alert-warning text-center" role="alert">
+    <fa-icon [icon]="faExclamationCircle"></fa-icon>
+  </div>
+</ng-template>
 
 

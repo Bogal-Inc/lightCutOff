@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ReportService} from '@Services/report.service';
-import {Observable} from 'rxjs';
 import {Report, ReportSatus} from '@Models/report.model';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,7 +11,8 @@ import {TimestampPipe} from '@Pipes/timestamp.pipe';
   styleUrls: ['./report-datatable.component.scss']
 })
 export class ReportDatatableComponent implements OnInit {
-  faExclamationCircle = faExclamationCircle;
+  @Input() reports: Report[];
+  readonly faExclamationCircle = faExclamationCircle;
   defaultColDef = {
     flex: 1
   };
@@ -63,20 +63,11 @@ export class ReportDatatableComponent implements OnInit {
     }
   ];
 
-  reports$: Observable<Report[]>;
-
   constructor(
     private reportService: ReportService,
     private translateService: TranslateService,
     private timestampPipe: TimestampPipe
   ) { }
 
-  ngOnInit(): void {
-    const now = new Date();
-
-    this.reports$ = this.reportService.getReports({
-      isDeleted: false,
-      datestart: new Date(now.getFullYear() + '/' + now.getMonth() + '/1')
-    });
-  }
+  ngOnInit(): void {}
 }
