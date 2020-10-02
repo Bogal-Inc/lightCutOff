@@ -2,6 +2,7 @@ export const environment = {
   production: true,
   environment: 'dev',
   googleMapsApiKey: 'googleMapsApiKey',
+  domain: 'localhost',
   firebase: {
     apiKey: 'apiKey',
     authDomain: 'authDomain',
