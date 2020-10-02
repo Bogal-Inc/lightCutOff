@@ -264,7 +264,8 @@
       "home": "Home",
       "map": "Map",
       "statistics": "Statistics",
-      "offline": "Offline"
+      "offline": "Offline",
+      "user_report_acces": "Acceder à vos signalements"
     },
     "map-legend": {
       "title": "Legend",

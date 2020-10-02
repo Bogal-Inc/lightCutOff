@@ -107,6 +107,9 @@
     }
   },
   "main": {
+    "user-profile": {
+      "title": "Vos signalements"
+    },
     "map-view": {
       "title_page": "Carte",
       "error_geolocalize_not_work": "Le service de geolocalisation ne fonctionne pas",
@@ -265,7 +268,8 @@
       "home": "Accueil",
       "map": "Carte",
       "statistics": "Statistiques",
-      "offline": "Hors ligne"
+      "offline": "Hors ligne",
+      "user_report_acces": "Mes signalements"
     },
     "map-legend": {
       "title": "Légende",
