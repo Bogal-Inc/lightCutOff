@@ -18,7 +18,6 @@ export class ReportService extends BaseService {
   constructor(
     protected angularFireAuth: AngularFireAuth,
     protected angularFirestore: AngularFirestore,
-    private analytics: AngularFireAnalytics
   ) {
     super(angularFireAuth, angularFirestore);
   }
@@ -27,24 +26,23 @@ export class ReportService extends BaseService {
                isDeleted: boolean,
                 datestart: Date
              }): Observable<Report[]> {
-    this.analytics.logEvent('collect_report');
 
     return this.col$<Report>(
       `${Const.collections.reports}`,
       ref => {
-        const responses = ref.where('_isDelete', '==', params.isDeleted);
+        let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+        query = query.where('_isDelete', '==', params.isDeleted);
 
         if (params.datestart) {
-          responses.where('reportedAt', '>', params.datestart);
+          query = query.orderBy('reportedAt', 'desc').endAt(params.datestart);
         }
 
-        return responses.orderBy('reportedAt', 'desc');
+        return query;
       }
     );
   }
 
   async addReport(report): Promise<DocumentReference<DocumentData>>{
-    this.analytics.logEvent('add_report');
 
     const ref = await this.add<Report>(
       `${Const.collections.reports}`,
@@ -72,16 +70,12 @@ export class ReportService extends BaseService {
   }
 
   getReport(reportId: string): Observable<Report> {
-    this.analytics.logEvent('get_report');
-
     return this.doc$<Report>(
       `${Const.collections.reports}/${reportId}`
     );
   }
 
   updateReport(report: Report): Promise<void>{
-    this.analytics.logEvent('update_report');
-
     const partialReport = {
       ...report,
       _updatedAt: this.timestamp,

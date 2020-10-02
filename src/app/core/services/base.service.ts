@@ -81,7 +81,7 @@ export class BaseService {
             return {
               id,
               ...data
-            };
+            } as T;
           });
         })
       );
