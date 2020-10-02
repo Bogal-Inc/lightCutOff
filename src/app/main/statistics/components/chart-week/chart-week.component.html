@@ -1,8 +1,28 @@
-<div>
-  <h4 class="text-center">{{'statistics.dashboard.chart_title_week' | translate: {year: year} }}</h4>
-  <chart
-    [type]="chartSettings.barChartType"
-    [data]="chartSettings.barChartData"
-    [options]="chartSettings.barChartOptions">
-  </chart>
+<div class="card shadow mb-4 border-bottom-success">
+  <!-- Card Header - Dropdown -->
+  <div
+    class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+  >
+    <h6 class="m-0 font-weight-bold text-dark">
+      {{'statistics.dashboard.chart_title_week' | translate: {year: year} }}
+    </h6>
+<!--    <div ngbDropdown class="dropdown no-arrow" >-->
+<!--      <a id="dropdownMenuLink" ngbDropdownToggle></a>-->
+
+<!--      <div ngbDropdownMenu aria-labelledby="dropdownMenuLink">-->
+<!--        &lt;!&ndash;        <div class="dropdown-header">Dropdown Header:</div>&ndash;&gt;-->
+<!--        <a ngbDropdownItem>Action - 1</a>-->
+<!--        <a ngbDropdownItem>Another Action</a>-->
+<!--        <a ngbDropdownItem>Something else is here</a>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+  <!-- Card Body -->
+  <div class="card-body">
+    <chart
+      [type]="chartSettings.barChartType"
+      [data]="chartSettings.barChartData"
+      [options]="chartSettings.barChartOptions">
+    </chart>
+  </div>
 </div>
