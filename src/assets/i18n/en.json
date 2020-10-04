@@ -246,9 +246,9 @@
     "map-legend": {
       "title": "Legend",
       "your_position": "Your position",
-      "no_energie": "Report of power failure",
+      "no_energie": "Report of power failure of other users",
       "your_no_energy": "Your report of power failure",
-      "energy_recovred": "Electricity recovered "
+      "energy_recovred": "Report electricity recovered "
     },
     "admin-nav": {
       "dashboard": "Chart",

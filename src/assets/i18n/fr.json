@@ -20,7 +20,7 @@
     "home": {
       "title_page": "Site officiel",
       "btn_show_video": "Comment utiliser {projectTitle}",
-      "btn_map": "Signaler nous une coupure",
+      "btn_map": "Signalez nous une coupure",
       "about": {
         "title": "À propos",
         "content": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
@@ -247,9 +247,9 @@
     "map-legend": {
       "title": "Légende",
       "your_position": "Votre position",
-      "no_energie": "Signalement de coupure",
+      "no_energie": "Signalement de coupure des autres utlisateurs",
       "your_no_energy": "Votre signalement de coupure",
-      "energy_recovred": "Electricité remise"
+      "energy_recovred": "Signalement d'électricité remis"
     },
     "admin-nav": {
       "dashboard": "Tableau",
