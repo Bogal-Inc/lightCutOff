@@ -28,6 +28,23 @@
   &__section-contactus {
     background: right center no-repeat url("../../../../assets/static/images/home/bg2.svg");
   }
+
+  &__section-data {
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 40px 1px;
+
+    &__body {
+      .data-item {
+        text-align: center;
+        span{
+          color: var(--gray);
+          font-weight: bolder;
+          font-size: 4em;
+        }
+      }
+    }
+  }
 }
 
 

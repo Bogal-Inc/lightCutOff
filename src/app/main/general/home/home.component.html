@@ -119,6 +119,31 @@
     </div>
   </section>
 
+<!--  data report-->
+  <section class="home__section home__section-data" *ngIf="reports">
+    <div class="home__section-data__header">
+      <h1 class="mb-5 text-center">{{'core.home.statistics.title' | translate}}</h1>
+    </div>
+    <div class="home__section-data__body w-100 h-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 data-item">
+            <h3>Total des rapports</h3>
+            <span>{{reports.reports_all}}</span>
+          </div>
+          <div class="col-md-4 data-item">
+            <h3>Rapports annuel</h3>
+            <span>{{reports.reports_year}}</span>
+          </div>
+          <div class="col-md-4 data-item">
+            <h3>Rapports mensuel</h3>
+            <span>{{reports.reports_month}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <!--  team section-->
   <section class="home__section home__section-team">
     <div class="home__section-team__body w-100 h-100">

@@ -38,6 +38,9 @@
         "founder": "Founder",
         "marketing": "Marketing"
       },
+      "statistics": {
+        "title": "Data"
+      },
       "whatwedo": {
         "title": "What do we do",
         "collect_data": "Compile data",

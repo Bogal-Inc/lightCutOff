@@ -38,6 +38,9 @@
         "founder": "fondateur",
         "marketing": "marketing"
       },
+      "statistics": {
+        "title": "Nos données"
+      },
       "whatwedo": {
         "title": "Que faisons nous",
         "collect_data": "Compiler des données",

@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   readonly faPlayCircle = faPlayCircle;
   readonly faBullhorn = faBullhorn;
   closeResult = '';
+  reports: any;
 
   constructor(
     private modalService: NgbModal,
@@ -37,10 +38,18 @@ export class HomeComponent implements OnInit {
     this.analytics.logEvent('home_page');
 
     this.metaService.initMetatoHome('core.home.title_page');
+    this.reports = this.getReportData();
   }
 
   openModal(content) {
     this.analytics.logEvent('tutorial_video');
     this.modalService.open(content);
+  }
+
+  getReportData() {
+    if (!localStorage.getItem('reports_count')) {
+      return;
+    }
+    return JSON.parse(localStorage.getItem('reports_count'));
   }
 }
