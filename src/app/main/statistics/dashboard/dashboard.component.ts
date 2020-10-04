@@ -8,7 +8,6 @@ import {Const} from '../../../../environments/const';
 import {MetaService} from '@Services/meta.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
 
 const log = new Logger('dashboard.component');
 
@@ -18,6 +17,7 @@ const log = new Logger('dashboard.component');
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  readonly projectTitle = Const.app.title;
   reports$: Observable<Report[]>;
   card2ReportsCurrentYear: Report[];
   reportsCurrentMonth: Report[];
@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
   reports: Report[];
   reportsCurrentYear: Report[];
   cards: any;
-  readonly projectTitle = Const.app.title;
 
   constructor(
     private reportService: ReportService,
@@ -44,17 +43,15 @@ export class DashboardComponent implements OnInit {
   }
 
   private initCardDashbord() {
-    this.reports$ = this.reportService.getReports({
-      isDeleted: false,
-      limit: 10
-    }).pipe(
-      tap((data) => {
-        this.reports = data;
+    this.reportService.getReports({
+      isDeleted: false
+    }).subscribe(
+      (reports) => {
+        this.reports = reports;
 
         this.initReportsCollection();
         this.initDashboardCards();
-      })
-    );
+    });
   }
 
   private initReportsCollection() {

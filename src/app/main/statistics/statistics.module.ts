@@ -8,7 +8,7 @@ import { CardComponent } from './components/card/card.component';
 import {ChartModule} from 'angular2-chartjs';
 import {DashboardChartComponent} from './components/dashboard-chart/dashboard-chart.component';
 import {ReportModule} from '../report/report.module';
-import { ChartWeekComponent } from './components/chart-week/chart-week.component';
+import {ChartDailyReportComponent} from './components/chart-daily-report/chart-daily-report.component';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { ChartWeekComponent } from './components/chart-week/chart-week.component
     DashboardComponent,
     CardComponent,
     DashboardChartComponent,
-    ChartWeekComponent,
+    ChartDailyReportComponent,
   ],
   imports: [
     CommonModule,

@@ -3,12 +3,12 @@ import {Report} from '@Models/report.model';
 import {I18nService} from '@Services/i18n.service';
 
 @Component({
-  selector: 'app-chart-week',
-  templateUrl: './chart-week.component.html',
-  styleUrls: ['./chart-week.component.scss']
+  selector: 'app-chart-daily-report',
+  templateUrl: './chart-daily-report.component.html',
+  styleUrls: ['./chart-daily-report.component.scss']
 })
-export class ChartWeekComponent implements OnInit {
-  @Input() reportsCurrentYear: Report[];
+export class ChartDailyReportComponent implements OnInit {
+  @Input() reportsCurrentMonth: Report[];
   year: number;
   chartSettings: {
     barChartData: any,
@@ -94,7 +94,7 @@ export class ChartWeekComponent implements OnInit {
   private getDayData(date: Date, close: boolean): number {
     let reports = 0;
 
-    this.reportsCurrentYear.map(
+    this.reportsCurrentMonth.map(
       data => {
         if (close && date.toDateString() === data.reportedAt.toDate().toDateString()) {
           reports += 1;

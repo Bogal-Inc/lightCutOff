@@ -9,12 +9,12 @@
 
     <!--    data table -->
     <div class="row">
-        <app-chart-week
+        <app-chart-daily-report
           class="col-md-6"
           *ngIf="reportsCurrentMonth"
-          [reportsCurrentYear]="reportsCurrentMonth"
-        ></app-chart-week>
-        <app-report-datatable class="col-md-6" [reports]="reports$ | async"></app-report-datatable>
+          [reportsCurrentMonth]="reportsCurrentMonth"
+        ></app-chart-daily-report>
+        <app-report-datatable class="col-md-6" [reports]="reportsCurrentMonth"></app-report-datatable>
     </div>
 
     <div class="row mt-5">
