@@ -3,11 +3,11 @@ import {Report} from '@Models/report.model';
 import {I18nService} from '@Services/i18n.service';
 
 @Component({
-  selector: 'app-chart-daily-report',
-  templateUrl: './chart-daily-report.component.html',
-  styleUrls: ['./chart-daily-report.component.scss']
+  selector: 'app-chart-line-daily-report',
+  templateUrl: './chart-line-daily-report.component.html',
+  styleUrls: ['./chart-line-daily-report.component.scss']
 })
-export class ChartDailyReportComponent implements OnInit {
+export class ChartLineDailyReportComponent implements OnInit {
   @Input() reportsCurrentMonth: Report[];
   year: number;
   chartSettings: {

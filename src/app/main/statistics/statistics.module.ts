@@ -6,17 +6,17 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardComponent } from './components/card/card.component';
 import {ChartModule} from 'angular2-chartjs';
-import {DashboardChartComponent} from './components/dashboard-chart/dashboard-chart.component';
 import {ReportModule} from '../report/report.module';
-import {ChartDailyReportComponent} from './components/chart-daily-report/chart-daily-report.component';
+import {ChartBarYearlyReportComponent} from './components/chart-bar-yearly-report/chart-bar-yearly-report.component';
+import {ChartLineDailyReportComponent} from './components/chart-line-daily-report/chart-line-daily-report.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CardComponent,
-    DashboardChartComponent,
-    ChartDailyReportComponent,
+    ChartBarYearlyReportComponent,
+    ChartLineDailyReportComponent,
   ],
   imports: [
     CommonModule,

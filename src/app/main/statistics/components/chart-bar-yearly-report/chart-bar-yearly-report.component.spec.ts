@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardChartComponent } from './dashboard-chart.component';
+import { ChartBarYearlyReportComponent } from './chart-bar-yearly-report.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {ChartModule} from 'angular2-chartjs';
 
-describe('DashboardChart', () => {
-  let component: DashboardChartComponent;
-  let fixture: ComponentFixture<DashboardChartComponent>;
+describe('ChartBarYearlyReport', () => {
+  let component: ChartBarYearlyReportComponent;
+  let fixture: ComponentFixture<ChartBarYearlyReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -14,13 +14,13 @@ describe('DashboardChart', () => {
         TranslateModule.forRoot(),
         ChartModule
       ],
-      declarations: [ DashboardChartComponent ]
+      declarations: [ ChartBarYearlyReportComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardChartComponent);
+    fixture = TestBed.createComponent(ChartBarYearlyReportComponent);
     component = fixture.componentInstance;
     component.chartSettings = {
       barChartData: [],

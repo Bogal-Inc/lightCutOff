@@ -9,20 +9,20 @@
 
     <!--    data table -->
     <div class="row">
-        <app-chart-daily-report
+        <app-chart-line-daily-report
           class="col-md-6"
           *ngIf="reportsCurrentMonth"
           [reportsCurrentMonth]="reportsCurrentMonth"
-        ></app-chart-daily-report>
+        ></app-chart-line-daily-report>
         <app-report-datatable class="col-md-6" [reports]="reportsCurrentMonth"></app-report-datatable>
     </div>
 
     <div class="row mt-5">
       <div class="col-md-12">
-        <app-chart
+        <app-chart-bar-yearly-report
               *ngIf="reportsCurrentYear"
               [reportsCurrentYear]="reportsCurrentYear"
-            ></app-chart>
+            ></app-chart-bar-yearly-report>
       </div>
     </div>
   </div>

@@ -1,25 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChartDailyReportComponent } from './chart-daily-report.component';
+import { ChartLineDailyReportComponent } from './chart-line-daily-report.component';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
-describe('ChartDailyReportComponent', () => {
-  let component: ChartDailyReportComponent;
-  let fixture: ComponentFixture<ChartDailyReportComponent>;
+describe('ChartLineDailyReportComponent', () => {
+  let component: ChartLineDailyReportComponent;
+  let fixture: ComponentFixture<ChartLineDailyReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot()
       ],
-      declarations: [ ChartDailyReportComponent ],
+      declarations: [ ChartLineDailyReportComponent ],
       providers: [TranslateService]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChartDailyReportComponent);
+    fixture = TestBed.createComponent(ChartLineDailyReportComponent);
     component = fixture.componentInstance;
     component.reportsCurrentMonth = [];
     fixture.detectChanges();
