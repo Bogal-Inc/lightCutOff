@@ -103,8 +103,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   openTutoModal() {
     log.debug('open tutorial modal');
+
     const tutoPassed = localStorage.getItem('tutoPassed');
-    if (tutoPassed !== null || tutoPassed !== '0') {
+    if (tutoPassed !== null) {
       return;
     }
 
