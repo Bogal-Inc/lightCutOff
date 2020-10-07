@@ -8,7 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./marker-details.component.scss']
 })
 export class MarkerDetailsComponent implements BaseComponent, OnInit {
-  data: Report;
+  data: {
+    report: Report,
+    map: true
+  };
+  report: Report;
 
   constructor() { }
 

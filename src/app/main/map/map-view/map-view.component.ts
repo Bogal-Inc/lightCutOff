@@ -25,7 +25,7 @@ import {MarkerCreateReportComponent} from '../components/marker-create-report/ma
 import {MarkerRecovredReportComponent} from '../components/marker-recovred-report/marker-recovred-report.component';
 import {MetaService} from '@Services/meta.service';
 import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {takeUntil, tap, map} from 'rxjs/operators';
 import {MapService} from '@Services/map.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {TutoModalComponent} from '../components/tuto-modal/tuto-modal.component';
@@ -409,7 +409,10 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     if (report.recovredAt) {
-      content = this.mapService.createComponent(report, MarkerDetailsComponent, this.infosReport);
+      const data = {
+        report
+      };
+      content = this.mapService.createComponent(data, MarkerDetailsComponent, this.infosReport);
       this.addInfoWindow(currentMareker, content);
     } else {
       if (this.authService.getUser().id === report._createdBy.id){

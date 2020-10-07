@@ -1,10 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Report, ReportSatus} from '@Models/report.model';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {ReportService} from '@Services/report.service';
 import {TranslateService} from '@ngx-translate/core';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import {AuthService} from '@Services/auth.service';
+import {map, takeUntil} from 'rxjs/operators';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {MarkerRecovredReportComponent} from '../../map/components/marker-recovred-report/marker-recovred-report.component';
+import {MapService} from '@Services/map.service';
+import {MarkerDetailsComponent} from '../../map/components/marker-details/marker-details.component';
 
 
 @Component({
@@ -12,12 +18,17 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './own-report.component.html',
   styleUrls: ['./own-report.component.scss']
 })
-export class OwnReportComponent implements OnInit {
-  faExclamationCircle = faExclamationCircle;
-  defaultColDef = {
+export class OwnReportComponent implements OnInit, OnDestroy {
+  private gridApi;
+  reports$: Observable<Report[]>;
+  paginationPageSize;
+  rowSelection = 'single';
+  readonly faExclamationCircle = faExclamationCircle;
+  readonly unsubsscribe$ = new Subject<void>();
+  readonly defaultColDef = {
     flex: 1
   };
-  columnDefs = [
+  readonly columnDefs = [
     {
       headerName: '',
       field: 'status',
@@ -61,14 +72,15 @@ export class OwnReportComponent implements OnInit {
       cellRenderer: (params) => {
         return params.value.city;
       }
-    }
-  ];
+    }];
 
-  reports$: Observable<Report[]>;
   constructor(
     private reportService: ReportService,
     private translateService: TranslateService,
-    private timestampPipe: TimestampPipe
+    private authService: AuthService,
+    private timestampPipe: TimestampPipe,
+    private mapService: MapService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -76,7 +88,71 @@ export class OwnReportComponent implements OnInit {
     this.reports$ = this.reportService.getReports({
       isDeleted: false,
       datestart: new Date(now.getFullYear() + '/1/1')
-    });
+    })
+    .pipe(
+      map((reports) => {
+        return reports.filter(
+          (report) => this.authService.getUser().id === report._createdBy.id
+        );
+      }),
+      takeUntil(this.unsubsscribe$)
+    );
+
+    this.paginationPageSize = 10;
   }
 
+  ngOnDestroy(): void {
+    this.unsubsscribe$.next();
+    this.unsubsscribe$.complete();
+  }
+
+  onRowSelected(event: any) {
+    // this.analytics.logEvent('report_selected');
+    const selectedRows = this.gridApi.getSelectedRows();
+
+    if (selectedRows[0].recovredAt) {
+      this.createMpdal(MarkerDetailsComponent, selectedRows[0]);
+      // modalRef = this.modalService.open(
+      //   MarkerDetailsComponent,
+      //   {
+      //     centered: true,
+      //     size: 'lg'
+      //   });
+      // modalRef.componentInstance.data = selectedRows[0];
+    } else {
+      this.createMpdal(MarkerRecovredReportComponent, {
+        report: selectedRows[0],
+        list: true
+      });
+      // modalRef = this.modalService.open(
+      //   MarkerRecovredReportComponent,
+      //   {
+      //     centered: true,
+      //     size: 'lg'
+      //   });
+      // modalRef.componentInstance.data = {
+      //   report: selectedRows[0],
+      //   list: true
+      // };
+    }
+
+    // modalRef.result.then((result) => {
+    //   console.log(result);
+    // }, (reason) => {
+    // });
+  }
+
+  private createMpdal(component, data) {
+    const modalRef = this.modalService.open(
+      component,
+      {
+        centered: true,
+        size: 'lg'
+      });
+    modalRef.componentInstance.data = data;
+  }
+
+  onGridReady(params) {
+    this.gridApi = params.api;
+  }
 }
