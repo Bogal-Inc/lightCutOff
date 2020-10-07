@@ -29,6 +29,7 @@ import {takeUntil} from 'rxjs/operators';
 import {MapService} from '@Services/map.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {TutoModalComponent} from '../components/tuto-modal/tuto-modal.component';
+import {MapFilterComponent} from '../components/map-filter/map-filter.component';
 
 const log = new Logger('map-view.component');
 
@@ -48,6 +49,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private loadingElt: ElementRef;
   @ViewChild(MapLegendComponent, {read: ElementRef})
   private legends: ElementRef;
+  @ViewChild(MapFilterComponent, {read: ElementRef})
+  private mapFilter: ElementRef;
   @ViewChild('btnAddReport', {static: false})
   private btnAddReport: ElementRef;
   @ViewChild('recovredFormReport', { read: ViewContainerRef })
@@ -271,7 +274,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.map = this.mapService.initMap(
       this.gmap.nativeElement,
       this.legends.nativeElement,
-      this.btnAddReport.nativeElement
+      this.btnAddReport.nativeElement,
+      this.mapFilter.nativeElement
     );
     this.mapService.map = this.map;
     this.initMarkerUser(this.mapService.markerUserOption());

@@ -1,0 +1,26 @@
+.filter {
+  background-color: var(--white);
+
+  &__form {
+    li {
+      padding: 5px;
+
+      a {
+        background-color: var(--white);
+        padding: 3px;
+      }
+      a.btn-clicked {
+        background-color: var(--dark);
+      }
+    }
+  }
+}
+.btn {
+  padding-right: 6px;
+
+  button {
+    border-radius: 10em;
+    border: 5px solid var(--success);
+    color: var(--success);
+  }
+}

@@ -37,7 +37,7 @@ export class MapService {
     this._position = position;
   }
 
-  initMap(gmap, legends, btnAddReport) {
+  initMap(gmap, legends, btnAddReport, mapFilter) {
     const mapOptions = {
       center: this._position,
       zoom: 12,
@@ -53,6 +53,7 @@ export class MapService {
     this._map = new google.maps.Map(gmap, mapOptions);
     this._map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legends);
     this._map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(btnAddReport);
+    this._map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(mapFilter);
 
     return this._map;
   }
