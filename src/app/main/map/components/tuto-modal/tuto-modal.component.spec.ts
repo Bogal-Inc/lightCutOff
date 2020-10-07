@@ -4,6 +4,7 @@ import { TutoModalComponent } from './tuto-modal.component';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 
+
 describe('TutoModalComponent', () => {
   let component: TutoModalComponent;
   let fixture: ComponentFixture<TutoModalComponent>;
