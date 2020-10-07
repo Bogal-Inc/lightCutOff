@@ -1,4 +1,4 @@
-<div class="marker-details" *ngIf="data">
+<div class="marker-details" *ngIf="data.report">
     <div class="marker-details__header">
       <h6>{{'main.marker-details.title' | translate}}</h6>
     </div>
@@ -6,35 +6,35 @@
         <ul class="list-unstyled">
           <li>
               <b>{{'main.marker-details.report_that' | translate}}</b>
-              {{ data.reportedAt.toDate() | timestamp }}
+              {{ data.report.reportedAt.toDate() | timestamp }}
           </li>
-          <li *ngIf="data.recovredAt">
+          <li *ngIf="data.report.recovredAt">
             <b>{{'main.marker-details.recovred_that' | translate}}</b>
-            {{ data.recovredAt.toDate() | timestamp }}
+            {{ data.report.recovredAt.toDate() | timestamp }}
           </li>
           <li class="mt-2">
             <h6>{{'main.marker-details.info_locations' | translate}}</h6>
             <ul>
               <li>
                 <b>{{'main.marker-details.country' | translate}}</b>
-                {{data.location.country}}
+                {{data.report.location.country}}
               </li>
               <li>
                 <b>{{'main.marker-details.department' | translate}}</b>
-                {{data.location.department}}
+                {{data.report.location.department}}
               </li>
               <li>
                 <b>{{'main.marker-details.city' | translate}}</b>
-                {{data.location.city}}
+                {{data.report.location.city}}
               </li>
               <li>
                 <b>{{'main.marker-details.neighborhood' | translate}}</b>
-                {{data.location.neighborhood}}
+                {{data.report.location.neighborhood}}
               </li>
             </ul>
             <b>{{'main.marker-details.address' | translate}}</b>
             <ul>
-              <li *ngFor="let address of data?.location.addresses">
+              <li *ngFor="let address of data.report?.location.addresses">
                 {{address.label}}
               </li>
             </ul>
@@ -42,7 +42,7 @@
         </ul>
     </div>
     <div class="marker-details__footer">
-      <small><b>{{'main.marker-details.lng' | translate}}</b> {{ data?.position.lng }}</small>&nbsp;&nbsp;
-      <small><b>{{'main.marker-details.lat' | translate}}</b> {{ data?.position.lat }}</small>
+      <small><b>{{'main.marker-details.lng' | translate}}</b> {{ data.report?.position.lng }}</small>&nbsp;&nbsp;
+      <small><b>{{'main.marker-details.lat' | translate}}</b> {{ data.report?.position.lat }}</small>
     </div>
 </div>

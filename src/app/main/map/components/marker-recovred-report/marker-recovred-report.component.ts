@@ -3,9 +3,10 @@ import {ToastrService} from 'ngx-toastr';
 import {Component, OnInit} from '@angular/core';
 import {compareDate} from '@Helpers/date.helper';
 import {BaseComponent} from '@Models/baseComponent.model';
-import {ReportSatus} from '@Models/report.model';
+import {Report, ReportSatus} from '@Models/report.model';
 import {TranslateService} from '@ngx-translate/core';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-update-form-report',
@@ -13,7 +14,12 @@ import {AngularFireAnalytics} from '@angular/fire/analytics';
   styleUrls: ['./marker-recovred-report.component.scss']
 })
 export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
-  data: any;
+  data: {
+    report: null | Report,
+    markerCurrentInfoWindow: any,
+    map: true
+  };
+  btnCloseModal = false;
   datetime: any;
   min: Date;
   max: Date;
@@ -23,6 +29,7 @@ export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
     private toastrService: ToastrService,
     private translateService: TranslateService,
     private analytics: AngularFireAnalytics,
+    public activeModal: NgbActiveModal
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +41,12 @@ export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
   }
 
   onSubmitRecovred() {
-    this.analytics.logEvent('recovred_report');
+    if (this.data.map) {
+      this.analytics.logEvent('recovred_report_map');
+    } else {
+      this.analytics.logEvent('recovred_report_list_report');
+    }
+    this.btnCloseModal = true;
 
     if (!this.isDate(this.data.report.reportedAt)) {
       this.toastrService.error(this.translateService.instant('main.update-form-report.error_date_old'));
@@ -69,5 +81,9 @@ export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
 
   closeInfoRecovred() {
     this.data.markerCurrentInfoWindow.close();
+  }
+
+  closeModal() {
+    this.activeModal.close();
   }
 }
