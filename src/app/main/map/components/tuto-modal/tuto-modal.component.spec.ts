@@ -6,7 +6,10 @@ import {TranslateModule} from '@ngx-translate/core';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../../../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0a0012d... fix report-view
 
 describe('TutoModalComponent', () => {
   let component: TutoModalComponent;
@@ -17,7 +20,10 @@ describe('TutoModalComponent', () => {
       imports: [
         TranslateModule.forRoot(),
         AngularFireModule.initializeApp(environment.firebase),
+<<<<<<< HEAD
         AngularFireDatabaseModule,
+=======
+>>>>>>> 0a0012d... fix report-view
       ],
       declarations: [ TutoModalComponent ],
       providers: [

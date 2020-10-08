@@ -112,7 +112,10 @@
       "btn_add_report": "Ajouter un rapport",
       "no_place": "Votre place n'a pas été trouvée",
       "your_position": "Votre position",
-      "error_no_user": "Vous n'avez pas pu être identifié. Pour faire un signalement vous devez l'être."
+      "error_no_user": "Vous n'avez pas pu être identifié. Pour faire un signalement vous devez l'être.",
+      "swicth_form_title": "Voulez-vous déclarer la fin de la coupure que vous venez de créer?",
+      "switch_btn_yes": "Oui",
+      "switch_btn_no": "Non"
     },
     "map-filter": {
       "title": "Filtres",

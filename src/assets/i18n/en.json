@@ -111,7 +111,10 @@
       "btn_add_report": "Add a report",
       "no_place": "Your place was not found",
       "your_position": "Your position",
-      "error_no_user": "You could not be identified. To make a report you must be logged in."
+      "error_no_user": "You could not be identified. To make a report you must be logged in.",
+      "swicth_form_title": "Voulez-vous signaler la fin de la coupure que vous venez de creer?",
+      "switch_btn_yes": "Yes",
+      "switch_btn_no": "No"
     },
     "map-filter": {
       "title": "Filters",

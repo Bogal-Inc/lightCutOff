@@ -272,33 +272,25 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         log.debug('report create');
         this.formLoader = false;
         report.id = resp.path.valueOf().split('/')[1];
-
-        this.reportService.updateReport(report).then(
-          () => {
-            this.reportAdd = report;
-            // const data = {
-            //   report,
-            //   markerCurrentInfoWindow: this.markerCurrentInfoWindow
-            // };
-            // const recovredFromElement = this.mapService.createComponent(
-            //   data,
-            //   MarkerRecovredReportComponent,
-            //   this.recovredFormReport
-            // );
-
-            // this.markerCurrentInfoWindow.setContent(recovredFromElement);
-            this.markerCurrentInfoWindow.setContent(this.btnSwitchForm.nativeElement);
-            this.markerCurrentPosition.setDraggable(false);
-            this.markerCurrentPosition.setOpacity(0);
-            this.toastrService.success(this.translateService.instant('main.map-view.signalement_add'));
-          },
-          err => {
-            log.error('report not update', err);
-            this.formLoader = false;
-          }
-        );
+        this.updateReport(report);
       },
       err => log.error('report not create', err)
+    );
+  }
+
+  private updateReport(report: Report) {
+    this.reportService.updateReport(report).then(
+      () => {
+        this.reportAdd = report;
+        this.markerCurrentInfoWindow.setContent(this.btnSwitchForm.nativeElement);
+        this.markerCurrentPosition.setDraggable(false);
+        this.markerCurrentPosition.setOpacity(0);
+        this.toastrService.success(this.translateService.instant('main.map-view.signalement_add'));
+      },
+      err => {
+        log.error('report not update', err);
+        this.formLoader = false;
+      }
     );
   }
 
