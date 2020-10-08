@@ -58,8 +58,8 @@ export class TutoModalComponent implements OnInit {
     this.analytics.logEvent('tuto_pass_next');
 
     this.nextStep[this.currentStep].status = false;
-    this.nextStep[this.currentStep].status = true;
     this.currentStep++;
+    this.nextStep[this.currentStep].status = true;
   }
 
   tutoFinish() {

@@ -47,6 +47,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private createReportFormElt: ElementRef;
   @ViewChild(LoadingComponent, {read: ElementRef})
   private loadingElt: ElementRef;
+  @ViewChild('btnSwitchForm', {static: false})
+  private btnSwitchForm: ElementRef;
   @ViewChild(MapLegendComponent, {read: ElementRef})
   private legends: ElementRef;
   @ViewChild(MapFilterComponent, {read: ElementRef})
@@ -70,6 +72,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   unsubsscribe$ = new Subject<void>();
   reportsMarkers: any;
   markersClusters;
+  reportAdd: Report;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
@@ -272,17 +275,19 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.reportService.updateReport(report).then(
           () => {
-            const data = {
-              report,
-              markerCurrentInfoWindow: this.markerCurrentInfoWindow
-            };
-            const recovredFromElement = this.mapService.createComponent(
-              data,
-              MarkerRecovredReportComponent,
-              this.recovredFormReport
-            );
+            this.reportAdd = report;
+            // const data = {
+            //   report,
+            //   markerCurrentInfoWindow: this.markerCurrentInfoWindow
+            // };
+            // const recovredFromElement = this.mapService.createComponent(
+            //   data,
+            //   MarkerRecovredReportComponent,
+            //   this.recovredFormReport
+            // );
 
-            this.markerCurrentInfoWindow.setContent(recovredFromElement);
+            // this.markerCurrentInfoWindow.setContent(recovredFromElement);
+            this.markerCurrentInfoWindow.setContent(this.btnSwitchForm.nativeElement);
             this.markerCurrentPosition.setDraggable(false);
             this.markerCurrentPosition.setOpacity(0);
             this.toastrService.success(this.translateService.instant('main.map-view.signalement_add'));
@@ -447,5 +452,29 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.initMarkerUser(this.mapService.markerUserOption());
       }
     });
+  }
+
+  switchForm(elt: boolean) {
+    log.debug('choice form', elt);
+
+    if (elt) {
+      this.analytics.logEvent('go_to_recovredForm');
+
+      const data = {
+        report: this.reportAdd,
+        markerCurrentInfoWindow: this.markerCurrentInfoWindow
+      };
+
+      const recovredFromElement = this.mapService.createComponent(
+        data,
+        MarkerRecovredReportComponent,
+        this.recovredFormReport
+      );
+
+      this.markerCurrentInfoWindow.setContent(recovredFromElement);
+    } else {
+      this.analytics.logEvent('go_to_recovredForm_not');
+      this.markerCurrentInfoWindow.close();
+    }
   }
 }
