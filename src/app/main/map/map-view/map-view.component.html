@@ -13,10 +13,11 @@
       <div #mapContainer id="map" class="map-container__map">
         <app-loading [show]="isLoader"></app-loading>
         <app-map-legend [class.d-none]="!isFormLightCutOf"></app-map-legend>
+        <app-map-filter (filtered)="mapFiltered($event);" [class.d-none]="!isFormLightCutOf"></app-map-filter>
         <app-loading [show]="formLoader"></app-loading>
         <app-create-form-report (reportSubmit)="onCreateReport($event)"
                                 [class.d-none]="!isFormLightCutOf"></app-create-form-report>
-        <app-map-filter [class.d-none]="!isFormLightCutOf"></app-map-filter>
+
         <ng-template #recovredFormReport></ng-template>
         <ng-template #infosReport></ng-template>
         <div [class.d-none]="!isFormLightCutOf" class="map-container__btn" #btnAddReport>
@@ -27,6 +28,7 @@
               <i class="fas fa-plus"></i>
             </button>
         </div>
+
       </div>
   </div>
 

@@ -2,11 +2,11 @@ import {DocumentReference} from '@firebase/firestore-types';
 import {BaseService} from './base.service';
 import {Injectable} from '@angular/core';
 import {AngularFirestore, DocumentData} from '@angular/fire/firestore';
-import {defaultReport, Report} from '@Models/report.model';
+import {defaultReport, Report, ReportSatus} from '@Models/report.model';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Observable} from 'rxjs';
 import {Const} from 'src/environments/const';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import * as firebase from 'firebase';
 
 
 @Injectable({
@@ -22,12 +22,14 @@ export class ReportService extends BaseService {
     super(angularFireAuth, angularFirestore);
   }
 
-  getReports(params: {
-               isDeleted: boolean,
-                datestart?: Date,
-                limit?: number
-             }): Observable<Report[]> {
-
+  getReports(
+    params: {
+      isDeleted: boolean,
+      datestart?: Date,
+      limit?: number,
+      reportStatus?: ReportSatus
+    }
+  ): Observable<Report[]> {
     return this.col$<Report>(
       `${Const.collections.reports}`,
       ref => {
@@ -35,10 +37,11 @@ export class ReportService extends BaseService {
         let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
         query = query.where('_isDelete', '==', params.isDeleted);
 
-        if (params.datestart) {
+        if (params.reportStatus) {
+          query = query.where('status', '==', params.reportStatus);
+        } else if (params.datestart) {
           query = query.orderBy('reportedAt', 'desc').endAt(params.datestart);
-        }
-        if (params.limit) {
+        } else if (params.limit) {
           query = query.limit(params.limit);
         }
 

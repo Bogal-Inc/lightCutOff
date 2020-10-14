@@ -1,17 +1,19 @@
 .filter {
-  background-color: var(--white);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px 10px 1px 10px;
+
+  &__title {
+    font-size: 1em;
+  }
 
   &__form {
     li {
       padding: 5px;
-
-      a {
-        background-color: var(--white);
-        padding: 3px;
-      }
-      a.btn-clicked {
-        background-color: var(--dark);
-      }
+      text-align: center;
+      cursor: pointer;
+    }
+    li.clicked, li:hover  {
+      background-color: var(--secondary);
     }
   }
 }

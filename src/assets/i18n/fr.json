@@ -114,6 +114,12 @@
       "your_position": "Votre position",
       "error_no_user": "Vous n'avez pas pu être identifié. Pour faire un signalement vous devez l'être."
     },
+    "map-filter": {
+      "title": "Filtres",
+      "alt_marker_cut_owner": "Vos propres rapports",
+      "alt_marker_cut": "Rapports signalés",
+      "alt_marker_cut_closed": "Rapports signalés comme terminés"
+    },
     "create-form-report": {
       "title": "Signalez une coupure",
       "warning_message": "Assurez-vous que vous êtes bien positionnez sur la map",
