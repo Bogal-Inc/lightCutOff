@@ -53,7 +53,7 @@ export class MapService {
     this._map = new google.maps.Map(gmap, mapOptions);
     this._map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legends);
     this._map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(btnAddReport);
-    this._map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(mapFilter);
+    this._map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(mapFilter);
 
     return this._map;
   }

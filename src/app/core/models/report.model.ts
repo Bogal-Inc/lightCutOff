@@ -20,7 +20,8 @@ export interface Location {
 
 export enum ReportSatus {
   CUT = 'cut',
-  RECOVRED = 'recovred'
+  CUT_OWNER = 'cut_owner',
+  CUT_COMPLETED = 'cut_completed'
 }
 
 export interface Report extends Doc {

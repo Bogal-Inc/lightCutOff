@@ -1,7 +1,7 @@
 import {TranslateService} from '@ngx-translate/core';
 import {MarkerDetailsComponent} from '../components/marker-details/marker-details.component';
 import {AuthService} from '@Services/auth.service';
-import {Position, Report} from '@Models/report.model';
+import {Position, Report, ReportSatus} from '@Models/report.model';
 import {LoadingComponent} from '../../../shared/loading/loading.component';
 import {ReportService} from '@Services/report.service';
 import {
@@ -50,7 +50,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MapLegendComponent, {read: ElementRef})
   private legends: ElementRef;
   @ViewChild(MapFilterComponent, {read: ElementRef})
-  private mapFilter: ElementRef;
+  public mapFilter: ElementRef;
   @ViewChild('btnAddReport', {static: false})
   private btnAddReport: ElementRef;
   @ViewChild('recovredFormReport', { read: ViewContainerRef })
@@ -69,6 +69,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   isLoader = true;
   unsubsscribe$ = new Subject<void>();
   reportsMarkers: any;
+  markersClusters;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
@@ -145,8 +146,13 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           log.error('Map not load');
           this.isErrorMapActive = true;
           this.isLoader = false;
-        }
-      );
+      });
+  }
+
+  mapFiltered(reportStatus: ReportSatus[]) {
+    this.mapClear();
+    const reportsResults = (reportStatus.length > 0) ? this.getReportsByStatus(reportStatus) : this.reports;
+    this.addClusters(reportsResults);
   }
 
   onCreateReport(event: any) {
@@ -211,7 +217,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   openInfoWindowCreateReport() {
     this.analytics.logEvent('plus_button_add_report');
-
     google.maps.event.trigger(this.markerCurrentPosition, 'click');
   }
 
@@ -221,6 +226,31 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       log.debug('tooltip close after 3 seconds');
       this.tooltip.close();
     }, 5000);
+  }
+
+  private getReportsByStatus(reportsStatus: ReportSatus[]) {
+    let reportsResults = [];
+    reportsStatus.forEach(
+      ev => {
+        const reportsFilter = this.reports.filter(
+          (report: Report) => {
+            if (ev === ReportSatus.CUT_OWNER) {
+              // the owner report status is not saved in database. it is saved in the cutoff status
+              return (this.authService.getUser().id === report._createdBy.id) && (report.status === ReportSatus.CUT);
+            } else if (ev === ReportSatus.CUT) {
+              return (this.authService.getUser().id !== report._createdBy.id) && (report.status === ReportSatus.CUT);
+            } else {
+              return report.status === ev;
+            }
+          });
+        reportsResults = reportsResults.concat(reportsFilter);
+      });
+    return reportsResults;
+  }
+
+  private mapClear() {
+    this.markersClusters.setMap(null);
+    this.reportsMarkers.map(marker => marker.setMap(null));
   }
 
   private createReport(query, location) {
@@ -304,24 +334,42 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private LoadReports() {
+  private LoadReports(reportSatus?: ReportSatus) {
     log.debug('load reports');
 
     const now = new Date();
+    let reportStatus = null;
+
+    if (reportSatus) {
+      if (
+        reportSatus === ReportSatus.CUT_OWNER ||
+        reportSatus === ReportSatus.CUT
+      ) {
+        reportStatus = ReportSatus.CUT;
+      } else if (reportSatus === ReportSatus.CUT_COMPLETED) {
+        reportStatus = ReportSatus.CUT_COMPLETED;
+      }
+    }
 
     this.reportService.getReports({
       isDeleted: false,
-      datestart: new Date(now.getFullYear())
+      reportStatus,
+      datestart: new Date(now.getFullYear(), 1, 1)
     })
       .pipe(takeUntil(this.unsubsscribe$))
       .subscribe(reports => {
-        this.reportsMarkers = reports.map(report => {
-          return this.markerFactory(report);
-        });
-        this.mapService.addMarkersToCluster(this.reportsMarkers);
+        this.reports = reports;
+        this.addClusters(this.reports);
       },
       err => log.error('report not load', err)
       );
+  }
+
+  private addClusters(reports) {
+    this.reportsMarkers = reports.map(report => {
+      return this.markerFactory(report);
+    });
+    this.markersClusters = this.mapService.addMarkersToCluster(this.reportsMarkers);
   }
 
   private markerFactory(report: Report): google.maps.Marker {
