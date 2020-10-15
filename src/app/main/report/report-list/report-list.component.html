@@ -1,9 +1,9 @@
 <div class="main-admin">
-  <h1 class="text-center pt-4">{{'shared.admin-nav.reports' | translate}}</h1>
+  <h1 class="pt-4 text-center">{{'shared.admin-nav.reports' | translate}}</h1>
   <hr>
 
   <div class="container-fluid">
-    <div class="col reports__datatable" *ngIf="(reports$ | async) !== undefined; else datatableEmpty">
+    <div class="reports__datatable" *ngIf="(reports$ | async) !== undefined; else datatableEmpty">
       <app-report-details *ngIf="!isMobiled()"
         (showDetail)="close($event)"
         [detailReportLightRight]="detailReportLightRight"
