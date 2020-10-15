@@ -204,7 +204,11 @@
       "card_reports_current_month_title": "Monthly reports",
       "no_datatable": "No data available for this year.",
       "chart_title": "Reports created for the year {year}",
-      "chart_title_week": "Daily cut-off and recovred"
+      "chart_title_week": "Daily cut-off and recovred",
+      "view_all": "View all"
+    },
+    "statistics-number": {
+      "title_page": "Statistical figures"
     }
   },
   "report": {
@@ -262,7 +266,8 @@
     "admin-nav": {
       "dashboard": "Chart",
       "reports": "Reports",
-      "menu": "Menu"
+      "menu": "Menu",
+      "figures": "Chiffres"
     },
     "main-footer": {
       "contactus": "Contact us",

@@ -205,7 +205,11 @@
       "card_reports_current_month_title": "Rapports mensuel",
       "no_datatable": "Aucune donnée disponible pour cette année.",
       "chart_title": "Rapports crées pour l'année {year}",
-      "chart_title_week": "Copure et remise journalière"
+      "chart_title_week": "Copure et remise journalière",
+      "view_all": "Regarder tout"
+    },
+    "statistics-number": {
+      "title_page": "Chiffres statistiques"
     }
   },
   "report": {
@@ -263,7 +267,8 @@
     "admin-nav": {
       "dashboard": "Tableau",
       "reports": "Rapports",
-      "menu": "Menu"
+      "menu": "Menu",
+      "figures": "Chiffres"
     },
     "main-footer": {
       "contactus": "Contactez-nous",

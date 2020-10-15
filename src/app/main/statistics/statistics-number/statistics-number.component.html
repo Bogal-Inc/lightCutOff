@@ -1,0 +1,92 @@
+<div class="main-admin">
+  <h1 class="pt-4 text-center">{{'statistics.statistics-number.title_page' | translate}}</h1>
+  <hr>
+
+  <div class="container-fluid pt-lg-5">
+    <div class="row">
+      <section class="col-md-4 data-yearly">
+        <h3 class="text-center pb-4">Chiffres annuels</h3>
+        <div class="table-responsive-md">
+          <table class="w-100 table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Label</th>
+                <th scope="col" class="text-center">Chiffres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">Rapports totals</td>
+                <td class="text-center">{{reportsCurrentYear?.length}}</td>
+              </tr>
+              <tr>
+                <td>Rapports open</td>
+                <td class="text-center">{{reportsCurrentYear?.length - reportsYearlyClose?.length}}</td>
+              </tr>
+              <tr>
+                <td>Rapports clos</td>
+                <td class="text-center">{{reportsYearlyClose?.length}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="col-md-4 data-monthly">
+        <h3 class="text-center pb-4">Chiffres mensuels</h3>
+        <div class="table-responsive-md">
+          <table class="w-100 table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Label</th>
+                <th scope="col" class="text-center">Chiffres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">Nombres de rapport</td>
+                <td class="text-center">{{reportsCurrentMonth?.length}}</td>
+              </tr>
+              <tr>
+                <td>Rapports open</td>
+                <td class="text-center">{{reportsCurrentMonth?.length - reportsMonthlyClose?.length}}</td>
+              </tr>
+              <tr>
+                <td>Rapports clos</td>
+                <td class="text-center">{{reportsMonthlyClose?.length}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="col-md-4 data-monthly">
+        <h3 class="text-center pb-4">Chiffres journaliers</h3>
+        <div class="table-responsive-md">
+          <table class="w-100 table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Label</th>
+                <th scope="col" class="text-center">Chiffres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">Nombres de rapport</td>
+                <td class="text-center">{{reportsCurrentDaily?.length}}</td>
+              </tr>
+              <tr>
+                <td>Rapports open</td>
+                <td class="text-center">{{reportsCurrentDaily?.length - reportsDailyClose?.length}}</td>
+              </tr>
+              <tr>
+                <td>Rapports clos</td>
+                <td class="text-center">{{reportsDailyClose?.length}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

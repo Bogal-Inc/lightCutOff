@@ -9,6 +9,7 @@ import {ChartModule} from 'angular2-chartjs';
 import {ReportModule} from '../report/report.module';
 import {ChartBarYearlyReportComponent} from './components/chart-bar-yearly-report/chart-bar-yearly-report.component';
 import {ChartLineDailyReportComponent} from './components/chart-line-daily-report/chart-line-daily-report.component';
+import { StatisticsNumberComponent } from './statistics-number/statistics-number.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {ChartLineDailyReportComponent} from './components/chart-line-daily-repor
     CardComponent,
     ChartBarYearlyReportComponent,
     ChartLineDailyReportComponent,
+    StatisticsNumberComponent,
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,9 @@
     <div class="row">
       <app-card class="col-xl-3 col-md-6 mb-4" *ngFor="let card of cards" [card]="card"></app-card>
     </div>
+    <div class="mb-lg-5 text-center"><a routerLink="/statistics_numbers">
+      {{'statistics.dashboard.view_all' | translate}}
+    </a></div>
 
     <!--    data table -->
     <div class="row">

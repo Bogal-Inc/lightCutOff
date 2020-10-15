@@ -42,6 +42,19 @@ export class MetaService {
   }
 
   /**
+   * Meta tags for about us page
+   */
+  initMetaToStatisticsNumbers(title: string) {
+    this.initTitlePage(title);
+
+    this.metaTagService.addTags([
+      { name: 'keywords', content: 'Angular, électricité, cameroun' },
+      { name: 'title', content: this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page') },
+      { name: 'description', content: 'Angular, électricité, cameroun' },
+    ]);
+  }
+
+  /**
    * Meta tags for tuto page
    */
   initMetatoTuto(title) {
