@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ReportService} from '@Services/report.service';
 import {Report, ReportSatus} from '@Models/report.model';
-import {faChartArea, faChartLine, faChartPie} from '@fortawesome/free-solid-svg-icons';
+import {faChartArea, faChartLine, faChartPie, faChartBar} from '@fortawesome/free-solid-svg-icons';
 import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
 import {Const} from '../../../../environments/const';
@@ -66,11 +66,11 @@ export class DashboardComponent implements OnInit {
     );
 
     this.reportsYearClose = this.reportsCurrentYear.filter(
-      report => report.status === ReportSatus.CUT
+      report => report.status === ReportSatus.CUT_COMPLETED
     );
 
     this.reportsMonthClose = this.reportsCurrentMonth.filter(
-      report => report.status === ReportSatus.CUT
+      report => report.status === ReportSatus.CUT_COMPLETED
     );
   }
 
@@ -97,7 +97,7 @@ export class DashboardComponent implements OnInit {
       {
         title: 'rapport annuelle clos',
         body: this.reportsYearClose.length,
-        icon: faChartArea,
+        icon: faChartBar,
         style: 'border-left-info'
       },
       {

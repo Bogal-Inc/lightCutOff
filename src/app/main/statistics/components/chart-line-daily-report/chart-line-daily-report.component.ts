@@ -75,7 +75,7 @@ export class ChartLineDailyReportComponent implements OnInit {
   private getDataset(close = true): any {
     const daysOfWeek = this.last7Days().reverse();
     const reports = [];
-    const colorIndex = (close) ? 1 : 0;
+    const colorIndex = (close) ? 0 : 1;
 
     daysOfWeek.forEach(
       date => {
@@ -84,7 +84,7 @@ export class ChartLineDailyReportComponent implements OnInit {
     );
 
     return {
-      label: close ? 'Report close' : 'Report in progress',
+      label: close ? 'Report in progress' : 'Report close',
       data: reports,
       backgroundColor: this.backgroundColor[colorIndex],
       borderColor: this.borderColor[colorIndex]

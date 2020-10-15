@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatisticsNumberComponent } from './statistics-number.component';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../../../../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('StatisticsNumberComponent', () => {
   let component: StatisticsNumberComponent;
@@ -8,6 +12,11 @@ describe('StatisticsNumberComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+        TranslateModule.forRoot(),
+      ],
       declarations: [ StatisticsNumberComponent ]
     })
     .compileComponents();
