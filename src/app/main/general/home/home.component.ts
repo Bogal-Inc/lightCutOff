@@ -6,6 +6,8 @@ import { Const } from 'src/environments/const';
 import {TranslateService} from '@ngx-translate/core';
 import {MetaService} from '@Services/meta.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {Router} from '@angular/router';
+import {isMobile} from '@Helpers/mobile-confirm.helper';
 
 const log = new Logger('home.component');
 
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit {
     private translateService: TranslateService,
     private metaService: MetaService,
     private analytics: AngularFireAnalytics,
+    private router: Router,
     config: NgbModalConfig
   ) {
     config.centered = true;
@@ -36,6 +39,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
     this.analytics.logEvent('home_page');
+
+    if (isMobile()) {
+      this.router.navigate(['map']);
+    }
 
     this.metaService.initMetatoHome('core.home.title_page');
     this.reports = this.getReportData();
