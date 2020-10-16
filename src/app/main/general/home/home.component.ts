@@ -38,7 +38,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
-    this.analytics.logEvent('home_page');
+    this.analytics.logEvent('page_view', {
+      page_location: 'https://lightcutoff.com',
+      page_path: '/',
+      page_title: 'Home'
+    });
 
     // if (isMobile()) {
     //   this.router.navigate(['map']);

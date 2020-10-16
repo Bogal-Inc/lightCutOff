@@ -21,7 +21,11 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
-    this.analytics.logEvent('about_page');
+    this.analytics.logEvent('page_view', {
+      page_location: 'https://lightcutoff.com/aboutus',
+      page_path: '/aboutus',
+      page_title: 'About'
+    });
 
     this.metaService.initMetatoAboutUs('core.aboutus.title_page');
   }

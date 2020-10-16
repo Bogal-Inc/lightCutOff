@@ -14,6 +14,7 @@ const log = new Logger('tuto-modal.component');
 })
 export class TutoModalComponent implements OnInit {
   readonly projectTitle = Const.app.title;
+  readonly localStorageNameTutoPass = 'tutoPassed';
   currentStep = 0;
   tutoPassed: any;
   nextStep = [
@@ -49,13 +50,15 @@ export class TutoModalComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
 
-    if (localStorage.getItem('tutoPassed') === null){
-      localStorage.setItem('tutoPassed', '0');
+    if (localStorage.getItem(this.localStorageNameTutoPass) === null){
+      localStorage.setItem(this.localStorageNameTutoPass, '0');
     }
   }
 
   tutoNext() {
-    this.analytics.logEvent('tuto_pass_next');
+    this.analytics.logEvent('tuto_modal_next', {
+      step: this.currentStep
+    });
 
     this.nextStep[this.currentStep].status = false;
     this.currentStep++;
@@ -67,9 +70,9 @@ export class TutoModalComponent implements OnInit {
   }
 
   tutoEnd() {
-    this.analytics.logEvent('tuto_pass_end');
+    this.analytics.logEvent('tutorial_complete');
 
-    localStorage.setItem('tutoPassed', '1');
+    localStorage.setItem(this.localStorageNameTutoPass, '1');
     this.activeModal.close();
   }
 }

@@ -93,7 +93,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     log.debug('init');
-    this.analytics.logEvent('map_page');
+    this.analytics.logEvent('page_view', {
+      page_location: 'https://lightcutoff.com/map',
+      page_path: '/map',
+      page_title: 'Map'
+    });
 
     this.metaService.initMetaMapView('main.map-view.title_page');
   }
@@ -110,6 +114,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   openTutoModal() {
     log.debug('open tutorial modal');
+    this.analytics.logEvent('tutorial_begin');
 
     const tutoPassed = localStorage.getItem('tutoPassed');
     if (tutoPassed !== null) {
@@ -160,7 +165,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onCreateReport(event: any) {
     log.debug('create report');
-    this.analytics.logEvent('create_report');
+    this.analytics.logEvent('add_report');
 
     const geocoder = new google.maps.Geocoder();
     const errorMessage = this.translateService.instant('main.map-view.error_no_cameroon');
@@ -448,10 +453,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   switchForm(elt: boolean) {
     log.debug('choice form', elt);
+    this.analytics.logEvent('go_to_recovredForm', {
+      accept: elt
+    });
 
     if (elt) {
-      this.analytics.logEvent('go_to_recovredForm');
-
       const data = {
         report: this.reportAdd,
         markerCurrentInfoWindow: this.markerCurrentInfoWindow
@@ -465,7 +471,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.markerCurrentInfoWindow.setContent(recovredFromElement);
     } else {
-      this.analytics.logEvent('go_to_recovredForm_not');
       this.markerCurrentInfoWindow.close();
     }
   }

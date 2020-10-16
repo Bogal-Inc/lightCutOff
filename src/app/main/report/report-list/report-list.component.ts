@@ -101,7 +101,11 @@ export class ReportListComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
-    this.analytics.logEvent('report_list_page');
+    this.analytics.logEvent('page_view', {
+      page_location: 'https://lightcutoff.com/reports',
+      page_path: '/reports',
+      page_title: 'Reports list'
+    });
 
     this.datatableMobilConfig();
     const now = new Date();
@@ -113,11 +117,11 @@ export class ReportListComponent implements OnInit {
   }
 
   onRowSelected(event: any) {
-    this.analytics.logEvent('report_selected');
-
     const selectedRows = this.gridApi.getSelectedRows();
     this.detailReportLightRight = true;
     this.reportSelected = selectedRows;
+
+    this.analytics.logEvent('select_content', this.reportSelected[0]);
 
     if (isMobile()) {
       const reportId = this.reportSelected[0].id;

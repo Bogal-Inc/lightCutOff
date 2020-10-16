@@ -25,21 +25,15 @@ export class MainFooterComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
     this.currentLang = this.i18nService.language;
+    log.debug('current lang', this.currentLang);
   }
 
   toggleLang() {
-    log.debug('call toggleLang');
+    const lang = (this.i18nService.language === Const.app.lang.fr) ? Const.app.lang.en : Const.app.lang.fr;
+    log.debug('switch lang', lang);
 
-    if (this.i18nService.language === Const.app.lang.fr){
-      log.debug('active lang en');
-      this.analytics.logEvent('switch_lang_en');
-      this.i18nService.language = Const.app.lang.en;
-      this.currentLang = Const.app.lang.en;
-    } else {
-      log.debug('active lang Fr');
-      this.analytics.logEvent('switch_lang_fr');
-      this.i18nService.language = Const.app.lang.fr;
-      this.currentLang = Const.app.lang.fr;
-    }
+    this.analytics.setUserProperties({favorite_lang: lang});
+    this.i18nService.language = lang;
+    this.currentLang = lang;
   }
 }

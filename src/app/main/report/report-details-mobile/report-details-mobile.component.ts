@@ -31,7 +31,11 @@ export class ReportDetailsMobileComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
-    this.analytics.logEvent('report_details_mobile_page');
+    this.analytics.logEvent('page_view', {
+      page_location: 'https://lightcutoff.com/report',
+      page_path: '/report',
+      page_title: 'Report details'
+    });
 
     if (!isMobile()) {
       this.router.navigate(['/reports']);

@@ -7,6 +7,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 
 @Component({
@@ -54,7 +55,8 @@ export class SearchPlaceFormComponent implements OnInit {
   activeSearchBar = false;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private analytics: AngularFireAnalytics
   ) { }
 
   ngOnInit(): void {
@@ -98,6 +100,9 @@ export class SearchPlaceFormComponent implements OnInit {
     }
 
     const request = this.searchPlaceForm.value;
+    this.analytics.logEvent('search', {
+      search_term: request.query
+    });
     this.searchPlaceSubmit.emit(request);
   }
 

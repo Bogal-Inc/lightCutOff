@@ -23,7 +23,11 @@ export class TutoComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
-    this.analytics.logEvent('tutorial_page');
+    this.analytics.logEvent('page_view', {
+      page_location: 'https://lightcutoff.com/tuto',
+      page_path: '/tuto',
+      page_title: 'Tutorial'
+    });
 
     this.metaService.initMetatoTuto('core.tuto.title_page');
   }

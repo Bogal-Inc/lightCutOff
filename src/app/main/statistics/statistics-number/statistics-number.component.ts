@@ -36,7 +36,11 @@ export class StatisticsNumberComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
-    this.analytics.logEvent('dashboard_page');
+    this.analytics.logEvent('page_view', {
+      page_location: 'https://lightcutoff.com/statistics_numbers',
+      page_path: '/statistics_numbers',
+      page_title: 'statistics numbers'
+    });
 
     this.metaService.initMetaToStatisticsNumbers('statistics.statistics-number.title_page');
     this.initCardDashbord();

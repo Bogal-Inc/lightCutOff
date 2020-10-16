@@ -35,7 +35,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
-    this.analytics.logEvent('dashboard_page');
+    this.analytics.logEvent('page_view', {
+      page_location: 'https://lightcutoff.com/dashboard',
+      page_path: '/dashboard',
+      page_title: 'Dashboard'
+    });
 
     this.metaService.initMetatoAboutUs('statistics.dashboard.title_page');
     this.initCardDashbord();
