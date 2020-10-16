@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DownloadAppComponent } from './download-app/download-app.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -34,9 +35,11 @@ import { DownloadAppComponent } from './download-app/download-app.component';
     FormsModule,
     RouterModule,
     TranslateModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule
   ],
   exports: [
+    NgbModule,
     MainFooterComponent,
     MainHeaderComponent,
     LoadingComponent,
