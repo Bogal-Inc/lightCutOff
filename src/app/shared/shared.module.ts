@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MainFooterComponent } from './main-footer/main-footer.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { LoadingComponent } from './loading/loading.component';
 import { TimestampPipe } from '../core/pipes/timestamp.pipe';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
@@ -35,26 +34,22 @@ import { DownloadAppComponent } from './download-app/download-app.component';
     FormsModule,
     RouterModule,
     TranslateModule,
-    FontAwesomeModule,
-    NgbModule
+    FontAwesomeModule
   ],
   exports: [
     MainFooterComponent,
     MainHeaderComponent,
     LoadingComponent,
     MapLegendComponent,
-
     TimestampPipe,
-
     ReactiveFormsModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     FormsModule,
     TranslateModule,
     FontAwesomeModule,
-    NgbModule,
     AdminNavComponent,
-    ContactUsComponent,
+    ContactUsComponent
   ],
   providers: [
     // use french locale

@@ -1,5 +1,5 @@
 import { AuthService } from '@Services/auth.service';
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
 import {ConnectionService} from '@Services/connection.service';
@@ -13,9 +13,9 @@ const log = new Logger('main-header.component');
   styleUrls: ['./main-header.component.scss']
 })
 export class MainHeaderComponent implements OnInit {
+  @Input() fixedTop = false;
   appTitle = Const.app.title;
   online: boolean;
-  fixedTop = false;
 
   constructor(
     private authService: AuthService,
@@ -31,7 +31,9 @@ export class MainHeaderComponent implements OnInit {
 
     // fixed header or not
     const url = this.router.url;
-    this.fixedTop = (url.split('/')[1] === '') || (url.split('/')[1] === 'dashboard');
+    if (url.split('/')[1] === '') {
+      this.fixedTop = true;
+    }
   }
 
   isOnlineStatus() {

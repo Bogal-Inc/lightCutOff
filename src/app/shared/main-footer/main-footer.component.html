@@ -14,7 +14,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link footer__line__menu__link" (click)="open(contactus)">
+                  <a class="nav-link footer__line__menu__link" href="#contactus">
                     {{ 'shared.main-footer.contactus' | translate}}
                   </a>
               </li>
@@ -41,55 +41,4 @@
         <small>Copyright © 2020 by {{ appTitle }}</small>
     </div>
 </footer>
-
-<ng-template #contactus let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">{{ 'shared.main-footer.modal.title' | translate}}</h4>
-        <a class="close" role="button" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </a>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="contactUsForm" (ngSubmit)="onSendMail()">
-            <div class="form-group">
-                <label for="email">* {{ 'shared.main-footer.modal.email' | translate}}:</label>
-                <input type="email" class="form-control" id="email" formControlName="email"
-                       aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required">
-                      {{ 'shared.main-footer.modal.email_required' | translate}}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="subject">* {{ 'shared.main-footer.modal.subject' | translate}}:</label>
-                <input type="text" class="form-control" id="subject" formControlName="subject"
-                       aria-describedby="emailHelp" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
-                <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
-                    <div *ngIf="f.subject.errors.required">
-                      {{ 'shared.main-footer.modal.subject_required' | translate}}
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="body">* {{ 'shared.main-footer.modal.message' | translate}}:</label>
-                <textarea type="text" class="form-control" id="body" formControlName="body"
-                          aria-describedby="emailHelp"
-                          [ngClass]="{ 'is-invalid': submitted && f.body.errors }"></textarea>
-                <div *ngIf="submitted && f.body.errors" class="invalid-feedback">
-                    <div *ngIf="f.body.errors.required">
-                      {{ 'shared.main-footer.modal.message_required' | translate}}
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">
-          {{ 'shared.main-footer.modal.close' | translate}}
-        </button>
-        <button type="button" class="btn btn-outline-primary" (click)="onSendMail()"
-                [disabled]="submitted">{{ 'shared.main-footer.modal.send' | translate}}</button>
-    </div>
-</ng-template>
 

@@ -40,9 +40,9 @@ export class HomeComponent implements OnInit {
     log.debug('init');
     this.analytics.logEvent('home_page');
 
-    if (isMobile()) {
-      this.router.navigate(['map']);
-    }
+    // if (isMobile()) {
+    //   this.router.navigate(['map']);
+    // }
 
     this.metaService.initMetatoHome('core.home.title_page');
     this.reports = this.getReportData();
