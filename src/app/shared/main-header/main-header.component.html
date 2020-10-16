@@ -26,7 +26,7 @@
           {{"shared.main-header.map" | translate}}
         </a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf="!prod">
         <a  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
           class="nav-link dropdown-toggle">
           {{"shared.main-header.statistics" | translate}}

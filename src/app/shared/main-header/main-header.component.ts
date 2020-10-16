@@ -4,6 +4,7 @@ import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
 import {ConnectionService} from '@Services/connection.service';
 import {Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 const log = new Logger('main-header.component');
 
@@ -14,6 +15,7 @@ const log = new Logger('main-header.component');
 })
 export class MainHeaderComponent implements OnInit {
   @Input() fixedTop = false;
+  readonly prod = environment.production;
   appTitle = Const.app.title;
   online: boolean;
 
