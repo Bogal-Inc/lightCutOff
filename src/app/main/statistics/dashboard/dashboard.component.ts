@@ -54,7 +54,6 @@ export class DashboardComponent implements OnInit {
 
         this.initReportsCollection();
         this.initDashboardCards();
-        this.saveDataReports();
     });
   }
 
@@ -111,15 +110,5 @@ export class DashboardComponent implements OnInit {
         style: 'border-left-secondary'
       }
     ];
-  }
-
-  private saveDataReports() {
-    localStorage.setItem(
-      'reports_count',
-      JSON.stringify({
-        reports_all: this.reports.length,
-        reports_year: this.reportsCurrentYear.length,
-        reports_month: this.reportsCurrentMonth.length
-      }));
   }
 }

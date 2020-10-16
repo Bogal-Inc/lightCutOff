@@ -8,6 +8,8 @@ import {MetaService} from '@Services/meta.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {Router} from '@angular/router';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
+import {ReportService} from '@Services/report.service';
+import {ReportSatus} from '@Models/report.model';
 
 const log = new Logger('home.component');
 
@@ -23,13 +25,16 @@ export class HomeComponent implements OnInit {
   readonly faBullhorn = faBullhorn;
   closeResult = '';
   reports: any;
+  reportsCurrentYear: any;
+  reportsCurrentMonth: any;
 
   constructor(
     private modalService: NgbModal,
     private translateService: TranslateService,
     private metaService: MetaService,
     private analytics: AngularFireAnalytics,
-    private router: Router,
+    // private router: Router,
+    private reportService: ReportService,
     config: NgbModalConfig
   ) {
     config.centered = true;
@@ -49,7 +54,7 @@ export class HomeComponent implements OnInit {
     // }
 
     this.metaService.initMetatoHome('core.home.title_page');
-    this.reports = this.getReportData();
+    this.initCardDashbord();
   }
 
   openModal(content) {
@@ -57,10 +62,26 @@ export class HomeComponent implements OnInit {
     this.modalService.open(content);
   }
 
-  getReportData() {
-    if (!localStorage.getItem('reports_count')) {
-      return;
-    }
-    return JSON.parse(localStorage.getItem('reports_count'));
+  private initCardDashbord() {
+    this.reportService.getReports({
+      isDeleted: false
+    }).subscribe(
+      (reports) => {
+        this.reports = reports;
+
+        this.initReportsCollection();
+      });
+  }
+
+  private initReportsCollection() {
+    const now = new Date();
+
+    this.reportsCurrentYear = this.reports.filter(
+      report => report.reportedAt.toDate().getFullYear() === now.getFullYear()
+    );
+
+    this.reportsCurrentMonth = this.reportsCurrentYear.filter(
+      report => report.reportedAt.toDate().getMonth() === now.getMonth()
+    );
   }
 }

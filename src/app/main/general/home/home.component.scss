@@ -47,10 +47,8 @@
   }
 }
 
-
-
 .section_1 {
-  height: 1000px;
+  min-height: 100vh;
 }
 
 .box-shadow {
@@ -63,10 +61,6 @@
 }
 
 @media (max-width: 575px){
-  .section_1 {
-    height: 500px;
-  }
-
   .font-size-title {
     font-size: 2em;
   }
