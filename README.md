@@ -1,5 +1,4 @@
 ![Deploy to Firebase Hosting on merge](https://github.com/willkoua/lightCutOff/workflows/Deploy%20to%20Firebase%20Hosting%20on%20merge/badge.svg?event=push)
-![Deploy to Firebase Hosting on merge](https://github.com/willkoua/lightCutOff/workflows/Deploy%20to%20Firebase%20Hosting%20on%20merge/badge.svg)
 ![](https://img.shields.io/badge/language-angular-red.svg)
 ![](https://img.shields.io/badge/node-green.svg)
 
