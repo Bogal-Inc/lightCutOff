@@ -96,6 +96,13 @@
       "menu_add_report": "Add a report",
       "menu_add_signal": "Report a power outage",
       "menu_after_signal": "After your report"
+    },
+    "faq": {
+      "title": "FAQ",
+      "question_1": "D'où est ce que je peux utiliser {projectTitle}?",
+      "response_1": "{projectTitle} est pour l'instant disponible uniquement au Cameroun. Notre objectif dans l'immédiat est de cibler le marché camerounais. Bien sûr, nous n'excluons pas un jour de pouvoir l'exporter vers d'autres régions d'Afrique.",
+      "question_2": "Comment signaler une coupure de lumière sur {projectTitle}?",
+      "response_2": "Il existe deux façons de signaler une coupure de lumière avec {projectTitle}. Vous pouvez trouvez comment faire dans au moins 2 tutoriels se trouvant sur notre plateforme:<ol><li>Dans la page d'accueil, vous trouverez un bouton pour une vidéo tutoriel.</li><li>Dans le pied de page, vous trouverez aussi un <a href=\"/tuto\">lien vers un tutoriel</a>.</li></ol>"
     }
   },
   "main": {
