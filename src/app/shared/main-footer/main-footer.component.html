@@ -2,19 +2,24 @@
 <footer class="footer">
     <div class="d-flex justify-content-between">
         <div class="d-flex justify-content-start footer__line">
-            <ul class="nav footer__line__menu">
+            <ul class="nav">
               <li class="nav-item">
-                <a class="nav-link footer__line__menu__link" href="/tuto">
+                <a class="nav-link" routerLink="/tuto" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                   {{ 'shared.main-footer.tutorial' | translate}}
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link footer__line__menu__link" href="/aboutus">
+                <a class="nav-link" routerLink="/aboutus" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                   {{ 'shared.main-footer.about' | translate}}
                 </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link footer__line__menu__link" href="#contactus">
+                <a class="nav-link" routerLink="/faq" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                  FAQ
+                </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="#contactus" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                     {{ 'shared.main-footer.contactus' | translate}}
                   </a>
               </li>
