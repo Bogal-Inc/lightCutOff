@@ -21,15 +21,15 @@
       </div>
       <div class="text-center">
         <button
+          class="btn btn-outline-secondary"
+          (click)="closeInfoRecovred()"
+          [disabled]="!datetime">{{'main.update-form-report.close' | translate}}</button>
+        &nbsp; &nbsp; &nbsp;
+        <button
           class="btn btn-danger"
           type="submit"
           (click)="onSubmitRecovred()"
           [disabled]="!datetime">{{'main.update-form-report.btn_submit' | translate}}</button>
-        &nbsp; &nbsp; &nbsp;
-        <button
-          class="btn btn-outline-secondary"
-          (click)="closeInfoRecovred()"
-          [disabled]="!datetime">{{'main.update-form-report.close' | translate}}</button>
       </div>
     </div>
   </div>

@@ -336,35 +336,53 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private LoadReports(reportSatus?: ReportSatus) {
+  private getReportStatusForSystem(reportStatus: ReportSatus): ReportSatus {
+    if (
+      reportStatus === ReportSatus.CUT_OWNER ||
+      reportStatus === ReportSatus.CUT
+    ) {
+      return ReportSatus.CUT;
+    } else if (reportStatus === ReportSatus.CUT_COMPLETED) {
+      return ReportSatus.CUT_COMPLETED;
+    }
+  }
+
+  private LoadReports(reportStatus?: ReportSatus) {
     log.debug('load reports');
 
     const now = new Date();
-    let reportStatus = null;
+    let currentReportStatus = null;
 
-    if (reportSatus) {
-      if (
-        reportSatus === ReportSatus.CUT_OWNER ||
-        reportSatus === ReportSatus.CUT
-      ) {
-        reportStatus = ReportSatus.CUT;
-      } else if (reportSatus === ReportSatus.CUT_COMPLETED) {
-        reportStatus = ReportSatus.CUT_COMPLETED;
-      }
+    if (reportStatus) {
+      currentReportStatus = this.getReportStatusForSystem(reportStatus);
     }
 
     this.reportService.getReports({
       isDeleted: false,
-      reportStatus,
+      reportStatus: (reportStatus) ? currentReportStatus : null,
       datestart: new Date(now.getFullYear(), 1, 1)
     })
-      .pipe(takeUntil(this.unsubsscribe$))
-      .subscribe(reports => {
-        this.reports = reports;
-        this.addClusters(this.reports);
-      },
-      err => log.error('report not load', err)
-      );
+      .pipe(
+        takeUntil(this.unsubsscribe$)
+      )
+      .subscribe(
+        (reports) => {
+          // the reports closed from 24h is not visible on map
+          this.reports = reports.filter(
+            report => {
+              if (report.status === ReportSatus.CUT_COMPLETED) {
+                const recovredAt = report.reportedAt.toDate();
+                const tomorrow = new Date(recovredAt.getTime() + 86400000);
+                if (tomorrow > now) {
+                  return report;
+                }
+              } else {
+                return report;
+              }
+            });
+          this.addClusters(this.reports);
+        },
+      err => log.error('report not load', err));
   }
 
   private addClusters(reports) {
