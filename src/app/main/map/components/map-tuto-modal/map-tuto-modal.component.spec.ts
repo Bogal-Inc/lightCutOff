@@ -1,15 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TutoModalComponent } from './tuto-modal.component';
+import {MapTutoModalComponent} from './map-tuto-modal.component';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from '@ngx-translate/core';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../../../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 
-describe('TutoModalComponent', () => {
-  let component: TutoModalComponent;
-  let fixture: ComponentFixture<TutoModalComponent>;
+describe('MapTutoModalComponent', () => {
+  let component: MapTutoModalComponent;
+  let fixture: ComponentFixture<MapTutoModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,7 +18,7 @@ describe('TutoModalComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
       ],
-      declarations: [ TutoModalComponent ],
+      declarations: [ MapTutoModalComponent ],
       providers: [
         NgbActiveModal
       ]
@@ -27,7 +27,7 @@ describe('TutoModalComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TutoModalComponent);
+    fixture = TestBed.createComponent(MapTutoModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

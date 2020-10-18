@@ -11,9 +11,9 @@ import {MarkerDetailsComponent} from './components/marker-details/marker-details
 import {MarkerCreateReportComponent} from './components/marker-create-report/marker-create-report.component';
 import {MarkerRecovredReportComponent} from './components/marker-recovred-report/marker-recovred-report.component';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import { TutoModalComponent } from './components/tuto-modal/tuto-modal.component';
 import { MapFilterComponent } from './components/map-filter/map-filter.component';
 import {MapSearchComponent} from './components/map-search/map-search.component';
+import {MapTutoModalComponent} from './components/map-tuto-modal/map-tuto-modal.component';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import {MapSearchComponent} from './components/map-search/map-search.component';
     MarkerCreateReportComponent,
     MarkerDetailsComponent,
     MarkerRecovredReportComponent,
-    TutoModalComponent,
+    MapTutoModalComponent,
     MapFilterComponent,
     MapSearchComponent
   ],

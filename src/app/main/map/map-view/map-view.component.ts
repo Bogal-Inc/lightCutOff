@@ -28,7 +28,7 @@ import {Subject} from 'rxjs';
 import {takeUntil, tap, map} from 'rxjs/operators';
 import {MapService} from '@Services/map.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
-import {TutoModalComponent} from '../components/tuto-modal/tuto-modal.component';
+import {MapTutoModalComponent} from '../components/map-tuto-modal/map-tuto-modal.component';
 import {MapFilterComponent} from '../components/map-filter/map-filter.component';
 
 const log = new Logger('map-view.component');
@@ -121,7 +121,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
 
-    this.modalService.open(TutoModalComponent, {
+    this.modalService.open(MapTutoModalComponent, {
       centered: true,
       size: 'lg',
       backdrop: 'static'

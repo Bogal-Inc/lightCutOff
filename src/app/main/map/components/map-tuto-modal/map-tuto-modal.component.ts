@@ -9,10 +9,10 @@ const log = new Logger('tuto-modal.component');
 
 @Component({
   selector: 'app-tuto-modal',
-  templateUrl: './tuto-modal.component.html',
-  styleUrls: ['./tuto-modal.component.scss'],
+  templateUrl: './map-tuto-modal.component.html',
+  styleUrls: ['./map-tuto-modal.component.scss'],
 })
-export class TutoModalComponent implements OnInit {
+export class MapTutoModalComponent implements OnInit {
   readonly projectTitle = Const.app.title;
   readonly localStorageNameTutoPass = 'tutoPassed';
   currentStep = 0;
