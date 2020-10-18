@@ -143,7 +143,7 @@
     "update-form-report": {
       "title": "Signalez une fin de coupure",
       "signal_that": "Signalez le:",
-      "label": "Quant est-ce que vous n'avez plus eu de lumière?",
+      "label": "Quand est-ce que la lumière est revenue?",
       "btn_submit": "Signaler",
       "close": "Fermer",
       "contribute_thanks": "Merci pour votre contribution.",
@@ -204,6 +204,14 @@
       "step_5_text_3": "<b>Survolé</b> sur le marqueur orange",
       "button_next": "Suivant",
       "button_end": "Terminer"
+    },
+    "own-report": {
+      "title": "Vos signalements",
+      "title1": "Selectionner un rapport.",
+      "title2": "Depuis cette interface, vous pouvez aussi modifier vos raports."
+    },
+    "own-report-detail": {
+      "btn_edit_title": "Signaler la fin de cette coupure"
     }
   },
   "statistics": {
@@ -230,7 +238,7 @@
       "title": "Rapport détails",
       "report_that": "Signalez le:",
       "recovred_that":"Remis le:",
-      "no_return": "Toujours en cours",
+      "no_return": "Toujours en cours.",
       "report_places": "Localisation",
       "country": "Pays:",
       "city": "Ville:",

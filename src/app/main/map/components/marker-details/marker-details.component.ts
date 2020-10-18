@@ -1,6 +1,6 @@
 import { Report } from '@Models/report.model';
 import { BaseComponent } from '@Models/baseComponent.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-report-infos',

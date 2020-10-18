@@ -7,11 +7,10 @@ import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from '@Services/auth.service';
 import {map, takeUntil} from 'rxjs/operators';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {MarkerRecovredReportComponent} from '../../map/components/marker-recovred-report/marker-recovred-report.component';
-import {MapService} from '@Services/map.service';
-import {MarkerDetailsComponent} from '../../map/components/marker-details/marker-details.component';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {Logger} from '@Services/logger.service';
 
+const log = new Logger('own-report.component');
 
 @Component({
   selector: 'app-own-report',
@@ -20,9 +19,6 @@ import {MarkerDetailsComponent} from '../../map/components/marker-details/marker
 })
 export class OwnReportComponent implements OnInit, OnDestroy {
   private gridApi;
-  reports$: Observable<Report[]>;
-  paginationPageSize;
-  rowSelection = 'single';
   readonly faExclamationCircle = faExclamationCircle;
   readonly unsubsscribe$ = new Subject<void>();
   readonly defaultColDef = {
@@ -74,16 +70,27 @@ export class OwnReportComponent implements OnInit, OnDestroy {
       }
     }];
 
+  reports$: Observable<Report[]>;
+  report: Report;
+  paginationPageSize;
+  rowSelection = 'single';
+
   constructor(
     private reportService: ReportService,
     private translateService: TranslateService,
     private authService: AuthService,
     private timestampPipe: TimestampPipe,
-    private mapService: MapService,
-    private modalService: NgbModal
+    private analytics: AngularFireAnalytics,
   ) { }
 
   ngOnInit(): void {
+    log.debug('init');
+    this.analytics.logEvent('page_view', {
+      page_location: 'https://lightcutoff.com/own-report',
+      page_path: '/own-report',
+      page_title: 'own report'
+    });
+
     const now = new Date();
     this.reports$ = this.reportService.getReports({
       isDeleted: false,
@@ -107,49 +114,9 @@ export class OwnReportComponent implements OnInit, OnDestroy {
   }
 
   onRowSelected(event: any) {
-    // this.analytics.logEvent('report_selected');
     const selectedRows = this.gridApi.getSelectedRows();
-
-    if (selectedRows[0].recovredAt) {
-      this.createMpdal(MarkerDetailsComponent, selectedRows[0]);
-      // modalRef = this.modalService.open(
-      //   MarkerDetailsComponent,
-      //   {
-      //     centered: true,
-      //     size: 'lg'
-      //   });
-      // modalRef.componentInstance.data = selectedRows[0];
-    } else {
-      this.createMpdal(MarkerRecovredReportComponent, {
-        report: selectedRows[0],
-        list: true
-      });
-      // modalRef = this.modalService.open(
-      //   MarkerRecovredReportComponent,
-      //   {
-      //     centered: true,
-      //     size: 'lg'
-      //   });
-      // modalRef.componentInstance.data = {
-      //   report: selectedRows[0],
-      //   list: true
-      // };
-    }
-
-    // modalRef.result.then((result) => {
-    //   console.log(result);
-    // }, (reason) => {
-    // });
-  }
-
-  private createMpdal(component, data) {
-    const modalRef = this.modalService.open(
-      component,
-      {
-        centered: true,
-        size: 'lg'
-      });
-    modalRef.componentInstance.data = data;
+    this.report = selectedRows[0];
+    this.analytics.logEvent('select_content', this.report);
   }
 
   onGridReady(params) {

@@ -106,6 +106,9 @@
     }
   },
   "main": {
+    "user-profile": {
+      "title": "Your reports"
+    },
     "map-view": {
       "title_page": "Map",
       "error_geolocalize_not_work": "The geolocalization service does not work",
@@ -200,6 +203,14 @@
       "step_5_text_3": "<b>Survolé</b> sur le marqueur orange",
       "button_next": "Next",
       "button_end": "Finish"
+    },
+    "own-report": {
+      "title": "Your reports",
+      "title1": "Select a report.",
+      "title2": "From this interface, you can also modify your reports."
+    },
+    "own-report-detail": {
+      "btn_edit_title": "Signaler la fin de cette coupure"
     }
   },
   "statistics": {
@@ -226,7 +237,7 @@
       "title": "Report details",
       "report_that": "Report on:",
       "recovred_that":"Recovered on:",
-      "no_return": "Still ongoing",
+      "no_return": "Still ongoing.",
       "report_places": "Localization",
       "country": "Country:",
       "city": "City:",
