@@ -20,6 +20,9 @@ describe('MarkerDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MarkerDetailsComponent);
     component = fixture.componentInstance;
+    component.data = {
+      report: null,
+    };
     fixture.detectChanges();
   });
 
