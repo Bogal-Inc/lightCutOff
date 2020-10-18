@@ -165,7 +165,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onCreateReport(event: any) {
     log.debug('create report');
-    this.analytics.logEvent('add_report');
+    this.analytics.logEvent('added_report');
 
     const geocoder = new google.maps.Geocoder();
     const errorMessage = this.translateService.instant('main.map-view.error_no_cameroon');

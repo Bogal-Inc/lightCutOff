@@ -1,0 +1,98 @@
+<div class="report" *ngIf="report">
+  <div class="col-md-12">
+    <div class="report__header mb-4">
+      <h4 class=" text-center report__title">{{'report.report-details.title' | translate}}</h4>
+
+      <div>
+        <ul class="list-inline text-center">
+          <li class="list-inline-item">{{report?.location.city}},</li>
+          <li class="list-inline-item">{{report?.location.country}}</li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+
+    <div class="report__body">
+      <div class="mb-5 report__body__content1">
+        <ul class="list-unstyled">
+          <li class="mb-lg-3">
+            {{'report.report-details.report_that' | translate}} {{report?.reportedAt?.toDate() | timestamp}}
+          </li>
+          <li class="mb-lg-3" *ngIf="report?.recovredAt">
+            {{'report.report-details.recovred_that' | translate}} {{report?.recovredAt?.toDate() | timestamp}}
+          </li>
+          <li class="mb-lg-3 text-danger" *ngIf="!report?.recovredAt">
+            {{'report.report-details.no_return' | translate}} &nbsp;
+            <a (click)="editRecovred()" title="{{'main.own-report-detail.btn_edit_title' | translate}}" class="text-dark">
+              <fa-icon [icon]="faEdit"></fa-icon>
+            </a>
+            <div class="report__body__content1__form" *ngIf="showFormRecovred">
+              <p class="text-dark">{{'main.update-form-report.label' | translate}}</p>
+              <div class="onSubmitRecovred()__form">
+                <form class="form-inline">
+                  <div class="form-group mb-2">
+                    <input id="recovred_date"
+                      [owlDateTimeTrigger]="dt"
+                      [owlDateTime]="dt"
+                      [min]="min" [max]="max"
+                      class="form-control form-control-sm">
+                    <owl-date-time #dt></owl-date-time>
+                  </div>
+                  <button
+                    class="btn btn-sm btn-success mb-2 ml-2"
+                    type="submit"
+                    (click)="onSubmitRecovred()">
+                    {{'main.update-form-report.btn_submit' | translate}}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </li>
+          <li class="mb-lg-3">
+            {{'report.report-details.report_places' | translate}}
+            <ul>
+              <li>
+                <b>{{'report.report-details.country' | translate}}</b>
+                {{report?.location.country}}
+              </li>
+              <li>
+                <b>{{'report.report-details.department' | translate}}</b>
+                {{report?.location.department}}
+              </li>
+              <li>
+                <b>{{'report.report-details.city' | translate}}</b>
+                {{report?.location.city}}
+              </li>
+              <li>
+                <b>{{'report.report-details.neighborhood' | translate}}</b>
+                {{report?.location.neighborhood}}
+              </li>
+            </ul>
+            <br>
+            {{'report.report-details.address' | translate}}
+            <ul>
+              <li *ngFor="let address of report?.location.addresses">
+                {{address.label}}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="report__body__content2">
+        <small>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <b>{{'report.report-details.longitude' | translate}}</b>
+              {{report?.position.lng}}
+            </li>
+            <li class="list-inline-item">
+              <b>{{'report.report-details.latitude' | translate}}</b>
+              {{report?.position.lat}}
+            </li>
+          </ul>
+        </small>
+      </div>
+    </div>
+    <div class="report-footer"></div>
+  </div>
+</div>

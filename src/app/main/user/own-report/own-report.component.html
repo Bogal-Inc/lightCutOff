@@ -1,19 +1,32 @@
 <div class="main-admin reports">
   <div class="container">
-    <div *ngIf="reports$ | async" class="reports__bloc">
-      <h4 class="text-center reports__title mb-5">{{'main.user-profile.title' | translate}}</h4>
+    <div class="row">
+      <div class="col-md-6 mb-5">
+        <div *ngIf="(reports$ | async)" class="reports__bloc">
+          <h4 class="text-center reports__title">
+            {{'main.own-report.title' | translate}}
+          </h4>
+          <div class="mb-3 text-center">
+            <small>{{'main.own-report.title1' | translate}}</small><br>
+            <small>{{'main.own-report.title2' | translate}}</small>
+          </div>
 
-      <ag-grid-angular
-        class="ag-theme-alpine reports__bloc__datatable"
-        [rowData]="reports$ | async"
-        [columnDefs]="columnDefs"
-        [pagination]="true"
-        [defaultColDef]="defaultColDef"
-        [paginationPageSize]="paginationPageSize"
-        [rowSelection]="rowSelection"
-        (gridReady)="onGridReady($event)"
-        (selectionChanged)="onRowSelected($event)"
-      ></ag-grid-angular>
+          <ag-grid-angular
+            class="ag-theme-alpine reports__bloc__datatable"
+            [rowData]="reports$ | async"
+            [columnDefs]="columnDefs"
+            [pagination]="true"
+            [defaultColDef]="defaultColDef"
+            [paginationPageSize]="paginationPageSize"
+            [rowSelection]="rowSelection"
+            (gridReady)="onGridReady($event)"
+            (selectionChanged)="onRowSelected($event)"
+          ></ag-grid-angular>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <app-own-report-detail [report]="report"></app-own-report-detail>
+      </div>
     </div>
   </div>
 </div>
