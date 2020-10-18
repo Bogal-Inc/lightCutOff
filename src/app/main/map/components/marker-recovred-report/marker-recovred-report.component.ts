@@ -30,9 +30,10 @@ export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
   ) { }
 
   ngOnInit(): void {
-    this.min = this.data.report.reportedAt.toDate();
+    this.min = this.data.report.reportedAt;
     this.max = new Date();
     this.datetime = this.max;
+    console.log(this.data.report);
   }
 
   onSubmitRecovred() {

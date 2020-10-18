@@ -9,10 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarkerDetailsComponent implements BaseComponent, OnInit {
   data: {
-    report: Report,
-    map: true
+    report: Report
   };
-  report: Report;
 
   constructor() { }
 
