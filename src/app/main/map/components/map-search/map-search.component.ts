@@ -12,8 +12,8 @@ import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 @Component({
   selector: 'app-search-place-form',
-  templateUrl: './search-place-form.component.html',
-  styleUrls: ['./search-place-form.component.scss'],
+  templateUrl: './map-search.component.html',
+  styleUrls: ['./map-search.component.scss'],
   animations: [
     trigger('searchBarUpDown', [
       state('up', style({
@@ -45,7 +45,7 @@ import {AngularFireAnalytics} from '@angular/fire/analytics';
     ])
   ]
 })
-export class SearchPlaceFormComponent implements OnInit {
+export class MapSearchComponent implements OnInit {
   @Output() searchPlaceSubmit: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('inputSearch', {static: false})
   private inputSearch: ElementRef;

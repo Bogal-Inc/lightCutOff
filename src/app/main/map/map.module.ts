@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { MapRoutingModule } from './map-routing.module';
 import { MapViewComponent } from './map-view/map-view.component';
 import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
-import { SearchPlaceFormComponent } from './components/search-place-form/search-place-form.component';
 import {environment} from '../../../environments/environment';
 import {GoogleMapsModule} from '@angular/google-maps';
 import {MarkerDetailsComponent} from './components/marker-details/marker-details.component';
@@ -14,17 +13,18 @@ import {MarkerRecovredReportComponent} from './components/marker-recovred-report
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { TutoModalComponent } from './components/tuto-modal/tuto-modal.component';
 import { MapFilterComponent } from './components/map-filter/map-filter.component';
+import {MapSearchComponent} from './components/map-search/map-search.component';
 
 
 @NgModule({
   declarations: [
     MapViewComponent,
     MarkerCreateReportComponent,
-    SearchPlaceFormComponent,
     MarkerDetailsComponent,
     MarkerRecovredReportComponent,
     TutoModalComponent,
     MapFilterComponent,
+    MapSearchComponent
   ],
   imports: [
     CommonModule,
