@@ -1,5 +1,4 @@
 import { LoadingComponent } from '../../../shared/loading/loading.component';
-import { SearchPlaceFormComponent } from '../components/search-place-form/search-place-form.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MapViewComponent } from './map-view.component';
@@ -16,7 +15,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from
 import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
 import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
-import {NgcCookieConsentModule} from 'ngx-cookieconsent';
+import {MapSearchComponent} from '../components/map-search/map-search.component';
 
 describe('MapViewComponent', () => {
   let component: MapViewComponent;
@@ -26,7 +25,7 @@ describe('MapViewComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         MapViewComponent,
-        SearchPlaceFormComponent,
+        MapSearchComponent,
         LoadingComponent,
         MapLegendComponent,
         NgbTooltip

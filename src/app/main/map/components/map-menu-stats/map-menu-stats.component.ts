@@ -27,7 +27,7 @@ export class MapMenuStatsComponent implements OnInit {
     this.translateService.instant('app.october'),
     this.translateService.instant('app.november'),
     this.translateService.instant('app.december'),
-  ]
+  ];
 
   constructor(
     private translateService: TranslateService
