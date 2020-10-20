@@ -1,11 +1,16 @@
 import { Doc, defaultDoc } from './doc.model';
 
-
 export interface Position {
   lat: number;
   lng: number;
 }
 
+export class Duration {
+  day: number;
+  hour: number;
+  min: number;
+  sec: number;
+}
 
 export interface Location {
   country: string;
