@@ -14,6 +14,8 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { MapFilterComponent } from './components/map-filter/map-filter.component';
 import {MapSearchComponent} from './components/map-search/map-search.component';
 import {MapTutoModalComponent} from './components/map-tuto-modal/map-tuto-modal.component';
+import { MapHistoryMarkerComponent } from './components/map-history-marker/map-history-marker.component';
+import { MapMenuStatsComponent } from './components/map-menu-stats/map-menu-stats.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import {MapTutoModalComponent} from './components/map-tuto-modal/map-tuto-modal.
     MarkerRecovredReportComponent,
     MapTutoModalComponent,
     MapFilterComponent,
-    MapSearchComponent
+    MapSearchComponent,
+    MapHistoryMarkerComponent,
+    MapMenuStatsComponent
   ],
   imports: [
     CommonModule,

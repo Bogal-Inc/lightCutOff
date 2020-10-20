@@ -1,0 +1,45 @@
+.report {
+  background-image: linear-gradient(white, rgba(255, 255, 255, 0.5));
+  &__nav {
+    &__item {
+      &__content {
+        &__elt {
+          border-left: 5px solid var(--danger);
+          cursor: pointer;
+
+          &__header {
+            &__title {
+              word-wrap: break-word;
+              margin: auto;
+              width: 300px;
+            }
+          }
+        }
+        &__elt:hover {
+          background-color: #eaeaea !important;
+        }
+        &__elt-close {
+          border-left: 5px solid var(--success) !important;
+        }
+        &__elt-new {
+          background-color: var(--success) !important;
+        }
+      }
+    }
+  }
+
+
+}
+
+.stats {
+  background-color: var(--white);
+}
+
+.list-group {
+  overflow: scroll;
+  height: 400px;
+  width: 400px;
+}
+.list-group-item {
+  background: none !important;
+}

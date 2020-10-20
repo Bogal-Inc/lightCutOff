@@ -1,7 +1,7 @@
 import {ReportService} from '@Services/report.service';
 import {ToastrService} from 'ngx-toastr';
 import {Component, OnInit} from '@angular/core';
-import {compareDate} from '@Helpers/date.helper';
+import {compareDate, getDuration} from '@Helpers/date.helper';
 import {BaseComponent} from '@Models/baseComponent.model';
 import {Report, ReportSatus} from '@Models/report.model';
 import {TranslateService} from '@ngx-translate/core';
@@ -33,12 +33,10 @@ export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
     this.min = this.data.report.reportedAt;
     this.max = new Date();
     this.datetime = this.max;
-    console.log(this.data.report);
   }
 
   onSubmitRecovred() {
     this.analytics.logEvent('recovred_report');
-    this.btnCloseModal = true;
 
     if (!this.isDate(this.data.report.reportedAt)) {
       this.toastrService.error(this.translateService.instant('main.update-form-report.error_date_old'));
