@@ -30,6 +30,7 @@ import {MapService} from '@Services/map.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {MapTutoModalComponent} from '../components/map-tuto-modal/map-tuto-modal.component';
 import {MapFilterComponent} from '../components/map-filter/map-filter.component';
+import {MapHistoryMarkerComponent} from '../components/map-history-marker/map-history-marker.component';
 
 const log = new Logger('map-view.component');
 
@@ -53,6 +54,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private legends: ElementRef;
   @ViewChild(MapFilterComponent, {read: ElementRef})
   public mapFilter: ElementRef;
+  @ViewChild(MapHistoryMarkerComponent, {read: ElementRef})
+  public mapHistoryMarker: ElementRef;
   @ViewChild('btnAddReport', {static: false})
   private btnAddReport: ElementRef;
   @ViewChild('recovredFormReport', { read: ViewContainerRef })
@@ -307,7 +310,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       this.gmap.nativeElement,
       this.legends.nativeElement,
       this.btnAddReport.nativeElement,
-      this.mapFilter.nativeElement
+      this.mapFilter.nativeElement,
+      this.mapHistoryMarker.nativeElement
     );
     this.mapService.map = this.map;
     this.initMarkerUser(this.mapService.markerUserOption());
@@ -494,5 +498,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       this.markerCurrentInfoWindow.close();
     }
+  }
+
+  goToMarker(report: Report) {
+    this.map.setCenter(report.position);
+    this.map.setZoom(14);
+    const marker = this.markerFactory(report);
+    google.maps.event.trigger(marker, 'click');
   }
 }

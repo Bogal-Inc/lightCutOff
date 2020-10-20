@@ -212,6 +212,14 @@
     },
     "own-report-detail": {
       "btn_edit_title": "Signaler la fin de cette coupure"
+    },
+    "map-history-marker": {
+      "menu_history": "Historique",
+      "icon_user_title": "Votre signalement",
+      "last_modif": "Derniere modification le",
+      "for_month": "Pour ce mois",
+      "current_cut": "Coupures en cours",
+      "end_cut": "Coupures terminées"
     }
   },
   "statistics": {
