@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Const} from '../../../../../environments/const';
 import {TranslateService} from '@ngx-translate/core';
+import {Logger} from '@Services/logger.service';
+
+const log = new Logger('map-history-stats.component');
 
 @Component({
   selector: 'app-map-menu-stats',
@@ -34,6 +36,7 @@ export class MapMenuStatsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    log.debug('init');
   }
 
 }

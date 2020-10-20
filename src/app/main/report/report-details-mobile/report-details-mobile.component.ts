@@ -34,7 +34,8 @@ export class ReportDetailsMobileComponent implements OnInit {
     this.analytics.logEvent('page_view', {
       page_location: 'https://lightcutoff.com/report',
       page_path: '/report',
-      page_title: 'Report details'
+      page_title: 'Report details',
+      mobile: true
     });
 
     if (!isMobile()) {
@@ -48,7 +49,7 @@ export class ReportDetailsMobileComponent implements OnInit {
   getReport(){
     const reportId = this.actiavteRoute.snapshot.queryParamMap.get('id');
     this.reportService.getReport(reportId).subscribe(
-      data => this.report = data,
+      report => this.report = report,
       err => log.error('report not found', err)
     );
   }

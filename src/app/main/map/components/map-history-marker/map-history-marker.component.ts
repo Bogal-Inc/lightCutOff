@@ -4,6 +4,11 @@ import {isMobile} from '@Helpers/mobile-confirm.helper';
 import {durationToString, getDuration} from '@Helpers/date.helper';
 import {faAngleRight, faCircle, faUser} from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from '@Services/auth.service';
+import {Logger} from '@Services/logger.service';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {Const} from '../../../../../environments/const';
+
+const log = new Logger('map-history-marker.component');
 
 @Component({
   selector: 'app-map-history-marker',
@@ -17,6 +22,7 @@ export class MapHistoryMarkerComponent implements OnInit, OnChanges {
   readonly faAngleRight = faAngleRight;
   readonly faCircle = faCircle;
   readonly faUser = faUser;
+  readonly moduleConfig = Const.app.modules;
   reportsMonthly: Report[];
   reportsNotClosed: Report[];
   now: Date;
@@ -26,32 +32,13 @@ export class MapHistoryMarkerComponent implements OnInit, OnChanges {
   reportsDayNotClosed: Report[];
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private analytics: AngularFireAnalytics,
   ) { }
 
   ngOnInit(): void {
+    log.debug('init');
     this.now = new Date();
-  }
-
-  isClosed(report) {
-    return report.status === ReportSatus.CUT_COMPLETED;
-  }
-
-  moveToMarker(marker) {
-    this.goToMarker.emit(marker);
-  }
-
-  reportDurationToString(report: Report) {
-    const duration = (report.recovredAt) ?
-      getDuration(report.reportedAt.toDate(), report.recovredAt.toDate()) :
-      getDuration(report.reportedAt.toDate(), new Date());
-    let result = (report.recovredAt) ? 'Coupé pendant ' : 'Coupé depuis ';
-
-    return result += durationToString(duration);
-  }
-
-  isOwner(report: Report) {
-    return this.authService.getUser().id === report._createdBy.id;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -92,5 +79,32 @@ export class MapHistoryMarkerComponent implements OnInit, OnChanges {
         report => report.status === ReportSatus.CUT
       );
     }
+  }
+
+  isClosed(report) {
+    return report.status === ReportSatus.CUT_COMPLETED;
+  }
+
+  moveToMarker(report) {
+    log.debug('move to marker');
+    this.analytics.logEvent('select_content', {
+      report,
+      where: 'map-history'
+    });
+
+    this.goToMarker.emit(report);
+  }
+
+  reportDurationToString(report: Report) {
+    const duration = (report.recovredAt) ?
+      getDuration(report.reportedAt.toDate(), report.recovredAt.toDate()) :
+      getDuration(report.reportedAt.toDate(), new Date());
+    let result = (report.recovredAt) ? 'Coupé pendant ' : 'Coupé depuis ';
+
+    return result += durationToString(duration);
+  }
+
+  isOwner(report: Report) {
+    return this.authService.getUser().id === report._createdBy.id;
   }
 }

@@ -121,7 +121,10 @@ export class ReportListComponent implements OnInit {
     this.detailReportLightRight = true;
     this.reportSelected = selectedRows;
 
-    this.analytics.logEvent('select_content', this.reportSelected[0]);
+    this.analytics.logEvent('select_content', {
+      report: this.reportSelected[0],
+      where: 'report-list'
+    });
 
     if (isMobile()) {
       const reportId = this.reportSelected[0].id;
