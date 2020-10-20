@@ -218,8 +218,15 @@
       "icon_user_title": "Votre signalement",
       "last_modif": "Derniere modification le",
       "for_month": "Pour ce mois",
+      "for_day": "Pour aujourd'hui",
       "current_cut": "Coupures en cours",
-      "end_cut": "Coupures terminées"
+      "end_cut": "Coupures terminées",
+      "report_for": "Signalements pour",
+      "report_of": "Signalements de",
+      "report_today": "signalements d'aujourd'hui",
+      "total": "Total",
+      "current_report": "Signalement coupure en cours",
+      "end_report": "Signalements coupure terminée"
     }
   },
   "statistics": {

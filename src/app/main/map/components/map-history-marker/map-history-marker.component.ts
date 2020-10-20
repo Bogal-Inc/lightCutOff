@@ -22,6 +22,8 @@ export class MapHistoryMarkerComponent implements OnInit, OnChanges {
   now: Date;
   showHistory = false;
   active = 1;
+  reportsDay: Report[];
+  reportsDayNotClosed: Report[];
 
   constructor(
     private authService: AuthService
@@ -62,6 +64,11 @@ export class MapHistoryMarkerComponent implements OnInit, OnChanges {
           return report.reportedAt.toDate().getMonth() === this.now.getMonth();
         }
       );
+      this.reportsDay = this.reportsMonthly.filter(
+        report => {
+          return report.reportedAt.toDate().getDate() === this.now.getDate();
+        }
+      );
       // the sort is automatic
       // this.reportsMonthly.sort(
       //   (a: any, b: any) => {
@@ -78,6 +85,10 @@ export class MapHistoryMarkerComponent implements OnInit, OnChanges {
       //   }
       // );
       this.reportsNotClosed = this.reportsMonthly.filter(
+        report => report.status === ReportSatus.CUT
+      );
+
+      this.reportsDayNotClosed = this.reportsDay.filter(
         report => report.status === ReportSatus.CUT
       );
     }

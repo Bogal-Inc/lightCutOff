@@ -38,7 +38,13 @@
       <li [ngbNavItem]="2">
         <a ngbNavLink>Statistiques</a>
         <ng-template ngbNavContent>
-          <app-map-menu-stats></app-map-menu-stats>
+          <app-map-menu-stats
+            [nbreReportsYear]="reports.length"
+            [nbreReportsMonthly]="reportsMonthly.length"
+            [nbreReportsNotClosed]="reportsNotClosed.length"
+            [nbreReportsDay]="reportsDay.length"
+            [nbreReportsDayNotClosed]="reportsDayNotClosed.length"
+          ></app-map-menu-stats>
         </ng-template>
       </li>
     </ul>
@@ -48,16 +54,16 @@
   <div class="text-center stats">
     <ul class="list-inline">
       <li class="list-inline-item">
-        <small>{{'main.map-history-marker.for_month' | translate}} {{reportsMonthly.length}}</small>
+        <small>{{'main.map-history-marker.for_day' | translate}} {{reportsDay.length}}</small>
       </li>
       <li class="text-danger list-inline-item">
         <small>
           {{'main.map-history-marker.current_cut' | translate}}
-          {{reportsMonthly.length - reportsNotClosed.length}}
+          {{reportsDayNotClosed.length}}
         </small>
       </li>
       <li class="text-success list-inline-item">
-        <small>{{'main.map-history-marker.end_cut' | translate}} {{reportsNotClosed.length}}</small>
+        <small>{{'main.map-history-marker.end_cut' | translate}} {{reportsDay.length - reportsDayNotClosed.length}}</small>
       </li>
     </ul>
   </div>
