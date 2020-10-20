@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MapMenuStatsComponent } from './map-menu-stats.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('MapMenuStatsComponent', () => {
   let component: MapMenuStatsComponent;
@@ -8,6 +9,9 @@ describe('MapMenuStatsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        TranslateModule.forRoot()
+      ],
       declarations: [ MapMenuStatsComponent ]
     })
     .compileComponents();

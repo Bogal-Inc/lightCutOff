@@ -1,5 +1,5 @@
 import * as firebase from 'firebase/app';
-import {Duration} from "@Models/report.model";
+import {Duration} from '@Models/report.model';
 
 
 // custom validator to check that two fields match
