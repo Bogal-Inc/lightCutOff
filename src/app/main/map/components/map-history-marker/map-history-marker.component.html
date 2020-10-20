@@ -51,7 +51,7 @@
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
   </div>
 
-  <div class="text-center stats">
+  <div class="text-center stats" *ngIf="reportsDay.length > 0">
     <ul class="list-inline">
       <li class="list-inline-item">
         <small>{{'main.map-history-marker.for_day' | translate}} {{reportsDay.length}}</small>
