@@ -69,7 +69,7 @@ export class StatisticsNumberComponent implements OnInit {
       report => report.status === ReportSatus.CUT_COMPLETED
     );
 
-    this.reportsDailyClose = this.reportsCurrentMonth.filter(
+    this.reportsDailyClose = this.reportsCurrentDaily.filter(
       report => report.status === ReportSatus.CUT_COMPLETED
     );
   }
