@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ReportService} from '@Services/report.service';
+import {ReportService} from '../../../../core/services-firebase/report.service';
 import {ToastrService} from 'ngx-toastr';
 import {TranslateService} from '@ngx-translate/core';
 import {AngularFireAnalytics} from '@angular/fire/analytics';

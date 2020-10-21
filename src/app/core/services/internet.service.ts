@@ -5,7 +5,7 @@ import {mapTo} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ConnectionService {
+export class InternetService {
   private behaviorSubject$;
   behaviorSubjectObservable$: Observable<boolean>;
 

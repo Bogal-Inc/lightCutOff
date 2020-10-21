@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Report, ReportSatus} from '@Models/report.model';
 import {Const} from '../../../../environments/const';
 import {Observable} from 'rxjs';
-import {ReportService} from '@Services/report.service';
+import {ReportService} from '../../../core/services-firebase/report.service';
 import {TranslateService} from '@ngx-translate/core';
 import {MetaService} from '@Services/meta.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
