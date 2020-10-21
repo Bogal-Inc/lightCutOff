@@ -7,6 +7,7 @@ import {AuthService} from '@Services/auth.service';
 import {Logger} from '@Services/logger.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {Const} from '../../../../../environments/const';
+import {environment} from '../../../../../environments/environment';
 
 const log = new Logger('map-history-marker.component');
 
@@ -22,7 +23,7 @@ export class MapHistoryMarkerComponent implements OnInit, OnChanges {
   readonly faAngleRight = faAngleRight;
   readonly faCircle = faCircle;
   readonly faUser = faUser;
-  readonly moduleConfig = Const.app.modules;
+  readonly moduleConfig = environment.app.modules.mapMenu;
   reportsMonthly: Report[];
   reportsNotClosed: Report[];
   now: Date;

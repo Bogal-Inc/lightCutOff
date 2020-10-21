@@ -19,6 +19,11 @@ if (environment === 'prod') {
     environment: '${process.env.ENVIRONMENT}',
     domain: '${process.env.DOMAIN_PROD}',
     googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
+    app: {
+      modules: {
+        mapMenu: false
+      }
+    },
     firebase: {
       apiKey: '${process.env.FIREBASE_API_KEY}',
       authDomain: '${process.env.FIREBASE_AUTH_DOMAIN}',
@@ -38,6 +43,11 @@ if (environment === 'prod') {
       environment: '${process.env.ENVIRONMENT}',
       domain: '${process.env.DOMAIN_PROD}',
       googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
+      app: {
+        modules: {
+          mapMenu: true
+        }
+      },
       firebase: {
         apiKey: '${process.env.FIREBASE_API_KEY_DEV}',
         authDomain: '${process.env.FIREBASE_AUTH_DOMAIN_DEV}',
@@ -57,6 +67,11 @@ if (environment === 'prod') {
       environment: '${process.env.ENVIRONMENT}',
       domain: '${process.env.DOMAIN_DEV}',
       googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
+      app: {
+        modules: {
+          mapMenu: true
+        }
+      },
       firebase: {
         apiKey: '${process.env.FIREBASE_API_KEY_DEV}',
         authDomain: '${process.env.FIREBASE_AUTH_DOMAIN_DEV}',

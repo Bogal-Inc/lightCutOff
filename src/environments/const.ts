@@ -6,11 +6,6 @@ export const Const = {
       defaultLanguage: 'fr',
       fr: 'fr',
       en: 'en'
-    },
-    modules: {
-      map_menu: false,
-      filter: false,
-      mode_admin: false
     }
   },
   user: {

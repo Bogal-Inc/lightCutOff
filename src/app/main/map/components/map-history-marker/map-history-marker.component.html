@@ -1,4 +1,4 @@
-<div *ngIf="!isMobile && showHistory">
+<div *ngIf="!isMobile && showHistory && moduleConfig">
   <div class="report">
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs report__nav">
       <li [ngbNavItem]="1" class="report__nav__item">
