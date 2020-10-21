@@ -6,7 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
 import { TimestampPipe } from '../core/pipes/timestamp.pipe';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
-import { MapLegendComponent } from './map-legend/map-legend.component';
+import { MapLegendComponent } from '../main/map/components/map-legend/map-legend.component';
 import { TranslateModule } from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -20,7 +20,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     MainFooterComponent,
     MainHeaderComponent,
-    MapLegendComponent,
     LoadingComponent,
     TimestampPipe,
     AdminNavComponent,
@@ -43,7 +42,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MainFooterComponent,
     MainHeaderComponent,
     LoadingComponent,
-    MapLegendComponent,
     TimestampPipe,
     ReactiveFormsModule,
     OwlDateTimeModule,
