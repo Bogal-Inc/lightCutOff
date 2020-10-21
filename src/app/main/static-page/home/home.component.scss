@@ -1,7 +1,7 @@
 .home {
   background-color: var(--white);
 
-  .home__section {
+  &__section {
     margin-bottom: 100px;
   }
 
@@ -27,6 +27,12 @@
 
   &__section-contactus {
     background: right center no-repeat url("../../../../assets/static/images/home/bg2.svg");
+  }
+
+  &__section-team {
+    &__item {
+      cursor: pointer;
+    }
   }
 
   &__section-data {

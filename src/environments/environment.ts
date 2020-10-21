@@ -3,6 +3,11 @@ export const environment = {
   environment: 'staging',
   googleMapsApiKey: 'googleMapsApiKey',
   domain: 'localhost',
+  app: {
+    modules: {
+      mapMenu: true
+    }
+  },
   firebase: {
     apiKey: 'apiKey',
     authDomain: 'authDomain',

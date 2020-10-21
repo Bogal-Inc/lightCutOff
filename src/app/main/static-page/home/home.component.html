@@ -148,38 +148,55 @@
   <section class="home__section home__section-team">
     <div class="home__section-team__body w-100 h-100">
       <h1 class="mb-5 text-center">{{'core.home.team.title' | translate}}</h1>
+
       <div class="container">
         <div class="row">
-          <div class="col-md-4 text-center">
+          <div class="col-md-4 text-center home__section-team__item"
+               (mouseenter) ="mouseEnter(partners[0])"  (mouseleave) ="mouseLeave(partners[0])">
             <div class=" pb-4">
-              <img src="../../../../assets/static/images/home/unknow_user.png"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.collect_data' | translate}}">
+              <img [src]="impPartnerWilly"
+                   class="rounded-circle w-100" alt="{{'core.home.whatwedo.collect_data' | translate}}">
             </div>
             <div>
               <h4>Willy Kouagnia</h4>
               <i>{{'core.home.team.developer' | translate}}, {{'core.home.team.founder' | translate}}</i>
             </div>
           </div>
-          <div class="col-md-4 text-center">
+          <div class="col-md-4 text-center home__section-team__item"
+               (mouseenter) ="mouseEnter(partners[2])"  (mouseleave) ="mouseLeave(partners[2])">
             <div class="text-center pb-4">
-              <img src="../../../../assets/static/images/home/unknow_user.png"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.local_cut_off' | translate}}">
+              <img [src]="impPartnerJaures"
+                   class="rounded-circle w-100" alt="{{'core.home.whatwedo.local_cut_off' | translate}}">
             </div>
             <div>
               <h4>Jaures Tchapet</h4>
               <i>{{'core.home.team.developer' | translate}}</i>
             </div>
           </div>
-          <div class="col-md-4 text-center">
+          <div class="col-md-4 text-center home__section-team__item"
+               (mouseenter) ="mouseEnter(partners[1])" (mouseleave) ="mouseLeave(partners[1])">
             <div class="text-center pb-4">
-              <img src="../../../../assets/static/images/home/unknow_user.png"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.charts_data' | translate}}">
+              <img [src]="impPartnerEuclide"
+                   class="rounded-circle w-100" alt="{{'core.home.whatwedo.charts_data' | translate}}">
             </div>
             <div>
-              <h4>Yvan Ngassa</h4>
-              <i>{{'core.home.team.developer' | translate}}, {{'core.home.team.marketing' | translate}}</i>
+              <h4>Nandjeu Euclide Quentin</h4>
+              <i>{{'core.home.team.communication' | translate}}</i>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- partners -->
+  <section class="home__section home__section-partner">
+    <div class="home__section-partner__body w-100 h-100">
+      <div class="container">
+        <h1 class="mb-5 text-center">{{'core.home.partners.title' | translate}}</h1>
+        <div class="row">
+          <img src="../../../../assets/static/images/partners/AG-LOGO.png"
+               class="rounded-circle mx-auto d-block w-25" alt="AG-LOGO">
         </div>
       </div>
     </div>

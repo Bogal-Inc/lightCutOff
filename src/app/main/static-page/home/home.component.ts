@@ -8,10 +8,17 @@ import {MetaService} from '@Services/meta.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {Router} from '@angular/router';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
-import {ReportService} from '../../../core/services-firebase/report.service';
+import {ReportService} from '../../../core/services-firebase';
 import {ReportSatus} from '@Models/report.model';
+import {faLightbulb} from '@fortawesome/free-solid-svg-icons';
 
 const log = new Logger('home.component');
+
+export enum PARTNERS {
+  WILLY,
+  EUCLIDE,
+  JAURES
+}
 
 @Component({
   selector: 'app-home',
@@ -27,6 +34,14 @@ export class HomeComponent implements OnInit {
   reports: any;
   reportsCurrentYear: any;
   reportsCurrentMonth: any;
+  partners = [
+    PARTNERS.WILLY,
+    PARTNERS.EUCLIDE,
+    PARTNERS.JAURES
+  ];
+  impPartnerWilly = '../../../../assets/static/images/partners/kouagnia_willy_b.png';
+  impPartnerEuclide = '../../../../assets/static/images/partners/nandjeu_euclide_b.png';
+  impPartnerJaures = '../../../../assets/static/images/partners/unknow_user.png';
 
   constructor(
     private modalService: NgbModal,
@@ -62,6 +77,10 @@ export class HomeComponent implements OnInit {
     this.modalService.open(content);
   }
 
+  toggleImagesPartner() {
+
+  }
+
   private initCardDashbord() {
     this.reportService.getReports({
       isDeleted: false
@@ -83,5 +102,25 @@ export class HomeComponent implements OnInit {
     this.reportsCurrentMonth = this.reportsCurrentYear.filter(
       report => report.reportedAt.toDate().getMonth() === now.getMonth()
     );
+  }
+
+  mouseEnter(partner: PARTNERS) {
+    if (partner === PARTNERS.WILLY) {
+      this.impPartnerWilly = '../../../../assets/static/images/partners/kouagnia_willy_c.png';
+    } else if (partner === PARTNERS.EUCLIDE) {
+      this.impPartnerEuclide = '../../../../assets/static/images/partners/nandjeu_euclide_c.png';
+    } else {
+      this.impPartnerJaures = '../../../../assets/static/images/partners/unknow_user.png';
+    }
+  }
+
+  mouseLeave(partner: PARTNERS) {
+    if (partner === PARTNERS.WILLY) {
+      this.impPartnerWilly = '../../../../assets/static/images/partners/kouagnia_willy_b.png';
+    } else if (partner === PARTNERS.EUCLIDE) {
+      this.impPartnerEuclide = '../../../../assets/static/images/partners/nandjeu_euclide_b.png';
+    } else {
+      this.impPartnerJaures = '../../../../assets/static/images/partners/unknow_user.png';
+    }
   }
 }
