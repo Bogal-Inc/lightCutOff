@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ReportService} from '@Services/report.service';
+import {ReportService} from '../../../core/services-firebase/report.service';
 import {Report} from '@Models/report.model';
 import {Logger} from '@Services/logger.service';
 import {isMobile} from '@Helpers/mobile-confirm.helper';

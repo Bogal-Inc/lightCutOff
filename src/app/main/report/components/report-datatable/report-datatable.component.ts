@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ReportService} from '@Services/report.service';
+import {ReportService} from '../../../../core/services-firebase/report.service';
 import {Report, ReportSatus} from '@Models/report.model';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { TranslateService } from '@ngx-translate/core';

@@ -8,7 +8,7 @@ import {MetaService} from '@Services/meta.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {Router} from '@angular/router';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
-import {ReportService} from '@Services/report.service';
+import {ReportService} from '../../../core/services-firebase/report.service';
 import {ReportSatus} from '@Models/report.model';
 
 const log = new Logger('home.component');

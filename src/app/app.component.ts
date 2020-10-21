@@ -1,6 +1,6 @@
 import { Const } from 'src/environments/const';
 import {Component, OnInit} from '@angular/core';
-import { AuthService } from '@Services/auth.service';
+import { AuthService } from './core/services-firebase/auth.service';
 import { DateTimeAdapter } from 'ng-pick-datetime';
 import { Logger } from '@Services/logger.service';
 import { environment } from 'src/environments/environment';

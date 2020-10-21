@@ -1,8 +1,8 @@
-import { AuthService } from '@Services/auth.service';
+import { AuthService } from '../../core/services-firebase/auth.service';
 import {Component, Input, OnInit} from '@angular/core';
 import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
-import {ConnectionService} from '@Services/connection.service';
+import {InternetService} from '@Services/internet.service';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 
@@ -21,7 +21,7 @@ export class MainHeaderComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private connectionService: ConnectionService,
+    private connectionService: InternetService,
     private router: Router
   ) { }
 
