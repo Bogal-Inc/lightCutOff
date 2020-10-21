@@ -36,7 +36,7 @@
         </ng-template>
       </li>
       <li [ngbNavItem]="2">
-        <a ngbNavLink>Statistiques</a>
+        <a ngbNavLink>{{'main.map-history-marker.title_stats' | translate}}</a>
         <ng-template ngbNavContent>
           <app-map-menu-stats
             [nbreReportsYear]="reports.length"
@@ -51,8 +51,8 @@
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
   </div>
 
-  <div class="text-center stats" *ngIf="reportsDay.length > 0">
-    <ul class="list-inline">
+  <div class="text-center stats">
+    <ul class="list-inline" [class.visible]="reportsDay.length > 0">
       <li class="list-inline-item">
         <small>{{'main.map-history-marker.for_day' | translate}} {{reportsDay.length}}</small>
       </li>
