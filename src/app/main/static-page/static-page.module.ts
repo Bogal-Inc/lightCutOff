@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { TutoComponent } from './tuto/tuto.component';
 import { HomeComponent } from './home/home.component';
 import { FaqComponent } from './faq/faq.component';
+import {MapModule} from '../map/map.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { FaqComponent } from './faq/faq.component';
     CommonModule,
     StaticPageRoutingModule,
     SharedModule,
+    MapModule,
   ]
 })
 export class StaticPageModule { }

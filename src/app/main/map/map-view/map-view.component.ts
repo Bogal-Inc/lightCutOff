@@ -18,7 +18,7 @@ import {
 import {MapsAPILoader} from '@agm/core';
 import {ToastrService} from 'ngx-toastr';
 import {Const} from 'src/environments/const';
-import {MapLegendComponent} from 'src/app/shared/map-legend/map-legend.component';
+import {MapLegendComponent} from 'src/app/main/map/components/map-legend/map-legend.component';
 import {NgbModal, NgbTooltip, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Logger} from '@Services/logger.service';
 import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';

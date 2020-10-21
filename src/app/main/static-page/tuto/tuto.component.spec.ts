@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TutoComponent } from './tuto.component';
-import { MapLegendComponent } from 'src/app/shared/map-legend/map-legend.component';
+import { MapLegendComponent } from 'src/app/main/map/components/map-legend/map-legend.component';
 import { TranslateModule } from '@ngx-translate/core';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../../../environments/environment';
