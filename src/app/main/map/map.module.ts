@@ -16,6 +16,7 @@ import {MapSearchComponent} from './components/map-search/map-search.component';
 import {MapTutoModalComponent} from './components/map-tuto-modal/map-tuto-modal.component';
 import { MapHistoryMarkerComponent } from './components/map-history-marker/map-history-marker.component';
 import { MapMenuStatsComponent } from './components/map-menu-stats/map-menu-stats.component';
+import {MapLegendComponent} from './components/map-legend/map-legend.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MapMenuStatsComponent } from './components/map-menu-stats/map-menu-stat
     MapFilterComponent,
     MapSearchComponent,
     MapHistoryMarkerComponent,
-    MapMenuStatsComponent
+    MapMenuStatsComponent,
+    MapLegendComponent
   ],
   imports: [
     CommonModule,
@@ -46,6 +48,9 @@ import { MapMenuStatsComponent } from './components/map-menu-stats/map-menu-stat
   providers: [
     GoogleMapsAPIWrapper,
     NgbActiveModal
+  ],
+  exports: [
+    MapLegendComponent
   ],
   entryComponents: [
     MarkerRecovredReportComponent,
