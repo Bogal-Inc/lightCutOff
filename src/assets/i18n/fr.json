@@ -36,7 +36,7 @@
         "title": "Équipe",
         "developer": "Développeur",
         "founder": "CEO",
-        "marketing": "marketing"
+        "communication": "Responsable communication"
       },
       "statistics": {
         "title": "Quelques chiffres"
@@ -50,6 +50,9 @@
       },
       "contactus": {
         "title": "Contactez-nous"
+      },
+      "partners": {
+        "title": "Partenaires"
       }
     },
     "aboutus": {
