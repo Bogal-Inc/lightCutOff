@@ -52,7 +52,7 @@
   </div>
 
   <div class="text-center stats">
-    <ul class="list-inline" [class.visible]="reportsDay.length > 0">
+    <ul class="list-inline" *ngIf="reportsDay.length > 0">
       <li class="list-inline-item">
         <small>{{'main.map-history-marker.for_day' | translate}} {{reportsDay.length}}</small>
       </li>

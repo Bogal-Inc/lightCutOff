@@ -229,7 +229,8 @@
       "report_today": "signalements d'aujourd'hui",
       "total": "Total",
       "current_report": "Signalement coupure en cours",
-      "end_report": "Signalements coupure terminée"
+      "end_report": "Signalements coupure terminée",
+      "title_stats": "Statistiques"
     }
   },
   "statistics": {

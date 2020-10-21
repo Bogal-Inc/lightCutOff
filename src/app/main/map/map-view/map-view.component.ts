@@ -1,9 +1,9 @@
 import {TranslateService} from '@ngx-translate/core';
 import {MarkerDetailsComponent} from '../components/marker-details/marker-details.component';
-import {AuthService} from '../../../core/services-firebase/auth.service';
+import {AuthService} from '../../../core/services-firebase';
 import {Position, Report, ReportSatus} from '@Models/report.model';
 import {LoadingComponent} from '../../../shared/loading/loading.component';
-import {ReportService} from '../../../core/services-firebase/report.service';
+import {ReportService} from '../../../core/services-firebase';
 import {
   AfterViewInit,
   Component,
@@ -413,10 +413,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     if (report.recovredAt) {
-      const data = {
-        report
-      };
-      content = this.mapService.createComponent(data, MarkerDetailsComponent, this.infosReport);
+      content = this.mapService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
       this.addInfoWindow(currentMareker, content);
     } else {
       if (this.authService.getUser().id === report._createdBy.id){
@@ -430,10 +427,10 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         info.setContent(content);
         info.setZIndex(1000);
         // show report informations
-        content = this.mapService.createComponent(report, MarkerDetailsComponent, this.infosReport);
+        content = this.mapService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
         this.addInfoWindow(currentMareker, content, 'hover');
       } else {
-        content = this.mapService.createComponent(report, MarkerDetailsComponent, this.infosReport);
+        content = this.mapService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
         this.addInfoWindow(currentMareker, content);
       }
     }
