@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MailService} from '@Services/mail.service';
+import {MailService} from '../../core/services-firebase/mail.service';
 import {ToastrService} from 'ngx-toastr';
 import {I18nService} from '@Services/i18n.service';
 import {Subject} from 'rxjs';

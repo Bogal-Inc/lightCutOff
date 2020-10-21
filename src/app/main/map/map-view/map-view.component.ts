@@ -1,9 +1,9 @@
 import {TranslateService} from '@ngx-translate/core';
 import {MarkerDetailsComponent} from '../components/marker-details/marker-details.component';
-import {AuthService} from '@Services/auth.service';
+import {AuthService} from '../../../core/services-firebase/auth.service';
 import {Position, Report, ReportSatus} from '@Models/report.model';
 import {LoadingComponent} from '../../../shared/loading/loading.component';
-import {ReportService} from '@Services/report.service';
+import {ReportService} from '../../../core/services-firebase/report.service';
 import {
   AfterViewInit,
   Component,

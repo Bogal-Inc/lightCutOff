@@ -3,7 +3,7 @@ import {Report, ReportSatus} from '@Models/report.model';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
 import {durationToString, getDuration} from '@Helpers/date.helper';
 import {faAngleRight, faCircle, faUser} from '@fortawesome/free-solid-svg-icons';
-import {AuthService} from '@Services/auth.service';
+import {AuthService} from '../../../../core/services-firebase/auth.service';
 import {Logger} from '@Services/logger.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {Const} from '../../../../../environments/const';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Report, ReportSatus} from '@Models/report.model';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-import {ReportService} from '@Services/report.service';
+import {ReportService} from '../../../core/services-firebase/report.service';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import { isMobile } from '@Helpers/mobile-confirm.helper';
 import {Router} from '@angular/router';
