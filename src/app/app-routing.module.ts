@@ -18,8 +18,8 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     loadChildren: () =>
-      import('./main/general/general.module').then(
-        m => m.GeneralModule
+      import('./main/static-page/static-page.module').then(
+        m => m.StaticPageModule
       ),
   },
   {
