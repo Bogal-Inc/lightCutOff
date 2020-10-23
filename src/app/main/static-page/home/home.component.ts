@@ -39,9 +39,9 @@ export class HomeComponent implements OnInit {
     PARTNERS.EUCLIDE,
     PARTNERS.JAURES
   ];
-  impPartnerWilly = '../../../../assets/static/images/partners/kouagnia_willy_b.png';
-  impPartnerEuclide = '../../../../assets/static/images/partners/nandjeu_euclide_b.png';
-  impPartnerJaures = '../../../../assets/static/images/partners/unknow_user.png';
+  impPartnerWilly = true;
+  impPartnerEuclide = true;
+  impPartnerJaures = true;
 
   constructor(
     private modalService: NgbModal,
@@ -106,21 +106,21 @@ export class HomeComponent implements OnInit {
 
   mouseEnter(partner: PARTNERS) {
     if (partner === PARTNERS.WILLY) {
-      this.impPartnerWilly = '../../../../assets/static/images/partners/kouagnia_willy_c.png';
+      this.impPartnerWilly = false;
     } else if (partner === PARTNERS.EUCLIDE) {
-      this.impPartnerEuclide = '../../../../assets/static/images/partners/nandjeu_euclide_c.png';
+      this.impPartnerEuclide = false;
     } else {
-      this.impPartnerJaures = '../../../../assets/static/images/partners/unknow_user.png';
+      this.impPartnerJaures = false;
     }
   }
 
   mouseLeave(partner: PARTNERS) {
     if (partner === PARTNERS.WILLY) {
-      this.impPartnerWilly = '../../../../assets/static/images/partners/kouagnia_willy_b.png';
+      this.impPartnerWilly = true;
     } else if (partner === PARTNERS.EUCLIDE) {
-      this.impPartnerEuclide = '../../../../assets/static/images/partners/nandjeu_euclide_b.png';
+      this.impPartnerEuclide = true;
     } else {
-      this.impPartnerJaures = '../../../../assets/static/images/partners/unknow_user.png';
+      this.impPartnerJaures = true;
     }
   }
 }
