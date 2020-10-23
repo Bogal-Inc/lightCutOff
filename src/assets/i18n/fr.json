@@ -39,7 +39,11 @@
         "communication": "Responsable communication et design"
       },
       "statistics": {
-        "title": "Quelques chiffres"
+        "title": "Nos statistiques",
+        "reports_total": "Total des signalements",
+        "reports_yearly": "Signalements annuel",
+        "reports_monthly": "Signalements mensuel",
+        "reports_daily": "Signalements journalier"
       },
       "whatwedo": {
         "title": "Que faisons nous",

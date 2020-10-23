@@ -9,7 +9,7 @@ import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {Router} from '@angular/router';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
 import {ReportService} from '../../../core/services-firebase';
-import {ReportSatus} from '@Models/report.model';
+import {Report, ReportSatus} from '@Models/report.model';
 import {faLightbulb} from '@fortawesome/free-solid-svg-icons';
 
 const log = new Logger('home.component');
@@ -42,6 +42,8 @@ export class HomeComponent implements OnInit {
   impPartnerWilly = true;
   impPartnerEuclide = true;
   impPartnerJaures = true;
+  reportsCurrentDay: Report[];
+  nbrReportsDay: number;
 
   constructor(
     private modalService: NgbModal,
@@ -102,6 +104,11 @@ export class HomeComponent implements OnInit {
     this.reportsCurrentMonth = this.reportsCurrentYear.filter(
       report => report.reportedAt.toDate().getMonth() === now.getMonth()
     );
+
+    this.reportsCurrentDay = this.reportsCurrentMonth.filter(
+      report => report.reportedAt.toDate().getDate() === now.getDate()
+    );
+    this.nbrReportsDay = this.reportsCurrentDay.length;
   }
 
   mouseEnter(partner: PARTNERS) {

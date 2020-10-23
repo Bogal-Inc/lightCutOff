@@ -39,7 +39,11 @@
         "communication": "Communication and design manager"
       },
       "statistics": {
-        "title": "Some numbers"
+        "title": "Our statistics",
+        "reports_total": "Total reports",
+        "reports_yearly": "Annual reports",
+        "reports_monthly": "Monthly reports",
+        "reports_daily": "Daily reports"
       },
       "whatwedo": {
         "title": "What do we do",
