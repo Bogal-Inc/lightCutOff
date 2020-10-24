@@ -1,21 +1,40 @@
 import { TestBed } from '@angular/core/testing';
 
 import { I18nService } from './i18n.service';
-import { TranslateLoader, TranslateCompiler, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateMessageFormatCompiler } from 'ngx-translate-messageformat-compiler';
-import { HttpLoaderFactory } from 'src/app/app.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
 
+// @ts-ignore
 describe('I18nService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [
-      HttpClientModule,
-      TranslateModule.forRoot(),
-    ],
-  }));
+  let service: I18nService;
 
-  it('should be created', () => {
-    const service: I18nService = TestBed.inject(I18nService);
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+        TranslateModule.forRoot(),
+      ]
+    });
+    service = TestBed.inject(I18nService);
+  });
+
+  it ('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('#init should return default langage', () => {
+    const serviceTmp = TestBed.inject(I18nService);
+    serviceTmp.init('fr', ['fr', 'en']);
+    const defaultLang = serviceTmp.language;
+
+    expect(defaultLang).toEqual('fr');
+  });
+
+  it('#setLanguage should return new langage', () => {
+    service.init('fr', ['fr', 'en']);
+    service.language = 'en';
+    const defaultLang = service.language;
+
+    expect(defaultLang).toEqual('en');
   });
 });
