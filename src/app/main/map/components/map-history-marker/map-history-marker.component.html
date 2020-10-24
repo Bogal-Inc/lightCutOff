@@ -6,8 +6,9 @@
         <ng-template ngbNavContent>
           <div class="list-group report__nav__item__content">
             <a class="list-group-item list-group-item-action report__nav__item__content__elt"
-               (click)="moveToMarker(report)" *ngFor="let report of reportsMonthly"
+               (click)="moveToMarker(report, index)" *ngFor="let report of reportsMonthly; let index = index"
                [class.report__nav__item__content__elt-close]="isClosed(report)"
+               [id]="'report-item-' + index"
             >
               <div class="d-flex w-100 justify-content-between report__nav__item__content__elt__header">
                 <div>
