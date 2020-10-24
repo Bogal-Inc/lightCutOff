@@ -18,7 +18,8 @@ module.exports = function(config) {
         files: [
             { pattern: './node_modules/jquery/dist/jquery.min.js', watched: false },
           './node_modules/cookieconsent/build/cookieconsent.min.js',
-          './node_modules/cookieconsent/build/cookieconsent.min.css'
+          './node_modules/cookieconsent/build/cookieconsent.min.css',
+          'src/app/shared/mocks/google-api.js'
         ],
         client: {
             clearContext: false // leave Jasmine Spec Runner output visible in browser
@@ -27,12 +28,12 @@ module.exports = function(config) {
             dir: require('path').join(__dirname, './coverage/lightcutoff'),
             reports: ['html', 'lcovonly', 'text-summary'],
             fixWebpackSourcePaths: true,
-            // thresholds: {
-            //   statements: 80,
-            //   lines: 80,
-            //   branches: 80,
-            //   functions: 80
-            // }
+            thresholds: {
+              statements: 80,
+              lines: 80,
+              branches: 80,
+              functions: 80
+            }
         },
         customLaunchers: {
             ChromeHeadlessNoSandbox: {

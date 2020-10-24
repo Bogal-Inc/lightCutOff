@@ -177,11 +177,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     geocoder.geocode(
       {location: this.mapService.position},
       (googleLocations, status) => {
-      if (status === 'OK') {
+
+        if (status === 'OK') {
         googleLocation = googleLocations[1];
 
         if (googleLocation) {
-          const locality = this.mapService.getLocality(googleLocation);
+          const locality = this.mapService.getCountryCity(googleLocation);
           const country = locality[1];
 
           if (country === 'Cameroun' || country === 'Cameroon') {
@@ -308,10 +309,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mapService.position = position;
     this.map = this.mapService.initMap(
       this.gmap.nativeElement,
-      this.legends.nativeElement,
-      this.btnAddReport.nativeElement,
-      this.mapFilter.nativeElement,
-      this.mapHistoryMarker.nativeElement
+      [
+        this.legends?.nativeElement,
+        this.btnAddReport?.nativeElement,
+        this.mapFilter?.nativeElement,
+        this.mapHistoryMarker?.nativeElement
+      ]
     );
     this.mapService.map = this.map;
     this.initMarkerUser(this.mapService.markerUserOption());

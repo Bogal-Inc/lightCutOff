@@ -37,7 +37,7 @@ export class MapService {
     this._position = position;
   }
 
-  initMap(gmap, legends, btnAddReport, mapFilter, mapHistoryMarker) {
+  initMap(gmap, components) {
     const mapOptions = {
       center: this._position,
       zoom: 12,
@@ -51,17 +51,18 @@ export class MapService {
     };
 
     this._map = new google.maps.Map(gmap, mapOptions);
-    this._map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legends);
-    this._map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(btnAddReport);
-    this._map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(mapFilter);
-    this._map.controls[google.maps.ControlPosition.LEFT_TOP].push(mapHistoryMarker);
+    this._map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(components[0]);
+    this._map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(components[1]);
+    this._map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(components[2]);
+    this._map.controls[google.maps.ControlPosition.LEFT_TOP].push(components[3]);
 
     return this._map;
   }
 
   /**
-   * format address from google map API
-   *
+   * @description get address from address elements from google api
+   * @param googleLocations element address from google api
+   * @param location country from google api
    */
   getAddresses(googleLocations, location): Location {
     // delete last element for array
@@ -71,7 +72,7 @@ export class MapService {
       country: location[1],
       region: null,
       department: null,
-      city: null,
+      city: location[0],
       neighborhood: null,
       addresses: [],
       others: [],
@@ -87,10 +88,10 @@ export class MapService {
   }
 
   /**
-   * return country and city
-   *
+   * @description get country from address element
+   * @param address contain element address from google
    */
-  getLocality(address): string[] {
+  getCountryCity(address): string[] {
     const resultCountry = address.formatted_address.split(', ');
     const country = resultCountry[resultCountry.length - 1];
     const city = resultCountry[resultCountry.length - 2];
@@ -145,15 +146,13 @@ export class MapService {
       locationTmp.region = this.getRegion(label);
     } else if (locateType === 'administrative_area_level_2') {
       locationTmp.department = this.getDataLocation(label);
-    }else if (locateType === 'locality') {
-      locationTmp.city = this.getDataLocation(label);
-    }else if (locateType === 'sublocality') {
+    } else if (locateType === 'sublocality') {
       locationTmp.neighborhood = label.split(', ')[0];
-    }else if (locateType === 'neighborhood') {
+    } else if (locateType === 'neighborhood') {
       locationTmp.neighborhood = label.split(', ')[0];
-    }else if (locateType === 'street_address') {
+    } else if (locateType === 'street_address') {
       locationTmp.addresses.push(address);
-    }else if (locateType === 'route') {
+    } else if (locateType === 'route') {
       locationTmp.addresses.push(address);
       if (locationTmp.neighborhood === null) {
         locationTmp.neighborhood = label.split(', ')[0];
