@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Report, ReportSatus} from '@Models/report.model';
 import {Observable, Subject} from 'rxjs';
-import {ReportService} from '../../../core/services-firebase/report.service';
+import {ReportService} from '../../../core/services-firebase';
 import {TranslateService} from '@ngx-translate/core';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-import {AuthService} from '../../../core/services-firebase/auth.service';
+import {AuthService} from '../../../core/services-firebase';
 import {map, takeUntil} from 'rxjs/operators';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {Logger} from '@Services/logger.service';

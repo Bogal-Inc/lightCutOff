@@ -16,7 +16,7 @@ describe('MapService', () => {
       ]
     });
     service = TestBed.inject(MapService);
-    service.map = spyOn(google.maps, 'Map');;
+    service.map = spyOn(google.maps, 'Map');
     service.position = {
       lat: 11.48022226405379,
       lng: 3.843249609352396

@@ -16,6 +16,7 @@ describe('I18nService', () => {
       ]
     });
     service = TestBed.inject(I18nService);
+    service.init('fr', ['fr', 'en']);
   });
 
   it ('should be created', () => {
@@ -23,11 +24,9 @@ describe('I18nService', () => {
   });
 
   it('#init should return default langage', () => {
-    const serviceTmp = TestBed.inject(I18nService);
-    serviceTmp.init('fr', ['fr', 'en']);
-    const defaultLang = serviceTmp.language;
+    const defaultLang = service.language;
 
-    expect(defaultLang).toEqual('fr');
+    expect(defaultLang).toBe('fr');
   });
 
   it('#setLanguage should return new langage', () => {
@@ -35,6 +34,6 @@ describe('I18nService', () => {
     service.language = 'en';
     const defaultLang = service.language;
 
-    expect(defaultLang).toEqual('en');
+    expect(defaultLang).toBe('en');
   });
 });
