@@ -1,4 +1,4 @@
-import { AuthService } from '../../core/services-firebase/auth.service';
+import { AuthService } from '../../core/services-firebase';
 import {Component, Input, OnInit} from '@angular/core';
 import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
@@ -41,6 +41,7 @@ export class MainHeaderComponent implements OnInit {
   isOnlineStatus() {
     this.connectionService.start();
     this.connectionService.behaviorSubjectObservable$.subscribe(online => {
+      console.log(online);
       const logMessage = (online) ? 'app online' : 'app off line';
       log.debug(logMessage);
       this.online = online;
