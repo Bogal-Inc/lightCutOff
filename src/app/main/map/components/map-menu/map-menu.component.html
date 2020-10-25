@@ -4,36 +4,9 @@
       <li [ngbNavItem]="1" class="report__nav__item">
         <a ngbNavLink>{{'main.map-history-marker.menu_history' | translate}}</a>
         <ng-template ngbNavContent>
-          <div class="list-group report__nav__item__content">
-            <a class="list-group-item list-group-item-action report__nav__item__content__elt"
-               (click)="moveToMarker(report, index)" *ngFor="let report of reportsMonthly; let index = index"
-               [class.report__nav__item__content__elt-close]="isClosed(report)"
-               [id]="'report-item-' + index"
-            >
-              <div class="d-flex w-100 justify-content-between report__nav__item__content__elt__header">
-                <div>
-                  <h5 class="report__nav__item__content__elt__header__title">
-                    {{report.location.city}}
-                    <fa-icon [icon]="faAngleRight"></fa-icon>
-                    {{report.location.neighborhood}}
-                  </h5>
-                </div>
-                <div>
-                  <fa-icon [icon]="faCircle" [class.text-success]="isClosed(report)"
-                           [class.text-danger]="!isClosed(report)"></fa-icon>
-                  <br>
-                  <fa-icon *ngIf="isOwner(report)"
-                           [icon]="faUser"
-                           [title]="'main.map-history-marker.icon_user_title' | translate"></fa-icon>
-                </div>
-              </div>
-
-              <div class="w-100  report__nav__item__content__elt__body">
-                {{'main.map-history-marker.last_modif' | translate}} {{report._updatedAt.toDate() | timestamp}}<br>
-                {{ reportDurationToString(report) }}
-              </div>
-            </a>
-          </div>
+          <app-map-menu-history (goToMarker)="goToMarker($event)"
+            [reports]="reportsMonthly"
+          ></app-map-menu-history>
         </ng-template>
       </li>
       <li [ngbNavItem]="2">

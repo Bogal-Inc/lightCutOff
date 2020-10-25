@@ -17,6 +17,7 @@ import {MapTutoModalComponent} from './components/map-tuto-modal/map-tuto-modal.
 import { MapMenuStatsComponent } from './components/map-menu-stats/map-menu-stats.component';
 import {MapLegendComponent} from './components/map-legend/map-legend.component';
 import {MapMenuComponent} from './components/map-menu/map-menu.component';
+import { MapMenuHistoryComponent } from './components/map-menu-history/map-menu-history.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {MapMenuComponent} from './components/map-menu/map-menu.component';
     MapSearchComponent,
     MapMenuComponent,
     MapMenuStatsComponent,
-    MapLegendComponent
+    MapLegendComponent,
+    MapMenuHistoryComponent
   ],
   imports: [
     CommonModule,

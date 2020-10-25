@@ -1,42 +1,7 @@
 .report {
   background-image: linear-gradient(white, rgba(255, 255, 255, 0.5));
-  &__nav {
-    &__item {
-      &__content {
-        &__elt {
-          border-left: 5px solid var(--danger);
-          cursor: pointer;
-          background: none;
-
-          &__header {
-            &__title {
-              word-wrap: break-word;
-              margin: auto;
-              width: 300px;
-            }
-          }
-
-          &-close {
-            border-left: 5px solid var(--success) !important;
-          }
-          &-selected {
-            background-color: #eaeaea ;
-          }
-        }
-        &__elt:hover {
-          background-color: #eaeaea;
-        }
-      }
-    }
-  }
 }
 
 .stats {
   background-color: var(--white);
-}
-
-.list-group {
-  overflow: scroll;
-  height: 400px;
-  width: 400px;
 }

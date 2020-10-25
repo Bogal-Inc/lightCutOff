@@ -1,0 +1,30 @@
+<div class="list-group reports">
+  <a class="list-group-item list-group-item-action reports__item"
+     (click)="moveToMarker(report, index)" *ngFor="let report of reports; let index = index"
+     [class.report__nav__item__content__elt-close]="isClosed(report)"
+     [id]="'report-item-' + index"
+  >
+    <div class="d-flex w-100 justify-content-between reports__item__header">
+      <div>
+        <h5 class="reports__item__header__title">
+          {{report.location.city}}
+          <fa-icon [icon]="faAngleRight"></fa-icon>
+          {{report.location.neighborhood}}
+        </h5>
+      </div>
+      <div>
+        <fa-icon [icon]="faCircle" [class.text-success]="isClosed(report)"
+                 [class.text-danger]="!isClosed(report)"></fa-icon>
+        <br>
+        <fa-icon *ngIf="isOwner(report)"
+                 [icon]="faUser"
+                 [title]="'main.map-history-marker.icon_user_title' | translate"></fa-icon>
+      </div>
+    </div>
+
+    <div class="w-100  reports__item__footer">
+      {{'main.map-history-marker.last_modif' | translate}} {{report._updatedAt.toDate() | timestamp}}<br>
+      {{ reportDurationToString(report) }}
+    </div>
+  </a>
+</div>

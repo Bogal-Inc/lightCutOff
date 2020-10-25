@@ -1,0 +1,32 @@
+.reports {
+  &__item {
+      border-left: 5px solid var(--danger);
+      cursor: pointer;
+      background: none;
+
+      &__header {
+        &__title {
+          word-wrap: break-word;
+          margin: auto;
+          width: 300px;
+        }
+      }
+
+      &-close {
+        border-left: 5px solid var(--success) !important;
+      }
+      &-selected {
+        background-color: #eaeaea ;
+      }
+    }
+    &__item:hover {
+      background-color: #eaeaea;
+    }
+  }
+
+
+.list-group {
+  overflow: scroll;
+  height: 400px;
+  width: 400px;
+}

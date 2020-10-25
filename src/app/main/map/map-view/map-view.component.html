@@ -17,7 +17,7 @@
         <app-loading [show]="formLoader"></app-loading>
         <app-create-form-report (reportSubmit)="onCreateReport($event)"
                                 [class.d-none]="!isFormLightCutOf"></app-create-form-report>
-        <app-map-menu [reports]="reports" (goToMarker)="goToMarker($event)"
+        <app-map-menu [reports]="reports" (goToMarkerEnd)="goToMarker($event)"
           [class.d-none]="!isFormLightCutOf"></app-map-menu>
 
       <ng-template #recovredFormReport></ng-template>

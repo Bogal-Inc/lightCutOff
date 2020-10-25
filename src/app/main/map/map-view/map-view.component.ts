@@ -25,7 +25,7 @@ import {MarkerCreateReportComponent} from '../components/marker-create-report/ma
 import {MarkerRecovredReportComponent} from '../components/marker-recovred-report/marker-recovred-report.component';
 import {MetaService} from '@Services/meta.service';
 import {Subject} from 'rxjs';
-import {takeUntil, tap, map} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 import {MapService} from '@Services/map.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {MapTutoModalComponent} from '../components/map-tuto-modal/map-tuto-modal.component';
