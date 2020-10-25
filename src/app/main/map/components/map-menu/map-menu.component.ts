@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Report, ReportSatus} from '@Models/report.model';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
 import {durationToString, getDuration} from '@Helpers/date.helper';
@@ -7,16 +7,15 @@ import {AuthService} from '../../../../core/services-firebase';
 import {Logger} from '@Services/logger.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {environment} from '../../../../../environments/environment';
-import {appendHtmlElementToHead} from '@angular/cdk/schematics';
 
-const log = new Logger('map-history-marker.component');
+const log = new Logger('map-menu.component');
 
 @Component({
-  selector: 'app-map-history-marker',
-  templateUrl: './map-history-marker.component.html',
-  styleUrls: ['./map-history-marker.component.scss']
+  selector: 'app-map-menu',
+  templateUrl: './map-menu.component.html',
+  styleUrls: ['./map-menu.component.scss']
 })
-export class MapHistoryMarkerComponent implements OnInit, OnChanges {
+export class MapMenuComponent implements OnInit, OnChanges {
   @Input() reports: Report[];
   @Output() goToMarker: EventEmitter<any> = new EventEmitter<any>();
   readonly isMobile = isMobile();

@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MapHistoryMarkerComponent } from './map-history-marker.component';
+import { MapMenuComponent } from './map-menu.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../../../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 
-describe('MapHistoryMarkerComponent', () => {
-  let component: MapHistoryMarkerComponent;
-  let fixture: ComponentFixture<MapHistoryMarkerComponent>;
+describe('MapMenuComponent', () => {
+  let component: MapMenuComponent;
+  let fixture: ComponentFixture<MapMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,13 +17,13 @@ describe('MapHistoryMarkerComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule
       ],
-      declarations: [ MapHistoryMarkerComponent ]
+      declarations: [ MapMenuComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MapHistoryMarkerComponent);
+    fixture = TestBed.createComponent(MapMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

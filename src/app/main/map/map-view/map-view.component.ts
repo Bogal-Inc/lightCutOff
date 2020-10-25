@@ -30,7 +30,7 @@ import {MapService} from '@Services/map.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {MapTutoModalComponent} from '../components/map-tuto-modal/map-tuto-modal.component';
 import {MapFilterComponent} from '../components/map-filter/map-filter.component';
-import {MapHistoryMarkerComponent} from '../components/map-history-marker/map-history-marker.component';
+import {MapMenuComponent} from '../components/map-menu/map-menu.component';
 
 const log = new Logger('map-view.component');
 
@@ -54,8 +54,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private legends: ElementRef;
   @ViewChild(MapFilterComponent, {read: ElementRef})
   public mapFilter: ElementRef;
-  @ViewChild(MapHistoryMarkerComponent, {read: ElementRef})
-  public mapHistoryMarker: ElementRef;
+  @ViewChild(MapMenuComponent, {read: ElementRef})
+  public MapMenuComponent: ElementRef;
   @ViewChild('btnAddReport', {static: false})
   private btnAddReport: ElementRef;
   @ViewChild('recovredFormReport', { read: ViewContainerRef })
@@ -313,7 +313,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.legends?.nativeElement,
         this.btnAddReport?.nativeElement,
         this.mapFilter?.nativeElement,
-        this.mapHistoryMarker?.nativeElement
+        this.MapMenuComponent?.nativeElement
       ]
     );
     this.mapService.map = this.map;
