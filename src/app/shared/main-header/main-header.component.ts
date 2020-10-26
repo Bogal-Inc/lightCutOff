@@ -19,6 +19,8 @@ export class MainHeaderComponent implements OnInit {
   readonly moduleEnable = environment.app.modules.ownerReport;
   appTitle = Const.app.title;
   online: boolean;
+  mapActive = false;
+  adminActive = false;
 
   constructor(
     private authService: AuthService,
@@ -34,15 +36,19 @@ export class MainHeaderComponent implements OnInit {
 
     // fixed header or not
     const url = this.router.url;
-    if (url.split('/')[1] === '') {
+    const route2 = url.split('/')[1];
+    if (route2 === '') {
       this.fixedTop = true;
+    } else if (route2 === 'map') {
+      this.mapActive = true;
+    } else if (route2 === 'dashboard' || route2 === 'reports' || route2 === 'statistics_numbers') {
+      this.adminActive = true;
     }
   }
 
   isOnlineStatus() {
     this.connectionService.start();
     this.connectionService.behaviorSubjectObservable$.subscribe(online => {
-      console.log(online);
       const logMessage = (online) ? 'app online' : 'app off line';
       log.debug(logMessage);
       this.online = online;

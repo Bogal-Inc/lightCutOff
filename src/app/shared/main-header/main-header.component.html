@@ -21,12 +21,12 @@
           {{"shared.main-header.home" | translate}}
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/map" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <li class="nav-item" [class.active]="mapActive">
+        <a class="nav-link" href="/map">
           {{"shared.main-header.map" | translate}}
         </a>
       </li>
-      <li class="nav-item dropdown" *ngIf="!prod">
+      <li class="nav-item dropdown" *ngIf="!prod" [class.active]="adminActive">
         <a  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
           class="nav-link dropdown-toggle">
           {{"shared.main-header.statistics" | translate}}
