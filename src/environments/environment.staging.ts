@@ -5,7 +5,10 @@ export const environment = {
   domain: 'localhost',
   app: {
     modules: {
-      mapMenu: true
+      ownerReport: true,
+      mapMenu: true,
+      mapFilter: false,
+      mapSearch: true
     }
   },
   firebase: {

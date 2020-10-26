@@ -8,6 +8,7 @@ import {
   transition,
 } from '@angular/animations';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {environment} from '../../../../../environments/environment';
 
 
 @Component({
@@ -50,6 +51,7 @@ export class MapSearchComponent implements OnInit {
   @ViewChild('inputSearch', {static: false})
   private inputSearch: ElementRef;
   private submitted = false;
+  readonly moduleEnable = environment.app.modules.mapSearch;
   searchPlaceForm: FormGroup;
   searchBarDownUp = false;
   activeSearchBar = false;

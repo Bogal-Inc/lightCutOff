@@ -1,11 +1,14 @@
 export const environment = {
-  production: true,
-  environment: 'staging',
+  production: false,
+  environment: 'dev',
   googleMapsApiKey: 'googleMapsApiKey',
   domain: 'localhost',
   app: {
     modules: {
-      mapMenu: true
+      ownerReport: true,
+      mapMenu: true,
+      mapFilter: false,
+      mapSearch: true
     }
   },
   firebase: {

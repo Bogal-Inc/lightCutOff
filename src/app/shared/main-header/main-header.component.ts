@@ -16,6 +16,7 @@ const log = new Logger('main-header.component');
 export class MainHeaderComponent implements OnInit {
   @Input() fixedTop = false;
   readonly prod = environment.production;
+  readonly moduleEnable = environment.app.modules.ownerReport;
   appTitle = Const.app.title;
   online: boolean;
 

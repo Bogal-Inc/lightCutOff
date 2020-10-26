@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="moduleEnable">
     <div class="row justify-content-center search-place" [@searchBarUpDown]="searchBarDownUp ? 'down' : 'up'">
         <div class="col-md-5 search-place__bloc">
             <form class="form-inline search-place__bloc__form" [formGroup]="searchPlaceForm" (ngSubmit)="onSubmit()">
