@@ -8,9 +8,9 @@ import {
   AfterViewInit,
   Component,
   ComponentFactoryResolver,
-  ElementRef,
+  ElementRef, OnChanges,
   OnDestroy,
-  OnInit,
+  OnInit, SimpleChanges,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation
@@ -41,7 +41,7 @@ const log = new Logger('map-view.component');
   styleUrls: ['./map-view.component.scss'],
   providers: [NgbTooltipConfig],
 })
-export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
+export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
   @ViewChild('mapContainer', {static: false})
   private gmap: ElementRef;
   @ViewChild(MarkerCreateReportComponent, {read: ElementRef})
@@ -72,6 +72,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   reports: Report[];
   formLoader: boolean;
   isLoader = true;
+  isloaderMap = false;
   unsubsscribe$ = new Subject<void>();
   reportsMarkers: any;
   markersClusters;
@@ -115,20 +116,14 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.unsubsscribe$.complete();
   }
 
-  openTutoModal() {
-    log.debug('open tutorial modal');
-    this.analytics.logEvent('tutorial_begin');
+  ngOnChanges(changes: SimpleChanges): void {
+    const reportsCurrent = changes.reports.currentValue;
+    const reportsPrevious = changes.reports.previousValue;
+    console.log('actu. avant', reportsCurrent.length, reportsPrevious.length)
 
-    const tutoPassed = localStorage.getItem('tutoPassed');
-    if (tutoPassed !== null) {
-      return;
+    if (reportsCurrent.length !== reportsPrevious.length) {
+      console.log('change')
     }
-
-    this.modalService.open(MapTutoModalComponent, {
-      centered: true,
-      size: 'lg',
-      backdrop: 'static'
-    });
   }
 
   mapInitializer() {
@@ -136,7 +131,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       () => {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition( position => {
-            log.debug('position user found');
+            log.debug('position user founded');
 
             this.initMap({
               lng: +position.coords.longitude,
@@ -153,17 +148,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           this.initMap(Const.coordsDefault);
         }
       },
-        () => {
-          log.error('Map not load');
-          this.isErrorMapActive = true;
-          this.isLoader = false;
-      });
-  }
-
-  mapFiltered(reportStatus: ReportSatus[]) {
-    this.mapClear();
-    const reportsResults = (reportStatus.length > 0) ? this.getReportsByStatus(reportStatus) : this.reports;
-    this.addClusters(reportsResults);
+      () => {
+        log.error('Map not load');
+        this.isErrorMapActive = true;
+        this.isLoader = false;
+    });
   }
 
   onCreateReport(event: any) {
@@ -230,6 +219,43 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   openInfoWindowCreateReport() {
     this.analytics.logEvent('plus_button_add_report');
     google.maps.event.trigger(this.markerCurrentPosition, 'click');
+  }
+
+  goToMarker(report: Report) {
+    this.map.setCenter(report.position);
+    this.map.setZoom(14);
+    const marker = this.markerFactory(report);
+    google.maps.event.trigger(marker, 'click');
+  }
+
+  switchForm(elt: boolean) {
+    log.debug('choice form', elt);
+    this.analytics.logEvent('go_to_recovredForm', {
+      accept: elt
+    });
+
+    if (elt) {
+      const data = {
+        report: this.reportAdd,
+        markerCurrentInfoWindow: this.markerCurrentInfoWindow
+      };
+
+      const recovredFromElement = this.mapService.createComponent(
+        data,
+        MarkerRecovredReportComponent,
+        this.recovredFormReport
+      );
+
+      this.markerCurrentInfoWindow.setContent(recovredFromElement);
+    } else {
+      this.markerCurrentInfoWindow.close();
+    }
+  }
+
+  mapFiltered(reportStatus: ReportSatus[]) {
+    this.mapClear();
+    const reportsResults = (reportStatus.length > 0) ? this.getReportsByStatus(reportStatus) : this.reports;
+    this.addClusters(reportsResults);
   }
 
   private initTooltip() {
@@ -476,34 +502,19 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  switchForm(elt: boolean) {
-    log.debug('choice form', elt);
-    this.analytics.logEvent('go_to_recovredForm', {
-      accept: elt
-    });
+  private openTutoModal() {
+    log.debug('open tutorial modal');
+    this.analytics.logEvent('tutorial_begin');
 
-    if (elt) {
-      const data = {
-        report: this.reportAdd,
-        markerCurrentInfoWindow: this.markerCurrentInfoWindow
-      };
-
-      const recovredFromElement = this.mapService.createComponent(
-        data,
-        MarkerRecovredReportComponent,
-        this.recovredFormReport
-      );
-
-      this.markerCurrentInfoWindow.setContent(recovredFromElement);
-    } else {
-      this.markerCurrentInfoWindow.close();
+    const tutoPassed = localStorage.getItem('tutoPassed');
+    if (tutoPassed !== null) {
+      return;
     }
-  }
 
-  goToMarker(report: Report) {
-    this.map.setCenter(report.position);
-    this.map.setZoom(14);
-    const marker = this.markerFactory(report);
-    google.maps.event.trigger(marker, 'click');
+    this.modalService.open(MapTutoModalComponent, {
+      centered: true,
+      size: 'lg',
+      backdrop: 'static'
+    });
   }
 }

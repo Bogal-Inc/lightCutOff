@@ -15,6 +15,9 @@
     li.clicked {
       background-color: var(--secondary);
     }
+    li:hover {
+      background-color: var(--secondary);
+    }
   }
 }
 .btn {
