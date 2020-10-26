@@ -37,7 +37,6 @@ const log = new Logger('map-view.component');
 @Component({
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./map-view.component.scss'],
   providers: [NgbTooltipConfig],
 })
