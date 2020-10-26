@@ -15,6 +15,7 @@ const log = new Logger('loading.component');
 export class MainFooterComponent implements OnInit {
   appTitle = Const.app.title;
   currentLang: string;
+  now: Date;
 
   constructor(
     private i18nService: I18nService,
@@ -26,6 +27,7 @@ export class MainFooterComponent implements OnInit {
     log.debug('init');
     this.currentLang = this.i18nService.language;
     log.debug('current lang', this.currentLang);
+    this.now = new Date();
   }
 
   toggleLang() {
