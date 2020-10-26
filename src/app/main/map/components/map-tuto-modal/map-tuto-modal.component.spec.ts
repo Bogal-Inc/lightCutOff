@@ -35,4 +35,11 @@ describe('MapTutoModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call go from step 0 to step 1', () => {
+    expect(component.nextStep[1].status).toBeFalse();
+    component.tutoNext();
+    expect(component.currentStep).toBe(1);
+    expect(component.nextStep[1].status).toBeTrue();
+  });
 });
