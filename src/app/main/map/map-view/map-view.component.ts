@@ -8,9 +8,9 @@ import {
   AfterViewInit,
   Component,
   ComponentFactoryResolver,
-  ElementRef, OnChanges,
+  ElementRef,
   OnDestroy,
-  OnInit, SimpleChanges,
+  OnInit,
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation
@@ -41,7 +41,7 @@ const log = new Logger('map-view.component');
   styleUrls: ['./map-view.component.scss'],
   providers: [NgbTooltipConfig],
 })
-export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
+export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('mapContainer', {static: false})
   private gmap: ElementRef;
   @ViewChild(MarkerCreateReportComponent, {read: ElementRef})
@@ -114,16 +114,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy, OnCha
   ngOnDestroy(): void {
     this.unsubsscribe$.next();
     this.unsubsscribe$.complete();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const reportsCurrent = changes.reports.currentValue;
-    const reportsPrevious = changes.reports.previousValue;
-    console.log('actu. avant', reportsCurrent.length, reportsPrevious.length)
-
-    if (reportsCurrent.length !== reportsPrevious.length) {
-      console.log('change')
-    }
   }
 
   mapInitializer() {

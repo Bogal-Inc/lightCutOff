@@ -11,10 +11,14 @@
 
   <div class="map-container">
       <div #mapContainer id="map" class="map-container__map">
+<!--        loading init map page-->
         <app-loading [show]="isLoader"></app-loading>
+<!--        loading between forms of window markr-->
+        <app-loading [show]="formLoader"></app-loading>
+
         <app-map-legend [class.d-none]="!isFormLightCutOf"></app-map-legend>
         <app-map-filter (filtered)="mapFiltered($event);" [class.d-none]="!isFormLightCutOf"></app-map-filter>
-        <app-loading [show]="formLoader"></app-loading>
+
         <app-create-form-report (reportSubmit)="onCreateReport($event)"
                                 [class.d-none]="!isFormLightCutOf"></app-create-form-report>
         <app-map-menu [reports]="reports" (goToMarkerEnd)="goToMarker($event)"
