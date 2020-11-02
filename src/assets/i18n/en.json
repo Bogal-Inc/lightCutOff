@@ -35,8 +35,9 @@
       "team": {
         "title": "Team",
         "developer": "Developer",
-        "founder": "CEO",
-        "communication": "Communication and design manager"
+        "cto": "CTO",
+        "ceo": "CEO",
+        "communication": "Communication, design manager"
       },
       "statistics": {
         "title": "Our statistics",
