@@ -23,12 +23,6 @@ describe('I18nService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('#init should return default langage', () => {
-    const defaultLang = service.language;
-
-    expect(defaultLang).toBe('fr');
-  });
-
   it('#setLanguage should return new langage', () => {
     service.init('fr', ['fr', 'en']);
     service.language = 'en';
