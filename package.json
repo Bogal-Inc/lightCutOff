@@ -4,19 +4,16 @@
     "scripts": {
         "ng": "ng",
         "config": "ts-node set-env.ts",
-        "start": "node server.js",
         "clean": "rimraf ./dist",
         "start:dev": "npm run config -- && ng serve --aot",
         "build": "npm run clean && npm run config -- && ng build --aot --source-map",
         "build:cordova": "npm run config -- && ng build --aot --prod --source-map=false --base-href . --output-path ../lightcutoffApp/www/",
         "build:prod": "npm run clean && npm run config -- && ng build --aot --prod --source-map=false --base-href .",
         "build:staging": "npm run clean && npm run config -- && ng build --aot --configuration=staging --prod",
-        "build:ci": "npm run clean && npm run config -- && ng build --aot --prod --source-map=false --base-href .",
-        "test": "ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage --source-map=false",
+        "test": "ng test --browsers=ChromeHeadless --code-coverage --watch=false",
         "test:ci": "ng test --watch=false --code-coverage --browsers=ChromeHeadlessNoSandbox",
         "lint": "ng lint",
-        "e2e": "ng e2e",
-        "heroku-postbuild": "npm run build:heroku"
+        "e2e": "ng e2e"
     },
     "private": true,
     "dependencies": {
@@ -48,7 +45,6 @@
         "colors": "^1.4.0",
         "cookieconsent": "^3.1.1",
         "dotenv": "^8.2.0",
-        "express": "^4.17.1",
         "firebase": "^7.14.5",
         "firebase-functions": "^3.11.0",
         "firebase-tools": "^8.4.3",
