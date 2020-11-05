@@ -41,7 +41,7 @@ export class MainHeaderComponent implements OnInit {
       this.fixedTop = true;
     } else if (route2 === 'map') {
       this.mapActive = true;
-    } else if (route2 === 'dashboard' || route2 === 'reports' || route2 === 'statistics_numbers') {
+    } else if (route2 === 'admin') {
       this.adminActive = true;
     }
   }

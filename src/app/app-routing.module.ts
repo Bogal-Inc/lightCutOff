@@ -39,7 +39,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: '',
+    path: 'admin',
     component: AdminLayoutComponent,
     loadChildren: () =>
       import('./main/statistics/statistics.module').then(
@@ -47,7 +47,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: '',
+    path: 'admin',
     component: AdminLayoutComponent,
     loadChildren: () =>
       import('./main/report/report.module').then(
