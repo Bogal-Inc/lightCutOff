@@ -25,10 +25,10 @@
                         "aot": true,
                         "allowedCommonJsDependencies": [
                           "@firebase/database",
+                          "@firebase/auth",
                           "@firebase/util",
-                          "@firebase/app",
-                          "firebase/app",
-                          "@firebase/component"
+                          "@firebase/component",
+                          "@firebase/app"
                         ],
                         "assets": [
                             "src/favicon.ico",

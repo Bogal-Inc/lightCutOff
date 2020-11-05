@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {Report, ReportSatus} from '@Models/report.model';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-import {ReportService} from '../../../core/services-firebase/report.service';
+import {ReportService} from '../../../core/services-firebase';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import { isMobile } from '@Helpers/mobile-confirm.helper';
 import {Router} from '@angular/router';
@@ -22,6 +22,7 @@ const log = new Logger('router-list.component');
 export class ReportListComponent implements OnInit {
   private gridApi;
   readonly projectTitle = Const.app.title;
+  isMobile: boolean;
   faExclamationCircle = faExclamationCircle;
   reports$: Observable<Report[]>;
   detailReportLightRight = false;
@@ -114,6 +115,7 @@ export class ReportListComponent implements OnInit {
       datestart: new Date(now.getFullYear())
     });
     this.metaService.initMetatoAboutUs('report.report-list.title_page');
+    this.isMobile = isMobile();
   }
 
   onRowSelected(event: any) {
@@ -155,9 +157,5 @@ export class ReportListComponent implements OnInit {
         floatingFilter: true,
       };
     }
-  }
-
-  isMobiled() {
-    return isMobile();
   }
 }

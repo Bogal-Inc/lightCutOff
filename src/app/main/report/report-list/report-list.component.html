@@ -4,7 +4,7 @@
 
   <div class="container-fluid">
     <div class="reports__datatable" *ngIf="(reports$ | async) !== undefined; else datatableEmpty">
-      <app-report-details *ngIf="!isMobiled()"
+      <app-report-details *ngIf="!isMobile"
         (showDetail)="close($event)"
         [detailReportLightRight]="detailReportLightRight"
         [report]="reportSelected"

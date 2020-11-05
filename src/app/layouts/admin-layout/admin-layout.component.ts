@@ -7,14 +7,12 @@ import {isMobile} from '@Helpers/mobile-confirm.helper';
   styleUrls: ['./admin-layout.component.scss']
 })
 export class AdminLayoutComponent implements OnInit {
+  isMobile: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  isMobiled() {
-    return isMobile();
+    this.isMobile = isMobile();
   }
 
 }
