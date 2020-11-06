@@ -16,6 +16,7 @@ export class MapMenuComponent implements OnInit, OnChanges {
   @Input() reports: Report[];
   readonly moduleConfig = environment.app.modules.mapMenu;
   readonly isMobile = isMobile();
+  reportsSort: Report[];
   reportsMonthly: Report[];
   reportsNotClosed: Report[];
   reportsDayNotClosed: Report[];
@@ -39,26 +40,13 @@ export class MapMenuComponent implements OnInit, OnChanges {
     if (reportsCurrent) {
       this.showHistory = true;
 
+      this.sortMarkersTab();
+
       this.reportsMonthly = reportsCurrent.filter(
         report => {
           return report.reportedAt.toDate().getMonth() === this.now.getMonth();
         }
       );
-
-      // the sort is automatic
-      this.reportsMonthly.sort(
-        (a: any, b: any) => {
-          const aDate = a._updatedAt.seconds;
-          const bDate = b._updatedAt.seconds;
-
-          if (aDate < bDate) {
-            return 1;
-          } else if (aDate > bDate) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
 
       this.reportsDay = this.reportsMonthly.filter(
         report => {
@@ -78,5 +66,22 @@ export class MapMenuComponent implements OnInit, OnChanges {
 
   goToMarker(event: any) {
     this.goToMarkerEnd.emit(event);
+  }
+
+  private sortMarkersTab(){
+    // the sort by update date
+    this.reports.sort(
+      (a: any, b: any) => {
+        const aDate = a._updatedAt.seconds;
+        const bDate = b._updatedAt.seconds;
+
+        if (aDate < bDate) {
+          return 1;
+        } else if (aDate > bDate) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
   }
 }

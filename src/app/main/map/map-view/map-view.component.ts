@@ -182,7 +182,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /**
-   * Search place in map
+   * @description search place, locality to find position exactly
+   * @param event key word
    */
   onSearchPlace(event: { query: any; }) {
     log.debug('map search');
@@ -200,7 +201,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.map.setCenter(results[0].geometry.location);
         this.map.setZoom(14);
       }else {
-        log.error('your place not found');
+        log.error(event.query, 'not found');
         this.toastrService.error(this.translateService.instant('main.map-view.no_place'));
       }
     });
@@ -218,6 +219,10 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     google.maps.event.trigger(marker, 'click');
   }
 
+  /**
+   * @description determine if after add report to update report
+   * @param elt yes or no show recovered form
+   */
   switchForm(elt: boolean) {
     log.debug('choice form', elt);
     this.analytics.logEvent('go_to_recovredForm', {
@@ -278,7 +283,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private mapClear() {
     this.markersClusters.setMap(null);
-    this.reportsMarkers.map(marker => marker.setMap(null));
+    this.reportsMarkers.forEach(marker => marker.setMap(null));
   }
 
   private createReport(query, location) {
@@ -299,7 +304,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         report.id = resp.path.valueOf().split('/')[1];
         this.updateReport(report);
       },
-      err => log.error('report not create', err)
+      err => log.error('report not create')
     );
   }
 
@@ -415,6 +420,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.markersClusters = this.mapService.addMarkersToCluster(this.reportsMarkers);
   }
 
+  /**
+   *
+   * @description create the marker, add in map and add infowindow with event for everyone
+   * @param report
+   * @private
+   */
   private markerFactory(report: Report): google.maps.Marker {
     log.debug('Marker factory', report);
 
@@ -432,23 +443,27 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     if (report.recovredAt) {
+      // add detail component to recovred marker
       content = this.mapService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
       this.addInfoWindow(currentMareker, content);
     } else {
       if (this.authService.getUser().id === report._createdBy.id){
-        const info = this.addInfoWindow(currentMareker, content);
+        const infoWindow = this.addInfoWindow(currentMareker, content);
         const data = {
           report,
-          markerCurrentInfoWindow: (info) ? info : this.markerCurrentInfoWindow
+          markerCurrentInfoWindow: (infoWindow) ? infoWindow : this.markerCurrentInfoWindow
         };
-        // update report marker
+
+        // component to update report marker for marker not recovred with owner same
         content = this.mapService.createComponent(data, MarkerRecovredReportComponent, this.recovredFormReport);
-        info.setContent(content);
-        info.setZIndex(1000);
-        // show report informations
+        infoWindow.setContent(content);
+        infoWindow.setZIndex(1000);
+
+        // component to see report informations for marker not recovred with owner same
         content = this.mapService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
         this.addInfoWindow(currentMareker, content, 'hover');
       } else {
+        // marker recovred not owner same
         content = this.mapService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
         this.addInfoWindow(currentMareker, content);
       }
@@ -474,12 +489,16 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     return infoWindow;
   }
 
+  /**
+   * @description add events drag and drop and double click in map to useer marker position
+   * @private
+   */
   private addEventsUserMarker() {
-    this.addEventUserMarker(this.markerCurrentPosition, 'dragend');
-    this.addEventUserMarker(this.map, 'dblclick');
+    this.addEventToMap(this.markerCurrentPosition, 'dragend');
+    this.addEventToMap(this.map, 'dblclick');
   }
 
-  private addEventUserMarker(eltOnEvent, event) {
+  private addEventToMap(eltOnEvent, event) {
     google.maps.event.addListener(eltOnEvent, event, (e) => {
       this.mapService.position = {
         lng: e.latLng.lng(),
