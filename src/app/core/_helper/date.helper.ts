@@ -41,13 +41,9 @@ export function durationToString(duration: Duration): string {
   if (duration.day === 0) {
     if (duration.hour === 0) {
       if (duration.min === 0) {
-        result += duration.sec + 's';
+        result += 'Il y a quelques secondes';
       } else {
-        if (duration.min === 1) {
-          result += duration.min + 'm' + duration.sec + 's';
-        } else {
-          result += duration.min + 'm';
-        }
+        result += duration.min + 'm';
       }
     } else {
       if (duration.hour === 1) {
