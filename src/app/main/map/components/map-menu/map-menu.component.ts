@@ -38,29 +38,7 @@ export class MapMenuComponent implements OnInit, OnChanges {
     const reportsPrevious = changes.reports.previousValue;
 
     if (reportsCurrent) {
-      this.showHistory = true;
-
-      this.sortMarkersTab();
-
-      this.reportsMonthly = reportsCurrent.filter(
-        report => {
-          return report.reportedAt.toDate().getMonth() === this.now.getMonth();
-        }
-      );
-
-      this.reportsDay = this.reportsMonthly.filter(
-        report => {
-          return report.reportedAt.toDate().getDate() === this.now.getDate();
-        }
-      );
-
-      this.reportsNotClosed = this.reportsMonthly.filter(
-        report => report.status === ReportSatus.CUT
-      );
-
-      this.reportsDayNotClosed = this.reportsDay.filter(
-        report => report.status === ReportSatus.CUT
-      );
+      this.loadReports(reportsCurrent);
     }
   }
 
@@ -70,7 +48,7 @@ export class MapMenuComponent implements OnInit, OnChanges {
 
   private sortMarkersTab(){
     // the sort by update date
-    this.reports.sort(
+    this.reportsMonthly.sort(
       (a: any, b: any) => {
         const aDate = a._updatedAt.seconds;
         const bDate = b._updatedAt.seconds;
@@ -83,5 +61,32 @@ export class MapMenuComponent implements OnInit, OnChanges {
           return 0;
         }
       });
+  }
+
+  private loadReports(reportsCurrent: Report[]) {
+    this.showHistory = true;
+
+    this.reportsMonthly = reportsCurrent.filter(
+      report => {
+        return report.reportedAt.toDate().getMonth() === this.now.getMonth();
+      }
+    );
+
+    // sort reportsMonthly by recovred date
+    this.sortMarkersTab();
+
+    this.reportsDay = this.reportsMonthly.filter(
+      report => {
+        return report.reportedAt.toDate().getDate() === this.now.getDate();
+      }
+    );
+
+    this.reportsNotClosed = this.reportsMonthly.filter(
+      report => report.status === ReportSatus.CUT
+    );
+
+    this.reportsDayNotClosed = this.reportsDay.filter(
+      report => report.status === ReportSatus.CUT
+    );
   }
 }
