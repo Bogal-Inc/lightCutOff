@@ -18,12 +18,12 @@
     </div>
     <div class="row justify-content-center">
         <div class="btn-search" [@btnSearchBarUpDown]="searchBarDownUp ? 'down' : 'up'">
-            <a (click)="onActiveSearch()" *ngIf="!activeSearchBar">
+          <a (click)="onActiveSearch()" *ngIf="!activeSearchBar">
             {{'main.search-place-form.find_district' | translate}}
             <i class="fas fa-angle-down"></i>
           </a>
-            <a (click)="onDectiveSearch()" *ngIf="activeSearchBar">
-              {{'main.search-place-form.close' | translate}}
+          <a (click)="onDectiveSearch()" *ngIf="activeSearchBar">
+            {{'main.search-place-form.close' | translate}}
             <i class="fas fa-angle-up"></i>
           </a>
         </div>
