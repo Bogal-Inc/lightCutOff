@@ -8,26 +8,31 @@
         padding: 10px;
         &__form {
             .input-group {
-                width: 100%;
+              width: 100%;
+
+              input[type=text]:focus {
+                box-shadow: none;
+              }
             }
         }
     }
 }
 
-input[type=text]:focus {
-  box-shadow: none;
-}
-
-.pac-container {
-  box-shadow: none !important;
+.btn-search:hover {
+  background-color: #eaeaea;
 }
 
 .btn-search {
-    position: absolute;
-    background-color: white;
-    z-index: 1000;
-    border-radius: 0 0 10px 10px;
-    text-align: center;
-    padding: 10px;
-    cursor: pointer;
+  position: absolute;
+  background-color: var(--white);
+  z-index: 1000;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: var(--dark);
+  }
 }
