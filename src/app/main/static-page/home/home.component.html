@@ -3,8 +3,7 @@
     <div class="home__section-header__body">
       <div class="d-flex align-items-center justify-content-center home__section-header__body__logo section_1">
         <div class="text-center">
-          <img src="../../../../assets/static/images/logo.png" alt="{{ projectTitle }} logo" class="mb-3">
-          <h1 class="mb-3 display-1 font-size-title"><b>{{ projectTitle | uppercase }}</b></h1>
+          <img src="../../../../assets/static/images/logo.png" alt="{{ projectTitle }} logo" class="mb-3 w-50"><br>
           <a class="mb-3 btn btn-lg btn-dark" (click)="openModal(content)">
             <fa-icon [icon]="faPlayCircle"></fa-icon>
             {{'core.home.btn_show_video' | translate: { projectTitle: projectTitle } }}

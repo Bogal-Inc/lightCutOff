@@ -1,6 +1,6 @@
 export const environment = {
-  production: false,
-  environment: 'dev',
+  production: true,
+  environment: 'staging',
   googleMapsApiKey: 'googleMapsApiKey',
   domain: 'localhost',
   app: {
