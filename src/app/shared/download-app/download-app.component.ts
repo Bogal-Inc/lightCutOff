@@ -14,7 +14,8 @@ const log = new Logger('loading.component');
 export class DownloadAppComponent implements OnInit {
   readonly appTitle = Const.app.title;
   deferredPrompt: any;
-  showDownload = false;
+  showDownload = true;
+  showThanks = false;
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
@@ -27,6 +28,19 @@ export class DownloadAppComponent implements OnInit {
     this.showDownload = true;
   }
 
+  @HostListener('window:appinstalled', ['$event'])
+  onappinstalled(e) {
+    log.debug('succss download');
+    this.analytics.logEvent('download_app');
+
+    this.showDownload = false;
+    this.showThanks = true;
+    setTimeout(() => {
+      log.debug('tooltip close after 5 seconds');
+      this.showThanks = false;
+    }, 5000);
+  }
+
   constructor(
     private analytics: AngularFireAnalytics
   ) { }
@@ -37,7 +51,6 @@ export class DownloadAppComponent implements OnInit {
 
   download() {
     log.debug('download app');
-    this.analytics.logEvent('download_app');
 
     // hide our user interface that shows our A2HS button
     this.showDownload = false;

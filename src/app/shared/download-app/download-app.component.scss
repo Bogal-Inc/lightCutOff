@@ -1,9 +1,5 @@
 .download{
-  position: fixed;
   background-color: var(--warning);
-  padding: 1em;
-  text-align: center;
-  width: 100%;
 
   &__title{
     h4{
@@ -12,8 +8,19 @@
   }
 }
 
+.thanks{
+  background: url("../../../assets/static/images/background/bg_icons.jpg") top center;
+}
+
+.thanks, .download {
+  position: fixed;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+}
+
 @media only screen and (max-width: 480px) and (orientation: portrait){
-  .download {
+  .download, .thanks {
     bottom: 0;
   }
 }

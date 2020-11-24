@@ -20,3 +20,14 @@
     </button>
   </div>
 </div>
+<div class="thanks" *ngIf="showThanks">
+  <div class="thanks__header"><h3>Merci</h3></div>
+  <div class="thanks__body">
+    <h4 class="thanks__body__title">Voulez-vous savoir comment utiliser {{appTitle}}?</h4>
+    <div class="thanks__body__content">
+      <ul>
+        <li><a class="btn btn-light" routerLink="/tuto">Suivez ce tutoriel</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
