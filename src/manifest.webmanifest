@@ -14,11 +14,6 @@
       "type": "image/png"
     },
     {
-      "src": "assets/static/icons/android-chrome-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-    },
-    {
       "src": "assets/static/icons/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
@@ -26,17 +21,17 @@
     {
       "src": "assets/static/icons/mstile-150x150.png",
       "sizes": "128x128",
-      "type": "image/png",
+      "type": "image/png"
     },
     {
       "src": "assets/static/icons/mstile-150x150.png",
       "sizes": "144x144",
-      "type": "image/png",
+      "type": "image/png"
     },
     {
       "src": "assets/static/icons/mstile-150x150.png",
       "sizes": "152x152",
-      "type": "image/png",
+      "type": "image/png"
     },
     {
       "src": "assets/static/icons/android-chrome-512x512.png",
