@@ -14,7 +14,8 @@ const log = new Logger('loading.component');
 export class DownloadAppComponent implements OnInit {
   readonly appTitle = Const.app.title;
   deferredPrompt: any;
-  showDownload = false;
+  isDownload = true;
+  isThanks = false;
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
@@ -24,7 +25,19 @@ export class DownloadAppComponent implements OnInit {
     e.preventDefault();
     // Stash the event so it can be triggered later.
     this.deferredPrompt = e;
-    this.showDownload = true;
+    this.isDownload = true;
+  }
+
+  @HostListener('window:appinstalled', ['$event'])
+  onappinstalled(e) {
+    log.debug('succss download');
+    this.analytics.logEvent('download_app_success');
+
+    this.isThanks = true;
+    setTimeout(() => {
+      log.debug('tooltip close after 5 seconds');
+      this.isThanks = false;
+    }, 5000);
   }
 
   constructor(
@@ -37,10 +50,10 @@ export class DownloadAppComponent implements OnInit {
 
   download() {
     log.debug('download app');
-    this.analytics.logEvent('download_app');
+    this.analytics.logEvent('download_app_click');
 
     // hide our user interface that shows our A2HS button
-    this.showDownload = false;
+    this.isDownload = false;
     // Show the prompt
     this.deferredPrompt.prompt();
     // Wait for the user to respond to the prompt
@@ -56,11 +69,11 @@ export class DownloadAppComponent implements OnInit {
   }
 
   show() {
-    return this.showDownload && isMobile();
+    return this.isDownload && isMobile();
   }
 
   close() {
-    console.log('close');
-    this.showDownload = false;
+    this.isDownload = false;
+    this.isThanks = false;
   }
 }

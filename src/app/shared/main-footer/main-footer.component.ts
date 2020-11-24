@@ -4,6 +4,7 @@ import {Component, OnInit} from '@angular/core';
 import { Logger } from '@Services/logger.service';
 import {TranslateService} from '@ngx-translate/core';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {isMobile} from '@Helpers/mobile-confirm.helper';
 
 const log = new Logger('loading.component');
 
@@ -16,6 +17,7 @@ export class MainFooterComponent implements OnInit {
   appTitle = Const.app.title;
   currentLang: string;
   now: Date;
+  isAppDownload = isMobile();
 
   constructor(
     private i18nService: I18nService,
