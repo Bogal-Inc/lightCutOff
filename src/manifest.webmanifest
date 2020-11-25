@@ -25,17 +25,7 @@
     },
     {
       "src": "assets/static/icons/mstile-150x150.png",
-      "sizes": "128x128",
-      "type": "image/png",
-    },
-    {
-      "src": "assets/static/icons/mstile-150x150.png",
-      "sizes": "144x144",
-      "type": "image/png",
-    },
-    {
-      "src": "assets/static/icons/mstile-150x150.png",
-      "sizes": "152x152",
+      "sizes": "150x150",
       "type": "image/png",
     },
     {

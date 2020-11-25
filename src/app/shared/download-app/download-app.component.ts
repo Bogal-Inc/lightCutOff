@@ -2,7 +2,6 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
 import {Const} from '../../../environments/const';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
-import {isMobile} from '@Helpers/mobile-confirm.helper';
 
 const log = new Logger('loading.component');
 
@@ -66,10 +65,6 @@ export class DownloadAppComponent implements OnInit {
         }
         this.deferredPrompt = null;
     });
-  }
-
-  show() {
-    return this.isDownload && isMobile();
   }
 
   close() {
