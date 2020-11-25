@@ -292,7 +292,10 @@
       "your_position": "Your position",
       "no_energie": "Report of power failure of other users",
       "your_no_energy": "Your report of power failure",
-      "energy_recovred": "Report electricity recovered "
+      "energy_recovred": "Report electricity recovered ",
+      "thanks": "Thank you",
+      "thanks_message": "Do you want to know how to use {appTitle}?",
+      "thanks_link": "Follow this tutorial"
     },
     "admin-nav": {
       "dashboard": "Chart",

@@ -1,5 +1,5 @@
 .download{
-  background-color: var(--warning);
+  background-color: var(--light);
 
   &__title{
     h4{
@@ -9,7 +9,7 @@
 }
 
 .thanks{
-  background: url("../../../assets/static/images/background/bg_icons.jpg") top center;
+  background-color: var(--warning);
 }
 
 .thanks, .download {

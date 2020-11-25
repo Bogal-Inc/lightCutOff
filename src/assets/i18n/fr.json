@@ -291,7 +291,10 @@
       "title": "Vous utilisez un mobile?",
       "body": "Télécharger {lightcutoff} pour une navigation et un accès plus facile",
       "button_download": "Télécharger",
-      "button_close": "Fermé"
+      "button_close": "Fermé",
+      "thanks": "Merci",
+      "thanks_message": "Voulez-vous savoir comment utiliser {appTitle}?",
+      "thanks_link": "Suivez ce tutoriel"
     },
     "loading": {
       "loading": "Chargement..."
