@@ -30,11 +30,9 @@ export class DownloadAppComponent implements OnInit {
   @HostListener('window:appinstalled', ['$event'])
   onappinstalled(e) {
     log.debug('succss download');
-    this.analytics.logEvent('download_app_success');
 
     this.isThanks = true;
     setTimeout(() => {
-      log.debug('tooltip close after 5 seconds');
       this.isThanks = false;
     }, 5000);
   }
@@ -49,7 +47,6 @@ export class DownloadAppComponent implements OnInit {
 
   download() {
     log.debug('download app');
-    this.analytics.logEvent('download_app_click');
 
     // hide our user interface that shows our A2HS button
     this.isDownload = false;
@@ -59,8 +56,10 @@ export class DownloadAppComponent implements OnInit {
     this.deferredPrompt.userChoice
       .then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
+          this.analytics.logEvent('add_download_app');
           log.debug('User accepted the A2HS prompt');
         } else {
+          this.analytics.logEvent('refuse_download_app');
           log.debug('User dismissed the A2HS prompt');
         }
         this.deferredPrompt = null;
