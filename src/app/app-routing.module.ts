@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
 import {EmptyLayoutComponent} from './layouts/empty-layout/empty-layout.component';
+import {NotFoundComponent} from './main/static-page/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,14 @@ const routes: Routes = [
       import('./main/user/user.module').then(
         m => m.UserModule
       ),
+  },
+  {
+    path: 'page-not-found',
+    component: NotFoundComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/page-not-found'
   },
   {
     path: 'admin',
