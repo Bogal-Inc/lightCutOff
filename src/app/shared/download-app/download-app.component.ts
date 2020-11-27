@@ -13,7 +13,7 @@ const log = new Logger('loading.component');
 export class DownloadAppComponent implements OnInit {
   readonly appTitle = Const.app.title;
   deferredPrompt: any;
-  isDownload = true;
+  isDownload = false;
   isThanks = false;
 
   @HostListener('window:beforeinstallprompt', ['$event'])
