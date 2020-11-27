@@ -40,14 +40,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'page-not-found',
-    component: NotFoundComponent
-  },
-  {
-    path: '**',
-    redirectTo: '/page-not-found'
-  },
-  {
     path: 'admin',
     component: AdminLayoutComponent,
     loadChildren: () =>
@@ -62,7 +54,15 @@ const routes: Routes = [
       import('./main/report/report.module').then(
         m => m.ReportModule
       ),
-  }
+  },
+  {
+    path: 'page-not-found',
+    component: NotFoundComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/page-not-found'
+  },
 ];
 
 @NgModule({

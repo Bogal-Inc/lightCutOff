@@ -23,8 +23,8 @@
           </li>
           <li class="mb-lg-3 text-danger" *ngIf="!report?.recovredAt">
             {{'report.report-details.no_return' | translate}} &nbsp;
-            <a (click)="editRecovred()" title="{{'main.own-report-detail.btn_edit_title' | translate}}" class="text-dark">
-              <fa-icon [icon]="faEdit"></fa-icon>
+            <a (click)="editRecovred()" title="{{'main.own-report-detail.btn_edit_title' | translate}}" class="btn btn-danger">
+              {{'main.own-report-detail.btn_edit_title' | translate}}
             </a>
             <div class="report__body__content1__form" *ngIf="showFormRecovred">
               <p class="text-dark">{{'main.update-form-report.label' | translate}}</p>
