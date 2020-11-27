@@ -24,7 +24,7 @@
       "about": {
         "title": "À propos",
         "content": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
-        "btn_next": "Allez dans à propos"
+        "btn_next": "En savoir plus"
       },
       "app_example": {
         "title": "Quelques exemples d'application",
@@ -33,7 +33,7 @@
         "to_move_out": "Habiter une zone à faible fréquence de coupure"
       },
       "team": {
-        "title": "Équipe",
+        "title": "Notre équipe",
         "developer": "Développeur",
         "cto": "CTO",
         "ceo": "CEO",

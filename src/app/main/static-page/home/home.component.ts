@@ -6,11 +6,8 @@ import { Const } from 'src/environments/const';
 import {TranslateService} from '@ngx-translate/core';
 import {MetaService} from '@Services/meta.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
-import {Router} from '@angular/router';
-import {isMobile} from '@Helpers/mobile-confirm.helper';
 import {ReportService} from '../../../core/services-firebase';
-import {Report, ReportSatus} from '@Models/report.model';
-import {faLightbulb} from '@fortawesome/free-solid-svg-icons';
+import {Report} from '@Models/report.model';
 
 const log = new Logger('home.component');
 
@@ -50,7 +47,6 @@ export class HomeComponent implements OnInit {
     private translateService: TranslateService,
     private metaService: MetaService,
     private analytics: AngularFireAnalytics,
-    // private router: Router,
     private reportService: ReportService,
     config: NgbModalConfig
   ) {
@@ -66,10 +62,6 @@ export class HomeComponent implements OnInit {
       page_title: 'Home'
     });
 
-    // if (isMobile()) {
-    //   this.router.navigate(['map']);
-    // }
-
     this.metaService.initMetatoHome('core.home.title_page');
     this.initCardDashbord();
   }
@@ -77,10 +69,6 @@ export class HomeComponent implements OnInit {
   openModal(content) {
     this.analytics.logEvent('tutorial_video');
     this.modalService.open(content);
-  }
-
-  toggleImagesPartner() {
-
   }
 
   private initCardDashbord() {

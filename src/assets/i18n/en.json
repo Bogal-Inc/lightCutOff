@@ -24,7 +24,7 @@
       "about": {
         "title": "About us",
         "content": "In <b>Cameroon, access to public resources such as electricity and water is not easy. Some regions may even be deprived of it for several days or even weeks. The <b>{projectTitle}</b> project aims to help make a real time inventory of access to electricity in <b>Cameroon</b>. This, in order to allow third parties to adapt their daily life and to be informed",
-        "btn_next": "Go to about us"
+        "btn_next": "Find out more"
       },
       "app_example": {
         "title": "Some application examples",
@@ -33,7 +33,7 @@
         "to_move_out": "Living in a low cut-off frequency area"
       },
       "team": {
-        "title": "Team",
+        "title": "Our team",
         "developer": "Developer",
         "cto": "CTO",
         "ceo": "CEO",
