@@ -40,7 +40,7 @@ export class MapService {
   initMap(gmap, components) {
     const mapOptions = {
       center: this._position,
-      zoom: 12,
+      zoom: 14,
       restriction: {
         latLngBounds: Const.coordsCameroon,
       },

@@ -11,8 +11,7 @@
 <!--    etape 1 introduction-->
     <section *ngIf="nextStep[0].status" class="tuto__step-1">
       <div class="tuto___step-1__bloc">
-        <p>
-          {{'main.tuto-modal.step_1_text_1' | translate: {lightcutoff: projectTitle} }}
+        <p [innerHTML]="'main.tuto-modal.step_1_text_1' | translate: {lightcutoff: projectTitle}">
         </p>
         <p [innerHTML]="'main.tuto-modal.step_1_text_2' | translate"></p>
       </div>
@@ -38,7 +37,7 @@
 
 <!--    etape 2 add report-->
     <section *ngIf="nextStep[2].status" class="tuto__step-3">
-      <h5>{{'main.tuto-modal.step_3_title' | translate }}</h5>
+      <h5 [innerHTML]="'main.tuto-modal.step_3_title' | translate"></h5>
       <div class="tuto__step-3__bloc">
         <div class="row tuto__step-2__bloc">
           <div class="col-md-6">

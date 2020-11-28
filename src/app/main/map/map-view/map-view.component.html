@@ -1,6 +1,4 @@
 <div class="map-container">
-<!--  <app-search-place-form *ngIf="!isErrorMapActive" (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>-->
-
   <div class="d-flex justify-content-center mt-5" *ngIf="isErrorMapActive">
     <div class="mt-5">
       <div class="mt-5 alert alert-danger text-danger" role="alert">
@@ -22,7 +20,7 @@
         <app-create-form-report (reportSubmit)="onCreateReport($event)"
                                 [class.d-none]="!isFormLightCutOf"></app-create-form-report>
         <app-map-menu [reports]="reports" (goToMarkerEnd)="goToMarker($event)" (researchPlace)="onSearchPlace($event)"
-          [class.d-none]="!isFormLightCutOf" class="w-25"></app-map-menu>
+          [class.d-none]="!isFormLightCutOf" class="map-container__map__menu"></app-map-menu>
 
       <ng-template #recovredFormReport></ng-template>
       <ng-template #infosReport></ng-template>

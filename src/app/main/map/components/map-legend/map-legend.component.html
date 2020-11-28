@@ -1,5 +1,5 @@
 <div class="legend" *ngIf="showlegend">
-  <a class="close" role="button" aria-label="Close" (click)="showLegend()">
+  <a class="close" role="button" aria-label="Close" (click)="toggleShowLegend()">
     <span aria-hidden="true">&times;</span>
   </a>
   <div class="legend__bloc">
@@ -14,5 +14,5 @@
   </div>
 </div>
 <div class="btn-group" *ngIf="!showlegend">
-  <button class="btn btn-sm btn-light" (click)="showLegend()">{{"shared.map-legend.title" | translate}}</button>
+  <button class="btn btn-sm btn-light" (click)="toggleShowLegend()">{{"shared.map-legend.title" | translate}}</button>
 </div>
