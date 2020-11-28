@@ -1,13 +1,13 @@
-<div class="container-fluid" *ngIf="moduleEnable">
-    <div class="row justify-content-center search-place" [@searchBarUpDown]="searchBarDownUp ? 'down' : 'up'">
-        <div class="col-md-5 search-place__bloc">
+<div *ngIf="moduleEnable">
+    <div class="search-place" [@searchBarUpDown]="searchBarDownUp ? 'down' : 'up'">
+        <div class="search-place__bloc">
             <form class="form-inline search-place__bloc__form" [formGroup]="searchPlaceForm" (ngSubmit)="onSubmit()">
                 <div class="input-group">
                     <input type="text" formControlName="query" class="form-control" (keyup)="autocompletePlace()"
                            attr.placeholder="{{'main.search-place-form.placeholder' | translate}}"
                            #inputSearch>
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-success"
+                        <button type="submit" class="btn btn-secondary"
                                 attr.aria-label="{{'main.search-place-form.btn_label' | translate}}">
                           <i class="fas fa-search"></i>
                         </button>
@@ -16,7 +16,7 @@
             </form>
         </div>
     </div>
-    <div class="row justify-content-center">
+    <!--<div class="row justify-content-center">
         <div class="btn-search" [@btnSearchBarUpDown]="searchBarDownUp ? 'down' : 'up'">
           <a (click)="onActiveSearch()" *ngIf="!activeSearchBar">
             {{'main.search-place-form.find_district' | translate}}
@@ -27,5 +27,5 @@
             <i class="fas fa-angle-up"></i>
           </a>
         </div>
-    </div>
+    </div>-->
 </div>

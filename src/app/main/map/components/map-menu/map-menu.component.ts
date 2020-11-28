@@ -13,6 +13,7 @@ const log = new Logger('map-menu.component');
 })
 export class MapMenuComponent implements OnInit, OnChanges {
   @Output() goToMarkerEnd: EventEmitter<any> = new EventEmitter<any>();
+  @Output() researchPlace: EventEmitter<any> = new EventEmitter<any>();
   @Input() reports: Report[];
   readonly moduleConfig = environment.app.modules.mapMenu;
   readonly isMobile = isMobile();
@@ -44,6 +45,10 @@ export class MapMenuComponent implements OnInit, OnChanges {
 
   goToMarker(event: any) {
     this.goToMarkerEnd.emit(event);
+  }
+
+  onSearchPlace(event: any) {
+    this.researchPlace.emit(event);
   }
 
   private sortMarkersTab(){
