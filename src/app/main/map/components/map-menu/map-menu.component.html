@@ -1,4 +1,4 @@
-<div *ngIf="!isMobile && showHistory && moduleConfig" class="menu">
+<div *ngIf="showHistory && moduleConfig" class="menu">
   <div class="p-3 menu__header">
     <app-search-place-form (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>
   </div>

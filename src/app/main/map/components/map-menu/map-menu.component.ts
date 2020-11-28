@@ -16,7 +16,6 @@ export class MapMenuComponent implements OnInit, OnChanges {
   @Output() researchPlace: EventEmitter<any> = new EventEmitter<any>();
   @Input() reports: Report[];
   readonly moduleConfig = environment.app.modules.mapMenu;
-  readonly isMobile = isMobile();
   reportsSort: Report[];
   reportsMonthly: Report[];
   reportsNotClosed: Report[];

@@ -10,6 +10,10 @@
     }
     &__map {
         min-height: inherit;
+
+      &__menu {
+        width: 25%;
+      }
     }
 }
 
@@ -23,4 +27,14 @@
 
 .tooltip .arrow::before {
     border-left-color: #28a745;
+}
+
+@media (max-width: 575px){
+  .map-container {
+    &__map {
+      &__menu {
+        width: 50%;
+      }
+    }
+  }
 }

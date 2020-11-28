@@ -41,7 +41,7 @@ export class MapLegendComponent implements OnInit {
     this.showlegend = !isMobile();
   }
 
-  showLegend() {
+  toggleShowLegend() {
     if (this.showlegend) {
       this.showlegend = false;
     } else {
