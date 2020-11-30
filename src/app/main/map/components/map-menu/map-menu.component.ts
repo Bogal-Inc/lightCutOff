@@ -1,21 +1,54 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {Report, ReportSatus} from '@Models/report.model';
 import {Logger} from '@Services/logger.service';
 import {environment} from '../../../../../environments/environment';
-import {isMobile} from '@Helpers/mobile-confirm.helper';
+import {faAngleRight, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 const log = new Logger('map-menu.component');
 
 @Component({
   selector: 'app-map-menu',
   templateUrl: './map-menu.component.html',
-  styleUrls: ['./map-menu.component.scss']
+  styleUrls: ['./map-menu.component.scss'],
+  animations: [
+    trigger('searchBarUpDown', [
+      state('left', style({
+        transform: 'translateX(-85%)'
+      })),
+      state('right', style({
+        transform: 'translateX(0%)'
+      })),
+      transition('right => left', [
+        animate('0.5s')
+      ]),
+      transition('left => right', [
+        animate('0.5s')
+      ]),
+    ]),
+    trigger('btnSearchBarUpDown', [
+      state('left', style({
+        transform: 'translateX(-25%)'
+      })),
+      state('right', style({
+        transform: 'translateX(0%)'
+      })),
+      transition('left => right', [
+        animate('0.5s')
+      ]),
+      transition('right => left', [
+        animate('0.5s')
+      ]),
+    ])
+  ]
 })
 export class MapMenuComponent implements OnInit, OnChanges {
   @Output() goToMarkerEnd: EventEmitter<any> = new EventEmitter<any>();
   @Output() researchPlace: EventEmitter<any> = new EventEmitter<any>();
   @Input() reports: Report[];
   readonly moduleConfig = environment.app.modules.mapMenu;
+  readonly faAngleRight = faAngleRight;
+  readonly faAngleLeft = faAngleLeft;
   reportsSort: Report[];
   reportsMonthly: Report[];
   reportsNotClosed: Report[];
@@ -24,6 +57,9 @@ export class MapMenuComponent implements OnInit, OnChanges {
   now: Date;
   showHistory = false;
   active = 1;
+  btnActive = false;
+  menuDownUp = false;
+  btnSearchBarUpDown = false;
 
   constructor() { }
 
@@ -35,9 +71,9 @@ export class MapMenuComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     const reportsCurrent = changes.reports.currentValue;
-    const reportsPrevious = changes.reports.previousValue;
 
     if (reportsCurrent) {
+      this.showHistory = true;
       this.loadReports(reportsCurrent);
     }
   }
@@ -68,8 +104,6 @@ export class MapMenuComponent implements OnInit, OnChanges {
   }
 
   private loadReports(reportsCurrent: Report[]) {
-    this.showHistory = true;
-
     this.reportsMonthly = reportsCurrent.filter(
       report => {
         return report.reportedAt.toDate().getMonth() === this.now.getMonth();
@@ -92,5 +126,11 @@ export class MapMenuComponent implements OnInit, OnChanges {
     this.reportsDayNotClosed = this.reportsDay.filter(
       report => report.status === ReportSatus.CUT
     );
+  }
+
+  onToggleMenu() {
+    this.menuDownUp = !this.menuDownUp;
+    this.btnSearchBarUpDown = !this.btnSearchBarUpDown;
+    this.btnActive = !this.btnActive;
   }
 }

@@ -1,8 +1,21 @@
 .menu {
-  background-color: var(--white);
+  width: 400px;
+  min-height: 85vh;
 
-  &__footer {
-    background-image: linear-gradient(white, rgba(255, 255, 255, 0.5));
+  &__group1 {
+    background-color: var(--white);
+    &__footer {
+      background-image: linear-gradient(white, rgba(255, 255, 255, 0.5));
+    }
+  }
+
+  &__group2 {
+    &__btn {
+      cursor: pointer;
+      background-color: var(--white);
+      padding: 20px;
+      display: inline-block;
+    }
   }
 }
 
