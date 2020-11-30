@@ -1,48 +1,58 @@
-<div *ngIf="showHistory && moduleConfig" class="menu">
-  <div class="p-3 menu__header">
-    <app-search-place-form (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>
-  </div>
+<div class="d-flex flex-row menu" *ngIf="showHistory && moduleConfig" [@searchBarUpDown]="menuDownUp ? 'left' : 'right'">
+  <div class="w-100 menu__group1">
+    <div class="p-3 menu__group1__header">
+      <app-search-place-form (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>
+    </div>
 
-  <div class="menu__body">
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs report__nav">
-      <li [ngbNavItem]="1" class="report__nav__item">
-        <a ngbNavLink>{{'main.map-history-marker.menu_history' | translate}}</a>
-        <ng-template ngbNavContent>
-          <app-map-menu-history (goToMarker)="goToMarker($event)"
-            [reports]="reportsMonthly"
-          ></app-map-menu-history>
-        </ng-template>
-      </li>
-      <li [ngbNavItem]="2">
-        <a ngbNavLink>{{'main.map-history-marker.title_stats' | translate}}</a>
-        <ng-template ngbNavContent>
-          <app-map-menu-stats
-            [nbreReportsYear]="reports?.length"
-            [nbreReportsMonthly]="reportsMonthly?.length"
-            [nbreReportsNotClosed]="reportsNotClosed?.length"
-            [nbreReportsDay]="reportsDay?.length"
-            [nbreReportsDayNotClosed]="reportsDayNotClosed?.length"
-          ></app-map-menu-stats>
-        </ng-template>
-      </li>
-    </ul>
-    <div [ngbNavOutlet]="nav" class="mt-2"></div>
-  </div>
+    <div class="menu__group1__body">
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs report__nav">
+        <li [ngbNavItem]="1" class="report__nav__item">
+          <a ngbNavLink>{{'main.map-history-marker.menu_history' | translate}}</a>
+          <ng-template ngbNavContent>
+            <app-map-menu-history (goToMarker)="goToMarker($event)"
+                                  [reports]="reportsMonthly"
+            ></app-map-menu-history>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>{{'main.map-history-marker.title_stats' | translate}}</a>
+          <ng-template ngbNavContent>
+            <app-map-menu-stats
+              [nbreReportsYear]="reports?.length"
+              [nbreReportsMonthly]="reportsMonthly?.length"
+              [nbreReportsNotClosed]="reportsNotClosed?.length"
+              [nbreReportsDay]="reportsDay?.length"
+              [nbreReportsDayNotClosed]="reportsDayNotClosed?.length"
+            ></app-map-menu-stats>
+          </ng-template>
+        </li>
+      </ul>
+      <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    </div>
 
-  <div class="text-center menu__footer">
-    <ul class="list-inline" *ngIf="reportsDay?.length > 0">
-      <li class="list-inline-item">
-        <small>{{'main.map-history-marker.for_day' | translate}} {{reportsDay?.length}}</small>
-      </li>
-      <li class="text-danger list-inline-item">
-        <small>
-          {{'main.map-history-marker.current_cut' | translate}}
-          {{reportsDayNotClosed?.length}}
-        </small>
-      </li>
-      <li class="text-success list-inline-item">
-        <small>{{'main.map-history-marker.end_cut' | translate}} {{reportsDay?.length - reportsDayNotClosed?.length}}</small>
-      </li>
-    </ul>
+    <div class="text-center menu__group1__footer">
+      <ul class="list-inline" *ngIf="reportsDay?.length > 0">
+        <li class="list-inline-item">
+          <small>{{'main.map-history-marker.for_day' | translate}} {{reportsDay?.length}}</small>
+        </li>
+        <li class="text-danger list-inline-item">
+          <small>
+            {{'main.map-history-marker.current_cut' | translate}}
+            {{reportsDayNotClosed?.length}}
+          </small>
+        </li>
+        <li class="text-success list-inline-item">
+          <small>{{'main.map-history-marker.end_cut' | translate}} {{reportsDay?.length - reportsDayNotClosed?.length}}</small>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="menu__group2" [@btnSearchBarUpDown]="btnSearchBarUpDown ? 'left' : 'right'">
+    <a class="menu__group2__btn menu__group2__btn-right" *ngIf="btnActive" (click)="onToggleMenu()">
+      <fa-icon [icon]="faAngleRight" [size]="'3x'"></fa-icon>
+    </a>
+    <a class="menu__group2__btn menu__group2__btn-left" *ngIf="!btnActive" (click)="onToggleMenu()">
+      <fa-icon [icon]="faAngleLeft" [size]="'3x'"></fa-icon>
+    </a>
   </div>
 </div>
