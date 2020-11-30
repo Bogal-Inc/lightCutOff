@@ -420,10 +420,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /**
-   *
    * @description create the marker, add in map and add infowindow with event for everyone
-   * @param report
-   * @private
+   * @param report: all report
    */
   private markerFactory(report: Report): google.maps.Marker {
     log.debug('Marker factory', report);
@@ -489,8 +487,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /**
-   * @description add events drag and drop and double click in map to useer marker position
-   * @private
+   * @description add events drag and drop and double click in map to user marker position
    */
   private addEventsUserMarker() {
     this.addEventToMap(this.markerCurrentPosition, 'dragend');
