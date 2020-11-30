@@ -45,6 +45,7 @@ const log = new Logger('map-menu.component');
 export class MapMenuComponent implements OnInit, OnChanges {
   @Output() goToMarkerEnd: EventEmitter<any> = new EventEmitter<any>();
   @Output() researchPlace: EventEmitter<any> = new EventEmitter<any>();
+  @Output() filterMarker: EventEmitter<any> = new EventEmitter<any>();
   @Input() reports: Report[];
   readonly moduleConfig = environment.app.modules.mapMenu;
   readonly faAngleRight = faAngleRight;
@@ -84,6 +85,10 @@ export class MapMenuComponent implements OnInit, OnChanges {
 
   onSearchPlace(event: any) {
     this.researchPlace.emit(event);
+  }
+
+  onMapFiltered(event) {
+    this.filterMarker.emit(event);
   }
 
   private sortMarkersTab(){

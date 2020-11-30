@@ -3,15 +3,16 @@
     <div class="p-3 menu__group1__header">
       <app-search-place-form (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>
     </div>
+    <div>
+      <app-map-filter (filtered)="onMapFiltered($event);"></app-map-filter>
+    </div>
 
     <div class="menu__group1__body">
       <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs report__nav">
         <li [ngbNavItem]="1" class="report__nav__item">
           <a ngbNavLink>{{'main.map-history-marker.menu_history' | translate}}</a>
           <ng-template ngbNavContent>
-            <app-map-menu-history (goToMarker)="goToMarker($event)"
-                                  [reports]="reportsMonthly"
-            ></app-map-menu-history>
+            <app-map-menu-history (goToMarker)="goToMarker($event)" [reports]="reportsMonthly"></app-map-menu-history>
           </ng-template>
         </li>
         <li [ngbNavItem]="2">
@@ -30,21 +31,8 @@
       <div [ngbNavOutlet]="nav" class="mt-2"></div>
     </div>
 
-    <div class="text-center menu__group1__footer">
-      <ul class="list-inline" *ngIf="reportsDay?.length > 0">
-        <li class="list-inline-item">
-          <small>{{'main.map-history-marker.for_day' | translate}} {{reportsDay?.length}}</small>
-        </li>
-        <li class="text-danger list-inline-item">
-          <small>
-            {{'main.map-history-marker.current_cut' | translate}}
-            {{reportsDayNotClosed?.length}}
-          </small>
-        </li>
-        <li class="text-success list-inline-item">
-          <small>{{'main.map-history-marker.end_cut' | translate}} {{reportsDay?.length - reportsDayNotClosed?.length}}</small>
-        </li>
-      </ul>
+    <div class="d-flex align-items-end text-center menu__group1__footer">
+
     </div>
   </div>
   <div class="menu__group2" [@btnSearchBarUpDown]="btnSearchBarUpDown ? 'left' : 'right'">
@@ -56,3 +44,4 @@
     </a>
   </div>
 </div>
+
