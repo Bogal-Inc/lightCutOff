@@ -20,7 +20,7 @@
         <app-create-form-report (reportSubmit)="onCreateReport($event)"
                                 [class.d-none]="!isFormLightCutOf"></app-create-form-report>
         <app-map-menu [reports]="reports" (goToMarkerEnd)="goToMarker($event)" (researchPlace)="onSearchPlace($event)"
-          [class.d-none]="!isFormLightCutOf" class="map-container__map__menu"></app-map-menu>
+          [class.d-none]="!isFormLightCutOf"></app-map-menu>
 
       <ng-template #recovredFormReport></ng-template>
       <ng-template #infosReport></ng-template>
@@ -33,7 +33,7 @@
             <i class="fas fa-plus"></i>
           </button>
       </div>
-      <div [ngbTooltip]="tooltipContent" [class.d-none]="!isFormLightCutOf" #btnSwitchForm>
+      <div [class.d-none]="!isFormLightCutOf" #btnSwitchForm>
         <div class="mb-3">{{'main.map-view.swicth_form_title' | translate}}</div>
         <div class="d-flex justify-content-center">
           <button class="btn btn-light mr-5" (click)="switchForm(false)">
