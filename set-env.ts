@@ -13,13 +13,37 @@ let targetPath = './src/environments/';
 let envConfigFile;
 
 if (environment === 'prod') {
+  const module = {
+    ownerReport: true,
+    mapMenu: true,
+    mapFilter: true,
+    mapSearch: true,
+    admin: false
+  };
   targetPath += 'environment.prod.ts';
+  envConfigFile = getEnvironment(module);
 } else if (environment === 'staging')  {
+  const module = {
+    ownerReport: true,
+    mapMenu: true,
+    mapFilter: true,
+    mapSearch: true,
+    admin: false
+  };
   targetPath += 'environment.staging.ts';
+  envConfigFile = getEnvironment(module);
 } else {
+  const module = {
+    ownerReport: true,
+    mapMenu: true,
+    mapFilter: true,
+    mapSearch: true,
+    admin: true
+  };
   targetPath += 'environment.ts';
+  envConfigFile = getEnvironment(module);
 }
-envConfigFile = getEnvironment();
+
 
 console.log(colors.magenta('The file environment will be written with the following content: \n'));
 console.log(colors.grey(envConfigFile));
@@ -38,8 +62,9 @@ writeFile(
    }
 });
 
-function getEnvironment() {
+function getEnvironment(modules) {
   const param = getParams();
+
   return  `export const environment = {
   production: ${param.production},
   environment: '${param.environment}',
@@ -47,11 +72,11 @@ function getEnvironment() {
   googleMapsApiKey: '${param.googleMapsApiKey}',
   app: {
   modules: {
-  ownerReport: true,
-  mapMenu: true,
-  mapFilter: true,
-  mapSearch: true,
-  admin: true
+  ownerReport: ${modules.ownerReport},
+  mapMenu: ${modules.mapMenu},
+  mapFilter: ${modules.mapFilter},
+  mapSearch: ${modules.mapSearch},
+  admin: ${modules.admin}
   }
   },
   firebase: {
