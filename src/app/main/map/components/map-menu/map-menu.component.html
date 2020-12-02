@@ -1,10 +1,12 @@
 <div class="d-flex flex-row menu" *ngIf="showHistory && moduleConfig" [@searchBarUpDown]="menuDownUp ? 'left' : 'right'">
   <div class="w-100 menu__group1">
-    <div class="p-3 menu__group1__header">
-      <app-search-place-form (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>
-    </div>
-    <div>
-      <app-map-filter (filtered)="onMapFiltered($event);"></app-map-filter>
+    <div class="menu__group1__header">
+      <div class="p-3 menu__group1__header-search">
+        <app-search-place-form (searchPlaceSubmit)="onSearchPlace($event)"></app-search-place-form>
+      </div>
+      <div class="menu__group1__header-filter">
+        <app-map-filter (filtered)="onMapFiltered($event);"></app-map-filter>
+      </div>
     </div>
 
     <div class="menu__group1__body">
@@ -31,9 +33,7 @@
       <div [ngbNavOutlet]="nav" class="mt-2"></div>
     </div>
 
-    <div class="d-flex align-items-end text-center menu__group1__footer">
-
-    </div>
+    <div class="d-flex align-items-end text-center menu__group1__footer"></div>
   </div>
   <div class="menu__group2" [@btnSearchBarUpDown]="btnSearchBarUpDown ? 'left' : 'right'">
     <a class="menu__group2__btn menu__group2__btn-right" *ngIf="btnActive" (click)="onToggleMenu()">

@@ -66,7 +66,6 @@ export class MapMenuComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     log.debug('init');
-
     this.now = new Date();
   }
 
@@ -79,6 +78,12 @@ export class MapMenuComponent implements OnInit, OnChanges {
     }
   }
 
+  onToggleMenu() {
+    this.menuDownUp = !this.menuDownUp;
+    this.btnSearchBarUpDown = !this.btnSearchBarUpDown;
+    this.btnActive = !this.btnActive;
+  }
+
   goToMarker(event: any) {
     this.goToMarkerEnd.emit(event);
   }
@@ -89,23 +94,6 @@ export class MapMenuComponent implements OnInit, OnChanges {
 
   onMapFiltered(event) {
     this.filterMarker.emit(event);
-  }
-
-  private sortMarkersTab(){
-    // the sort by update date
-    this.reportsMonthly.sort(
-      (a: any, b: any) => {
-        const aDate = a._updatedAt.seconds;
-        const bDate = b._updatedAt.seconds;
-
-        if (aDate < bDate) {
-          return 1;
-        } else if (aDate > bDate) {
-          return -1;
-        } else {
-          return 0;
-        }
-      });
   }
 
   private loadReports(reportsCurrent: Report[]) {
@@ -133,9 +121,23 @@ export class MapMenuComponent implements OnInit, OnChanges {
     );
   }
 
-  onToggleMenu() {
-    this.menuDownUp = !this.menuDownUp;
-    this.btnSearchBarUpDown = !this.btnSearchBarUpDown;
-    this.btnActive = !this.btnActive;
+  /**
+   * @description: sort by update date
+   */
+  private sortMarkersTab(){
+    // the sort by update date
+    this.reportsMonthly.sort(
+      (a: any, b: any) => {
+        const aDate = a._updatedAt.seconds;
+        const bDate = b._updatedAt.seconds;
+
+        if (aDate < bDate) {
+          return 1;
+        } else if (aDate > bDate) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
   }
 }
