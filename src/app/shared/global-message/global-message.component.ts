@@ -18,6 +18,6 @@ export class GlobalMessageComponent implements OnInit {
   }
 
   getStyle() {
-    return
+    return;
   }
 }

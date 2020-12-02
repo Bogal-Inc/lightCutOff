@@ -15,7 +15,7 @@ let envConfigFile;
 if (environment === 'prod') {
   const module = {
     ownerReport: true,
-    mapMenu: true,
+    mapMenu: false,
     mapFilter: true,
     mapSearch: true,
     admin: false
@@ -35,7 +35,7 @@ if (environment === 'prod') {
 } else {
   const module = {
     ownerReport: true,
-    mapMenu: true,
+    mapMenu: false,
     mapFilter: true,
     mapSearch: true,
     admin: true
