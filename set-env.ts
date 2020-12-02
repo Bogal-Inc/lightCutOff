@@ -50,7 +50,8 @@ function getEnvironment() {
   ownerReport: true,
   mapMenu: true,
   mapFilter: true,
-  mapSearch: true
+  mapSearch: true,
+  admin: true
   }
   },
   firebase: {
