@@ -4,9 +4,8 @@ import { MainFooterComponent } from './main-footer/main-footer.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
-import { TimestampPipe } from '../core/pipes/timestamp.pipe';
+import { TimestampPipe } from '@Pipes/timestamp.pipe';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
-import { MapLegendComponent } from '../main/map/components/map-legend/map-legend.component';
 import { TranslateModule } from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -14,6 +13,7 @@ import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DownloadAppComponent } from './download-app/download-app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { GlobalMessageComponent } from './global-message/global-message.component';
 
 
 @NgModule({
@@ -25,6 +25,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AdminNavComponent,
     ContactUsComponent,
     DownloadAppComponent,
+    GlobalMessageComponent,
   ],
   imports: [
     OwlDateTimeModule,
@@ -50,7 +51,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     TranslateModule,
     FontAwesomeModule,
     AdminNavComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    GlobalMessageComponent
   ],
   providers: [
     // use french locale

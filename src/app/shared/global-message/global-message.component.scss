@@ -1,0 +1,21 @@
+.danger {
+  background-color: var(--danger);
+}
+
+.warning {
+  background-color: var(--warning);
+}
+
+.info {
+  background-color: var(--info);
+}
+
+#global-message {
+  color: var(--light);
+  height: 100px;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  right: 0;
+  top: 0;
+}

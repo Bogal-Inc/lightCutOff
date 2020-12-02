@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-layout.component.scss']
 })
 export class MainLayoutComponent implements OnInit {
+  options = {
+    active: true,
+    message: 'Hello world',
+    type: 'danger'
+  };
 
   constructor() { }
 
