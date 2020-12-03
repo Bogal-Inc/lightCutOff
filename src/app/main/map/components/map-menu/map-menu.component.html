@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="menu__group1__body">
+    <div class="menu__group1__body" *ngIf="reportsMonthly.length > 0">
       <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs report__nav">
         <li [ngbNavItem]="1" class="report__nav__item">
           <a ngbNavLink>{{'main.map-history-marker.menu_history' | translate}}</a>
@@ -32,7 +32,6 @@
       </ul>
       <div [ngbNavOutlet]="nav" class="mt-2"></div>
     </div>
-
     <div class="d-flex align-items-end text-center menu__group1__footer"></div>
   </div>
   <div class="menu__group2" [@btnSearchBarUpDown]="btnSearchBarUpDown ? 'left' : 'right'">

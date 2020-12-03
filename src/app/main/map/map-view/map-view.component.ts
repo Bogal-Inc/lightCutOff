@@ -332,8 +332,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       [
         this.legends?.nativeElement,
         this.btnAddReport?.nativeElement,
-        this.mapFilter?.nativeElement,
-        this.MapMenuComponent?.nativeElement
+        this.mapFilter?.nativeElement
       ]
     );
     this.mapService.map = this.map;

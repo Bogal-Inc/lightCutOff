@@ -54,7 +54,6 @@ export class MapService {
     this._map.controls[google.maps.ControlPosition.TOP_RIGHT].push(components[0]);
     this._map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(components[1]);
     this._map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(components[2]);
-    this._map.controls[google.maps.ControlPosition.LEFT_TOP].push(components[3]);
 
     return this._map;
   }

@@ -8,6 +8,8 @@
   </div>
 
   <div class="map-container">
+    <app-map-menu [reports]="reports" (goToMarkerEnd)="goToMarker($event)" (researchPlace)="onSearchPlace($event)"
+                  [class.d-none]="!isFormLightCutOf" (filterMarker)="mapFiltered($event);"></app-map-menu>
     <div #mapContainer id="map" class="map-container__map">
 <!--        loading init map page-->
       <app-loading [show]="isLoader"></app-loading>
@@ -18,9 +20,6 @@
 
       <app-create-form-report (reportSubmit)="onCreateReport($event)"
                               [class.d-none]="!isFormLightCutOf"></app-create-form-report>
-
-      <app-map-menu [reports]="reports" (goToMarkerEnd)="goToMarker($event)" (researchPlace)="onSearchPlace($event)"
-          [class.d-none]="!isFormLightCutOf" (filterMarker)="mapFiltered($event);"></app-map-menu>
 
       <ng-template #recovredFormReport></ng-template>
       <ng-template #infosReport></ng-template>

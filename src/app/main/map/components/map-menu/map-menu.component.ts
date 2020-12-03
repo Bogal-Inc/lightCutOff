@@ -28,7 +28,7 @@ const log = new Logger('map-menu.component');
     ]),
     trigger('btnSearchBarUpDown', [
       state('left', style({
-        transform: 'translateX(-25%)'
+        transform: 'translateX(-1%)'
       })),
       state('right', style({
         transform: 'translateX(0%)'
