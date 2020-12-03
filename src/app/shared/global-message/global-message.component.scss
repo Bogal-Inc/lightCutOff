@@ -12,10 +12,7 @@
 
 #global-message {
   color: var(--light);
-  height: 100px;
-  position: fixed;
-  z-index: 1001;
-  left: 0;
-  right: 0;
+  position: absolute;
+  z-index: 2000;
   top: 0;
 }

@@ -1,5 +1,5 @@
-  <div [class]="options.type" *ngIf="options.active" class="w-100">
-    <div class="d-flex justify-content-center" [class]="options.type + '__content'">
-      <div [innerHTML]="options.message" [class]="options.type + '__content__message'">bonjour</div>
+  <div [class]="options?.type" *ngIf="isMessage()" class="w-100" id="global-message">
+    <div class="d-flex justify-content-center" [class]="options?.type + '__content'">
+      <div [innerHTML]="options?.message" [class]="options?.type + '__content__message'"></div>
     </div>
   </div>

@@ -7,7 +7,6 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class GlobalMessageComponent implements OnInit {
   @Input() options: {
-    active: false,
     type: 'danger',
     message: string
   };
@@ -17,7 +16,7 @@ export class GlobalMessageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getStyle() {
-    return;
+  isMessage(): boolean {
+    return this.options?.message !== '';
   }
 }
