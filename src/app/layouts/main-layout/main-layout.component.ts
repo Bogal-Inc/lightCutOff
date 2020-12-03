@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main-layout',
@@ -8,12 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class MainLayoutComponent implements OnInit {
   options: any;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    /*this.options = {
-      message: '<b>Hello</b> world',
-      type: 'danger'
-    };*/
+  }
+
+  isGlobalMessage() {
+    return this.options?.message_en !== undefined && this.options?.message_fr !== undefined;
+  }
+
+  isFixedTop(){
+    const url = this.router.url;
+    const route2 = url.split('/')[1];
+    return route2 === '';
   }
 }

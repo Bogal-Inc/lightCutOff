@@ -15,6 +15,7 @@ const log = new Logger('main-header.component');
 })
 export class MainHeaderComponent implements OnInit {
   @Input() fixedTop = false;
+  @Input() isGlobalMessage = false;
   readonly isAdmin = environment.app.modules.admin;
   readonly moduleEnable = environment.app.modules.ownerReport;
   appTitle = Const.app.title;
@@ -37,9 +38,7 @@ export class MainHeaderComponent implements OnInit {
     // fixed header or not
     const url = this.router.url;
     const route2 = url.split('/')[1];
-    if (route2 === '') {
-      this.fixedTop = true;
-    } else if (route2 === 'map') {
+    if (route2 === 'map') {
       this.mapActive = true;
     } else if (route2 === 'admin') {
       this.adminActive = true;

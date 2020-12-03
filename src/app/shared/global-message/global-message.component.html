@@ -1,5 +1,6 @@
-  <div [class]="options?.type" *ngIf="isMessage()" class="w-100" id="global-message">
+  <div [class]="options?.type" *ngIf="isMessage()" class="w-100" [class.global-message]="!fixedTop" [class.fixed-top]="fixedTop">
     <div class="d-flex justify-content-center" [class]="options?.type + '__content'">
-      <div [innerHTML]="options?.message" [class]="options?.type + '__content__message'"></div>
+      <div [innerHTML]="options?.message_en" [class]="options?.type + '__content__message'" *ngIf="!langFr"></div>
+      <div [innerHTML]="options?.message_fr" [class]="options?.type + '__content__message'" *ngIf="langFr"></div>
     </div>
   </div>

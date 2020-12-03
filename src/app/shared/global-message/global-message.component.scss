@@ -1,18 +1,20 @@
 .danger {
   background-color: var(--danger);
+  color: var(--light);
 }
 
 .warning {
   background-color: var(--warning);
+  color: var(--light);
 }
 
 .info {
   background-color: var(--info);
+  color: var(--light);
 }
 
-#global-message {
-  color: var(--light);
+.global-message {
   position: absolute;
-  z-index: 2000;
+  z-index: 1030;
   top: 0;
 }
