@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="menu__group1__body" *ngIf="reportsMonthly.length > 0">
+    <div class="menu__group1__body" *ngIf="reportsMonthly.length < 0">
       <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs report__nav">
         <li [ngbNavItem]="1" class="report__nav__item">
           <a ngbNavLink>{{'main.map-history-marker.menu_history' | translate}}</a>
