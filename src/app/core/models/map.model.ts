@@ -1,25 +1,16 @@
-import {ComponentFactoryResolver, Injectable, ViewContainerRef} from '@angular/core';
-import {Const} from '../../../environments/const';
 import {Location, Position} from '@Models/report.model';
-import {TranslateService} from '@ngx-translate/core';
-import {MarkerRecovredReportComponent} from '../../main/map/components/marker-recovred-report/marker-recovred-report.component';
+import {Const} from '../../../environments/const';
 
 declare const MarkerClusterer: any;
 
-@Injectable({
-  providedIn: 'root'
-})
-export class MapService {
+const ZOOM = 14;
+const BG_COLOR = '#eaeaea';
+
+export class MapModel {
   // tslint:disable-next-line:variable-name
   private _map;
   // tslint:disable-next-line:variable-name
   private _position: Position;
-
-  constructor(
-    private translateService: TranslateService,
-    private componentFactoryResolver: ComponentFactoryResolver,
-    ) {
-  }
 
   get map(){
     return this._map;
@@ -37,25 +28,21 @@ export class MapService {
     this._position = position;
   }
 
-  initMap(gmap, components) {
-    const mapOptions = {
-      center: this._position,
-      zoom: 14,
-      restriction: {
-        latLngBounds: Const.coordsCameroon,
+  public constructor(position, gmap, components) {
+    this._position = position;
+    this.initMap(gmap, components);
+  }
+
+  markerUserOption(label) {
+    return {
+      position: this._position,
+      label,
+      icon: {
+        url: Const.markerColor.user
       },
-      disableDoubleClickZoom: true,
-      backgroundColor: '#eaeaea',
-      mapTypeControl: false,
-      streetViewControl: false
+      draggable: true,
+      zIndex: 2000
     };
-
-    this._map = new google.maps.Map(gmap, mapOptions);
-    this._map.controls[google.maps.ControlPosition.TOP_RIGHT].push(components[0]);
-    this._map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(components[1]);
-    this._map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(components[2]);
-
-    return this._map;
   }
 
   /**
@@ -103,29 +90,6 @@ export class MapService {
       markers,
       {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
     );
-  }
-
-  markerUserOption() {
-    return {
-      position: this._position,
-      label: this.translateService.instant('main.map-view.your_position'),
-      icon: {
-        url: Const.markerColor.user
-      },
-      draggable: true,
-      zIndex: 2000
-    };
-  }
-
-  createComponent(data, component, container: ViewContainerRef): any {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-    const componentRef = container.createComponent(componentFactory);
-
-    (componentRef.instance as MarkerRecovredReportComponent).data = data;
-    componentRef.hostView.detectChanges();
-    const { nativeElement } = componentRef.location;
-
-    return nativeElement;
   }
 
   private intiLocation(locate, locationTmp) {
@@ -186,5 +150,24 @@ export class MapService {
   private getDataLocation(dataLocation) {
     const resultCountry = dataLocation.split(', ');
     return resultCountry[resultCountry.length - 2];
+  }
+
+  private initMap(gmap, components) {
+    const mapOptions = {
+      center: this._position,
+      zoom: ZOOM,
+      restriction: {
+        latLngBounds: Const.coordsCameroon,
+      },
+      disableDoubleClickZoom: true,
+      backgroundColor: BG_COLOR,
+      mapTypeControl: false,
+      streetViewControl: false
+    };
+
+    this._map = new google.maps.Map(gmap, mapOptions);
+    this._map.controls[google.maps.ControlPosition.TOP_RIGHT].push(components[0]);
+    this._map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(components[1]);
+    this._map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(components[2]);
   }
 }

@@ -128,8 +128,8 @@ export class MapMenuComponent implements OnInit, OnChanges {
     // the sort by update date
     this.reportsMonthly.sort(
       (a: any, b: any) => {
-        const aDate = a._updatedAt.seconds;
-        const bDate = b._updatedAt.seconds;
+        const aDate = a?._updatedAt?.seconds;
+        const bDate = b?._updatedAt?.seconds;
 
         if (aDate < bDate) {
           return 1;

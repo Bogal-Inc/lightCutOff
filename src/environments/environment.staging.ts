@@ -8,7 +8,8 @@ export const environment = {
       ownerReport: true,
       mapMenu: true,
       mapFilter: false,
-      mapSearch: true
+      mapSearch: true,
+      admin: true
     }
   },
   firebase: {

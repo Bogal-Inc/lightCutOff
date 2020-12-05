@@ -2,7 +2,7 @@ import {ReportService} from '../../../../core/services-firebase/report.service';
 import {ToastrService} from 'ngx-toastr';
 import {Component, OnInit} from '@angular/core';
 import {compareDate, getDuration} from '@Helpers/date.helper';
-import {BaseComponent} from '@Models/baseComponent.model';
+import {Base} from '@Models/base.model';
 import {Report, ReportSatus} from '@Models/report.model';
 import {TranslateService} from '@ngx-translate/core';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
@@ -12,7 +12,7 @@ import {AngularFireAnalytics} from '@angular/fire/analytics';
   templateUrl: './marker-recovred-report.component.html',
   styleUrls: ['./marker-recovred-report.component.scss']
 })
-export class MarkerRecovredReportComponent implements OnInit, BaseComponent {
+export class MarkerRecovredReportComponent implements OnInit, Base {
   data: {
     report: null | Report,
     markerCurrentInfoWindow: any

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Report, ReportSatus} from '@Models/report.model';
 import {durationToString, getDuration} from '@Helpers/date.helper';
-import {AuthService} from '../../../../core/services-firebase';
+import {AuthService} from '../../../../../../core/services-firebase';
 import {Logger} from '@Services/logger.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {faAngleRight, faCircle, faUser} from '@fortawesome/free-solid-svg-icons';
