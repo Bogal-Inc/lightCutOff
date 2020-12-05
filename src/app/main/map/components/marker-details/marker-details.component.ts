@@ -1,5 +1,5 @@
 import { Report } from '@Models/report.model';
-import { BaseComponent } from '@Models/baseComponent.model';
+import { Base } from '@Models/base.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './marker-details.component.html',
   styleUrls: ['./marker-details.component.scss']
 })
-export class MarkerDetailsComponent implements BaseComponent, OnInit {
+export class MarkerDetailsComponent implements Base, OnInit {
   data: {
     report: Report
   };

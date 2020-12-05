@@ -12,8 +12,7 @@ import {
   OnDestroy,
   OnInit,
   ViewChild,
-  ViewContainerRef,
-  ViewEncapsulation
+  ViewContainerRef
 } from '@angular/core';
 import {MapsAPILoader} from '@agm/core';
 import {ToastrService} from 'ngx-toastr';
@@ -26,11 +25,12 @@ import {MarkerRecovredReportComponent} from '../components/marker-recovred-repor
 import {MetaService} from '@Services/meta.service';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {MapService} from '@Services/map.service';
+import {ComponentService} from '@Services/component.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {MapTutoModalComponent} from '../components/map-tuto-modal/map-tuto-modal.component';
 import {MapFilterComponent} from '../components/map-filter/map-filter.component';
 import {MapMenuComponent} from '../components/map-menu/map-menu.component';
+import {MapModel} from '@Models/map.model';
 
 const log = new Logger('map-view.component');
 
@@ -76,6 +76,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   reportsMarkers: any;
   markersClusters;
   reportAdd: Report;
+  private mapM: MapModel;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
@@ -85,7 +86,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private authService: AuthService,
     private translateService: TranslateService,
     private metaService: MetaService,
-    private mapService: MapService,
+    private mapService: ComponentService,
     private analytics: AngularFireAnalytics,
     private modalService: NgbModal,
     config: NgbTooltipConfig
@@ -153,20 +154,19 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     let googleLocation = null;
 
     geocoder.geocode(
-      {location: this.mapService.position},
+      {location: this.mapM.position},
       (googleLocations, status) => {
-
         if (status === 'OK') {
         googleLocation = googleLocations[1];
 
         if (googleLocation) {
-          const locality = this.mapService.getCountryCity(googleLocation);
+          const locality = this.mapM.getCountryCity(googleLocation);
           const country = locality[1];
 
           if (country === 'Cameroun' || country === 'Cameroon') {
             this.createReport(
               event,
-              this.mapService.getAddresses(googleLocations, locality)
+              this.mapM.getAddresses(googleLocations, locality)
             );
           } else {
             log.error('current user no found in Camoeroon', googleLocation);
@@ -291,7 +291,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const report = {
       location,
-      position: this.mapService.position,
+      position: this.mapM.position,
       reportedAt: new Date(query),
     } as Report;
 
@@ -326,8 +326,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private initMap(position: Position){
     this.isLoader = false;
     this.isFormLightCutOf = true;
-    this.mapService.position = position;
-    this.map = this.mapService.initMap(
+
+    this.mapM = new MapModel(
+      position,
       this.gmap.nativeElement,
       [
         this.legends?.nativeElement,
@@ -335,8 +336,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.mapFilter?.nativeElement
       ]
     );
-    this.mapService.map = this.map;
-    this.initMarkerUser(this.mapService.markerUserOption());
+    this.map = this.mapM.map;
+
+    this.initMarkerUser(this.mapM.markerUserOption(this.translateService.instant('main.map-view.your_position')));
     this.LoadReports();
     this.addEventsUserMarker();
     this.initTooltip();
@@ -415,7 +417,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.reportsMarkers = reports.map(report => {
       return this.markerFactory(report);
     });
-    this.markersClusters = this.mapService.addMarkersToCluster(this.reportsMarkers);
+    this.markersClusters = this.mapM.addMarkersToCluster(this.reportsMarkers);
   }
 
   /**
@@ -495,13 +497,13 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private addEventToMap(eltOnEvent, event) {
     google.maps.event.addListener(eltOnEvent, event, (e) => {
-      this.mapService.position = {
+      this.mapM.position = {
         lng: e.latLng.lng(),
         lat: e.latLng.lat()
       };
 
       if (event === 'dblclick') {
-        this.initMarkerUser(this.mapService.markerUserOption());
+        this.initMarkerUser(this.mapM.markerUserOption(this.translateService.instant('main.map-view.your_position')));
       }
     });
   }
