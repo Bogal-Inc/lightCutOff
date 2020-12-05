@@ -1,10 +1,26 @@
-.report {
-  &__title1 {
-    font-size: 1.2em;
+.stats {
+  height: 62.5vh;
+  padding: 5px;
+  font-size: 0.85em;
+
+  &__report {
+    overflow: scroll;
+    height: 97%;
+
+    &__title1 {
+      font-size: 1.2em;
+    }
+
+    &__number {
+      text-align: center;
+      font-weight: 900;
+      font-size: 2em;
+    }
   }
-  &__number {
-    text-align: center;
-    font-weight: 900;
-    font-size: 2em;
+}
+
+@media only screen and (max-width: 575px) {
+  .stats {
+    height: 52.5vh;
   }
 }

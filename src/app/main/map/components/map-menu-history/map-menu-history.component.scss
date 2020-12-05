@@ -1,5 +1,11 @@
 .reports {
-  &__item {
+  height: 62.5vh;
+
+  &__history {
+    overflow: scroll;
+    height: 97%;
+
+    &__item {
       border-left: 5px solid var(--danger);
       cursor: pointer;
       background: none;
@@ -8,6 +14,7 @@
         &__title {
           word-wrap: break-word;
           margin: auto;
+          font-size: 1.3em;
         }
       }
 
@@ -22,10 +29,11 @@
       background-color: #eaeaea;
     }
   }
-
-
-.list-group {
-  overflow: scroll;
-  width: 100% !important;
-  height: 100% !important;
 }
+
+@media only screen and (max-width: 575px) {
+  .reports {
+    height: 52vh;
+  }
+}
+
