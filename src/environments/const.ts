@@ -8,6 +8,23 @@ export const Const = {
       en: 'en'
     }
   },
+  eneo: {
+    url: 'https://xtrc.eneocameroon.cm/Programmes_coupures/',
+    regions: {
+      yaounde: 'x-1',
+      douala: 'x-22',
+      adamaoua: 1,
+      centre: 2,
+      est: 3,
+      extreme_nord: 4,
+      littoral: 5,
+      ouest: 6,
+      nord: 7,
+      nord_ouest: 8,
+      sud: 9,
+      sud_ouest: 0
+    }
+  },
   user: {
     localstorage: 'lightCutOffUser'
   },
