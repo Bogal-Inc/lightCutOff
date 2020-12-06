@@ -111,7 +111,20 @@
       "question_1": "D'où est ce que je peux utiliser {projectTitle}?",
       "response_1": "{projectTitle} est pour l'instant disponible uniquement au Cameroun. Notre objectif dans l'immédiat est de cibler le marché camerounais. Bien sûr, nous n'excluons pas un jour de pouvoir l'exporter vers d'autres régions d'Afrique.",
       "question_2": "Comment signaler une coupure de lumière sur {projectTitle}?",
-      "response_2": "Il existe deux façons de signaler une coupure de lumière avec {projectTitle}. Vous pouvez trouvez comment faire dans au moins 2 tutoriels se trouvant sur notre plateforme:<ol><li>Dans la page d'accueil, vous trouverez un bouton pour une vidéo tutoriel.</li><li>Dans le pied de page, vous trouverez aussi un <a href=\"/tuto\">lien vers un tutoriel</a>.</li></ol>"
+      "response_2": "Il existe deux façons de signaler une coupure de lumière avec {projectTitle}. Vous pouvez trouvez comment faire dans au moins 2 tutoriels se trouvant sur notre plateforme:<ol><li>Dans la page d'accueil, vous trouverez un bouton pour une vidéo tutoriel.</li><li>Dans le pied de page, vous trouverez aussi un <a href=\"/tuto\">lien vers un tutoriel</a>.</li></ol>",
+      "question_3": "Comment installer {projectTitle} sur mon mobile?",
+      "question_intro": "Suivez les instructions ci-dessous pour ajouter un raccourci vers un site Web sur l'écran d'accueil de otre iPad, iPhone ou appareils Android.",
+      "question_title_1": "iPad ou iPhone",
+      "question_title_1_li_1": "Lancez l'application «Safari». Cela ne fonctionne pas à partir de l'application <i>«Chrome»</i>.",
+      "question_title_1_li_2": "Entrez dans le champ d'adresse l'URL du site Web vers lequel vous souhaitez créer un raccourci. Appuyez sur “Aller”",
+      "question_title_1_li_3": "Appuyez sur l'icône avec une flèche pointant vers la droite sortant d'une boîte en haut de la fenêtre Safari pour ouvrir un menu déroulant",
+      "question_title_1_li_4": "Appuyez sur “Ajouter à l'écran d'accueil”. La boîte de dialogue Ajouter à l'accueil apparaîtra, avec l'icône qui sera utilisée pour ce site Web sur le côté gauche de la boîte de dialogue.",
+      "question_title_1_li_5": "Saisissez le nom du raccourci à l'aide du clavier à l'écran et appuyez sur “Ajouter”. Safari se fermera automatiquement et vous serez redirigé vers l'emplacement de l'icône sur le bureau de votre iPad.",
+      "question_title_2": "Android",
+      "question_title_2_li_1": "Lancez l'application «Chrome».",
+      "question_title_2_li_2": "Ouvrez le site Web ou la page Web que vous souhaitez épingler sur votre écran d'accueil.",
+      "question_title_2_li_3": "Appuyez sur l'icône de menu (3 points dans le coin supérieur droit) et appuyez sur Ajouter à l'écran d'accueil.",
+      "question_title_2_li_4": "Vous pourrez saisir un nom pour le raccourci, puis Chrome l'ajoutera à votre écran d'accueil."
     }
   },
   "main": {
@@ -289,7 +302,8 @@
   "shared": {
     "download-app": {
       "title": "Vous utilisez un mobile?",
-      "body": "Télécharger {lightcutoff} pour une navigation et un accès plus facile",
+      "body": "Télécharger {lightcutoff} pour une navigation et un accès plus facile.",
+      "faq": "Si l'installation ne fonctionne pas, allez à la <a href='/faq'>FAQ</a> pour suivre des instructions plus détailllées.",
       "button_download": "Télécharger",
       "button_close": "Fermé",
       "thanks": "Merci",

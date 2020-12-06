@@ -110,7 +110,20 @@
       "question_1": "Where can I use {projectTitle} from?",
       "response_1": "{projectTitle} is currently only available in Cameroon. Our immediate goal is to target the Cameroonian market. Of course, we do not rule out one day being able to export it to other regions of Africa",
       "question_2": "How to report a light cut on {projectTitle}?",
-      "response_2": "There are two ways to report a light cut with {projectTitle}. You can find how to do this in at least 2 tutorials on our platform:<ol><li>In the homepage you will find a button for a video tutorial.</li><li> In the footer you will also find a <a href=\"/tuto\">link to a tutorial</a>.</li></ol>"
+      "response_2": "There are two ways to report a light cut with {projectTitle}. You can find how to do this in at least 2 tutorials on our platform:<ol><li>In the homepage you will find a button for a video tutorial.</li><li> In the footer you will also find a <a href=\"/tuto\">link to a tutorial</a>.</li></ol>",
+      "question_3": "How to install {projectTitle} on my mobile",
+      "question_intro": "Follow the instructions below to add a shortcut to a website on the home screen of your iPad, iPhone, or Android devices.",
+      "question_title_1": "iPad or iPhone",
+      "question_title_1_li_1": "Launch <i>“Safari”</i> app.  This does not work from the <i>“Chrome”</i> app.",
+      "question_title_1_li_2": "Enter into the address field the URL of the website you want to create a shortcut to. Tap “Go.”",
+      "question_title_1_li_3": "Tap the icon featuring a right-pointing arrow coming out of a box along the top of the Safari window to open a drop-down menu.",
+      "question_title_1_li_4": "Tap “Add to Home Screen.” The Add to Home dialog box will appear, with the icon that will be used for this website on the left side of the dialog box.",
+      "question_title_1_li_5": "Enter the name for the shortcut using the on-screen keyboard and tap “Add.” Safari will close automatically and you will be taken to where the icon is located on your iPad’s desktop.",
+      "question_title_2": "Android",
+      "question_title_2_li_1": "Launch “Chrome” app.",
+      "question_title_2_li_2": "Open the website or web page you want to pin to your home screen.",
+      "question_title_2_li_3": "Tap the menu icon (3 dots in upper right-hand corner) and tap Add to homescreen.",
+      "question_title_2_li_4": "You’ll be able to enter a name for the shortcut and then Chrome will add it to your home screen."
     }
   },
   "main": {
@@ -273,9 +286,13 @@
   "shared": {
     "download-app": {
       "title": "Do you use a mobile?",
-      "body": "Download {lightcutoff} for easier navigation and access",
+      "body": "Download {lightcutoff} for easier navigation and access.",
+      "faq": "If the installation does not work, go to the <a href='/faq'>FAQ</a> for more detailed instructions.",
       "button_download": "Download",
-      "button_close": "Close"
+      "button_close": "Close",
+      "thanks": "Thank you",
+      "thanks_message": "Do you want to know how to use {appTitle}?",
+      "thanks_link": "Follow this tutorial"
     },
     "loading": {
       "loading": "Uploading..."

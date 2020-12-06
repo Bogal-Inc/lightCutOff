@@ -6,9 +6,8 @@
     <h4>{{'shared.download-app.title' | translate}}</h4>
   </div>
   <div class="download__body">
-    <p>
-      {{'shared.download-app.body' | translate: {lightcutoff: appTitle} }}
-    </p>
+    <p>{{'shared.download-app.body' | translate: {lightcutoff: appTitle} }}</p>
+    <p [innerHTML]="'shared.download-app.faq' | translate: {lightcutoff: appTitle}"></p>
   </div>
   <div class="d-flex justify-content-center download__footer">
     <button type="button" class="btn btn-light" (click)="download()">
