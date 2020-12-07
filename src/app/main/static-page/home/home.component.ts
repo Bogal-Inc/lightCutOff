@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   impPartnerJaures = true;
   reportsCurrentDay: Report[];
   nbrReportsDay: number;
+  nbrReportsMonthly: number;
 
   constructor(
     private modalService: NgbModal,
@@ -96,6 +97,7 @@ export class HomeComponent implements OnInit {
     this.reportsCurrentDay = this.reportsCurrentMonth.filter(
       report => report.reportedAt.toDate().getDate() === now.getDate()
     );
+    this.nbrReportsMonthly = this.reportsCurrentMonth.length;
     this.nbrReportsDay = this.reportsCurrentDay.length;
   }
 

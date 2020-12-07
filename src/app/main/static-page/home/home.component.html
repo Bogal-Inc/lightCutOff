@@ -127,19 +127,19 @@
     <div class="home__section-data__body w-100 h-100">
       <div class="container">
         <div class="row">
-          <div class="data-item" [class.col-md-4]="nbrReportsDay === 0" [class.col-md-3]="nbrReportsDay > 0">
+          <div class="col-md data-item">
             <h3>{{'core.home.statistics.reports_total' | translate }}</h3>
             <span>{{reports.length}}</span>
           </div>
-          <div class="data-item" [class.col-md-4]="nbrReportsDay === 0" [class.col-md-3]="nbrReportsDay > 0">
+          <div class="col-md data-item">
             <h3>{{'core.home.statistics.reports_yearly' | translate }}</h3>
             <span>{{reportsCurrentYear.length}}</span>
           </div>
-          <div class="data-item" [class.col-md-4]="nbrReportsDay === 0" [class.col-md-3]="nbrReportsDay > 0">
+          <div class="col-md data-item" *ngIf="nbrReportsMonthly > 0">
             <h3>{{'core.home.statistics.reports_monthly' | translate }}</h3>
-            <span>{{reportsCurrentMonth.length}}</span>
+            <span>{{nbrReportsMonthly}}</span>
           </div>
-          <div class="col-md-3 data-item" *ngIf="reportsCurrentDay.length > 0">
+          <div class="col-md data-item" *ngIf="nbrReportsDay > 0">
             <h3>{{'core.home.statistics.reports_daily' | translate }}</h3>
             <span>{{nbrReportsDay}}</span>
           </div>
