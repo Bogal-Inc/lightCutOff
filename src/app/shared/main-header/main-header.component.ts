@@ -34,15 +34,7 @@ export class MainHeaderComponent implements OnInit {
 
     // check connection status
     this.isOnlineStatus();
-
-    // fixed header or not
-    const url = this.router.url;
-    const route2 = url.split('/')[1];
-    if (route2 === 'map') {
-      this.mapActive = true;
-    } else if (route2 === 'admin') {
-      this.adminActive = true;
-    }
+    this.activeMenuDashboard();
   }
 
   isOnlineStatus() {
@@ -52,5 +44,17 @@ export class MainHeaderComponent implements OnInit {
       log.debug(logMessage);
       this.online = online;
     });
+  }
+
+  private activeMenuDashboard() {
+    // fixed header or not
+    const url = this.router.url;
+    const route2 = url.split('/')[1];
+
+    if (route2 === 'admin') {
+      this.adminActive = true;
+    } else {
+      this.adminActive = false;
+    }
   }
 }
