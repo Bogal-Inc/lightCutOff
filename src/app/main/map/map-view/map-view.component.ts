@@ -28,7 +28,7 @@ import {takeUntil} from 'rxjs/operators';
 import {ComponentService} from '@Services/component.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {MapTutoModalComponent} from '../components/map-tuto-modal/map-tuto-modal.component';
-import {MapFilterComponent} from '../components/map-filter/map-filter.component';
+import {MapFilterComponent} from '../components/map-menu/components/map-filter/map-filter.component';
 import {MapMenuComponent} from '../components/map-menu/map-menu.component';
 import {MapModel} from '@Models/map.model';
 
@@ -399,10 +399,18 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           this.reports = reports.filter(
             report => {
               if (report.status === ReportSatus.CUT_COMPLETED) {
-                const recovredAt = report.reportedAt.toDate();
+                const recovredAt = report.recovredAt.toDate();
                 const tomorrow = new Date(recovredAt.getTime() + 86400000);
                 if (tomorrow > now) {
                   return report;
+                }
+              } else if (report.status === ReportSatus.CUT) {
+                const reportedAt = report.reportedAt.toDate();
+                const monthDiff = now.getMonth() - reportedAt.getMonth();
+                if (monthDiff === 0 || monthDiff === 1) {
+                  if (now.getDay() <= reportedAt.getDay()) {
+                    return report;
+                  }
                 }
               } else {
                 return report;
