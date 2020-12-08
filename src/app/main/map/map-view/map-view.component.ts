@@ -12,7 +12,7 @@ import {
   OnDestroy,
   OnInit,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef, ViewEncapsulation
 } from '@angular/core';
 import {MapsAPILoader} from '@agm/core';
 import {ToastrService} from 'ngx-toastr';
@@ -37,6 +37,7 @@ const log = new Logger('map-view.component');
 @Component({
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./map-view.component.scss'],
   providers: [NgbTooltipConfig],
 })
