@@ -1,4 +1,4 @@
-<div class="d-flex flex-row menu" *ngIf="showHistory && moduleConfig" [@searchBarUpDown]="menuDownUp ? 'left' : 'right'">
+<div class="d-flex flex-row menu" *ngIf="mapMenu" [@searchBarUpDown]="menuDownUp ? 'left' : 'right'">
   <div class="w-100 menu__group1">
     <div class="menu__group1__header">
       <div class="p-3 menu__group1__header-search">
@@ -9,12 +9,12 @@
       </div>
     </div>
 
-    <div class="menu__group1__body" *ngIf="reportsMonthly.length > 0">
+    <div class="menu__group1__body" *ngIf="reports?.length > 0">
       <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs report__nav">
         <li [ngbNavItem]="1" class="report__nav__item">
           <a ngbNavLink>{{'main.map-history-marker.menu_history' | translate}}</a>
           <ng-template ngbNavContent>
-            <app-map-menu-history (goToMarker)="goToMarker($event)" [reports]="reportsMonthly"></app-map-menu-history>
+            <app-map-menu-history (goToMarker)="goToMarker($event)" [reports]="reports"></app-map-menu-history>
           </ng-template>
         </li>
         <li [ngbNavItem]="2">

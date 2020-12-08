@@ -399,7 +399,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           // the reports closed from 24h is not visible on map
           this.reports = reports.filter(
             report => {
-              if (report.status === ReportSatus.CUT_COMPLETED) {
+              /*if (report.status === ReportSatus.CUT_COMPLETED) {
                 const recovredAt = report.recovredAt.toDate();
                 const tomorrow = new Date(recovredAt.getTime() + 86400000);
                 if (tomorrow > now) {
@@ -415,7 +415,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
                 }
               } else {
                 return report;
-              }
+              }*/
+              return report;
             });
           this.addClusters(this.reports);
         },

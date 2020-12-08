@@ -47,7 +47,7 @@ export class MapMenuComponent implements OnInit, OnChanges {
   @Output() researchPlace: EventEmitter<any> = new EventEmitter<any>();
   @Output() filterMarker: EventEmitter<any> = new EventEmitter<any>();
   @Input() reports: Report[];
-  readonly moduleConfig = environment.app.modules.mapMenu;
+  readonly mapMenu = environment.app.modules.mapMenu;
   readonly faAngleRight = faAngleRight;
   readonly faAngleLeft = faAngleLeft;
   reportsSort: Report[];
@@ -56,7 +56,6 @@ export class MapMenuComponent implements OnInit, OnChanges {
   reportsDayNotClosed: Report[];
   reportsDay: Report[];
   now: Date;
-  showHistory = false;
   active = 1;
   btnActive = false;
   menuDownUp = false;
@@ -73,7 +72,6 @@ export class MapMenuComponent implements OnInit, OnChanges {
     const reportsCurrent = changes.reports.currentValue;
 
     if (reportsCurrent) {
-      this.showHistory = true;
       this.loadReports(reportsCurrent);
     }
   }
