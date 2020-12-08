@@ -17,7 +17,6 @@ import {
 import {MapsAPILoader} from '@agm/core';
 import {ToastrService} from 'ngx-toastr';
 import {Const} from 'src/environments/const';
-import {geoDataCameroun} from '../../../../environments/geo-data';
 import {MapLegendComponent} from '../components/map-legend/map-legend.component';
 import {NgbModal, NgbTooltip, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {Logger} from '@Services/logger.service';
@@ -65,6 +64,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('tleft') public tooltip: NgbTooltip;
   private map: google.maps.Map;
   private markerCurrentInfoWindow: google.maps.InfoWindow;
+  private mapM: MapModel;
   readonly projectTitle = Const.app.title;
   isErrorMapActive = false;
   markerCurrentPosition: google.maps.Marker;
@@ -77,7 +77,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   reportsMarkers: any;
   markersClusters;
   reportAdd: Report;
-  private mapM: MapModel;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
@@ -343,6 +342,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.LoadReports();
     this.addEventsUserMarker();
     this.initTooltip();
+    this.initPolygon('../../../../assets/static/geo-json/yaounde.geojson.json');
   }
 
   private initMarkerUser(markerOption: google.maps.MarkerOptions) {
@@ -539,27 +539,25 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       strokeColor: '#FF0000',
       strokeOpacity: 0.5,
       strokeWeight: 3,
-      fillColor: '#FF0000',
+      fillColor: '#ff0000',
       fillOpacity: 0.35
     });
     // this.addEventUserMarker(polygon, 'dblclick');
 
     polygon.setMap(this.map);
 
-    // this.map.data.loadGeoJson(coordsPolygons);
-    // this.map.data.add({
-    //   geometry: new google.maps.Data.Polygon(coordsPolygons)
+    // this.mapM.map.data.add({
+    //   geometry: new google.maps.Data.Polygon(polygon)
     // });
-    this.map.data.loadGeoJson(coordsPolygons);
-    this.map.data.addListener('dblclick', (event) => {
-      console.log(event.feature.getProperty('name'));
+    this.mapM.map.data.loadGeoJson(coordsPolygon, { idPropertyName: 'STATE' });
 
-      this.mapM.position = {
-        lng: event.latLng.lng(),
-        lat: event.latLng.lat()
-      };
-      this.initMarkerUser(this.mapM.markerUserOption());
-    });
+    // this.map.data.addListener('dblclick', (event) => {
+    //   this.mapM.position = {
+    //     lng: event.latLng.lng(),
+    //     lat: event.latLng.lat()
+    //   };
+    //   // this.initMarkerUser(this.mapM.markerUserOption());
+    // });
   }
 
   private isWithinPoly(polygon, marker){
