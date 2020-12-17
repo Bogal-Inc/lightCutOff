@@ -287,6 +287,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private createReport(query, location) {
+    if (location === null) {
+      log.error('report not create. Location is null');
+      return null;
+    }
+
     this.isLoader = true;
     this.formLoader = true;
 
@@ -399,6 +404,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           // the reports closed from 24h is not visible on map
           this.reports = reports.filter(
             report => {
+              if (report.location.country) {
+                return report;
+              }
               /*if (report.status === ReportSatus.CUT_COMPLETED) {
                 const recovredAt = report.recovredAt.toDate();
                 const tomorrow = new Date(recovredAt.getTime() + 86400000);
@@ -416,7 +424,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
               } else {
                 return report;
               }*/
-              return report;
             });
           this.addClusters(this.reports);
         },

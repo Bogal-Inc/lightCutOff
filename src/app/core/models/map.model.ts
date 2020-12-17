@@ -70,6 +70,9 @@ export class MapModel {
       }
     );
 
+    if (locationTmp.country && locationTmp.city) {
+      return null;
+    }
     return locationTmp;
   }
 
