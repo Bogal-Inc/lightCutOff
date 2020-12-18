@@ -1,0 +1,119 @@
+export interface ILocationModel {
+  country: string;
+  region: string;
+  department: string;
+  city: string;
+  neighborhood: string;
+  addresses: any[];
+  others: any[];
+  googleData: any[];
+}
+
+export const locationModel: ILocationModel = {
+  department: null,
+  neighborhood: null,
+  addresses: [],
+  others: []
+} as ILocationModel;
+
+export class LocationModel implements ILocationModel{
+  public country: string;
+  public region: string;
+  public department: string;
+  public city: string;
+  public neighborhood: string;
+  public addresses: any[];
+  public others: any[];
+  public googleData: any[];
+
+  constructor(googleLocations, locationInfos) {
+    this.getAddresses(googleLocations, locationInfos);
+  }
+
+  /**
+   * @description get address from address elements from google api
+   * @param googleLocations element address from google api
+   * @param locationInfos country from google api
+   */
+  getAddresses(googleLocations, locationInfos): ILocationModel {
+    // delete last element for array
+    googleLocations.pop();
+
+    this.country = locationInfos[1];
+    this.region = null;
+    this.department = null;
+    this.city = locationInfos[0];
+    this.neighborhood = null;
+    this.addresses = [];
+    this.others = [];
+    this.googleData = [];
+
+    googleLocations.forEach(
+      locate => {
+        this.intiLocation(locate);
+      }
+    );
+
+    if (this.country && this.city) {
+      return null;
+    }
+  }
+
+  private intiLocation(locate) {
+    let locateType = locate.types[0];
+
+    if (locateType === 'political') {
+      locateType = locate.types[1];
+    }
+
+    const formattedAddress = locate.formatted_address;
+    const address = {
+      formattedAddress,
+      type: locate.types
+    };
+
+    if (locateType === 'administrative_area_level_1') {
+      this.region = this.getRegion(formattedAddress);
+    } else if (locateType === 'administrative_area_level_2') {
+      this.department = this.getDataLocation(formattedAddress);
+    } else if (locateType === 'sublocality') {
+      this.neighborhood = formattedAddress.split(', ')[0];
+    } else if (locateType === 'neighborhood') {
+      this.neighborhood = formattedAddress.split(', ')[0];
+    } else if (locateType === 'street_address') {
+      this.addresses.push(address);
+    } else if (locateType === 'route') {
+      this.addresses.push(address);
+      if (this.neighborhood === null) {
+        this.neighborhood = formattedAddress.split(', ')[0];
+      }
+    } else {
+      this.others.push(address);
+      if (this.neighborhood === null) {
+        this.neighborhood = formattedAddress.split(', ')[0];
+      }
+    }
+
+    this.googleData.push(address);
+  }
+
+  private getRegion(regionBrut) {
+    let region = regionBrut.split(', ')[0];
+    region = region.split(' ')[2];
+
+    if (region.indexOf('\'') > 0) {
+      region = region.split('\'')[1];
+    }
+
+    if (region === 'Ctre') {
+      return 'Centre';
+    }
+
+    return region;
+  }
+
+  private getDataLocation(dataLocation) {
+    const resultCountry = dataLocation.split(', ');
+    return resultCountry[resultCountry.length - 2];
+  }
+}
