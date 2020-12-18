@@ -51,18 +51,17 @@ export class ReportService extends BaseService {
   }
 
   async addReport(report): Promise<DocumentReference<DocumentData>>{
-
-    const ref = await this.add<Report>(
+    return await this.add<Report>(
       `${Const.collections.reports}`,
       {
         ...defaultReport,
         reportedAt: report.reportedAt,
+        location: report.location,
         position: this.geopoint(report.position.lat, report.position.lng),
         _createdBy: this.user,
         _createdAt: this.timestamp,
       } as unknown as Report
     );
-    return ref;
   }
 
   deleteReport(reportId: string) {

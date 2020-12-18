@@ -10,10 +10,14 @@ export interface ILocationModel {
 }
 
 export const locationModel: ILocationModel = {
+  country: null,
+  region: null,
   department: null,
+  city: null,
   neighborhood: null,
   addresses: [],
-  others: []
+  others: [],
+  googleData: []
 } as ILocationModel;
 
 export class LocationModel implements ILocationModel{
@@ -27,7 +31,8 @@ export class LocationModel implements ILocationModel{
   public googleData: any[];
 
   constructor(googleLocations, locationInfos) {
-    this.getAddresses(googleLocations, locationInfos);
+    this.initAttributes(locationInfos);
+    this.getLocation(googleLocations, locationInfos);
   }
 
   /**
@@ -35,33 +40,19 @@ export class LocationModel implements ILocationModel{
    * @param googleLocations element address from google api
    * @param locationInfos country from google api
    */
-  getAddresses(googleLocations, locationInfos): ILocationModel {
+  getLocation(googleLocations, locationInfos) {
     // delete last element for array
     googleLocations.pop();
-
-    this.country = locationInfos[1];
-    this.region = null;
-    this.department = null;
-    this.city = locationInfos[0];
-    this.neighborhood = null;
-    this.addresses = [];
-    this.others = [];
-    this.googleData = [];
 
     googleLocations.forEach(
       locate => {
         this.intiLocation(locate);
       }
     );
-
-    if (this.country && this.city) {
-      return null;
-    }
   }
 
   private intiLocation(locate) {
     let locateType = locate.types[0];
-
     if (locateType === 'political') {
       locateType = locate.types[1];
     }
@@ -72,29 +63,7 @@ export class LocationModel implements ILocationModel{
       type: locate.types
     };
 
-    if (locateType === 'administrative_area_level_1') {
-      this.region = this.getRegion(formattedAddress);
-    } else if (locateType === 'administrative_area_level_2') {
-      this.department = this.getDataLocation(formattedAddress);
-    } else if (locateType === 'sublocality') {
-      this.neighborhood = formattedAddress.split(', ')[0];
-    } else if (locateType === 'neighborhood') {
-      this.neighborhood = formattedAddress.split(', ')[0];
-    } else if (locateType === 'street_address') {
-      this.addresses.push(address);
-    } else if (locateType === 'route') {
-      this.addresses.push(address);
-      if (this.neighborhood === null) {
-        this.neighborhood = formattedAddress.split(', ')[0];
-      }
-    } else {
-      this.others.push(address);
-      if (this.neighborhood === null) {
-        this.neighborhood = formattedAddress.split(', ')[0];
-      }
-    }
-
-    this.googleData.push(address);
+    this.formatLocation(locateType, formattedAddress, address);
   }
 
   private getRegion(regionBrut) {
@@ -115,5 +84,44 @@ export class LocationModel implements ILocationModel{
   private getDataLocation(dataLocation) {
     const resultCountry = dataLocation.split(', ');
     return resultCountry[resultCountry.length - 2];
+  }
+
+  private formatLocation(locateType, formattedAddress, address) {
+
+    if (locateType === 'administrative_area_level_1') {
+      this.region = this.getRegion(formattedAddress);
+    } else if (locateType === 'administrative_area_level_2') {
+      this.department = this.getDataLocation(formattedAddress);
+    } else if (locateType === 'sublocality') {
+      this.neighborhood = formattedAddress.split(', ')[0];
+    } else if (locateType === 'neighborhood') {
+      this.neighborhood = formattedAddress.split(', ')[0];
+    } else if (locateType === 'street_address') {
+      console.log('----------------------------------------', address);
+      this.addresses.push(address);
+    } else if (locateType === 'route') {
+      this.addresses.push(address);
+      if (this.neighborhood === null) {
+        this.neighborhood = formattedAddress.split(', ')[0];
+      }
+    } else {
+      this.others.push(address);
+      if (this.neighborhood === null) {
+        this.neighborhood = formattedAddress.split(', ')[0];
+      }
+    }
+
+    this.googleData.push(address);
+  }
+
+  private initAttributes(locationInfos) {
+    this.country = locationInfos[1];
+    this.city = locationInfos[0];
+    this.region = null;
+    this.department = null;
+    this.neighborhood = null;
+    this.addresses = [];
+    this.others = [];
+    this.googleData = [];
   }
 }

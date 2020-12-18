@@ -1,4 +1,5 @@
 import { Doc, defaultDoc } from './doc.model';
+import {ILocationModel, LocationModel, locationModel} from '@Models/location.model';
 
 export interface Position {
   lat: number;
@@ -11,7 +12,7 @@ export class Duration {
   min: number;
   sec: number;
 }
-
+/*
 export interface Location {
   country: string;
   region: string;
@@ -21,7 +22,7 @@ export interface Location {
   addresses: any[];
   others: any[];
   googleData: any[];
-}
+}*/
 
 export enum ReportSatus {
   CUT = 'cut',
@@ -31,7 +32,7 @@ export enum ReportSatus {
 
 export interface Report extends Doc {
   status: ReportSatus;
-  location: Location;
+  location: ILocationModel;
   reportedAt: Date | firebase.firestore.Timestamp | any;
   recovredAt?: Date | firebase.firestore.Timestamp | any;
   position: Position;
@@ -41,12 +42,7 @@ export interface Report extends Doc {
 export const defaultReport = {
   ...defaultDoc,
   status: ReportSatus.CUT,
-  location: {
-    department: null,
-    neighborhood: null,
-    addresses: [],
-    others: []
-  },
+  location: locationModel,
   reportedAt: null,
   recovredAt: null,
   position: null,

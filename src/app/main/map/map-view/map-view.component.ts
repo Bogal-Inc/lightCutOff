@@ -31,6 +31,7 @@ import {MapTutoModalComponent} from '../components/map-tuto-modal/map-tuto-modal
 import {MapFilterComponent} from '../components/map-menu/components/map-filter/map-filter.component';
 import {MapMenuComponent} from '../components/map-menu/map-menu.component';
 import {MapModel} from '@Models/map.model';
+import {LocationModel} from '@Models/location.model';
 
 const log = new Logger('map-view.component');
 
@@ -167,7 +168,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           if (country === 'Cameroun' || country === 'Cameroon') {
             this.createReport(
               event,
-              this.mapM.getAddresses(googleLocations, locality)
+              new LocationModel(googleLocations, locality)
             );
           } else {
             log.error('current user no found in Camoeroon', googleLocation);
@@ -287,16 +288,16 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private createReport(query, location) {
-    /*if (location === null) {
+    if (location.country === null && location.city === null) {
       log.error('report not create. Location is null');
       return null;
-    }*/
+    }
 
     this.isLoader = true;
     this.formLoader = true;
 
     const report = {
-      location,
+      location: Object.assign({}, location),
       position: this.mapM.position,
       reportedAt: new Date(query),
     } as Report;
@@ -304,12 +305,16 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.markerCurrentInfoWindow.setContent(this.loadingElt.nativeElement);
     this.reportService.addReport(report).then(
       resp => {
-        log.debug('report create');
+        log.debug('report create', resp.path.valueOf());
         this.formLoader = false;
         report.id = resp.path.valueOf().split('/')[1];
         this.updateReport(report);
       },
-      err => log.error('report not create')
+      err => {
+        log.error('Error: report not create');
+        this.markerCurrentInfoWindow.close();
+        this.initMarkerUser(this.mapM.markerUserOption(this.translateService.instant('main.map-view.your_position')));
+      }
     );
   }
 
