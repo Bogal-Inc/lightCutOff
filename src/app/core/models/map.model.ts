@@ -51,6 +51,10 @@ export class MapModel {
    * @param location country from google api
    */
   getAddresses(googleLocations, location): Location {
+    if (location.length[0] === null && location.length[1] === null) {
+      return null;
+    }
+
     // delete last element for array
     googleLocations.pop();
 
@@ -70,9 +74,6 @@ export class MapModel {
       }
     );
 
-    if (locationTmp.country && locationTmp.city) {
-      return null;
-    }
     return locationTmp;
   }
 
