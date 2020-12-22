@@ -32,6 +32,7 @@ import {MapFilterComponent} from '../components/map-menu/components/map-filter/m
 import {MapMenuComponent} from '../components/map-menu/map-menu.component';
 import {MapModel} from '@Models/map.model';
 import {LocationModel} from '@Models/location.model';
+import { MapService } from '@Services/map.service';
 
 const log = new Logger('map-view.component');
 
@@ -88,7 +89,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private authService: AuthService,
     private translateService: TranslateService,
     private metaService: MetaService,
-    private mapService: ComponentService,
+    private componentService: ComponentService,
+    private mapService: MapService,
     private analytics: AngularFireAnalytics,
     private modalService: NgbModal,
     config: NgbTooltipConfig
@@ -236,7 +238,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         markerCurrentInfoWindow: this.markerCurrentInfoWindow
       };
 
-      const recovredFromElement = this.mapService.createComponent(
+      const recovredFromElement = this.componentService.createComponent(
         data,
         MarkerRecovredReportComponent,
         this.recovredFormReport
@@ -431,6 +433,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
               }
               return report;*/
             });
+          // this.getDistanceBylocality();
           this.addClusters(this.reports);
         },
       err => log.error('report not load', err));
@@ -465,7 +468,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (report.recovredAt) {
       // add detail component to recovred marker
-      content = this.mapService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
+      content = this.componentService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
       this.addInfoWindow(currentMareker, content);
     } else {
       if (this.authService.getUser().id === report._createdBy.id){
@@ -476,16 +479,16 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         };
 
         // component to update report marker for marker not recovred with owner same
-        content = this.mapService.createComponent(data, MarkerRecovredReportComponent, this.recovredFormReport);
+        content = this.componentService.createComponent(data, MarkerRecovredReportComponent, this.recovredFormReport);
         infoWindow.setContent(content);
         infoWindow.setZIndex(1000);
 
         // component to see report informations for marker not recovred with owner same
-        content = this.mapService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
+        content = this.componentService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
         this.addInfoWindow(currentMareker, content, 'hover');
       } else {
         // marker recovred not owner same
-        content = this.mapService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
+        content = this.componentService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
         this.addInfoWindow(currentMareker, content);
       }
     }
@@ -545,5 +548,68 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       size: 'lg',
       backdrop: 'static'
     });
+  }
+
+  private getDistanceBetweenMarker(reports: Report[]) {
+    const results = [];
+
+    reports.forEach(
+      reportA => {
+        // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < reports.length; i++) {
+          const reportB = reports[i];
+          let isReport;
+
+          if (reportA.id === reportB.id) {
+            continue;
+          }
+
+          if (results.length > 0) {
+            isReport = results.filter(
+              (reportFilter) => (reportFilter.reportA.id === reportA.id && reportFilter.reportB.id === reportB.id) ||
+                (reportFilter.reportB.id === reportA.id && reportFilter.reportA.id === reportB.id)
+            );
+          }
+
+          if (isReport?.length > 0) {
+            continue;
+          }
+
+          const result = {
+            reportA,
+            reportB,
+            dist: this.mapService.getDistanceFromLatLonInKm(reportA.position, reportB.position)
+          };
+          results.push(result);
+        }
+      }
+    );
+
+    return results.sort((reportA, reportB) => reportA.dist - reportB.dist);
+  }
+
+  private getDistanceBylocality() {
+    const geocoder = new google.maps.Geocoder();
+    let googleLocation = null;
+
+    geocoder.geocode(
+      {location: this.mapM.position},
+      (googleLocations, status) => {
+        if (status === 'OK') {
+          googleLocation = googleLocations[1];
+
+          if (googleLocation) {
+            const locality = this.mapM.getCountryCity(googleLocation);
+            console.log('---------------------------------', locality[0]);
+            const reports = this.reeportsFilterByCity(locality[0]);
+            const results = this.getDistanceBetweenMarker(reports);
+            console.log(results);
+          }
+        }
+      });
+  }
+
+  private reeportsFilterByCity(city: string): Report[] {
+    return this.reports.filter(report => report.location.city === city);
   }
 }
