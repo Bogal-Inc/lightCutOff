@@ -142,7 +142,7 @@
       "error_no_cameroon": "Vous ne pouvez pas creer de rapport hors du territoire Camerounais",
       "error_no_pace": "La place rechercher est introuvable",
       "signalement_add": "Signalement ajouté",
-      "signal_no_energy": "Signalez une coupure de lumière où vous vous trouvez",
+      "message_add_report": "Signalez une coupure de lumière où vous vous trouvez",
       "map_no_load": "La map n'a pas pu être chargée. Veillez vous assurez que vous etes bien connecté à internet",
       "btn_add_report": "Ajouter un rapport",
       "no_place": "Votre place n'a pas été trouvée",
@@ -253,6 +253,12 @@
       "current_report": "Signalement coupure en cours",
       "end_report": "Signalements coupure terminée",
       "title_stats": "Statistiques"
+    },
+    "map-not-found": {
+      "text_1": "VOTRE PLANETE N'EST PLUS ACCESSIBLE",
+      "text_2": "Est ce que vous pouvez vérifier que vous êtes connecté à internet?",
+      "text_3": "Si cela ne fonctionne pas vous avez de gros problèmes.",
+      "btn_home": "ACCUEIL"
     }
   },
   "statistics": {

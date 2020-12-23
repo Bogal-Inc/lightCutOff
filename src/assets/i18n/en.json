@@ -142,7 +142,7 @@
       "error_no_cameroon": "You cannot create a report outside Cameroonian territory",
       "error_no_pace": "The place to search is not found",
       "signalement_add": "Report added",
-      "signal_no_energy": "Report a light cut off where you are",
+      "message_add_report": "Report a light cut off where you are",
       "map_no_load": "The map could not be loaded. Please make sure you are connected to the internet",
       "btn_add_report": "Add a report",
       "no_place": "Your place was not found",
@@ -237,6 +237,28 @@
     },
     "own-report-detail": {
       "btn_edit_title": "Signaler la fin de cette coupure"
+    },
+    "map-history-marker": {
+      "menu_history": "Historic",
+      "icon_user_title": "Your report",
+      "last_modif": "Last update",
+      "for_month": "For this month",
+      "for_day": "For today",
+      "current_cut": "Current cuts",
+      "end_cut": "Finished cuts",
+      "report_for": "Reports for",
+      "report_of": "Reports of",
+      "report_today": "reports today",
+      "total": "Total",
+      "current_report": "Report cut in progress",
+      "end_report": "Reports completed",
+      "title_stats": "Statistics"
+    },
+    "map-not-found": {
+      "text_1": "YOUR PLANET IS NO LONGER ACCESSIBLE",
+      "text_2": "Can you verify that you are connected to the internet?",
+      "text_3": "If that doesn't work, you're in big trouble.",
+      "btn_home": "HOME"
     }
   },
   "statistics": {
