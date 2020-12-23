@@ -66,6 +66,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private infosReport: ViewContainerRef;
   @ViewChild('tleft') public tooltip: NgbTooltip;
   private map: google.maps.Map;
+  private mapM: MapModel;
   private markerCurrentInfoWindow: google.maps.InfoWindow;
   readonly projectTitle = Const.app.title;
   isErrorMapActive = false;
@@ -79,7 +80,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   reportsMarkers: any;
   markersClusters;
   reportAdd: Report;
-  private mapM: MapModel;
+  activeInfoWindow: any;
 
   constructor(
     private mapsApiLoader: MapsAPILoader,
@@ -498,13 +499,22 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private addInfoWindow(marker: google.maps.Marker, content = null, event= 'click'): google.maps.InfoWindow {
     log.debug('init infowindow on marker');
+
     const infoWindow = new google.maps.InfoWindow({
       content
     });
     const markerMap = marker.getMap();
 
     if (event === 'click') {
-      google.maps.event.addListener(marker, event, () => infoWindow.open(markerMap, marker) );
+      google.maps.event.addListener(marker, event, () => {
+        if (this.activeInfoWindow) {
+          this.activeInfoWindow.close();
+        }
+
+        infoWindow.open(markerMap, marker);
+        this.activeInfoWindow = infoWindow;
+      });
+
     } else if (event === 'hover') {
       google.maps.event.addListener(marker, 'mouseover', () => infoWindow.open(markerMap, marker));
       google.maps.event.addListener(marker, 'mouseout', () => infoWindow.close());
@@ -600,10 +610,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
           if (googleLocation) {
             const locality = this.mapM.getCountryCity(googleLocation);
-            console.log('---------------------------------', locality[0]);
             const reports = this.reeportsFilterByCity(locality[0]);
             const results = this.getDistanceBetweenMarker(reports);
-            console.log(results);
           }
         }
       });
