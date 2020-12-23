@@ -23,7 +23,7 @@
       "btn_map": "Signalez nous une coupure",
       "about": {
         "title": "À propos",
-        "content": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. Le projet <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
+        "content": "L'accès à des ressources publiques dans les pays en voie de développement tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. <b>{projectTitle}</b> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
         "btn_next": "En savoir plus"
       },
       "app_example": {
@@ -63,10 +63,10 @@
     "aboutus": {
       "title_page": "A propos",
       "title": "Qui sommes nous?",
-      "text_history_1": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. La plateforme <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
+      "text_history_1": "La fourniture d'énergie électrique en Afrique est un besoin fondamental, c'est à dire qu'elle est précieuse pour tout habitant. Cependant, dans des pays en voie de développement comme le Cameroun, l'effectivité de cette disponibilité n'est pas tout le temps avérée. Afin de permettre aux habitants et consommateurs d'énergie électrique de mieux maitriser cette disponibilité au quotidien, nous avons pensé à créer l'outil <b>{projectTitle}</b>.",
       "title_obj_1": "Notre objectif",
+      "text_obj_1": "<b>{projectTitle}</b> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
       "title_obj_2": "Comment?",
-      "text_obj_1": "Notre but est d'aider la population à mieux s'adapter aux interruptions d'électricité. Nous voulons les aider à trouver des alternatives et ainsi poursuivre leurs activités.",
       "text_obj_2": "Notre stratégie est de proposer une carte interactive d'où nos utilisateurs pourraient signaler des coupures de lumière quand elles commencent et aussi quand elles se terminent et ainsi informer la communauté."
     },
     "tuto": {
