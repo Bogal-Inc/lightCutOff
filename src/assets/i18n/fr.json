@@ -19,8 +19,9 @@
   "core": {
     "home": {
       "title_page": "Site officiel",
-      "btn_show_video": "Comment utiliser {projectTitle}",
-      "btn_map": "Signalez nous une coupure",
+      "btn_show_video": "Tutoriel {projectTitle}",
+      "btn_map": "Signalez une coupure",
+      "btn_report": "Mes signalements",
       "about": {
         "title": "À propos",
         "content": "L'accès à des ressources publiques dans les pays en voie de développement tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. <b>{projectTitle}</b> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
@@ -317,8 +318,7 @@
       "home": "Accueil",
       "map": "Carte",
       "statistics": "Statistiques",
-      "offline": "Hors ligne",
-      "user_report_acces": "Mes signalements"
+      "offline": "Hors ligne"
     },
     "map-legend": {
       "title": "Légende",
