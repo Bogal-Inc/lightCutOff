@@ -7,19 +7,19 @@
                class="mb-5 home__section-header__body__logo__img"><br>
           <a class="mb-3 btn btn-dark mr-2" (click)="openModal(content)"
              [class.btn-lg]="!isMobil"
-             title="Apprenez comment utiliser Lightcutoff"
+             [title]="'core.home.btn_tuto_lightcutoff_title' | translate: { projectTitle: projectTitle }"
           >
             <fa-icon [icon]="faPlayCircle"></fa-icon>
-            {{'core.home.btn_show_video' | translate: { projectTitle: projectTitle } }}
+            {{'core.home.btn_tuto_lightcutoff' | translate: { projectTitle: projectTitle } }}
           </a>
           <a class="mb-3 btn btn-danger mr-2" [class.btn-lg]="!isMobil" href="/map"
-             title="Allez sur notre carte interactive de Lightcutoff faire votre signalement"
+             [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }"
           >
             <fa-icon [icon]="faBullhorn"></fa-icon>
             {{"core.home.btn_map" | translate}}
           </a>
           <a class="mb-3 btn btn-success mr-2" [class.btn-lg]="!isMobil" href="/own-report" *ngIf="isMarkerAdded"
-             title="Retrouver la liste de vos signalements sur Lightcutoff"
+             [title]="'core.home.btn_report_title' | translate: { projectTitle: projectTitle }"
           >
             <fa-icon [icon]="faCheckCircle"></fa-icon>
             {{"core.home.btn_report" | translate}}

@@ -19,9 +19,12 @@
   "core": {
     "home": {
       "title_page": "Official website",
-      "btn_show_video": "Tutorial {projectTitle}",
+      "btn_tuto_lightcutoff": "Tutorial {projectTitle}",
+      "btn_tuto_lightcutoff_title": "How use {projectTitle}?",
       "btn_map": "Report a light cut",
+      "btn_map_title": "Go to our interactive map of {projectTitle} to make your report",
       "btn_report": "Mes signalements",
+      "btn_report_title": "Find the list of your reports on {projectTitle}",
       "about": {
         "title": "About us",
         "content": "Access to public resources in developing countries such as electricity or water is not easy. Some regions/cities/districts may even be deprived of it for several days or even several weeks. <b>{projectTitle}</b> is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
