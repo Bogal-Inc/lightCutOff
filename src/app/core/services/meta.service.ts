@@ -22,9 +22,13 @@ export class MetaService {
     this.initTitlePage(title);
 
     this.metaTagService.addTags([
-      { name: 'keywords', content: 'Angular, électricité, cameroun' },
+      { name: 'keywords', content: 'lightcutoff, light cut off, coupure de lumiàre, coupure d\'energie électrique, coupure d\'électricité, ' +
+          'on a cut la light, où est ce qu\'il ya de la lumière, électricité, cameroun, coupure, ENEO, eneo, electricity, énergie, energy, ' +
+          'kmer, 237, cut, ' },
       { name: 'title', content: this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page') },
-      { name: 'description', content: 'Angular, électricité, cameroun' },
+      { name: 'description', content: 'LightCutOff is a collaborative platform that allows its users to help each other on the issue of ' +
+          'the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of ' +
+          'their resources and their activities.' },
     ]);
   }
 
