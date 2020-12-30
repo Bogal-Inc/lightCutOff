@@ -3,7 +3,8 @@
     <div class="home__section-header__body">
       <div class="d-flex align-items-center justify-content-center home__section-header__body__logo section_1">
         <div class="text-center">
-          <img src="../../../../assets/static/images/logo.png" alt="{{ projectTitle }} logo"
+          <img src="../../../../assets/static/images/logo.png"
+               [alt]="'core.home.alt_logo' | translate: { projectTitle: projectTitle }"
                class="mb-5 home__section-header__body__logo__img"><br>
           <a class="mb-3 btn btn-dark mr-2" (click)="openModal(content)"
              [class.btn-lg]="!isMobil"
@@ -34,10 +35,12 @@
     <div class="home__section-about__body w-100 h-100">
       <div class="d-flex align-items-center justify-content-center w-100 h-100">
         <div class="container">
-          <h1 class="mb-5 text-center">{{'core.home.about.title' | translate}}</h1>
+          <h2 class="mb-5 text-center">{{'core.home.about.title' | translate}}</h2>
           <div class="row">
             <div class="col-md-3">
-              <img src="../../../../assets/static/images/home/aboutus.svg" class="rounded w-100" alt="aboutus logo">
+              <img src="../../../../assets/static/images/home/aboutus.svg" class="rounded w-100"
+                   [alt]="'core.aboutus.alt_img' | translate: { projectTitle: projectTitle }"
+                   alt="">
             </div>
             <div class="col-md-9">
               <div>
@@ -59,7 +62,7 @@
 <!--  what we do section-->
   <section class="home__section home__section-whatwedo">
     <div class="home__section-whatwedo__body w-100 h-100">
-      <h1 class="mb-5 text-center">{{'core.home.whatwedo.title' | translate}}</h1>
+      <h2 class="mb-5 text-center">{{'core.home.whatwedo.title' | translate}}</h2>
       <div class="container">
         <div class="row">
           <div class="col-md-3 text-center">
@@ -88,7 +91,7 @@
           <div class="col-md-3 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/notification.svg"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.users_notifications' | translate}} logo">
+                   class="rounded w-100" alt="{{'core.home.whatwedo.users_notifications' | translate}}">
             </div>
             <h4>{{'core.home.whatwedo.users_notifications' | translate}}</h4>
           </div>
@@ -100,27 +103,27 @@
   <!--  Applications example -->
   <section class="home__section home__section-example">
     <div class="home__section-whatwedo__body w-100 h-100">
-      <h1 class="mb-5 text-center">{{'core.home.app_example.title' | translate}}</h1>
+      <h2 class="mb-5 text-center">{{'core.home.app_example.title' | translate}}</h2>
       <div class="container">
         <div class="row">
           <div class="col-md-4 text-center">
             <div class=" pb-4">
               <img src="../../../../assets/static/images/home/research.svg"
-                   class="rounded w-100" alt="{{'core.home.app_example.research' | translate}} logo">
+                   class="rounded w-100" alt="{{'core.home.app_example.alt_research' | translate}} logo">
             </div>
             <h4>{{'core.home.app_example.research' | translate}}</h4>
           </div>
           <div class="col-md-4 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/work.svg"
-                   class="rounded w-100" alt="{{'core.home.app_example.deplace' | translate}} logo">
+                   class="rounded w-100" alt="{{'core.home.app_example.alt_deplace' | translate}}">
             </div>
             <h4>{{'core.home.app_example.deplace' | translate}}</h4>
           </div>
           <div class="col-md-4 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/demenage.svg"
-                   class="rounded w-100" alt="{{'core.home.app_example.to_move_out' | translate}} logo">
+                   class="rounded w-100" alt="{{'core.home.app_example.alt_to_move_out' | translate}}">
             </div>
             <h4>{{'core.home.app_example.to_move_out' | translate}}</h4>
           </div>
@@ -132,7 +135,7 @@
 <!--  data report-->
   <section class="home__section home__section-data" *ngIf="reports">
     <div class="home__section-data__header">
-      <h1 class="mb-5 text-center">{{'core.home.statistics.title' | translate }}</h1>
+      <h2 class="mb-5 text-center">{{'core.home.statistics.title' | translate }}</h2>
     </div>
     <div class="home__section-data__body w-100 h-100">
       <div class="container">
@@ -161,7 +164,7 @@
 <!--  team section-->
   <section class="home__section home__section-team">
     <div class="home__section-team__body w-100 h-100">
-      <h1 class="mb-5 text-center">{{'core.home.team.title' | translate}}</h1>
+      <h2 class="mb-5 text-center">{{'core.home.team.title' | translate}}</h2>
 
       <div class="container">
         <div class="row">
@@ -169,22 +172,22 @@
                (mouseenter) ="mouseEnter(partners[0])"  (mouseleave) ="mouseLeave(partners[0])">
             <div class=" pb-4">
               <img src="../../../../assets/static/images/partners/kouagnia_willy_c.png" [class.d-block]="!impPartnerWilly"
-                   class="rounded-circle w-100 d-none" alt="kouagnia willy CEO">
+                   class="rounded-circle w-100 d-none" alt="kouagnia willy lightcutoff CEO">
               <img src="../../../../assets/static/images/partners/kouagnia_willy_b.png" [class.d-block]="impPartnerWilly"
-                   class="rounded-circle w-100 d-none" alt="kouagnia willy CEO">
+                   class="rounded-circle w-100 d-none" alt="kouagnia willy lightcutoff CEO">
             </div>
             <div>
               <h4>Willy Kouagnia</h4>
-              <i>{{'core.home.team.ceo' | translate}}, {{'core.home.team.developer' | translate}}</i>
+              <i>{{'core.home.team.founder' | translate}}, {{'core.home.team.developer' | translate}}</i>
             </div>
           </div>
           <div class="col-md-4 text-center home__section-team__item"
                (mouseenter) ="mouseEnter(partners[2])"  (mouseleave) ="mouseLeave(partners[2])">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/partners/jaures_tchapet_c.png" [class.d-block]="!impPartnerJaures"
-                   class="rounded-circle w-100 d-none" alt="jaures_tchapet CTO">
+                   class="rounded-circle w-100 d-none" alt="jaures_tchapet lightcutoff CTO">
               <img src="../../../../assets/static/images/partners/jaures_tchapet_b.png" [class.d-block]="impPartnerJaures"
-                   class="rounded-circle w-100 d-none" alt="jaures_tchapet CTO">
+                   class="rounded-circle w-100 d-none" alt="jaures_tchapet lightcutoff CTO">
             </div>
             <div>
               <h4>Jaures Tchapet</h4>
@@ -195,9 +198,9 @@
                (mouseenter) ="mouseEnter(partners[1])" (mouseleave) ="mouseLeave(partners[1])">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/partners/nandjeu_euclide_c.png" [class.d-block]="!impPartnerEuclide"
-                   class="rounded-circle w-100 d-none" alt="Nandjeu Euclide Quentin reponsable communication">
+                   class="rounded-circle w-100 d-none" alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
               <img src="../../../../assets/static/images/partners/nandjeu_euclide_b.png" [class.d-block]="impPartnerEuclide"
-                   class="rounded-circle w-100 d-none" alt="Nandjeu Euclide Quentin reponsable communication">
+                   class="rounded-circle w-100 d-none" alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
             </div>
             <div>
               <h4>Nandjeu Euclide Quentin</h4>
@@ -216,7 +219,8 @@
         <h1 class="mb-5 text-center">{{'core.home.partners.title' | translate}}</h1>
         <div class="row">
           <img src="../../../../assets/static/images/partners/AG-LOGO.png"
-               class="rounded-circle mx-auto d-block w-25" alt="AG-LOGO">
+               class="rounded-circle mx-auto d-block w-25"
+               alt="AG-LOGO lightcutoff partner">
         </div>
       </div>
     </div>
@@ -231,7 +235,7 @@
           <div class="row">
             <div class="col-md-3">
               <img src="../../../../assets/static/images/home/contact_us.svg"
-                   class="rounded w-100" alt="{{'core.home.contactus.title' | translate}} logo">
+                   class="rounded w-100" alt="{{'core.home.contactus.alt_img' | translate}} logo">
             </div>
             <div class="col-md-9">
               <app-contact-us></app-contact-us>

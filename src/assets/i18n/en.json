@@ -25,15 +25,20 @@
       "btn_map_title": "Go to our interactive map of {projectTitle} to make your report",
       "btn_report": "Mes signalements",
       "btn_report_title": "Find the list of your reports on {projectTitle}",
+      "alt_logo": "{projectTitle} logo, report power cut, mark your light cut",
       "about": {
         "title": "About us",
         "content": "Access to public resources in developing countries such as electricity or water is not easy. Some regions/cities/districts may even be deprived of it for several days or even several weeks. <b>{projectTitle}</b> is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
-        "btn_next": "Find out more"
+        "btn_next": "Find out more",
+        "alt_img": "report light cut, lightcutoff logo about"
       },
       "app_example": {
         "title": "Some application examples",
+        "alt_research": "illustration: Research data on light cut off",
         "research": "Research",
+        "alt_deplace": "illustration: To move to work in an area where there is no power outage",
         "deplace": "To move to work in an area where there is no power outage",
+        "alt_to_move_out": "illustration: Living in a low cut-off frequency area",
         "to_move_out": "Living in a low cut-off frequency area"
       },
       "team": {
@@ -52,12 +57,13 @@
       },
       "whatwedo": {
         "title": "What do we do",
-        "collect_data": "Compile data",
-        "local_cut_off": "Locate power outages",
-        "charts_data": "Data analysis",
-        "users_notifications": "Notify users"
+        "collect_data": "Compile data illustration, collect data illustration",
+        "local_cut_off": "Locate power outage, illustration what we dos",
+        "charts_data": "Data analysis, data learning",
+        "users_notifications": "illustration Notify users, illustration send information to users"
       },
       "contactus": {
+        "alt_img": "Contact us for the light cuts near you",
         "title": "Contact us"
       },
       "partners": {

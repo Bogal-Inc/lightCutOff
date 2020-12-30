@@ -25,15 +25,20 @@
       "btn_map_title": "Allez sur notre carte interactive de {projectTitle} faire votre signalement",
       "btn_report": "Mes signalements",
       "btn_report_title": "Retrouver la liste de vos signalements sur {projectTitle}",
+      "alt_logo": "{projectTitle} logo, signalez coupure de courant, marquez vos coupure de lumiere",
       "about": {
         "title": "À propos",
         "content": "L'accès à des ressources publiques dans les pays en voie de développement tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. <b>{projectTitle}</b> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
-        "btn_next": "En savoir plus"
+        "btn_next": "En savoir plus",
+        "alt_img": "rapportez coupure lumiere, lightcutoff logo a propos"
       },
       "app_example": {
         "title": "Quelques exemples d'application",
-        "research": "La Recherche",
+        "research": "Recherche",
+        "alt_research": "illustration: La Recherche de données sur les coupures de lumiere",
+        "alt_deplace": "illustration: Se déplacer pour travailler dans une zone où il y a pas de coupure de lumière",
         "deplace": "Se déplacer pour travailler dans une zone où il y a pas de coupure",
+        "alt_to_move_out": "illustration: Habiter une zone à faible fréquence de coupure",
         "to_move_out": "Habiter une zone à faible fréquence de coupure"
       },
       "team": {
@@ -41,6 +46,7 @@
         "developer": "Développeur",
         "cto": "CTO",
         "ceo": "CEO",
+        "founder": "Fondateur",
         "communication": "Responsable communication, design"
       },
       "statistics": {
@@ -52,12 +58,13 @@
       },
       "whatwedo": {
         "title": "Que faisons nous",
-        "collect_data": "Compiler des données",
-        "local_cut_off": "Localiser les coupures d'électricité",
-        "charts_data": "Étude des données",
-        "users_notifications": "Notifier les utilisateurs"
+        "collect_data": "illustration Compiler des données, illustration collecter les donnees",
+        "local_cut_off": "Localiser les coupures d'électricité, illustration qu'est ce que nous faisons",
+        "charts_data": "Étude des données, analyse de donnees",
+        "users_notifications": "illustration Notifier les utilisateurs, illustration envoyer des informations aux utilisateurs"
       },
       "contactus": {
+        "alt_img": "Contactez-nous pour les coupures de lumiere pres dou vous etes",
         "title": "Contactez-nous"
       },
       "partners": {
