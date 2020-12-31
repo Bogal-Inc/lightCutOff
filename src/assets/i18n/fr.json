@@ -121,7 +121,7 @@
       "menu_after_signal": "Après votre signalement"
     },
     "faq": {
-      "title": "FAQ",
+      "title": "Foire aux questions sur {projectTitle}",
       "question_1": "D'où est ce que je peux utiliser {projectTitle}?",
       "response_1": "{projectTitle} est pour l'instant disponible uniquement au Cameroun. Notre objectif dans l'immédiat est de cibler le marché camerounais. Bien sûr, nous n'excluons pas un jour de pouvoir l'exporter vers d'autres régions d'Afrique.",
       "question_2": "Comment signaler une coupure de lumière sur {projectTitle}?",
