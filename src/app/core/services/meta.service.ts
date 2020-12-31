@@ -23,8 +23,7 @@ export class MetaService {
 
     this.metaTagService.addTags([
       { name: 'keywords', content: 'lightcutoff, light cut off, cut off, light, electricity services, electrician near me, electric companies, no electricity, light, electricity, ' },
-      { name: 'title', content: this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page') },
-      { name: 'description', content: 'LightCutOff is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.' },
+      { name: 'description', content: this.translateService.instant('core.home.desc_page') },
     ]);
   }
 
@@ -36,21 +35,19 @@ export class MetaService {
 
     this.metaTagService.addTags([
       { name: 'keywords', content: 'Angular, électricité, cameroun' },
-      { name: 'title', content: this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page') },
-      { name: 'description', content: 'Angular, électricité, cameroun' },
+      { name: 'description', content: this.translateService.instant('core.aboutus.desc_page') },
     ]);
   }
 
   /**
-   * Meta tags for about us page
+   * Meta tags for static page
    */
   initMetaToStatisticsNumbers(title: string) {
     this.initTitlePage(title);
 
     this.metaTagService.addTags([
       { name: 'keywords', content: 'Angular, électricité, cameroun' },
-      { name: 'title', content: this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page') },
-      { name: 'description', content: 'Angular, électricité, cameroun' },
+      { name: 'description', content: this.translateService.instant('statistics.dashboard.desc_page') },
     ]);
   }
 
@@ -62,8 +59,7 @@ export class MetaService {
 
     this.metaTagService.addTags([
       { name: 'keywords', content: 'Angular, électricité, cameroun' },
-      { name: 'title', content: this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page') },
-      { name: 'description', content: 'Angular, électricité, cameroun' },
+      { name: 'description', content: this.translateService.instant('core.tuto.desc_page') },
     ]);
   }
 
@@ -75,8 +71,7 @@ export class MetaService {
 
     this.metaTagService.addTags([
       { name: 'keywords', content: 'Angular, électricité, cameroun' },
-      { name: 'title', content: this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page') },
-      { name: 'description', content: 'Angular, électricité, cameroun' },
+      { name: 'description', content: this.translateService.instant('main.map-view.desc_page') },
     ]);
   }
 
@@ -88,8 +83,7 @@ export class MetaService {
 
     this.metaTagService.addTags([
       { name: 'keywords', content: 'Angular, électricité, cameroun' },
-      { name: 'title', content: this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page') },
-      { name: 'description', content: 'Angular, électricité, cameroun' },
+      { name: 'description', content: this.translateService.instant('report.report-list.title_page') },
     ]);
   }
 
@@ -101,8 +95,7 @@ export class MetaService {
 
     this.metaTagService.addTags([
       { name: 'keywords', content: 'Angular, électricité, cameroun' },
-      { name: 'title', content: this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page') },
-      { name: 'description', content: 'Angular, électricité, cameroun' },
+      { name: 'description', content: this.translateService.instant('report.report-details-mobile.title_page') },
     ]);
   }
 
@@ -114,14 +107,13 @@ export class MetaService {
 
     this.metaTagService.addTags([
       { name: 'keywords', content: 'Angular, électricité, cameroun' },
-      { name: 'title', content: this.projectTitle + ' - ' + this.translateService.instant('core.home.title_page') },
-      { name: 'description', content: 'Angular, électricité, cameroun' },
+      { name: 'description', content: this.translateService.instant('statistics.dashboard.title_page') },
     ]);
   }
 
   private initTitlePage(title: string) {
     this.titleService.setTitle(
-      this.projectTitle + ' - ' + this.translateService.instant(title)
+      this.projectTitle + ' | ' + this.translateService.instant(title)
     );
   }
 }

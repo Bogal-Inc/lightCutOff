@@ -19,25 +19,26 @@
   "core": {
     "home": {
       "title_page": "Official website",
+      "desc_page": "LightCutOff is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
       "btn_tuto_lightcutoff": "Tutorial {projectTitle}",
       "btn_tuto_lightcutoff_title": "How use {projectTitle}?",
       "btn_map": "Report a light cut",
-      "btn_map_title": "Go to our interactive map of {projectTitle} to make your report",
+      "btn_map_title": "Go to our interactive map of {projectTitle} to make your light cut reports",
       "btn_report": "Mes signalements",
-      "btn_report_title": "Find the list of your reports on {projectTitle}",
-      "alt_logo": "{projectTitle} logo, report power cut, mark your light cut",
+      "btn_report_title": "Find the list of your current reports on {projectTitle}",
+      "alt_logo": "{projectTitle} logo, report a power cut, mark your electric power cut",
       "about": {
-        "title": "About us",
+        "title": "About us {projectTitle}",
         "content": "Access to public resources in developing countries such as electricity or water is not easy. Some regions/cities/districts may even be deprived of it for several days or even several weeks. <b>{projectTitle}</b> is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
         "btn_next": "Find out more",
-        "alt_img": "report light cut, lightcutoff logo about"
+        "alt_img": "about section illustration. Report light cut"
       },
       "app_example": {
         "title": "Some application examples",
-        "alt_research": "illustration: Research data on light cut off",
-        "research": "Research",
-        "alt_deplace": "illustration: To move to work in an area where there is no power outage",
-        "deplace": "To move to work in an area where there is no power outage",
+        "alt_research": "illustration: Research related to electrification issues",
+        "research": "Research related to electrification issues",
+        "alt_move": "illustration: Being able to find light in the event of a power cut where you are",
+        "move": "Being able to find light in the event of a power cut where you are",
         "alt_to_move_out": "illustration: Living in a low cut-off frequency area",
         "to_move_out": "Living in a low cut-off frequency area"
       },
@@ -49,7 +50,7 @@
         "communication": "Communication, design manager"
       },
       "statistics": {
-        "title": "Our statistics",
+        "title": "{projectTitle} statistics",
         "reports_total": "Total reports",
         "reports_yearly": "Annual reports",
         "reports_monthly": "Monthly reports",
@@ -72,6 +73,7 @@
     },
     "aboutus": {
       "title_page": "About us",
+      "desc_page": "LightCutOff is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
       "title": "Who are we?",
       "text_history_1": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. La plateforme <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
       "title_obj_1": "Our objective",
@@ -81,6 +83,7 @@
     },
     "tuto": {
       "title_page": "Tutorial, learning how to use our tool",
+      "desc_page": "Tutorial, learn to use lightcutoff. How to use to make light cut reports.",
       "prin_title": "Learn how to use {projectTitle}",
       "report_alert_2": "In this tutorial we consider that <b>a report</b> is also <b>a report</b>, <b>an alert</b> and vice versa.",
       "report_alert_1": "For the moment, {projectTitle} is only available in Cameroon. This means that no report will be accepted if it is made outside Cameroon.",
@@ -274,6 +277,7 @@
     },
     "dashboard": {
       "title_page": "Dashboard",
+      "desc_page": "Lightcutoff. Retrieve statistics related to data recorded during blackouts",
       "card_reports_all_title": "Total reports",
       "card_reports_current_year_title": "Annual reports",
       "card_reports_current_month_title": "Monthly reports",

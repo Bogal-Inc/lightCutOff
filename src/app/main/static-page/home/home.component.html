@@ -35,7 +35,7 @@
     <div class="home__section-about__body w-100 h-100">
       <div class="d-flex align-items-center justify-content-center w-100 h-100">
         <div class="container">
-          <h2 class="mb-5 text-center">{{'core.home.about.title' | translate}}</h2>
+          <h2 class="mb-5 text-center">{{'core.home.about.title' | translate: { projectTitle: projectTitle } }}</h2>
           <div class="row">
             <div class="col-md-3">
               <img src="../../../../assets/static/images/home/aboutus.svg" class="rounded w-100"
@@ -116,9 +116,9 @@
           <div class="col-md-4 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/work.svg"
-                   class="rounded w-100" alt="{{'core.home.app_example.alt_deplace' | translate}}">
+                   class="rounded w-100" alt="{{'core.home.app_example.alt_move' | translate}}">
             </div>
-            <h4>{{'core.home.app_example.deplace' | translate}}</h4>
+            <h4>{{'core.home.app_example.move' | translate}}</h4>
           </div>
           <div class="col-md-4 text-center">
             <div class="text-center pb-4">
@@ -135,7 +135,7 @@
 <!--  data report-->
   <section class="home__section home__section-data" *ngIf="reports">
     <div class="home__section-data__header">
-      <h2 class="mb-5 text-center">{{'core.home.statistics.title' | translate }}</h2>
+      <h2 class="mb-5 text-center">{{'core.home.statistics.title' | translate: { projectTitle: projectTitle } }}</h2>
     </div>
     <div class="home__section-data__body w-100 h-100">
       <div class="container">

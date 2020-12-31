@@ -19,27 +19,28 @@
   "core": {
     "home": {
       "title_page": "Site officiel",
+      "desc_page": "LightCutOff est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
       "btn_tuto_lightcutoff": "Tutoriel {projectTitle}",
       "btn_tuto_lightcutoff_title": "Comment utiliser {projectTitle}?",
       "btn_map": "Signalez une coupure",
-      "btn_map_title": "Allez sur notre carte interactive de {projectTitle} faire votre signalement",
+      "btn_map_title": "Allez sur notre carte interactive de {projectTitle} faire vos signalements de coupures de lumière",
       "btn_report": "Mes signalements",
-      "btn_report_title": "Retrouver la liste de vos signalements sur {projectTitle}",
-      "alt_logo": "{projectTitle} logo, signalez coupure de courant, marquez vos coupure de lumiere",
+      "btn_report_title": "Retrouver la liste de vos signalements de courant sur {projectTitle}",
+      "alt_logo": "{projectTitle} logo, signalez coupure de courant, marquez vos coupure d'energie électrique",
       "about": {
-        "title": "À propos",
+        "title": "À propos de {projectTitle}",
         "content": "L'accès à des ressources publiques dans les pays en voie de développement tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. <b>{projectTitle}</b> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
         "btn_next": "En savoir plus",
-        "alt_img": "rapportez coupure lumiere, lightcutoff logo a propos"
+        "alt_img": "illustration de section à propos. Rapportez coupure lumiere"
       },
       "app_example": {
         "title": "Quelques exemples d'application",
-        "research": "Recherche",
-        "alt_research": "illustration: La Recherche de données sur les coupures de lumiere",
-        "alt_deplace": "illustration: Se déplacer pour travailler dans une zone où il y a pas de coupure de lumière",
-        "deplace": "Se déplacer pour travailler dans une zone où il y a pas de coupure",
-        "alt_to_move_out": "illustration: Habiter une zone à faible fréquence de coupure",
-        "to_move_out": "Habiter une zone à faible fréquence de coupure"
+        "research": "La recherche lié aux problèmes d'électrification",
+        "alt_research": "Illustration: La recherche lié aux problèmes d'électrification",
+        "alt_move": "Illustration: Se déplacer dans une zone où il y a pas de coupure de lumière",
+        "move": "Pouvoir trouver de la lumière en cas de coupure où vous vous trouvez",
+        "alt_to_move_out": "Illustration: Habiter une zone à faible fréquence de coupure d'électricité",
+        "to_move_out": "Habiter une zone à faible fréquence de coupure d'électricité"
       },
       "team": {
         "title": "Notre équipe",
@@ -50,7 +51,7 @@
         "communication": "Responsable communication, design"
       },
       "statistics": {
-        "title": "Nos statistiques",
+        "title": "{projectTitle} statistiques",
         "reports_total": "Total des signalements",
         "reports_yearly": "Signalements annuel",
         "reports_monthly": "Signalements mensuel",
@@ -73,6 +74,7 @@
     },
     "aboutus": {
       "title_page": "A propos",
+      "desc_page": "LightCutOff est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
       "title": "Qui sommes nous?",
       "text_history_1": "La fourniture d'énergie électrique en Afrique est un besoin fondamental, c'est à dire qu'elle est précieuse pour tout habitant. Cependant, dans des pays en voie de développement comme le Cameroun, l'effectivité de cette disponibilité n'est pas tout le temps avérée. Afin de permettre aux habitants et consommateurs d'énergie électrique de mieux maitriser cette disponibilité au quotidien, nous avons pensé à créer l'outil <b>{projectTitle}</b>.",
       "title_obj_1": "Notre objectif",
@@ -81,7 +83,8 @@
       "text_obj_2": "Notre stratégie est de proposer une carte interactive d'où nos utilisateurs pourraient signaler des coupures de lumière quand elles commencent et aussi quand elles se terminent et ainsi informer la communauté."
     },
     "tuto": {
-      "title_page": "Tutoriel, apprentissage de comment utiliser notre outil",
+      "title_page": "Lightcutoff. Tutoriel, comment utiliser?",
+      "desc_page": "Tutoriel, apprendre à utiliser lightcutoff. Comment utiliser faire des signalements de coupure de lumière.",
       "prin_title": "Apprenez à utiliser {projectTitle}",
       "report_alert_2": "Dans ce tutoriel, nous considérons qu'<b>un rapport</b> est aussi <b>un signalement</b>, <b>une alerte</b> et vice versa.",
       "report_alert_1": "Pour l'instant, {projectTitle} n'est disponible qu'au Cameroun. Ce qui veut dire qu'aucun signalement ne sera accepté s'il est fait en dehors du Cameroun.",
@@ -143,7 +146,8 @@
       "title": "Vos signalements"
     },
     "map-view": {
-      "title_page": "Carte",
+      "title_page": "Carte collaborative",
+      "desc_page": "Lightcutoff carte collaborative. Signaler les coupures de lumière. Aidez nos équipe à geolocalisé des coupures de courant. Informer les membres de la communauté des coupures d'energie électrique.",
       "error_geolocalize_not_work": "Le service de geolocalisation ne fonctionne pas",
       "error_geolocalize_no_browser": "Votre navigateur ne supporte Geolocation",
       "error_no_cameroon": "Vous ne pouvez pas creer de rapport hors du territoire Camerounais",
@@ -275,6 +279,7 @@
     },
     "dashboard": {
       "title_page": "Tableau de bord",
+      "desc_page": "Lightcutoff. Retrouver des statistiques liées aux données enregistrées pendant des coupure de lumière",
       "card_reports_all_title": "Total rapports",
       "card_reports_current_year_title": "Rapports annuel",
       "card_reports_current_month_title": "Rapports mensuel",

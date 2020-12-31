@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
       page_title: 'Dashboard'
     });
 
-    this.metaService.initMetatoAboutUs('statistics.dashboard.title_page');
+    this.metaService.initMetaDashboard('statistics.dashboard.title_page');
     this.initCardDashbord();
   }
 
