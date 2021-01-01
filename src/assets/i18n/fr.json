@@ -59,10 +59,14 @@
       },
       "whatwedo": {
         "title": "Que faisons nous",
-        "collect_data": "illustration Compiler des données, illustration collecter les donnees",
-        "local_cut_off": "Localiser les coupures d'électricité, illustration qu'est ce que nous faisons",
-        "charts_data": "Étude des données, analyse de donnees",
-        "users_notifications": "illustration Notifier les utilisateurs, illustration envoyer des informations aux utilisateurs"
+        "alt_collect_data": "Illustration compiler et collecter des données sur les coupures de courant",
+        "collect_data": "Compiler et collecter des données",
+        "alt_local_cut_off": "Illustration localiser les coupures d'électricité",
+        "local_cut_off": "Localiser les coupures d'électricité",
+        "alt_charts_data": "Illustration analyse des données sur les coupures d'énergie électrique",
+        "charts_data": "Analyse des données",
+        "alt_users_notifications": "Illustration Notifier les utilisateurs sur les coupure de courrant electrique",
+        "users_notifications": "Notifier les utilisateurs"
       },
       "contactus": {
         "alt_img": "Contactez-nous pour les coupures de lumiere pres dou vous etes",
@@ -73,7 +77,7 @@
       }
     },
     "aboutus": {
-      "title_page": "À propos | Qui sommes nous?",
+      "title_page": "À propos",
       "desc_page": "LightCutOff est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
       "text_history_1": "La fourniture d'énergie électrique en Afrique est un besoin fondamental, c'est à dire qu'elle est précieuse pour tout habitant. Cependant, dans des pays en voie de développement comme le Cameroun, l'effectivité de cette disponibilité n'est pas tout le temps avérée. Afin de permettre aux habitants et consommateurs d'énergie électrique de mieux maitriser cette disponibilité au quotidien, nous avons pensé à créer l'outil <b>{projectTitle}</b>.",
       "title_obj_1": "Notre objectif",

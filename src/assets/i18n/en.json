@@ -57,11 +57,15 @@
         "reports_daily": "Daily reports"
       },
       "whatwedo": {
-        "title": "What do we do",
-        "collect_data": "Compile data illustration, collect data illustration",
-        "local_cut_off": "Locate power outage, illustration what we dos",
-        "charts_data": "Data analysis, data learning",
-        "users_notifications": "illustration Notify users, illustration send information to users"
+        "title": "what are we doing",
+        "alt_collect_data": "Illustration compiling and collecting data on power outages",
+        "collect_data": "Compile and collect data",
+        "alt_local_cut_off": "Illustration Locate power cuts",
+        "local_cut_off": "Locate power cuts",
+        "alt_charts_data": "Illustration analysis of data on power cuts",
+        "charts_data": "analysis and compile of data",
+        "alt_users_notifications": "Illustration Notify users on power outages",
+        "users_notifications": "Notify users"
       },
       "contactus": {
         "alt_img": "Contact us for the light cuts near you",
@@ -72,7 +76,7 @@
       }
     },
     "aboutus": {
-      "title_page": "About us | Who are we?",
+      "title_page": "About us",
       "desc_page": "LightCutOff is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
       "text_history_1": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. La plateforme <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
       "title_obj_1": "Our objective",

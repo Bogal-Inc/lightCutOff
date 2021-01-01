@@ -68,7 +68,7 @@
           <div class="col-md-3 text-center">
             <div class="text-center pb-4">
               <img src="../../../../assets/static/images/home/map.svg"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.local_cut_off' | translate}} logo">
+                   class="rounded w-100" alt="{{'core.home.whatwedo.alt_local_cut_off' | translate}} logo">
             </div>
             <h4>{{'core.home.whatwedo.local_cut_off' | translate}}</h4>
           </div>
@@ -76,7 +76,7 @@
           <div class="col-md-3 text-center">
             <div class=" pb-4">
               <img src="../../../../assets/static/images/home/data_collect.svg"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.collect_data' | translate}} logo">
+                   class="rounded w-100" alt="{{'core.home.whatwedo.alt_collect_data' | translate}} logo">
             </div>
             <h4>{{'core.home.whatwedo.collect_data' | translate }}</h4>
           </div>
@@ -144,7 +144,7 @@
             <h3>{{'core.home.statistics.reports_total' | translate }}</h3>
             <span>{{reports.length}}</span>
           </div>
-          <div class="col-md data-item">
+          <div class="col-md data-item" *ngIf="reportsCurrentYear.length > 0">
             <h3>{{'core.home.statistics.reports_yearly' | translate }}</h3>
             <span>{{reportsCurrentYear.length}}</span>
           </div>
