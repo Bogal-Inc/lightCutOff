@@ -22,7 +22,7 @@ export class MetaService {
     this.initTitlePage(title);
 
     this.metaTagService.addTags([
-      { name: 'keywords', content: 'lightcutoff, light cut off, cut off, light, electricity services, electrician near me, electric companies, no electricity, light, electricity, ' },
+      { name: 'keywords', content: 'lightcutoff, light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, Logo lightcutoff, délestages, coupures, signaler coupure, signalez coupure de lumiere, rapport de coupure de lumiere, rapport, panne de courant, panne electrique, panne, report light cut off, que faire pendant une coupure de lumiere, page d\'accueil, homepage' },
       { name: 'description', content: this.translateService.instant('core.home.desc_page') },
     ]);
   }
@@ -34,7 +34,7 @@ export class MetaService {
     this.initTitlePage(title);
 
     this.metaTagService.addTags([
-      { name: 'keywords', content: 'Angular, électricité, cameroun' },
+      { name: 'keywords', content: 'lightcutoff, light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, Logo lightcutoff, délestages, coupures, a propos, about us, historic, histoire, vision, qu\'est ce que lightcutoff, signaler coupure, signalez coupure de lumiere, rapport de coupure de lumiere, rapport, panne de courant, panne de electrique, panne, report light cut off' },
       { name: 'description', content: this.translateService.instant('core.aboutus.desc_page') },
     ]);
   }
@@ -58,7 +58,7 @@ export class MetaService {
     this.initTitlePage(title);
 
     this.metaTagService.addTags([
-      { name: 'keywords', content: 'Angular, électricité, cameroun' },
+      { name: 'keywords', content: 'lightcutoff, light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, Logo lightcutoff, délestages, coupures, signaler coupure, signalez coupure de lumiere, rapport de coupure de lumiere, rapport, panne de courant, panne de electrique, panne, report light cut off, que faire pendant une coupure de lumiere, comment utiliser lightcutoff, tutoriel, apprendre, learning' },
       { name: 'description', content: this.translateService.instant('core.tuto.desc_page') },
     ]);
   }
@@ -70,7 +70,7 @@ export class MetaService {
     this.initTitlePage(title);
 
     this.metaTagService.addTags([
-      { name: 'keywords', content: 'Angular, électricité, cameroun' },
+      { name: 'keywords', content: 'lightcutoff, light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, Logo lightcutoff, délestages, coupures, signaler coupure, signalez coupure de lumiere, rapport de coupure de lumiere, rapport, panne de courant, panne de electrique, panne, report light cut off, que faire pendant une coupure de lumiere, carte interactive, map, marker, marqueur, heure de coupure de la lumiere, date de coupure de la lumiere, signaler la fin d\'une coupure de courant' },
       { name: 'description', content: this.translateService.instant('main.map-view.desc_page') },
     ]);
   }
