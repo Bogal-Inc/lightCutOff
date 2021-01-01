@@ -402,7 +402,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.reportService.getReports({
       isDeleted: false,
       reportStatus: (reportStatus) ? currentReportStatus : null,
-      datestart: new Date(now.getFullYear(), 1, 1)
+      datestart: new Date(2020, 1, 1)
+      // datestart: new Date(now.getFullYear(), 1, 1)
     })
       .pipe(
         takeUntil(this.unsubsscribe$)
