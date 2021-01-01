@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
 
     this.isMobil = isMobile();
     this.metaService.initMetatoHome('core.home.title_page');
-    this.loadReports();
+    // this.loadReports();
   }
 
   openModal(content) {
