@@ -73,14 +73,13 @@
       }
     },
     "aboutus": {
-      "title_page": "A propos",
+      "title_page": "À propos | Qui sommes nous?",
       "desc_page": "LightCutOff est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
-      "title": "Qui sommes nous?",
       "text_history_1": "La fourniture d'énergie électrique en Afrique est un besoin fondamental, c'est à dire qu'elle est précieuse pour tout habitant. Cependant, dans des pays en voie de développement comme le Cameroun, l'effectivité de cette disponibilité n'est pas tout le temps avérée. Afin de permettre aux habitants et consommateurs d'énergie électrique de mieux maitriser cette disponibilité au quotidien, nous avons pensé à créer l'outil <b>{projectTitle}</b>.",
       "title_obj_1": "Notre objectif",
-      "text_obj_1": "<b>{projectTitle}</b> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
-      "title_obj_2": "Comment?",
-      "text_obj_2": "Notre stratégie est de proposer une carte interactive d'où nos utilisateurs pourraient signaler des coupures de lumière quand elles commencent et aussi quand elles se terminent et ainsi informer la communauté."
+      "text_obj_1": "<strong>{projectTitle}</strong> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
+      "title_obj_2": "Notre vision",
+      "text_obj_2": "Notre vision à long terme chez <strong>{projectTitle}</strong> est d'utiliser des technologies tel que <strong>l'intelligence artificielle et le machin learning</strong> pour offrir des services plus précis et mieux évalués afin d'améliorer l'expérience des utilisateurs face aux coupures de courant."
     },
     "tuto": {
       "title_page": "Lightcutoff. Tutoriel, comment utiliser?",

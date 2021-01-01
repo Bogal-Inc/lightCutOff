@@ -72,14 +72,13 @@
       }
     },
     "aboutus": {
-      "title_page": "About us",
+      "title_page": "About us | Who are we?",
       "desc_page": "LightCutOff is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
-      "title": "Who are we?",
       "text_history_1": "Au <b>Cameroun</b>, l'accès à des ressources publiques tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. La plateforme <b>{projectTitle}</b> vise à aider à faire un état des lieux en temps réel de l'accès à l'énergie électrique au <b>Cameroun</b>. Ceci dans le but de permettre à des tiers d'adapter leur quotidien et de s'informer.",
       "title_obj_1": "Our objective",
       "text_obj_1": "<b>{projectTitle}</b> is a collaborative platform which allows its users to help each other on the question of availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
-      "title_obj_2": "How?",
-      "text_obj_2": "Our strategy is to provide an interactive map from where our users can report light cuts when they start and also when they end and thus inform the community."
+      "title_obj_2": "Our vision",
+      "text_obj_2": "Our long-term vision at <strong> {projectTitle} </strong> is to use technologies such as <strong> artificial intelligence and machin learning </strong> to offer more precise and better evaluated services in order to '' improve the user experience in the face of power cuts."
     },
     "tuto": {
       "title_page": "Tutorial, learning how to use our tool",

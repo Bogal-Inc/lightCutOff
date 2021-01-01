@@ -34,7 +34,7 @@ export class MetaService {
     this.initTitlePage(title);
 
     this.metaTagService.addTags([
-      { name: 'keywords', content: 'lightcutoff, light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, Logo lightcutoff, délestages, coupures, a propos, about us, historic, histoire, vision, qu\'est ce que lightcutoff, signaler coupure, signalez coupure de lumiere, rapport de coupure de lumiere, rapport, panne de courant, panne de electrique, panne, report light cut off' },
+      { name: 'keywords', content: 'lightcutoff, light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, Logo lightcutoff, délestages, coupures, a propos, about us, historic, histoire, vision, qu\'est ce que lightcutoff, signaler coupure, signalez coupure de lumiere, rapport de coupure de lumiere, rapport, panne de courant, panne de electrique, panne, report light cut off, intelligence artificielle, machin learning' },
       { name: 'description', content: this.translateService.instant('core.aboutus.desc_page') },
     ]);
   }
