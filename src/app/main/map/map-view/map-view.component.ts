@@ -33,6 +33,7 @@ import {MapMenuComponent} from '../components/map-menu/map-menu.component';
 import {MapModel} from '@Models/map.model';
 import {LocationModel} from '@Models/location.model';
 import { MapService } from '@Services/map.service';
+import {ActivatedRoute} from '@angular/router';
 
 const log = new Logger('map-view.component');
 
@@ -94,6 +95,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private mapService: MapService,
     private analytics: AngularFireAnalytics,
     private modalService: NgbModal,
+    private activatedRoute: ActivatedRoute,
     config: NgbTooltipConfig
   ) {
     config.placement = 'left';
@@ -132,9 +134,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
               lng: +position.coords.longitude,
               lat: +position.coords.latitude
             });
+
+            // if param in url map
+            this.goToMarkerWithUrl();
           },
-          () => {
-            log.error('geolocalization no actived or no application not connected');
+          (err) => {
+            log.error('geolocalization no actived or no application not connected', err);
             this.initMap(Const.coordsDefault);
           });
         } else {
@@ -615,5 +620,17 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private reeportsFilterByCity(city: string): Report[] {
     return this.reports.filter(report => report.location.city === city);
+  }
+
+  private goToMarkerWithUrl() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      const reportId = params.reportId;
+
+      if (reportId) {
+        this.reportService.getReport(reportId).subscribe(
+          report => this.goToMarker(report)
+        );
+      }
+    });
   }
 }
