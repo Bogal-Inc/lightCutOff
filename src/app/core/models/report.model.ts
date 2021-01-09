@@ -25,7 +25,6 @@ export interface Report extends Doc {
   reportedAt: Date | firebase.firestore.Timestamp | any;
   recovredAt?: Date | firebase.firestore.Timestamp | any;
   position: Position;
-  url?: string;
 }
 
 export const defaultReport = {
@@ -34,6 +33,5 @@ export const defaultReport = {
   location: locationModel,
   reportedAt: null,
   recovredAt: null,
-  position: null,
-  url: null,
+  position: null
 } as Report;

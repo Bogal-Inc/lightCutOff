@@ -12,7 +12,6 @@ export interface Doc {
 }
 
 export const defaultDoc = {
-  id:  null,
   _createdAt:  null,
   _createdBy: {
     id:  null

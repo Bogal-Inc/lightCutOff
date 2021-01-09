@@ -33,7 +33,6 @@ export class ReportService extends BaseService {
     return this.col$<Report>(
       `${Const.collections.reports}`,
       ref => {
-
         let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
         query = query.where('_isDelete', '==', params.isDeleted);
 
@@ -44,7 +43,6 @@ export class ReportService extends BaseService {
         } else if (params.limit) {
           query = query.limit(params.limit);
         }
-
         return query;
       }
     );
@@ -57,7 +55,7 @@ export class ReportService extends BaseService {
         ...defaultReport,
         reportedAt: report.reportedAt,
         location: report.location,
-        position: this.geopoint(report.position.lat, report.position.lng),
+        position: {lat: report.position.lat, lng: report.position.lng},
         _createdBy: this.user,
         _createdAt: this.timestamp,
       } as unknown as Report
