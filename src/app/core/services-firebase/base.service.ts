@@ -72,19 +72,7 @@ export class BaseService {
 
   protected col$<T>(ref: CollectionPredicate<T>, queryFn?: QueryFn): Observable<any[]> {
     return this.col(ref, queryFn)
-      .snapshotChanges()
-      .pipe(
-        map(actions => {
-          return actions.map(a => {
-            const data = a.payload.doc.data() as any;
-            const id = a.payload.doc.id;
-            return {
-              id,
-              ...data
-            } as T;
-          });
-        })
-      );
+      .valueChanges({ idField: 'id' });
   }
 
   protected set<T extends Doc>(ref: DocPredicate<T>, data: any) {

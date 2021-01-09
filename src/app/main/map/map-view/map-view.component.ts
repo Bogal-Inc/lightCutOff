@@ -310,8 +310,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       resp => {
         log.debug('report create', resp.path.valueOf());
         this.formLoader = false;
-        report.id = resp.path.valueOf().split('/')[1];
-        this.updateReport(report);
+        const id = resp.path.valueOf().split('/')[1];
+        this.reportAdd = {
+          id,
+          ... report
+        };
+        this.uodateMarkerConfig();
       },
       err => {
         log.error('Error: report not create');
@@ -321,20 +325,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  private updateReport(report: Report) {
-    this.reportService.updateReport(report).then(
-      () => {
-        this.reportAdd = report;
-        this.markerCurrentInfoWindow.setContent(this.btnSwitchForm.nativeElement);
-        this.markerCurrentPosition.setDraggable(false);
-        this.markerCurrentPosition.setOpacity(0);
-        this.toastrService.success(this.translateService.instant('main.map-view.signalement_add'));
-      },
-      err => {
-        log.error('report not update', err);
-        this.formLoader = false;
-      }
-    );
+  private uodateMarkerConfig() {
+    this.markerCurrentInfoWindow.setContent(this.btnSwitchForm.nativeElement);
+    this.markerCurrentPosition.setDraggable(false);
+    this.markerCurrentPosition.setOpacity(0);
+    this.toastrService.success(this.translateService.instant('main.map-view.signalement_add'));
   }
 
   private initMap(position: Position){
@@ -561,7 +556,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  private getDistanceBetweenMarker(reports: Report[]) {
+  /*private getDistanceBetweenMarker(reports: Report[]) {
     const results = [];
 
     reports.forEach(
@@ -616,7 +611,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           }
         }
       });
-  }
+  }*/
 
   private reeportsFilterByCity(city: string): Report[] {
     return this.reports.filter(report => report.location.city === city);
