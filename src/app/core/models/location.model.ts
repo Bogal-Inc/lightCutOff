@@ -97,7 +97,6 @@ export class LocationModel implements ILocationModel{
     } else if (locateType === 'neighborhood') {
       this.neighborhood = formattedAddress.split(', ')[0];
     } else if (locateType === 'street_address') {
-      console.log('----------------------------------------', address);
       this.addresses.push(address);
     } else if (locateType === 'route') {
       this.addresses.push(address);
