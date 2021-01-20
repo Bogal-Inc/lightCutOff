@@ -71,6 +71,14 @@
         "alt_img": "Contact us for the light cuts near you",
         "title": "Contact us"
       },
+      ,
+      "actuality": {
+        "title": "Actuality",
+        "opleda": {
+          "title": "4th place in the hackathon organized by the NGO OPLEDA",
+          "content": "We had the honor of participating in the hackthon organized by the NGO <b>OPLEDA</b> whose theme was <b>Electricity for all in Africa</b>. Out of 62 projects on the list, we got the 4th place."
+        }
+      },
       "partners": {
         "title": "Partners"
       }

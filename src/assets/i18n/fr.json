@@ -72,6 +72,13 @@
         "alt_img": "Contactez-nous pour les coupures de lumiere pres dou vous etes",
         "title": "Contactez-nous"
       },
+      "actuality": {
+        "title": "Actualité",
+        "opleda": {
+          "title": "4<sup>e</sup> place du hackathon organisé par l'ONG OPLEDA",
+          "content": "Nous avons eu l'honneur de participer au hackthon organisé par l'ONG <b>OPLEDA</b> dont le thème portait sur <b>Electricité pour tous en Afrique</b>. Sur 62 projets en liste, nous avons eu la 4<sup>e</sup> place."
+        }
+      },
       "partners": {
         "title": "Partenaires"
       }
