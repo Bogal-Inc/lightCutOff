@@ -1,6 +1,6 @@
 .menu {
   position: absolute;
-  z-index: 1000;
+  z-index: 999;
   width: 400px;
   font-size: 0.85em;
 
@@ -14,6 +14,7 @@
   &__group2 {
     &__btn {
       cursor: pointer;
+      color: var(--dark);
       background-color: var(--white);
       padding: 20px;
       display: inline-block;

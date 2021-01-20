@@ -4,6 +4,7 @@ import {Logger} from '@Services/logger.service';
 import {environment} from '../../../../../environments/environment';
 import {faAngleRight, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {isMobile} from '@Helpers/mobile-confirm.helper';
 
 const log = new Logger('map-menu.component');
 
@@ -47,7 +48,7 @@ export class MapMenuComponent implements OnInit, OnChanges {
   @Output() researchPlace: EventEmitter<any> = new EventEmitter<any>();
   @Output() filterMarker: EventEmitter<any> = new EventEmitter<any>();
   @Input() reports: Report[];
-  readonly moduleConfig = environment.app.modules.mapMenu;
+  readonly mapMenu = environment.app.modules.mapMenu;
   readonly faAngleRight = faAngleRight;
   readonly faAngleLeft = faAngleLeft;
   reportsSort: Report[];
@@ -56,10 +57,9 @@ export class MapMenuComponent implements OnInit, OnChanges {
   reportsDayNotClosed: Report[];
   reportsDay: Report[];
   now: Date;
-  showHistory = false;
   active = 1;
   btnActive = false;
-  menuDownUp = false;
+  menuDownUp = isMobile();
   btnSearchBarUpDown = false;
 
   constructor() { }
@@ -73,7 +73,6 @@ export class MapMenuComponent implements OnInit, OnChanges {
     const reportsCurrent = changes.reports.currentValue;
 
     if (reportsCurrent) {
-      this.showHistory = true;
       this.loadReports(reportsCurrent);
     }
   }

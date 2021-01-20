@@ -1,4 +1,4 @@
-import {Location, Position} from '@Models/report.model';
+import {Position} from '@Models/report.model';
 import {Const} from '../../../environments/const';
 
 declare const MarkerClusterer: any;
@@ -9,6 +9,7 @@ const BG_COLOR = '#eaeaea';
 export class MapModel {
   // tslint:disable-next-line:variable-name
   private _map;
+  // position user on map
   // tslint:disable-next-line:variable-name
   private _position: Position;
 
@@ -46,34 +47,6 @@ export class MapModel {
   }
 
   /**
-   * @description get address from address elements from google api
-   * @param googleLocations element address from google api
-   * @param location country from google api
-   */
-  getAddresses(googleLocations, location): Location {
-    // delete last element for array
-    googleLocations.pop();
-
-    let locationTmp = {
-      country: location[1],
-      region: null,
-      department: null,
-      city: location[0],
-      neighborhood: null,
-      addresses: [],
-      others: [],
-      googleData: [],
-    };
-    googleLocations.forEach(
-      locate => {
-        locationTmp = this.intiLocation(locate, locationTmp);
-      }
-    );
-
-    return locationTmp;
-  }
-
-  /**
    * @description get country from address element
    * @param address contain element address from google
    */
@@ -90,66 +63,6 @@ export class MapModel {
       markers,
       {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
     );
-  }
-
-  private intiLocation(locate, locationTmp) {
-    let locateType = locate.types[0];
-
-    if (locateType === 'political') {
-      locateType = locate.types[1];
-    }
-
-    const label = locate.formatted_address;
-    const address = {
-      label,
-      type: locate.types
-    };
-
-    if (locateType === 'administrative_area_level_1') {
-      locationTmp.region = this.getRegion(label);
-    } else if (locateType === 'administrative_area_level_2') {
-      locationTmp.department = this.getDataLocation(label);
-    } else if (locateType === 'sublocality') {
-      locationTmp.neighborhood = label.split(', ')[0];
-    } else if (locateType === 'neighborhood') {
-      locationTmp.neighborhood = label.split(', ')[0];
-    } else if (locateType === 'street_address') {
-      locationTmp.addresses.push(address);
-    } else if (locateType === 'route') {
-      locationTmp.addresses.push(address);
-      if (locationTmp.neighborhood === null) {
-        locationTmp.neighborhood = label.split(', ')[0];
-      }
-    } else {
-      locationTmp.others.push(address);
-      if (locationTmp.neighborhood === null) {
-        locationTmp.neighborhood = label.split(', ')[0];
-      }
-    }
-
-    locationTmp.googleData.push(address);
-
-    return locationTmp;
-  }
-
-  private getRegion(regionBrut) {
-    let region = regionBrut.split(', ')[0];
-    region = region.split(' ')[2];
-
-    if (region.indexOf('\'') > 0) {
-      region = region.split('\'')[1];
-    }
-
-    if (region === 'Ctre') {
-      return 'Centre';
-    }
-
-    return region;
-  }
-
-  private getDataLocation(dataLocation) {
-    const resultCountry = dataLocation.split(', ');
-    return resultCountry[resultCountry.length - 2];
   }
 
   private initMap(gmap, components) {

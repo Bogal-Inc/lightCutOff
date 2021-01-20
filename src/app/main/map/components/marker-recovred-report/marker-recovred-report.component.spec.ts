@@ -53,7 +53,6 @@ describe('MarkerRecovredReportComponent', () => {
         recovredAt: null,
         reportedAt: {seconds: 1603022468, nanoseconds: 228000000},
         status: ReportSatus.CUT_COMPLETED,
-        url: null,
         _createdAt: {seconds: 1603022488, nanoseconds: 184000000},
         _createdBy: {id: '6wXgCDpPQjbM73lf339BLh5uQK22'},
         _deletedAt: null,

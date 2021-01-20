@@ -1,68 +1,69 @@
 <app-download-app *ngIf="isAppDownload"></app-download-app>
+
 <footer class="footer">
-    <div class="d-flex justify-content-between">
-        <div class="footer__line">
-            <ul class="nav">
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/tuto" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                  {{ 'shared.main-footer.tutorial' | translate}}
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/aboutus" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                  {{ 'shared.main-footer.about' | translate}}
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/faq" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                  FAQ
-                </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" routerLink="#contactus" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                    {{ 'shared.main-footer.contactus' | translate}}
-                  </a>
-              </li>
-            </ul>
-        </div>
-        <div *ngIf="false">
-          <ul class="list-inline">
-            <li class="p-1 list-inline-item">
-              <a><i class="fab fa-facebook-f"></i></a>
-            </li>
-            <li class="p-1 list-inline-item">
-              <a><i class="fab fa-twitter"></i></a>
-            </li>
-            <li class="p-1 list-inline-item">
-              <a><i class="fab fa-instagram"></i></a>
-            </li>
-            <li class="p-1 list-inline-item">
-              <a><i class="fab fa-pinterest"></i></a>
-            </li>
-          </ul>
-        </div>
-        <div>
-            <ul class="nav">
-                <li *ngIf="currentLang === 'en'" class="nav-item">
-                  <a (click)="toggleLang()" class="nav-link" href="#">
-                    <img src="./../../../assets/static/icons/france.png" alt="flag_french" class="lang-flag">
-                    Français
-                  </a>
-                </li>
-                <li *ngIf="currentLang === 'fr'" class="nav-item">
-                  <a (click)="toggleLang()" class="nav-link" href="#">
-                    <img src="./../../../assets/static/icons/england.png" alt="flag_england" class="lang-flag">
-                    English
-                  </a>
-                </li>
-            </ul>
-        </div>
+  <div class="d-flex justify-content-between">
+    <div class="footer__line">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tuto" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            {{ 'shared.main-footer.tutorial' | translate}}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/aboutus" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            {{ 'shared.main-footer.about' | translate}}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/faq" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            FAQ
+          </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#contactus" >
+              {{ 'shared.main-footer.contactus' | translate}}
+            </a>
+        </li>
+      </ul>
     </div>
-    <div class="text-center">
-        <small>Copyright © {{ now.getFullYear() }} by {{ appTitle }} All Rights Reserved.</small>
-      <a routerLink="/admin/dashboard" style="color: black">
-        .
-      </a>
+    <div *ngIf="false">
+      <ul class="list-inline">
+        <li class="p-1 list-inline-item">
+          <a><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li class="p-1 list-inline-item">
+          <a><i class="fab fa-twitter"></i></a>
+        </li>
+        <li class="p-1 list-inline-item">
+          <a><i class="fab fa-instagram"></i></a>
+        </li>
+        <li class="p-1 list-inline-item">
+          <a><i class="fab fa-pinterest"></i></a>
+        </li>
+      </ul>
     </div>
+
+    <div class="pt-2 footer__lang">
+      <div class="media footer__lang__media" *ngIf="currentLang === 'en'">
+        <img src="./../../../assets/static/icons/france.png" alt="flag_french" class="footer__lang__media__img">
+        <div class="media-body footer__lang__media__body">
+          <a (click)="toggleLang()" class="pl-1 footer__lang__media__body__link">Français</a>
+        </div>
+      </div>
+      <div class="media footer__lang__media" *ngIf="currentLang === 'fr'">
+        <img src="./../../../assets/static/icons/england.png" alt="flag_england" class="footer__lang__media__img">
+        <div class="media-body footer__lang__media__body">
+          <a (click)="toggleLang()" class="pl-1 footer__lang__media__body__link">English</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+      <small>Copyright © {{ now.getFullYear() }} by {{ appTitle }} All Rights Reserved.</small>
+    <a routerLink="/admin/dashboard" style="color: black">
+      .
+    </a>
+  </div>
 </footer>
 

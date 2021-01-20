@@ -1,4 +1,4 @@
-import {ReportService} from '../../../../core/services-firebase/report.service';
+import {ReportService} from '../../../../core/services-firebase';
 import {ToastrService} from 'ngx-toastr';
 import {Component, OnInit} from '@angular/core';
 import {compareDate, getDuration} from '@Helpers/date.helper';

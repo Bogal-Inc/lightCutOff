@@ -10,7 +10,7 @@
   }
 
   &__section-header {
-    background: center/contain no-repeat url("../../../../assets/static/images/home/background_home_section_1.jpg");
+    background: center/contain no-repeat url("../../../../assets/static/images/home/background_home_section.jpg");
     background-size: cover;
 
     &__body {
@@ -44,6 +44,7 @@
     padding: 40px 1px;
 
     &__body {
+      background-color: var(--white);
       .data-item {
         text-align: center;
         span{
@@ -66,7 +67,7 @@
 }
 
 #modal-video {
-  background: center/contain no-repeat url("../../../../assets/static/images/loading.svg");
+  background-color: var(--dark);
 }
 
 @media (max-width: 575px){

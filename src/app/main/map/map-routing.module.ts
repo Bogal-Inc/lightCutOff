@@ -8,6 +8,10 @@ const routes: Routes = [
     path: 'map',
     component: MapViewComponent,
   },
+  {
+    path: 'map/:reportId',
+    component: MapViewComponent,
+  },
 ];
 
 @NgModule({

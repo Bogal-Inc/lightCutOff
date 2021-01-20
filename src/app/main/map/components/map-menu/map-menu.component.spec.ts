@@ -1,7 +1,6 @@
-import {async, ComponentFixture, TestBed, tick} from '@angular/core/testing';
-
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import { MapMenuComponent } from './map-menu.component';
-import {By} from '@angular/platform-browser';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('MapMenuComponent', () => {
   let component: MapMenuComponent;
@@ -9,7 +8,8 @@ describe('MapMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MapMenuComponent ]
+      declarations: [ MapMenuComponent ],
+      imports: [NoopAnimationsModule]
     })
     .compileComponents();
   }));

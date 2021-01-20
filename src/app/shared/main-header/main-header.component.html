@@ -1,12 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" [class.fixed-top]="fixedTop" [class.mt-3]="isGlobalMessage">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" [class.fixed-top]="fixedTop" [class.mt-4]="isGlobalMessage">
   <a class="navbar-brand" href="/" attr.aria-label="{{'shared.main-header.home' | translate}}">
     <img src="../../../assets/static/images/logo_header.png"
          class="d-inline-block align-top" width="150px"
          alt="logo" loading="lazy">
-<!--    <span class="badge badge-pill badge-danger beta">Beta</span>-->
-    <!--<span *ngIf="online" class="badge badge-pill badge-danger beta">
-      {{ 'shared.main-header.offline' | translate }}
-    </span>-->
+    <span class="badge badge-pill badge-danger beta">Beta</span>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
           aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +18,7 @@
         </a>
       </li>
       <li class="nav-item" [class.active]="mapActive">
-        <a class="nav-link" routerLink="map" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" routerLink="/map" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
           {{"shared.main-header.map" | translate}}
         </a>
       </li>
@@ -46,7 +43,7 @@
     <ul class="navbar-nav mt-2 mt-lg-0" *ngIf="moduleEnable">
       <li class="nav-item">
         <a class="nav-link" routerLink="/own-report" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-          {{"shared.main-header.user_report_acces" | translate}}
+          {{"core.home.btn_report" | translate}}
         </a>
       </li>
     </ul>

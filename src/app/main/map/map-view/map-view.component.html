@@ -1,19 +1,13 @@
 <div class="map-container">
-  <div class="d-flex justify-content-center mt-5" *ngIf="isErrorMapActive">
-    <div class="mt-5">
-      <div class="mt-5 alert alert-danger text-danger" role="alert">
-        {{"main.map-view.map_no_load" | translate}}
-      </div>
-    </div>
-  </div>
+  <app-map-not-found *ngIf="isErrorMapActive"></app-map-not-found>
 
   <div class="map-container">
     <app-map-menu [reports]="reports" (goToMarkerEnd)="goToMarker($event)" (researchPlace)="onSearchPlace($event)"
                   [class.d-none]="!isFormLightCutOf" (filterMarker)="mapFiltered($event);"></app-map-menu>
     <div #mapContainer id="map" class="map-container__map">
-<!--        loading init map page-->
+<!--loading init map page-->
       <app-loading [show]="isLoader"></app-loading>
-<!--        loading between forms of window markr-->
+<!--loading between forms of window marker-->
       <app-loading [show]="formLoader"></app-loading>
 
       <app-map-legend [class.d-none]="!isFormLightCutOf"></app-map-legend>
@@ -47,7 +41,7 @@
 
   <ng-template #tooltipContent>
     <div>
-      {{"main.map-view.signal_no_energy" | translate}}
+      {{"main.map-view.message_add_report" | translate}}
     </div>
   </ng-template>
 </div>

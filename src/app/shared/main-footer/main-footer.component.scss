@@ -2,12 +2,23 @@
   background-color: var(--dark);
   color: var(--gray);
 
-  .nav-item a {
-    color:  rgba(255,255,255,.5);
+  &__lang {
+    &__media {
+      &__img {
+        width: 20%;
+      }
+      &__body {
+        &__link {
+          cursor: pointer;
+        }
+      }
+    }
   }
-  .nav-item a:hover {
-    color: var(--white);
-  }
+}
 
-  .lang-flag{ width: 20%; }
+a {
+  color:  rgba(255,255,255,.5);
+}
+.nav-item a:hover {
+  color: var(--white);
 }

@@ -2,7 +2,6 @@ import { AuthService } from '../../core/services-firebase';
 import {Component, Input, OnInit} from '@angular/core';
 import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
-import {InternetService} from '@Services/internet.service';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 
@@ -19,31 +18,18 @@ export class MainHeaderComponent implements OnInit {
   readonly isAdmin = environment.app.modules.admin;
   readonly moduleEnable = environment.app.modules.ownerReport;
   appTitle = Const.app.title;
-  online: boolean;
   mapActive = false;
   adminActive = false;
 
   constructor(
     private authService: AuthService,
-    private connectionService: InternetService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     log.debug('init');
 
-    // check connection status
-    this.isOnlineStatus();
     this.activeMenuDashboard();
-  }
-
-  isOnlineStatus() {
-    this.connectionService.start();
-    this.connectionService.behaviorSubjectObservable$.subscribe(online => {
-      const logMessage = (online) ? 'app online' : 'app off line';
-      log.debug(logMessage);
-      this.online = online;
-    });
   }
 
   private activeMenuDashboard() {

@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
-import {faPlayCircle, faBullhorn} from '@fortawesome/free-solid-svg-icons';
+import {faPlayCircle, faBullhorn, faCheckCircle} from '@fortawesome/free-solid-svg-icons';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Const } from 'src/environments/const';
 import {TranslateService} from '@ngx-translate/core';
 import {MetaService} from '@Services/meta.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
-import {ReportService} from '../../../core/services-firebase';
+import {AuthService, ReportService} from '../../../core/services-firebase';
 import {Report} from '@Models/report.model';
+import {isMobile} from '@Helpers/mobile-confirm.helper';
 
 const log = new Logger('home.component');
 
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
   readonly projectTitle = Const.app.title;
   readonly faPlayCircle = faPlayCircle;
   readonly faBullhorn = faBullhorn;
+  readonly faCheckCircle = faCheckCircle;
   closeResult = '';
   reports: any;
   reportsCurrentYear: any;
@@ -42,6 +44,8 @@ export class HomeComponent implements OnInit {
   reportsCurrentDay: Report[];
   nbrReportsDay: number;
   nbrReportsMonthly: number;
+  isMobil: boolean;
+  isMarkerAdded: boolean;
 
   constructor(
     private modalService: NgbModal,
@@ -49,6 +53,7 @@ export class HomeComponent implements OnInit {
     private metaService: MetaService,
     private analytics: AngularFireAnalytics,
     private reportService: ReportService,
+    private authService: AuthService,
     config: NgbModalConfig
   ) {
     config.centered = true;
@@ -63,8 +68,9 @@ export class HomeComponent implements OnInit {
       page_title: 'Home'
     });
 
+    this.isMobil = isMobile();
     this.metaService.initMetatoHome('core.home.title_page');
-    this.initCardDashbord();
+    // this.loadReports();
   }
 
   openModal(content) {
@@ -72,33 +78,17 @@ export class HomeComponent implements OnInit {
     this.modalService.open(content);
   }
 
-  private initCardDashbord() {
+  private loadReports() {
     this.reportService.getReports({
       isDeleted: false
     }).subscribe(
       (reports) => {
         this.reports = reports;
 
+        this.isMarkerAdded = this.isCurrentUSerHaveMarkers();
         this.initReportsCollection();
       });
-  }
 
-  private initReportsCollection() {
-    const now = new Date();
-
-    this.reportsCurrentYear = this.reports.filter(
-      report => report.reportedAt.toDate().getFullYear() === now.getFullYear()
-    );
-
-    this.reportsCurrentMonth = this.reportsCurrentYear.filter(
-      report => report.reportedAt.toDate().getMonth() === now.getMonth()
-    );
-
-    this.reportsCurrentDay = this.reportsCurrentMonth.filter(
-      report => report.reportedAt.toDate().getDate() === now.getDate()
-    );
-    this.nbrReportsMonthly = this.reportsCurrentMonth.length;
-    this.nbrReportsDay = this.reportsCurrentDay.length;
   }
 
   mouseEnter(partner: PARTNERS) {
@@ -119,5 +109,29 @@ export class HomeComponent implements OnInit {
     } else {
       this.impPartnerJaures = true;
     }
+  }
+
+  private isCurrentUSerHaveMarkers() {
+    return this.reports.find(
+      report => this.authService.getUser().id === report._createdBy.id
+    );
+  }
+
+  private initReportsCollection() {
+    const now = new Date();
+
+    this.reportsCurrentYear = this.reports.filter(
+      report => report.reportedAt.toDate().getFullYear() === now.getFullYear()
+    );
+
+    this.reportsCurrentMonth = this.reportsCurrentYear.filter(
+      report => report.reportedAt.toDate().getMonth() === now.getMonth()
+    );
+
+    this.reportsCurrentDay = this.reportsCurrentMonth.filter(
+      report => report.reportedAt.toDate().getDate() === now.getDate()
+    );
+    this.nbrReportsMonthly = this.reportsCurrentMonth.length;
+    this.nbrReportsDay = this.reportsCurrentDay.length;
   }
 }

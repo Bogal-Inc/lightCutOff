@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {I18nService} from '@Services/i18n.service';
 import {Const} from '../../../environments/const';
+import {InternetService} from '@Services/internet.service';
 
 @Component({
   selector: 'app-global-message',
@@ -16,7 +17,9 @@ export class GlobalMessageComponent implements OnInit {
   };
   langFr: boolean;
 
-  constructor(private i18nService: I18nService) { }
+  constructor(
+    private i18nService: I18nService
+  ) { }
 
   ngOnInit(): void {
     this.langFr = this.i18nService.language === Const.app.lang.fr;

@@ -2,7 +2,7 @@
   <div class="list-group reports__history">
     <a class="list-group-item list-group-item-action reports__history__item"
        (click)="moveToMarker(report, index)" *ngFor="let report of reports; let index = index"
-       [class.report__nav__item__content__elt-close]="isClosed(report)"
+       [class.reports__history__item-close]="isClosed(report)"
        [id]="'report-item-' + index"
     >
       <div class="row reports__history__item__header">
