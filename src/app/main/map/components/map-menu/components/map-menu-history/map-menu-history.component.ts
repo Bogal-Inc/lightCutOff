@@ -58,11 +58,18 @@ export class MapMenuHistoryComponent implements OnInit {
 
   private changeStyleOnElementHistory(index: number) {
     const elements = document.querySelectorAll('.reports__history__item');
+    const elementClicked = document.querySelector('#report-item-' + index);
+
     elements.forEach(
-      element => element.className = 'list-group-item list-group-item-action reports__history__item'
+      element => {
+        if (element.className.indexOf('reports__history__item-close') > 0) {
+          element.className = 'list-group-item list-group-item-action reports__history__item-close reports__history__item';
+        } else {
+          element.className = 'list-group-item list-group-item-action reports__history__item';
+        }
+      }
     );
 
-    const elementClicked = document.querySelector('#report-item-' + index);
     elementClicked.className = 'list-group-item list-group-item-action reports__history__item reports__history__item-selected';
   }
 
