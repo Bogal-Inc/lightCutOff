@@ -12,6 +12,7 @@ import {NgcCookieConsentService} from 'ngx-cookieconsent';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 const firebase = require('firebase/app');
+var firebaseui = require('firebaseui');
 /** Initialize Logger */
 const log = new Logger('app.component');
 
