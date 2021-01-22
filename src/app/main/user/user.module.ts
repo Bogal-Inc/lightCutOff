@@ -8,10 +8,11 @@ import {AgGridModule} from 'ag-grid-angular';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import {MapModule} from '../map/map.module';
 import { OwnReportDetailComponent } from './components/own-report-detail/own-report-detail.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
-  declarations: [OwnReportComponent, OwnReportDetailComponent],
+  declarations: [OwnReportComponent, OwnReportDetailComponent, RegisterComponent],
     imports: [
         CommonModule,
         UserRoutingModule,
