@@ -69,7 +69,6 @@ export class MapMenuHistoryComponent implements OnInit {
         }
       }
     );
-
     elementClicked.className = 'list-group-item list-group-item-action reports__history__item reports__history__item-selected';
   }
 
