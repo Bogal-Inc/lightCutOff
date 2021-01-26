@@ -20,6 +20,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { EmptyLayoutComponent } from './layouts/empty-layout/empty-layout.component';
 import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import {NgcCookieConsentConfig, NgcCookieConsentModule} from 'ngx-cookieconsent';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -74,7 +75,8 @@ const cookieConfig: NgcCookieConsentConfig = {
       }
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgcCookieConsentModule.forRoot(cookieConfig)
+    NgcCookieConsentModule.forRoot(cookieConfig),
+    ReactiveFormsModule
   ],
   exports: [
     TranslateModule

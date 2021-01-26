@@ -330,6 +330,15 @@
       "report_places": "Reporting localization details"
     }
   },
+  "user": {
+    "register": {
+      "password_errors_message1": "Le mot de passe doit avoir au moins une lettre majuscule.",
+      "password_errors_message2": "Le mot de passe doit avoir au moins une lettre minuscule.",
+      "password_errors_message3": "Le mot de passe doit avoir au moins un chiffre.",
+      "password_errors_message4": "Le mot de passe doit contenir au moins un de ces caractères spéciaux (!, @, #, $, %, ^, &).",
+      "password_errors_message5": "Le mot de passe doit avoir au moins 8 caractéres."
+    }
+  },
   "shared": {
     "download-app": {
       "title": "Do you use a mobile?",
