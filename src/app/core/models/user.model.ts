@@ -7,11 +7,12 @@ export interface SimpleUser {
 export type Role = 'admin' | 'manager' | 'collector';
 
 export interface User extends Doc{
-  firstName?: string;
+  email: string;
+  password: string;
+  /*firstName?: string;
   lastName?: string;
   fullName?: string;
   pictureUrl?: string;
-  email?: string;
   isHost?: boolean;
   lastProjectVisited?: string;
   projects?: {
@@ -20,5 +21,5 @@ export interface User extends Doc{
       isOwner: boolean;
       role: Role;
     };
-  };
+  };*/
 }

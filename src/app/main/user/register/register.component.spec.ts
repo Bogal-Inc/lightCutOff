@@ -1,6 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterComponent } from './register.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../../../../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {ToastrModule} from 'ngx-toastr';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -8,6 +17,20 @@ describe('RegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        NoopAnimationsModule,
+        RouterTestingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+        ToastrModule.forRoot({
+          timeOut: 10000,
+          progressBar: true
+        }),
+        TranslateModule.forRoot(),
+      ],
       declarations: [ RegisterComponent ]
     })
     .compileComponents();

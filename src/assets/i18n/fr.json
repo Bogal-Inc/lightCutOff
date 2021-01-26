@@ -333,6 +333,28 @@
       "report_places": "Details sur le lieu de signalement"
     }
   },
+  "user": {
+    "register": {
+      "title": "Créer un compte",
+      "mail": "Mail",
+      "mail_error_required": "Votre email ",
+      "mail_error_match": "Mail attendu. Ex: example@example.ex",
+      "password": "Mot de passe",
+      "confirm_password": "Confirmer mot de passe",
+      "password_error_required": "Mot de passe requis",
+      "password_error_match": "Mot de passe ne correspond pas",
+      "password_error_message1": "Le mot de passe doit avoir au moins une lettre majuscule.",
+      "password_error_message2": "Le mot de passe doit avoir au moins une lettre minuscule.",
+      "password_error_message3": "Le mot de passe doit avoir au moins un chiffre.",
+      "password_error_message4": "Le mot de passe doit contenir au moins un de ces caractères spéciaux (!, @, #, $, %, ^, &).",
+      "password_error_message5": "Le mot de passe doit avoir au moins 8 caractéres.",
+      "cgu": "Accepter les conditions d'utilisation",
+      "cgu_error": "Accepter les conditions d'utilisation sont requis",
+      "save_success": "Votre compte à bien été crée",
+      "save_error": "Une erreur est survenue lors de la création de votre compte",
+      "btn_submit": "Envoyer"
+    }
+  },
   "shared": {
     "download-app": {
       "title": "Vous utilisez un mobile?",
