@@ -41,10 +41,25 @@
       </li>
     </ul>
     <ul class="navbar-nav mt-2 mt-lg-0" *ngIf="moduleEnable">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/own-report" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-          {{"core.home.btn_report" | translate}}
-        </a>
+      <li><a class="nav-link" routerLink="/signup" *ngIf="user === null">
+        {{"shared.main-header.signup" | translate}}
+      </a></li>
+      <li><a class="nav-link" routerLink="/signin" *ngIf="user === null">
+        {{"shared.main-header.signin" | translate}}
+      </a></li>
+      <li *ngIf="user !== null">
+        <div class="btn-group">
+          <a class="dropdown-user dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+            <fa-icon [icon]="faUserCircle"></fa-icon> {{user.email}}
+          </a>
+          <div class="dropdown-menu bg-dark dropdown-menu-right">
+            <a class="dropdown-item" routerLink="/own-report">
+              {{"core.home.btn_report" | translate}}
+            </a>
+            <a class="dropdown-item" (click)="logout()">{{"shared.main-header.logout" | translate}}</a>
+          </div>
+        </div>
       </li>
     </ul>
   </div>

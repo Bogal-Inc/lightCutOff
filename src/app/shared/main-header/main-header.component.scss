@@ -12,4 +12,17 @@ nav {
     color: var(--white) !important;
     background-color: black;
   }
+
+  .dropdown-user {
+    color: var(--gray);
+    display: inline-block;
+  }
+
+  .dropdown-item, .dropdown-user{
+    cursor: pointer;
+  }
+
+  .dropdown-user:hover {
+    color: var(--white) !important;
+  }
 }

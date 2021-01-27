@@ -59,7 +59,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     AngularFireAuthModule,
     AngularFireAnalyticsModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 7000,
       progressBar: true
     }),
     TranslateModule.forRoot({

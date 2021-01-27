@@ -40,4 +40,18 @@ export class AuthService extends BaseService{
   createUser(email: string, password: string) {
     return this.angularFireAuth.createUserWithEmailAndPassword(email, password);
   }
+
+  login(email: string, password: string) {
+    return this.angularFireAuth.signInWithEmailAndPassword(email, password);
+  }
+
+  logout() {
+    localStorage.removeItem('LCO_userLogged');
+    return this.angularFireAuth.signOut();
+  }
+
+  getUserLogged() {
+    const user = localStorage.getItem('LCO_userLogged');
+    return JSON.parse(user);
+  }
 }

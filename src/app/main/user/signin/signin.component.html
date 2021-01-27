@@ -1,0 +1,38 @@
+<div class="main-admin signin">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mb-5">
+        <div class="signin__bloc">
+          <h4 class="text-center signin__title">
+            {{'user.signin.title' | translate}}
+          </h4>
+          <hr>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="{{'user.signin.mail' | translate}}"
+                     formControlName="email">
+            </div>
+
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="password" formControlName="password">
+            </div>
+
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="submit">{{'user.signin.btn_submit' | translate}}</button>
+            </div>
+          </form>
+
+          <div *ngIf="reActiveEmail" class="mt-3 alert alert-warning">
+            {{'user.signin.signin_verified_email_message' | translate}}
+            <a class="alert-link" (click)="sendEmailVerification()">
+              {{'user.signin.signin_verified_email_message_2' | translate}}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+      </div>
+    </div>
+  </div>
+</div>
