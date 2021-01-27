@@ -9,10 +9,11 @@ import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import {MapModule} from '../map/map.module';
 import { OwnReportDetailComponent } from './components/own-report-detail/own-report-detail.component';
 import { RegisterComponent } from './register/register.component';
+import { SigninComponent } from './signin/signin.component';
 
 
 @NgModule({
-  declarations: [OwnReportComponent, OwnReportDetailComponent, RegisterComponent],
+  declarations: [OwnReportComponent, OwnReportDetailComponent, RegisterComponent, SigninComponent],
     imports: [
         CommonModule,
         UserRoutingModule,

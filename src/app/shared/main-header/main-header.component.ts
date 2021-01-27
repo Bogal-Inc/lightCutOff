@@ -4,6 +4,8 @@ import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
+import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
+import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
 const log = new Logger('main-header.component');
 
@@ -15,21 +17,23 @@ const log = new Logger('main-header.component');
 export class MainHeaderComponent implements OnInit {
   @Input() fixedTop = false;
   @Input() isGlobalMessage = false;
+  readonly faUserCircle = faUserCircle;
   readonly isAdmin = environment.app.modules.admin;
   readonly moduleEnable = environment.app.modules.ownerReport;
   appTitle = Const.app.title;
   mapActive = false;
   adminActive = false;
+  user: any;
 
   constructor(
     private authService: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     log.debug('init');
-
     this.activeMenuDashboard();
+    this.user = this.authService.getUserLogged();
   }
 
   private activeMenuDashboard() {
@@ -42,5 +46,11 @@ export class MainHeaderComponent implements OnInit {
     } else {
       this.adminActive = false;
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.user = null;
+    this.router.navigate(['/']);
   }
 }

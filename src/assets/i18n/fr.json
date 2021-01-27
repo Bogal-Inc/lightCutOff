@@ -336,8 +336,8 @@
   "user": {
     "register": {
       "title": "Créer un compte",
-      "mail": "Mail",
-      "mail_error_required": "Votre email ",
+      "mail": "Email",
+      "mail_error_required": "Email requis",
       "mail_error_match": "Mail attendu. Ex: example@example.ex",
       "password": "Mot de passe",
       "confirm_password": "Confirmer mot de passe",
@@ -350,9 +350,22 @@
       "password_error_message5": "Le mot de passe doit avoir au moins 8 caractéres.",
       "cgu": "Accepter les conditions d'utilisation",
       "cgu_error": "Accepter les conditions d'utilisation sont requis",
-      "save_success": "Votre compte à bien été crée",
+      "save_success_message": "Vous pouvez aller dans votre boite email activer votre nouveau compte. Merci.",
+      "save_success_title": "Votre compte à bien été crée.",
       "save_error": "Une erreur est survenue lors de la création de votre compte",
       "btn_submit": "Envoyer"
+    },
+    "signin": {
+      "title": "Connectez-vous à un compte",
+      "mail": "Email",
+      "password": "Mot de passe",
+      "login_success": "Connection réussie",
+      "login_error": "Email et/ou mot de passe non correct",
+      "btn_submit": "Connectez-vous",
+      "email_verified_title": "Votre compte n'est pas atcif",
+      "email_verified_body": "Pour activer votre compte, vous devez cliquer sur le lien que vous avez reçu lors de la création de votre compte.",
+      "signin_verified_email_message": "Si vous ne retrouvez plus votre email d'activation, renvoyer un courriel d'activation.",
+      "signin_verified_email_message_2": "Cliquer ici"
     }
   },
   "shared": {
@@ -373,7 +386,10 @@
       "home": "Accueil",
       "map": "Carte",
       "statistics": "Statistiques",
-      "offline": "Hors ligne"
+      "offline": "Hors ligne",
+      "logout": "Déconnexion",
+      "signup": "S'inscrire",
+      "signin": "Se connecter"
     },
     "map-legend": {
       "title": "Légende",
