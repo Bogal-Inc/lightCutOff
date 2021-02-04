@@ -10,10 +10,11 @@ import {MapModule} from '../map/map.module';
 import { OwnReportDetailComponent } from './components/own-report-detail/own-report-detail.component';
 import { RegisterComponent } from './register/register.component';
 import { SigninComponent } from './signin/signin.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
-  declarations: [OwnReportComponent, OwnReportDetailComponent, RegisterComponent, SigninComponent],
+  declarations: [OwnReportComponent, OwnReportDetailComponent, RegisterComponent, SigninComponent, ForgotPasswordComponent],
     imports: [
         CommonModule,
         UserRoutingModule,
