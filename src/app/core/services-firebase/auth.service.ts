@@ -54,4 +54,8 @@ export class AuthService extends BaseService{
     const user = localStorage.getItem('LCO_userLogged');
     return JSON.parse(user);
   }
+
+  sendPasswordResetEmail(email) {
+    return this.angularFireAuth.sendPasswordResetEmail(email);
+  }
 }

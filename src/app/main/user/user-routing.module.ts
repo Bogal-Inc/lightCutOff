@@ -4,6 +4,7 @@ import {OwnReportComponent} from './own-report/own-report.component';
 import {RegisterComponent} from './register/register.component';
 import {SigninComponent} from './signin/signin.component';
 import {AuthGuard} from '../../core/guards/auth.guard';
+import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
     path: 'signin',
     component: SigninComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
   },
 ];
 
