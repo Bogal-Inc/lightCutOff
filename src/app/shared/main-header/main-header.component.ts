@@ -5,7 +5,6 @@ import { Logger } from '@Services/logger.service';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
-import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
 const log = new Logger('main-header.component');
 

@@ -11,10 +11,11 @@ import { OwnReportDetailComponent } from './components/own-report-detail/own-rep
 import { RegisterComponent } from './register/register.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  declarations: [OwnReportComponent, OwnReportDetailComponent, RegisterComponent, SigninComponent, ForgotPasswordComponent],
+  declarations: [OwnReportComponent, OwnReportDetailComponent, RegisterComponent, SigninComponent, ForgotPasswordComponent, ProfileComponent],
     imports: [
         CommonModule,
         UserRoutingModule,
