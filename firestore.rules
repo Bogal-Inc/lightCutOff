@@ -8,5 +8,12 @@ service cloud.firestore {
       // Allow anonymous read on invitation
       allow read, write
     }
+
+    // Matches any document in the users collection as well as any document
+    // in a subcollection.
+    match /users/{users}/{document=**} {
+      // Allow anonymous read on invitation
+      allow read, write
+    }
   }
 }
