@@ -348,12 +348,13 @@
       "password_error_message5": "Le mot de passe doit avoir au moins 8 caractéres.",
       "cgu": "Accepter les conditions d'utilisation",
       "cgu_error": "Accepter les conditions d'utilisation sont requis",
-      "save_success_message": "Vous pouvez aller dans votre boite email activer votre nouveau compte. Merci.",
-      "save_success_title": "Votre compte à bien été crée.",
+      "success_message": "Un e-mail de validation vous a été envoyé, merci d’activer votre compte pour profiter de nos services. Pensez à vérifier votre boîte spam!",
+      "success_title": "Votre compte à bien été crée.",
       "save_error": "Une erreur est survenue lors de la création de votre compte",
       "btn_submit": "Envoyer",
       "text_signin": "Vous avez dèjà un compte?",
-      "btn_password_forget": "Mot de passe oublié"
+      "btn_password_forget": "Mot de passe oublié",
+      "error_email_exist": "Cette email est dèjà utilisé par un aure compte"
     },
     "signin": {
       "title": "Connectez-vous à un compte",

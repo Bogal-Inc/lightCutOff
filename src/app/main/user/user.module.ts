@@ -15,7 +15,14 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  declarations: [OwnReportComponent, OwnReportDetailComponent, RegisterComponent, SigninComponent, ForgotPasswordComponent, ProfileComponent],
+  declarations: [
+    OwnReportComponent,
+    OwnReportDetailComponent,
+    RegisterComponent,
+    SigninComponent,
+    ForgotPasswordComponent,
+    ProfileComponent
+  ],
     imports: [
         CommonModule,
         UserRoutingModule,
