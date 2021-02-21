@@ -327,7 +327,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.formLoader = false;
         this.reportAdd = report;
         this.reportAdd.id = id;
-        this.uodateMarkerConfig();
+        this.updateMarkerConfig();
       },
       err => {
         log.error('Error: report not create');
@@ -337,7 +337,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  private uodateMarkerConfig() {
+  private updateMarkerConfig() {
     this.markerCurrentInfoWindow.setContent(this.btnSwitchForm.nativeElement);
     this.markerCurrentPosition.setDraggable(false);
     this.markerCurrentPosition.setOpacity(0);

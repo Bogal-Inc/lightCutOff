@@ -103,7 +103,7 @@ export class BaseService {
       _createdAt: this.timestamp,
       _createdBy: this.user,
       _updatedAt: this.timestamp,
-      _updatedBy: this.user,
+      _updatedBy: this.user
     });
   }
 

@@ -57,6 +57,7 @@
             <div>
               {{"user.register.text_signin" | translate}} <a routerLink="/signin">{{"shared.main-header.signin" | translate}}</a>
             </div>
+            <div *ngIf="successed" class="alert alert-success">{{'user.register.success_message' | translate}}</div>
           </form>
         </div>
       </div>

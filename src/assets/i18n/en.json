@@ -205,7 +205,7 @@
     "marker-details": {
       "title": "Report",
       "report_that": "Reported on:",
-      "recovred_that":"Recovered on:",
+      "recovred_that": "Recovered on:",
       "info_locations": "Localizations",
       "country": "Country:",
       "city": "City:",
@@ -305,7 +305,7 @@
     "report-details": {
       "title": "Report details",
       "report_that": "Report on:",
-      "recovred_that":"Recovered on:",
+      "recovred_that": "Recovered on:",
       "no_return": "Still ongoing.",
       "report_places": "Localization",
       "country": "Country:",
@@ -323,7 +323,7 @@
       "title_page": "Marker details",
       "title": "Report details",
       "report_that": "Reported on:",
-      "recovred_that":"Recovered on:",
+      "recovred_that": "Recovered on:",
       "no_return": "Still ongoing",
       "longitude": "Longitude:",
       "latitude": "Latitude:",
@@ -332,11 +332,47 @@
   },
   "user": {
     "register": {
-      "password_errors_message1": "Le mot de passe doit avoir au moins une lettre majuscule.",
-      "password_errors_message2": "Le mot de passe doit avoir au moins une lettre minuscule.",
-      "password_errors_message3": "Le mot de passe doit avoir au moins un chiffre.",
-      "password_errors_message4": "Le mot de passe doit contenir au moins un de ces caractères spéciaux (!, @, #, $, %, ^, &).",
-      "password_errors_message5": "Le mot de passe doit avoir au moins 8 caractéres."
+      "title": "Créer un compte",
+      "mail": "Email",
+      "mail_error_required": "Email requis",
+      "mail_error_match": "Mail attendu. Ex: example@example.ex",
+      "password": "Mot de passe",
+      "confirm_password": "Confirmer mot de passe",
+      "password_error_required": "Mot de passe requis",
+      "password_error_match": "Mot de passe ne correspond pas",
+      "password_error_message1": "Le mot de passe doit avoir au moins une lettre majuscule.",
+      "password_error_message2": "Le mot de passe doit avoir au moins une lettre minuscule.",
+      "password_error_message3": "Le mot de passe doit avoir au moins un chiffre.",
+      "password_error_message4": "Le mot de passe doit contenir au moins un de ces caractères spéciaux (!, @, #, $, %, ^, &).",
+      "password_error_message5": "Le mot de passe doit avoir au moins 8 caractéres.",
+      "cgu": "Accepter les conditions d'utilisation",
+      "cgu_error": "Accepter les conditions d'utilisation sont requis",
+      "success_message": "Un e-mail de validation vous a été envoyé, merci d’activer votre compte pour profiter de nos services. Pensez à vérifier votre boîte spam!",
+      "success_title": "Votre compte à bien été crée.",
+      "save_error": "Une erreur est survenue lors de la création de votre compte",
+      "btn_submit": "Envoyer",
+      "text_signin": "Vous avez dèjà un compte?",
+      "btn_password_forget": "Mot de passe oublié",
+      "error_email_exist": "The email address is already in use by another account"
+    },
+    "signin": {
+      "title": "Connectez-vous à un compte",
+      "mail": "Email",
+      "password": "Mot de passe",
+      "login_success": "Connection réussie",
+      "login_error": "Email et/ou mot de passe non correct",
+      "btn_submit": "Connectez-vous",
+      "email_verified_title": "Votre compte n'est pas atcif",
+      "email_verified_body": "Pour activer votre compte, vous devez cliquer sur le lien que vous avez reçu lors de la création de votre compte.",
+      "signin_verified_email_message": "Si vous ne retrouvez plus votre email d'activation, renvoyer un courriel d'activation.",
+      "signin_verified_email_message_2": "Cliquer ici"
+    },
+    "forgot-password": {
+      "title": "Mot de passe oublié",
+      "btn_submit": "Envoyer",
+      "mail": "Email",
+      "err_message": "Erreur email non reconnu",
+      "success_message": "Un email vous a été envoyé"
     }
   },
   "shared": {
@@ -403,4 +439,3 @@
     }
   }
 }
-

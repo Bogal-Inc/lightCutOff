@@ -1,25 +1,41 @@
-import { Doc } from './doc.model';
+import { Doc, defaultDoc } from './doc.model';
+
+export enum Gender {
+  MAN = 'man',
+  WOMAN = 'woman'
+}
 
 export interface SimpleUser {
   id: string;
 }
 
-export type Role = 'admin' | 'manager' | 'collector';
-
-export interface User extends Doc{
-  email: string;
-  password: string;
-  /*firstName?: string;
-  lastName?: string;
-  fullName?: string;
-  pictureUrl?: string;
-  isHost?: boolean;
-  lastProjectVisited?: string;
-  projects?: {
-    [projectId: string]: {
-      isMember: true;
-      isOwner: boolean;
-      role: Role;
-    };
-  };*/
+// TODO: il reste encore des roles a determiner
+export interface Role {
+  admin?: boolean;
 }
+
+export interface User  extends Doc {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  displayName?: string;
+  phoneNumber?: null;
+  photoURL?: string;
+  gender?: Gender;
+  birthday: Date | firebase.firestore.Timestamp | any;
+  roles: Role;
+}
+
+export const defaultUser = {
+  ...defaultDoc,
+  email: null,
+  firstName: null,
+  lastName: null,
+  displayName: null,
+  phoneNumber: null,
+  gender: null,
+  photoURL: null,
+  roles: {
+    admin: false
+  }
+} as User;
