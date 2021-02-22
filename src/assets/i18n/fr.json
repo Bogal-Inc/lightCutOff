@@ -398,7 +398,9 @@
       "logout": "Déconnexion",
       "signup": "S'inscrire",
       "signin": "Se connecter",
-      "profile": "Profile"
+      "profile": "Profile",
+      "admin": "Admin",
+      "user_report_acces": "Acceder à vos signalements"
     },
     "map-legend": {
       "title": "Légende",

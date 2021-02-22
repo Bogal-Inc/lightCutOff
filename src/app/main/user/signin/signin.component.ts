@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {UserService} from '../../../core/services-firebase/user.service';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from '../../../core/services-firebase';
 import {ToastrService} from 'ngx-toastr';
 import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
 import {Router} from '@angular/router';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 const log = new Logger('signin.component');
 
@@ -15,7 +17,7 @@ const log = new Logger('signin.component');
 })
 export class SigninComponent implements OnInit {
   form: FormGroup;
-  reActiveEmail = false;
+  reactiveEmail = false;
   user: any;
 
   constructor(
@@ -23,11 +25,19 @@ export class SigninComponent implements OnInit {
     private authService: AuthService,
     private toastrService: ToastrService,
     private translateService: TranslateService,
-    private router: Router
-  ) { }
+    private userService: UserService,
+    private router: Router,
+    private angularFireAnalytics: AngularFireAnalytics,
+  ) {
+  }
 
   ngOnInit(): void {
     log.debug('init');
+    this.angularFireAnalytics.logEvent('page_view', {
+      page_location: 'https://lightcutoff.com/signin',
+      page_path: '/signin',
+      page_title: 'signin'
+    });
     this.initForm();
   }
 
@@ -39,6 +49,9 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
+    log.debug('signin');
+
+    this.angularFireAnalytics.logEvent('loggin_user');
     // stop here if form is invalid
     if (this.form.invalid) {
       return;
@@ -52,10 +65,12 @@ export class SigninComponent implements OnInit {
 
   sendEmailVerification() {
     this.user.sendEmailVerification();
-    this.reActiveEmail = false;
+    this.reactiveEmail = false;
   }
 
   private logout() {
+    log.debug('signout');
+
     this.authService.logout().then(
       () => {
         log.debug('user logout. Email not verified');
@@ -73,33 +88,41 @@ export class SigninComponent implements OnInit {
 
   private login(email, password) {
     this.authService.login(email, password).then((userCredential) => {
-      log.debug('user login');
-
       this.user = userCredential.user;
-      if (!this.user.emailVerified) {
-        this.reActiveEmail = true;
-        this.logout();
-      } else {
-        window.localStorage.setItem('LCO_userLogged', JSON.stringify({
-          id: this.user.uid,
-          photoURL: this.user.photoURL,
-          phoneNumber: this.user.phoneNumber,
-          lastLoginAt: this.user.lastLoginAt,
-          emailVerified: this.user.emailVerified,
-          displayName: this.user.displayName,
-          createAt: this.user.createAt,
-          email: this.user.email
-        }));
-        this.router.navigate(['/']);
-        this.toastrService.success(this.translateService.instant('user.signin.login_success'));
-      }
+
+      this.getUser();
     })
-      .catch(
-        (err) => {
-          const errorCode = err.code;
-          const errorMessage = err.message;
-          log.error(errorCode, errorMessage);
-          this.toastrService.error(this.translateService.instant('user.signin.login_error'));
-        });
+    .catch(
+      (err) => {
+        const errorCode = err.code;
+        const errorMessage = err.message;
+        log.error(errorCode, errorMessage);
+        this.toastrService.error(this.translateService.instant('user.signin.login_error'));
+      });
+  }
+
+  private getUser() {
+    if (!this.user.emailVerified) {
+      this.reactiveEmail = true;
+      this.logout();
+    } else {
+      this.authService.currentUser$.subscribe(
+        (user) => {
+          window.localStorage.setItem('LCO_userLogged', JSON.stringify({
+            firstName: user.firstName,
+            lastName: user.lastName,
+            photoURL: user.photoURL,
+            phoneNumber: user.phoneNumber,
+            email: user.email,
+            gender: user.gender,
+            role: user.roles,
+            birthday: user.birthday
+          }));
+        }
+      );
+
+      this.router.navigate(['/']);
+      this.toastrService.success(this.translateService.instant('user.signin.login_success'));
+    }
   }
 }

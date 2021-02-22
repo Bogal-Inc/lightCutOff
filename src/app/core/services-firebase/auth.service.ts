@@ -1,9 +1,11 @@
-import { SimpleUser } from '@Models/user.model';
+import {SimpleUser, User} from '@Models/user.model';
 import { Const } from 'src/environments/const';
 import { BaseService } from './base.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
+import {filter, switchMap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +59,16 @@ export class AuthService extends BaseService{
 
   sendPasswordResetEmail(email) {
     return this.angularFireAuth.sendPasswordResetEmail(email);
+  }
+
+  getUserById(userId: string): Observable<User> {
+    return this.doc$<User>(`${Const.collections.users}/${userId}`);
+  }
+
+  get currentUser$(): Observable<User> {
+    return this.angularFireAuth.authState.pipe(
+      filter(user => !!user),
+      switchMap(user => this.getUserById(user.uid))
+    );
   }
 }
