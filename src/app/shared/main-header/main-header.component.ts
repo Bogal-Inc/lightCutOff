@@ -39,12 +39,7 @@ export class MainHeaderComponent implements OnInit {
     // fixed header or not
     const url = this.router.url;
     const route2 = url.split('/')[1];
-
-    if (route2 === 'admin') {
-      this.adminActive = true;
-    } else {
-      this.adminActive = false;
-    }
+    this.adminActive = route2 === 'admin';
   }
 
   logout() {

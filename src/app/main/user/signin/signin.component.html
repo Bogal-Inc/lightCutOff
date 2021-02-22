@@ -24,7 +24,7 @@
             </div>
           </form>
 
-          <div *ngIf="reActiveEmail" class="mt-3 alert alert-warning">
+          <div *ngIf="reactiveEmail" class="mt-3 alert alert-warning">
             {{'user.signin.signin_verified_email_message' | translate}}
             <a class="alert-link" (click)="sendEmailVerification()">
               {{'user.signin.signin_verified_email_message_2' | translate}}

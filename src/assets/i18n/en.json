@@ -394,6 +394,11 @@
       "map": "Map",
       "statistics": "Statistics",
       "offline": "Offline",
+      "logout": "Logout",
+      "signup": "Signup",
+      "signin": "Signin",
+      "profile": "Profile",
+      "admin": "Admin",
       "user_report_acces": "Acceder à vos signalements"
     },
     "map-legend": {

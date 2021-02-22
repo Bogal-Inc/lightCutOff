@@ -10,58 +10,66 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
           {{"shared.main-header.home" | translate}}
         </a>
-            </li>
-            <li class="nav-item" [class.active]="mapActive">
-                <a class="nav-link" routerLink="/map" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      </li>
+      <li class="nav-item" [class.active]="mapActive">
+        <a class="nav-link" routerLink="/map" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
           {{"shared.main-header.map" | translate}}
         </a>
-            </li>
-            <li class="nav-item dropdown" *ngIf="isAdmin" [class.active]="adminActive">
-                <a role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+      </li>
+      <li class="nav-item dropdown" *ngIf="isAdmin" [class.active]="adminActive">
+        <a role="button" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false" class="nav-link dropdown-toggle">
           {{"shared.main-header.statistics" | translate}}
         </a>
-                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                    <a routerLink="/admin/dashboard" class="dropdown-item">
+        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+          <a routerLink="/admin/dashboard" class="dropdown-item">
             {{'shared.admin-nav.dashboard' | translate}}
           </a>
-                    <a class="dropdown-item" routerLink="/admin/reports">
+          <a class="dropdown-item" routerLink="/admin/reports">
             {{'shared.admin-nav.reports' | translate}}
           </a>
-                    <a class="dropdown-item" routerLink="/admin/statistics_numbers">
+          <a class="dropdown-item" routerLink="/admin/statistics_numbers">
             {{'shared.admin-nav.figures' | translate}}
           </a>
-                </div>
-            </li>
-        </ul>
-        <ul class="navbar-nav mt-2 mt-lg-0" *ngIf="moduleEnable">
-            <li><a class="nav-link" routerLink="/signup" *ngIf="user === null">
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav mt-2 mt-lg-0" *ngIf="moduleEnable">
+      <li><a class="nav-link" routerLink="/signup" *ngIf="user === null">
         {{"shared.main-header.signup" | translate}}
       </a></li>
-            <li><a class="nav-link" routerLink="/signin" *ngIf="user === null">
+      <li><a class="nav-link" routerLink="/signin" *ngIf="user === null">
         {{"shared.main-header.signin" | translate}}
       </a></li>
-            <li *ngIf="user !== null">
-                <div class="btn-group">
-                    <a class="dropdown-user dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <fa-icon [icon]="faUserCircle"></fa-icon> {{user.email}}
-                    </a>
-                    <div class="dropdown-menu bg-dark dropdown-menu-right">
-                        <a class="dropdown-item" routerLink="/own-report">
-                          {{"core.home.btn_report" | translate}}
-                        </a>
-                        <a class="dropdown-item" routerLink="/profile">
-                          {{"shared.main-header.profile" | translate}}
-                        </a>
-                        <a class="dropdown-item" (click)="logout()">{{"shared.main-header.logout" | translate}}</a>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
+      <li *ngIf="user !== null">
+        <div class="btn-group">
+          <a class="dropdown-user dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
+             aria-expanded="false">
+            <fa-icon [icon]="faUserCircle"></fa-icon>
+            {{user.email}}
+          </a>
+          <div class="dropdown-menu bg-dark dropdown-menu-right">
+            <a class="dropdown-item" routerLink="/own-report">
+              {{"core.home.btn_report" | translate}}
+            </a>
+            <a class="dropdown-item" routerLink="/profile">
+              {{"shared.main-header.profile" | translate}}
+            </a>
+            <a class="dropdown-item" routerLink="/admin/dashboard">
+              {{"shared.main-header.admin" | translate}}
+            </a>
+            <a class="dropdown-item" (click)="logout()">
+              {{"shared.main-header.logout" | translate}}
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </nav>
