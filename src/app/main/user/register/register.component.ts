@@ -1,4 +1,4 @@
-import { UserService } from './../../../core/services-firebase/user.service';
+import { UserService } from '../../../core/services-firebase/user.service';
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {MustMatch} from '@Helpers/must-match.validator';
@@ -8,6 +8,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
 import { User } from '@Models/user.model';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
+import * as firebase from 'firebase';
 
 
 const log = new Logger('register.component');
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
     private userService: UserService,
     private toastrService: ToastrService,
     private translateService: TranslateService,
-    private angularFireAnalytics: AngularFireAnalytics,
+    private angularFireAnalytics: AngularFireAnalytics
   ) { }
 
   ngOnInit(): void {
@@ -75,6 +76,7 @@ export class RegisterComponent implements OnInit {
 
     this.authService.createUser(email, password)
       .then((userCredential) => {
+        this.associateWithAnonymousAccount(email, password);
         this.sendEmaiVerification(userCredential.user);
       })
       .catch((error) => {
@@ -125,5 +127,14 @@ export class RegisterComponent implements OnInit {
         this.toastrService.error(this.translateService.instant('user.register.save_error'));
       }
     );
+  }
+
+  private associateWithAnonymousAccount(email, password) {
+    const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+    firebase.auth().currentUser.linkWithCredential(credential).then((user) => {
+      log.debug('Anonymous account successfully upgraded', user);
+    }, (error) => {
+      log.error('Error upgrading anonymous account', error);
+    });
   }
 }
