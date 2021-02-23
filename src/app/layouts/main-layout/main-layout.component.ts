@@ -16,11 +16,11 @@ export class MainLayoutComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // TODO: préparer des message pour des situations d'urgence
     /*this.options = {
-      type: 'warning',
-      message_en: '<strong>Lightcutoff</strong> team is proud to present its best wishes for the year <strong>2021</strong>.',
-      message_fr: 'L\'équipe <strong>Lightcutoff</strong> est fiert de vous présentez ses meilleurs voeux pour l\'année
-      <strong>2021</strong>.',
+      type: 'danger',
+      message_en: 'Actuellement nous subissons une defaillance du système sur le navigateur chrome. Nous travaillons activement à résou',
+      message_fr: 'Actuellement nous subissons une defaillance du système sur le navigateur chrome. Nous travaillons activement à résou' ,
     };*/
     this.isOnlineStatus();
   }
