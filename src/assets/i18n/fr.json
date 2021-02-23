@@ -29,18 +29,18 @@
       "alt_logo": "{projectTitle} logo, signalez coupure de courant, marquez vos coupure d'energie électrique",
       "about": {
         "title": "À propos de {projectTitle}",
-        "content": "L'accès à des ressources publiques dans les pays en voie de développement tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. <b>{projectTitle}</b> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
+        "content": "L'accès à des ressources publiques dans les pays en voie de développement tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. <b>{projectTitle}</b> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité en énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
         "btn_next": "En savoir plus",
         "alt_img": "illustration de section à propos. Rapportez coupure lumiere"
       },
       "app_example": {
         "title": "Quelques exemples d'application",
-        "research": "La recherche lié aux problèmes d'électrification",
+        "research": "La recherche",
         "alt_research": "Illustration: La recherche lié aux problèmes d'électrification",
         "alt_move": "Illustration: Se déplacer dans une zone où il y a pas de coupure de lumière",
-        "move": "Pouvoir trouver de la lumière en cas de coupure où vous vous trouvez",
-        "alt_to_move_out": "Illustration: Habiter une zone à faible fréquence de coupure d'électricité",
-        "to_move_out": "Habiter une zone à faible fréquence de coupure d'électricité"
+        "move": "Où Trouver de la lumière en cas de coupure",
+        "alt_to_move_out": "Illustration: Habiter une zone à faible fréquence de coupure",
+        "to_move_out": "Habiter une zone à faible fréquence de coupure"
       },
       "team": {
         "title": "Notre équipe",
@@ -60,13 +60,13 @@
       "whatwedo": {
         "title": "Que faisons nous",
         "alt_collect_data": "Illustration compiler et collecter des données sur les coupures de courant",
-        "collect_data": "Compiler et collecter des données",
+        "collect_data": "Collecter et compiler les données",
         "alt_local_cut_off": "Illustration localiser les coupures d'électricité",
         "local_cut_off": "Localiser les coupures d'électricité",
         "alt_charts_data": "Illustration analyse des données sur les coupures d'énergie électrique",
-        "charts_data": "Analyse des données",
+        "charts_data": "Analyser les données",
         "alt_users_notifications": "Illustration Notifier les utilisateurs sur les coupure de courrant electrique",
-        "users_notifications": "Notifier les utilisateurs"
+        "users_informations": "Informer nos utilisateurs"
       },
       "contactus": {
         "alt_img": "Contactez-nous pour les coupures de lumiere pres dou vous etes",

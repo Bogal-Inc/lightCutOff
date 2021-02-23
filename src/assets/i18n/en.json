@@ -36,9 +36,9 @@
       "app_example": {
         "title": "Some application examples",
         "alt_research": "illustration: Research related to electrification issues",
-        "research": "Research related to electrification issues",
-        "alt_move": "illustration: Being able to find light in the event of a power cut where you are",
-        "move": "Being able to find light in the event of a power cut where you are",
+        "research": "Research",
+        "alt_move": "illustration: Where to find light in the event of an outage",
+        "move": "Where to find light in the event of an outage",
         "alt_to_move_out": "illustration: Living in a low cut-off frequency area",
         "to_move_out": "Living in a low cut-off frequency area"
       },
@@ -59,13 +59,13 @@
       "whatwedo": {
         "title": "what are we doing",
         "alt_collect_data": "Illustration compiling and collecting data on power outages",
-        "collect_data": "Compile and collect data",
+        "collect_data": "Collect and compile data",
         "alt_local_cut_off": "Illustration Locate power cuts",
         "local_cut_off": "Locate power cuts",
         "alt_charts_data": "Illustration analysis of data on power cuts",
         "charts_data": "analysis and compile of data",
         "alt_users_notifications": "Illustration Notify users on power outages",
-        "users_notifications": "Notify users"
+        "users_informations": "Inform our users"
       },
       "contactus": {
         "alt_img": "Contact us for the light cuts near you",
