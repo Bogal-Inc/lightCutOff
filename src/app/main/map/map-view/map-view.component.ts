@@ -34,6 +34,7 @@ import {MapModel} from '@Models/map.model';
 import {LocationModel} from '@Models/location.model';
 import { MapService } from '@Services/map.service';
 import {ActivatedRoute} from '@angular/router';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 const log = new Logger('map-view.component');
 
@@ -96,6 +97,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private analytics: AngularFireAnalytics,
     private modalService: NgbModal,
     private activatedRoute: ActivatedRoute,
+    private angularFirestore: AngularFirestore,
     config: NgbTooltipConfig
   ) {
     config.placement = 'left';
@@ -305,6 +307,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.formLoader = true;
 
     const report = {
+      id: this.angularFirestore.createId(),
       location: Object.assign({}, location),
       position: this.mapM.position,
       reportedAt: new Date(query),
@@ -315,11 +318,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       resp => {
         log.debug('report create', resp.path.valueOf());
         this.formLoader = false;
-        const id = resp.path.valueOf().split('/')[1];
-        this.reportAdd = {
-          id,
-          ... report
-        };
+        this.reportAdd = report;
         this.uodateMarkerConfig();
       },
       err => {

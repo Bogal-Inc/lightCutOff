@@ -81,11 +81,6 @@ export class ReportService extends BaseService {
   }
 
   updateReport(report: Report): Promise<void>{
-    const partialReport = {
-      ...report,
-      _updatedAt: this.timestamp,
-      _UpdatedBy: this.user
-    } as unknown as Report;
-    return this.update<Report>(`${Const.collections.reports}/${report.id}`, partialReport);
+    return this.update<Report>(`${Const.collections.reports}/${report.id}`, report);
   }
 }
