@@ -114,7 +114,6 @@ export class ReportListComponent implements OnInit {
       isDeleted: false,
       datestart: new Date(now.getFullYear())
     });
-    this.metaService.initMetaReportList('report.report-list.title_page');
     this.isMobile = isMobile();
   }
 

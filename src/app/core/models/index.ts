@@ -4,3 +4,4 @@ export * from './user.model';
 export * from './base.model';
 export * from './map.model';
 export * from './location.model';
+export * from './metaTag.model';

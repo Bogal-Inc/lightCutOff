@@ -42,7 +42,6 @@ export class StatisticsNumberComponent implements OnInit {
       page_title: 'statistics numbers'
     });
 
-    this.metaService.initMetaToStatisticsNumbers('statistics.statistics-number.title_page');
     this.initCardDashbord();
   }
 

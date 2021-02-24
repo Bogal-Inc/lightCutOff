@@ -27,7 +27,7 @@ export const Const = {
     lat: 3.843249609352396
   },
   emailService: {
-    support: 'willkoua@gmaill.com'
+    support: 'willkoua@gmail.com'
   },
   markerColor: {
     user: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',

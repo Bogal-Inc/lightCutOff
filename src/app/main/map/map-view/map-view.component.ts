@@ -35,6 +35,8 @@ import {LocationModel} from '@Models/location.model';
 import { MapService } from '@Services/map.service';
 import {ActivatedRoute} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {METATAG, MetaTag} from '@Models/metaTag.model';
+import {environment} from '../../../../environments/environment';
 
 const log = new Logger('map-view.component');
 
@@ -77,7 +79,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   reports: Report[];
   formLoader: boolean;
   isLoader = true;
-  isloaderMap = false;
   unsubsscribe$ = new Subject<void>();
   reportsMarkers: any;
   markersClusters;
@@ -112,7 +113,12 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       page_title: 'Map'
     });
 
-    this.metaService.initMetaMapView('main.map-view.title_page');
+    this.metaService.setTagsGeneral(
+      this.translateService.instant('main.map-view.title_page'),
+      [
+        new MetaTag(METATAG.KEYWORDS, 'lightcutoff, service information, light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, Logo lightcutoff, délestages, coupures, signaler coupure, signalez coupure de lumiere, rapport de coupure de lumiere, rapport, panne de courant, panne de electrique, panne, report light cut off, que faire pendant une coupure de lumiere, carte interactive, map, marker, marqueur, heure de coupure de la lumiere, date de coupure de la lumiere, signaler la fin d\'une coupure de courant'),
+        new MetaTag(METATAG.DESCRIPTION, this.translateService.instant('main.map-view.desc_page'))
+      ]);
   }
 
   ngAfterViewInit() {
@@ -659,7 +665,24 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
       if (reportId) {
         this.reportService.getReport(reportId).subscribe(
-          report => this.goToMarker(report)
+          report => {
+            const reportedAt = (report.recovredAt) ? `Terminer le: ${report.recovredAt.toDate()}` : '';
+            const description = `
+            Signalement du: ${report._createdAt.toDate()} \n
+            ${reportedAt} \n
+            Ville: ${report.location.city} \n
+            Quartier: ${report.location.neighborhood}
+            `;
+
+            this.metaService.setFacebookTags(
+              `${environment.domain}/map`,
+              this.translateService.instant('main.map-view.fb_title', {cretedAt: report._createdAt.toDate()}),
+              description,
+              `${environment.domain}/assets/static/images/logo.png`
+            );
+
+            this.goToMarker(report);
+          }
         );
       }
     });
