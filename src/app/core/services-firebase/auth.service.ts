@@ -35,7 +35,7 @@ export class AuthService extends BaseService{
     });
   }
 
-  getUser(): SimpleUser {
+  getUserToLocalStorage() {
     return JSON.parse(localStorage.getItem(Const.user.localstorage));
   }
 
@@ -48,12 +48,12 @@ export class AuthService extends BaseService{
   }
 
   logout() {
-    localStorage.removeItem('LCO_userLogged');
+    localStorage.removeItem(Const.user.localstorage);
     return this.angularFireAuth.signOut();
   }
 
   getUserLogged() {
-    const user = localStorage.getItem('LCO_userLogged');
+    const user = localStorage.getItem(Const.user.localstorage);
     return JSON.parse(user);
   }
 

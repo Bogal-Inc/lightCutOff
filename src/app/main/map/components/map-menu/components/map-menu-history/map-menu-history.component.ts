@@ -53,7 +53,7 @@ export class MapMenuHistoryComponent implements OnInit {
   }
 
   isOwner(report: Report) {
-    return this.authService.getUser().id === report._createdBy.id;
+    return this.authService.getUserToLocalStorage().id === report._createdBy.id;
   }
 
   private changeStyleOnElementHistory(index: number) {

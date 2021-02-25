@@ -286,9 +286,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
           (report: Report) => {
             if (ev === ReportSatus.CUT_OWNER) {
               // the owner report status is not saved in database. it is saved in the cutoff status
-              return (this.authService.getUser().id === report._createdBy.id) && (report.status === ReportSatus.CUT);
+              return (this.authService.getUserToLocalStorage().id === report._createdBy.id) && (report.status === ReportSatus.CUT);
             } else if (ev === ReportSatus.CUT) {
-              return (this.authService.getUser().id !== report._createdBy.id) && (report.status === ReportSatus.CUT);
+              return (this.authService.getUserToLocalStorage().id !== report._createdBy.id) && (report.status === ReportSatus.CUT);
             } else {
               return report.status === ev;
             }
@@ -376,7 +376,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.markerCurrentPosition = new google.maps.Marker(markerOption);
     this.markerCurrentPosition.setMap(this.map);
 
-    if (this.authService.getUser()){
+    if (this.authService.getUserToLocalStorage()){
       log.debug('add to current marker reported form in infos window');
       this.markerCurrentInfoWindow = this.addInfoWindow(this.markerCurrentPosition, this.createReportFormElt.nativeElement);
     } else {
@@ -468,7 +468,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
         icon: {
           url: (report.recovredAt === null) ?
-            (this.authService.getUser().id === report._createdBy.id) ?
+            (this.authService.getUserToLocalStorage().id === report._createdBy.id) ?
               Const.markerColor.cutUser :
               Const.markerColor.cut :
             Const.markerColor.recovred
@@ -481,7 +481,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       content = this.componentService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
       this.addInfoWindow(currentMareker, content);
     } else {
-      if (this.authService.getUser().id === report._createdBy.id){
+      if (this.authService.getUserToLocalStorage().id === report._createdBy.id){
         const infoWindow = this.addInfoWindow(currentMareker, content);
         const data = {
           report,

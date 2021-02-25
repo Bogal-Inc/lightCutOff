@@ -7,6 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
 import {Router} from '@angular/router';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {Const} from '../../../../environments/const';
 
 const log = new Logger('signin.component');
 
@@ -90,7 +91,7 @@ export class SigninComponent implements OnInit {
     this.authService.login(email, password).then((userCredential) => {
       this.user = userCredential.user;
 
-      this.getUser();
+      this.saveUserToLocalstorage();
     })
     .catch(
       (err) => {
@@ -101,14 +102,15 @@ export class SigninComponent implements OnInit {
       });
   }
 
-  private getUser() {
+  private saveUserToLocalstorage() {
     if (!this.user.emailVerified) {
       this.reactiveEmail = true;
       this.logout();
     } else {
       this.authService.currentUser$.subscribe(
         (user) => {
-          window.localStorage.setItem('LCO_userLogged', JSON.stringify({
+          window.localStorage.setItem(Const.user.localstorage, JSON.stringify({
+            id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
             photoURL: user.photoURL,
