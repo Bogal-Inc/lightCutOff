@@ -120,7 +120,7 @@ export class HomeComponent implements OnInit {
 
   private isCurrentUSerHaveMarkers() {
     return this.reports.find(
-      report => this.authService.getUser().id === report._createdBy.id
+      report => this.authService.getUserToLocalStorage().id === report._createdBy.id
     );
   }
 

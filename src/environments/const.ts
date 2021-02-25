@@ -9,7 +9,7 @@ export const Const = {
     }
   },
   user: {
-    localstorage: 'lightCutOffUser'
+    localstorage: 'LCO_userLogged'
   },
   sendMail: 'https://us-central1-lightcutoff.cloudfunctions.net/sendMail',
   collections: {

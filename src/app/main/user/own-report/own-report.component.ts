@@ -9,6 +9,7 @@ import {AuthService} from '../../../core/services-firebase';
 import {map, takeUntil} from 'rxjs/operators';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {Logger} from '@Services/logger.service';
+import {Const} from '../../../../environments/const';
 
 const log = new Logger('own-report.component');
 
@@ -99,7 +100,10 @@ export class OwnReportComponent implements OnInit, OnDestroy {
     .pipe(
       map((reports) => {
         return reports.filter(
-          (report) => this.authService.getUser().id === report._createdBy.id
+          (report) => {
+            const user = JSON.parse(localStorage.getItem(Const.user.localstorage));
+            return user.id === report._createdBy.id;
+          }
         );
       }),
       takeUntil(this.unsubsscribe$)

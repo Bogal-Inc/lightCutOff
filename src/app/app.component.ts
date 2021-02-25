@@ -34,8 +34,13 @@ export class AppComponent implements OnInit {
     dateTimeAdapter: DateTimeAdapter<any>
   ) {
     dateTimeAdapter.setLocale('fr-FR');
-    this.authService.anonymousAuth();
-    this.authService.getAnonymousUser();
+
+    // if user logged we don't use anonymous informations
+    const user = this.authService.getUserToLocalStorage();
+    if (!user?.email) {
+      this.authService.anonymousAuth();
+      this.authService.getAnonymousUser();
+    }
   }
 
   ngOnInit() {
