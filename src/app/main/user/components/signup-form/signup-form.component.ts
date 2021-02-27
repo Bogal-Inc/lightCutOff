@@ -44,8 +44,7 @@ export class SignupFormComponent implements OnInit {
         firstName: [this.user.firstName],
         lastName: [this.user.lastName],
         phoneNumber: [this.user.phoneNumber],
-        gender: [this.user.gender],
-        email: [this.user.email, [Validators.required, Validators.email]]
+        gender: [this.user.gender]
       });
     } else {
       this.form = this.formBuilder.group({
@@ -71,7 +70,6 @@ export class SignupFormComponent implements OnInit {
     if (this.user?.email) {
       dataForm = {
         id: this.form.get('id').value,
-        email: this.form.get('email').value,
         firstName: this.form.get('firstName').value,
         lastName: this.form.get('lastName').value,
         gender: this.form.get('gender').value,

@@ -44,7 +44,7 @@
       <li *ngIf="!user?.email"><a class="nav-link" routerLink="/own-report">
         {{"core.home.btn_report" | translate}}
       </a></li>
-      <li *ngIf="!user?.email"><a class="nav-link" routerLink="/signup">
+      <!--<li *ngIf="!user?.email"><a class="nav-link" routerLink="/signup">
         {{"shared.main-header.signup" | translate}}
       </a></li>
       <li *ngIf="!user?.email"><a class="nav-link" routerLink="/signin">
@@ -54,7 +54,7 @@
         <div class="btn-group">
           <a class="dropdown-user dropdown-toggle dropdown-toggle-split nav-link" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">
-            <fa-icon [icon]="faUserCircle"></fa-icon>
+            <fa-icon style="color: var(&#45;&#45;warning)" [icon]="faUserCircle"></fa-icon>
             <span *ngIf="!user?.firstName">&nbsp; {{user.email}} &nbsp;</span>
             <span *ngIf="user?.firstName">&nbsp; {{user.firstName}} &nbsp;</span>
           </a>
@@ -73,7 +73,7 @@
             </a>
           </div>
         </div>
-      </li>
+      </li>-->
     </ul>
   </div>
 </nav>
