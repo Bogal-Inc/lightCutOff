@@ -24,4 +24,8 @@ export class UserService extends BaseService {
       ...user
     });
   }
+
+  updateUser(user: User): Promise<void>{
+    return this.update<User>(`${Const.collections.users}/${user.id}`, user);
+  }
 }

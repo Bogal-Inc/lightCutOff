@@ -22,8 +22,8 @@ export interface User  extends Doc {
   phoneNumber?: null;
   photoURL?: string;
   gender?: Gender;
-  birthday: Date | firebase.firestore.Timestamp | any;
-  roles: Role;
+  birthday?: Date | firebase.firestore.Timestamp | any;
+  roles?: Role;
 }
 
 export const defaultUser = {

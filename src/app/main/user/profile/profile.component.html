@@ -1,12 +1,28 @@
 <div class="main-admin">
-    <div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="../../../../assets/static/images/user_incognito.png" alt="lightcutoff user profile" width="50%">
+      </div>
+      <div class="col-md-9">
         <div class="row">
-            <div class="col-md-3">
-                <img src="../../../../assets/static/images/user_incognito.png" alt="lightcutoff user profile" width="50%">
-            </div>
-            <div class="col-md-9">
-                Email: {{user.email}}
-            </div>
+          <ul class="list-unstyled" *ngIf="!ativedForm">
+            <li><strong>{{'user.profile.firstname' | translate}}:</strong> {{user?.firstName}}</li>
+            <li><strong>{{'user.profile.lastname' | translate}}:</strong> {{user?.lastName}}</li>
+            <li><strong>{{'user.profile.email' | translate}}:</strong> {{user?.email}}</li>
+            <li>
+              <strong>{{'user.profile.gender' | translate}}:</strong>&nbsp;
+              <span *ngIf="user?.gender === 'g1'">{{'user.profile.man' | translate}}</span>
+              <span *ngIf="user?.gender === 'g0'">{{'user.profile.woman' | translate}}</span>
+            </li>
+            <li><strong>{{'user.profile.phone_number' | translate}}:</strong> {{user?.phoneNumber}}</li>
+          </ul>
+          <app-register-form *ngIf="ativedForm" [user]="user" (submited)="onSubmit($event)"></app-register-form>
         </div>
+        <div class="row">
+          <a (click)="activeUpdateForm()" class="btn btn-link">Modifier votre profile</a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
