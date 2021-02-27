@@ -1,4 +1,4 @@
-import { UserService } from '../../../core/services-firebase/user.service';
+import { UserService } from '../../../core/services-firebase';
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {MustMatch} from '@Helpers/must-match.validator';
@@ -9,7 +9,6 @@ import {Logger} from '@Services/logger.service';
 import { User } from '@Models/user.model';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import * as firebase from 'firebase';
-
 
 const log = new Logger('register.component');
 
@@ -25,7 +24,6 @@ export class RegisterComponent implements OnInit {
   cguError = false;
 
   constructor(
-    private formBuilder: FormBuilder,
     private authService: AuthService,
     private userService: UserService,
     private toastrService: ToastrService,
@@ -40,43 +38,12 @@ export class RegisterComponent implements OnInit {
       page_path: '/register',
       page_title: 'register'
     });
-
-    this.initForm();
   }
 
-  private initForm() {
-    this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)]],
-      confirmPassword: ['', Validators.required],
-      accept: [false]
-    }, { validator: MustMatch('password', 'confirmPassword')});
-  }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.form.controls; }
-
-  onSubmit() {
-    this.angularFireAnalytics.logEvent('added_user');
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.form.invalid) {
-      return;
-    }
-
-    const email = this.form.get('email').value;
-    const password = this.form.get('password').value;
-    const accept = this.form.get('accept').value;
-
-    if (!accept) {
-      this.cguError = true;
-      return;
-    }
-
-    this.authService.createUser(email, password)
+  onSubmit(user) {
+    this.authService.createUser(user)
       .then((userCredential) => {
-        this.associateWithAnonymousAccount(email, password);
+        this.associateWithAnonymousAccount(user.email, user.password);
         this.sendEmaiVerification(userCredential.user);
       })
       .catch((error) => {
