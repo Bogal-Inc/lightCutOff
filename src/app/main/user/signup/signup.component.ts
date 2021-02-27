@@ -13,7 +13,7 @@ import * as firebase from 'firebase';
 const log = new Logger('register.component');
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
