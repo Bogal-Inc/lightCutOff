@@ -14,8 +14,7 @@ const log = new Logger('signup.component');
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
-  user: any;
+  user = null;
   ativedForm = false;
 
   constructor(
