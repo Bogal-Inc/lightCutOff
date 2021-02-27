@@ -7,58 +7,7 @@
             {{'user.register.title' | translate}}
           </h4>
           <hr>
-          <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="{{'user.register.mail' | translate}}" formControlName="email"
-                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                <div *ngIf="f.email.errors.email">{{'user.register.mail_error_match' | translate}}</div>
-                <div *ngIf="f.email.errors.required">{{'user.register.mail_error_required' | translate}}</div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <input type="password" class="form-control" placeholder="password" formControlName="password"
-                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                <div *ngIf="f.password.errors.required">{{'user.register.password_error_required' | translate}}</div>
-                <div *ngIf="f.password.errors.pattern">
-                  <ul>
-                    <li>{{'user.register.password_error_message1' | translate}}</li>
-                    <li>{{'user.register.password_error_message2' | translate}}</li>
-                    <li>{{'user.register.password_error_message3' | translate}}</li>
-                    <li>{{'user.register.password_error_message4' | translate}}</li>
-                    <li>{{'user.register.password_error_message5' | translate}}</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <input type="password" class="form-control" placeholder="{{'user.register.confirm_password' | translate}}"
-                     formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
-              <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                <div *ngIf="f.confirmPassword.errors.required">{{'user.register.password_error_required' | translate}}</div>
-                <div *ngIf="f.confirmPassword.errors.mustMatch">{{'user.register.password_error_match' | translate}}</div>
-              </div>
-            </div>
-
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="cgu" value="1" formControlName="accept">
-              <label class="form-check-label" for="cgu">{{'user.register.cgu' | translate}}</label>
-              <div *ngIf="cguError" class="text-danger">
-                <div>{{'user.register.cgu_error' | translate}}</div>
-              </div>
-            </div>
-
-            <div class="input-group-append">
-              <button class="btn btn-secondary" type="submit">{{'user.register.btn_submit' | translate}}</button>
-            </div>
-            <div>
-              {{"user.register.text_signin" | translate}} <a routerLink="/signin">{{"shared.main-header.signin" | translate}}</a>
-            </div>
-            <div *ngIf="successed" class="alert alert-success">{{'user.register.success_message' | translate}}</div>
-          </form>
+          <app-register-form (submited)="onSubmit($event)"></app-register-form>
         </div>
       </div>
 

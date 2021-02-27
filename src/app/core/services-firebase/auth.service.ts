@@ -39,8 +39,8 @@ export class AuthService extends BaseService{
     return JSON.parse(localStorage.getItem(Const.user.localstorage));
   }
 
-  createUser(email: string, password: string) {
-    return this.angularFireAuth.createUserWithEmailAndPassword(email, password);
+  createUser(user) {
+    return this.angularFireAuth.createUserWithEmailAndPassword(user.email, user.password);
   }
 
   login(email: string, password: string) {
