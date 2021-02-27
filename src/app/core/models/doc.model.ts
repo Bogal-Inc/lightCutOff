@@ -8,7 +8,7 @@ export interface Doc {
   _updatedBy?: SimpleUser;
   _deletedAt?: Date | firebase.firestore.Timestamp | any;
   _deletedBy?: SimpleUser;
-  _isDelete: boolean;
+  _isDelete?: boolean;
 }
 
 export const defaultDoc = {

@@ -353,7 +353,11 @@
       "btn_submit": "Envoyer",
       "text_signin": "Vous avez dèjà un compte?",
       "btn_password_forget": "Mot de passe oublié",
-      "error_email_exist": "The email address is already in use by another account"
+      "error_email_exist": "The email address is already in use by another account",
+      "update_success": "Modification réussie",
+      "update_error": "Erreur de modification",
+      "man": "Homme",
+      "womman": "Femme"
     },
     "signin": {
       "title": "Connectez-vous à un compte",
@@ -373,6 +377,13 @@
       "mail": "Email",
       "err_message": "Erreur email non reconnu",
       "success_message": "Un email vous a été envoyé"
+    },
+    "Profile": {
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "gender": "Genre",
+      "email": "Email",
+      "phone_number": "Numéro de téléphone"
     }
   },
   "shared": {

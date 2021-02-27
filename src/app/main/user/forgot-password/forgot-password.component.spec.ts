@@ -1,6 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForgotPasswordComponent } from './forgot-password.component';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../../../../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {ToastrModule} from 'ngx-toastr';
+import {TranslateModule} from '@ngx-translate/core';
 
 describe('ForgotPasswordComponent', () => {
   let component: ForgotPasswordComponent;
@@ -8,7 +17,21 @@ describe('ForgotPasswordComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForgotPasswordComponent ]
+      declarations: [ ForgotPasswordComponent ],
+      imports: [
+        NoopAnimationsModule,
+        RouterTestingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+        ToastrModule.forRoot({
+          timeOut: 10000,
+          progressBar: true
+        }),
+        TranslateModule.forRoot()
+      ],
     })
     .compileComponents();
   }));
