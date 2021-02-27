@@ -109,17 +109,7 @@ export class SigninComponent implements OnInit {
     } else {
       this.authService.currentUser$.subscribe(
         (user) => {
-          window.localStorage.setItem(Const.user.localstorage, JSON.stringify({
-            id: user.id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            photoURL: user.photoURL,
-            phoneNumber: user.phoneNumber,
-            email: user.email,
-            gender: user.gender,
-            role: user.roles,
-            birthday: user.birthday
-          }));
+          this.authService.createUserToLocalStorage(user);
         }
       );
 
