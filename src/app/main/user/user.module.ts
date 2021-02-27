@@ -8,7 +8,7 @@ import {AgGridModule} from 'ag-grid-angular';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import {MapModule} from '../map/map.module';
 import { OwnReportDetailComponent } from './components/own-report-detail/own-report-detail.component';
-import { RegisterComponent } from './register/register.component';
+import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -19,7 +19,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
   declarations: [
     OwnReportComponent,
     OwnReportDetailComponent,
-    RegisterComponent,
+    SignupComponent,
     SigninComponent,
     ForgotPasswordComponent,
     ProfileComponent,
