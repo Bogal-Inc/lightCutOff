@@ -11,11 +11,11 @@ import {User} from '@Models/user.model';
 const log = new Logger('register-form.component');
 
 @Component({
-  selector: 'app-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss']
+  selector: 'app-signup-form',
+  templateUrl: './signup-form.component.html',
+  styleUrls: ['./signup-form.component.scss']
 })
-export class RegisterFormComponent implements OnInit {
+export class SignupFormComponent implements OnInit {
   @Input() user;
   @Output() submited = new EventEmitter<User>();
   form: FormGroup;

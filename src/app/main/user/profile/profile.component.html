@@ -17,7 +17,7 @@
             </li>
             <li><strong>{{'user.profile.phone_number' | translate}}:</strong> {{user?.phoneNumber}}</li>
           </ul>
-          <app-register-form *ngIf="ativedForm" [user]="user" (submited)="onSubmit($event)"></app-register-form>
+          <app-signup-form *ngIf="ativedForm" [user]="user" (submited)="onSubmit($event)"></app-signup-form>
         </div>
         <div class="row">
           <a (click)="activeUpdateForm()" class="btn btn-link">Modifier votre profile</a>

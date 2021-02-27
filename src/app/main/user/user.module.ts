@@ -12,7 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
-import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     SigninComponent,
     ForgotPasswordComponent,
     ProfileComponent,
-    RegisterFormComponent
+    SignupFormComponent
   ],
     imports: [
         CommonModule,
