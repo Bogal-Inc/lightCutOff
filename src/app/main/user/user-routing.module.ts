@@ -6,6 +6,7 @@ import {SignupComponent} from './signup/signup.component';
 import {SigninComponent} from './signin/signin.component';
 import {AuthGuard} from '../../core/guards/auth.guard';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
+import {ModuleUserGuard} from '../../core/guards/module-user.guard';
 
 
 const routes: Routes = [
@@ -16,19 +17,22 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
+    canActivate: [ModuleUserGuard]
   },
   {
     path: 'signin',
     component: SigninComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, ModuleUserGuard]
   },
   {
     path: 'forgot-password',
-    component: ForgotPasswordComponent
+    component: ForgotPasswordComponent,
+    canActivate: [ModuleUserGuard]
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [ModuleUserGuard]
   },
 ];
 

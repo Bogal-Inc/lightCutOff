@@ -18,6 +18,7 @@ if (environment === 'prod') {
     mapMenu: true,
     mapFilter: true,
     mapSearch: true,
+    user: false,
     admin: false
   };
   targetPath += 'environment.prod.ts';
@@ -28,6 +29,7 @@ if (environment === 'prod') {
     mapMenu: true,
     mapFilter: true,
     mapSearch: true,
+    user: false,
     admin: false
   };
   targetPath += 'environment.staging.ts';
@@ -38,6 +40,7 @@ if (environment === 'prod') {
     mapMenu: true,
     mapFilter: true,
     mapSearch: true,
+    user: true,
     admin: true
   };
   targetPath += 'environment.ts';
@@ -76,6 +79,7 @@ function getEnvironment(modules) {
   mapMenu: ${modules.mapMenu},
   mapFilter: ${modules.mapFilter},
   mapSearch: ${modules.mapSearch},
+  user: ${modules.user},
   admin: ${modules.admin}
   }
   },

@@ -17,9 +17,11 @@ export class MainHeaderComponent implements OnInit {
   @Input() fixedTop = false;
   @Input() isGlobalMessage = false;
   readonly faUserCircle = faUserCircle;
-  readonly isAdmin = environment.app.modules.admin;
-  readonly moduleEnable = environment.app.modules.ownerReport;
-  appTitle = Const.app.title;
+  readonly isModuleAdmin = environment.app.modules.admin;
+  readonly isModuleOwnerReport = environment.app.modules.ownerReport;
+  readonly isModuleUser = environment.app.modules.user;
+  readonly appTitle = Const.app.title;
+
   mapActive = false;
   adminActive = false;
   user: any;

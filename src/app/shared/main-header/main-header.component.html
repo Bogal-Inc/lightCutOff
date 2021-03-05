@@ -22,7 +22,7 @@
           {{"shared.main-header.map" | translate}}
         </a>
       </li>
-      <li class="nav-item dropdown" *ngIf="isAdmin" [class.active]="adminActive">
+      <li class="nav-item dropdown" *ngIf="isModuleAdmin" [class.active]="adminActive">
         <a role="button" data-toggle="dropdown" aria-haspopup="true"
            aria-expanded="false" class="nav-link dropdown-toggle">
           {{"shared.main-header.statistics" | translate}}
@@ -40,21 +40,21 @@
         </div>
       </li>
     </ul>
-    <ul class="navbar-nav mt-2 mt-lg-0" *ngIf="moduleEnable">
+    <ul class="navbar-nav mt-2 mt-lg-0" *ngIf="isModuleOwnerReport">
       <li *ngIf="!user?.email"><a class="nav-link" routerLink="/own-report">
         {{"core.home.btn_report" | translate}}
       </a></li>
-      <!--<li *ngIf="!user?.email"><a class="nav-link" routerLink="/signup">
+      <li *ngIf="!user?.email && isModuleUser"><a class="nav-link" routerLink="/signup">
         {{"shared.main-header.signup" | translate}}
       </a></li>
-      <li *ngIf="!user?.email"><a class="nav-link" routerLink="/signin">
+      <li *ngIf="!user?.email && isModuleUser"><a class="nav-link" routerLink="/signin">
         {{"shared.main-header.signin" | translate}}
       </a></li>
-      <li *ngIf="user?.email">
+      <li *ngIf="user?.email && isModuleUser">
         <div class="btn-group">
           <a class="dropdown-user dropdown-toggle dropdown-toggle-split nav-link" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">
-            <fa-icon style="color: var(&#45;&#45;warning)" [icon]="faUserCircle"></fa-icon>
+            <fa-icon style="color: var(--warning)" [icon]="faUserCircle"></fa-icon>
             <span *ngIf="!user?.firstName">&nbsp; {{user.email}} &nbsp;</span>
             <span *ngIf="user?.firstName">&nbsp; {{user.firstName}} &nbsp;</span>
           </a>
@@ -73,7 +73,7 @@
             </a>
           </div>
         </div>
-      </li>-->
+      </li>
     </ul>
   </div>
 </nav>
