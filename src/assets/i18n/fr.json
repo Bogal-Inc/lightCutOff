@@ -311,6 +311,7 @@
       "report_places": "Localisation",
       "country": "Pays:",
       "city": "Ville:",
+      "region": "Région:",
       "department": "Département:",
       "neighborhood": "Quartier:",
       "address": "Adresse:",

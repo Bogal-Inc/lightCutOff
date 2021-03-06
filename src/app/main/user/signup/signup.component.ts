@@ -1,7 +1,5 @@
 import { UserService } from '../../../core/services-firebase';
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {MustMatch} from '@Helpers/must-match.validator';
 import {AuthService} from '../../../core/services-firebase';
 import {ToastrService} from 'ngx-toastr';
 import {TranslateService} from '@ngx-translate/core';
@@ -18,10 +16,6 @@ const log = new Logger('register.component');
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  form: FormGroup;
-  submitted = false;
-  successed = false;
-  cguError = false;
 
   constructor(
     private authService: AuthService,
@@ -55,10 +49,6 @@ export class SignupComponent implements OnInit {
           this.translateService.instant('user.register.error_email_exist') :
           this.translateService.instant('user.register.save_error')
         );
-      })
-      .finally(() => {
-        this.cguError = false;
-        this.submitted = false;
       });
   }
 
@@ -82,7 +72,6 @@ export class SignupComponent implements OnInit {
     this.userService.createUser(user).then(
       (userTmp) => {
         log.debug('add user in user collection');
-        this.successed = true;
         this.toastrService.success(
           this.translateService.instant('user.register.success_message')
         );
@@ -98,6 +87,7 @@ export class SignupComponent implements OnInit {
 
   private associateWithAnonymousAccount(email, password) {
     const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+
     firebase.auth().currentUser.linkWithCredential(credential).then((user) => {
       log.debug('Anonymous account successfully upgraded', user);
     }, (error) => {

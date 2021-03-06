@@ -310,6 +310,7 @@
       "report_places": "Localization",
       "country": "Country:",
       "city": "City:",
+      "region": "Region:",
       "department": "Department:",
       "neighborhood": "Neighborhood:",
       "address": "Address:",
