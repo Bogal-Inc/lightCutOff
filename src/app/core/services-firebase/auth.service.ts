@@ -49,7 +49,8 @@ export class AuthService extends BaseService{
       email: user.email,
       gender: user.gender,
       role: user.roles,
-      birthday: user.birthday
+      birthday: user.birthday,
+      isMessagingToken: user.isMessagingToken
     }));
   }
 

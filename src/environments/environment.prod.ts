@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  environment: 'prod',
+  environment: 'staging',
   googleMapsApiKey: 'googleMapsApiKey',
   domain: 'localhost',
   app: {
@@ -10,7 +10,8 @@ export const environment = {
       mapFilter: false,
       mapSearch: true,
       admin: true
-    }
+    },
+    vapidPublicKey: 'vapidPublicKey',
   },
   firebase: {
     apiKey: 'apiKey',

@@ -21,6 +21,10 @@ import { EmptyLayoutComponent } from './layouts/empty-layout/empty-layout.compon
 import {AngularFireAnalyticsModule} from '@angular/fire/analytics';
 import {NgcCookieConsentConfig, NgcCookieConsentModule} from 'ngx-cookieconsent';
 import {ReactiveFormsModule} from '@angular/forms';
+import { MessagingComponent } from './modals/messaging/messaging.component';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import {MessagingService} from './core/services-firebase';
+import {AsyncPipe} from '@angular/common';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -47,6 +51,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     MainLayoutComponent,
     AdminLayoutComponent,
     EmptyLayoutComponent,
+    MessagingComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +62,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireMessagingModule,
     AngularFireAnalyticsModule,
     ToastrModule.forRoot({
       timeOut: 7000,
@@ -84,7 +90,9 @@ const cookieConfig: NgcCookieConsentConfig = {
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr' },
-    {provide: MESSAGE_FORMAT_CONFIG, useValue: { locales: ['fr', 'en'] } }
+    {provide: MESSAGE_FORMAT_CONFIG, useValue: { locales: ['fr', 'en'] } },
+    MessagingService,
+    AsyncPipe
   ],
   bootstrap: [AppComponent]
 })

@@ -9,9 +9,9 @@ export const environment = {
       mapMenu: true,
       mapFilter: false,
       mapSearch: true,
-      user: false,
       admin: true
-    }
+    },
+    vapidPublicKey: 'vapidPublicKey',
   },
   firebase: {
     apiKey: 'apiKey',
