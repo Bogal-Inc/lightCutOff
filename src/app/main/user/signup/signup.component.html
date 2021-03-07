@@ -3,15 +3,24 @@
     <div class="row">
       <div class="col-md-6 mb-5">
         <div class="register__bloc">
-          <h4 class="text-center register__title">
+          <h1 class="text-center register__title">
             {{'user.register.title' | translate}}
-          </h4>
+          </h1>
           <hr>
           <app-signup-form (submited)="onSubmit($event)"></app-signup-form>
         </div>
       </div>
 
       <div class="col-md-6">
+        <h2>Pourquoi créer un compte?</h2>
+        <div>
+          <ul>
+            <li>Recevoir des notifications via email.</li>
+            <li>Bénéficier des nouvelles concernant la plateforme.</li>
+            <li>Recevoir des informations selon vos habitudes de déplacements.</li>
+            <li>Gagner des badges et des prix pour. <a href="">Règlementation</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
