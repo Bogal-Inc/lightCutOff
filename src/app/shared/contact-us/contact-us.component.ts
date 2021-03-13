@@ -7,6 +7,7 @@ import {Subject} from 'rxjs';
 import {Const} from '../../../environments/const';
 import {takeUntil} from 'rxjs/operators';
 import {Logger} from '@Services/logger.service';
+import {AngularFireAnalytics} from '@angular/fire/analytics';
 
 const log = new Logger('contactus.component');
 
@@ -27,6 +28,7 @@ export class ContactUsComponent implements OnInit, OnDestroy {
     private mailService: MailService,
     private toastService: ToastrService,
     private i18nService: I18nService,
+    private analytics: AngularFireAnalytics
   ) { }
 
   ngOnInit(): void {
@@ -64,14 +66,19 @@ export class ContactUsComponent implements OnInit, OnDestroy {
       .subscribe(
         data => {
           if (data === 'Sended'){
-            log.debug('send mail');
+            log.debug('email sended');
+            this.analytics.logEvent('send_email');
+
             this.toastService.success('Message envoyé');
           } else {
-            log.error('error send mail');
+            log.error('error send mail', data);
             this.toastService.error('Votre message n\'a pas été envoyé');
           }
           this.submitted = false;
           this.contactUsForm.reset();
+        },
+        err => {
+          log.error('email no send', err);
         }
       );
   }
