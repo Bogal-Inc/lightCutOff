@@ -1,6 +1,6 @@
 import { Const } from 'src/environments/const';
 import {Component, OnInit} from '@angular/core';
-import { AuthService } from './core/services-firebase/auth.service';
+import {AuthService, MessagingService} from './core/services-firebase';
 import { DateTimeAdapter } from 'ng-pick-datetime';
 import { Logger } from '@Services/logger.service';
 import { environment } from 'src/environments/environment';
@@ -8,8 +8,10 @@ import { I18nService } from '@Services/i18n.service';
 import {ToastrService} from 'ngx-toastr';
 import {TranslateService} from '@ngx-translate/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {NgcCookieConsentService} from 'ngx-cookieconsent';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {MessagingComponent} from './modals/messaging/messaging.component';
+import {User} from '@Models/user.model';
 
 const firebase = require('firebase/app');
 /** Initialize Logger */
@@ -22,6 +24,7 @@ const log = new Logger('app.component');
 })
 export class AppComponent implements OnInit {
   title = Const.app.title;
+  user: User;
 
   constructor(
     private authService: AuthService,
@@ -29,15 +32,17 @@ export class AppComponent implements OnInit {
     private toastrService: ToastrService,
     private translateService: TranslateService,
     private angularFirestore: AngularFirestore,
+    private messagingService: MessagingService,
     // private ccService: NgcCookieConsentService,
     private analytics: AngularFireAnalytics,
+    private modalService: NgbModal,
     dateTimeAdapter: DateTimeAdapter<any>
   ) {
     dateTimeAdapter.setLocale('fr-FR');
 
     // if user logged we don't use anonymous informations
-    const user = this.authService.getUserToLocalStorage();
-    if (!user?.email) {
+    this.user = this.authService.getUserToLocalStorage();
+    if (!this.user?.email) {
       this.authService.anonymousAuth();
       this.authService.getAnonymousUser();
     }
@@ -60,6 +65,16 @@ export class AppComponent implements OnInit {
     );
 
     // this.initCookiesConsient();
+    if (this.user && this.user.isMessagingToken) {
+      this.openModalMessaging();
+      this.messagingService.listen().subscribe((message: any) => {
+        this.toastrService.info(message.notification.body, message.notification.title);
+      });
+    }
+  }
+
+  openModalMessaging() {
+    this.modalService.open(MessagingComponent, { centered: true });
   }
 
   // private initCookiesConsient() {
@@ -110,6 +125,5 @@ export class AppComponent implements OnInit {
               return;
             }
       });
-
   }
 }
