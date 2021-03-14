@@ -1,15 +1,19 @@
 <div class="messaging">
   <div class="messaging__header">
-    <h4 class="messaging__header__title">Activer les notifications de votre navigateur</h4>
+    <h4 class="messaging__header__title">{{'modal.messaging.title' | translate}}</h4>
   </div>
   <div class="messaging__body">
     <div class="messaging__body__text">
-      <h5 class="mb-3">Pourquoi activer les notifications?</h5>
-      <p>En activant vos notifications, nous pourrons ainsi vous prévenir en cas de coupure dans votre zone.</p>
+      <h5 class="mb-3">{{'modal.messaging.body_title' | translate}}</h5>
+      <p>{{'modal.messaging.body' | translate}}</p>
     </div>
   </div>
   <div class="d-flex justify-content-end messaging__footer">
-    <button type="button" class="btn btn-outline-dark mr-2" (click)="close('Close click')">Close</button>
-    <button type="button" class="btn btn-warning" (click)="activeNotification()">Activer</button>
+    <button type="button" class="btn btn-outline-dark mr-2" (click)="close('Close click')">
+      {{'modal.messaging.btn_close' | translate}}
+    </button>
+    <button type="button" class="btn btn-warning" (click)="activeNotification()">
+      {{'modal.messaging.btn_active' | translate}}
+    </button>
   </div>
 </div>

@@ -454,5 +454,14 @@
       "link": "Learn more",
       "policy": "Cookie Policy"
     }
+  },
+  "modal": {
+    "messaging": {
+      "title": "Activer les notifications de votre navigateur",
+      "body_title": "Pourquoi activer les notifications?",
+      "body": "En activant vos notifications, nous pourrons ainsi vous prévenir en cas de coupure dans votre zone.",
+      "btn_close": "Fermé",
+      "btn_active": "Activé"
+    }
   }
 }
