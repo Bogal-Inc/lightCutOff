@@ -20,10 +20,7 @@ export class AuthService extends BaseService{
   }
 
   anonymousAuth() {
-    this.angularFireAuth.signInAnonymously().catch(err => {
-      const errorCode = err.code;
-      const errorMessage = err.message ;
-    });
+    return this.angularFireAuth.signInAnonymously();
   }
 
   getAnonymousUser() {

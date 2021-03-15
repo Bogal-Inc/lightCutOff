@@ -42,9 +42,8 @@ export class AppComponent implements OnInit {
 
     // if user logged we don't use anonymous informations
     this.user = this.authService.getUserToLocalStorage();
-    if (!this.user?.email) {
-      this.authService.anonymousAuth();
-      this.authService.getAnonymousUser();
+    if (!this.user) {
+      this.signInAnonymously();
     }
   }
 
@@ -65,16 +64,33 @@ export class AppComponent implements OnInit {
     );
 
     // this.initCookiesConsient();
-    if (this.user && this.user.isMessagingToken) {
-      this.openModalMessaging();
-      this.messagingService.listen().subscribe((message: any) => {
-        this.toastrService.info(message.notification.body, message.notification.title);
-      });
+
+    this.openModalMessaging();
+    this.messagingService.listen().subscribe((message: any) => {
+      this.toastrService.info(message.notification.body, message.notification.title);
+    });
+  }
+
+  private openModalMessaging() {
+    if (Notification.permission === 'granted') {
+      log.debug('Notifications browser actived');
+    } else {
+      log.debug('Notifications browser disabled');
+      this.modalService.open(MessagingComponent, { centered: true });
     }
   }
 
-  openModalMessaging() {
-    this.modalService.open(MessagingComponent, { centered: true });
+  private signInAnonymously() {
+    this.authService.anonymousAuth()
+      .then(() => {
+        log.debug('signIn anonymously');
+      })
+      .catch(err => {
+        const errorCode = err.code;
+        const errorMessage = err.message ;
+        log.debug(errorCode, errorMessage);
+      });
+    this.authService.getAnonymousUser();
   }
 
   // private initCookiesConsient() {
