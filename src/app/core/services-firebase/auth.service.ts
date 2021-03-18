@@ -12,15 +12,26 @@ import {filter, switchMap} from 'rxjs/operators';
 })
 export class AuthService extends BaseService{
 
+  authState: any = null;
+
   constructor(
     protected angularFireAuth: AngularFireAuth,
     protected angularFirestore: AngularFirestore
   ) {
     super(angularFireAuth, angularFirestore);
+
+    this.angularFireAuth.authState.subscribe ((auth) => {
+      console.log(auth);
+      this.authState = auth;
+    });
   }
 
   anonymousAuth() {
     return this.angularFireAuth.signInAnonymously();
+  }
+
+  get isUserAnonymousLoggedIn(): boolean {
+    return (this.authState !== null) ? this.authState.isAnonymous : false;
   }
 
   getAnonymousUser() {

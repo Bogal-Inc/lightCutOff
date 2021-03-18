@@ -12,6 +12,7 @@ import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MessagingComponent} from './modals/messaging/messaging.component';
 import {User} from '@Models/user.model';
+import {takeUntil} from 'rxjs/operators';
 
 const firebase = require('firebase/app');
 /** Initialize Logger */
@@ -64,6 +65,13 @@ export class AppComponent implements OnInit {
     );
 
     // this.initCookiesConsient();
+
+    this.messagingService.sendMessaging()
+      .subscribe(
+        data => {
+          console.log('-------------------------', data);
+        }
+      );
 
     this.openModalMessaging();
     this.messagingService.listen().subscribe((message: any) => {

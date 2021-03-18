@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireMessaging } from '@angular/fire/messaging';
 import {mergeMap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,8 @@ import {mergeMap} from 'rxjs/operators';
 export class MessagingService {
 
   constructor(
-    private angularFireMessaging: AngularFireMessaging
+    private angularFireMessaging: AngularFireMessaging,
+    private httpClient: HttpClient
   ) {}
 
   /**
@@ -38,5 +41,22 @@ export class MessagingService {
   deleteToken() {
     return this.angularFireMessaging.getToken
       .pipe(mergeMap(token => this.angularFireMessaging.deleteToken(token)));
+  }
+
+  sendMessaging(): Observable<any>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.httpClient.post(
+      'https://us-central1-lightcutoff.cloudfunctions.net/messaging',
+      // JSON.stringify(sender),
+      {
+        ...httpOptions,
+        responseType: 'text'
+      }
+    );
   }
 }

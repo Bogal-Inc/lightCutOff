@@ -45,13 +45,18 @@ testem.log
 .DS_Store
 Thumbs.db
 
-
+# env file
 .env
 src/environments/environment.prod.ts
 src/environments/environment.staging.ts
 src/environments/environment.ts
 
+# log test
 /report.*
 
+# firebase files
 firebase-debug.log
 .firebase/*
+.runtimeconfig.json
+database-debug.log
+firestore-debug.log
