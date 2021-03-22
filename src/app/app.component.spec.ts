@@ -9,6 +9,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import {ToastrModule} from 'ngx-toastr';
 import {Const} from '../environments/const';
 import {NgcCookieConsentConfig, NgcCookieConsentModule, NgcCookieConsentService} from 'ngx-cookieconsent';
+import {HttpClientModule} from '@angular/common/http';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -38,6 +39,7 @@ describe('AppComponent', () => {
         OwlNativeDateTimeModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
         TranslateModule.forRoot(),
+        HttpClientModule,
         ToastrModule.forRoot({
           timeOut: 10000,
           progressBar: true

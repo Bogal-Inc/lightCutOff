@@ -43,9 +43,7 @@ export class AppComponent implements OnInit {
 
     // if user logged we don't use anonymous informations
     this.user = this.authService.getUserToLocalStorage();
-    if (!this.user) {
-      this.signInAnonymously();
-    }
+    this.signInAnonymously();
   }
 
   ngOnInit() {
@@ -69,14 +67,19 @@ export class AppComponent implements OnInit {
     this.messagingService.sendMessaging()
       .subscribe(
         data => {
-          console.log('-------------------------', data);
+          log.debug('message receive');
+        },
+        error => {
+          log.error('message not receive');
         }
       );
 
-    this.openModalMessaging();
-    this.messagingService.listen().subscribe((message: any) => {
-      this.toastrService.info(message.notification.body, message.notification.title);
-    });
+    if (environment.app.modules.messaging) {
+      this.openModalMessaging();
+      this.messagingService.listen().subscribe((message: any) => {
+        this.toastrService.info(message.notification.body, message.notification.title);
+      });
+    }
   }
 
   private openModalMessaging() {

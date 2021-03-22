@@ -20,7 +20,8 @@ if (environment === 'prod') {
     mapMenu: true,
     mapFilter: true,
     mapSearch: true,
-    user: false,
+    user: true,
+    messaging: true,
     admin: false
   };
   environmentPath += 'environment.prod.ts';
@@ -31,8 +32,9 @@ if (environment === 'prod') {
     mapMenu: true,
     mapFilter: true,
     mapSearch: true,
-    user: false,
-    admin: false
+    user: true,
+    messaging: true,
+    admin: true
   };
   environmentPath += 'environment.staging.ts';
   envConfigFile = getEnvironment(module);
@@ -43,6 +45,7 @@ if (environment === 'prod') {
     mapFilter: true,
     mapSearch: true,
     user: true,
+    messaging: true,
     admin: true
   };
   environmentPath += 'environment.ts';

@@ -7,6 +7,7 @@ import {takeUntil} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
 import {Logger} from '@Services/logger.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {TranslateService} from '@ngx-translate/core';
 
 const log = new Logger('messaging.component');
 
@@ -25,7 +26,8 @@ export class MessagingComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private userService: UserService,
     private toastrService: ToastrService,
-    private angularFireAnalytics: AngularFireAnalytics
+    private angularFireAnalytics: AngularFireAnalytics,
+    private translateService: TranslateService
   ) {
   }
 
@@ -39,10 +41,10 @@ export class MessagingComponent implements OnInit, OnDestroy {
   }
 
   activeNotification() {
-    combineLatest(
+    combineLatest([
       this.authService.currentUser$,
       this.messagingService.requestPermission()
-    )
+      ])
       .pipe(
         takeUntil(this.unsubsscribe$)
       )
@@ -58,7 +60,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
             }
           }
 
-          this.toastrService.success('Merci pour votre confiance');
+          this.toastrService.success(this.translateService.instant('modal.messaging.thanks_trust'));
           this.activeModal.close();
         },
         error => {

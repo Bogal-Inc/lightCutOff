@@ -9,6 +9,8 @@ export const environment = {
       mapMenu: true,
       mapFilter: false,
       mapSearch: true,
+      user: true,
+      messaging: true,
       admin: true
     },
     vapidPublicKey: 'vapidPublicKey',
