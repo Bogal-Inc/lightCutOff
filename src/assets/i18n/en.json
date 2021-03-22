@@ -373,18 +373,24 @@
       "signin_verified_email_message_2": "Cliquer ici"
     },
     "forgot-password": {
-      "title": "Mot de passe oublié",
-      "btn_submit": "Envoyer",
+      "title": "password forget",
+      "btn_submit": "Submit",
       "mail": "Email",
-      "err_message": "Erreur email non reconnu",
-      "success_message": "Un email vous a été envoyé"
+      "err_message": "Error email",
+      "success_message": "An email has been sent to you"
     },
     "Profile": {
-      "firstname": "Prénom",
-      "lastname": "Nom",
-      "gender": "Genre",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "gender": "Gender",
       "email": "Email",
-      "phone_number": "Numéro de téléphone"
+      "phone_number": "Cell",
+      "update_success": "Successed modification",
+      "update_error": "Error modification",
+      "man": "Man",
+      "woman": "Woman",
+      "back": "Return",
+      "btn_update_profile": "Update profile"
     }
   },
   "shared": {
@@ -411,7 +417,7 @@
       "signin": "Signin",
       "profile": "Profile",
       "admin": "Admin",
-      "user_report_acces": "Acceder à vos signalements"
+      "user_report_acces": "Access your reports"
     },
     "map-legend": {
       "title": "Legend",

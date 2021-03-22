@@ -40,8 +40,8 @@
 <!--    TODO: add birthday field -->
 
     <div class="form-group">
-      <input type="email" class="form-control" placeholder="{{'user.register.mail' | translate}}" formControlName="email"
-             [ngClass]="{ 'is-invalid': submitted && f.email.errors }" *ngIf="!user">
+      <input [type]="(user) ? 'hidden' : 'email'" class="form-control" placeholder="{{'user.register.mail' | translate}}" formControlName="email"
+             [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
         <div *ngIf="f.email.errors.email">{{'user.register.mail_error_match' | translate}}</div>
         <div *ngIf="f.email.errors.required">{{'user.register.mail_error_required' | translate}}</div>
@@ -83,7 +83,7 @@
     </div>
 
     <div class="input-group-append">
-      <button class="btn btn-secondary" type="submit">
+      <button class="btn btn-warning" type="submit">
         {{'user.register-form.btn_submit' | translate}}
       </button>
     </div>

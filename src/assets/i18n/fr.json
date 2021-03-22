@@ -385,7 +385,9 @@
       "update_success": "Modification réussie",
       "update_error": "Erreur de modification",
       "man": "Homme",
-      "womman": "Femme"
+      "woman": "Femme",
+      "back": "Retour",
+      "btn_update_profile": "Modifier votre profile"
     },
     "register-form": {
       "firstname": "Prénom",

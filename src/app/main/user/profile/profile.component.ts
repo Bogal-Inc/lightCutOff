@@ -44,6 +44,7 @@ export class ProfileComponent implements OnInit {
         this.authService.createUserToLocalStorage(user);
         this.ativedForm = false;
         this.user = this.authService.getUserLogged();
+        this.ativedForm = false;
 
         this.toastrService.success(this.translateService.instant('user.profile.update_success'));
       },
@@ -54,7 +55,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  activeUpdateForm() {
+  toggleForm() {
     this.ativedForm = !this.ativedForm;
   }
 }

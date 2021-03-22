@@ -44,7 +44,8 @@ export class SignupFormComponent implements OnInit {
         firstName: [this.user.firstName],
         lastName: [this.user.lastName],
         phoneNumber: [this.user.phoneNumber],
-        gender: [this.user.gender]
+        gender: [this.user.gender],
+        email: [this.user.email]
       });
     } else {
       this.form = this.formBuilder.group({
@@ -74,6 +75,7 @@ export class SignupFormComponent implements OnInit {
         lastName: this.form.get('lastName').value,
         gender: this.form.get('gender').value,
         phoneNumber: this.form.get('phoneNumber').value,
+        email: this.form.get('email').value,
       };
     } else {
       dataForm = {
