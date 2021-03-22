@@ -110,11 +110,11 @@ export class SigninComponent implements OnInit {
       this.authService.currentUser$.subscribe(
         (user) => {
           this.authService.createUserToLocalStorage(user);
+          this.toastrService.success(this.translateService.instant('user.signin.login_success'));
+
+          this.router.navigate(['/']);
         }
       );
-
-      this.router.navigate(['/']);
-      this.toastrService.success(this.translateService.instant('user.signin.login_success'));
     }
   }
 }
