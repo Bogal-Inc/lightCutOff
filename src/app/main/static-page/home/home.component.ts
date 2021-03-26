@@ -1,3 +1,4 @@
+import { TutorialComponent } from './../../../modals/tutorial/tutorial.component';
 import {Component, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
 import {faPlayCircle, faBullhorn, faCheckCircle} from '@fortawesome/free-solid-svg-icons';
@@ -80,9 +81,9 @@ export class HomeComponent implements OnInit {
     ]);
   }
 
-  openModal(content) {
+  openModal() {
     this.analytics.logEvent('tutorial_video');
-    this.modalService.open(content);
+    this.modalService.open(TutorialComponent);
   }
 
   private loadReports() {

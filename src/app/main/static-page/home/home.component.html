@@ -1,139 +1,122 @@
 <div class="pb-5 home">
-  <section class="home__section position-relative home__section-header">
-    <div class="home__section-header__body">
-      <div class="d-flex align-items-center justify-content-center home__section-header__body__logo section_1">
-        <div class="text-center">
-          <img src="../../../../assets/static/images/logo.png"
-               [alt]="'core.home.alt_logo' | translate: { projectTitle: projectTitle }"
-               class="mb-5 home__section-header__body__logo__img"><br>
-          <a class="mb-3 btn btn-light mr-2" (click)="openModal(content)"
-             [class.btn-lg]="!isMobil"
-             [title]="'core.home.btn_tuto_lightcutoff_title' | translate: { projectTitle: projectTitle }"
-          >
-            <fa-icon [icon]="faPlayCircle"></fa-icon>
-            {{'core.home.btn_tuto_lightcutoff' | translate: { projectTitle: projectTitle } }}
-          </a>
-          <a class="mb-3 btn btn-warning mr-2" [class.btn-lg]="!isMobil" href="/map"
-             [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }"
-          >
-            <fa-icon [icon]="faBullhorn"></fa-icon>
-            {{"core.home.btn_map" | translate}}
-          </a>
-          <!--<a class="mb-3 btn btn-success mr-2" [class.btn-lg]="!isMobil" href="/own-report" *ngIf="isMarkerAdded"
+    <section class="home__section position-relative home__section-header">
+        <div class="home__section-header__body">
+            <div class="d-flex align-items-center justify-content-center home__section-header__body__logo section_1">
+                <div class="text-center">
+                    <img src="../../../../assets/static/images/logo.png" [alt]="'core.home.alt_logo' | translate: { projectTitle: projectTitle }" class="mb-5 home__section-header__body__logo__img"><br>
+                    <a class="mb-3 btn btn-light mr-2" (click)="openModal()" [class.btn-lg]="!isMobil" [title]="'core.home.btn_tuto_lightcutoff_title' | translate: { projectTitle: projectTitle }">
+                        <fa-icon [icon]="faPlayCircle"></fa-icon>
+                        {{'core.home.btn_tuto_lightcutoff' | translate: { projectTitle: projectTitle } }}
+                    </a>
+                    <a class="mb-3 btn btn-warning mr-2" [class.btn-lg]="!isMobil" href="/map" [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }">
+                        <fa-icon [icon]="faBullhorn"></fa-icon>
+                        {{"core.home.btn_map" | translate}}
+                    </a>
+                    <!--<a class="mb-3 btn btn-success mr-2" [class.btn-lg]="!isMobil" href="/own-report" *ngIf="isMarkerAdded"
              [title]="'core.home.btn_report_title' | translate: { projectTitle: projectTitle }"
           >
             <fa-icon [icon]="faCheckCircle"></fa-icon>
             {{"core.home.btn_report" | translate}}
           </a>-->
-        </div>
-      </div>
-    </div>
-  </section>
-
-<!-- about us section-->
-  <section class="home__section home__section-about">
-    <div class="home__section-about__body w-100 h-100">
-      <div class="d-flex align-items-center justify-content-center w-100 h-100">
-        <div class="container">
-          <h2 class="mb-5 text-center">{{'core.home.about.title' | translate: { projectTitle: projectTitle } }}</h2>
-          <div class="row">
-            <div class="col-md-3">
-              <img src="../../../../assets/static/images/home/aboutus.svg" class="rounded w-100"
-                   [alt]="'core.aboutus.alt_img' | translate: { projectTitle: projectTitle }"
-                   alt="">
+                </div>
             </div>
-            <div class="col-md-9">
-              <div>
-                <p class="text-justify"
-                   [innerHTML]="'core.home.about.content' | translate: { projectTitle: projectTitle }"></p>
-              </div>
-              <div class="text-center">
-                <button type="button" class="btn btn-outline-info" routerLink="/aboutus">
+        </div>
+    </section>
+
+    <!-- about us section-->
+    <section class="home__section home__section-about">
+        <div class="home__section-about__body w-100 h-100">
+            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                <div class="container">
+                    <h2 class="mb-5 text-center">{{'core.home.about.title' | translate: { projectTitle: projectTitle } }}</h2>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="../../../../assets/static/images/home/aboutus.svg" class="rounded w-100" [alt]="'core.aboutus.alt_img' | translate: { projectTitle: projectTitle }" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <div>
+                                <p class="text-justify" [innerHTML]="'core.home.about.content' | translate: { projectTitle: projectTitle }"></p>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-outline-info" routerLink="/aboutus">
                   {{'core.home.about.btn_next' | translate}}
                 </button>
-              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-<!--  what we do section-->
-  <section class="home__section home__section-whatwedo">
-    <div class="home__section-whatwedo__body w-100 h-100">
-      <h2 class="mb-5 text-center">{{'core.home.whatwedo.title' | translate}}</h2>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 text-center">
-            <div class="text-center pb-4">
-              <img src="../../../../assets/static/images/home/map.svg"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.alt_local_cut_off' | translate}} logo">
-            </div>
-            <h4>{{'core.home.whatwedo.local_cut_off' | translate}}</h4>
-          </div>
+    <!--  what we do section-->
+    <section class="home__section home__section-whatwedo">
+        <div class="home__section-whatwedo__body w-100 h-100">
+            <h2 class="mb-5 text-center">{{'core.home.whatwedo.title' | translate}}</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <div class="text-center pb-4">
+                            <img src="../../../../assets/static/images/home/map.svg" class="rounded w-100" alt="{{'core.home.whatwedo.alt_local_cut_off' | translate}} logo">
+                        </div>
+                        <h4>{{'core.home.whatwedo.local_cut_off' | translate}}</h4>
+                    </div>
 
-          <div class="col-md-3 text-center">
-            <div class=" pb-4">
-              <img src="../../../../assets/static/images/home/data_collect.svg"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.alt_collect_data' | translate}} logo">
-            </div>
-            <h4>{{'core.home.whatwedo.collect_data' | translate }}</h4>
-          </div>
+                    <div class="col-md-3 text-center">
+                        <div class=" pb-4">
+                            <img src="../../../../assets/static/images/home/data_collect.svg" class="rounded w-100" alt="{{'core.home.whatwedo.alt_collect_data' | translate}} logo">
+                        </div>
+                        <h4>{{'core.home.whatwedo.collect_data' | translate }}</h4>
+                    </div>
 
-          <div class="col-md-3 text-center">
-            <div class="text-center pb-4">
-              <img src="../../../../assets/static/images/home/grahic_chart.svg"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.charts_data' | translate}} logo">
+                    <div class="col-md-3 text-center">
+                        <div class="text-center pb-4">
+                            <img src="../../../../assets/static/images/home/grahic_chart.svg" class="rounded w-100" alt="{{'core.home.whatwedo.charts_data' | translate}} logo">
+                        </div>
+                        <h4>{{'core.home.whatwedo.charts_data' | translate}}</h4>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <div class="text-center pb-4">
+                            <img src="../../../../assets/static/images/home/user_data.svg" class="rounded w-100" alt="{{'core.home.whatwedo.users_notifications' | translate}}">
+                        </div>
+                        <h4>{{'core.home.whatwedo.users_informations' | translate}}</h4>
+                    </div>
+                </div>
             </div>
-            <h4>{{'core.home.whatwedo.charts_data' | translate}}</h4>
-          </div>
-          <div class="col-md-3 text-center">
-            <div class="text-center pb-4">
-              <img src="../../../../assets/static/images/home/user_data.svg"
-                   class="rounded w-100" alt="{{'core.home.whatwedo.users_notifications' | translate}}">
-            </div>
-            <h4>{{'core.home.whatwedo.users_informations' | translate}}</h4>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!--  Applications example -->
-  <section class="home__section home__section-example">
-    <div class="home__section-whatwedo__body w-100 h-100">
-      <h2 class="mb-5 text-center">{{'core.home.app_example.title' | translate}}</h2>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 text-center">
-            <div class=" pb-4">
-              <img src="../../../../assets/static/images/home/research.svg"
-                   class="rounded w-100" alt="{{'core.home.app_example.alt_research' | translate}} logo">
+    <!--  Applications example -->
+    <section class="home__section home__section-example">
+        <div class="home__section-whatwedo__body w-100 h-100">
+            <h2 class="mb-5 text-center">{{'core.home.app_example.title' | translate}}</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class=" pb-4">
+                            <img src="../../../../assets/static/images/home/research.svg" class="rounded w-100" alt="{{'core.home.app_example.alt_research' | translate}} logo">
+                        </div>
+                        <h4>{{'core.home.app_example.research' | translate}}</h4>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="text-center pb-4">
+                            <img src="../../../../assets/static/images/home/work.svg" class="rounded w-100" alt="{{'core.home.app_example.alt_move' | translate}}">
+                        </div>
+                        <h4>{{'core.home.app_example.move' | translate}}</h4>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="text-center pb-4">
+                            <img src="../../../../assets/static/images/home/demenage.svg" class="rounded w-100" alt="{{'core.home.app_example.alt_to_move_out' | translate}}">
+                        </div>
+                        <h4>{{'core.home.app_example.to_move_out' | translate}}</h4>
+                    </div>
+                </div>
             </div>
-            <h4>{{'core.home.app_example.research' | translate}}</h4>
-          </div>
-          <div class="col-md-4 text-center">
-            <div class="text-center pb-4">
-              <img src="../../../../assets/static/images/home/work.svg"
-                   class="rounded w-100" alt="{{'core.home.app_example.alt_move' | translate}}">
-            </div>
-            <h4>{{'core.home.app_example.move' | translate}}</h4>
-          </div>
-          <div class="col-md-4 text-center">
-            <div class="text-center pb-4">
-              <img src="../../../../assets/static/images/home/demenage.svg"
-                   class="rounded w-100" alt="{{'core.home.app_example.alt_to_move_out' | translate}}">
-            </div>
-            <h4>{{'core.home.app_example.to_move_out' | translate}}</h4>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-<!--  data report-->
-  <!--<section class="home__section home__section-data" *ngIf="reports">
+    <!--  data report-->
+    <!--<section class="home__section home__section-data" *ngIf="reports">
     <div class="home__section-data__header">
       <h2 class="mb-5 text-center">{{'core.home.statistics.title' | translate: { projectTitle: projectTitle } }}</h2>
     </div>
@@ -161,121 +144,96 @@
     </div>
   </section>-->
 
-<!--  actuality-->
-  <section class="home__section home__section-actuality">
-    <div class="home__section-actuality__body w-100 h-100">
-      <h2 class="mb-5 text-center">{{'core.home.actuality.title' | translate}}</h2>
+    <!--  actuality-->
+    <section class="home__section home__section-actuality">
+        <div class="home__section-actuality__body w-100 h-100">
+            <h2 class="mb-5 text-center">{{'core.home.actuality.title' | translate}}</h2>
 
-      <div class="container">
-        <div class="d-flex justify-content-center">
-          <div class="card" style="width: 18rem;">
-            <img src="../../../../assets/static/images/home/logo_opleda.jpg" class="card-img-top" alt="logo opleda">
-            <div class="card-body">
-              <h5 class="card-title" [innerHTML]="'core.home.actuality.opleda.title' | translate"></h5>
-              <p class="card-text" [innerHTML]="'core.home.actuality.opleda.content' | translate"></p>
-              <a href="https://eventornado.com/event/electricite-pour-tous-en-afrique#Blog%20du%20hackathon"
-                 class="btn btn-link">En savoir plus</a>
+            <div class="container">
+                <div class="d-flex justify-content-center">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../../../../assets/static/images/home/logo_opleda.jpg" class="card-img-top" alt="logo opleda">
+                        <div class="card-body">
+                            <h5 class="card-title" [innerHTML]="'core.home.actuality.opleda.title' | translate"></h5>
+                            <p class="card-text" [innerHTML]="'core.home.actuality.opleda.content' | translate"></p>
+                            <a href="https://eventornado.com/event/electricite-pour-tous-en-afrique#Blog%20du%20hackathon" class="btn btn-link">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-<!--  team section-->
-  <section class="home__section home__section-team">
-    <div class="home__section-team__body w-100 h-100">
-      <h2 class="mb-5 text-center">{{'core.home.team.title' | translate}}</h2>
+    <!--  team section-->
+    <section class="home__section home__section-team">
+        <div class="home__section-team__body w-100 h-100">
+            <h2 class="mb-5 text-center">{{'core.home.team.title' | translate}}</h2>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 text-center home__section-team__item"
-               (mouseenter) ="mouseEnter(partners[0])"  (mouseleave) ="mouseLeave(partners[0])">
-            <div class=" pb-4">
-              <img src="../../../../assets/static/images/partners/kouagnia_willy_c.png" [class.d-block]="!impPartnerWilly"
-                   class="rounded-circle w-100 d-none" alt="kouagnia willy lightcutoff CEO">
-              <img src="../../../../assets/static/images/partners/kouagnia_willy_b.png" [class.d-block]="impPartnerWilly"
-                   class="rounded-circle w-100 d-none" alt="kouagnia willy lightcutoff CEO">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[0])" (mouseleave)="mouseLeave(partners[0])">
+                        <div class=" pb-4">
+                            <img src="../../../../assets/static/images/partners/kouagnia_willy_c.png" [class.d-block]="!impPartnerWilly" class="rounded-circle w-100 d-none" alt="kouagnia willy lightcutoff CEO">
+                            <img src="../../../../assets/static/images/partners/kouagnia_willy_b.png" [class.d-block]="impPartnerWilly" class="rounded-circle w-100 d-none" alt="kouagnia willy lightcutoff CEO">
+                        </div>
+                        <div>
+                            <h4>Willy Kouagnia</h4>
+                            <i>{{'core.home.team.founder' | translate}}, {{'core.home.team.developer' | translate}}</i>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[2])" (mouseleave)="mouseLeave(partners[2])">
+                        <div class="text-center pb-4">
+                            <img src="../../../../assets/static/images/partners/jaures_tchapet_c.png" [class.d-block]="!impPartnerJaures" class="rounded-circle w-100 d-none" alt="jaures_tchapet lightcutoff CTO">
+                            <img src="../../../../assets/static/images/partners/jaures_tchapet_b.png" [class.d-block]="impPartnerJaures" class="rounded-circle w-100 d-none" alt="jaures_tchapet lightcutoff CTO">
+                        </div>
+                        <div>
+                            <h4>Jaures Tchapet</h4>
+                            <i>{{'core.home.team.cto' | translate}}, {{'core.home.team.developer' | translate}}</i>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[1])" (mouseleave)="mouseLeave(partners[1])">
+                        <div class="text-center pb-4">
+                            <img src="../../../../assets/static/images/partners/nandjeu_euclide_c.png" [class.d-block]="!impPartnerEuclide" class="rounded-circle w-100 d-none" alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
+                            <img src="../../../../assets/static/images/partners/nandjeu_euclide_b.png" [class.d-block]="impPartnerEuclide" class="rounded-circle w-100 d-none" alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
+                        </div>
+                        <div>
+                            <h4>Nandjeu Euclide Quentin</h4>
+                            <i>{{'core.home.team.communication' | translate}}</i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-              <h4>Willy Kouagnia</h4>
-              <i>{{'core.home.team.founder' | translate}}, {{'core.home.team.developer' | translate}}</i>
-            </div>
-          </div>
-          <div class="col-md-4 text-center home__section-team__item"
-               (mouseenter) ="mouseEnter(partners[2])"  (mouseleave) ="mouseLeave(partners[2])">
-            <div class="text-center pb-4">
-              <img src="../../../../assets/static/images/partners/jaures_tchapet_c.png" [class.d-block]="!impPartnerJaures"
-                   class="rounded-circle w-100 d-none" alt="jaures_tchapet lightcutoff CTO">
-              <img src="../../../../assets/static/images/partners/jaures_tchapet_b.png" [class.d-block]="impPartnerJaures"
-                   class="rounded-circle w-100 d-none" alt="jaures_tchapet lightcutoff CTO">
-            </div>
-            <div>
-              <h4>Jaures Tchapet</h4>
-              <i>{{'core.home.team.cto' | translate}}, {{'core.home.team.developer' | translate}}</i>
-            </div>
-          </div>
-          <div class="col-md-4 text-center home__section-team__item"
-               (mouseenter) ="mouseEnter(partners[1])" (mouseleave) ="mouseLeave(partners[1])">
-            <div class="text-center pb-4">
-              <img src="../../../../assets/static/images/partners/nandjeu_euclide_c.png" [class.d-block]="!impPartnerEuclide"
-                   class="rounded-circle w-100 d-none" alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
-              <img src="../../../../assets/static/images/partners/nandjeu_euclide_b.png" [class.d-block]="impPartnerEuclide"
-                   class="rounded-circle w-100 d-none" alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
-            </div>
-            <div>
-              <h4>Nandjeu Euclide Quentin</h4>
-              <i>{{'core.home.team.communication' | translate}}</i>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- partners -->
-  <section class="home__section home__section-partner">
-    <div class="home__section-partner__body w-100 h-100">
-      <div class="container">
-        <h1 class="mb-5 text-center">{{'core.home.partners.title' | translate}}</h1>
-        <div class="row">
-          <img src="../../../../assets/static/images/partners/AG-LOGO.png"
-               class="rounded-circle mx-auto d-block w-25"
-               alt="AG-LOGO lightcutoff partner">
+    <!-- partners -->
+    <section class="home__section home__section-partner">
+        <div class="home__section-partner__body w-100 h-100">
+            <div class="container">
+                <h1 class="mb-5 text-center">{{'core.home.partners.title' | translate}}</h1>
+                <div class="row">
+                    <img src="../../../../assets/static/images/partners/AG-LOGO.png" class="rounded-circle mx-auto d-block w-25" alt="AG-LOGO lightcutoff partner">
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- contact us section-->
-  <section class="home__section home__section-contactus" id="contactus">
-    <div class="home__section-contactus__body w-100 h-100">
-      <div class="d-flex align-items-center justify-content-center w-100 h-100">
-        <div class="container">
-          <h1 class="mb-5 text-center">{{'core.home.contactus.title' | translate}}</h1>
-          <div class="row">
-            <div class="col-md-3">
-              <img src="../../../../assets/static/images/home/contact_us.svg"
-                   class="rounded w-100" alt="{{'core.home.contactus.alt_img' | translate}} logo">
+    <!-- contact us section-->
+    <section class="home__section home__section-contactus" id="contactus">
+        <div class="home__section-contactus__body w-100 h-100">
+            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                <div class="container">
+                    <h1 class="mb-5 text-center">{{'core.home.contactus.title' | translate}}</h1>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="../../../../assets/static/images/home/contact_us.svg" class="rounded w-100" alt="{{'core.home.contactus.alt_img' | translate}} logo">
+                        </div>
+                        <div class="col-md-9">
+                            <app-contact-us></app-contact-us>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-9">
-              <app-contact-us></app-contact-us>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </div>
-
-<ng-template #content let-modal>
-  <div class="embed-responsive embed-responsive-4by3" id="modal-video">
-    <app-loading [show]="true"></app-loading>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/mC6TnZfDA7w"
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-<!--    <iframe class="embed-responsive-item"-->
-<!--            src="https://youtu.be/mC6TnZfDA7w"-->
-<!--            allowfullscreen></iframe>-->
-  </div>
-</ng-template>

@@ -80,6 +80,7 @@ function getEnvironment(modules) {
   mapFilter: ${modules.mapFilter},
   mapSearch: ${modules.mapSearch},
   user: ${modules.user},
+  messaging: ${modules.messaging},
   admin: ${modules.admin}
   }
   },
