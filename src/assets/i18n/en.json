@@ -463,12 +463,12 @@
   },
   "modal": {
     "messaging": {
-      "title": "Activer les notifications de votre navigateur",
-      "body_title": "Pourquoi activer les notifications?",
-      "thanks_trust": "Merci pour votre confiance",
-      "body": "En activant vos notifications, nous pourrons ainsi vous prévenir en cas de coupure dans votre zone.",
-      "btn_close": "Fermé",
-      "btn_active": "Activé"
+      "title": "Activate your browser notifications",
+      "body_title": "Why activate notifications?",
+      "thanks_trust": "thank you for your trust",
+      "body": "By activating your notifications, we will be able to inform you more precisely.",
+      "btn_close": "Closed",
+      "btn_active": "Enabled"
     }
   }
 }
