@@ -1,11 +1,11 @@
 import { writeFile } from 'fs';
 
 declare var require: any;
+require('dotenv').config();
 
 // Load node modules
 const colors = require('colors');
 const SRCPATH = './src/';
-require('dotenv').config();
 
 const environment = process.env.ENVIRONMENT;
 // Configure Angular `environment.ts` file path
@@ -13,6 +13,7 @@ let environmentPath = `${SRCPATH}environments/`;
 // `environment.ts` file structure
 let envConfigFile;
 const messagingManifestFile = getMessagingManifestFile();
+const swenv = getSwEnv();
 
 if (environment === 'prod') {
   const module = {
@@ -32,8 +33,8 @@ if (environment === 'prod') {
     mapMenu: true,
     mapFilter: true,
     mapSearch: true,
-    user: true,
-    messaging: true,
+    user: false,
+    messaging: false,
     admin: true
   };
   environmentPath += 'environment.staging.ts';
@@ -63,6 +64,7 @@ if (environment === 'dev') {
 // create environment file
 createFile(environmentPath, envConfigFile);
 // create messaging manifest file
+createFile(SRCPATH + 'swenv.js', swenv);
 createFile(SRCPATH + 'manifest.json', messagingManifestFile);
 
 function getEnvironment(modules) {
@@ -94,6 +96,21 @@ function getEnvironment(modules) {
     projectId: '${process.env.FIREBASE_PROJECT_ID}',
     storageBucket: '${process.env.FIREBASE_STORAGE_BUCKET}'
   }
+  };
+  `;
+}
+
+function getSwEnv() {
+
+  return  `const firebase = {
+    apiKey: '${process.env.FIREBASE_API_KEY}',
+    authDomain: '${process.env.FIREBASE_AUTH_DOMAIN}',
+    databaseURL: '${process.env.FIREBASE_DATABASE_URL}',
+    messagingSenderId: '${process.env.FIREBASE_MESSAGING_SENDER_ID}',
+    appId: '${process.env.FIREBASE_APP_ID}',
+    measurementId: '${process.env.FIREBASE_MEASUREMENT_ID}',
+    projectId: '${process.env.FIREBASE_PROJECT_ID}',
+    storageBucket: '${process.env.FIREBASE_STORAGE_BUCKET}'
   };
   `;
 }

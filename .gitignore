@@ -50,6 +50,7 @@ Thumbs.db
 src/environments/environment.prod.ts
 src/environments/environment.staging.ts
 src/environments/environment.ts
+src/swenv.js
 
 # log test
 /report.*
@@ -60,3 +61,4 @@ firebase-debug.log
 .runtimeconfig.json
 database-debug.log
 firestore-debug.log
+
