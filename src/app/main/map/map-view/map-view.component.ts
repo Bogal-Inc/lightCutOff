@@ -322,8 +322,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.markerCurrentInfoWindow.setContent(this.loadingElt.nativeElement);
     this.reportService.addReport(report).then(
       resp => {
-        const id = resp.path.valueOf().split('/')[1];
         log.debug('report create', resp.path.valueOf());
+        const id = resp.path.valueOf().split('/')[1];
         this.formLoader = false;
         this.reportAdd = report;
         this.reportAdd.id = id;

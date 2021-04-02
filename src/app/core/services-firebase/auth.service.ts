@@ -21,7 +21,6 @@ export class AuthService extends BaseService{
     super(angularFireAuth, angularFirestore);
 
     this.angularFireAuth.authState.subscribe ((auth) => {
-      console.log(auth);
       this.authState = auth;
     });
   }

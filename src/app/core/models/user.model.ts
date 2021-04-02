@@ -24,8 +24,6 @@ export interface User  extends Doc {
   gender?: Gender;
   birthday?: Date | firebase.firestore.Timestamp | any;
   roles?: Role;
-  messagingToken?: string;
-  isMessagingToken: boolean;
 }
 
 export const defaultUser = {
@@ -39,7 +37,5 @@ export const defaultUser = {
   photoURL: null,
   roles: {
     admin: false
-  },
-  messagingToken: null,
-  isMessagingToken: false
+  }
 } as User;

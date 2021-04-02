@@ -64,16 +64,6 @@ export class AppComponent implements OnInit {
 
     // this.initCookiesConsient();
 
-    this.messagingService.sendMessaging()
-      .subscribe(
-        data => {
-          log.debug('message receive');
-        },
-        error => {
-          log.error('message not receive');
-        }
-      );
-
     if (environment.app.modules.messaging) {
       this.openModalMessaging();
       this.messagingService.listen().subscribe((message: any) => {

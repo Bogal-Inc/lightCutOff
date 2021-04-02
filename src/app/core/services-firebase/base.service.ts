@@ -75,8 +75,8 @@ export class BaseService {
       .valueChanges({ idField: 'id' });
   }
 
-  protected set<T extends Doc>(ref: DocPredicate<T>, data: any) {
-    return this.doc(ref).set({
+  protected set<T extends Doc>(ref: any, data: any) {
+    return this.col(ref).doc(data.id).set({
       ...data,
       _createdAt: this.timestamp,
       _createdBy: this.user,

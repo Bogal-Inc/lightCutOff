@@ -1,7 +1,7 @@
 importScripts('https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/8.2.10/firebase-messaging.js');
+importScripts('swenv.js');
 
-require('dotenv').config();
 
 firebase.initializeApp({
   apiKey: process.env.FIREBASE_API_KEY,
@@ -14,16 +14,20 @@ firebase.initializeApp({
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET
 });
 
+
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage((payload) => {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
+  console.log('[firebase-messaging-sw.js] Received background message ');
   // Customize notification here
-  const notificationTitle = 'Background Message Title';
+  const notificationTitle = playload.notification.title;
   const notificationOptions = {
-    body: 'Background Message body.',
-    // icon: '/firebase-logo.png'
+    body: playload.notification.body,
+    icon: '/assets/static/icons/android-chrome-192x192.png'
   };
 
   self.registration.showNotification(notificationTitle, notificationOptions);
-});
+},
+  (error) => {
+    console.error('[firebase-messaging-sw.js] receive message fail')
+  });

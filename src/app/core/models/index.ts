@@ -5,3 +5,4 @@ export * from './base.model';
 export * from './map.model';
 export * from './location.model';
 export * from './metaTag.model';
+export * from './device.model';

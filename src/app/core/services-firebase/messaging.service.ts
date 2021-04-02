@@ -10,8 +10,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class MessagingService {
 
   constructor(
-    private angularFireMessaging: AngularFireMessaging,
-    private httpClient: HttpClient
+    private angularFireMessaging: AngularFireMessaging
   ) {}
 
   /**
@@ -21,13 +20,6 @@ export class MessagingService {
    */
   requestPermission() {
     return this.angularFireMessaging.requestToken;
-  }
-
-  /**
-   * This function will be triggered when a new message has received.
-   */
-  receiveMessage() {
-    return this.angularFireMessaging.messages;
   }
 
   /**
@@ -41,22 +33,5 @@ export class MessagingService {
   deleteToken() {
     return this.angularFireMessaging.getToken
       .pipe(mergeMap(token => this.angularFireMessaging.deleteToken(token)));
-  }
-
-  sendMessaging(): Observable<any>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-
-    return this.httpClient.post(
-      'https://us-central1-lightcutoff.cloudfunctions.net/messaging',
-      // JSON.stringify(sender),
-      {
-        ...httpOptions,
-        responseType: 'text'
-      }
-    );
   }
 }

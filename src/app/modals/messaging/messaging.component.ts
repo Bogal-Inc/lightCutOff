@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthService, MessagingService, UserService} from '../../core/services-firebase';
+import {AuthService, MessagingService} from '../../core/services-firebase';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {combineLatest, Subject} from 'rxjs';
 import {User} from '@Models/user.model';
@@ -8,6 +8,8 @@ import {ToastrService} from 'ngx-toastr';
 import {Logger} from '@Services/logger.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {TranslateService} from '@ngx-translate/core';
+import {DeviceService} from '../../core/services-firebase/device.service';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 const log = new Logger('messaging.component');
 
@@ -22,9 +24,10 @@ export class MessagingComponent implements OnInit, OnDestroy {
 
   constructor(
     public activeModal: NgbActiveModal,
+    private angularFirestore: AngularFirestore,
     private messagingService: MessagingService,
     private authService: AuthService,
-    private userService: UserService,
+    private deviceservice: DeviceService,
     private toastrService: ToastrService,
     private angularFireAnalytics: AngularFireAnalytics,
     private translateService: TranslateService
@@ -41,10 +44,19 @@ export class MessagingComponent implements OnInit, OnDestroy {
   }
 
   activeNotification() {
+    this.enableMessagingwithlogin();
+  }
+
+  close(result?) {
+    this.angularFireAnalytics.logEvent('no_enable_messaging');
+    this.activeModal.close(result);
+  }
+
+  enableMessagingwithlogin(){
     combineLatest([
       this.authService.currentUser$,
       this.messagingService.requestPermission()
-      ])
+    ])
       .pipe(
         takeUntil(this.unsubsscribe$)
       )
@@ -52,25 +64,18 @@ export class MessagingComponent implements OnInit, OnDestroy {
           log.debug('enable_messaging');
           this.angularFireAnalytics.logEvent('enable_messaging');
 
-          if (user) {
-            user.messagingToken = token;
-            user.isMessagingToken = true;
-            if (token !== user.messagingToken) {
-              this.userService.updateUser(user);
-            }
-          }
+          const device = {
+            id: this.angularFirestore.createId(),
+            messagingToken: token
+          };
 
+          this.deviceservice.create(device);
           this.toastrService.success(this.translateService.instant('modal.messaging.thanks_trust'));
           this.activeModal.close();
         },
         error => {
-          log.error('enable messaging error');
+          log.error('enable messaging error', error);
         });
   }
 
-  close(result?) {
-    this.angularFireAnalytics.logEvent('no_enable_messaging');
-
-    this.activeModal.close(result);
-  }
 }
