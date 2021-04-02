@@ -14,6 +14,7 @@ export const Const = {
   sendMail: 'https://us-central1-lightcutoff.cloudfunctions.net/sendMail',
   collections: {
     users: 'users',
+    devices: 'devices',
     reports: 'reports'
   },
   coordsCameroon: {

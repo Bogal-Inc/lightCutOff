@@ -30,6 +30,10 @@
     "database": {
       "host": "localhost",
       "port": "10000"
+    },
+    "firestore": {
+      "host": "localhost",
+      "port": "10001"
     }
   }
 
