@@ -50,9 +50,10 @@ export class SignupFormComponent implements OnInit {
     } else {
       this.form = this.formBuilder.group({
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)]],
+        password: ['', [Validators.required]],
+        // password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)]],
         confirmPassword: ['', Validators.required],
-        accept: [false]
+        // accept: [false]
       }, { validator: MustMatch('password', 'confirmPassword')});
     }
   }

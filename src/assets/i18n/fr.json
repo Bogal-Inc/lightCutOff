@@ -369,6 +369,9 @@
       "signin_verified_email_message": "Si vous ne retrouvez plus votre email d'activation, renvoyer un courriel d'activation.",
       "signin_verified_email_message_2": "Cliquer ici"
     },
+    "signup": {
+      "reason_signup": "Lightcutoff est une plateforme collaborative qui permet à ses utilisateurs de partager de l'information concernant les coupures de lumière. Pour se faire, nous avons besoin de connaitre nos utilisateurs. <br>Alors crée vous un compte. Gardons le contact."
+    },
     "forgot-password": {
       "title": "Mot de passe oublié",
       "btn_submit": "Envoyer",

@@ -1,27 +1,21 @@
 <div class="main-admin register">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mb-5">
-        <div class="register__bloc">
-          <h1 class="text-center register__title">
-            {{'user.register.title' | translate}}
-          </h1>
-          <hr>
-          <app-signup-form (submited)="onSubmit($event)"></app-signup-form>
-        </div>
-      </div>
+  <div class="text-center mb-3 register__logo">
+    <img
+      src="../../../../assets/static/images/logo_text_lightcutoff_LCO.jpg"
+      class="w-25"
+      alt="logo text lightcutoff"
+    >
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="register__bloc">
+      <h1 class="text-center register__bloc__title">
+        {{'user.register.title' | translate}}
+      </h1>
 
-      <div class="col-md-6">
-        <h2>Pourquoi créer un compte?</h2>
-        <div>
-          <ul>
-            <li>Recevoir des notifications via email.</li>
-            <li>Bénéficier des nouvelles concernant la plateforme.</li>
-            <li>Recevoir des informations selon vos habitudes de déplacements.</li>
-            <li>Gagner des badges et des prix pour. <a href="">Règlementation</a></li>
-          </ul>
-        </div>
-      </div>
+      <p class="register__bloc__text" [innerHTML]="'user.signup.reason_signup' | translate">
+
+      </p>
+      <app-signup-form (submited)="onSubmit($event)"></app-signup-form>
     </div>
   </div>
 </div>
