@@ -1,4 +1,4 @@
-import { TutorialComponent } from './../../../modals/tutorial/tutorial.component';
+import { TutorialComponent } from '../../../modals/tutorial/tutorial.component';
 import {Component, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
 import {faPlayCircle, faBullhorn, faCheckCircle} from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +17,7 @@ const log = new Logger('home.component');
 export enum PARTNERS {
   WILLY,
   EUCLIDE,
-  JAURES
+  YVAN
 }
 
 @Component({
@@ -38,11 +38,11 @@ export class HomeComponent implements OnInit {
   partners = [
     PARTNERS.WILLY,
     PARTNERS.EUCLIDE,
-    PARTNERS.JAURES
+    PARTNERS.YVAN
   ];
   impPartnerWilly = true;
   impPartnerEuclide = true;
-  impPartnerJaures = true;
+  impPartnerYVAN = true;
   reportsCurrentDay: Report[];
   nbrReportsDay: number;
   nbrReportsMonthly: number;
@@ -96,7 +96,6 @@ export class HomeComponent implements OnInit {
         this.isMarkerAdded = this.isCurrentUSerHaveMarkers();
         this.initReportsCollection();
       });
-
   }
 
   mouseEnter(partner: PARTNERS) {
@@ -105,7 +104,7 @@ export class HomeComponent implements OnInit {
     } else if (partner === PARTNERS.EUCLIDE) {
       this.impPartnerEuclide = false;
     } else {
-      this.impPartnerJaures = false;
+      this.impPartnerYVAN = false;
     }
   }
 
@@ -115,7 +114,7 @@ export class HomeComponent implements OnInit {
     } else if (partner === PARTNERS.EUCLIDE) {
       this.impPartnerEuclide = true;
     } else {
-      this.impPartnerJaures = true;
+      this.impPartnerYVAN = true;
     }
   }
 

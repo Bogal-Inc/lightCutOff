@@ -94,19 +94,22 @@
                 <div class="row">
                     <div class="col-md-4 text-center">
                         <div class=" pb-4">
-                            <img src="../../../../assets/static/images/home/research.svg" class="rounded w-100" alt="{{'core.home.app_example.alt_research' | translate}} logo">
+                            <img src="../../../../assets/static/images/home/research.svg" class="rounded w-100"
+                                 alt="{{'core.home.app_example.alt_research' | translate}} logo">
                         </div>
                         <h4>{{'core.home.app_example.research' | translate}}</h4>
                     </div>
                     <div class="col-md-4 text-center">
                         <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/home/work.svg" class="rounded w-100" alt="{{'core.home.app_example.alt_move' | translate}}">
+                            <img src="../../../../assets/static/images/home/work.svg" class="rounded w-100"
+                                 alt="{{'core.home.app_example.alt_move' | translate}}">
                         </div>
                         <h4>{{'core.home.app_example.move' | translate}}</h4>
                     </div>
                     <div class="col-md-4 text-center">
                         <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/home/demenage.svg" class="rounded w-100" alt="{{'core.home.app_example.alt_to_move_out' | translate}}">
+                            <img src="../../../../assets/static/images/home/demenage.svg" class="rounded w-100"
+                                 alt="{{'core.home.app_example.alt_to_move_out' | translate}}">
                         </div>
                         <h4>{{'core.home.app_example.to_move_out' | translate}}</h4>
                     </div>
@@ -152,11 +155,13 @@
             <div class="container">
                 <div class="d-flex justify-content-center">
                     <div class="card" style="width: 18rem;">
-                        <img src="../../../../assets/static/images/home/logo_opleda.jpg" class="card-img-top" alt="logo opleda">
+                        <img src="../../../../assets/static/images/home/logo_opleda.jpg" class="card-img-top"
+                             alt="logo opleda">
                         <div class="card-body">
                             <h5 class="card-title" [innerHTML]="'core.home.actuality.opleda.title' | translate"></h5>
                             <p class="card-text" [innerHTML]="'core.home.actuality.opleda.content' | translate"></p>
-                            <a href="https://eventornado.com/event/electricite-pour-tous-en-afrique#Blog%20du%20hackathon" class="btn btn-link">En savoir plus</a>
+                            <a href="https://eventornado.com/event/electricite-pour-tous-en-afrique#Blog%20du%20hackathon"
+                               class="btn btn-link">En savoir plus</a>
                         </div>
                     </div>
                 </div>
@@ -181,20 +186,30 @@
                             <i>{{'core.home.team.founder' | translate}}, {{'core.home.team.developer' | translate}}</i>
                         </div>
                     </div>
-                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[2])" (mouseleave)="mouseLeave(partners[2])">
+                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[2])"
+                         (mouseleave)="mouseLeave(partners[2])">
                         <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/partners/jaures_tchapet_c.png" [class.d-block]="!impPartnerJaures" class="rounded-circle w-100 d-none" alt="jaures_tchapet lightcutoff CTO">
-                            <img src="../../../../assets/static/images/partners/jaures_tchapet_b.png" [class.d-block]="impPartnerJaures" class="rounded-circle w-100 d-none" alt="jaures_tchapet lightcutoff CTO">
+                            <img src="../../../../assets/static/images/partners/lco_yvan_tchounga_c.jpg"
+                                 [class.d-block]="!impPartnerYVAN" class="rounded-circle w-100 d-none"
+                                 alt="yvan_tchounga lightcutoff CTO">
+                            <img src="../../../../assets/static/images/partners/lco_yvan_tchounga_b.jpg"
+                                 [class.d-block]="impPartnerYVAN" class="rounded-circle w-100 d-none"
+                                 alt="yvan_tchounga lightcutoff CTO">
                         </div>
                         <div>
-                            <h4>Jaures Tchapet</h4>
-                            <i>{{'core.home.team.cto' | translate}}, {{'core.home.team.developer' | translate}}</i>
+                            <h4>Yvan Tchounga</h4>
+                            <i>{{'core.home.team.data_analysis' | translate}}</i>
                         </div>
                     </div>
-                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[1])" (mouseleave)="mouseLeave(partners[1])">
+                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[1])"
+                         (mouseleave)="mouseLeave(partners[1])">
                         <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/partners/nandjeu_euclide_c.png" [class.d-block]="!impPartnerEuclide" class="rounded-circle w-100 d-none" alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
-                            <img src="../../../../assets/static/images/partners/nandjeu_euclide_b.png" [class.d-block]="impPartnerEuclide" class="rounded-circle w-100 d-none" alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
+                            <img src="../../../../assets/static/images/partners/nandjeu_euclide_c.png"
+                                 [class.d-block]="!impPartnerEuclide" class="rounded-circle w-100 d-none"
+                                 alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
+                            <img src="../../../../assets/static/images/partners/nandjeu_euclide_b.png"
+                                 [class.d-block]="impPartnerEuclide" class="rounded-circle w-100 d-none"
+                                 alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
                         </div>
                         <div>
                             <h4>Nandjeu Euclide Quentin</h4>

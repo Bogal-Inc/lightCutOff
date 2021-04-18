@@ -45,6 +45,7 @@
       "team": {
         "title": "Our team",
         "developer": "Developer",
+        "data_analysis": "Data analysis manager",
         "cto": "CTO",
         "ceo": "CEO",
         "communication": "Communication, design manager"
