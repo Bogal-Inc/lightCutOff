@@ -4,11 +4,9 @@
 ![](https://img.shields.io/badge/node-green.svg)
 
 # Pre-requisites
-- node: 12.16.2
-- npm 6.14.8
-- Angular 10.0.0
-- Firebase 
-- Google MAP API
+- node: 14.16.0
+- npm 7.8.0
+- Angular 12.0.0
 
 # contribute
 with `pull request`. Never in develop branch or master branch directly.
@@ -34,8 +32,12 @@ FIREBASE_MEASUREMENT_ID_DEV=FIREBASE_MEASUREMENT_ID
 FIREBASE_PROJECT_ID_DEV=FIREBASE_PROJECT_ID
 FIREBASE_STORAGE_BUCKET_DEV=FIREBASE_STORAGE_BUCKET
 ```
+
+and add messaging parameters to `.env` file. [documentation](https://firebase.google.com/docs/cloud-messaging/js/client#configure_web_credentials_with_fcm)
+```text
+VAPID_PUBLIC_KEY=VAPID_PUBLIC_KEY
+```
 - Create `Cloud firestore` in your project
-- Create document `reports` in `Cloud firestore`
 
 # Development server
 Before run server. You verify `.env`. with
@@ -56,7 +58,12 @@ npm run test
 ```
 report coverage on in `coverage` directory. You can run `index.html` file for see coverage by file and repertory.
 
-# Build prod version in local
+# Build prod in local
+Before run server. You verify `.env`. with
+```text
+ENVIRONMENT=prod
+PRODUCTION=true
+```
 Run 
  ```text
 npm run build:prod
