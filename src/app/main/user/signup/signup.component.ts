@@ -86,9 +86,9 @@ export class SignupComponent implements OnInit {
   }
 
   private associateWithAnonymousAccount(email, password) {
-    const credential = firebase.auth.EmailAuthProvider.credential(email, password);
+    const credential = firebase.default.auth.EmailAuthProvider.credential(email, password);
 
-    firebase.auth().currentUser.linkWithCredential(credential).then((user) => {
+    firebase.default.auth().currentUser.linkWithCredential(credential).then((user) => {
       log.debug('Anonymous account successfully upgraded', user);
     }, (error) => {
       log.error('Error upgrading anonymous account', error);

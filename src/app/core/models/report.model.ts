@@ -1,5 +1,6 @@
 import { Doc, defaultDoc } from './doc.model';
 import {ILocationModel, locationModel} from '@Models/location.model';
+import { Timestamp } from '@firebase/firestore-types';
 
 export interface Position {
   lat: number;
@@ -22,8 +23,8 @@ export enum ReportSatus {
 export interface Report extends Doc {
   status: ReportSatus;
   location: ILocationModel;
-  reportedAt: Date | firebase.firestore.Timestamp | any;
-  recovredAt?: Date | firebase.firestore.Timestamp | any;
+  reportedAt: Date | Timestamp | any;
+  recovredAt?: Date | Timestamp | any;
   position: Position;
 }
 

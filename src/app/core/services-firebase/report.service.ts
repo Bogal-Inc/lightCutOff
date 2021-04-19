@@ -6,7 +6,7 @@ import {defaultReport, Report, ReportSatus} from '@Models/report.model';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Observable} from 'rxjs';
 import {Const} from 'src/environments/const';
-import * as firebase from 'firebase';
+import { CollectionReference, Query } from '@firebase/firestore-types';
 
 
 @Injectable({
@@ -33,7 +33,7 @@ export class ReportService extends BaseService {
     return this.col$<Report>(
       `${Const.collections.reports}`,
       ref => {
-        let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+        let query: CollectionReference | Query = ref;
         query = query.where('_isDelete', '==', params.isDeleted);
 
         if (params.reportStatus) {

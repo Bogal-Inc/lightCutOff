@@ -1,12 +1,13 @@
 import { SimpleUser } from './user.model';
+import { Timestamp } from '@firebase/firestore-types';
 
 export interface Doc {
   id?: string;
-  _createdAt?: Date | firebase.firestore.Timestamp | any;
+  _createdAt?: Date | Timestamp | any;
   _createdBy?: SimpleUser;
-  _updatedAt?: Date | firebase.firestore.Timestamp | any;
+  _updatedAt?: Date | Timestamp | any;
   _updatedBy?: SimpleUser;
-  _deletedAt?: Date | firebase.firestore.Timestamp | any;
+  _deletedAt?: Date | Timestamp | any;
   _deletedBy?: SimpleUser;
   _isDelete?: boolean;
 }

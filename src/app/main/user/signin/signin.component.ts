@@ -1,4 +1,4 @@
-import {UserService} from '../../../core/services-firebase/user.service';
+import {UserService} from '../../../core/services-firebase';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from '../../../core/services-firebase';
@@ -7,7 +7,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
 import {Router} from '@angular/router';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
-import {Const} from '../../../../environments/const';
 
 const log = new Logger('signin.component');
 
