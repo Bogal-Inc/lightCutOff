@@ -13,7 +13,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MessagingComponent} from './modals/messaging/messaging.component';
 import {User} from '@Models/user.model';
 
-const firebase = require('firebase/app');
+// const firebase = require('firebase/app');
 /** Initialize Logger */
 const log = new Logger('app.component');
 
@@ -122,7 +122,7 @@ export class AppComponent implements OnInit {
   // }
 
   // TODO: offline mode
-  private initCacheSystem() {
+  /*private initCacheSystem() {
     const settings = {
       // timestampsInSnapshots: true,
       cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED
@@ -142,5 +142,5 @@ export class AppComponent implements OnInit {
               return;
             }
       });
-  }
+  }*/
 }
