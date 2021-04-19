@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ReportDatatableComponent } from './report-datatable.component';
 import {AngularFireModule} from '@angular/fire';
@@ -10,7 +10,7 @@ describe('ReportDatatableComponent', () => {
   let component: ReportDatatableComponent;
   let fixture: ComponentFixture<ReportDatatableComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         AngularFireModule.initializeApp(environment.firebase),

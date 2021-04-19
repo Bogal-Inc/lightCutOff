@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DownloadAppComponent } from './download-app.component';
 import {AngularFireModule} from '@angular/fire';
@@ -10,7 +10,7 @@ describe('DownloadAppComponent', () => {
   let component: DownloadAppComponent;
   let fixture: ComponentFixture<DownloadAppComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot(),

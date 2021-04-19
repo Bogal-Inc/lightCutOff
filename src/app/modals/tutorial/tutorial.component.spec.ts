@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TutorialComponent } from './tutorial.component';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
@@ -7,7 +7,7 @@ describe('TutorialComponent', () => {
   let component: TutorialComponent;
   let fixture: ComponentFixture<TutorialComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TutorialComponent ],
       providers: [NgbActiveModal]

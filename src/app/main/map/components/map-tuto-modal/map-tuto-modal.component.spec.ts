@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {MapTutoModalComponent} from './map-tuto-modal.component';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
@@ -11,7 +11,7 @@ describe('MapTutoModalComponent', () => {
   let component: MapTutoModalComponent;
   let fixture: ComponentFixture<MapTutoModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot(),

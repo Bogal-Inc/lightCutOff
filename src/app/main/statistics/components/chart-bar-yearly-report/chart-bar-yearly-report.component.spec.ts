@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ChartBarYearlyReportComponent } from './chart-bar-yearly-report.component';
 import {TranslateModule} from '@ngx-translate/core';
@@ -8,7 +8,7 @@ describe('ChartBarYearlyReport', () => {
   let component: ChartBarYearlyReportComponent;
   let fixture: ComponentFixture<ChartBarYearlyReportComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot(),

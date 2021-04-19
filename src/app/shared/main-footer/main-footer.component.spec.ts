@@ -1,5 +1,5 @@
 import { TranslateModule } from '@ngx-translate/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MainFooterComponent } from './main-footer.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ describe('MainFooterComponent', () => {
   let component: MainFooterComponent;
   let fixture: ComponentFixture<MainFooterComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,

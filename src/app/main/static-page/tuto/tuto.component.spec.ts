@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TutoComponent } from './tuto.component';
 import { MapLegendComponent } from 'src/app/main/map/components/map-legend/map-legend.component';
@@ -11,7 +11,7 @@ describe('TutoComponent', () => {
   let component: TutoComponent;
   let fixture: ComponentFixture<TutoComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot(),

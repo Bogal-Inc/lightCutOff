@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ReportListComponent } from './report-list.component';
 import {AngularFireModule} from '@angular/fire';
@@ -17,7 +17,7 @@ describe('ReportListComponent', () => {
   let component: ReportListComponent;
   let fixture: ComponentFixture<ReportListComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         AngularFireModule.initializeApp(environment.firebase),
@@ -25,7 +25,7 @@ describe('ReportListComponent', () => {
         FontAwesomeModule,
         AgGridModule.withComponents([]),
         NoopAnimationsModule,
-        RouterModule.forRoot([]),
+        RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
       ],
       declarations: [
         ReportListComponent,

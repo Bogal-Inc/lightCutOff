@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OwnReportComponent } from './own-report.component';
 import {AngularFireModule} from '@angular/fire';
@@ -11,7 +11,7 @@ describe('OwnReportComponent', () => {
   let component: OwnReportComponent;
   let fixture: ComponentFixture<OwnReportComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         AngularFireModule.initializeApp(environment.firebase),
