@@ -17,7 +17,8 @@ const log = new Logger('home.component');
 export enum PARTNERS {
   WILLY,
   EUCLIDE,
-  YVAN
+  YVAN,
+  ALEX
 }
 
 @Component({
@@ -38,11 +39,13 @@ export class HomeComponent implements OnInit {
   partners = [
     PARTNERS.WILLY,
     PARTNERS.EUCLIDE,
-    PARTNERS.YVAN
+    PARTNERS.YVAN,
+    PARTNERS.ALEX
   ];
   impPartnerWilly = true;
   impPartnerEuclide = true;
-  impPartnerYVAN = true;
+  impPartnerYvan = true;
+  impPartnerAlex = true;
   reportsCurrentDay: Report[];
   nbrReportsDay: number;
   nbrReportsMonthly: number;
@@ -103,8 +106,10 @@ export class HomeComponent implements OnInit {
       this.impPartnerWilly = false;
     } else if (partner === PARTNERS.EUCLIDE) {
       this.impPartnerEuclide = false;
-    } else {
-      this.impPartnerYVAN = false;
+    } else if (partner === PARTNERS.YVAN) {
+      this.impPartnerYvan = false;
+    } else if (partner === PARTNERS.ALEX) {
+      this.impPartnerAlex = false;
     }
   }
 
@@ -113,8 +118,10 @@ export class HomeComponent implements OnInit {
       this.impPartnerWilly = true;
     } else if (partner === PARTNERS.EUCLIDE) {
       this.impPartnerEuclide = true;
-    } else {
-      this.impPartnerYVAN = true;
+    } else if (partner === PARTNERS.YVAN) {
+      this.impPartnerYvan= true;
+    } else if (partner === PARTNERS.ALEX) {
+      this.impPartnerAlex = true;
     }
   }
 
