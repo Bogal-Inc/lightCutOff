@@ -35,7 +35,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onSubmit(event) {
-    // tslint:disable-next-line:no-unused-expression
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     event.preventDefault;
 
     // stop here if form is invalid
