@@ -600,62 +600,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     return google.maps.geometry.poly.containsLocation(marker.getPosition(), polygon);
   }
 
-  /*private getDistanceBetweenMarker(reports: Report[]) {
-    const results = [];
-
-    reports.forEach(
-      reportA => {
-        // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < reports.length; i++) {
-          const reportB = reports[i];
-          let isReport;
-
-          if (reportA.id === reportB.id) {
-            continue;
-          }
-
-          if (results.length > 0) {
-            isReport = results.filter(
-              (reportFilter) => (reportFilter.reportA.id === reportA.id && reportFilter.reportB.id === reportB.id) ||
-                (reportFilter.reportB.id === reportA.id && reportFilter.reportA.id === reportB.id)
-            );
-          }
-
-          if (isReport?.length > 0) {
-            continue;
-          }
-
-          const result = {
-            reportA,
-            reportB,
-            dist: this.mapService.getDistanceFromLatLonInKm(reportA.position, reportB.position)
-          };
-          results.push(result);
-        }
-      }
-    );
-
-    return results.sort((reportA, reportB) => reportA.dist - reportB.dist);
-  }
-
-  private getDistanceBylocality() {
-    const geocoder = new google.maps.Geocoder();
-    let googleLocation = null;
-
-    geocoder.geocode(
-      {location: this.mapM.position},
-      (googleLocations, status) => {
-        if (status === 'OK') {
-          googleLocation = googleLocations[1];
-
-          if (googleLocation) {
-            const locality = this.mapM.getCountryCity(googleLocation);
-            const reports = this.reportsFilterByCity(locality[0]);
-            const results = this.getDistanceBetweenMarker(reports);
-          }
-        }
-      });
-  }*/
+  /* eslint-disable-next-line , , , , , , , , , , , , , , , , ,  */
 
   private reportsFilterByCity(city: string): Report[] {
     return this.reports.filter(report => report.location.city === city);

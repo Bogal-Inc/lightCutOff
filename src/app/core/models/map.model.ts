@@ -7,10 +7,10 @@ const ZOOM = 14;
 const BG_COLOR = '#eaeaea';
 
 export class MapModel {
-  // tslint:disable-next-line:variable-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention,no-underscore-dangle,id-blacklist,id-match
   private _map;
   // position user on map
-  // tslint:disable-next-line:variable-name
+  // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   private _position: Position;
 
   get map(){

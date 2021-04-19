@@ -86,7 +86,7 @@ export class Logger {
    * Works the same as console.log().
    */
   info(...objects: any[]) {
-    // tslint:disable-next-line:no-console
+    // eslint-disable-next-line no-console
     this.log(console.info, LogLevel.Info, objects);
   }
 
