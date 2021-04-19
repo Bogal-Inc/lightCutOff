@@ -1,4 +1,5 @@
 import { Doc, defaultDoc } from './doc.model';
+import { Timestamp } from '@firebase/firestore-types';
 
 export enum Gender {
   MAN = 'man',
@@ -22,7 +23,7 @@ export interface User  extends Doc {
   phoneNumber?: null;
   photoURL?: string;
   gender?: Gender;
-  birthday?: Date | firebase.firestore.Timestamp | any;
+  birthday?: Date | Timestamp | any;
   roles?: Role;
 }
 

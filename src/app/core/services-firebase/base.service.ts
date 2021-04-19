@@ -8,10 +8,10 @@ import {
   QueryFn
 } from '@angular/fire/firestore';
 import { DocumentReference } from '@firebase/firestore-types';
-import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { Doc } from '@Models/doc.model';
+import * as firebase from 'firebase/app';
 
 type CollectionPredicate<T> = string | AngularFirestoreCollection<T>;
 type DocPredicate<T> = string | AngularFirestoreDocument<T>;
@@ -119,7 +119,7 @@ export class BaseService {
   }
 
   protected geopoint(lat: number, lng: number) {
-    return new firebase.firestore.GeoPoint(lat, lng);
+    return new firebase.default.firestore.GeoPoint(lat, lng);
   }
 
   /// **************
@@ -127,10 +127,10 @@ export class BaseService {
   /// **************
   /// Firebase Server Timestamp
   get timestamp() {
-    return firebase.firestore.FieldValue.serverTimestamp();
+    return firebase.default.firestore.FieldValue.serverTimestamp();
   }
 
-  fromDate(date: Date): firebase.firestore.Timestamp {
-    return firebase.firestore.Timestamp.fromDate(date);
+  fromDate(date: Date): firebase.default.firestore.Timestamp {
+    return firebase.default.firestore.Timestamp.fromDate(date);
   }
 }

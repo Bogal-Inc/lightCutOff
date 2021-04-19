@@ -1,5 +1,5 @@
-import * as firebase from 'firebase/app';
 import {Duration} from '@Models/report.model';
+import * as firebase from 'firebase/app';
 
 
 // custom validator to check that two fields match
@@ -7,8 +7,8 @@ export function compareDate(date1: Date, date2: Date): boolean {
   return date1 > date2;
 }
 
-export function fromDate(date: Date): firebase.firestore.Timestamp {
-  return firebase.firestore.Timestamp.fromDate(date);
+export function fromDate(date: Date): firebase.default.firestore.Timestamp {
+  return firebase.default.firestore.Timestamp.fromDate(date);
 }
 
 export function getDuration(date1, date2){
