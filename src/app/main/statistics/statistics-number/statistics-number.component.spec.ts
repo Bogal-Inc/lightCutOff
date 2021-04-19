@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { StatisticsNumberComponent } from './statistics-number.component';
 import {AngularFireModule} from '@angular/fire';
@@ -10,7 +10,7 @@ describe('StatisticsNumberComponent', () => {
   let component: StatisticsNumberComponent;
   let fixture: ComponentFixture<StatisticsNumberComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         AngularFireModule.initializeApp(environment.firebase),

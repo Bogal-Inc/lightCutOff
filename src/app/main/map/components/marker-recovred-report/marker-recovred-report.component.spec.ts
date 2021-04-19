@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {MarkerRecovredReportComponent} from './marker-recovred-report.component';
 import {AngularFireModule} from '@angular/fire';
@@ -15,7 +15,7 @@ describe('MarkerRecovredReportComponent', () => {
   let component: MarkerRecovredReportComponent;
   let fixture: ComponentFixture<MarkerRecovredReportComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         MarkerRecovredReportComponent,

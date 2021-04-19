@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MapLegendComponent } from './map-legend.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -7,7 +7,7 @@ describe('MapLegendComponent', () => {
   let component: MapLegendComponent;
   let fixture: ComponentFixture<MapLegendComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot()

@@ -1,5 +1,5 @@
 import { TranslateModule } from '@ngx-translate/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MainHeaderComponent } from './main-header.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
@@ -11,7 +11,7 @@ describe('MainHeaderComponent', () => {
   let component: MainHeaderComponent;
   let fixture: ComponentFixture<MainHeaderComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         MainHeaderComponent

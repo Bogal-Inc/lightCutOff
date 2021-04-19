@@ -1,5 +1,5 @@
 import { TranslateModule } from '@ngx-translate/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { MarkerCreateReportComponent } from './marker-create-report.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
@@ -8,7 +8,7 @@ describe('MarkerCreateReportComponent', () => {
   let component: MarkerCreateReportComponent;
   let fixture: ComponentFixture<MarkerCreateReportComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MarkerCreateReportComponent ],
       imports: [

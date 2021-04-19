@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReportDetailsComponent } from './report-details.component';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
@@ -9,7 +9,7 @@ describe('ReportDetailsComponent', () => {
   let component: ReportDetailsComponent;
   let fixture: ComponentFixture<ReportDetailsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ReportDetailsMobileComponent } from './report-details-mobile.component';
 import {RouterModule} from '@angular/router';
@@ -12,10 +12,10 @@ describe('ReportDetailsMobileComponent', () => {
   let component: ReportDetailsMobileComponent;
   let fixture: ComponentFixture<ReportDetailsMobileComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterModule.forRoot([]),
+        RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         TranslateModule.forRoot()
