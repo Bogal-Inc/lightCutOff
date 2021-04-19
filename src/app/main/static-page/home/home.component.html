@@ -176,24 +176,29 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[0])" (mouseleave)="mouseLeave(partners[0])">
+                    <div class="col-md-3 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[0])"
+                         (mouseleave)="mouseLeave(partners[0])">
                         <div class=" pb-4">
-                            <img src="../../../../assets/static/images/partners/kouagnia_willy_c.png" [class.d-block]="!impPartnerWilly" class="rounded-circle w-100 d-none" alt="kouagnia willy lightcutoff CEO">
-                            <img src="../../../../assets/static/images/partners/kouagnia_willy_b.png" [class.d-block]="impPartnerWilly" class="rounded-circle w-100 d-none" alt="kouagnia willy lightcutoff CEO">
+                            <img src="../../../../assets/static/images/partners/kouagnia_willy_c.png"
+                                 [class.d-block]="!impPartnerWilly" class="rounded-circle w-100 d-none"
+                                 alt="kouagnia willy lightcutoff CEO">
+                            <img src="../../../../assets/static/images/partners/kouagnia_willy_b.png"
+                                 [class.d-block]="impPartnerWilly" class="rounded-circle w-100 d-none"
+                                 alt="kouagnia willy lightcutoff CEO">
                         </div>
                         <div>
                             <h4>Willy Kouagnia</h4>
                             <i>{{'core.home.team.founder' | translate}}, {{'core.home.team.developer' | translate}}</i>
                         </div>
                     </div>
-                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[2])"
+                    <div class="col-md-3 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[2])"
                          (mouseleave)="mouseLeave(partners[2])">
                         <div class="text-center pb-4">
                             <img src="../../../../assets/static/images/partners/lco_yvan_tchounga_c.jpg"
-                                 [class.d-block]="!impPartnerYVAN" class="rounded-circle w-100 d-none"
+                                 [class.d-block]="!impPartnerYvan" class="rounded-circle w-100 d-none"
                                  alt="yvan_tchounga lightcutoff CTO">
                             <img src="../../../../assets/static/images/partners/lco_yvan_tchounga_b.jpg"
-                                 [class.d-block]="impPartnerYVAN" class="rounded-circle w-100 d-none"
+                                 [class.d-block]="impPartnerYvan" class="rounded-circle w-100 d-none"
                                  alt="yvan_tchounga lightcutoff CTO">
                         </div>
                         <div>
@@ -201,7 +206,7 @@
                             <i>{{'core.home.team.data_analysis' | translate}}</i>
                         </div>
                     </div>
-                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[1])"
+                    <div class="col-md-3 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[1])"
                          (mouseleave)="mouseLeave(partners[1])">
                         <div class="text-center pb-4">
                             <img src="../../../../assets/static/images/partners/nandjeu_euclide_c.png"
@@ -212,10 +217,25 @@
                                  alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
                         </div>
                         <div>
-                            <h4>Nandjeu Euclide Quentin</h4>
-                            <i>{{'core.home.team.communication' | translate}}</i>
+                            <h4>Nandjeu Quentin</h4>
+                            <i>{{'core.home.team.design' | translate}}</i>
                         </div>
                     </div>
+                  <div class="col-md-3 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[3])"
+                       (mouseleave)="mouseLeave(partners[3])">
+                    <div class="text-center pb-4">
+                      <img src="../../../../assets/static/images/partners/lco_alex_nana_c.jpeg"
+                           [class.d-block]="!impPartnerAlex" class="rounded-circle w-100 d-none"
+                           alt="Alex Nana lightcutoff reponsable communication">
+                      <img src="../../../../assets/static/images/partners/lco_alex_nana_b.jpg"
+                           [class.d-block]="impPartnerAlex" class="rounded-circle w-100 d-none"
+                           alt="Alex Nana lightcutoff reponsable communication">
+                    </div>
+                    <div>
+                      <h4>Alex NANA</h4>
+                      <i>{{'core.home.team.communication' | translate}}</i>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>

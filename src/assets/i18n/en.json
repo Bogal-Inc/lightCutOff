@@ -45,10 +45,11 @@
       "team": {
         "title": "Our team",
         "developer": "Developer",
-        "data_analysis": "Data analysis manager",
+        "data_analysis": "Data analytics manager",
         "cto": "CTO",
         "ceo": "CEO",
-        "communication": "Communication, design manager"
+        "design": "Design manager",
+        "communication": "Communication, manager"
       },
       "statistics": {
         "title": "{projectTitle} statistics",
