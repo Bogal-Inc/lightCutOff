@@ -12,7 +12,6 @@ import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MessagingComponent} from './modals/messaging/messaging.component';
 import {User} from '@Models/user.model';
-import {takeUntil} from 'rxjs/operators';
 
 const firebase = require('firebase/app');
 /** Initialize Logger */
@@ -53,7 +52,7 @@ export class AppComponent implements OnInit {
     }
     log.debug('init');
 
-    this.initCacheSystem();
+    // this.initCacheSystem();
 
     // Setup translations
     const defaultLang = localStorage.getItem(Const.app.lang.localstorage_title);
@@ -122,6 +121,7 @@ export class AppComponent implements OnInit {
   //     });
   // }
 
+  // TODO: offline mode
   private initCacheSystem() {
     const settings = {
       // timestampsInSnapshots: true,
