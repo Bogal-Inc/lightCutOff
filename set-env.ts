@@ -21,8 +21,8 @@ if (environment === 'prod') {
     mapMenu: true,
     mapFilter: true,
     mapSearch: true,
-    user: true,
-    messaging: true,
+    user: false,
+    messaging: false,
     admin: false
   };
   environmentPath += 'environment.prod.ts';
