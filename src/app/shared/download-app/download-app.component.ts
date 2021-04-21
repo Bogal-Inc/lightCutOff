@@ -3,7 +3,7 @@ import {Logger} from '@Services/logger.service';
 import {Const} from '../../../environments/const';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 
-const log = new Logger('loading.component');
+const log = new Logger('download-app.component');
 
 @Component({
   selector: 'app-download-app',
@@ -29,7 +29,7 @@ export class DownloadAppComponent implements OnInit {
 
   @HostListener('window:appinstalled', ['$event'])
   onappinstalled(e) {
-    log.debug('succss download');
+    log.debug('success download');
 
     this.isThanks = true;
     setTimeout(() => {
