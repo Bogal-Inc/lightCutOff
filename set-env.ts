@@ -22,7 +22,7 @@ if (environment === 'prod') {
     mapFilter: true,
     mapSearch: true,
     user: false,
-    messaging: true,
+    messaging: false,
     admin: false
   };
   environmentPath += 'environment.prod.ts';
