@@ -1,6 +1,8 @@
-importScripts('https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/8.2.10/firebase-messaging.js');
-importScripts('swenv.js');
+importScripts([
+  'https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js',
+  'https://www.gstatic.com/firebasejs/8.2.10/firebase-messaging.js',
+  'swenv.js'
+  ]);
 
 
 firebase.initializeApp({
