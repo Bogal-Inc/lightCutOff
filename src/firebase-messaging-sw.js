@@ -1,8 +1,6 @@
-importScripts([
-  'https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js',
-  'https://www.gstatic.com/firebasejs/8.2.10/firebase-messaging.js',
-  'swenv.js'
-  ]);
+importScripts('https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/8.4.1/firebase-messaging.js');
+importScripts('./swenv.js');
 
 
 firebase.initializeApp({
@@ -15,7 +13,6 @@ firebase.initializeApp({
   projectId: process.env.FIREBASE_PROJECT_ID,
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET
 });
-
 
 const messaging = firebase.messaging();
 

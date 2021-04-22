@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireMessaging } from '@angular/fire/messaging';
 import {mergeMap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessagingService {
-
   constructor(
     private angularFireMessaging: AngularFireMessaging
   ) {}
