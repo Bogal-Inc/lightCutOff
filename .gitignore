@@ -61,4 +61,5 @@ firebase-debug.log
 .runtimeconfig.json
 database-debug.log
 firestore-debug.log
+src/manifest.json
 
