@@ -1,0 +1,15 @@
+.notification {
+  padding-bottom: 10px;
+  background-size: 40%;
+  background-position: 0 105%;
+
+  &__header {
+    background-color: var(--warning);
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+
+  &__body, &__footer {
+    padding: 10px;
+  }
+}

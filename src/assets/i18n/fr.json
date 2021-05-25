@@ -496,7 +496,15 @@
       "thanks_trust": "Merci pour votre confiance",
       "body": "En activant vos notifications, nous pourrons ainsi vous informer de manière plus précise.",
       "btn_close": "Fermé",
-      "btn_active": "Activé"
+      "btn_active": "Compris"
+    },
+    "geolocation": {
+      "title": "Activer votre localisation",
+      "body_title": "Pourquoi activer les localisation?",
+      "reason_1": "Vous vous retrouvez plus facilement sur notre carte.",
+      "reason_2": "Rendre nos notifications plus efficaces pour vous prévenir d'éventuelle coupure.",
+      "btn_close": "Fermé",
+      "btn_ok": "Compris"
     }
   }
 }

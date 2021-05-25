@@ -1,0 +1,24 @@
+<div class="notification">
+  <div class="notification__header">
+    <h4 class="notification__header__title">{{'modal.geolocation.title' | translate}}</h4>
+  </div>
+  <div class="notification__body">
+    <div class="notification__body__text">
+      <h5 class="mb-3">{{'modal.geolocation.body_title' | translate}}</h5>
+      <div>
+        <ul>
+          <li>{{'modal.geolocation.reason_1' | translate}}</li>
+          <li>{{'modal.geolocation.reason_2' | translate}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end notification__footer">
+    <button type="button" class="btn btn-outline-dark mr-2" (click)="close()">
+      {{'modal.geolocation.btn_close' | translate}}
+    </button>
+    <button type="button" class="btn btn-warning" (click)="accept()">
+      {{'modal.geolocation.btn_ok' | translate}}
+    </button>
+  </div>
+</div>

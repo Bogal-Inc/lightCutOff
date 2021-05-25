@@ -471,6 +471,14 @@
       "body": "By activating your notifications, we will be able to inform you more precisely.",
       "btn_close": "Closed",
       "btn_active": "Enabled"
+    },
+    "geolocation": {
+      "title": "Enable your location",
+      "body_title": "Why enable localization?",
+      "reason_1": "You can find your way more easily on our map.",
+      "reason_2": "Make our notifications more efficient to warn you of possible outages.",
+      "btn_close": "Close",
+      "btn_ok": "OK"
     }
   }
 }
