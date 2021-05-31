@@ -128,8 +128,8 @@ export class ReportListComponent implements OnInit {
     });
 
     if (isMobile()) {
-      const reportId = this.reportSelected[0].id;
-      this.router.navigate(['/report'], { queryParams: {id: reportId} });
+      const userId = this.reportSelected[0].id;
+      // this.router.navigate(['/report'], { queryParams: {id: reportId} });
     }
   }
 
