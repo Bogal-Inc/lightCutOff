@@ -26,6 +26,7 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import {MessagingService} from './core/services-firebase';
 import {AsyncPipe} from '@angular/common';
 import { TutorialComponent } from './modals/tutorial/tutorial.component';
+import { GeolocationComponent } from './modals/geolocation/geolocation.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -54,6 +55,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     EmptyLayoutComponent,
     MessagingComponent,
     TutorialComponent,
+    GeolocationComponent,
   ],
   imports: [
     BrowserModule,
