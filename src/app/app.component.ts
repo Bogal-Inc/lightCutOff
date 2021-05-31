@@ -42,7 +42,9 @@ export class AppComponent implements OnInit {
 
     // if user logged we don't use anonymous informations
     this.user = this.authService.getUserToLocalStorage();
-    this.signInAnonymously();
+    if(!this.user.email) {
+      this.signInAnonymously();
+    }
   }
 
   ngOnInit() {
