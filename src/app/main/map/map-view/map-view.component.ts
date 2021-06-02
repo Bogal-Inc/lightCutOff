@@ -23,7 +23,7 @@ import {Logger} from '@Services/logger.service';
 import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';
 import {MarkerRecovredReportComponent} from '../components/marker-recovred-report/marker-recovred-report.component';
 import {MetaService} from '@Services/meta.service';
-import {Subject} from 'rxjs';
+import {Notification, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ComponentService} from '@Services/component.service';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
@@ -37,6 +37,7 @@ import {ActivatedRoute} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
 import {environment} from '../../../../environments/environment';
+import {GeolocationComponent} from '../../../modals/geolocation/geolocation.component';
 
 const log = new Logger('map-view.component');
 
@@ -112,6 +113,19 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       page_path: '/map',
       page_title: 'Map'
     });
+
+    navigator.permissions.query({
+      name: 'geolocation'
+    }).then((result) => {
+      if (result.state == 'granted') {
+        console.log('geolocation granted');
+      } else if (result.state == 'prompt') {
+        console.log('geolocation prompt');
+        this.modalService.open(GeolocationComponent);
+      } else if (result.state == 'denied') {
+        console.log('geolocation denied');
+      }
+    })
 
     this.metaService.setTagsGeneral(
       this.translateService.instant('main.map-view.title_page'),
@@ -610,6 +624,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.activatedRoute.queryParams.subscribe(params => {
       const reportId = params.reportId;
 
+      if (reportId === undefined) {
+        log.error('no report found');
+        return;
+      }
+
       if (reportId) {
         this.reportService.getReport(reportId).subscribe(
           report => {
@@ -629,6 +648,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
             );
 
             this.goToMarker(report);
+          },
+          error => {
+            log.error(error);
           }
         );
       }

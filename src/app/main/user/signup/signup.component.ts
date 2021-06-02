@@ -6,7 +6,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
 import { User } from '@Models/user.model';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 const log = new Logger('register.component');
 
@@ -22,7 +23,8 @@ export class SignupComponent implements OnInit {
     private userService: UserService,
     private toastrService: ToastrService,
     private translateService: TranslateService,
-    private angularFireAnalytics: AngularFireAnalytics
+    private angularFireAnalytics: AngularFireAnalytics,
+    private angularFireAuth: AngularFireAuth
   ) { }
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class SignupComponent implements OnInit {
   onSubmit(user) {
     this.authService.createUser(user)
       .then((userCredential) => {
-        this.associateWithAnonymousAccount(user.email, user.password);
+        // this.associateWithAnonymousAccount(user.email, user.password);
         this.sendEmaiVerification(userCredential.user);
       })
       .catch((error) => {
@@ -85,7 +87,8 @@ export class SignupComponent implements OnInit {
     );
   }
 
-  private associateWithAnonymousAccount(email, password) {
+  // TODO: not working
+  /*private associateWithAnonymousAccount(email, password) {
     const credential = firebase.default.auth.EmailAuthProvider.credential(email, password);
 
     firebase.default.auth().currentUser.linkWithCredential(credential).then((user) => {
@@ -93,5 +96,5 @@ export class SignupComponent implements OnInit {
     }, (error) => {
       log.error('Error upgrading anonymous account', error);
     });
-  }
+  }*/
 }

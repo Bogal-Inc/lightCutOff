@@ -62,4 +62,5 @@ firebase-debug.log
 database-debug.log
 firestore-debug.log
 src/manifest.json
+export_directory/
 
