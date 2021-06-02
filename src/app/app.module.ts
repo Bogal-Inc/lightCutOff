@@ -85,7 +85,7 @@ const cookieConfig: NgcCookieConsentConfig = {
       }
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgcCookieConsentModule.forRoot(cookieConfig),
+    // NgcCookieConsentModule.forRoot(cookieConfig),
     ReactiveFormsModule
   ],
   exports: [

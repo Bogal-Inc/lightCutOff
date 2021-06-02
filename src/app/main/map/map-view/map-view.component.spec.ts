@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 import { MapLegendComponent } from 'src/app/main/map/components/map-legend/map-legend.component';
 import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateModule } from '@ngx-translate/core';
+import {TranslateModule, TranslateService} from '@ngx-translate/core';
 import {MapSearchComponent} from '../components/map-menu/components/map-search/map-search.component';
 
 describe('MapViewComponent', () => {
@@ -54,6 +54,7 @@ describe('MapViewComponent', () => {
       ],
       providers: [
         NgbTooltipConfig,
+        TranslateService,
         {provide: OWL_DATE_TIME_LOCALE, useValue: 'fr'},
       ],
     })
