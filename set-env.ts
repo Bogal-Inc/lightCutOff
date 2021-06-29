@@ -1,22 +1,26 @@
 import { writeFile } from 'fs';
-
 declare var require: any;
+
+const { argv } = require('yargs');
 require('dotenv').config();
 
 // Load node modules
 const colors = require('colors');
-const SRCPATH = './src/';
 
-const environment = process.env.ENVIRONMENT;
-// Configure Angular `environment.ts` file path
-let environmentPath = `${SRCPATH}environments/`;
+// read the command line arguments passed with yargs
+const environment = argv.environment;
+const isProduction = environment === 'prod';
+const environmentPath = isProduction
+  ? `./src/environments/environment.prod.ts`
+  : `./src/environments/environment.ts`;
+
 // `environment.ts` file structure
-let envConfigFile;
 const messagingManifestFile = getMessagingManifestFile();
 const swenv = getSwEnv();
+let features = null;
 
-if (environment === 'prod') {
-  const module = {
+if (isProduction) {
+  features = {
     ownerReport: true,
     mapMenu: true,
     mapFilter: true,
@@ -25,22 +29,8 @@ if (environment === 'prod') {
     messaging: true,
     admin: false
   };
-  environmentPath += 'environment.prod.ts';
-  envConfigFile = getEnvironment(module);
-} else if (environment === 'staging')  {
-  const module = {
-    ownerReport: true,
-    mapMenu: true,
-    mapFilter: true,
-    mapSearch: true,
-    user: false,
-    messaging: false,
-    admin: true
-  };
-  environmentPath += 'environment.staging.ts';
-  envConfigFile = getEnvironment(module);
 } else {
-  const module = {
+  features = {
     ownerReport: true,
     mapMenu: true,
     mapFilter: true,
@@ -49,12 +39,13 @@ if (environment === 'prod') {
     messaging: true,
     admin: true
   };
-  environmentPath += 'environment.ts';
-  envConfigFile = getEnvironment(module);
+
 }
 
+const envConfigFile = getEnvironment(features);
+
 console.log(colors.red('Start files create \n'));
-if (environment === 'dev') {
+if (!isProduction) {
   console.log(colors.magenta('The file environment will be written with the following content: \n'));
   console.log(colors.grey(envConfigFile));
   console.log(colors.magenta('The file messaging manifest will be written with the following content: \n'));
@@ -64,59 +55,57 @@ if (environment === 'dev') {
 // create environment file
 createFile(environmentPath, envConfigFile);
 // create messaging manifest file
-createFile(SRCPATH + 'swenv.js', swenv);
-createFile(SRCPATH + 'manifest.json', messagingManifestFile);
+createFile('./src/swenv.js', swenv);
+createFile('./src/manifest.json', messagingManifestFile);
 
-function getEnvironment(modules) {
-
+function getEnvironment(featuress) {
   return  `export const environment = {
-  production: ${process.env.PRODUCTION},
-  environment: '${process.env.ENVIRONMENT}',
+  production: ${isProduction},
+  environment: '${(isProduction) ? 'prod' : 'dev'}',
   domain: '${process.env.DOMAIN}',
   googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
   vapidPublicKey: '${process.env.VAPID_PUBLIC_KEY}',
   app: {
   modules: {
-  ownerReport: ${modules.ownerReport},
-  mapMenu: ${modules.mapMenu},
-  mapFilter: ${modules.mapFilter},
-  mapSearch: ${modules.mapSearch},
-  user: ${modules.user},
-  messaging: ${modules.messaging},
-  admin: ${modules.admin}
+  ownerReport: ${featuress.ownerReport},
+  mapMenu: ${featuress.mapMenu},
+  mapFilter: ${featuress.mapFilter},
+  mapSearch: ${featuress.mapSearch},
+  user: ${featuress.user},
+  messaging: ${featuress.messaging},
+  admin: ${featuress.admin}
   }
   },
   firebase: {
-    apiKey: '${process.env.FIREBASE_API_KEY}',
-    authDomain: '${process.env.FIREBASE_AUTH_DOMAIN}',
-    databaseURL: '${process.env.FIREBASE_DATABASE_URL}',
-    messagingSenderId: '${process.env.FIREBASE_MESSAGING_SENDER_ID}',
-    appId: '${process.env.FIREBASE_APP_ID}',
-    measurementId: '${process.env.FIREBASE_MEASUREMENT_ID}',
-    projectId: '${process.env.FIREBASE_PROJECT_ID}',
-    storageBucket: '${process.env.FIREBASE_STORAGE_BUCKET}'
+    apiKey: '${(isProduction) ? process.env.FIREBASE_API_KEY : process.env.DEV_FIREBASE_API_KEY}',
+    authDomain: '${(isProduction) ? process.env.FIREBASE_AUTH_DOMAIN : process.env.DEV_FIREBASE_AUTH_DOMAIN}',
+    databaseURL: '${(isProduction) ? process.env.FIREBASE_DATABASE_URL : process.env.DEV_FIREBASE_DATABASE_URL}',
+    messagingSenderId: '${(isProduction) ? process.env.FIREBASE_MESSAGING_SENDER_ID : process.env.DEV_FIREBASE_MESSAGING_SENDER_ID}',
+    appId: '${(isProduction) ? process.env.FIREBASE_APP_ID : process.env.DEV_FIREBASE_APP_ID}',
+    measurementId: '${(isProduction) ? process.env.FIREBASE_MEASUREMENT_ID : process.env.DEV_FIREBASE_MEASUREMENT_ID}',
+    projectId: '${(isProduction) ? process.env.FIREBASE_PROJECT_ID : process.env.DEV_FIREBASE_PROJECT_ID}',
+    storageBucket: '${(isProduction) ? process.env.FIREBASE_STORAGE_BUCKET : process.env.DEV_FIREBASE_STORAGE_BUCKET}'
   }
   };
   `;
 }
 
 function getSwEnv() {
-
   return  `const firebase = {
-    apiKey: '${process.env.FIREBASE_API_KEY}',
-    authDomain: '${process.env.FIREBASE_AUTH_DOMAIN}',
-    databaseURL: '${process.env.FIREBASE_DATABASE_URL}',
-    messagingSenderId: '${process.env.FIREBASE_MESSAGING_SENDER_ID}',
-    appId: '${process.env.FIREBASE_APP_ID}',
-    measurementId: '${process.env.FIREBASE_MEASUREMENT_ID}',
-    projectId: '${process.env.FIREBASE_PROJECT_ID}',
-    storageBucket: '${process.env.FIREBASE_STORAGE_BUCKET}'
+    apiKey: '${(isProduction) ? process.env.FIREBASE_API_KEY : process.env.DEV_FIREBASE_API_KEY}',
+    authDomain: '${(isProduction) ? process.env.FIREBASE_AUTH_DOMAIN : process.env.DEV_FIREBASE_AUTH_DOMAIN}',
+    databaseURL: '${(isProduction) ? process.env.FIREBASE_DATABASE_URL : process.env.DEV_FIREBASE_DATABASE_URL}',
+    messagingSenderId: '${(isProduction) ? process.env.FIREBASE_MESSAGING_SENDER_ID : process.env.DEV_FIREBASE_MESSAGING_SENDER_ID}',
+    appId: '${(isProduction) ? process.env.FIREBASE_APP_ID : process.env.DEV_FIREBASE_APP_ID}',
+    measurementId: '${(isProduction) ? process.env.FIREBASE_MEASUREMENT_ID : process.env.DEV_FIREBASE_MEASUREMENT_ID}',
+    projectId: '${(isProduction) ? process.env.FIREBASE_PROJECT_ID : process.env.DEV_FIREBASE_PROJECT_ID}',
+    storageBucket: '${(isProduction) ? process.env.FIREBASE_STORAGE_BUCKET : process.env.DEV_FIREBASE_STORAGE_BUCKET}'
   };
   `;
 }
 
 function getMessagingManifestFile() {
-  return `{"gcm_sender_id": "${process.env.VAPID_PUBLIC_KEY}"}`;
+  return `{"gcm_sender_id": "${(isProduction) ? process.env.VAPID_PUBLIC_KEY : process.env.DEV_VAPID_PUBLIC_KEY}"}`;
 }
 
 function createFile(path, data) {

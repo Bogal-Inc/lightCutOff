@@ -1,15 +1,20 @@
-import { TranslateModule } from '@ngx-translate/core';
+import {TranslateCompiler, TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {OWL_DATE_TIME_LOCALE, OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {ToastrModule} from 'ngx-toastr';
 import {Const} from '../environments/const';
 import {NgcCookieConsentConfig, NgcCookieConsentModule, NgcCookieConsentService} from 'ngx-cookieconsent';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {I18nService} from '@Services/i18n.service';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {TranslateMessageFormatCompiler} from 'ngx-translate-messageformat-compiler';
+import {HttpLoaderFactory} from './app.module';
 
 const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -34,11 +39,23 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
         AngularFireDatabaseModule,
         OwlDateTimeModule,
         OwlNativeDateTimeModule,
-        NgcCookieConsentModule.forRoot(cookieConfig),
-        TranslateModule.forRoot(),
+        // NgcCookieConsentModule.forRoot(cookieConfig),
+        TranslateModule.forRoot({
+          defaultLanguage: 'fr',
+          loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+          },
+          compiler: {
+            provide: TranslateCompiler,
+            useClass: TranslateMessageFormatCompiler
+          }
+        }),
         HttpClientModule,
         ToastrModule.forRoot({
           timeOut: 10000,
@@ -47,9 +64,22 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent
-      ]
+      ],
+      providers: [
+        I18nService,
+        TranslateService,
+      ],
     }).compileComponents();
   }));
+
+  beforeEach(() => {
+    let fixture = TestBed.createComponent(AppComponent);
+    let component = fixture.componentInstance;
+    fixture.detectChanges();
+    component.user = {
+      email: null
+    }
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

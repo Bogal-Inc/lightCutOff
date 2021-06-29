@@ -8,7 +8,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: 'npm ci && npm run lint && npm run test:ci && npm run build'
+      #- run: 'npm ci && npm run lint && npm run test:ci && npm run build'
+      - name: Install dependances
+        run: npm ci
+
+      - name: Run Lint
+        run: npm run lint
+
+      - name: Run Test
+        run: npm run test:ci
+
+      - name: Run build dev
+        run: npm run build
+        env:
+          MAILCHIMP_ENDPOINT: '${{ secrets.DEV_MAILCHIMP_ENDPOINT }}'
+          FIREBASE_API_KEY: '${{ secrets.DEV_FIREBASE_API_KEY }}'
+          FIREBASE_AUTH_DOMAIN: '${{ secrets.DEV_FIREBASE_AUTH_DOMAIN }}'
+          FIREBASE_DATABASE_URL: '${{ secrets.DEV_FIREBASE_DATABASE_URL }}'
+          FIREBASE_PROJECT_ID: '${{ secrets.DEV_FIREBASE_PROJECT_ID }}'
+          FIREBASE_STORAGE_BUCKET: '${{ secrets.DEV_FIREBASE_STORAGE_BUCKET }}'
+          FIREBASE_MESSAGING_SENDER_ID: '${{ secrets.DEV_FIREBASE_MESSAGING_SENDER_ID }}'
+          FIREBASE_APP_ID: '${{ secrets.DEV_FIREBASE_APP_ID }}'
+          FIREBASE_MEASUREMENT_ID: '${{ secrets.DEV_FIREBASE_MEASUREMENT_ID }}'
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

@@ -6,7 +6,6 @@ import { Logger } from '@Services/logger.service';
 import { environment } from 'src/environments/environment';
 import { I18nService } from '@Services/i18n.service';
 import {ToastrService} from 'ngx-toastr';
-import {TranslateService} from '@ngx-translate/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireAnalytics} from '@angular/fire/analytics';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -30,7 +29,6 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
     private i18nService: I18nService,
     private toastrService: ToastrService,
-    private translateService: TranslateService,
     private angularFirestore: AngularFirestore,
     private messagingService: MessagingService,
     // private ccService: NgcCookieConsentService,
@@ -42,7 +40,7 @@ export class AppComponent implements OnInit {
 
     // if user logged we don't use anonymous informations
     this.user = this.authService.getUserToLocalStorage();
-    if(!this.user.email) {
+    if(this.user && !this.user.email) {
       this.signInAnonymously();
     }
   }
