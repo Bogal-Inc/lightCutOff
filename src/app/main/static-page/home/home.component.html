@@ -3,12 +3,16 @@
         <div class="home__section-header__body">
             <div class="d-flex align-items-center justify-content-center home__section-header__body__logo section_1">
                 <div class="text-center">
-                    <img src="../../../../assets/static/images/logo.png" [alt]="'core.home.alt_logo' | translate: { projectTitle: projectTitle }" class="mb-5 home__section-header__body__logo__img"><br>
-                    <a class="mb-3 btn btn-light mr-2" (click)="openModal()" [class.btn-lg]="!isMobil" [title]="'core.home.btn_tuto_lightcutoff_title' | translate: { projectTitle: projectTitle }">
+                    <img src="../../../../assets/static/images/logo.png"
+                         [alt]="'core.home.alt_logo' | translate: { projectTitle: projectTitle }"
+                         class="mb-5 home__section-header__body__logo__img"><br>
+                    <a class="mb-3 btn btn-light mr-2" (click)="openModal()" [class.btn-lg]="!isMobil"
+                       [title]="'core.home.btn_tuto_lightcutoff_title' | translate: { projectTitle: projectTitle }">
                         <fa-icon [icon]="faPlayCircle"></fa-icon>
                         {{'core.home.btn_tuto_lightcutoff' | translate: { projectTitle: projectTitle } }}
                     </a>
-                    <a class="mb-3 btn btn-warning mr-2" [class.btn-lg]="!isMobil" href="/map" [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }">
+                    <a class="mb-3 btn btn-warning mr-2" [class.btn-lg]="!isMobil" href="/map"
+                       [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }">
                         <fa-icon [icon]="faBullhorn"></fa-icon>
                         {{"core.home.btn_map" | translate}}
                     </a>
@@ -31,7 +35,8 @@
                     <h2 class="mb-5 text-center">{{'core.home.about.title' | translate: { projectTitle: projectTitle } }}</h2>
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="../../../../assets/static/images/home/aboutus.svg" class="rounded w-100" [alt]="'core.aboutus.alt_img' | translate: { projectTitle: projectTitle }" alt="">
+                            <img src="../../../../assets/static/images/home/aboutus.svg" class="rounded w-100"
+                                 [alt]="'core.aboutus.alt_img' | translate: { projectTitle: projectTitle }" alt="">
                         </div>
                         <div class="col-md-9">
                             <div>
@@ -57,27 +62,31 @@
                 <div class="row">
                     <div class="col-md-3 text-center">
                         <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/home/map.svg" class="rounded w-100" alt="{{'core.home.whatwedo.alt_local_cut_off' | translate}} logo">
+                            <img src="../../../../assets/static/images/home/map.svg" class="rounded w-100"
+                                 alt="{{'core.home.whatwedo.alt_local_cut_off' | translate}} logo">
                         </div>
                         <h4>{{'core.home.whatwedo.local_cut_off' | translate}}</h4>
                     </div>
 
                     <div class="col-md-3 text-center">
                         <div class=" pb-4">
-                            <img src="../../../../assets/static/images/home/data_collect.svg" class="rounded w-100" alt="{{'core.home.whatwedo.alt_collect_data' | translate}} logo">
+                            <img src="../../../../assets/static/images/home/data_collect.svg" class="rounded w-100"
+                                 alt="{{'core.home.whatwedo.alt_collect_data' | translate}} logo">
                         </div>
                         <h4>{{'core.home.whatwedo.collect_data' | translate }}</h4>
                     </div>
 
                     <div class="col-md-3 text-center">
                         <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/home/grahic_chart.svg" class="rounded w-100" alt="{{'core.home.whatwedo.charts_data' | translate}} logo">
+                            <img src="../../../../assets/static/images/home/grahic_chart.svg" class="rounded w-100"
+                                 alt="{{'core.home.whatwedo.charts_data' | translate}} logo">
                         </div>
                         <h4>{{'core.home.whatwedo.charts_data' | translate}}</h4>
                     </div>
                     <div class="col-md-3 text-center">
                         <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/home/user_data.svg" class="rounded w-100" alt="{{'core.home.whatwedo.users_notifications' | translate}}">
+                            <img src="../../../../assets/static/images/home/user_data.svg" class="rounded w-100"
+                                 alt="{{'core.home.whatwedo.users_notifications' | translate}}">
                         </div>
                         <h4>{{'core.home.whatwedo.users_informations' | translate}}</h4>
                     </div>
@@ -176,7 +185,7 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[0])"
+                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[0])"
                          (mouseleave)="mouseLeave(partners[0])">
                         <div class=" pb-4">
                             <img src="../../../../assets/static/images/partners/kouagnia_willy_c.png"
@@ -191,7 +200,7 @@
                             <i>{{'core.home.team.founder' | translate}}, {{'core.home.team.developer' | translate}}</i>
                         </div>
                     </div>
-                    <div class="col-md-3 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[2])"
+                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[2])"
                          (mouseleave)="mouseLeave(partners[2])">
                         <div class="text-center pb-4">
                             <img src="../../../../assets/static/images/partners/lco_yvan_tchounga_c.jpg"
@@ -206,7 +215,7 @@
                             <i>{{'core.home.team.data_analysis' | translate}}</i>
                         </div>
                     </div>
-                    <div class="col-md-3 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[1])"
+                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[1])"
                          (mouseleave)="mouseLeave(partners[1])">
                         <div class="text-center pb-4">
                             <img src="../../../../assets/static/images/partners/nandjeu_euclide_c.png"
@@ -221,7 +230,7 @@
                             <i>{{'core.home.team.design' | translate}}</i>
                         </div>
                     </div>
-                  <div class="col-md-3 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[3])"
+                  <!--<div class="col-md-3 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[3])"
                        (mouseleave)="mouseLeave(partners[3])">
                     <div class="text-center pb-4">
                       <img src="../../../../assets/static/images/partners/lco_alex_nana_c.jpeg"
@@ -235,7 +244,7 @@
                       <h4>Alex Nana</h4>
                       <i>{{'core.home.team.communication' | translate}}</i>
                     </div>
-                  </div>
+                  </div>-->
                 </div>
             </div>
         </div>
