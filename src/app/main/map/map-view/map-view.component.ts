@@ -438,7 +438,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
               if (report.location.city) {
                 return report;
               }
-              /*if (report.status === ReportSatus.CUT_COMPLETED) {
+              if (report.status === ReportSatus.CUT_COMPLETED) {
                 const recovredAt = report.recovredAt.toDate();
                 const tomorrow = new Date(recovredAt.getTime() + 86400000);
                 if (tomorrow > now) {
@@ -455,7 +455,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
               } else {
                 return report;
               }
-              return report;*/
+              return report;
             });
           // this.getDistanceBylocality();
           this.addClusters(this.reports);
