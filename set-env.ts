@@ -9,7 +9,7 @@ const colors = require('colors');
 
 // read the command line arguments passed with yargs
 const environment = argv.environment;
-const isProduction = environment === 'prod';
+const isProduction = environment === 'production';
 const environmentPath = isProduction
   ? `./src/environments/environment.prod.ts`
   : `./src/environments/environment.ts`;
