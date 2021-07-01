@@ -22,7 +22,7 @@ jobs:
         run: npm run build:prod
         env:
           ENVIRONMENT: dev
-          PRODUCTION: true
+          PRODUCTION: false
           DOMAIN_DEV: localhost
           DOMAIN_PROD: https://www.lightcutoff.com
           MAILCHIMP_ENDPOINT: '${{ secrets.DEV_MAILCHIMP_ENDPOINT }}'
