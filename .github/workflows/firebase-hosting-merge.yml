@@ -18,12 +18,16 @@ jobs:
       - name: Run Lint
         run: npm run lint
 
-      - name: Run Test
-        run: npm run test:ci
+#      - name: Run Test
+#        run: npm run test:ci
 
       - name: Run build
         run: npm run build:prod
         env:
+          ENVIRONMENT: prod
+          PRODUCTION: true
+          DOMAIN_DEV: localhost
+          DOMAIN_PROD: https://www.lightcutoff.com
           MAILCHIMP_ENDPOINT: '${{ secrets.MAILCHIMP_ENDPOINT }}'
           FIREBASE_API_KEY: '${{ secrets.FIREBASE_API_KEY }}'
           FIREBASE_AUTH_DOMAIN: '${{ secrets.FIREBASE_AUTH_DOMAIN }}'
