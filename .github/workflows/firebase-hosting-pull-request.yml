@@ -15,11 +15,11 @@ jobs:
       - name: Run Lint
         run: npm run lint
 
-      - name: Run Test
-        run: npm run test:ci
+#      - name: Run Test
+#        run: npm run test:ci
 
       - name: Run build dev
-        run: npm run build
+        run: npm run build:prod
         env:
           MAILCHIMP_ENDPOINT: '${{ secrets.DEV_MAILCHIMP_ENDPOINT }}'
           FIREBASE_API_KEY: '${{ secrets.DEV_FIREBASE_API_KEY }}'
