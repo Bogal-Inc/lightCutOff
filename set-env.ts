@@ -9,7 +9,7 @@ const colors = require('colors');
 
 // read the command line arguments passed with yargs
 const environment = argv.environment;
-const isProduction = environment === 'production';
+const isProduction = environment === 'prod';
 const environmentPath = isProduction
   ? `./src/environments/environment.prod.ts`
   : `./src/environments/environment.ts`;
@@ -45,12 +45,12 @@ if (isProduction) {
 const envConfigFile = getEnvironment(features);
 
 console.log(colors.red('Start files create \n'));
-if (!isProduction) {
-  console.log(colors.magenta('The file environment will be written with the following content: \n'));
-  console.log(colors.grey(envConfigFile));
-  console.log(colors.magenta('The file messaging manifest will be written with the following content: \n'));
-  console.log(colors.grey(messagingManifestFile));
-}
+// if (!isProduction) {
+console.log(colors.magenta('The file environment will be written with the following content: \n'));
+console.log(colors.grey(envConfigFile));
+console.log(colors.magenta('The file messaging manifest will be written with the following content: \n'));
+console.log(colors.grey(messagingManifestFile));
+// }
 
 // create environment file
 createFile(environmentPath, envConfigFile);

@@ -38,6 +38,7 @@ jobs:
           FIREBASE_APP_ID: '${{ secrets.FIREBASE_APP_ID }}'
           FIREBASE_MEASUREMENT_ID: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
           VALID_PUBLIC_KEY: '${{ secrets.VALID_PUBLIC_KEY }}'
+          GOOGLE_MAPS_API_KEY: '${{ secrets.GOOGLE_MAPS_API_KEY }}'
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
