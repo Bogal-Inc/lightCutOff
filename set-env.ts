@@ -23,14 +23,14 @@ if (isProduction) {
     mapMenu: true,
     mapFilter: true,
     mapSearch: true,
-    admin: true
+    admin: false
   };
 } else {
   features = {
     mapMenu: true,
     mapFilter: true,
     mapSearch: true,
-    admin: true
+    admin: false
   };
 }
 

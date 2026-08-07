@@ -201,3 +201,9 @@ sections, CTA, absence équipe/partenaires).
 - **Section « Distinctions » restaurée** sur l'accueil (supprimée par erreur au lot 2b avec
   la section actualité) : 4e place du hackathon OPLEDA « Électricité pour tous en Afrique »
   (62 projets), avec logo et lien — placée avant le bandeau CTA.
+
+## [2.5.3] - 2026-08-07 — Menu Statistiques désactivé
+
+- Flag `admin: false` dans set-env (dev + prod) et environment.staging : le menu déroulant
+  « Statistiques » disparaît du header en attendant la vraie section admin (lot 2d, qui
+  réactivera le flag avec une authentification).
