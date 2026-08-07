@@ -10,9 +10,9 @@
 - [ ] `npm run lint` : 0 erreur
 
 ## Accueil & navigation
-- [ ] Page d'accueil : images de fond, header, footer, modal « Activer les notifications »
+- [ ] Page d'accueil : images de fond, header, footer
 - [ ] Bascule FR/EN (footer) — textes avec variables (`{{year}}`, `{{projectTitle}}`) corrects
-- [ ] Menus : Accueil / Carte / Statistiques / Mes signalements / S'inscrire / Se connecter
+- [ ] Menus : Accueil / Carte / Statistiques (uniquement)
 - [ ] Navbar responsive (burger) — collapse Bootstrap 5 fonctionne (data-bs-toggle)
 
 ## Carte (nécessite clé Google Maps valide)
