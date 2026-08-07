@@ -34,7 +34,7 @@ export class ReportDetailsMobileComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
     this.analytics.logEvent('page_view', {
-      page_location: 'https://njuka-prod.web.app/report',
+      page_location: 'https://njuka.app/report',
       page_path: '/report',
       page_title: 'Report details',
       mobile: true

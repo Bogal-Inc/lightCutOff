@@ -49,7 +49,7 @@ function getEnvironment(featuress) {
   return  `export const environment = {
   production: ${isProduction},
   environment: '${(isProduction) ? 'prod' : 'dev'}',
-  domain: '${process.env.DOMAIN}',
+  domain: '${(isProduction) ? process.env.DOMAIN_PROD : process.env.DOMAIN_DEV}',
   googleMapsApiKey: '${process.env.GOOGLE_MAPS_API_KEY}',
   app: {
   modules: {

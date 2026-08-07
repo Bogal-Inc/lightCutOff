@@ -104,7 +104,7 @@ export class ReportListComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
     this.analytics.logEvent('page_view', {
-      page_location: 'https://njuka-prod.web.app/reports',
+      page_location: 'https://njuka.app/reports',
       page_path: '/reports',
       page_title: 'Reports list'
     });

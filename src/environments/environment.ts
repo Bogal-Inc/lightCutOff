@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   environment: 'dev',
-  domain: 'undefined',
+  domain: 'localhost',
   googleMapsApiKey: 'GOOGLE_MAPS_API_KEY',
   app: {
   modules: {

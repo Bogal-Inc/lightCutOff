@@ -85,4 +85,4 @@ Lots dans l'ordre :
 - [ ] 2e. Bascule config Firebase du site → lightcutoff-dev (dev) / njuka-prod (prod), CI,
        secrets GitHub, firebase.json ; cohabitation avec les pages légales de l'app à trancher
        (multi-sites vs fusion).
-- [ ] 2f. Domaine final + suppression du projet Firebase `lightcutoff` (après migration).
+- [ ] 2f. Domaine **njuka.app** (décidé 2026-08-07 ; sitemap/robots/OG déjà alignés) : config DNS + hosting Firebase, puis suppression du projet `lightcutoff`.

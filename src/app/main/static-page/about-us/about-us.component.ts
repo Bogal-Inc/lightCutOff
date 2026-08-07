@@ -26,7 +26,7 @@ export class AboutUsComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
     this.analytics.logEvent('page_view', {
-      page_location: 'https://njuka-prod.web.app/aboutus',
+      page_location: 'https://njuka.app/aboutus',
       page_path: '/aboutus',
       page_title: 'About'
     });

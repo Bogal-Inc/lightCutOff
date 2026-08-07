@@ -108,4 +108,7 @@
 ### Reste à décider (Willy)
 - Liens sociaux du footer : pointent encore vers les comptes LightCutOff
   (facebook.com/lightcutoff.lco, twitter LightCutOff1, instagram lightcutoff).
-- Sitemaps XML encore au nom lightcutoff (dépend du domaine final — lot 2f).
+- ~~Sitemaps XML encore au nom lightcutoff~~ → réglé le 2026-08-07 : domaine final **njuka.app**,
+  nouveau `sitemap.xml` + `robots.txt` (routes vitrine, /admin exclu), Open Graph et
+  `page_location` analytics sur https://njuka.app, `DOMAIN_PROD` corrigé dans set-env/CI
+  (bug historique : set-env lisait `DOMAIN`, variable jamais définie).

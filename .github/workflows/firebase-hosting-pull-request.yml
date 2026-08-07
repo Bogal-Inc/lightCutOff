@@ -26,7 +26,7 @@ jobs:
           ENVIRONMENT: dev
           PRODUCTION: false
           DOMAIN_DEV: localhost
-          DOMAIN_PROD: https://www.lightcutoff.com
+          DOMAIN_PROD: https://njuka.app
           MAILCHIMP_ENDPOINT: '${{ secrets.DEV_MAILCHIMP_ENDPOINT }}'
           FIREBASE_API_KEY: '${{ secrets.DEV_FIREBASE_API_KEY }}'
           FIREBASE_AUTH_DOMAIN: '${{ secrets.DEV_FIREBASE_AUTH_DOMAIN }}'

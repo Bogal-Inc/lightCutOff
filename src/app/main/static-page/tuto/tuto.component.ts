@@ -28,7 +28,7 @@ export class TutoComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
     this.analytics.logEvent('page_view', {
-      page_location: 'https://njuka-prod.web.app/tuto',
+      page_location: 'https://njuka.app/tuto',
       page_path: '/tuto',
       page_title: 'Tutorial'
     });
