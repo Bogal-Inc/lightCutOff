@@ -3,7 +3,7 @@
   <div
     class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
   >
-    <h6 class="m-0 font-weight-bold text-dark">
+    <h6 class="m-0 fw-bold text-dark">
       {{'statistics.dashboard.chart_title_week' | translate: {year: year} }}
     </h6>
 <!--    <div ngbDropdown class="dropdown no-arrow" >-->
@@ -19,10 +19,10 @@
   </div>
   <!-- Card Body -->
   <div class="card-body">
-    <chart
+    <app-chart
       [type]="chartSettings.barChartType"
       [data]="chartSettings.barChartData"
       [options]="chartSettings.barChartOptions">
-    </chart>
+    </app-chart>
   </div>
 </div>

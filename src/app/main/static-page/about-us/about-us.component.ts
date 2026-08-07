@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Const } from 'src/environments/const';
 import {Logger} from '@Services/logger.service';
 import {MetaService} from '@Services/meta.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
 import {TranslateService} from '@ngx-translate/core';
 
 const log = new Logger('about-us.component');
 
 @Component({
+  standalone: false,
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
   styleUrls: ['./about-us.component.scss']

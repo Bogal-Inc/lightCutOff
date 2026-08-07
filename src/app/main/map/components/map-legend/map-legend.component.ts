@@ -7,6 +7,7 @@ import { isMobile } from '@Helpers/mobile-confirm.helper';
 const log = new Logger('map-legend.component');
 
 @Component({
+  standalone: false,
   selector: 'app-map-legend',
   templateUrl: './map-legend.component.html',
   styleUrls: ['./map-legend.component.scss']

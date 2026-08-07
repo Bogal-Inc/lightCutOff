@@ -1,14 +1,14 @@
 
 <ng-template #elsecard>
-  <div class="text-center"><fa-icon [spin]="'spin'" [size]="'4x'" [icon]="faSpinner"></fa-icon></div>
+  <div class="text-center"><fa-icon animation="spin" [size]="'4x'" [icon]="faSpinner"></fa-icon></div>
 </ng-template>
 
   <div class="card shadow h-100 py-2" [ngClass]="card.style" *ngIf="card; else elsecard">
     <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-uppercase mb-1" [ngClass]="style_text">{{card.title}}</div>
-          <div class="h3 mb-0 font-weight-bold text-gray-800">{{card.body}}</div>
+      <div class="row g-0 align-items-center">
+        <div class="col me-2">
+          <div class="text-xs fw-bold text-uppercase mb-1" [ngClass]="style_text">{{card.title}}</div>
+          <div class="h3 mb-0 fw-bold text-gray-800">{{card.body}}</div>
         </div>
         <div class="col-auto">
           <fa-icon size="4x" [icon]="card.icon" class="text-gray-300"></fa-icon>

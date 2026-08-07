@@ -1,6 +1,6 @@
 <div class="bg-warning download" *ngIf="isDownload">
   <div class="download__title">
-    <a class="close" role="button" aria-label="Close" (click)="close()">
+    <a class="btn-close-custom" role="button" aria-label="Close" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </a>
     <h4>{{'shared.download-app.title' | translate}}</h4>
@@ -21,7 +21,7 @@
 </div>
 <div class="thanks" *ngIf="isThanks">
   <div class="thanks__header">
-    <a class="close" role="button" aria-label="Close" (click)="close()">
+    <a class="btn-close-custom" role="button" aria-label="Close" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </a>
     <h3>{{'shared.download-app.thanks' | translate}}</h3>

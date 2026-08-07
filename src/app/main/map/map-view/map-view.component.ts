@@ -14,7 +14,7 @@ import {
   ViewChild,
   ViewContainerRef, ViewEncapsulation
 } from '@angular/core';
-import {MapsAPILoader} from '@agm/core';
+import {GoogleMapsLoaderService} from '@Services/google-maps-loader.service';
 import {ToastrService} from 'ngx-toastr';
 import {Const} from 'src/environments/const';
 import {MapLegendComponent} from '../components/map-legend/map-legend.component';
@@ -26,7 +26,7 @@ import {MetaService} from '@Services/meta.service';
 import {Notification, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ComponentService} from '@Services/component.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {MapTutoModalComponent} from '../components/map-tuto-modal/map-tuto-modal.component';
 import {MapFilterComponent} from '../components/map-menu/components/map-filter/map-filter.component';
 import {MapMenuComponent} from '../components/map-menu/map-menu.component';
@@ -34,7 +34,7 @@ import {MapModel} from '@Models/map.model';
 import {LocationModel} from '@Models/location.model';
 import { MapService } from '@Services/map.service';
 import {ActivatedRoute} from '@angular/router';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
 import {environment} from '../../../../environments/environment';
 import {GeolocationComponent} from '../../../modals/geolocation/geolocation.component';
@@ -42,6 +42,7 @@ import {GeolocationComponent} from '../../../modals/geolocation/geolocation.comp
 const log = new Logger('map-view.component');
 
 @Component({
+  standalone: false,
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
   encapsulation: ViewEncapsulation.None,
@@ -87,7 +88,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   activeInfoWindow: any;
 
   constructor(
-    private mapsApiLoader: MapsAPILoader,
+    private mapsApiLoader: GoogleMapsLoaderService,
     private reportService: ReportService,
     private toastrService: ToastrService,
     private componentFactoryResolver: ComponentFactoryResolver,

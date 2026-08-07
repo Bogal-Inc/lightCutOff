@@ -1,17 +1,17 @@
 import { SimpleUser } from '@Models/user.model';
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { EnvironmentInjector, Injectable, inject, runInInjectionContext } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
   QueryFn
-} from '@angular/fire/firestore';
+} from '@angular/fire/compat/firestore';
 import { DocumentReference } from '@firebase/firestore-types';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { Doc } from '@Models/doc.model';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 
 type CollectionPredicate<T> = string | AngularFirestoreCollection<T>;
 type DocPredicate<T> = string | AngularFirestoreDocument<T>;
@@ -21,6 +21,7 @@ type DocPredicate<T> = string | AngularFirestoreDocument<T>;
 })
 export class BaseService {
   protected user: SimpleUser;
+  protected readonly injector = inject(EnvironmentInjector);
 
   constructor(
     protected angularFireAuth: AngularFireAuth,
@@ -41,11 +42,17 @@ export class BaseService {
   /// Get a Reference
   /// **************
   protected col<T>(ref: CollectionPredicate<T>, queryFn?: QueryFn): AngularFirestoreCollection<T> {
-    return typeof ref === 'string' ? this.angularFirestore.collection<T>(ref, queryFn) : ref;
+    // runInInjectionContext : les wrappers compat de @angular/fire v20 appellent inject()
+    // dans leurs initialiseurs de champs, ce qui échoue hors contexte d'injection (NG0203)
+    return typeof ref === 'string'
+      ? runInInjectionContext(this.injector, () => this.angularFirestore.collection<T>(ref, queryFn))
+      : ref;
   }
 
   protected doc<T>(ref: DocPredicate<T>): AngularFirestoreDocument<T> {
-    return typeof ref === 'string' ? this.angularFirestore.doc<T>(ref) : ref;
+    return typeof ref === 'string'
+      ? runInInjectionContext(this.injector, () => this.angularFirestore.doc<T>(ref))
+      : ref;
   }
 
   /// **************
@@ -119,7 +126,7 @@ export class BaseService {
   }
 
   protected geopoint(lat: number, lng: number) {
-    return new firebase.default.firestore.GeoPoint(lat, lng);
+    return new firebase.firestore.GeoPoint(lat, lng);
   }
 
   /// **************
@@ -127,10 +134,10 @@ export class BaseService {
   /// **************
   /// Firebase Server Timestamp
   get timestamp() {
-    return firebase.default.firestore.FieldValue.serverTimestamp();
+    return firebase.firestore.FieldValue.serverTimestamp();
   }
 
-  fromDate(date: Date): firebase.default.firestore.Timestamp {
-    return firebase.default.firestore.Timestamp.fromDate(date);
+  fromDate(date: Date): firebase.firestore.Timestamp {
+    return firebase.firestore.Timestamp.fromDate(date);
   }
 }

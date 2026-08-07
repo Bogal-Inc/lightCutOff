@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ReportListComponent } from './report-list.component';
-import {AngularFireModule} from '@angular/fire';
+import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from '../../../../environments/environment';
 import {TranslateModule} from '@ngx-translate/core';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
@@ -23,9 +23,9 @@ describe('ReportListComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         TranslateModule.forRoot(),
         FontAwesomeModule,
-        AgGridModule.withComponents([]),
+        AgGridModule,
         NoopAnimationsModule,
-        RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
+        RouterModule.forRoot([]),
       ],
       declarations: [
         ReportListComponent,

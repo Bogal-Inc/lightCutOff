@@ -4,9 +4,9 @@ import { MapSearchComponent } from './map-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {TranslateModule} from '@ngx-translate/core';
-import {AngularFireModule} from '@angular/fire';
+import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from '../../../../../../../environments/environment';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 
 describe('mapSearchComponent', () => {
   let component: MapSearchComponent;

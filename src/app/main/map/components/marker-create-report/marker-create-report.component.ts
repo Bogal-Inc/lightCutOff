@@ -2,6 +2,7 @@ import { Report } from '@Models/report.model';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-create-form-report',
   templateUrl: './marker-create-report.component.html',
   styleUrls: ['./marker-create-report.component.scss']

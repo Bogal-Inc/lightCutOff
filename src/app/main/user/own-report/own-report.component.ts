@@ -7,13 +7,14 @@ import {TimestampPipe} from '@Pipes/timestamp.pipe';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from '../../../core/services-firebase';
 import {map, takeUntil} from 'rxjs/operators';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {Logger} from '@Services/logger.service';
 import {Const} from '../../../../environments/const';
 
 const log = new Logger('own-report.component');
 
 @Component({
+  standalone: false,
   selector: 'app-own-report',
   templateUrl: './own-report.component.html',
   styleUrls: ['./own-report.component.scss']

@@ -9,6 +9,7 @@ import {isMobile} from '@Helpers/mobile-confirm.helper';
 const log = new Logger('map-menu.component');
 
 @Component({
+  standalone: false,
   selector: 'app-map-menu',
   templateUrl: './map-menu.component.html',
   styleUrls: ['./map-menu.component.scss'],

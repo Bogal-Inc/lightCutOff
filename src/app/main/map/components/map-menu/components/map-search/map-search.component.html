@@ -1,12 +1,12 @@
 <div *ngIf="moduleEnable">
   <div class="search-place">
     <div class="search-place__bloc">
-      <form class="form-inline search-place__bloc__form" [formGroup]="searchPlaceForm" (ngSubmit)="onSubmit()">
+      <form class="d-flex align-items-center search-place__bloc__form" [formGroup]="searchPlaceForm" (ngSubmit)="onSubmit()">
         <div class="input-group">
           <input type="text" formControlName="query" class="form-control" (keyup)="autocompletePlace()"
                  attr.placeholder="{{'main.search-place-form.placeholder' | translate}}"
                  #inputSearch>
-          <div class="input-group-append">
+          <div class="input-group-text-wrapper d-flex">
             <button type="submit" class="btn btn-secondary"
                     attr.aria-label="{{'main.search-place-form.btn_label' | translate}}">
               <i class="fas fa-search"></i>

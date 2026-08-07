@@ -3,6 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {Report} from '@Models/report.model';
 
 @Component({
+  standalone: false,
   selector: 'app-chart-bar-yearly-report',
   templateUrl: './chart-bar-yearly-report.component.html',
   styleUrls: ['./chart-bar-yearly-report.component.scss']

@@ -5,12 +5,13 @@ import {Observable} from 'rxjs';
 import {ReportService} from '../../../core/services-firebase/report.service';
 import {TranslateService} from '@ngx-translate/core';
 import {MetaService} from '@Services/meta.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {Logger} from '@Services/logger.service';
 
 const log = new Logger('statistics-number.component');
 
 @Component({
+  standalone: false,
   selector: 'app-statistics-number',
   templateUrl: './statistics-number.component.html',
   styleUrls: ['./statistics-number.component.scss']

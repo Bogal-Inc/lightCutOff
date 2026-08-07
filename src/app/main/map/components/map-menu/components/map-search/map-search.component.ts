@@ -1,10 +1,11 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {environment} from '../../../../../../../environments/environment';
 
 
 @Component({
+  standalone: false,
   selector: 'app-search-place-form',
   templateUrl: './map-search.component.html',
   styleUrls: ['./map-search.component.scss']

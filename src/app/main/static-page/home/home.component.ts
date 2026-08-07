@@ -6,7 +6,7 @@ import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Const } from 'src/environments/const';
 import {TranslateService} from '@ngx-translate/core';
 import {MetaService} from '@Services/meta.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {AuthService, ReportService} from '../../../core/services-firebase';
 import {Report} from '@Models/report.model';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
@@ -22,6 +22,7 @@ export enum PARTNERS {
 }
 
 @Component({
+  standalone: false,
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],

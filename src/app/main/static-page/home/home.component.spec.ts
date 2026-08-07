@@ -5,9 +5,9 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterTestingModule} from '@angular/router/testing';
-import {AngularFireModule} from '@angular/fire';
+import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from '../../../../environments/environment';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;

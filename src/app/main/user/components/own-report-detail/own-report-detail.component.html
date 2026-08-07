@@ -29,8 +29,8 @@
             <div class="report__body__content1__form" *ngIf="showFormRecovred">
               <p class="text-dark">{{'main.update-form-report.label' | translate}}</p>
               <div class="onSubmitRecovred()__form">
-                <form class="form-inline" (ngSubmit)="onSubmitRecovred()">
-                  <div class="form-group mb-2">
+                <form class="d-flex align-items-center" (ngSubmit)="onSubmitRecovred()">
+                  <div class="mb-3 mb-2">
                     <input id="recovred_date"
                       [owlDateTimeTrigger]="dt"
                       [owlDateTime]="dt"
@@ -39,7 +39,7 @@
                     <owl-date-time #dt></owl-date-time>
                   </div>
                   <button
-                    class="btn btn-sm btn-success mb-2 ml-2"
+                    class="btn btn-sm btn-success mb-2 ms-2"
                     type="submit">
                     {{'main.update-form-report.btn_submit' | translate}}
                   </button>

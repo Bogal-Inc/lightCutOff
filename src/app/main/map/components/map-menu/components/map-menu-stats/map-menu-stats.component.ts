@@ -5,6 +5,7 @@ import {Logger} from '@Services/logger.service';
 const log = new Logger('map-history-stats.component');
 
 @Component({
+  standalone: false,
   selector: 'app-map-menu-stats',
   templateUrl: './map-menu-stats.component.html',
   styleUrls: ['./map-menu-stats.component.scss']

@@ -5,9 +5,10 @@ import {compareDate, getDuration} from '@Helpers/date.helper';
 import {Base} from '@Models/base.model';
 import {Report, ReportSatus} from '@Models/report.model';
 import {TranslateService} from '@ngx-translate/core';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 
 @Component({
+  standalone: false,
   selector: 'app-update-form-report',
   templateUrl: './marker-recovred-report.component.html',
   styleUrls: ['./marker-recovred-report.component.scss']

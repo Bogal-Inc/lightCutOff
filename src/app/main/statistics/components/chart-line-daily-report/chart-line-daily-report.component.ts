@@ -3,6 +3,7 @@ import {Report} from '@Models/report.model';
 import {I18nService} from '@Services/i18n.service';
 
 @Component({
+  standalone: false,
   selector: 'app-chart-line-daily-report',
   templateUrl: './chart-line-daily-report.component.html',
   styleUrls: ['./chart-line-daily-report.component.scss']

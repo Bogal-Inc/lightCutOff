@@ -21,7 +21,7 @@ import {ReportListComponent} from './report-list/report-list.component';
     CommonModule,
     ReportRoutingModule,
     SharedModule,
-    AgGridModule.withComponents([]),
+    AgGridModule,
   ],
   exports: [
     ReportDatatableComponent

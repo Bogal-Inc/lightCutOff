@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../../core/services-firebase';
 import {ToastrService} from 'ngx-toastr';
 import {TranslateService} from '@ngx-translate/core';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {Logger} from '@Services/logger.service';
 import {MustMatch} from '@Helpers/must-match.validator';
 import {User} from '@Models/user.model';
@@ -11,6 +11,7 @@ import {User} from '@Models/user.model';
 const log = new Logger('register-form.component');
 
 @Component({
+  standalone: false,
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.scss']

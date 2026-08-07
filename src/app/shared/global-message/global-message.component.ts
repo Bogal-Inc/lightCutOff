@@ -4,6 +4,7 @@ import {Const} from '../../../environments/const';
 import {InternetService} from '@Services/internet.service';
 
 @Component({
+  standalone: false,
   selector: 'app-global-message',
   templateUrl: './global-message.component.html',
   styleUrls: ['./global-message.component.scss']

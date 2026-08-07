@@ -4,9 +4,6 @@ import { CommonModule } from '@angular/common';
 
 import { MapRoutingModule } from './map-routing.module';
 import { MapViewComponent } from './map-view/map-view.component';
-import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
-import {environment} from '../../../environments/environment';
-import {GoogleMapsModule} from '@angular/google-maps';
 import {MarkerDetailsComponent} from './components/marker-details/marker-details.component';
 import {MarkerCreateReportComponent} from './components/marker-create-report/marker-create-report.component';
 import {MarkerRecovredReportComponent} from './components/marker-recovred-report/marker-recovred-report.component';
@@ -39,28 +36,13 @@ import { MapNotFoundComponent } from './components/map-not-found/map-not-found.c
   imports: [
     CommonModule,
     MapRoutingModule,
-    SharedModule,
-    AgmCoreModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsApiKey,
-      region: 'CM',
-      language: 'fr',
-      libraries: [
-        'places',
-        'geometry'
-      ]
-    }),
-    GoogleMapsModule,
+    SharedModule
   ],
   providers: [
-    GoogleMapsAPIWrapper,
     NgbActiveModal
   ],
   exports: [
     MapLegendComponent
-  ],
-  entryComponents: [
-    MarkerRecovredReportComponent,
   ]
 })
 export class MapModule { }

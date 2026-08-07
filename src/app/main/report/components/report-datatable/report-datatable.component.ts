@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';
 
 @Component({
+  standalone: false,
   selector: 'app-report-datatable',
   templateUrl: './report-datatable.component.html',
   styleUrls: ['./report-datatable.component.scss']

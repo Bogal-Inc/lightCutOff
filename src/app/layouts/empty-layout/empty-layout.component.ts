@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-empty-layout',
   templateUrl: './empty-layout.component.html',
   styleUrls: ['./empty-layout.component.scss']

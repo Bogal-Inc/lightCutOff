@@ -8,6 +8,7 @@ import {environment} from '../../../../../../../environments/environment';
 const log = new Logger('map-filter.component');
 
 @Component({
+  standalone: false,
   selector: 'app-map-filter',
   templateUrl: './map-filter.component.html',
   styleUrls: ['./map-filter.component.scss']

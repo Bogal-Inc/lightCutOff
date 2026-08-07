@@ -44,16 +44,16 @@
     </div>
 
     <div class="pt-2 footer__lang">
-      <div class="media footer__lang__media" *ngIf="currentLang === 'en'">
+      <div class="d-flex footer__lang__media" *ngIf="currentLang === 'en'">
         <img src="./../../../assets/static/icons/france.png" alt="flag_french" class="footer__lang__media__img">
-        <div class="media-body footer__lang__media__body">
-          <a (click)="toggleLang()" class="pl-1 footer__lang__media__body__link">Français</a>
+        <div class="flex-grow-1 footer__lang__media__body">
+          <a (click)="toggleLang()" class="ps-1 footer__lang__media__body__link">Français</a>
         </div>
       </div>
-      <div class="media footer__lang__media" *ngIf="currentLang === 'fr'">
+      <div class="d-flex footer__lang__media" *ngIf="currentLang === 'fr'">
         <img src="./../../../assets/static/icons/england.png" alt="flag_england" class="footer__lang__media__img">
-        <div class="media-body footer__lang__media__body">
-          <a (click)="toggleLang()" class="pl-1 footer__lang__media__body__link">English</a>
+        <div class="flex-grow-1 footer__lang__media__body">
+          <a (click)="toggleLang()" class="ps-1 footer__lang__media__body__link">English</a>
         </div>
       </div>
     </div>

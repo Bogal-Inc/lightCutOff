@@ -4,7 +4,6 @@ import { I18nService } from './i18n.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 
-// @ts-ignore
 describe('I18nService', () => {
   let service: I18nService;
 

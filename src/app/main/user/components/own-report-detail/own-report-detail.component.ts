@@ -2,12 +2,13 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ReportService} from '../../../../core/services-firebase/report.service';
 import {ToastrService} from 'ngx-toastr';
 import {TranslateService} from '@ngx-translate/core';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {faEdit} from '@fortawesome/free-solid-svg-icons';
 import {ReportSatus} from '@Models/report.model';
 import {compareDate} from '@Helpers/date.helper';
 
 @Component({
+  standalone: false,
   selector: 'app-own-report-detail',
   templateUrl: './own-report-detail.component.html',
   styleUrls: ['./own-report-detail.component.scss']

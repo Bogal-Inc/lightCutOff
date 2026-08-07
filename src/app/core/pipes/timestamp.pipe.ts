@@ -3,6 +3,7 @@ import {I18nService} from '@Services/i18n.service';
 
 
 @Pipe({
+  standalone: false,
   name: 'timestamp'
 })
 export class TimestampPipe implements PipeTransform {
@@ -22,8 +23,7 @@ export class TimestampPipe implements PipeTransform {
         second: '2-digit'
       });
 
-    // @ts-ignore
-    return dateFormat.format(value);
+    return dateFormat.format(value as Date);
   }
 
 }

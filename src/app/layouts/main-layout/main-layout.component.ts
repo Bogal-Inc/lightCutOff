@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {InternetService} from '@Services/internet.service';
 
 @Component({
+  standalone: false,
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss']

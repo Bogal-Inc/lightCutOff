@@ -1,11 +1,12 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
 import {Const} from '../../../environments/const';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 
 const log = new Logger('download-app.component');
 
 @Component({
+  standalone: false,
   selector: 'app-download-app',
   templateUrl: './download-app.component.html',
   styleUrls: ['./download-app.component.scss']

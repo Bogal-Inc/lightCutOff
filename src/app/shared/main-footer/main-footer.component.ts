@@ -3,12 +3,13 @@ import { Const } from 'src/environments/const';
 import {Component, OnInit} from '@angular/core';
 import { Logger } from '@Services/logger.service';
 import {TranslateService} from '@ngx-translate/core';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
 
 const log = new Logger('loading.component');
 
 @Component({
+  standalone: false,
   selector: 'app-main-footer',
   templateUrl: './main-footer.component.html',
   styleUrls: ['./main-footer.component.scss']

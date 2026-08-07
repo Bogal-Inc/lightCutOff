@@ -6,7 +6,7 @@
       "@Models/*": ["src/app/core/models/*"],
       "@Services/*": ["src/app/core/services/*"],
       "@Pipes/*": ["src/app/core/pipes/*"],
-      "@Helpers/*": ["src/app/core/_helper/*"],
+      "@Helpers/*": ["src/app/core/_helper/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -14,20 +14,17 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "module": "es2022",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2022",
+    "useDefineForClassFields": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "lib": [
-      "es2018",
+      "es2022",
       "dom"
-    ],
-    "types": [
-      "jasmine",
-      "googlemaps",
-      "node"
-    ],
-    "typeRoots": [ "../node_modules/@types" ]
+    ]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

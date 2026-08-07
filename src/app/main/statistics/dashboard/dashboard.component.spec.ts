@@ -4,7 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {CardComponent} from '../components/card/card.component';
-import {AngularFireModule} from '@angular/fire';
+import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from '../../../../environments/environment';
 
 

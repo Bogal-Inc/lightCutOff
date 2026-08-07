@@ -1,37 +1,19 @@
-import {TranslateCompiler, TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { MessagingComponent } from './modals/messaging/messaging.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
-import {OWL_DATE_TIME_LOCALE, OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import {OWL_DATE_TIME_LOCALE, OwlDateTimeModule, OwlNativeDateTimeModule} from '@danielmoncada/angular-datetime-picker';
 import {ToastrModule} from 'ngx-toastr';
 import {Const} from '../environments/const';
-import {NgcCookieConsentConfig, NgcCookieConsentModule, NgcCookieConsentService} from 'ngx-cookieconsent';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {provideHttpClient} from '@angular/common/http';
 import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import {I18nService} from '@Services/i18n.service';
-import {AngularFireAuthModule} from '@angular/fire/auth';
-import {TranslateMessageFormatCompiler} from 'ngx-translate-messageformat-compiler';
-import {HttpLoaderFactory} from './app.module';
-
-const cookieConfig: NgcCookieConsentConfig = {
-  cookie: {
-    // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
-    domain: 'localhost'
-  },
-  palette: {
-    popup: {
-      background: '#000'
-    },
-    button: {
-      background: '#f1d600'
-    }
-  },
-  theme: 'edgeless',
-  type: 'opt-out'
-};
+import {AngularFireAuthModule} from '@angular/fire/compat/auth';
+import {TranslateHttpLoader, provideTranslateHttpLoader} from '@ngx-translate/http-loader';
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
@@ -48,26 +30,23 @@ describe('AppComponent', () => {
           defaultLanguage: 'fr',
           loader: {
             provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-          },
-          compiler: {
-            provide: TranslateCompiler,
-            useClass: TranslateMessageFormatCompiler
+            useClass: TranslateHttpLoader
           }
         }),
-        HttpClientModule,
         ToastrModule.forRoot({
           timeOut: 10000,
           progressBar: true
         }),
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MessagingComponent
       ],
       providers: [
         I18nService,
         TranslateService,
+        provideHttpClient(),
+        provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' }),
       ],
     }).compileComponents();
   }));

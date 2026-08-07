@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
+  standalone: false,
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']

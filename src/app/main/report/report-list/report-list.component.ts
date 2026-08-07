@@ -10,11 +10,12 @@ import {Logger} from '@Services/logger.service';
 import {TranslateService} from '@ngx-translate/core';
 import {Const} from '../../../../environments/const';
 import {MetaService} from '@Services/meta.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 
 const log = new Logger('router-list.component');
 
 @Component({
+  standalone: false,
   selector: 'app-view-reports',
   templateUrl: './report-list.component.html',
   styleUrls: ['./report-list.component.scss']

@@ -9,6 +9,7 @@ import {faUserCircle} from '@fortawesome/free-solid-svg-icons';
 const log = new Logger('main-header.component');
 
 @Component({
+  standalone: false,
   selector: 'app-main-header',
   templateUrl: './main-header.component.html',
   styleUrls: ['./main-header.component.scss']

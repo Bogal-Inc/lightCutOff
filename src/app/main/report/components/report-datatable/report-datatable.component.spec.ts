@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ReportDatatableComponent } from './report-datatable.component';
-import {AngularFireModule} from '@angular/fire';
+import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from '../../../../../environments/environment';
 import {TranslateModule} from '@ngx-translate/core';
 import {TimestampPipe} from '@Pipes/timestamp.pipe';

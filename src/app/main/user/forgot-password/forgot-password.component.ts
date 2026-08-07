@@ -9,6 +9,7 @@ import {TranslateService} from '@ngx-translate/core';
 const log = new Logger('forgotPassword.component');
 
 @Component({
+  standalone: false,
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss']

@@ -1,7 +1,7 @@
 import {AuthService, UserService} from '../../../core/services-firebase';
 import { Component, OnInit } from '@angular/core';
 import { Logger } from '@Services/logger.service';
-import { AngularFireAnalytics } from '@angular/fire/analytics';
+import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 import {ToastrService} from 'ngx-toastr';
 import {TranslateService} from '@ngx-translate/core';
 import {Const} from '../../../../environments/const';
@@ -9,6 +9,7 @@ import {Const} from '../../../../environments/const';
 const log = new Logger('signup.component');
 
 @Component({
+  standalone: false,
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']

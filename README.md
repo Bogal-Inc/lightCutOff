@@ -1,12 +1,10 @@
 ![Deploy](https://github.com/willkoua/lightCutOff/workflows/Deploy%20to%20Firebase%20Hosting%20on%20merge/badge.svg?event=push)
 ![pull_request](https://github.com/willkoua/lightCutOff/workflows/lint%20and%20test%20on%20PR/badge.svg)
-![npm](https://img.shields.io/npm/v/npm?label=npm)
-![](https://img.shields.io/badge/node-green.svg)
 
 # Pre-requisites
-- node: 14.16.0
-- npm 7.8.0
-- Angular 12.0.0
+- node: >= 22.12
+- npm: >= 10
+- Angular 20
 
 # contribute
 with `pull request`. Never in develop branch or master branch directly.
@@ -14,8 +12,8 @@ with `pull request`. Never in develop branch or master branch directly.
 # Setup
 copy and paste `.env.example` file and rename `.env`
 
-## google MAp
-- Generate your google map API key. [documentation](https://cloud.google.com/maps-platform/?utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_460848633508-ADGP_Hybrid%20%7C%20AW%20SEM%20%7C%20BKWS%20~%20Google%20Maps%20API-KWID_43700033921822012-kwd-1952727095-userloc_9070075&utm_term=KW_google%20map%20api-ST_google%20map%20api&gclid=CjwKCAiAv4n9BRA9EiwA30WND59Wh7Bf38cxHwyMEodPmvkHX4PqlKb0VWKITlf3hPuV_11Y-47-9xoC9zoQAvD_BwE).
+## Google Maps
+- Generate your Google Maps API key ([documentation](https://developers.google.com/maps/documentation/javascript/get-api-key)).
 - Add your key in `.env`
 
 ## Firebase
@@ -55,13 +53,18 @@ VAPID_PUBLIC_KEY=VAPID_PUBLIC_KEY
 ```
 - Create `Cloud firestore` in your project
 
+# Cloud Functions
+The functions (`functions/`) run on **Node 22** / firebase-functions **v6** (API v2).
+The old `functions.config()` is gone: provide `GMAIL_EMAIL` and `GMAIL_PASSWORD`
+through a `functions/.env` file or Firebase secrets before deploying `contactus`.
+
 # Run local server
 ```text
 npm run start:dev
 ```
 and go to the browser with `localhost:4200`
 
-# Running unit tests 
+# Running unit tests
 ```text
 npm run test
 ```
@@ -71,7 +74,12 @@ report coverage on in `coverage` directory. You can run `index.html` file for se
  ```text
 npm run build
 ```
- When to build project, the build artifacts will be stored in the dist/ directory.
+When to build project, the build artifacts will be stored in the `dist/lightcutoff/browser`
+directory (Firebase Hosting points there).
 
-# Running end-to-end tests
-Run `ng e2e` to execute the end-to-end tests via Protractor.
+# Lint
+```text
+npm run lint
+```
+ESLint 9 flat config (`eslint.config.js`). The old Protractor e2e suite was removed with the
+Angular 20 upgrade — see `CHANGELOG.md` for the full migration notes.

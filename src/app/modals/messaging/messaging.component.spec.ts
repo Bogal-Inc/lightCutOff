@@ -4,13 +4,13 @@ import { MessagingComponent } from './messaging.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {RouterTestingModule} from '@angular/router/testing';
-import {AngularFireModule} from '@angular/fire';
+import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from '../../../environments/environment';
 import {MessagingService} from '../../core/services-firebase';
 import {HttpClientModule} from '@angular/common/http';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {ToastrModule} from 'ngx-toastr';
-import {AngularFireMessaging, AngularFireMessagingModule} from '@angular/fire/messaging';
+import {AngularFireMessaging, AngularFireMessagingModule} from '@angular/fire/compat/messaging';
 
 describe('messagingComponent', () => {
   let component: MessagingComponent;

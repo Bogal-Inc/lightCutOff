@@ -6,14 +6,15 @@ import {User} from '@Models/user.model';
 import {takeUntil} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
 import {Logger} from '@Services/logger.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {TranslateService} from '@ngx-translate/core';
 import {DeviceService} from '../../core/services-firebase/device.service';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 
 const log = new Logger('messaging.component');
 
 @Component({
+  standalone: false,
   selector: 'app-messaging',
   templateUrl: './messaging.component.html',
   styleUrls: ['./messaging.component.scss']

@@ -3,6 +3,7 @@ import { Base } from '@Models/base.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-report-infos',
   templateUrl: './marker-details.component.html',
   styleUrls: ['./marker-details.component.scss']

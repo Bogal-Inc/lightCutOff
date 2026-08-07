@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Const} from '../../../../environments/const';
 import {Logger} from '@Services/logger.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 
 const log = new Logger('maintenance.component');
 
 @Component({
+  standalone: false,
   selector: 'app-page-maintenance',
   templateUrl: './page-maintenance.component.html',
   styleUrls: ['./page-maintenance.component.scss']

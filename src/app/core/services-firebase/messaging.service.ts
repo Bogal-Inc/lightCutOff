@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireMessaging } from '@angular/fire/messaging';
+import { AngularFireMessaging } from '@angular/fire/compat/messaging';
 import {mergeMap} from 'rxjs/operators';
 
 @Injectable({

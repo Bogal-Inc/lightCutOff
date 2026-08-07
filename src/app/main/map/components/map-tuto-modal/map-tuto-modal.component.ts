@@ -3,11 +3,12 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Const} from '../../../../../environments/const';
 import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 
 const log = new Logger('tuto-modal.component');
 
 @Component({
+  standalone: false,
   selector: 'app-tuto-modal',
   templateUrl: './map-tuto-modal.component.html',
   styleUrls: ['./map-tuto-modal.component.scss'],

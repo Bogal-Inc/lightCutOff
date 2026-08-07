@@ -1,13 +1,13 @@
 import { Const } from 'src/environments/const';
 import {Component, OnInit} from '@angular/core';
 import {AuthService, MessagingService} from './core/services-firebase';
-import { DateTimeAdapter } from 'ng-pick-datetime';
+import { DateTimeAdapter } from '@danielmoncada/angular-datetime-picker';
 import { Logger } from '@Services/logger.service';
 import { environment } from 'src/environments/environment';
 import { I18nService } from '@Services/i18n.service';
 import {ToastrService} from 'ngx-toastr';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MessagingComponent} from './modals/messaging/messaging.component';
 import {User} from '@Models/user.model';
@@ -17,6 +17,7 @@ import {User} from '@Models/user.model';
 const log = new Logger('app.component');
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

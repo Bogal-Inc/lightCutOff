@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {MarkerRecovredReportComponent} from './marker-recovred-report.component';
-import {AngularFireModule} from '@angular/fire';
+import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from 'src/environments/environment';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {ToastrModule} from 'ngx-toastr';
-import {OWL_DATE_TIME_LOCALE, OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import {OWL_DATE_TIME_LOCALE, OwlDateTimeModule, OwlNativeDateTimeModule} from '@danielmoncada/angular-datetime-picker';
 import {FormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReportSatus} from '@Models/report.model';
@@ -44,7 +44,6 @@ describe('MarkerRecovredReportComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MarkerRecovredReportComponent);
     component = fixture.componentInstance;
-    // @ts-ignore
     component.data = {
       report: {
         id: 'Vi99X162RrJSoa6yZWQy',

@@ -5,6 +5,7 @@ import { Logger } from '@Services/logger.service';
 const log = new Logger('tutorial.component');
 
 @Component({
+  standalone: false,
   selector: 'app-tutorial',
   templateUrl: './tutorial.component.html',
   styleUrls: ['./tutorial.component.scss']

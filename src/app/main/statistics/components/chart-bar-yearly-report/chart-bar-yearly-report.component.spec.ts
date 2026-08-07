@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ChartBarYearlyReportComponent } from './chart-bar-yearly-report.component';
 import {TranslateModule} from '@ngx-translate/core';
-import {ChartModule} from 'angular2-chartjs';
+import {ChartComponent} from '../chart/chart.component';
 
 describe('ChartBarYearlyReport', () => {
   let component: ChartBarYearlyReportComponent;
@@ -12,9 +12,8 @@ describe('ChartBarYearlyReport', () => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot(),
-        ChartModule
-      ],
-      declarations: [ ChartBarYearlyReportComponent ]
+              ],
+      declarations: [ ChartBarYearlyReportComponent, ChartComponent ]
     })
     .compileComponents();
   }));

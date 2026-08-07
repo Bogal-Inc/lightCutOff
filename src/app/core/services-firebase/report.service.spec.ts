@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ReportService } from './report.service';
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 describe('ReportService', () => {
   let service: ReportService;

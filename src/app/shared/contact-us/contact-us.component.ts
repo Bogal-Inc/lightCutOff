@@ -7,11 +7,12 @@ import {Subject} from 'rxjs';
 import {Const} from '../../../environments/const';
 import {takeUntil} from 'rxjs/operators';
 import {Logger} from '@Services/logger.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 
 const log = new Logger('contactus.component');
 
 @Component({
+  standalone: false,
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.scss']

@@ -1,9 +1,9 @@
 import {DocumentReference} from '@firebase/firestore-types';
 import {BaseService} from './base.service';
 import {Injectable} from '@angular/core';
-import {AngularFirestore, DocumentData} from '@angular/fire/firestore';
+import {AngularFirestore, DocumentData} from '@angular/fire/compat/firestore';
 import {defaultReport, Report, ReportSatus} from '@Models/report.model';
-import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {Observable} from 'rxjs';
 import {Const} from 'src/environments/const';
 import { CollectionReference, Query } from '@firebase/firestore-types';

@@ -15,3 +15,26 @@ body {
   padding-bottom: 5%;
   background-color: var(--white);
 }
+
+// --- Compatibilité Bootstrap 4 -> 5 ---
+// Réplique de l'ancien `.close` de Bootstrap 4 (supprimé en v5),
+// utilisé par les liens/boutons de fermeture custom de l'app.
+.btn-close-custom {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    color: #000;
+    text-decoration: none;
+    opacity: .75;
+  }
+}

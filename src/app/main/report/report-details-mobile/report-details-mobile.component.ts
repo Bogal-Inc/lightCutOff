@@ -7,12 +7,13 @@ import {isMobile} from '@Helpers/mobile-confirm.helper';
 import {TranslateService} from '@ngx-translate/core';
 import {Const} from '../../../../environments/const';
 import {MetaService} from '@Services/meta.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
 
 const log = new Logger('report-details-mobile.component');
 
 @Component({
+  standalone: false,
   selector: 'app-report-details-mobile',
   templateUrl: './report-details-mobile.component.html',
   styleUrls: ['./report-details-mobile.component.scss']

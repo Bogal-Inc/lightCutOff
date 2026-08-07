@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OwnReportDetailComponent } from './own-report-detail.component';
-import {AngularFireModule} from '@angular/fire';
+import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from '../../../../../environments/environment';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {TranslateModule} from '@ngx-translate/core';
 import {ToastrModule} from 'ngx-toastr';
-import {OWL_DATE_TIME_LOCALE} from 'ng-pick-datetime';
+import {OWL_DATE_TIME_LOCALE} from '@danielmoncada/angular-datetime-picker';
 
 describe('OwnReportDetailComponent', () => {
   let component: OwnReportDetailComponent;

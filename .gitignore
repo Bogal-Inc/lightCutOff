@@ -64,3 +64,12 @@ firestore-debug.log
 src/manifest.json
 export_directory/
 
+
+# Brief de reprise local (jamais committé)
+CONTEXT.md
+
+# Angular CLI cache
+.angular/
+
+# Config locale Claude Code
+.claude/

@@ -3,13 +3,14 @@ import { Const } from 'src/environments/const';
 import {Logger} from '@Services/logger.service';
 import {MetaService} from '@Services/meta.service';
 import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
 import {TranslateService} from '@ngx-translate/core';
 
 const log = new Logger('tuto.component');
 
 @Component({
+  standalone: false,
   selector: 'app-tuto',
   templateUrl: './tuto.component.html',
   styleUrls: ['./tuto.component.scss']

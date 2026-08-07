@@ -3,9 +3,9 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TutoComponent } from './tuto.component';
 import { MapLegendComponent } from 'src/app/main/map/components/map-legend/map-legend.component';
 import { TranslateModule } from '@ngx-translate/core';
-import {AngularFireModule} from '@angular/fire';
+import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from '../../../../environments/environment';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 
 describe('TutoComponent', () => {
   let component: TutoComponent;

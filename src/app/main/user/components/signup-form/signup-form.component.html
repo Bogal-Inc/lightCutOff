@@ -1,7 +1,7 @@
 <div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <input type="hidden" formControlName="id" *ngIf="user" value="{{user?.id}}">
-    <div class="form-group" *ngIf="user">
+    <div class="mb-3" *ngIf="user">
       <input type="text" class="form-control" placeholder="{{'user.register-form.firstname' | translate}}"
              formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" maxlength="20">
       <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="form-group" *ngIf="user">
+    <div class="mb-3" *ngIf="user">
       <input type="text" class="form-control" placeholder="{{'user.register-form.lastname' | translate}}"
              formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" maxlength="20">
       <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div class="form-group" *ngIf="user">
+    <div class="mb-3" *ngIf="user">
       <div class="form-check">
         <input class="form-check-input" type="radio" id="male" value="g1" formControlName="gender">
         <label class="form-check-label" for="male">
@@ -32,14 +32,14 @@
       </div>
     </div>
 
-    <div class="form-group" *ngIf="user">
+    <div class="mb-3" *ngIf="user">
       <input type="text" class="form-control" placeholder="{{'user.register-form.phone_number' | translate}}"
              formControlName="phoneNumber" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
     </div>
 
 <!--    TODO: add birthday field -->
 
-    <div class="form-group">
+    <div class="mb-3">
       <input [type]="(user) ? 'hidden' : 'email'" class="form-control" placeholder="{{'user.register.mail' | translate}}" formControlName="email"
              [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <div class="form-group" *ngIf="!user">
+    <div class="mb-3" *ngIf="!user">
       <input type="password" class="form-control" placeholder="{{'user.register-form.password' | translate}}"
              formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
       <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <div class="form-group" *ngIf="!user">
+    <div class="mb-3" *ngIf="!user">
       <input type="password" class="form-control" placeholder="{{'user.register-form.confirm_password' | translate}}"
              formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
       <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
@@ -74,7 +74,7 @@
       </div>
     </div>
 
-    <!--<div class="form-group form-check" *ngIf="!user">
+    <!--<div class="mb-3 form-check" *ngIf="!user">
       <input type="checkbox" class="form-check-input" id="cgu" value="1" formControlName="accept">
       <label class="form-check-label" for="cgu">{{'user.register-form.cgu' | translate}}</label>
       <div *ngIf="cguError" class="text-danger">
@@ -82,7 +82,7 @@
       </div>
     </div>-->
 
-    <div class="input-group-append">
+    <div class="input-group-text-wrapper d-flex">
       <button class="btn btn-warning w-100" type="submit">
         {{'user.register-form.btn_submit' | translate}}
       </button>

@@ -2,16 +2,15 @@ import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MapViewComponent } from './map-view.component';
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { ToastrModule } from 'ngx-toastr';
-import { AgmCoreModule } from '@agm/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from '@danielmoncada/angular-datetime-picker';
 import { MapLegendComponent } from 'src/app/main/map/components/map-legend/map-legend.component';
 import { NgbTooltipConfig, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
@@ -27,10 +26,10 @@ describe('MapViewComponent', () => {
         MapViewComponent,
         MapSearchComponent,
         LoadingComponent,
-        MapLegendComponent,
-        NgbTooltip
+        MapLegendComponent
       ],
       imports: [
+        NgbTooltip,
         NoopAnimationsModule,
         RouterTestingModule,
         OwlDateTimeModule,
@@ -45,13 +44,7 @@ describe('MapViewComponent', () => {
           progressBar: true
         }),
         TranslateModule.forRoot(),
-        AgmCoreModule.forRoot({
-          apiKey: environment.googleMapsApiKey,
-          region: 'CM',
-          language: 'fr',
-          libraries: ['places']
-        }),
-      ],
+              ],
       providers: [
         NgbTooltipConfig,
         TranslateService,

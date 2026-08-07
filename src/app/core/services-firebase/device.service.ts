@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BaseService} from './base.service';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFirestore, DocumentData} from '@angular/fire/firestore';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
+import {AngularFirestore, DocumentData} from '@angular/fire/compat/firestore';
 import {DocumentReference} from '@firebase/firestore-types';
 import {Const} from '../../../environments/const';
 import {defaultDevice, Device} from '@Models/device.model';

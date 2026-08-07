@@ -6,12 +6,13 @@ import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
 import {Const} from '../../../../environments/const';
 import {MetaService} from '@Services/meta.service';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {Observable} from 'rxjs';
 
 const log = new Logger('dashboard.component');
 
 @Component({
+  standalone: false,
   selector: 'app-report-list',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']

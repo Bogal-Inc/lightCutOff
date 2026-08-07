@@ -5,13 +5,14 @@ import {ToastrService} from 'ngx-toastr';
 import {TranslateService} from '@ngx-translate/core';
 import {Logger} from '@Services/logger.service';
 import { User } from '@Models/user.model';
-import {AngularFireAnalytics} from '@angular/fire/analytics';
+import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 // import * as firebase from 'firebase';
-import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 
 const log = new Logger('register.component');
 
 @Component({
+  standalone: false,
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
@@ -89,9 +90,9 @@ export class SignupComponent implements OnInit {
 
   // TODO: not working
   /*private associateWithAnonymousAccount(email, password) {
-    const credential = firebase.default.auth.EmailAuthProvider.credential(email, password);
+    const credential = firebase.auth.EmailAuthProvider.credential(email, password);
 
-    firebase.default.auth().currentUser.linkWithCredential(credential).then((user) => {
+    firebase.auth().currentUser.linkWithCredential(credential).then((user) => {
       log.debug('Anonymous account successfully upgraded', user);
     }, (error) => {
       log.error('Error upgrading anonymous account', error);

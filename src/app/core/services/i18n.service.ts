@@ -9,7 +9,6 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import {Logger} from './logger.service';
 
 /** Other Imports */
-import { includes } from 'lodash';
 import * as frFR from '../../../assets/i18n/fr.json';
 
 
@@ -60,7 +59,7 @@ export class I18nService {
       language ||
       localStorage.getItem(this.languageStorageKey) ||
       this.translateService.getBrowserCultureLang();
-    let isSupportedLanguage = includes(this.supportedLanguages, language);
+    let isSupportedLanguage = this.supportedLanguages.includes(language);
 
     // If no exact match is found, search without the region
     if (language && !isSupportedLanguage) {

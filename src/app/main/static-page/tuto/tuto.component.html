@@ -1,6 +1,6 @@
-<div class="tuto" *ngIf="projectTitle != null">
+<div class="tuto" *ngIf="projectTitle !== null">
     <div class="container">
-      <div class="jumbotron jumbotron-fluid" id="start">
+      <div class="p-5 mb-4 bg-light" id="start">
         <div class="container">
           <h1 class="display-3">{{'core.tuto.prin_title' | translate: {projectTitle:projectTitle} }}</h1>
         </div>
@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-md-9">
-          <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+          <div data-spy="scroll" data-bs-target="#navbar-example3" data-offset="0">
             <div class="mb-5">
               <div>
                 <h4 class="display-4">{{'core.tuto.title_presentation' | translate}}</h4>

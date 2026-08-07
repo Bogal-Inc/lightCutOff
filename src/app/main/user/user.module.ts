@@ -30,7 +30,7 @@ import { SignupFormComponent } from './components/signup-form/signup-form.compon
         UserRoutingModule,
         ReportRoutingModule,
         SharedModule,
-        AgGridModule.withComponents([]),
+        AgGridModule,
         MapModule,
     ],
   providers: [TimestampPipe]
