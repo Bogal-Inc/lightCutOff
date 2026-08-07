@@ -162,10 +162,23 @@
         color: rgba(255, 255, 255, 0.75);
     }
 
-    &__sources {
-        margin-top: 1.5rem;
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.45);
+    &__tile {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+
+        &--visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &__punch {
+        max-width: 640px;
+        margin-top: 2rem;
+        font-size: 1.1rem;
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.85);
     }
 }
 

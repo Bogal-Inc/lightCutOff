@@ -265,3 +265,18 @@ sections, CTA, absence équipe/partenaires).
 - **Section « Notre carte » déplacée avant « Distinctions »** (dots mis à jour).
 - **Un seul titre par section** : les doublons noirs supprimés, les titres colorés
   soulignés (ex-kickers, promus en h2 ~1.6rem uppercase) conservés et tous centrés.
+
+## [2.10.0] - 2026-08-07 — Stats recentrées sur la fiabilité + compteurs animés
+
+- **Section chiffres recentrée sur le vrai problème de NJUKA** (la fiabilité et le manque
+  d'information, pas l'accès à l'infrastructure) — chiffres vérifiés :
+  **≈ 8** coupures/mois pour les entreprises camerounaises (Enterprise Surveys) ·
+  **5 %** du CA perdu à cause des coupures (Afrique subsaharienne, Banque mondiale) ·
+  **10×** le prix du réseau pour l'électricité au générateur privé ·
+  **69 %** des habitants d'Afrique subsaharienne sans eau potable gérée en toute sécurité
+  (OMS/UNICEF JMP).
+- **Phrase-choc** en clôture : « aucune donnée publique ne mesure ce que ces coupures font
+  vivre — NJUKA construit cette donnée. »
+- **Animation** : compteurs 0 → cible (easeOutCubic ~1,6 s, hors zone Angular) déclenchés à
+  l'apparition de la section (IntersectionObserver) + révélation des tuiles en cascade
+  (fondu/translation avec délais échelonnés).

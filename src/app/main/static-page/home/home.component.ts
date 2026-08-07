@@ -1,4 +1,4 @@
-import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, HostListener, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
 import {faBullhorn} from '@fortawesome/free-solid-svg-icons';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
@@ -21,7 +21,7 @@ const log = new Logger('home.component');
   styleUrls: ['./home.component.scss'],
   providers: [NgbModalConfig, NgbModal]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly projectTitle = Const.app.title;
   readonly playStoreUrl = Const.app.playStoreUrl;
   readonly appStoreUrl = Const.app.appStoreUrl;
@@ -37,6 +37,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     { id: 'contactus', label: 'contact' }
   ];
   activeSection = 'hero';
+  /** Tuiles « le problème en chiffres » : compteurs animés à l'apparition de la section. */
+  readonly figures: {
+    target: number; display: string; prefix: string; suffix: string;
+    color: 'amber' | 'sky'; labelKey: string;
+  }[] = [
+    { target: 8, display: '0', prefix: '≈ ', suffix: '', color: 'amber', labelKey: 'outages_label' },
+    { target: 5, display: '0', prefix: '', suffix: ' %', color: 'amber', labelKey: 'losses_label' },
+    { target: 10, display: '0', prefix: '', suffix: '×', color: 'amber', labelKey: 'generator_label' },
+    { target: 69, display: '0', prefix: '', suffix: ' %', color: 'sky', labelKey: 'water_label' }
+  ];
+  figuresAnimated = false;
+  private figuresObserver?: IntersectionObserver;
   readonly faBullhorn = faBullhorn;
   closeResult = '';
   reports: any;
@@ -49,6 +61,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isMarkerAdded: boolean;
 
   constructor(
+    private ngZone: NgZone,
     private sectionSpy: SectionSpyService,
     private modalService: NgbModal,
     private translateService: TranslateService,
@@ -136,7 +149,51 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  ngAfterViewInit(): void {
+    const section = document.getElementById('figures');
+    if (!section || typeof IntersectionObserver === 'undefined') {
+      this.startFiguresAnimation();
+      return;
+    }
+
+    this.figuresObserver = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        this.figuresObserver.disconnect();
+        this.startFiguresAnimation();
+      }
+    }, { threshold: 0.35 });
+    this.figuresObserver.observe(section);
+  }
+
+  /** Compte de 0 à la valeur cible avec une décélération douce (easeOutCubic). */
+  private startFiguresAnimation() {
+    if (this.figuresAnimated) {
+      return;
+    }
+    this.figuresAnimated = true;
+
+    const durationMs = 1600;
+    const start = performance.now();
+
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / durationMs, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      this.ngZone.run(() => {
+        for (const figure of this.figures) {
+          figure.display = String(Math.round(figure.target * eased));
+        }
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      }
+    };
+    this.ngZone.runOutsideAngular(() => requestAnimationFrame(tick));
+  }
+
   ngOnDestroy(): void {
+    this.figuresObserver?.disconnect();
     this.sectionSpy.setActiveSection(null);
   }
 }

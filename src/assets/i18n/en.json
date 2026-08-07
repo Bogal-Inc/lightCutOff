@@ -115,12 +115,11 @@
       },
       "figures": {
         "title": "The problem, in numbers",
-        "no_power_value": "600 million",
-        "no_power_label": "people live without electricity in sub-Saharan Africa",
-        "electricity_value": "53%",
-        "electricity_label": "only of sub-Saharan Africa's population has access to electricity",
-        "water_value": "31%",
-        "water_label": "only have access to safely managed drinking water"
+        "outages_label": "power outages per month endured on average by Cameroonian businesses",
+        "losses_label": "of annual sales lost by sub-Saharan African businesses because of outages",
+        "generator_label": "the grid price: that is what electricity from a private generator costs",
+        "water_label": "of sub-Saharan Africans lack safely managed drinking water",
+        "punch": "And no public data measures what these outages put people through every day. NJUKA is building that data, one report at a time."
       },
       "nav": {
         "hero": "Home",

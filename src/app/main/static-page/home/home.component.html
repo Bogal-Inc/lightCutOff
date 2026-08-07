@@ -70,25 +70,19 @@
             <div class="container">
                 <h2 class="mb-5 home__kicker home__kicker--on-dark">{{'core.home.figures.title' | translate}}</h2>
                 <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="home__section-figures__value home__section-figures__value--amber">
-                            {{'core.home.figures.no_power_value' | translate}}
+                    <div class="col-6 col-md-3 mb-4 home__section-figures__tile"
+                         [class.home__section-figures__tile--visible]="figuresAnimated"
+                         *ngFor="let figure of figures; index as i"
+                         [style.transition-delay.ms]="i * 120">
+                        <div class="home__section-figures__value"
+                             [class.home__section-figures__value--amber]="figure.color === 'amber'"
+                             [class.home__section-figures__value--sky]="figure.color === 'sky'">
+                            {{figure.prefix}}{{figure.display}}{{figure.suffix}}
                         </div>
-                        <p class="home__section-figures__label">{{'core.home.figures.no_power_label' | translate}}</p>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="home__section-figures__value home__section-figures__value--amber">
-                            {{'core.home.figures.electricity_value' | translate}}
-                        </div>
-                        <p class="home__section-figures__label">{{'core.home.figures.electricity_label' | translate}}</p>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="home__section-figures__value home__section-figures__value--sky">
-                            {{'core.home.figures.water_value' | translate}}
-                        </div>
-                        <p class="home__section-figures__label">{{'core.home.figures.water_label' | translate}}</p>
+                        <p class="home__section-figures__label">{{'core.home.figures.' + figure.labelKey | translate}}</p>
                     </div>
                 </div>
+                <p class="home__section-figures__punch mx-auto">{{'core.home.figures.punch' | translate}}</p>
             </div>
         </div>
     </section>

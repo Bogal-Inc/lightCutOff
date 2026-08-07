@@ -115,12 +115,11 @@
       },
       "figures": {
         "title": "Le problème, en chiffres",
-        "no_power_value": "600 millions",
-        "no_power_label": "de personnes vivent sans électricité en Afrique subsaharienne",
-        "electricity_value": "53 %",
-        "electricity_label": "seulement de la population d'Afrique subsaharienne a accès à l'électricité",
-        "water_value": "31 %",
-        "water_label": "seulement dispose d'une eau potable gérée en toute sécurité"
+        "outages_label": "coupures de courant par mois subies en moyenne par les entreprises camerounaises",
+        "losses_label": "du chiffre d'affaires perdu par les entreprises d'Afrique subsaharienne à cause des coupures",
+        "generator_label": "le prix du réseau : c'est ce que coûte l'électricité produite au générateur privé",
+        "water_label": "des habitants d'Afrique subsaharienne n'ont pas d'eau potable gérée en toute sécurité",
+        "punch": "Et aucune donnée publique ne mesure ce que ces coupures font vivre au quotidien. NJUKA construit cette donnée, signalement après signalement."
       },
       "nav": {
         "hero": "Accueil",
