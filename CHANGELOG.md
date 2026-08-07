@@ -225,3 +225,19 @@ sections, CTA, absence équipe/partenaires).
 - Boutons publics alignés : « En savoir plus » (accueil), envoi du formulaire de contact,
   recherche de la carte, modal géolocalisation → styles de marque (fini les
   warning/info/primary/secondary génériques).
+
+## [2.7.0] - 2026-08-07 — Chiffres Afrique, navigation par sections, espacement, support@njuka.app
+
+- **Section chiffres déplacée avant « Pourquoi NJUKA ? »**, ligne de sources retirée, et
+  chiffres élargis à l'**Afrique subsaharienne** (vérifiés) : **600 millions** de personnes
+  sans électricité (IEA/Tracking SDG7 2023), **53 %** seulement d'accès à l'électricité
+  (Banque mondiale 2023), **31 %** seulement avec une eau potable gérée en toute sécurité
+  (OMS/UNICEF JMP 2022).
+- **Espacement uniforme** entre toutes les sections de l'accueil (padding 4.5rem, plus de
+  marges disparates 100/120 px) — hero plein écran inchangé.
+- **Navigation par sections** : points fixes à droite (desktop), libellé au survol, point
+  actif suivi au scroll, défilement fluide au clic (hero/à propos/chiffres/pourquoi/app/
+  distinctions/contact).
+- **Contact → support@njuka.app** : destinataire de la Cloud Function `contactus` et
+  `Const.emailService.support` mis à jour. ⚠️ La CF doit être **redéployée** (elle tourne
+  encore sur l'ancien projet avec l'ancien destinataire) — prévu au lot 2e.

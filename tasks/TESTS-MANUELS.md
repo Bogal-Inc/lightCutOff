@@ -10,6 +10,12 @@
 - [ ] `npm run lint` : 0 erreur
 
 ## Accueil & navigation
+- [ ] Menu de sections (points à droite, desktop) : clic = défilement fluide vers la section,
+      point actif suit le scroll
+- [ ] Ordre des sections : hero → à propos → chiffres → pourquoi → app → distinctions → CTA → contact
+- [ ] Espacement vertical identique entre toutes les sections
+- [ ] Formulaire de contact : le message arrive sur support@njuka.app
+      (⚠️ nécessite le redéploiement de la Cloud Function `contactus`)
 - [ ] Page d'accueil : images de fond, header, footer
 - [ ] Bascule FR/EN (footer) — textes avec variables (`{{year}}`, `{{projectTitle}}`) corrects
 - [ ] Menus : Accueil / Carte / Statistiques (uniquement)

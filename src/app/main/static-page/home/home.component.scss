@@ -1,13 +1,13 @@
 .home {
     background-color: var(--white);
+    // espacement vertical UNIFORME entre toutes les sections
     &__section {
-        margin-bottom: 100px;
-    }
-    &__section-whatwedo {
-        margin-bottom: 120px !important;
+        margin: 0;
+        padding: 4.5rem 0;
     }
     &__section-header {
         background-color: var(--njuka-charcoal);
+        padding: 0; // le hero occupe tout l'écran
     }
     &__hero {
         min-height: 100vh;
@@ -88,7 +88,6 @@
 .home__section-figures {
     background-color: var(--njuka-charcoal);
     color: var(--white);
-    margin-bottom: 0;
 
     &__value {
         font-size: 3.5rem;
@@ -120,7 +119,6 @@
 .home__section-cta {
     background-color: var(--njuka-charcoal);
     color: var(--white);
-    margin-bottom: 0 !important;
 
     &__text {
         max-width: 620px;
@@ -151,5 +149,53 @@
     }
     .font-size-title {
         font-size: 2em;
+    }
+}
+
+// Navigation par sections (points fixes à droite)
+.home__dots {
+    position: fixed;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+    z-index: 1030;
+    flex-direction: column;
+    gap: 14px;
+
+    &__dot {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        cursor: pointer;
+        text-decoration: none;
+
+        &__circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--njuka-amber);
+            background: transparent;
+            transition: background-color 0.2s ease;
+        }
+
+        &__label {
+            font-size: 0.75rem;
+            color: var(--njuka-amber-dark);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1px 8px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            white-space: nowrap;
+        }
+
+        &:hover &__label {
+            opacity: 1;
+        }
+
+        &--active &__circle {
+            background-color: var(--njuka-amber);
+        }
     }
 }

@@ -114,13 +114,21 @@
       },
       "figures": {
         "title": "Le problème, en chiffres",
-        "electricity_value": "72 %",
-        "electricity_label": "des Camerounais ont accès à l'électricité — et seulement 26 % en zone rurale",
-        "outages_value": "≈ 8",
-        "outages_label": "coupures de courant par mois subies en moyenne par les entreprises camerounaises",
-        "water_value": "1 sur 3",
-        "water_label": "Camerounais n'a pas accès à une eau potable gérée en toute sécurité",
-        "sources": "Sources : Banque mondiale (accès à l'électricité 2023, Enterprise Surveys) · OMS/UNICEF (JMP)"
+        "no_power_value": "600 millions",
+        "no_power_label": "de personnes vivent sans électricité en Afrique subsaharienne",
+        "electricity_value": "53 %",
+        "electricity_label": "seulement de la population d'Afrique subsaharienne a accès à l'électricité",
+        "water_value": "31 %",
+        "water_label": "seulement dispose d'une eau potable gérée en toute sécurité"
+      },
+      "nav": {
+        "hero": "Accueil",
+        "about": "À propos",
+        "figures": "Chiffres",
+        "why": "Pourquoi",
+        "app": "L'application",
+        "awards": "Distinctions",
+        "contact": "Contact"
       }
     },
     "aboutus": {

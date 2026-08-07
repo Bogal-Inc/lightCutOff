@@ -35,7 +35,7 @@ export const Const = {
     lat: 3.843249609352396
   },
   emailService: {
-    support: 'support@bogal.ca'
+    support: 'support@njuka.app'
   },
   markerColor: {
     user: 'assets/static/images/markers/marker_blue.svg',

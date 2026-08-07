@@ -21,7 +21,7 @@ export const contactus = onRequest({ cors: true }, (req, res) => {
 
   const mailOptions = {
     from: `Support <${email}>`,
-    to: 'willkoua@gmail.com',
+    to: 'support@njuka.app',
     subject: subject,
     html: `<p>Vous avez été contacté par ${email}</p>
     <p>

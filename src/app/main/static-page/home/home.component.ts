@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
 import {faBullhorn} from '@fortawesome/free-solid-svg-icons';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
@@ -24,6 +24,17 @@ export class HomeComponent implements OnInit {
   readonly projectTitle = Const.app.title;
   readonly playStoreUrl = Const.app.playStoreUrl;
   readonly appStoreUrl = Const.app.appStoreUrl;
+  /** Sections de la page pour la navigation par points (id d'ancre + clé i18n courte). */
+  readonly sections = [
+    { id: 'hero', label: 'hero' },
+    { id: 'about', label: 'about' },
+    { id: 'figures', label: 'figures' },
+    { id: 'why', label: 'why' },
+    { id: 'app', label: 'app' },
+    { id: 'awards', label: 'awards' },
+    { id: 'contactus', label: 'contact' }
+  ];
+  activeSection = 'hero';
   readonly faBullhorn = faBullhorn;
   closeResult = '';
   reports: any;
@@ -102,5 +113,21 @@ export class HomeComponent implements OnInit {
     );
     this.nbrReportsMonthly = this.reportsCurrentMonth.length;
     this.nbrReportsDay = this.reportsCurrentDay.length;
+  }
+
+  scrollToSection(sectionId: string) {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    const probe = window.scrollY + window.innerHeight / 3;
+    for (const section of this.sections) {
+      const elt = document.getElementById(section.id);
+      if (elt && probe >= elt.offsetTop && probe < elt.offsetTop + elt.offsetHeight) {
+        this.activeSection = section.id;
+        return;
+      }
+    }
   }
 }
