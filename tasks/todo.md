@@ -52,7 +52,37 @@ changement d'imports mécanique, services intacts).
 - [x] 9. Vérif : `npm run build:prod` OK, `npm test` OK, `ng serve` fumée
 - [x] 10. CHANGELOG.md + README + tasks/TESTS-MANUELS.md
 
-## Phases suivantes (après validation Phase 1)
-- [ ] Phase 2 : rebranding LightCutOff → Njuka (~30 fichiers)
-- [ ] Phase 3 : bascule Firebase vers écosystème Njuka + CI + réconciliation schéma de données
-- [ ] Phase 4 : domaine + hosting (cohabitation avec pages légales de l'app)
+## Décision produit (2026-08-07, validée par Willy)
+Le site devient **vitrine Njuka + carte publique en LECTURE SEULE + section admin des données** :
+- Vitrine rebrandée Njuka (ambre #F88E01 / charbon #1A1A1A / sky #0EA5E9, devise, liens stores)
+  — rebranding fusionné avec la refonte (pas de double passage).
+- Carte interactive conservée mais **lecture seule** pour le public (plus d'ajout/suppression),
+  et **remplacée par la stack carto de l'app Njuka** : tuiles **Stadia Maps** (repli OSM)
+  → côté web : Leaflet + leaflet.markercluster, clé via env `STADIA_API_KEY`.
+  Recherche de lieu via Nominatim (service déjà présent) au lieu de Google Places.
+- **Section /admin** : administration des données **njuka-prod + lightcutoff-dev**
+  (sélecteur d'environnement). Admin = users/{uid}.role == 'admin' (règles de l'app vérifiées :
+  reports lisibles par tout utilisateur connecté, auth anonyme incluse → lecture publique OK).
+- **PWA supprimée** : ngsw, manifest d'installation, firebase-messaging-sw.js, notifications
+  push web, modal « activer les notifications ».
+- Comptes publics (signup/signin) et signalements web supprimés ; l'auth ne sert plus qu'à
+  l'admin (+ anonyme technique pour lire Firestore).
+
+## PLAN — Phase 2 : vitrine Njuka + carte lecture seule + admin (À VALIDER puis exécuter)
+
+Lots dans l'ordre :
+- [ ] 2a. **Purge** : PWA (ngsw, manifests, FCM/messaging, device.service), création/clôture de
+       signalements côté public, signup/signin publics, own-report, modals messaging/geolocation.
+- [ ] 2b. **Rebranding + vitrine Njuka** : const.ts, i18n fr/en, index.html (SEO), sitemap,
+       palette/styles, accueil (devise, features app, boutons Play Store/App Store), à propos,
+       FAQ, tuto orienté app, contact (CF contactus conservée).
+- [ ] 2c. **Carte lecture seule** : Google Maps → Leaflet + Stadia (+ markercluster),
+       lecture des reports Njuka (élec ⚡ / eau 💧, statuts), Nominatim pour la recherche,
+       suppression GoogleMapsLoaderService/@types/google.maps/clé GMaps.
+- [ ] 2d. **Admin** : auth email/Google, garde role=='admin', sélecteur lightcutoff-dev/njuka-prod,
+       vues reports (modération), users, official_outages, stats (vérifier droits d'écriture
+       admin dans les règles de l'app ; sinon passer par des callables).
+- [ ] 2e. Bascule config Firebase du site → lightcutoff-dev (dev) / njuka-prod (prod), CI,
+       secrets GitHub, firebase.json ; cohabitation avec les pages légales de l'app à trancher
+       (multi-sites vs fusion).
+- [ ] 2f. Domaine final + suppression du projet Firebase `lightcutoff` (après migration).
