@@ -103,6 +103,14 @@
       "cta": {
         "title": "Together, we see clearly.",
         "text": "Download NJUKA for free and join the community that stays informed and helps each other through electricity and water outages."
+      },
+      "awards": {
+        "title": "Awards",
+        "opleda": {
+          "title": "4th place in the “Electricity for all in Africa” hackathon",
+          "content": "The project had the honour of taking part in the hackathon organised by the NGO <b>OPLEDA</b> on the theme <b>“Electricity for all in Africa”</b>: out of 62 competing projects, it took <b>4th place</b>.",
+          "link": "Learn more"
+        }
       }
     },
     "aboutus": {
@@ -131,13 +139,23 @@
       "web_map_text": "The website lets you <a href='/map'>browse the reported outage map</a> in read-only mode. To report, confirm or get alerted, use the app."
     },
     "faq": {
-      "title": "Frequently asked questions about NJUKA",
-      "question_1": "Where can I use NJUKA?",
-      "response_1": "NJUKA is currently available in Cameroon only, for electricity (Eneo) and water (Camwater) outages. We do not rule out extending it to other African countries.",
-      "question_2": "How do I report an electricity or water outage?",
-      "response_2": "Reports are made from the <b>NJUKA</b> mobile app, available on <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Open the app, tap “Report”, and you're done — even without creating an account. The website lets you <a href='/map'>browse the outage map</a>.",
-      "question_3": "How do I install NJUKA on my phone?",
-      "response_3": "On Android, download the app from <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. On iPhone, from the <a href='https://apps.apple.com/app/njuka/id6794127922' target='_blank' rel='noopener'>App Store</a>."
+      "title": "Frequently asked questions",
+      "q1": "Where can I use NJUKA?",
+      "a1": "NJUKA is currently available in <b>Cameroon</b> only, for electricity (Eneo) and water (Camwater) outages. The app is designed to expand to other African countries.",
+      "q2": "Is NJUKA free?",
+      "a2": "Yes, the app is <b>completely free</b>, with no in-app purchases.",
+      "q3": "How do I install NJUKA on my phone?",
+      "a3": "On Android, download the app from <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. On iPhone, from the <a href='https://apps.apple.com/app/njuka/id6794127922' target='_blank' rel='noopener'>App Store</a>.",
+      "q4": "Do I need an account to use the app?",
+      "a4": "No. You can report, confirm and browse outages <b>without creating an account</b>. Creating one (e-mail, Google, Facebook or Apple) is optional: it keeps your history and username if you switch phones.",
+      "q5": "How do I report an electricity or water outage?",
+      "a5": "From the app: tap “Report”, pick the affected service (electricity or water), and you're done — your report is geolocated and visible to neighbours within seconds. The website lets you <a href='/map'>browse the outage map</a> in read-only mode.",
+      "q6": "How do I know a reported outage is reliable?",
+      "a6": "Every outage can be <b>confirmed</b> — or <b>denied</b> — by neighbours. The confirmation count is shown on each report: the more confirmations, the more reliable the information. When the service is back, the report becomes “resolved” and the reporter and confirmers are notified.",
+      "q7": "How do I get alerted about outages?",
+      "a7": "Enable the app's notifications: you'll be alerted when an outage is reported <b>near you</b>, when the service is back, and the day before an official <b>planned outage</b> (Eneo schedule) in the neighbourhoods you follow.",
+      "q8": "What do you do with my location and data?",
+      "a8": "Your location is only used to geolocate your reports and alert you about nearby outages. Your data is never sold or shared for advertising. Details in our <a href='https://njuka-prod.web.app/privacy' target='_blank' rel='noopener'>privacy policy</a>; you can also <a href='https://njuka-prod.web.app/account-deletion' target='_blank' rel='noopener'>delete your account</a> at any time."
     }
   },
   "main": {

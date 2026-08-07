@@ -103,6 +103,14 @@
       "cta": {
         "title": "Ensemble, on y voit plus clair.",
         "text": "Téléchargez NJUKA gratuitement et rejoignez la communauté qui s'informe et s'entraide face aux coupures d'électricité et d'eau."
+      },
+      "awards": {
+        "title": "Distinctions",
+        "opleda": {
+          "title": "4<sup>e</sup> place du hackathon « Électricité pour tous en Afrique »",
+          "content": "Le projet a eu l'honneur de participer au hackathon organisé par l'ONG <b>OPLEDA</b> sur le thème <b>« Électricité pour tous en Afrique »</b> : sur 62 projets en compétition, il a décroché la <b>4<sup>e</sup> place</b>.",
+          "link": "En savoir plus"
+        }
       }
     },
     "aboutus": {
@@ -131,13 +139,23 @@
       "web_map_text": "Le site vous permet de <a href='/map'>consulter la carte des coupures signalées</a> en lecture seule. Pour signaler, confirmer ou être alerté, c'est dans l'application."
     },
     "faq": {
-      "title": "Foire aux questions sur NJUKA",
-      "question_1": "Où est-ce que je peux utiliser NJUKA ?",
-      "response_1": "NJUKA est pour l'instant disponible uniquement au Cameroun, pour les coupures d'électricité (Eneo) et d'eau (Camwater). Nous n'excluons pas de l'étendre à d'autres pays d'Afrique.",
-      "question_2": "Comment signaler une coupure d'électricité ou d'eau ?",
-      "response_2": "Les signalements se font depuis l'application mobile <b>NJUKA</b>, disponible sur <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Ouvrez l'app, appuyez sur « Signaler », et c'est fait — même sans créer de compte. Le site web vous permet quant à lui de <a href='/map'>consulter la carte des coupures</a>.",
-      "question_3": "Comment installer NJUKA sur mon téléphone ?",
-      "response_3": "Sur Android, téléchargez l'application depuis <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Sur iPhone, depuis l'<a href='https://apps.apple.com/app/njuka/id6794127922' target='_blank' rel='noopener'>App Store</a>."
+      "title": "Foire aux questions",
+      "q1": "Où est-ce que je peux utiliser NJUKA ?",
+      "a1": "NJUKA est pour l'instant disponible uniquement au <b>Cameroun</b>, pour les coupures d'électricité (Eneo) et d'eau (Camwater). L'application est conçue pour s'étendre à d'autres pays d'Afrique.",
+      "q2": "NJUKA est-elle gratuite ?",
+      "a2": "Oui, l'application est <b>entièrement gratuite</b>, sans achat intégré.",
+      "q3": "Comment installer NJUKA sur mon téléphone ?",
+      "a3": "Sur Android, téléchargez l'application depuis <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Sur iPhone, depuis l'<a href='https://apps.apple.com/app/njuka/id6794127922' target='_blank' rel='noopener'>App Store</a>.",
+      "q4": "Dois-je créer un compte pour utiliser l'app ?",
+      "a4": "Non. Vous pouvez signaler, confirmer et consulter les coupures <b>sans créer de compte</b>. Créer un compte (e-mail, Google, Facebook ou Apple) est optionnel : il permet de conserver votre historique et votre pseudo si vous changez de téléphone.",
+      "q5": "Comment signaler une coupure d'électricité ou d'eau ?",
+      "a5": "Depuis l'application : appuyez sur « Signaler », choisissez le service concerné (électricité ou eau), et c'est fait — votre signalement est géolocalisé et visible par les voisins en quelques secondes. Le site web, lui, permet de <a href='/map'>consulter la carte des coupures</a> en lecture seule.",
+      "q6": "Comment savoir si une coupure signalée est fiable ?",
+      "a6": "Chaque coupure peut être <b>confirmée</b> — ou <b>démentie</b> — par les voisins. Le nombre de confirmations est affiché sur chaque signalement : plus il y a de confirmations, plus l'information est fiable. Quand le service revient, le signalement passe en « résolu » et l'auteur comme les confirmeurs sont prévenus.",
+      "q7": "Comment être alerté des coupures ?",
+      "a7": "Activez les notifications de l'application : vous serez alerté quand une coupure est signalée <b>près de chez vous</b>, quand le service revient, et la veille d'une <b>coupure planifiée officielle</b> (programme Eneo) dans les quartiers que vous suivez.",
+      "q8": "Que faites-vous de ma position et de mes données ?",
+      "a8": "Votre position sert uniquement à géolocaliser vos signalements et à vous alerter des coupures proches. Vos données ne sont ni vendues ni partagées à des fins publicitaires. Détails dans notre <a href='https://njuka-prod.web.app/privacy' target='_blank' rel='noopener'>politique de confidentialité</a> ; vous pouvez aussi <a href='https://njuka-prod.web.app/account-deletion' target='_blank' rel='noopener'>supprimer votre compte</a> à tout moment."
     }
   },
   "main": {

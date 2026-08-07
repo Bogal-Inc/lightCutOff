@@ -190,3 +190,14 @@ sections, CTA, absence équipe/partenaires).
   histoire (2020, LightCutOff → NJUKA, Bogal Consulting), mission (signaler/confirmer/
   alertes/coupures planifiées, Eneo + Camwater, devise), vision (des données aux
   prévisions de délestage, extension Afrique).
+
+## [2.5.2] - 2026-08-07 — FAQ enrichie + section Distinctions restaurée
+
+- **FAQ réécrite et étendue à 8 questions** (accordéon dynamique *ngFor, une seule ouverte
+  à la fois) : disponibilité, gratuité, installation (Play/App Store), compte optionnel
+  (anonyme-first), comment signaler, fiabilité (confirmations/démentis), alertes
+  (proximité + coupures planifiées), position & données personnelles (liens politique de
+  confidentialité / suppression de compte).
+- **Section « Distinctions » restaurée** sur l'accueil (supprimée par erreur au lot 2b avec
+  la section actualité) : 4e place du hackathon OPLEDA « Électricité pour tous en Afrique »
+  (62 projets), avec logo et lien — placée avant le bandeau CTA.

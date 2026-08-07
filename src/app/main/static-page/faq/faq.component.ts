@@ -9,6 +9,8 @@ import {Const} from '../../../../environments/const';
 })
 export class FaqComponent implements OnInit {
   readonly projectTitle = Const.app.title;
+  /** Clés i18n des questions/réponses (core.faq.qN / core.faq.aN). */
+  readonly faqItems = [1, 2, 3, 4, 5, 6, 7, 8];
 
   constructor() { }
 

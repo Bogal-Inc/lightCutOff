@@ -1,58 +1,29 @@
 <div class="main-admin">
   <div class="container">
     <div class="mb-5">
-      <h1 class="text-center">{{'core.faq.title' | translate: {projectTitle: projectTitle} }}</h1>
+      <h1 class="text-center">{{'core.faq.title' | translate}}</h1>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="accordion m-auto" id="accordionExample">
-          <div class="card">
-            <div class="card-header" id="headingOne">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion m-auto" id="faqAccordion">
+          <div class="card" *ngFor="let item of faqItems; first as isFirst">
+            <div class="card-header" [id]="'faqHeading' + item">
               <h2 class="mb-0">
-                <button class="btn btn-link w-100 text-start" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  {{'core.faq.question_1' | translate: {projectTitle: projectTitle} }}
+                <button class="btn btn-link w-100 text-start" [class.collapsed]="!isFirst" type="button"
+                        data-bs-toggle="collapse" [attr.data-bs-target]="'#faqCollapse' + item"
+                        [attr.aria-expanded]="isFirst" [attr.aria-controls]="'faqCollapse' + item">
+                  {{'core.faq.q' + item | translate}}
                 </button>
               </h2>
             </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
-                {{'core.faq.response_1' | translate: {projectTitle: projectTitle} }}
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h2 class="mb-0">
-                <button class="btn btn-link w-100 text-start collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  {{'core.faq.question_2' | translate: {projectTitle: projectTitle} }}
-                </button>
-              </h2>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-              <div class="card-body" [innerHTML] = "'core.faq.response_2' | translate: {projectTitle: projectTitle}">
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingThree">
-              <h2 class="mb-0">
-                <button class="btn btn-link w-100 text-start collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  {{'core.faq.question_3' | translate: {projectTitle: projectTitle} }}
-                </button>
-              </h2>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-              <div class="card-body" [innerHTML]="'core.faq.response_3' | translate">
+            <div [id]="'faqCollapse' + item" class="collapse" [class.show]="isFirst"
+                 [attr.aria-labelledby]="'faqHeading' + item" data-bs-parent="#faqAccordion">
+              <div class="card-body" [innerHTML]="'core.faq.a' + item | translate">
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6"></div>
     </div>
   </div>
 </div>
