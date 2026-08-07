@@ -85,6 +85,38 @@
     }
 }
 
+.home__section-figures {
+    background-color: var(--njuka-charcoal);
+    color: var(--white);
+    margin-bottom: 0;
+
+    &__value {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+
+        &--amber {
+            color: var(--njuka-amber);
+        }
+
+        &--sky {
+            color: var(--njuka-sky);
+        }
+    }
+
+    &__label {
+        max-width: 320px;
+        margin: 0.5rem auto 0;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    &__sources {
+        margin-top: 1.5rem;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.45);
+    }
+}
+
 .home__section-cta {
     background-color: var(--njuka-charcoal);
     color: var(--white);

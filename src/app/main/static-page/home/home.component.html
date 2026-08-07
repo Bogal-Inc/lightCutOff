@@ -53,7 +53,7 @@
                                 <p class="text-justify" [innerHTML]="'core.home.about.content' | translate: { projectTitle: projectTitle }"></p>
                             </div>
                             <div class="text-center">
-                                <button type="button" class="btn btn-outline-info" routerLink="/aboutus">
+                                <button type="button" class="btn btn-outline-njuka" routerLink="/aboutus">
                   {{'core.home.about.btn_next' | translate}}
                 </button>
                             </div>
@@ -83,6 +83,36 @@
                         <p class="text-muted">{{'core.home.why.data_text' | translate}}</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  figures section-->
+    <section class="home__section home__section-figures">
+        <div class="home__section-figures__body text-center">
+            <div class="container py-5">
+                <h2 class="mb-5">{{'core.home.figures.title' | translate}}</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="home__section-figures__value home__section-figures__value--amber">
+                            {{'core.home.figures.electricity_value' | translate}}
+                        </div>
+                        <p class="home__section-figures__label">{{'core.home.figures.electricity_label' | translate}}</p>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="home__section-figures__value home__section-figures__value--amber">
+                            {{'core.home.figures.outages_value' | translate}}
+                        </div>
+                        <p class="home__section-figures__label">{{'core.home.figures.outages_label' | translate}}</p>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="home__section-figures__value home__section-figures__value--sky">
+                            {{'core.home.figures.water_value' | translate}}
+                        </div>
+                        <p class="home__section-figures__label">{{'core.home.figures.water_label' | translate}}</p>
+                    </div>
+                </div>
+                <p class="home__section-figures__sources">{{'core.home.figures.sources' | translate}}</p>
             </div>
         </div>
     </section>

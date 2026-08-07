@@ -8,7 +8,7 @@ export const environment = {
   mapMenu: true,
   mapFilter: true,
   mapSearch: true,
-  admin: true
+  admin: false
   }
   },
   firebase: {

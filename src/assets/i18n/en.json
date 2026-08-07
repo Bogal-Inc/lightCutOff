@@ -111,6 +111,16 @@
           "content": "The project had the honour of taking part in the hackathon organised by the NGO <b>OPLEDA</b> on the theme <b>“Electricity for all in Africa”</b>: out of 62 competing projects, it took <b>4th place</b>.",
           "link": "Learn more"
         }
+      },
+      "figures": {
+        "title": "The problem, in numbers",
+        "electricity_value": "72%",
+        "electricity_label": "of Cameroonians have access to electricity — and only 26% in rural areas",
+        "outages_value": "≈ 8",
+        "outages_label": "power outages per month endured on average by Cameroonian businesses",
+        "water_value": "1 in 3",
+        "water_label": "Cameroonians lacks access to safely managed drinking water",
+        "sources": "Sources: World Bank (access to electricity 2023, Enterprise Surveys) · WHO/UNICEF (JMP)"
       }
     },
     "aboutus": {

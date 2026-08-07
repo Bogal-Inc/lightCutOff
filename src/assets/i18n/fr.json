@@ -111,6 +111,16 @@
           "content": "Le projet a eu l'honneur de participer au hackathon organisé par l'ONG <b>OPLEDA</b> sur le thème <b>« Électricité pour tous en Afrique »</b> : sur 62 projets en compétition, il a décroché la <b>4<sup>e</sup> place</b>.",
           "link": "En savoir plus"
         }
+      },
+      "figures": {
+        "title": "Le problème, en chiffres",
+        "electricity_value": "72 %",
+        "electricity_label": "des Camerounais ont accès à l'électricité — et seulement 26 % en zone rurale",
+        "outages_value": "≈ 8",
+        "outages_label": "coupures de courant par mois subies en moyenne par les entreprises camerounaises",
+        "water_value": "1 sur 3",
+        "water_label": "Camerounais n'a pas accès à une eau potable gérée en toute sécurité",
+        "sources": "Sources : Banque mondiale (accès à l'électricité 2023, Enterprise Surveys) · OMS/UNICEF (JMP)"
       }
     },
     "aboutus": {

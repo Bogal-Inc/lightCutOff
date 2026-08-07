@@ -207,3 +207,21 @@ sections, CTA, absence équipe/partenaires).
 - Flag `admin: false` dans set-env (dev + prod) et environment.staging : le menu déroulant
   « Statistiques » disparaît du header en attendant la vraie section admin (lot 2d, qui
   réactivera le flag avec une authentification).
+
+## [2.6.0] - 2026-08-07 — Section « Le problème, en chiffres » + cohérence des couleurs
+
+### Contenu
+- Nouvelle section accueil **« Le problème, en chiffres »** (bandeau charbon, entre
+  « Pourquoi NJUKA ? » et la section app), chiffres vérifiés et sourcés :
+  **72 %** d'accès à l'électricité (26 % en rural — Banque mondiale 2023), **≈ 8 coupures
+  de courant/mois** pour les entreprises (World Bank Enterprise Surveys), **1 Camerounais
+  sur 3** sans eau potable gérée en toute sécurité (OMS/UNICEF JMP). FR/EN + ligne sources.
+
+### Cohérence des couleurs (palette ambre/charbon/sky partout)
+- Nouvelle variable `--njuka-amber-dark` (#b96e00, lisible sur fond clair) ; liens du
+  contenu et `.btn-link` (FAQ) en ambre foncé au lieu du bleu Bootstrap ; onglets
+  (`.nav-tabs`, ex. Historique/Statistiques de la carte) actifs en ambre ; focus des
+  champs de formulaire en ambre ; nouveau `.btn-outline-njuka`.
+- Boutons publics alignés : « En savoir plus » (accueil), envoi du formulaire de contact,
+  recherche de la carte, modal géolocalisation → styles de marque (fini les
+  warning/info/primary/secondary génériques).
