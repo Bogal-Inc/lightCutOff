@@ -1,16 +1,7 @@
 {
-  "functions": {
-    "predeploy": "npm --prefix functions run build",
-    "source": "functions"
-  },
-  "firestore": {
-    "rules": "firestore.rules"
-  },
-  "database": {
-    "rules": "database.rules.json"
-  },
   "hosting": {
     "public": "dist/lightcutoff/browser",
+    "cleanUrls": true,
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -22,11 +13,5 @@
         "destination": "/index.html"
       }
     ]
-  },
-  "emulators": {
-    "database": {
-      "host": "localhost",
-      "port": "10000"
-    }
   }
 }

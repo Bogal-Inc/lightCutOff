@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <title>NJUKA — Mentions légales / Legal Notice</title>
+  <style>
+    :root { --amber:#F88E01; --dark:#1A1A1A; --gray:#4C4C4C; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+           color:#222; line-height:1.6; background:#fafafa; }
+    header { background:var(--dark); color:#fff; padding:28px 20px; }
+    .wrap { max-width:780px; margin:0 auto; padding:0 20px; }
+    header .wrap { display:flex; align-items:center; gap:12px; }
+    .dot { width:14px; height:14px; border-radius:50%; background:var(--amber); display:inline-block; }
+    h1 { font-size:22px; margin:0; letter-spacing:1px; }
+    main { max-width:780px; margin:0 auto; padding:24px 20px 60px; }
+    h2 { color:var(--dark); margin-top:32px; font-size:18px; border-bottom:2px solid var(--amber);
+         padding-bottom:6px; }
+    h3 { font-size:15px; margin-bottom:4px; }
+    .meta { color:var(--gray); font-size:13px; }
+    .toggle { margin:18px 0; }
+    .toggle button { border:1px solid var(--amber); background:#fff; color:var(--dark); padding:6px 14px;
+                     border-radius:20px; cursor:pointer; font-size:13px; }
+    .toggle button.active { background:var(--amber); color:#fff; }
+    .note { background:#fff7ec; border:1px solid #f3d9ad; border-radius:8px; padding:12px 14px; font-size:13px;
+            color:#7a5a1e; }
+    ul { padding-left:20px; }
+    a { color:#c46f00; }
+    footer { color:var(--gray); font-size:12px; text-align:center; padding:30px 20px; }
+    [data-lang] { display:none; }
+    [data-lang].show { display:block; }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><span class="dot"></span><h1>NJUKA</h1></div></header>
+
+  <div class="wrap toggle">
+    <button id="btn-fr" class="active" onclick="setLang('fr')">Français</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+
+  <!-- ===================== FRANÇAIS ===================== -->
+  <main data-lang="fr" class="show">
+    <p class="meta">Dernière mise à jour : <strong>14 juin 2026</strong></p>
+
+    <h2>Éditeur</h2>
+    <p><strong>Bogal Consulting</strong><br>
+      Contact : <a href="mailto:support@njuka.app">support@njuka.app</a></p>
+    <div class="note">À compléter avant publication : adresse postale, forme juridique et numéro
+      d'immatriculation de l'éditeur (le cas échéant selon la juridiction).</div>
+
+    <h2>Directeur de la publication</h2>
+    <p>Le représentant légal de Bogal Consulting.</p>
+
+    <h2>Application</h2>
+    <p><strong>NJUKA</strong> — application mobile de signalement et de suivi des coupures de courant.</p>
+
+    <h2>Hébergement</h2>
+    <p>Le service et le contenu sont hébergés par <strong>Google Firebase / Firebase Hosting</strong> —
+      Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, États-Unis (et Google Ireland Ltd
+      pour l'UE).</p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>La marque, l'interface, les contenus et le code de NJUKA sont protégés. Les fonds de carte
+      proviennent d'<a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+      et de ses contributeurs.</p>
+
+    <h2>Documents liés</h2>
+    <p><a href="privacy.html">Politique de confidentialité</a> · <a href="cgu.html">Conditions d'utilisation</a></p>
+
+    <h2>Contact</h2>
+    <p><a href="mailto:support@njuka.app">support@njuka.app</a></p>
+  </main>
+
+  <!-- ===================== ENGLISH ===================== -->
+  <main data-lang="en">
+    <p class="meta">Last updated: <strong>June 14, 2026</strong></p>
+
+    <h2>Publisher</h2>
+    <p><strong>Bogal Consulting</strong><br>
+      Contact: <a href="mailto:support@njuka.app">support@njuka.app</a></p>
+    <div class="note">To be completed before publication: postal address, legal form and registration
+      number of the publisher (where applicable per jurisdiction).</div>
+
+    <h2>Publication director</h2>
+    <p>The legal representative of Bogal Consulting.</p>
+
+    <h2>Application</h2>
+    <p><strong>NJUKA</strong> — mobile app for reporting and tracking power outages.</p>
+
+    <h2>Hosting</h2>
+    <p>The service and content are hosted by <strong>Google Firebase / Firebase Hosting</strong> —
+      Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (and Google Ireland Ltd for
+      the EU).</p>
+
+    <h2>Intellectual property</h2>
+    <p>NJUKA's brand, interface, content and code are protected. Map tiles are provided by
+      <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+      and its contributors.</p>
+
+    <h2>Related documents</h2>
+    <p><a href="privacy.html">Privacy Policy</a> · <a href="cgu.html">Terms of Use</a></p>
+
+    <h2>Contact</h2>
+    <p><a href="mailto:support@njuka.app">support@njuka.app</a></p>
+  </main>
+
+  <footer>© NJUKA · <a href="privacy.html">Confidentialité</a> · <a href="cgu.html">CGU</a> · <a href="mentions-legales.html">Mentions légales</a></footer>
+
+  <script>
+    function setLang(l) {
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-lang]').forEach(function (el) {
+        el.classList.toggle('show', el.getAttribute('data-lang') === l);
+      });
+      document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    }
+    setLang((navigator.language || 'fr').toLowerCase().startsWith('en') ? 'en' : 'fr');
+  </script>
+</body>
+</html>

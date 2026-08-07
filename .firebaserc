@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "lightcutoff"
+    "default": "lightcutoff-dev",
+    "staging": "lightcutoff-dev",
+    "prod": "njuka-prod"
   }
 }

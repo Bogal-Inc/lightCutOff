@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NJUKA — Suppression de compte / Account deletion</title>
+  <style>
+    :root { --amber:#F88E01; --dark:#1A1A1A; --gray:#4C4C4C; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+           color:#222; line-height:1.6; background:#fafafa; }
+    header { background:var(--dark); color:#fff; padding:28px 20px; }
+    .wrap { max-width:740px; margin:0 auto; padding:0 20px; }
+    header .wrap { display:flex; align-items:center; gap:12px; }
+    .dot { width:14px; height:14px; border-radius:50%; background:var(--amber); display:inline-block; }
+    h1 { font-size:22px; margin:0; letter-spacing:1px; }
+    main { max-width:740px; margin:0 auto; padding:24px 20px 60px; }
+    h2 { color:var(--dark); font-size:18px; border-bottom:2px solid var(--amber); padding-bottom:6px; margin-top:30px; }
+    ol, ul { padding-left:22px; }
+    a { color:#c46f00; }
+    .toggle { margin:18px 0; }
+    .toggle button { border:1px solid var(--amber); background:#fff; color:var(--dark); padding:6px 14px;
+                     border-radius:20px; cursor:pointer; font-size:13px; }
+    .toggle button.active { background:var(--amber); color:#fff; }
+    [data-lang] { display:none; }
+    [data-lang].show { display:block; }
+    footer { color:var(--gray); font-size:12px; text-align:center; padding:30px 20px; }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><span class="dot"></span><h1>NJUKA — Suppression de compte · Account deletion</h1></div></header>
+
+  <div class="wrap toggle">
+    <button id="btn-fr" class="active" onclick="setLang('fr')">Français</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+
+  <main data-lang="fr" class="show">
+    <h2>Supprimer votre compte NJUKA</h2>
+    <p>Cette page concerne l'application mobile <strong>NJUKA</strong>
+      (identifiant <strong>com.njuka.app</strong>), disponible sur Google Play et
+      l'App Store, développée et publiée par <strong>Bogal Consulting</strong>
+      (Willy Kouagnia · compte développeur « willkoua »).</p>
+    <p>Vous pouvez supprimer votre compte et vos données directement depuis l'application :</p>
+    <ol>
+      <li>Ouvrez <strong>NJUKA</strong> et connectez-vous ;</li>
+      <li>Allez dans <strong>Profil → Paramètres → Compte</strong> ;</li>
+      <li>Touchez <strong>« Supprimer mon compte »</strong>, saisissez votre mot de passe et confirmez.</li>
+    </ol>
+    <p>Si vous n'avez plus accès à l'application, écrivez-nous à
+      <a href="mailto:support@njuka.app">support@njuka.app</a>
+      depuis l'adresse e-mail de votre compte ; nous traiterons la demande.</p>
+
+    <h2>Ce qui est supprimé</h2>
+    <ul>
+      <li>Votre <strong>profil</strong> (nom, e-mail, pseudo, téléphone, date de naissance) ;</li>
+      <li>Vos <strong>appareils</strong> enregistrés (jetons de notification) ;</li>
+      <li>Vos <strong>médias</strong> (photos / GIF) envoyés ;</li>
+      <li>Votre <strong>compte d'authentification</strong>.</li>
+    </ul>
+    <p>Vos <strong>signalements de coupures</strong> sont <strong>anonymisés</strong> (votre identité en
+      est retirée) afin de préserver l'information communautaire, sans plus aucune donnée personnelle.
+      La suppression est <strong>immédiate et définitive</strong>.</p>
+  </main>
+
+  <main data-lang="en">
+    <h2>Delete your NJUKA account</h2>
+    <p>This page applies to the <strong>NJUKA</strong> mobile application
+      (identifier <strong>com.njuka.app</strong>), available on Google Play and the
+      App Store, developed and published by <strong>Bogal Consulting</strong>
+      (Willy Kouagnia · developer account “willkoua”).</p>
+    <p>You can delete your account and data directly from the app:</p>
+    <ol>
+      <li>Open <strong>NJUKA</strong> and sign in;</li>
+      <li>Go to <strong>Profile → Settings → Account</strong>;</li>
+      <li>Tap <strong>"Delete my account"</strong>, enter your password and confirm.</li>
+    </ol>
+    <p>If you no longer have access to the app, email us at
+      <a href="mailto:support@njuka.app">support@njuka.app</a>
+      from your account's email address and we'll handle the request.</p>
+
+    <h2>What is deleted</h2>
+    <ul>
+      <li>Your <strong>profile</strong> (name, email, username, phone, date of birth);</li>
+      <li>Your registered <strong>devices</strong> (notification tokens);</li>
+      <li>Your uploaded <strong>media</strong> (photos / GIFs);</li>
+      <li>Your <strong>authentication account</strong>.</li>
+    </ul>
+    <p>Your <strong>outage reports</strong> are <strong>anonymized</strong> (your identity is removed)
+      to preserve community information, with no personal data left. Deletion is
+      <strong>immediate and permanent</strong>.</p>
+  </main>
+
+  <footer>© NJUKA</footer>
+
+  <script>
+    function setLang(l) {
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-lang]').forEach(function (el) {
+        el.classList.toggle('show', el.getAttribute('data-lang') === l);
+      });
+      document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    }
+    setLang((navigator.language || 'fr').toLowerCase().startsWith('en') ? 'en' : 'fr');
+  </script>
+</body>
+</html>

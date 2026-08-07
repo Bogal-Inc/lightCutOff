@@ -305,3 +305,16 @@ sections, CTA, absence équipe/partenaires).
   « Distinctions » ne monopolise plus l'état actif.
 - **« Contactez-nous » du pied de page** : lien `href="#contactus"` remplacé par
   `routerLink="/" fragment="contactus"` — fonctionne depuis toutes les pages.
+
+## [2.11.0] - 2026-08-07 — 🚀 Site déployé sur njuka-prod
+
+- **Déployé sur https://njuka-prod.web.app** (`firebase deploy --only hosting`).
+- **Pages légales de l'app fusionnées** dans le build du site (`src/legal/` → racine,
+  `cleanUrls`) : /privacy, /cgu, /mentions-legales, /account-deletion, /support répondent
+  200 — les liens des fiches Play Store/App Store restent valides.
+- `firebase.json` réduit au **hosting seul** (les sections firestore/database/functions de
+  2022 ne peuvent plus écraser les règles njuka-prod par accident) ; `.firebaserc` aligné
+  sur l'app (default/staging = lightcutoff-dev, prod = njuka-prod).
+- Vérifié en ligne : accueil NJUKA, routes SPA (/map, /faq) via rewrite, pages légales.
+- ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
+  hosting servirait l'ancien public/ et écraserait le site.

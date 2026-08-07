@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <title>NJUKA — Politique de confidentialité / Privacy Policy</title>
+  <style>
+    :root { --amber:#F88E01; --dark:#1A1A1A; --gray:#4C4C4C; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+           color:#222; line-height:1.6; background:#fafafa; }
+    header { background:var(--dark); color:#fff; padding:28px 20px; }
+    .wrap { max-width:780px; margin:0 auto; padding:0 20px; }
+    header .wrap { display:flex; align-items:center; gap:12px; }
+    .dot { width:14px; height:14px; border-radius:50%; background:var(--amber); display:inline-block; }
+    h1 { font-size:22px; margin:0; letter-spacing:1px; }
+    main { max-width:780px; margin:0 auto; padding:24px 20px 60px; }
+    h2 { color:var(--dark); margin-top:32px; font-size:18px; border-bottom:2px solid var(--amber);
+         padding-bottom:6px; }
+    h3 { font-size:15px; margin-bottom:4px; }
+    .meta { color:var(--gray); font-size:13px; }
+    .toggle { margin:18px 0; }
+    .toggle button { border:1px solid var(--amber); background:#fff; color:var(--dark); padding:6px 14px;
+                     border-radius:20px; cursor:pointer; font-size:13px; }
+    .toggle button.active { background:var(--amber); color:#fff; }
+    .note { background:#fff7ec; border:1px solid #f3d9ad; border-radius:8px; padding:12px 14px; font-size:13px;
+            color:#7a5a1e; }
+    ul { padding-left:20px; }
+    a { color:#c46f00; }
+    footer { color:var(--gray); font-size:12px; text-align:center; padding:30px 20px; }
+    [data-lang] { display:none; }
+    [data-lang].show { display:block; }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><span class="dot"></span><h1>NJUKA — Politique de confidentialité · Privacy Policy</h1></div></header>
+
+  <div class="wrap toggle">
+    <button id="btn-fr" class="active" onclick="setLang('fr')">Français</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+
+  <!-- ===================== FRANÇAIS ===================== -->
+  <main data-lang="fr" class="show">
+    <p class="meta">Dernière mise à jour : <strong>30 juillet 2026</strong></p>
+
+    <p>La présente politique de confidentialité s'applique à l'application mobile
+      <strong>NJUKA</strong> (identifiant <strong>com.njuka.app</strong>), disponible sur
+      Google Play et l'App Store, développée et publiée par
+      <strong>Bogal Consulting</strong> (Willy Kouagnia · compte développeur « willkoua ») —
+      contact : <a href="mailto:support@njuka.app">support@njuka.app</a>.</p>
+
+    <p><strong>NJUKA</strong> (« l'application ») permet de signaler et suivre les coupures de courant
+      autour de soi. Cette politique explique quelles données nous collectons, pourquoi, et vos droits.</p>
+
+    <h2>1. Responsable du traitement</h2>
+    <p>L'application est éditée par <strong>Bogal Consulting</strong>.
+      Pour toute question relative à vos données : <a href="mailto:support@njuka.app">support@njuka.app</a>.</p>
+
+    <h2>2. Données que nous collectons</h2>
+    <h3>Compte</h3>
+    <ul>
+      <li>Adresse e-mail, pseudo, prénom, nom ;</li>
+      <li>Date de naissance et numéro de téléphone (facultatifs) ;</li>
+      <li>Quartier / ville de résidence (pour cibler les alertes de proximité).</li>
+    </ul>
+    <h3>Signalements</h3>
+    <ul>
+      <li>Position GPS précise au moment du signalement, et zone correspondante (quartier/ville) ;</li>
+      <li>Lorsque vous <strong>confirmez</strong> une coupure : une localisation <strong>approximative</strong>
+          (cellule d'environ 1,2 km, sans coordonnées précises), conservée pour estimer l'étendue de la
+          zone touchée. Elle n'est pas visible des autres utilisateurs ;</li>
+      <li>Description et média (photo / GIF) que vous choisissez d'ajouter ;</li>
+      <li>Votre pseudo, affiché publiquement à côté de vos signalements (votre nom reste privé).</li>
+    </ul>
+    <h3>Appareil & notifications</h3>
+    <ul>
+      <li>Jeton de notification (FCM), plateforme (Android/iOS) et zone géographique approximative,
+        pour vous alerter d'une coupure proche.</li>
+    </ul>
+    <h3>Données techniques</h3>
+    <ul>
+      <li>Rapports de plantage anonymisés (Firebase Crashlytics) ;</li>
+      <li>Statistiques d'usage agrégées et anonymes (Firebase Analytics) — événements d'utilisation
+        (ex. ouverture de l'app, création/confirmation d'un signalement) et identifiants techniques
+        d'appareil générés par Google, sans donnée personnelle, pour comprendre et améliorer
+        l'usage du service ;</li>
+      <li>Jetons anti-fraude (Firebase App Check) vérifiant que les requêtes proviennent bien de l'app.</li>
+    </ul>
+
+    <h2>3. Finalités</h2>
+    <ul>
+      <li>Fournir le service (créer, afficher, confirmer et résoudre des coupures) ;</li>
+      <li>Vous envoyer des alertes de coupure à proximité (avec votre consentement) ;</li>
+      <li>Gérer votre compte et l'authentification ;</li>
+      <li>Assurer la sécurité, prévenir les abus et corriger les anomalies.</li>
+    </ul>
+
+    <h2>4. Base légale (RGPD)</h2>
+    <ul>
+      <li><strong>Exécution du contrat</strong> : gestion du compte et du service ;</li>
+      <li><strong>Consentement</strong> : géolocalisation et notifications (révocable à tout moment) ;</li>
+      <li><strong>Intérêt légitime</strong> : sécurité, prévention des abus, diagnostics.</li>
+    </ul>
+
+    <h2>5. Partage des données</h2>
+    <p>Nous ne vendons pas vos données. Elles sont traitées par nos sous-traitants techniques :</p>
+    <ul>
+      <li><strong>Google Firebase</strong> (Google LLC / Google Ireland) : authentification, base de données,
+        stockage, notifications, fonctions serveur, diagnostics. Voir
+        <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">la confidentialité Firebase</a>.</li>
+      <li><strong>OpenStreetMap</strong> : l'affichage de la carte transmet votre adresse IP aux serveurs de tuiles.</li>
+      <li><strong>Service de géocodage</strong> de votre système d'exploitation (conversion coordonnées → adresse).</li>
+    </ul>
+
+    <h2>6. Durées de conservation</h2>
+    <ul>
+      <li>Données de compte : jusqu'à la suppression de votre compte ;</li>
+      <li>Signalements supprimés par leur auteur : effacés définitivement après <strong>30 jours</strong> ;</li>
+      <li>Appareils inactifs : jeton supprimé après <strong>90 jours</strong> d'inactivité.</li>
+    </ul>
+
+    <h2>7. Vos droits</h2>
+    <p>Vous disposez d'un droit d'accès, de rectification, d'effacement, de portabilité, d'opposition et de
+      retrait du consentement. Pour les exercer, écrivez à
+      <a href="mailto:support@njuka.app">support@njuka.app</a>. Vous pouvez aussi saisir l'autorité de
+      protection des données compétente.</p>
+
+    <h2>8. Sécurité</h2>
+    <p>Les accès aux données sont protégés par des règles de sécurité serveur, l'authentification et
+      Firebase App Check. Les transferts se font en HTTPS.</p>
+
+    <h2>9. Mineurs</h2>
+    <p>L'application n'est pas destinée aux enfants en dessous de l'âge minimum légal applicable.
+      Nous ne collectons pas sciemment leurs données.</p>
+
+    <h2>10. Modifications</h2>
+    <p>Cette politique peut évoluer ; la date de dernière mise à jour en haut de page fait foi.</p>
+
+    <h2>11. Contact</h2>
+    <p><a href="mailto:support@njuka.app">support@njuka.app</a></p>
+  </main>
+
+  <!-- ===================== ENGLISH ===================== -->
+  <main data-lang="en">
+    <p class="meta">Last updated: <strong>July 30, 2026</strong></p>
+
+    <p>This privacy policy applies to the <strong>NJUKA</strong> mobile application
+      (identifier <strong>com.njuka.app</strong>), available on Google Play and the
+      App Store, developed and published by <strong>Bogal Consulting</strong>
+      (Willy Kouagnia · developer account “willkoua”) — contact:
+      <a href="mailto:support@njuka.app">support@njuka.app</a>.</p>
+
+    <p><strong>NJUKA</strong> ("the app") lets you report and track power outages around you. This policy
+      explains what data we collect, why, and your rights.</p>
+
+    <h2>1. Data controller</h2>
+    <p>The app is published by <strong>Bogal Consulting</strong>.
+      For any question about your data: <a href="mailto:support@njuka.app">support@njuka.app</a>.</p>
+
+    <h2>2. Data we collect</h2>
+    <h3>Account</h3>
+    <ul>
+      <li>Email address, username, first and last name;</li>
+      <li>Date of birth and phone number (optional);</li>
+      <li>Home neighborhood / city (to target nearby alerts).</li>
+    </ul>
+    <h3>Reports</h3>
+    <ul>
+      <li>Precise GPS position when reporting, and the matching area (neighborhood/city);</li>
+      <li>When you <strong>confirm</strong> an outage: an <strong>approximate</strong> location
+          (a cell of about 1.2&nbsp;km, with no precise coordinates), kept to estimate the extent of the
+          affected area. It is not visible to other users;</li>
+      <li>Description and media (photo / GIF) you choose to add;</li>
+      <li>Your username, shown publicly next to your reports (your real name stays private).</li>
+    </ul>
+    <h3>Device & notifications</h3>
+    <ul>
+      <li>Push token (FCM), platform (Android/iOS) and approximate location, to alert you of nearby outages.</li>
+    </ul>
+    <h3>Technical data</h3>
+    <ul>
+      <li>Anonymized crash reports (Firebase Crashlytics);</li>
+      <li>Aggregated, anonymous usage statistics (Firebase Analytics) — usage events (e.g. app open,
+        creating/confirming a report) and Google-generated technical device identifiers, with no
+        personal data, to understand and improve how the service is used;</li>
+      <li>Anti-abuse tokens (Firebase App Check) verifying requests come from the genuine app.</li>
+    </ul>
+
+    <h2>3. Purposes</h2>
+    <ul>
+      <li>Provide the service (create, view, confirm and resolve outages);</li>
+      <li>Send you nearby outage alerts (with your consent);</li>
+      <li>Manage your account and authentication;</li>
+      <li>Ensure security, prevent abuse, and fix issues.</li>
+    </ul>
+
+    <h2>4. Legal basis (GDPR)</h2>
+    <ul>
+      <li><strong>Contract</strong>: account and service operation;</li>
+      <li><strong>Consent</strong>: geolocation and notifications (revocable any time);</li>
+      <li><strong>Legitimate interest</strong>: security, abuse prevention, diagnostics.</li>
+    </ul>
+
+    <h2>5. Data sharing</h2>
+    <p>We do not sell your data. It is processed by our technical sub-processors:</p>
+    <ul>
+      <li><strong>Google Firebase</strong> (Google LLC / Google Ireland): authentication, database, storage,
+        notifications, server functions, diagnostics. See
+        <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase privacy</a>.</li>
+      <li><strong>OpenStreetMap</strong>: displaying the map sends your IP address to tile servers.</li>
+      <li><strong>Geocoding service</strong> of your operating system (coordinates → address).</li>
+    </ul>
+
+    <h2>6. Retention</h2>
+    <ul>
+      <li>Account data: until you delete your account;</li>
+      <li>Reports deleted by their author: permanently erased after <strong>30 days</strong>;</li>
+      <li>Inactive devices: token removed after <strong>90 days</strong> of inactivity.</li>
+    </ul>
+
+    <h2>7. Your rights</h2>
+    <p>You have the right to access, rectify, erase, port, and object, and to withdraw consent. To exercise
+      them, email <a href="mailto:support@njuka.app">support@njuka.app</a>. You may also lodge a complaint
+      with your competent data protection authority.</p>
+
+    <h2>8. Security</h2>
+    <p>Data access is protected by server-side security rules, authentication and Firebase App Check.
+      Transfers use HTTPS.</p>
+
+    <h2>9. Children</h2>
+    <p>The app is not directed to children under the applicable minimum age. We do not knowingly collect
+      their data.</p>
+
+    <h2>10. Changes</h2>
+    <p>This policy may change; the "last updated" date at the top prevails.</p>
+
+    <h2>11. Contact</h2>
+    <p><a href="mailto:support@njuka.app">support@njuka.app</a></p>
+  </main>
+
+  <footer>© NJUKA · <a href="privacy.html">Confidentialité</a> · <a href="cgu.html">CGU</a> · <a href="mentions-legales.html">Mentions légales</a></footer>
+
+  <script>
+    function setLang(l) {
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-lang]').forEach(function (el) {
+        el.classList.toggle('show', el.getAttribute('data-lang') === l);
+      });
+      document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    }
+    // Langue initiale selon le navigateur (FR par défaut).
+    setLang((navigator.language || 'fr').toLowerCase().startsWith('en') ? 'en' : 'fr');
+  </script>
+</body>
+</html>

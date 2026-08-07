@@ -37,7 +37,12 @@
               "src/favicon.ico",
               "src/assets",
               "src/sitemap.xml",
-              "src/robots.txt"
+              "src/robots.txt",
+              {
+                "glob": "*.html",
+                "input": "src/legal",
+                "output": "/"
+              }
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
