@@ -280,3 +280,11 @@ sections, CTA, absence équipe/partenaires).
 - **Animation** : compteurs 0 → cible (easeOutCubic ~1,6 s, hors zone Angular) déclenchés à
   l'apparition de la section (IntersectionObserver) + révélation des tuiles en cascade
   (fondu/translation avec délais échelonnés).
+
+## [2.10.1] - 2026-08-07 — Stats « taux de coupure » Afrique subsaharienne
+
+- Tuile électricité : **9** coupures/mois en moyenne en Afrique subsaharienne, 5,7 h
+  chacune (Enterprise Surveys via Energy for Growth Hub) — remplace le ≈ 8 Cameroun.
+- Tuile eau : **≈ 13 h** d'eau au robinet par jour en moyenne sur les réseaux
+  subsahariens, coupée le reste du temps (littérature sur l'intermittence) — remplace
+  le 69 % (stat d'accès).
