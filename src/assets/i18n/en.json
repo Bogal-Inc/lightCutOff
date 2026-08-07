@@ -156,9 +156,9 @@
     },
     "map-filter": {
       "title": "Filters",
-      "alt_marker_cut_owner": "Your own reports",
-      "alt_marker_cut": "Reported reports",
-      "alt_marker_cut_closed": "Reports marked as completed"
+      "alt_marker_electricity": "Ongoing electricity outages",
+      "alt_marker_water": "Ongoing water outages",
+      "alt_marker_cut_closed": "Resolved reports"
     },
     "create-form-report": {
       "title": "Report a power outage",
@@ -187,14 +187,19 @@
     },
     "marker-details": {
       "title": "Report",
+      "service": "Service:",
+      "service_electricity": "⚡ Electricity",
+      "service_water": "💧 Water",
       "report_that": "Reported on:",
-      "recovred_that": "Recovered on:",
-      "info_locations": "Localizations",
+      "recovred_that": "Restored on:",
+      "description": "Description:",
+      "confirmations": "Confirmations:",
+      "author": "Reported by:",
+      "info_locations": "Location",
       "country": "Country:",
       "city": "City:",
-      "department": "Department:",
-      "neighborhood": "Neighborhood:",
-      "address": "Address:",
+      "region": "Region:",
+      "neighborhood": "Neighbourhood:",
       "lat": "Latitude:",
       "lng": "Longitude:"
     },
@@ -294,7 +299,6 @@
       "country": "Country:",
       "city": "City:",
       "region": "Region:",
-      "department": "Department:",
       "neighborhood": "Neighborhood:",
       "address": "Address:",
       "longitude": "Longitude:",
@@ -395,12 +399,9 @@
     "map-legend": {
       "title": "Legend",
       "your_position": "Your position",
-      "no_energie": "Report of power failure of other users",
-      "your_no_energy": "Your report of power failure",
-      "energy_recovred": "Report electricity recovered ",
-      "thanks": "Thank you",
-      "thanks_message": "Do you want to know how to use {{appTitle}}?",
-      "thanks_link": "Follow this tutorial"
+      "electricity_cut": "Ongoing electricity outage",
+      "water_cut": "Ongoing water outage",
+      "energy_recovred": "Service restored"
     },
     "admin-nav": {
       "dashboard": "Chart",

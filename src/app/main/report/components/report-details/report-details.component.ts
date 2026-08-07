@@ -48,7 +48,7 @@ export class ReportDetailsComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.report?.currentValue) {
       this.report = changes.report.currentValue[0];
-      this.reportStatus = (this.report?.status === ReportSatus.CUT);
+      this.reportStatus = (this.report?.status === ReportSatus.ONGOING);
     }
   }
 

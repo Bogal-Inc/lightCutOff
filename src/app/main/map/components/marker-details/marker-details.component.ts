@@ -1,4 +1,4 @@
-import { Report } from '@Models/report.model';
+import { Report, reportServiceType } from '@Models/report.model';
 import { Base } from '@Models/base.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,6 +12,10 @@ export class MarkerDetailsComponent implements Base, OnInit {
   data: {
     report: Report
   };
+
+  get serviceType(): string {
+    return reportServiceType(this.data.report);
+  }
 
   constructor() { }
 

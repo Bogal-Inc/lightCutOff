@@ -158,9 +158,9 @@
     },
     "map-filter": {
       "title": "Filtres",
-      "alt_marker_cut_owner": "Vos propres rapports",
-      "alt_marker_cut": "Rapports signalés",
-      "alt_marker_cut_closed": "Rapports signalés comme terminés"
+      "alt_marker_electricity": "Coupures d'électricité en cours",
+      "alt_marker_water": "Coupures d'eau en cours",
+      "alt_marker_cut_closed": "Signalements résolus"
     },
     "create-form-report": {
       "title": "Signalez une coupure",
@@ -188,17 +188,22 @@
       "close": "Fermer"
     },
     "marker-details": {
-      "title": "Rapport",
-      "report_that": "Signalez le:",
-      "recovred_that": "Remis le:",
-      "info_locations": "Localisations",
-      "country": "Pays:",
-      "city": "Ville:",
-      "department": "Département:",
-      "neighborhood": "Quartier:",
-      "address": "Adresse:",
-      "lat": "Lattitude:",
-      "lng": "Longitude:"
+      "title": "Signalement",
+      "service": "Service :",
+      "service_electricity": "⚡ Électricité",
+      "service_water": "💧 Eau",
+      "report_that": "Signalé le :",
+      "recovred_that": "Rétabli le :",
+      "description": "Description :",
+      "confirmations": "Confirmations :",
+      "author": "Signalé par :",
+      "info_locations": "Localisation",
+      "country": "Pays :",
+      "city": "Ville :",
+      "region": "Région :",
+      "neighborhood": "Quartier :",
+      "lat": "Latitude :",
+      "lng": "Longitude :"
     },
     "main-footer": {
       "message_send": "Message envoyé",
@@ -294,8 +299,7 @@
       "report_places": "Localisation",
       "country": "Pays:",
       "city": "Ville:",
-      "region": "Région:",
-      "department": "Département:",
+      "region": "Région :",
       "neighborhood": "Quartier:",
       "address": "Adresse:",
       "longitude": "Longitude:",
@@ -424,9 +428,9 @@
     "map-legend": {
       "title": "Légende",
       "your_position": "Votre position",
-      "no_energie": "Signalement de coupure des autres utlisateurs",
-      "your_no_energy": "Votre signalement de coupure",
-      "energy_recovred": "Signalement d'électricité remis"
+      "electricity_cut": "Coupure d'électricité en cours",
+      "water_cut": "Coupure d'eau en cours",
+      "energy_recovred": "Service rétabli"
     },
     "admin-nav": {
       "dashboard": "Tableau",

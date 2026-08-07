@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit {
 
   private initCardDashbord() {
     this.reportService.getReports({
-      isDeleted: false
     }).subscribe(
       (reports) => {
         this.reports = reports;
@@ -69,11 +68,11 @@ export class DashboardComponent implements OnInit {
     );
 
     this.reportsYearClose = this.reportsCurrentYear.filter(
-      report => report.status === ReportSatus.CUT_COMPLETED
+      report => report.status === ReportSatus.RESOLVED
     );
 
     this.reportsMonthClose = this.reportsCurrentMonth.filter(
-      report => report.status === ReportSatus.CUT_COMPLETED
+      report => report.status === ReportSatus.RESOLVED
     );
   }
 

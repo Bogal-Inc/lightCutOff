@@ -1,5 +1,3 @@
-import { Doc, defaultDoc } from './doc.model';
-import {ILocationModel, locationModel} from '@Models/location.model';
 import { Timestamp } from '@firebase/firestore-types';
 
 export interface Position {
@@ -14,25 +12,51 @@ export class Duration {
   sec: number;
 }
 
+/**
+ * Statuts d'un signalement — schéma Njuka (`reports/{id}`, voir SCHEMA.md de l'app).
+ */
 export enum ReportSatus {
-  CUT = 'cut',
-  CUT_OWNER = 'cut_owner',
-  CUT_COMPLETED = 'cut_completed'
+  ONGOING = 'ongoing',
+  RESOLVED = 'resolved'
 }
 
-export interface Report extends Doc {
+export enum ServiceType {
+  ELECTRICITY = 'electricity',
+  WATER = 'water'
+}
+
+/** Zone lisible issue du reverse-géocodage (GeoArea côté app). */
+export interface GeoArea {
+  country: string;
+  countryCode: string;
+  region: string;
+  city: string;
+  neighborhood: string;
+}
+
+export interface Report {
+  id?: string;
+  userId?: string;
+  authorUsername?: string | null;
   status: ReportSatus;
-  location: ILocationModel;
-  reportedAt: Date | Timestamp | any;
-  recovredAt?: Date | Timestamp | any;
+  /** unplanned (citoyen) | scheduled (opérateur) */
+  type?: string;
+  /** absent = electricity (rétro-compat app) */
+  serviceType?: ServiceType;
   position: Position;
+  location: GeoArea;
+  description?: string | null;
+  confirmationCount?: number;
+  restorationCount?: number;
+  impactRadiusM?: number;
+  reportedAt: Date | Timestamp | any;
+  resolvedAt?: Date | Timestamp | any;
+  archivedAt?: Date | Timestamp | any;
+  createdAt?: Date | Timestamp | any;
+  updatedAt?: Date | Timestamp | any;
 }
 
-export const defaultReport = {
-  ...defaultDoc,
-  status: ReportSatus.CUT,
-  location: locationModel,
-  reportedAt: null,
-  recovredAt: null,
-  position: null
-} as Report;
+/** serviceType absent = électricité (même rétro-compat que l'app). */
+export function reportServiceType(report: Report): ServiceType {
+  return report.serviceType === ServiceType.WATER ? ServiceType.WATER : ServiceType.ELECTRICITY;
+}

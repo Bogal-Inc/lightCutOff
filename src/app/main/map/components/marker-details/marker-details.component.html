@@ -5,12 +5,29 @@
     <div class="marker-details__body">
         <ul class="list-unstyled">
           <li>
+            <b>{{'main.marker-details.service' | translate}}</b>
+            <span *ngIf="serviceType === 'water'">{{'main.marker-details.service_water' | translate}}</span>
+            <span *ngIf="serviceType !== 'water'">{{'main.marker-details.service_electricity' | translate}}</span>
+          </li>
+          <li>
               <b>{{'main.marker-details.report_that' | translate}}</b>
               {{ data.report.reportedAt.toDate() | timestamp }}
           </li>
-          <li *ngIf="data.report.recovredAt">
+          <li *ngIf="data.report.resolvedAt">
             <b>{{'main.marker-details.recovred_that' | translate}}</b>
-            {{ data.report.recovredAt.toDate() | timestamp }}
+            {{ data.report.resolvedAt.toDate() | timestamp }}
+          </li>
+          <li *ngIf="data.report.description">
+            <b>{{'main.marker-details.description' | translate}}</b>
+            {{data.report.description}}
+          </li>
+          <li *ngIf="data.report.confirmationCount">
+            <b>{{'main.marker-details.confirmations' | translate}}</b>
+            {{data.report.confirmationCount}}
+          </li>
+          <li *ngIf="data.report.authorUsername">
+            <b>{{'main.marker-details.author' | translate}}</b>
+            &#64;{{data.report.authorUsername}}
           </li>
           <li class="mt-2">
             <h6>{{'main.marker-details.info_locations' | translate}}</h6>
@@ -20,8 +37,8 @@
                 {{data.report.location.country}}
               </li>
               <li>
-                <b>{{'main.marker-details.department' | translate}}</b>
-                {{data.report.location.department}}
+                <b>{{'main.marker-details.region' | translate}}</b>
+                {{data.report.location.region}}
               </li>
               <li>
                 <b>{{'main.marker-details.city' | translate}}</b>
@@ -32,12 +49,6 @@
                 {{data.report.location.neighborhood}}
               </li>
             </ul>
-            <!--<b>{{'main.marker-details.address' | translate}}</b>
-            <ul>
-              <li *ngFor="let address of data.report?.location.addresses">
-                {{address.formattedAddress}}
-              </li>
-            </ul>-->
           </li>
         </ul>
     </div>

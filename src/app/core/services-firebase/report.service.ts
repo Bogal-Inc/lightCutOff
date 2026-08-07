@@ -1,14 +1,19 @@
-import {DocumentReference} from '@firebase/firestore-types';
 import {BaseService} from './base.service';
 import {Injectable} from '@angular/core';
-import {AngularFirestore, DocumentData} from '@angular/fire/compat/firestore';
-import {defaultReport, Report, ReportSatus} from '@Models/report.model';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {Report, ReportSatus} from '@Models/report.model';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {Observable} from 'rxjs';
+import {first, map, switchMap} from 'rxjs/operators';
 import {Const} from 'src/environments/const';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 
-
+/**
+ * Lecture des signalements Njuka (`reports/{id}`, schéma de l'app — SCHEMA.md).
+ * Le site est en LECTURE SEULE : requête cloisonnée au pays (index composite
+ * `location.countryCode ASC, reportedAt DESC` déployé côté app), les signalements
+ * archivés (soft-delete) sont écartés côté client.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -24,63 +29,49 @@ export class ReportService extends BaseService {
 
   getReports(
     params: {
-      isDeleted: boolean,
       datestart?: Date,
       limit?: number,
       reportStatus?: ReportSatus
-    }
+    } = {}
   ): Observable<Report[]> {
-    return this.col$<Report>(
+    // attend la session (anonyme comprise) : les règles Firestore exigent isSignedIn()
+    return this.angularFireAuth.authState.pipe(
+      first(user => !!user),
+      switchMap(() => this.col$<Report>(
       `${Const.collections.reports}`,
       ref => {
         let query: CollectionReference | Query = ref;
-        query = query.where('_isDelete', '==', params.isDeleted);
+        query = query
+          .where('location.countryCode', '==', Const.countryCode)
+          .orderBy('reportedAt', 'desc');
 
-        if (params.reportStatus) {
-          query = query.where('status', '==', params.reportStatus);
-        } else if (params.datestart) {
-          query = query.orderBy('reportedAt', 'desc').endAt(params.datestart);
-        } else if (params.limit) {
+        if (params.limit) {
           query = query.limit(params.limit);
         }
         return query;
       }
-    );
-  }
-
-  async addReport(report): Promise<DocumentReference<DocumentData>>{
-    return await this.add<Report>(
-      `${Const.collections.reports}`,
-      {
-        ...defaultReport,
-        reportedAt: report.reportedAt,
-        location: report.location,
-        position: {lat: report.position.lat, lng: report.position.lng},
-        _createdBy: this.user,
-        _createdAt: this.timestamp,
-      } as unknown as Report
-    );
-  }
-
-  deleteReport(reportId: string) {
-    const partialReport = {
-      _isDeleted: true,
-      _deletedAt: this.timestamp,
-      _deletedBy: this.user
-    } as unknown as Report;
-    this.update(
-      `${Const.collections.reports}/${reportId}`,
-      partialReport
+    )),
+      map(reports => reports.filter(report => {
+        if (report.archivedAt) {
+          return false;
+        }
+        if (params.reportStatus && report.status !== params.reportStatus) {
+          return false;
+        }
+        if (params.datestart && report.reportedAt?.toDate() < params.datestart) {
+          return false;
+        }
+        return true;
+      }))
     );
   }
 
   getReport(reportId: string): Observable<Report> {
-    return this.doc$<Report>(
-      `${Const.collections.reports}/${reportId}`
+    return this.angularFireAuth.authState.pipe(
+      first(user => !!user),
+      switchMap(() => this.doc$<Report>(
+        `${Const.collections.reports}/${reportId}`
+      ))
     );
-  }
-
-  updateReport(report: Report): Promise<void>{
-    return this.update<Report>(`${Const.collections.reports}/${report.id}`, report);
   }
 }

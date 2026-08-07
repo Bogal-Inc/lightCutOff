@@ -29,3 +29,9 @@
   ~/Desktop, même en lecture) alors que les réglages montraient l'accès accordé | La permission
   ne s'applique qu'au redémarrage complet de l'app ; en cas d'EPERM soudain sur des fichiers
   valides : diagnostiquer TCC/redémarrer l'app avant de soupçonner le code ou le disque.
+- [2026-08-07] | Carte vide « permission-denied » : le site ne déclenchait l'auth anonyme
+  qu'aux visites suivantes, et les requêtes Firestore partaient avant la fin du sign-in |
+  Modèle anonyme-first : signInAnonymously systématique si pas de session, et TOUTE requête
+  Firestore gatée par `authState.pipe(first(u => !!u))` quand les règles exigent isSignedIn().
+- [2026-08-07] | NG5002 « Unclosed block » : un `@` littéral dans un template Angular 17+
+  (ex. `@{{pseudo}}`) est parsé comme un bloc de contrôle | Échapper avec `&#64;`.

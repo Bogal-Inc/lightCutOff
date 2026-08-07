@@ -2,10 +2,12 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { Const } from '../../../../../../../environments/const';
 import {Logger} from '@Services/logger.service';
-import {ReportSatus} from '@Models/report.model';
 import {environment} from '../../../../../../../environments/environment';
 
 const log = new Logger('map-filter.component');
+
+/** Filtres de la carte : coupure d'électricité / coupure d'eau en cours, ou service rétabli. */
+export type MapFilterKey = 'electricity' | 'water' | 'resolved';
 
 @Component({
   standalone: false,
@@ -14,16 +16,13 @@ const log = new Logger('map-filter.component');
   styleUrls: ['./map-filter.component.scss']
 })
 export class MapFilterComponent implements OnInit {
-  @Output() filtered: EventEmitter<ReportSatus[]> = new EventEmitter<ReportSatus[]>();
+  @Output() filtered: EventEmitter<MapFilterKey[]> = new EventEmitter<MapFilterKey[]>();
   readonly moduleEnable = environment.app.modules.mapFilter;
   readonly faFilter = faFilter;
-  readonly markerCut = Const.markerColor.cut;
+  readonly markerElectricity = Const.markerColor.electricity;
+  readonly markerWater = Const.markerColor.water;
   readonly markerRecovred = Const.markerColor.recovred;
-  readonly reportSatus = {
-    cut: ReportSatus.CUT,
-    recovred: ReportSatus.CUT_COMPLETED
-  };
-  clickedStatus: ReportSatus[] = [];
+  clickedFilters: MapFilterKey[] = [];
 
   constructor() { }
 
@@ -31,25 +30,18 @@ export class MapFilterComponent implements OnInit {
     log.debug('init');
   }
 
-  mapFilter(reportSatusFilter: ReportSatus) {
-    if (this.clickedStatus.length === 0) {
-      this.clickedStatus.push(reportSatusFilter);
-    } else {
-      const index = this.isClicked(reportSatusFilter);
+  mapFilter(filterKey: MapFilterKey) {
+    const index = this.isClicked(filterKey);
 
-      if (index >= 0) {
-        this.clickedStatus.splice(index, 1);
-      } else {
-        this.clickedStatus.push(reportSatusFilter);
-      }
+    if (index >= 0) {
+      this.clickedFilters.splice(index, 1);
+    } else {
+      this.clickedFilters.push(filterKey);
     }
-    this.filtered.emit(this.clickedStatus);
+    this.filtered.emit(this.clickedFilters);
   }
 
-  isClicked(reportSatusFilter) {
-    if (this.clickedStatus) {
-      return this.clickedStatus.findIndex(x => reportSatusFilter === x);
-    }
-    return -1;
+  isClicked(filterKey: MapFilterKey) {
+    return this.clickedFilters.findIndex(x => filterKey === x);
   }
 }

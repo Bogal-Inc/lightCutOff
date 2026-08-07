@@ -85,7 +85,6 @@ export class HomeComponent implements OnInit {
 
   private loadReports() {
     this.reportService.getReports({
-      isDeleted: false
     }).subscribe(
       (reports) => {
         this.reports = reports;
@@ -121,7 +120,7 @@ export class HomeComponent implements OnInit {
 
   private isCurrentUSerHaveMarkers() {
     return this.reports.find(
-      report => this.authService.getUserToLocalStorage().id === report._createdBy.id
+      report => false
     );
   }
 

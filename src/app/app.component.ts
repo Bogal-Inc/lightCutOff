@@ -23,9 +23,10 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
     private i18nService: I18nService
   ) {
-    // if user logged we don't use anonymous informations
+    // session anonyme par défaut (modèle anonyme-first de Njuka) :
+    // indispensable pour lire Firestore, les règles exigent isSignedIn()
     this.user = this.authService.getUserToLocalStorage();
-    if(this.user && !this.user.email) {
+    if (!this.user || !this.user.email) {
       this.signInAnonymously();
     }
   }

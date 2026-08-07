@@ -1,6 +1,6 @@
 import {TranslateService} from '@ngx-translate/core';
 import {MarkerDetailsComponent} from '../components/marker-details/marker-details.component';
-import {Position, Report, ReportSatus} from '@Models/report.model';
+import {Position, Report, ReportSatus, ServiceType, reportServiceType} from '@Models/report.model';
 import {ReportService} from '../../../core/services-firebase';
 import {
   AfterViewInit,
@@ -22,6 +22,7 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ComponentService} from '@Services/component.service';
 import {NominatimService} from '@Services/nominatim.service';
+import {MapFilterKey} from '../components/map-menu/components/map-filter/map-filter.component';
 import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {ActivatedRoute} from '@angular/router';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
@@ -56,7 +57,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private markerCurrentPosition: L.Marker;
   private readonly icons = {
     user: MapViewComponent.pinIcon(Const.markerColor.user),
-    cut: MapViewComponent.pinIcon(Const.markerColor.cut),
+    electricity: MapViewComponent.pinIcon(Const.markerColor.electricity),
+    water: MapViewComponent.pinIcon(Const.markerColor.water),
     recovred: MapViewComponent.pinIcon(Const.markerColor.recovred)
   };
   readonly projectTitle = Const.app.title;
@@ -173,25 +175,20 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     marker.addTo(this.map).openPopup();
   }
 
-  mapFiltered(reportStatus: ReportSatus[]) {
-    const reportsResults = (reportStatus.length > 0) ? this.getReportsByStatus(reportStatus) : this.reports;
+  mapFiltered(filters: MapFilterKey[]) {
+    const reportsResults = (filters.length > 0) ? this.getReportsByFilters(filters) : this.reports;
     this.addClusters(reportsResults);
   }
 
-  private getReportsByStatus(reportsStatus: ReportSatus[]) {
-    let reportsResults = [];
-    reportsStatus.forEach(
-      ev => {
-        const reportsFilter = this.reports.filter(
-          (report: Report) => {
-            if (ev === ReportSatus.CUT || ev === ReportSatus.CUT_OWNER) {
-              return report.status === ReportSatus.CUT;
-            }
-            return report.status === ev;
-          });
-        reportsResults = reportsResults.concat(reportsFilter);
-      });
-    return reportsResults;
+  private getReportsByFilters(filters: MapFilterKey[]) {
+    return this.reports.filter((report: Report) =>
+      filters.some(key => {
+        if (key === 'resolved') {
+          return report.status === ReportSatus.RESOLVED;
+        }
+        return report.status === ReportSatus.ONGOING && reportServiceType(report) === key;
+      })
+    );
   }
 
   private initMap(position: Position){
@@ -265,7 +262,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     const now = new Date();
 
     this.reportService.getReports({
-      isDeleted: false,
       reportStatus: null,
       datestart: new Date(2020, 1, 1)
     })
@@ -280,9 +276,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
               if (report.location.city) {
                 return report;
               }
-              if (report.status === ReportSatus.CUT_COMPLETED) {
-                const recovredAt = report.recovredAt.toDate();
-                const tomorrow = new Date(recovredAt.getTime() + 86400000);
+              if (report.status === ReportSatus.RESOLVED) {
+                const resolvedAt = report.resolvedAt.toDate();
+                const tomorrow = new Date(resolvedAt.getTime() + 86400000);
                 if (tomorrow > now) {
                   return report;
                 }
@@ -309,7 +305,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   private markerFactory(report: Report): L.Marker {
     const marker = L.marker([+report.position.lat, +report.position.lng], {
-      icon: (report.recovredAt === null) ? this.icons.cut : this.icons.recovred
+      icon: (report.status === ReportSatus.RESOLVED)
+        ? this.icons.recovred
+        : this.icons[reportServiceType(report)]
     });
 
     marker.bindPopup(() =>
@@ -331,9 +329,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       if (reportId) {
         this.reportService.getReport(reportId).subscribe(
           report => {
-            const reportedAt = (report.recovredAt) ? `Terminer le: ${report.recovredAt.toDate()}` : '';
+            const reportedAt = (report.resolvedAt) ? `Terminer le: ${report.resolvedAt.toDate()}` : '';
             const description = `
-            Signalement du: ${report._createdAt.toDate()} \n
+            Signalement du: ${report.reportedAt.toDate()} \n
             ${reportedAt} \n
             Ville: ${report.location.city} \n
             Quartier: ${report.location.neighborhood}
@@ -341,7 +339,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
             this.metaService.setFacebookTags(
               `${environment.domain}/map`,
-              this.translateService.instant('main.map-view.fb_title', {cretedAt: report._createdAt.toDate()}),
+              this.translateService.instant('main.map-view.fb_title', {cretedAt: report.reportedAt.toDate()}),
               description,
               `${environment.domain}/assets/static/images/logo.png`
             );

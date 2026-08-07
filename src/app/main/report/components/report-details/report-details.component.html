@@ -22,11 +22,11 @@
             {{'report.report-details.report_that' | translate}}
             {{report?.reportedAt?.toDate()  | timestamp}}
           </li>
-          <li class="mb-lg-3" *ngIf="report?.recovredAt">
+          <li class="mb-lg-3" *ngIf="report?.resolvedAt">
             {{'report.report-details.recovred_that' | translate}}
-            {{report?.recovredAt.toDate() | timestamp}}
+            {{report?.resolvedAt.toDate() | timestamp}}
           </li>
-          <li class="mb-lg-3 text-danger" *ngIf="!report?.recovredAt">
+          <li class="mb-lg-3 text-danger" *ngIf="!report?.resolvedAt">
             {{'report.report-details.no_return' | translate}}
           </li>
           <li class="mb-lg-3">
@@ -37,8 +37,8 @@
                 {{report?.location.country}}
               </li>
               <li>
-                <b>{{'report.report-details.department' | translate}}</b>
-                {{report?.location.department}}
+                <b>{{'report.report-details.region' | translate}}</b>
+                {{report?.location.region}}
               </li>
               <li>
                 <b>{{'report.report-details.city' | translate}}</b>

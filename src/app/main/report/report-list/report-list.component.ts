@@ -36,7 +36,7 @@ export class ReportListComponent implements OnInit {
       maxWidth: 50,
       filter: false,
       cellRenderer: (params) => {
-        if (params.value === ReportSatus.CUT){
+        if (params.value === ReportSatus.ONGOING){
           return '<span class="fas fa-circle text-danger"></span>';
         } else {
           return '<span class="fas fa-circle text-success"></span>';
@@ -54,7 +54,7 @@ export class ReportListComponent implements OnInit {
     },
     {
       headerName: 'Revenu le',
-      field: 'recovredAt',
+      field: 'resolvedAt',
       cellRenderer: (params) => {
         if (params.value){
           return this.timestampPipe.transform(params.value.toDate());
@@ -112,7 +112,6 @@ export class ReportListComponent implements OnInit {
     this.datatableMobilConfig();
     const now = new Date();
     this.reports$ = this.reportService.getReports({
-      isDeleted: false,
       datestart: new Date(now.getFullYear())
     });
     this.isMobile = isMobile();

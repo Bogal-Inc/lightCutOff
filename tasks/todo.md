@@ -82,7 +82,8 @@ Lots dans l'ordre :
 - [ ] 2d. **Admin** : auth email/Google, garde role=='admin', sélecteur lightcutoff-dev/njuka-prod,
        vues reports (modération), users, official_outages, stats (vérifier droits d'écriture
        admin dans les règles de l'app ; sinon passer par des callables).
-- [ ] 2e. Bascule config Firebase du site → lightcutoff-dev (dev) / njuka-prod (prod), CI,
-       secrets GitHub, firebase.json ; cohabitation avec les pages légales de l'app à trancher
-       (multi-sites vs fusion).
+- [ ] 2e. Bascule config Firebase → FAIT côté données (2026-08-07 : .env local sur
+       lightcutoff-dev/njuka-prod, schéma Report aligné Njuka, lecture réelle vérifiée).
+       RESTE : secrets GitHub CI, .firebaserc/firebase.json (projet + hosting),
+       cohabitation avec les pages légales de l'app (multi-sites vs fusion).
 - [ ] 2f. Domaine **njuka.app** (décidé 2026-08-07 ; sitemap/robots/OG déjà alignés) : config DNS + hosting Firebase, puis suppression du projet `lightcutoff`.

@@ -135,3 +135,33 @@
 - `ng build` + `build:prod` OK · `npm test` 52/52 · `lint` 0 erreur · vérif navigateur :
   carte plein écran (repli OSM sans clé), marqueur position, filtres, recherche
   « Douala » → carte recentrée.
+
+## [2.4.0] - 2026-08-07 — Données réelles Njuka (schéma aligné, lot 2e partie data)
+
+### Modèle de données
+- `Report` aligné sur le **schéma Njuka** (`SCHEMA.md` de l'app) : statuts `ongoing`/`resolved`
+  (ex CUT/CUT_COMPLETED), `resolvedAt` (ex recovredAt), `serviceType` electricity/water
+  (absent = électricité, même rétro-compat que l'app), `GeoArea`
+  (country/countryCode/region/city/neighborhood), `archivedAt` (soft-delete),
+  `description`, `authorUsername`, `confirmationCount`…
+- `ReportService` en lecture seule : requête cloisonnée pays
+  (`location.countryCode == 'CM'` + tri `reportedAt desc`, index composite déployé côté app),
+  signalements archivés écartés, **attente de la session** avant toute requête
+  (les règles exigent `isSignedIn()`).
+- Session **anonyme-first** : connexion anonyme systématique à l'arrivée quand aucune
+  session n'existe (l'ancien flux ne l'activait qu'après un premier passage).
+
+### Carte
+- Marqueurs par service, mêmes codes couleur que l'app : **ambre = électricité,
+  sky = eau, vert = résolu** ; filtres et légende refaits (élec / eau / résolu).
+- Popup de détail enrichie : service, description, confirmations, @pseudo (si non anonyme),
+  région (ex-département).
+
+### Config
+- `.env` local branché sur **lightcutoff-dev** (dev) et **njuka-prod** (prod) + clé Stadia
+  de l'app — la carte affiche les tuiles Stadia et les **signalements réels** du staging.
+
+### Vérifications
+- Build + prod OK · 52/52 tests · lint 0 erreur · navigateur : carte Stadia + données réelles
+  lightcutoff-dev (6 signalements Yaoundé/Douala, popup eau Biyem-Assi avec description
+  et 2 confirmations, historique daté correctement).

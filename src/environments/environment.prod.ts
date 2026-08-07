@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   environment: 'prod',
   domain: 'https://njuka.app',
-  stadiaApiKey: '',
+  stadiaApiKey: '97565f4c-6ad7-4b06-b36c-eefe81b1fed1',
   app: {
   modules: {
   mapMenu: true,
@@ -12,14 +12,14 @@ export const environment = {
   }
   },
   firebase: {
-    apiKey: 'FIREBASE_API_KEY',
-    authDomain: 'FIREBASE_AUTH_DOMAIN',
-    databaseURL: 'FIREBASE_DATABASE_URL',
-    messagingSenderId: 'FIREBASE_MESSAGING_SENDER_ID',
-    appId: 'FIREBASE_APP_ID',
-    measurementId: 'FIREBASE_MEASUREMENT_ID',
-    projectId: 'FIREBASE_PROJECT_ID',
-    storageBucket: 'FIREBASE_STORAGE_BUCKET'
+    apiKey: 'AIzaSyBwUk795hUiWyR4nbwaMEeaqCNsNCZy-6U',
+    authDomain: 'njuka-prod.firebaseapp.com',
+    databaseURL: '',
+    messagingSenderId: '574419625568',
+    appId: '1:574419625568:web:73ac6dadefa07ac4854505',
+    measurementId: 'G-CZK07TCPYP',
+    projectId: 'njuka-prod',
+    storageBucket: 'njuka-prod.firebasestorage.app'
   }
   };
   

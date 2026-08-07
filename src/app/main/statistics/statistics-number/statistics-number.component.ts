@@ -62,21 +62,20 @@ export class StatisticsNumberComponent implements OnInit {
     );
 
     this.reportsYearlyClose = this.reportsCurrentYear.filter(
-      report => report.status === ReportSatus.CUT_COMPLETED
+      report => report.status === ReportSatus.RESOLVED
     );
 
     this.reportsMonthlyClose = this.reportsCurrentMonth.filter(
-      report => report.status === ReportSatus.CUT_COMPLETED
+      report => report.status === ReportSatus.RESOLVED
     );
 
     this.reportsDailyClose = this.reportsCurrentDaily.filter(
-      report => report.status === ReportSatus.CUT_COMPLETED
+      report => report.status === ReportSatus.RESOLVED
     );
   }
 
   private initCardDashbord() {
     this.reportService.getReports({
-      isDeleted: false
     }).subscribe(
       (reports) => {
         this.reports = reports;

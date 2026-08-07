@@ -99,7 +99,7 @@ export class ChartLineDailyReportComponent implements OnInit {
       data => {
         if (close && date.toDateString() === data.reportedAt.toDate().toDateString()) {
           reports += 1;
-        } else if (!close && date.toDateString() === data.recovredAt?.toDate().toDateString())  {
+        } else if (!close && date.toDateString() === data.resolvedAt?.toDate().toDateString())  {
           reports += 1;
         }
       }

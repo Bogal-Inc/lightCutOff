@@ -20,8 +20,12 @@ export class MapLegendComponent implements OnInit {
       icon: Const.markerColor.user
     },
     {
-      name: this.translateService.instant('shared.map-legend.no_energie'),
-      icon: Const.markerColor.cut
+      name: this.translateService.instant('shared.map-legend.electricity_cut'),
+      icon: Const.markerColor.electricity
+    },
+    {
+      name: this.translateService.instant('shared.map-legend.water_cut'),
+      icon: Const.markerColor.water
     },
     {
       name: this.translateService.instant('shared.map-legend.energy_recovred'),

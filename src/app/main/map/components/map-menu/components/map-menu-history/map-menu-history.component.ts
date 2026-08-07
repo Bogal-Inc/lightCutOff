@@ -30,7 +30,7 @@ export class MapMenuHistoryComponent implements OnInit {
   }
 
   isClosed(report) {
-    return report.status === ReportSatus.CUT_COMPLETED;
+    return report.status === ReportSatus.RESOLVED;
   }
 
   moveToMarker(report: Report, index: number) {
@@ -45,16 +45,16 @@ export class MapMenuHistoryComponent implements OnInit {
   }
 
   reportDurationToString(report: Report) {
-    const duration = (report.recovredAt) ?
-      getDuration(report.reportedAt.toDate(), report.recovredAt.toDate()) :
+    const duration = (report.resolvedAt) ?
+      getDuration(report.reportedAt.toDate(), report.resolvedAt.toDate()) :
       getDuration(report.reportedAt.toDate(), new Date());
-    let result = (report.recovredAt) ? 'Coupé pendant ' : 'Coupé depuis ';
+    let result = (report.resolvedAt) ? 'Coupé pendant ' : 'Coupé depuis ';
 
     return result += durationToString(duration);
   }
 
   isOwner(report: Report) {
-    return this.authService.getUserToLocalStorage().id === report._createdBy.id;
+    return false; // lecture seule : pas de notion de propriétaire côté site
   }
 
   private changeStyleOnElementHistory(index: number) {

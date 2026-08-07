@@ -27,7 +27,7 @@
       </div>
       <div class="reports__history__item__footer">
         <ul class="list-unstyled">
-          <li>{{'main.map-history-marker.last_modif' | translate}} {{report?._updatedAt?.toDate() | timestamp}}</li>
+          <li>{{'main.map-history-marker.last_modif' | translate}} {{report?.updatedAt?.toDate() | timestamp}}</li>
           <li>{{ reportDurationToString(report) }}</li>
         </ul>
       </div>

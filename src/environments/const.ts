@@ -19,6 +19,7 @@ export const Const = {
     localstorage: 'NJUKA_userLogged'
   },
   sendMail: 'https://us-central1-lightcutoff.cloudfunctions.net/sendMail',
+  countryCode: 'CM',
   collections: {
     users: 'users',
     devices: 'devices',
@@ -39,7 +40,8 @@ export const Const = {
   },
   markerColor: {
     user: 'assets/static/images/markers/marker_blue.svg',
-    cut: 'assets/static/images/markers/marker_red.svg',
+    electricity: 'assets/static/images/markers/marker_amber.svg',
+    water: 'assets/static/images/markers/marker_sky.svg',
     recovred: 'assets/static/images/markers/marker_green.svg'
   }
 };

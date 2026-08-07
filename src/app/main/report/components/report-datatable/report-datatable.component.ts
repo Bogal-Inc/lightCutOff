@@ -23,7 +23,7 @@ export class ReportDatatableComponent implements OnInit {
       field: 'status',
       maxWidth: 50,
       cellRenderer: (params) => {
-        if (params.value === ReportSatus.CUT){
+        if (params.value === ReportSatus.ONGOING){
           return '<span class="fas fa-circle text-danger"></span>';
         } else {
           return '<span class="fas fa-circle text-success"></span>';
@@ -41,7 +41,7 @@ export class ReportDatatableComponent implements OnInit {
     },
     {
       headerName: 'Revenu le',
-      field: 'recovredAt',
+      field: 'resolvedAt',
       cellRenderer: (params) => {
         if (params.value){
           return this.timestampPipe.transform(params.value.toDate());
