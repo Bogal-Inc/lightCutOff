@@ -137,15 +137,29 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:scroll')
   onWindowScroll() {
-    const probe = window.scrollY + window.innerHeight / 3;
+    // en bas de page, la dernière section est active même si son haut
+    // ne peut pas atteindre le header (sections courtes en fin de page)
+    const scrollBottom = window.scrollY + window.innerHeight;
+    if (scrollBottom >= document.documentElement.scrollHeight - 2) {
+      this.setActiveSection(this.sections[this.sections.length - 1].id);
+      return;
+    }
+
+    // sinon : dernière section dont le haut est passé sous le header collant
+    const probe = window.scrollY + 96;
+    let current = this.sections[0].id;
     for (const section of this.sections) {
       const elt = document.getElementById(section.id);
-      if (elt && probe >= elt.offsetTop && probe < elt.offsetTop + elt.offsetHeight) {
-        this.activeSection = section.id;
-        this.sectionSpy.setActiveSection(section.id);
-        return;
+      if (elt && elt.getBoundingClientRect().top + window.scrollY <= probe) {
+        current = section.id;
       }
     }
+    this.setActiveSection(current);
+  }
+
+  private setActiveSection(sectionId: string) {
+    this.activeSection = sectionId;
+    this.sectionSpy.setActiveSection(sectionId);
   }
 
   ngAfterViewInit(): void {

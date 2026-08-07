@@ -296,3 +296,12 @@ sections, CTA, absence équipe/partenaires).
   **section « Notre carte »** de l'accueil (ancre #map) et est placée dans l'ordre des
   sections (entre L'application et Distinctions). La page /map reste accessible via le
   bouton « Explorer la carte » de la section.
+
+## [2.10.3] - 2026-08-07 — Fix scrollspy (carte/contact) + lien contact du footer
+
+- **Scrollspy corrigé** : l'algorithme prend désormais la dernière section dont le haut est
+  passé sous le header (au lieu d'un point à 1/3 d'écran), avec un cas spécial bas de page
+  (dernière section active) — « Notre carte » et « Contact » s'illuminent correctement,
+  « Distinctions » ne monopolise plus l'état actif.
+- **« Contactez-nous » du pied de page** : lien `href="#contactus"` remplacé par
+  `routerLink="/" fragment="contactus"` — fonctionne depuis toutes les pages.
