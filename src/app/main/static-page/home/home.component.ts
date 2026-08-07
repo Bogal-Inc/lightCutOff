@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     { id: 'why', label: 'why' },
     { id: 'app', label: 'app' },
     { id: 'awards', label: 'awards' },
+    { id: 'map', label: 'map' },
     { id: 'contactus', label: 'contact' }
   ];
   activeSection = 'hero';

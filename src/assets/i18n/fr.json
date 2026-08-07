@@ -60,7 +60,8 @@
       },
       "contactus": {
         "alt_img": "Contactez-nous pour les coupures de lumiere pres dou vous etes",
-        "title": "Contactez-nous"
+        "title": "Contactez-nous",
+        "subtitle": "Une question, une suggestion, un problème avec l'app ? Écrivez-nous — nous lisons tout."
       },
       "partners": {
         "title": "Partenaires"
@@ -124,11 +125,17 @@
       "nav": {
         "hero": "Accueil",
         "about": "À propos",
-        "figures": "Chiffres",
-        "why": "Pourquoi",
+        "figures": "Le problème",
+        "why": "Pourquoi NJUKA",
         "app": "L'application",
         "awards": "Distinctions",
+        "map": "Notre carte",
         "contact": "Contact"
+      },
+      "map": {
+        "title": "Suivez les coupures en temps réel",
+        "text": "Visualisez en temps réel les coupures d'électricité et d'eau signalées par la communauté : coupures en cours, services rétablis, filtres par service et recherche par ville ou quartier — en libre consultation.",
+        "btn": "Explorer la carte"
       }
     },
     "aboutus": {

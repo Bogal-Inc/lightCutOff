@@ -60,7 +60,8 @@
       },
       "contactus": {
         "alt_img": "Contact us for the light cuts near you",
-        "title": "Contact us"
+        "title": "Contact us",
+        "subtitle": "A question, a suggestion, an issue with the app? Write to us — we read everything."
       },
       "partners": {
         "title": "Partners"
@@ -124,11 +125,17 @@
       "nav": {
         "hero": "Home",
         "about": "About",
-        "figures": "Numbers",
-        "why": "Why",
+        "figures": "The problem",
+        "why": "Why NJUKA",
         "app": "The app",
         "awards": "Awards",
+        "map": "Our map",
         "contact": "Contact"
+      },
+      "map": {
+        "title": "Track outages in real time",
+        "text": "See in real time the electricity and water outages reported by the community: ongoing outages, restored services, per-service filters and search by city or neighbourhood — free to browse.",
+        "btn": "Explore the map"
       }
     },
     "aboutus": {

@@ -241,3 +241,17 @@ sections, CTA, absence équipe/partenaires).
 - **Contact → support@njuka.app** : destinataire de la Cloud Function `contactus` et
   `Const.emailService.support` mis à jour. ⚠️ La CF doit être **redéployée** (elle tourne
   encore sur l'ancien projet avec l'ancien destinataire) — prévu au lot 2e.
+
+## [2.8.0] - 2026-08-07 — Section carte, menu par sections, contact redesigné, identité visuelle
+
+- **Bandeau final « Ensemble, on y voit plus clair » remplacé par « Notre carte »** :
+  titre « Suivez les coupures en temps réel », texte descriptif et bouton
+  « Explorer la carte » → /map (bandeau charbon).
+- **Menu principal : un lien par section** de l'accueil (À propos, Le problème, Pourquoi
+  NJUKA, L'application, Distinctions, Contact) via fragments d'ancrage
+  (`anchorScrolling` activé + défilement fluide global), en plus d'Accueil et Carte.
+- **Section contact redesignée** : kicker + titre + sous-titre centrés, formulaire dans
+  une carte centrée (fond doux, liseré supérieur ambre, ombre portée).
+- **Identité visuelle des sections** : « kicker » commun (libellé uppercase ambre +
+  souligné) sur chaque section, fonds alternés blanc / gris doux (#f7f7f5) / charbon,
+  point de navigation ajouté pour « Notre carte » (8 points).

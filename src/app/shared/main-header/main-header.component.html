@@ -17,6 +17,11 @@
           {{"shared.main-header.home" | translate}}
         </a>
       </li>
+      <li class="nav-item" *ngFor="let section of sectionLinks">
+        <a class="nav-link" routerLink="/" [fragment]="section.fragment">
+          {{'core.home.nav.' + section.label | translate}}
+        </a>
+      </li>
       <li class="nav-item" [class.active]="mapActive">
         <a class="nav-link" routerLink="/map" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
           {{"shared.main-header.map" | translate}}

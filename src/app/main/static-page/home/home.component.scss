@@ -85,6 +85,58 @@
     }
 }
 
+// Identité visuelle des sections : kicker commun + fonds alternés
+.home__kicker {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--njuka-amber-dark);
+
+    &::after {
+        content: '';
+        display: block;
+        width: 42px;
+        height: 3px;
+        margin: 6px auto 0;
+        background-color: var(--njuka-amber);
+    }
+
+    &--on-dark {
+        color: var(--njuka-amber);
+    }
+}
+
+// fonds alternés : blanc / gris doux / charbon
+.home__section-why,
+.home__section-awards {
+    background-color: #f7f7f5;
+}
+
+.home__section-map {
+    background-color: var(--njuka-charcoal);
+    color: var(--white);
+
+    &__text {
+        max-width: 620px;
+        color: rgba(255, 255, 255, 0.75);
+    }
+}
+
+.home__section-contactus {
+    background: none;
+
+    &__card {
+        max-width: 640px;
+        background-color: #f7f7f5;
+        border-top: 4px solid var(--njuka-amber);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(26, 26, 26, 0.08);
+    }
+}
+
 .home__section-figures {
     background-color: var(--njuka-charcoal);
     color: var(--white);
@@ -113,16 +165,6 @@
         margin-top: 1.5rem;
         font-size: 0.8rem;
         color: rgba(255, 255, 255, 0.45);
-    }
-}
-
-.home__section-cta {
-    background-color: var(--njuka-charcoal);
-    color: var(--white);
-
-    &__text {
-        max-width: 620px;
-        color: rgba(255, 255, 255, 0.75);
     }
 }
 

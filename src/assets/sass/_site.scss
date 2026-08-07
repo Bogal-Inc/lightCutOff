@@ -77,6 +77,10 @@ main a:not(.btn):not(.nav-link):not(.navbar-brand):not(.dropdown-item),
   box-shadow: 0 0 0 0.25rem rgba(248, 142, 1, 0.25);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;

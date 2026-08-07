@@ -17,6 +17,15 @@ export class MainHeaderComponent implements OnInit {
   @Input() isGlobalMessage = false;
   readonly isModuleAdmin = environment.app.modules.admin;
   readonly appTitle = Const.app.title;
+  /** Ancres des sections de l'accueil (clés i18n core.home.nav). */
+  readonly sectionLinks = [
+    { fragment: 'about', label: 'about' },
+    { fragment: 'figures', label: 'figures' },
+    { fragment: 'why', label: 'why' },
+    { fragment: 'app', label: 'app' },
+    { fragment: 'awards', label: 'awards' },
+    { fragment: 'contactus', label: 'contact' }
+  ];
 
   mapActive = false;
   adminActive = false;

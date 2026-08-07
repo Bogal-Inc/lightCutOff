@@ -42,7 +42,8 @@
         <div class="home__section-about__body w-100 h-100">
             <div class="d-flex align-items-center justify-content-center w-100 h-100">
                 <div class="container">
-                    <h2 class="mb-5 text-center">{{'core.home.about.title' | translate: { projectTitle: projectTitle } }}</h2>
+                    <div class="text-center home__kicker">{{'core.home.nav.about' | translate}}</div>
+                    <h2 class="mt-2 mb-5 text-center">{{'core.home.about.title' | translate: { projectTitle: projectTitle } }}</h2>
                     <div class="row">
                         <div class="col-md-3">
                             <img src="../../../../assets/static/images/home/aboutus.svg" class="rounded w-100"
@@ -68,7 +69,8 @@
     <section class="home__section home__section-figures" id="figures">
         <div class="home__section-figures__body text-center">
             <div class="container">
-                <h2 class="mb-5">{{'core.home.figures.title' | translate}}</h2>
+                <div class="home__kicker home__kicker--on-dark">{{'core.home.nav.figures' | translate}}</div>
+                <h2 class="mt-2 mb-5">{{'core.home.figures.title' | translate}}</h2>
                 <div class="row">
                     <div class="col-md-4 mb-4">
                         <div class="home__section-figures__value home__section-figures__value--amber">
@@ -96,7 +98,8 @@
     <!--  why njuka section-->
     <section class="home__section home__section-why" id="why">
         <div class="w-100 h-100">
-            <h2 class="mb-5 text-center">{{'core.home.why.title' | translate}}</h2>
+            <div class="text-center home__kicker">{{'core.home.nav.why' | translate}}</div>
+            <h2 class="mt-2 mb-5 text-center">{{'core.home.why.title' | translate}}</h2>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 mb-4">
@@ -120,7 +123,8 @@
     <!--  NJUKA app section -->
     <section class="home__section home__section-app" id="app">
         <div class="w-100 h-100">
-            <h2 class="mb-2 text-center">{{'core.home.app.title' | translate}}</h2>
+            <div class="text-center home__kicker">{{'core.home.nav.app' | translate}}</div>
+            <h2 class="mt-2 mb-2 text-center">{{'core.home.app.title' | translate}}</h2>
             <p class="text-center text-muted mb-5">{{'core.home.app.subtitle' | translate}}</p>
             <div class="container">
                 <div class="row align-items-center">
@@ -214,7 +218,8 @@
     <!--  awards section-->
     <section class="home__section home__section-awards" id="awards">
         <div class="w-100 h-100">
-            <h2 class="mb-5 text-center">{{'core.home.awards.title' | translate}}</h2>
+            <div class="text-center home__kicker">{{'core.home.nav.awards' | translate}}</div>
+            <h2 class="mt-2 mb-5 text-center">{{'core.home.awards.title' | translate}}</h2>
             <div class="container">
                 <div class="d-flex justify-content-center">
                     <div class="card" style="width: 22rem;">
@@ -234,23 +239,17 @@
         </div>
     </section>
 
-    <!--  download CTA band -->
-    <section class="home__section home__section-cta">
-        <div class="home__section-cta__body text-center">
+    <!--  our map section -->
+    <section class="home__section home__section-map" id="map">
+        <div class="text-center">
             <div class="container">
-                <img src="../../../../assets/static/images/njuka/njuka_foreground.png" alt="NJUKA" width="72">
-                <h2 class="mt-3">{{'core.home.cta.title' | translate}}</h2>
-                <p class="home__section-cta__text mx-auto">{{'core.home.cta.text' | translate}}</p>
-                <div class="mt-4 home__hero__badges">
-                    <a [href]="playStoreUrl" target="_blank" rel="noopener">
-                        <img [src]="'core.home.hero.badge_playstore_src' | translate"
-                             [alt]="'core.home.hero.badge_playstore_alt' | translate"
-                             class="home__hero__badges__badge">
-                    </a>
-                    <a [href]="appStoreUrl" target="_blank" rel="noopener">
-                        <img [src]="'core.home.hero.badge_appstore_src' | translate"
-                             [alt]="'core.home.hero.badge_appstore_alt' | translate"
-                             class="home__hero__badges__badge">
+                <div class="home__kicker home__kicker--on-dark">{{'core.home.nav.map' | translate}}</div>
+                <h2 class="mt-2 text-white">{{'core.home.map.title' | translate}}</h2>
+                <p class="home__section-map__text mx-auto">{{'core.home.map.text' | translate}}</p>
+                <div class="mt-4">
+                    <a class="btn btn-njuka btn-lg" routerLink="/map">
+                        <fa-icon [icon]="faBullhorn"></fa-icon>
+                        {{'core.home.map.btn' | translate}}
                     </a>
                 </div>
             </div>
@@ -259,20 +258,14 @@
 
     <!-- contact us section-->
     <section class="home__section home__section-contactus" id="contactus">
-        <div class="home__section-contactus__body w-100 h-100">
-            <div class="d-flex align-items-center justify-content-center w-100 h-100">
-                <div class="container">
-                    <h1 class="mb-5 text-center">{{'core.home.contactus.title' | translate}}</h1>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img src="../../../../assets/static/images/home/contact_us.svg" class="rounded w-100"
-                                 alt="{{'core.home.contactus.alt_img' | translate}} logo">
-                        </div>
-                        <div class="col-md-9">
-                            <app-contact-us></app-contact-us>
-                        </div>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="text-center">
+                <div class="home__kicker">{{'core.home.nav.contact' | translate}}</div>
+                <h2 class="mt-2">{{'core.home.contactus.title' | translate}}</h2>
+                <p class="text-muted mb-5">{{'core.home.contactus.subtitle' | translate}}</p>
+            </div>
+            <div class="home__section-contactus__card mx-auto">
+                <app-contact-us></app-contact-us>
             </div>
         </div>
     </section>
