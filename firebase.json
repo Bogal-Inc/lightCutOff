@@ -9,6 +9,10 @@
     ],
     "rewrites": [
       {
+        "source": "/s/**",
+        "function": "renderReportShare"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
