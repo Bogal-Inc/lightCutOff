@@ -79,6 +79,22 @@ main a:not(.btn):not(.nav-link):not(.navbar-brand):not(.dropdown-item),
 
 html {
   scroll-behavior: smooth;
+  // les ancres s'arrêtent sous le header collant
+  scroll-padding-top: 64px;
+}
+
+// Header toujours visible (collant), sur toutes les pages
+app-main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  display: block;
+}
+
+// Lien actif du menu en ambre
+.navbar-dark .navbar-nav .nav-link.active {
+  color: var(--njuka-amber);
+  font-weight: 600;
 }
 
 html,

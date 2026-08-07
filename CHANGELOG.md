@@ -255,3 +255,13 @@ sections, CTA, absence équipe/partenaires).
 - **Identité visuelle des sections** : « kicker » commun (libellé uppercase ambre +
   souligné) sur chaque section, fonds alternés blanc / gris doux (#f7f7f5) / charbon,
   point de navigation ajouté pour « Notre carte » (8 points).
+
+## [2.9.0] - 2026-08-07 — Header collant + scrollspy, titres uniques, carte avant distinctions
+
+- **Header toujours visible** (sticky, toutes pages) avec `scroll-padding-top` pour que les
+  ancres s'arrêtent sous le menu.
+- **Scrollspy dans le menu principal** : l'entrée correspondant à la section visible passe
+  en ambre (service partagé `SectionSpyService` publié par l'accueil au scroll).
+- **Section « Notre carte » déplacée avant « Distinctions »** (dots mis à jour).
+- **Un seul titre par section** : les doublons noirs supprimés, les titres colorés
+  soulignés (ex-kickers, promus en h2 ~1.6rem uppercase) conservés et tous centrés.

@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
 import {Router} from '@angular/router';
+import {SectionSpyService} from '@Services/section-spy.service';
 import {environment} from '../../../environments/environment';
 
 const log = new Logger('main-header.component');
@@ -29,14 +30,17 @@ export class MainHeaderComponent implements OnInit {
 
   mapActive = false;
   adminActive = false;
+  activeSection: string | null = null;
 
   constructor(
     private router: Router,
+    private sectionSpy: SectionSpyService,
   ) {}
 
   ngOnInit(): void {
     log.debug('init');
     this.activeMenuDashboard();
+    this.sectionSpy.activeSection$.subscribe(section => this.activeSection = section);
   }
 
   private activeMenuDashboard() {

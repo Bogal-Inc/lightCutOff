@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" [class.fixed-top]="fixedTop" [class.mt-4]="isGlobalMessage">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" [class.mt-4]="isGlobalMessage">
   <a class="navbar-brand d-flex align-items-center" href="/" attr.aria-label="{{'shared.main-header.home' | translate}}">
     <img src="../../../assets/static/images/njuka/njuka_foreground.png"
          class="d-inline-block navbar-brand__bulb" height="36"
@@ -13,12 +13,14 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav me-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [class.active]="activeSection === 'hero'" routerLink="/"
+           [fragment]="'hero'">
           {{"shared.main-header.home" | translate}}
         </a>
       </li>
       <li class="nav-item" *ngFor="let section of sectionLinks">
-        <a class="nav-link" routerLink="/" [fragment]="section.fragment">
+        <a class="nav-link" [class.active]="activeSection === section.fragment"
+           routerLink="/" [fragment]="section.fragment">
           {{'core.home.nav.' + section.label | translate}}
         </a>
       </li>

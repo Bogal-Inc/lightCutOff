@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
 import {faBullhorn} from '@fortawesome/free-solid-svg-icons';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
@@ -10,6 +10,7 @@ import {AuthService, ReportService} from '../../../core/services-firebase';
 import {Report} from '@Models/report.model';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
 import {MetaTag, METATAG} from '@Models/metaTag.model';
+import {SectionSpyService} from '@Services/section-spy.service';
 
 const log = new Logger('home.component');
 
@@ -20,7 +21,7 @@ const log = new Logger('home.component');
   styleUrls: ['./home.component.scss'],
   providers: [NgbModalConfig, NgbModal]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   readonly projectTitle = Const.app.title;
   readonly playStoreUrl = Const.app.playStoreUrl;
   readonly appStoreUrl = Const.app.appStoreUrl;
@@ -31,8 +32,8 @@ export class HomeComponent implements OnInit {
     { id: 'figures', label: 'figures' },
     { id: 'why', label: 'why' },
     { id: 'app', label: 'app' },
-    { id: 'awards', label: 'awards' },
     { id: 'map', label: 'map' },
+    { id: 'awards', label: 'awards' },
     { id: 'contactus', label: 'contact' }
   ];
   activeSection = 'hero';
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit {
   isMarkerAdded: boolean;
 
   constructor(
+    private sectionSpy: SectionSpyService,
     private modalService: NgbModal,
     private translateService: TranslateService,
     private metaService: MetaService,
@@ -62,6 +64,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     log.debug('init');
+    this.sectionSpy.setActiveSection('hero');
     this.analytics.logEvent('page_view', {
       page_location: 'https://njuka.app',
       page_path: '/',
@@ -127,8 +130,13 @@ export class HomeComponent implements OnInit {
       const elt = document.getElementById(section.id);
       if (elt && probe >= elt.offsetTop && probe < elt.offsetTop + elt.offsetHeight) {
         this.activeSection = section.id;
+        this.sectionSpy.setActiveSection(section.id);
         return;
       }
     }
+  }
+
+  ngOnDestroy(): void {
+    this.sectionSpy.setActiveSection(null);
   }
 }
