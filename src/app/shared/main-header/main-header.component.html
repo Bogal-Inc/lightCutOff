@@ -12,12 +12,6 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" [class.active]="activeSection === 'hero'" routerLink="/"
-           [fragment]="'hero'">
-          {{"shared.main-header.home" | translate}}
-        </a>
-      </li>
       <li class="nav-item" *ngFor="let section of sectionLinks">
         <a class="nav-link" [class.active]="activeSection === section.fragment"
            routerLink="/" [fragment]="section.fragment">
