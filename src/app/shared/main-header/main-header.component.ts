@@ -24,6 +24,7 @@ export class MainHeaderComponent implements OnInit {
     { fragment: 'figures', label: 'figures' },
     { fragment: 'why', label: 'why' },
     { fragment: 'app', label: 'app' },
+    { fragment: 'map', label: 'map' },
     { fragment: 'awards', label: 'awards' },
     { fragment: 'contactus', label: 'contact' }
   ];

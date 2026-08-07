@@ -288,3 +288,11 @@ sections, CTA, absence équipe/partenaires).
 - Tuile eau : **≈ 13 h** d'eau au robinet par jour en moyenne sur les réseaux
   subsahariens, coupée le reste du temps (littérature sur l'intermittence) — remplace
   le 69 % (stat d'accès).
+
+## [2.10.2] - 2026-08-07 — 3 stats, menu « Notre carte » ancré à sa place
+
+- Stat « 10× générateur » retirée — 3 tuiles (9 coupures/mois · 5 % du CA · ≈ 13 h d'eau/jour).
+- L'entrée « Carte » du menu principal ne route plus vers /map : elle descend vers la
+  **section « Notre carte »** de l'accueil (ancre #map) et est placée dans l'ordre des
+  sections (entre L'application et Distinctions). La page /map reste accessible via le
+  bouton « Explorer la carte » de la section.

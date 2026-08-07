@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }[] = [
     { target: 9, display: '0', prefix: '', suffix: '', color: 'amber', labelKey: 'outages_label' },
     { target: 5, display: '0', prefix: '', suffix: ' %', color: 'amber', labelKey: 'losses_label' },
-    { target: 10, display: '0', prefix: '', suffix: '×', color: 'amber', labelKey: 'generator_label' },
     { target: 13, display: '0', prefix: '≈ ', suffix: ' h', color: 'sky', labelKey: 'water_label' }
   ];
   figuresAnimated = false;

@@ -24,11 +24,6 @@
           {{'core.home.nav.' + section.label | translate}}
         </a>
       </li>
-      <li class="nav-item" [class.active]="mapActive">
-        <a class="nav-link" routerLink="/map" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-          {{"shared.main-header.map" | translate}}
-        </a>
-      </li>
       <li class="nav-item dropdown" *ngIf="isModuleAdmin" [class.active]="adminActive">
         <a role="button" data-bs-toggle="dropdown" aria-haspopup="true"
            aria-expanded="false" class="nav-link dropdown-toggle">
