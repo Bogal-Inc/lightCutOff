@@ -16,6 +16,8 @@ const log = new Logger('about-us.component');
 })
 export class AboutUsComponent implements OnInit {
   readonly projectTitle = Const.app.title;
+  readonly playStoreUrl = Const.app.playStoreUrl;
+  readonly appStoreUrl = Const.app.appStoreUrl;
 
   constructor(
     private metaService: MetaService,
