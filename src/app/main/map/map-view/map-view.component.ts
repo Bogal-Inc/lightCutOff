@@ -101,7 +101,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.metaService.setTagsGeneral(
       this.translateService.instant('main.map-view.title_page'),
       [
-        new MetaTag(METATAG.KEYWORDS, 'lightcutoff, service information, light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, délestages, coupures, carte interactive, map, marker, marqueur'),
+        new MetaTag(METATAG.KEYWORDS, 'njuka, coupure electricité, coupure eau, délestage, Eneo, Camwater, Cameroun, Cameroon, signaler coupure, panne de courant, coupures programmées, power outage, water outage, carte des coupures'),
         new MetaTag(METATAG.DESCRIPTION, this.translateService.instant('main.map-view.desc_page'))
       ]);
   }

@@ -14,22 +14,20 @@
     "october": "October",
     "november": "November",
     "december": "December",
-    "meta_description": "Lightcutoff is a project that aims to collect data on the supply of electrical energy in Cameroon, these data are mainly provided by people directly concerned by these cuts (the population)."
+    "meta_description": "NJUKA is a project that aims to collect data on the supply of electrical energy in Cameroon, these data are mainly provided by people directly concerned by these cuts (the population)."
   },
   "core": {
     "home": {
       "title_page": "Official website",
-      "desc_page": "LightCutOff is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
-      "btn_tuto_lightcutoff": "Tutorial {{projectTitle}}",
-      "btn_tuto_lightcutoff_title": "How use {{projectTitle}}?",
-      "btn_map": "Report a light cut",
-      "btn_map_title": "Go to our interactive map of {{projectTitle}} to make your light cut reports",
+      "desc_page": "NJUKA is the mobile app for reporting electricity and water outages in Cameroon. Report, confirm and track outages around you, and check official planned outages.",
+      "btn_map": "See the outage map",
+      "btn_map_title": "Browse the interactive map of outages reported on NJUKA",
       "btn_report": "Mes signalements",
-      "btn_report_title": "Find the list of your current reports on {{projectTitle}}",
-      "alt_logo": "{{projectTitle}} logo, report a power cut, mark your electric power cut",
+      "btn_report_title": "Find the list of your current reports on NJUKA",
+      "alt_logo": "NJUKA logo — electricity and water outage reporting",
       "about": {
-        "title": "About us {{projectTitle}}",
-        "content": "Access to public resources in developing countries such as electricity or water is not easy. Some regions/cities/districts may even be deprived of it for several days or even several weeks. <b>{{projectTitle}}</b> is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
+        "title": "About us NJUKA",
+        "content": "Access to essential services such as electricity or water is not always guaranteed: some regions, cities or neighbourhoods can be deprived of them for hours or even days. <b>NJUKA</b> is a collaborative platform that lets its users report electricity and water outages around them, confirm them, track service restoration and check official planned outages — to better organise their daily life.",
         "btn_next": "Find out more",
         "alt_img": "about section illustration. Report light cut"
       },
@@ -52,7 +50,7 @@
         "communication": "Communication, manager"
       },
       "statistics": {
-        "title": "{{projectTitle}} statistics",
+        "title": "NJUKA statistics",
         "reports_total": "Total reports",
         "reports_yearly": "Annual reports",
         "reports_monthly": "Monthly reports",
@@ -63,7 +61,7 @@
         "alt_collect_data": "Illustration compiling and collecting data on power outages",
         "collect_data": "Collect and compile data",
         "alt_local_cut_off": "Illustration Locate power cuts",
-        "local_cut_off": "Locate power cuts",
+        "local_cut_off": "Locate electricity and water outages",
         "alt_charts_data": "Illustration analysis of data on power cuts",
         "charts_data": "analysis and compile of data",
         "alt_users_notifications": "Illustration Notify users on power outages",
@@ -73,83 +71,66 @@
         "alt_img": "Contact us for the light cuts near you",
         "title": "Contact us"
       },
-      "actuality": {
-        "title": "Actuality",
-        "opleda": {
-          "title": "4th place in the hackathon organized by the NGO OPLEDA",
-          "content": "We had the honor of participating in the hackthon organized by the NGO <b>OPLEDA</b> whose theme was <b>Electricity for all in Africa</b>. Out of 62 projects on the list, we got the 4th place."
-        }
-      },
       "partners": {
         "title": "Partners"
+      },
+      "hero": {
+        "tagline": "Together, we see clearly.",
+        "sub_electricity": "Electricity",
+        "sub_water": "Water",
+        "btn_playstore": "Get it on Google Play",
+        "btn_playstore_title": "Download the NJUKA app on Google Play",
+        "appstore_soon": "Coming soon to the App Store"
+      },
+      "app": {
+        "title": "The NJUKA app",
+        "subtitle": "Report and track electricity and water outages, right from your phone.",
+        "feature_report_title": "Report in seconds",
+        "feature_report": "Outage at your place? Report it, geolocated, even without creating an account.",
+        "feature_confirm_title": "Confirm, or deny",
+        "feature_confirm": "Neighbours confirm ongoing outages: the more confirmations, the more reliable the information.",
+        "feature_alert_title": "Get alerted",
+        "feature_alert": "Get notified when an outage is reported near you, and when the service is back.",
+        "feature_official_title": "Official planned outages",
+        "feature_official": "Check the planned outages announced by Eneo every day and follow your neighbourhoods.",
+        "alt_screenshot_list": "NJUKA screenshot: electricity and water outage list",
+        "alt_screenshot_map": "NJUKA screenshot: outage map",
+        "alt_screenshot_detail": "NJUKA screenshot: report details"
       }
     },
     "aboutus": {
       "title_page": "About us",
-      "desc_page": "LightCutOff is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
-      "text_history_1": "In <b>Cameroon</b>, access to public resources such as electricity or water is not easy. Some regions/cities/districts may even be deprived of it for several days or even several weeks. The <b>{{projectTitle}}</b> platform aims to help make a real-time inventory of access to electric energy in <b>Cameroon</b>. This in order to allow third parties to adapt their daily life and to be informed.",
+      "desc_page": "NJUKA is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
+      "text_history_1": "In <b>Cameroon</b>, access to public resources such as electricity or water is not easy. Some regions/cities/districts may even be deprived of it for several days or even several weeks. The <b>NJUKA</b> platform aims to help make a real-time inventory of access to electric energy in <b>Cameroon</b>. This in order to allow third parties to adapt their daily life and to be informed.",
       "title_obj_1": "Our objective",
-      "text_obj_1": "<b>{{projectTitle}}</b> is a collaborative platform which allows its users to help each other on the question of availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
+      "text_obj_1": "<b>NJUKA</b> is a collaborative platform which allows its users to help each other on the question of availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
       "title_obj_2": "Our vision",
-      "text_obj_2": "Our long-term vision at <strong> {{projectTitle}} </strong> is to use technologies such as <strong> artificial intelligence and machin learning </strong> to offer more precise and better evaluated services in order to '' improve the user experience in the face of power cuts."
+      "text_obj_2": "Our long-term vision at <strong> NJUKA </strong> is to use technologies such as <strong> artificial intelligence and machin learning </strong> to offer more precise and better evaluated services in order to '' improve the user experience in the face of power cuts."
     },
     "tuto": {
-      "title_page": "Tutorial, learning how to use our tool",
-      "desc_page": "Tutorial, learn to use lightcutoff. How to use to make light cut reports.",
-      "prin_title": "Learn how to use {{projectTitle}}",
-      "report_alert_2": "In this tutorial we consider that <b>a report</b> is also <b>a report</b>, <b>an alert</b> and vice versa.",
-      "report_alert_1": "For the moment, {{projectTitle}} is only available in Cameroon. This means that no report will be accepted if it is made outside Cameroon.",
-      "title_presentation": "Presentation",
-      "text_presentation": "{{projectTitle}} is designed to help power users adapt to the constraints of power outages. This is done by means of an interactive map that would allow them to report any power outage or power restoration at their location.",
-      "title_legend": "Legend",
-      "title_begin": "Let's start",
-      "title_report_signal": "Report a power outage",
-      "title_add_report": "Add a report",
-      "legend_intro": "To begin with, here is the legend of our map.",
-      "legend_text_1": "As you can see, there's a specific record for each situation. We have:",
-      "legend_text_2": "<span class=\"text-primary\"><b>Marqueur bleu:</b></span> To report your position on the map.",
-      "legend_text_3": "<span class=\"text-danger\"><b>Marqueur rouge:</b></span> Represents a light cut reported by another user.",
-      "legend_text_4": "<span class=\"text-warning\"><b>Marqueur orange:</b></span>Represents a light cut reported by yourself.",
-      "legend_text_5": "<span class=\"text-success\"><b>Marqueur vert:</b></span>Represents the end of a cut reported by you or another user.",
-      "title_cluster": "Clusters",
-      "title_after_signal": "After your report",
-      "cluster_text_1": "a cluster is an area with a large number of markers. Depending on the number of markers, we have several types of clusters.",
-      "cluster_text_2": "Clusters are classified according to the number of markers in the area. Thus, the order of colors ranges from blue for a relatively small number to purple for a very large number of markers.",
-      "begin_text_1": "When you arrive on our map, you will be geolocated and your position will be represented by a blue marker.",
-      "begin_text_2": "It is possible that your position is not exactly accurate, so to improve it we have provided a search module that will allow you to better locate yourself in the map.",
-      "begin_text_3": "If it turns out that you have to move your blue marker over a very long distance, you don't necessarily have to drag it all the way. A double click on a place on the map will suffice.",
-      "begin_text_4": "To add a report, simply click once on your blue marker and a form will appear. All you have to do is choose a date and time corresponding to a power outage.",
-      "add_report_1": "Report a power outage.",
-      "report_signal_text_1": "After creating a report, there are 2 possibilities:",
-      "report_signal_text_2": "You report a current outage: after saving the previous report, you are presented with a new form, but you are not obliged to fill it in. You will notice an orange marker that indicates a power outage in progress that you have reported and that only you can report finished.",
-      "report_signal_text_3": "To close an issued outage report, simply click on the corresponding orange marker and fill in the form.",
-      "report_signal_text_4": "Another form is offered to you to complete your report: Just after you have created a report, a new form is presented to you. By filling out and sending this form, you close the power outage report initiated earlier.",
-      "after_signal_text_1": "After closing an issued report (section: Reporting a power failure), you will see a green marker. To let users know that your previous outage report is no longer valid. The situation has returned to normal (power restored).",
-      "menu_intro": "Introduction",
-      "menu_begin": "Let's get started",
-      "menu_add_report": "Add a report",
-      "menu_add_signal": "Report a power outage",
-      "menu_after_signal": "After your report"
+      "title_page": "Tutorial — how to use NJUKA",
+      "desc_page": "Learn how to use NJUKA: install the app, report an electricity or water outage, confirm ongoing outages and get alerts.",
+      "prin_title": "Learn how to use NJUKA",
+      "alert_country": "For now, NJUKA is only available in <b>Cameroon</b>: reports made outside Cameroon are not accepted.",
+      "step_install_title": "1. Install the app",
+      "step_install_text": "Download NJUKA on <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. No account needed to get started: you can report and browse anonymously. The iPhone version is coming soon to the App Store.",
+      "step_report_title": "2. Report an outage",
+      "step_report_text": "Electricity ⚡ or water 💧 outage at your place? Tap the “Report” button, pick the affected service: your report is geolocated and visible to your neighbours within seconds.",
+      "step_confirm_title": "3. Confirm… or deny",
+      "step_confirm_text": "When an outage is reported near you, the app asks “At your place too?”. Confirm if you are affected, or deny if everything works at home: the more confirmations, the more reliable the information. When the service is back, declare it — the reporter and confirmers are notified.",
+      "step_alert_title": "4. Follow planned outages",
+      "step_alert_text": "Check the official planned outages announced by Eneo every day, follow your neighbourhoods and get alerted the day before an outage is scheduled there.",
+      "web_map_title": "What about the website?",
+      "web_map_text": "The website lets you <a href='/map'>browse the reported outage map</a> in read-only mode. To report, confirm or get alerted, use the app."
     },
     "faq": {
-      "title": "Frequently Asked Questions on {{projectTitle}}",
-      "question_1": "Where can I use {{projectTitle}} from?",
-      "response_1": "{{projectTitle}} is currently only available in Cameroon. Our immediate goal is to target the Cameroonian market. Of course, we do not rule out one day being able to export it to other regions of Africa",
-      "question_2": "How to report a light cut on {{projectTitle}}?",
-      "response_2": "There are two ways to report a light cut with {{projectTitle}}. You can find how to do this in at least 2 tutorials on our platform:<ol><li>In the homepage you will find a button for a video tutorial.</li><li> In the footer you will also find a <a href=\"/tuto\">link to a tutorial</a>.</li></ol>",
-      "question_3": "How to install {{projectTitle}} on my mobile",
-      "question_intro": "Follow the instructions below to add a shortcut to a website on the home screen of your iPad, iPhone, or Android devices.",
-      "question_title_1": "iPad or iPhone",
-      "question_title_1_li_1": "Launch <i>“Safari”</i> app.  This does not work from the <i>“Chrome”</i> app.",
-      "question_title_1_li_2": "Enter into the address field the URL of the website you want to create a shortcut to. Tap “Go.”",
-      "question_title_1_li_3": "Tap the icon featuring a right-pointing arrow coming out of a box along the top of the Safari window to open a drop-down menu.",
-      "question_title_1_li_4": "Tap “Add to Home Screen.” The Add to Home dialog box will appear, with the icon that will be used for this website on the left side of the dialog box.",
-      "question_title_1_li_5": "Enter the name for the shortcut using the on-screen keyboard and tap “Add.” Safari will close automatically and you will be taken to where the icon is located on your iPad’s desktop.",
-      "question_title_2": "Android",
-      "question_title_2_li_1": "Launch “Chrome” app.",
-      "question_title_2_li_2": "Open the website or web page you want to pin to your home screen.",
-      "question_title_2_li_3": "Tap the menu icon (3 dots in upper right-hand corner) and tap Add to homescreen.",
-      "question_title_2_li_4": "You’ll be able to enter a name for the shortcut and then Chrome will add it to your home screen."
+      "title": "Frequently asked questions about NJUKA",
+      "question_1": "Where can I use NJUKA?",
+      "response_1": "NJUKA is currently available in Cameroon only, for electricity (Eneo) and water (Camwater) outages. We do not rule out extending it to other African countries.",
+      "question_2": "How do I report an electricity or water outage?",
+      "response_2": "Reports are made from the <b>NJUKA</b> mobile app, available on <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Open the app, tap “Report”, and you're done — even without creating an account. The website lets you <a href='/map'>browse the outage map</a>.",
+      "question_3": "How do I install NJUKA on my phone?",
+      "response_3": "On Android, download the app from <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. The iOS (iPhone) version is coming soon to the App Store."
     }
   },
   "main": {
@@ -222,7 +203,7 @@
       "error_message_send": "Your message has not been sent"
     },
     "tuto-modal": {
-      "step_1_text_1": "Discover some tips to use {{lightcutoff}}",
+      "step_1_text_1": "Discover some tips to use NJUKA",
       "step_1_text_2": "You can click on <b>next</b> to skip the steps",
       "step_1_header": "Welcome to our tutorial",
       "step_2_title": "1st method: Click on the blue marker",
@@ -289,7 +270,7 @@
     },
     "dashboard": {
       "title_page": "Dashboard",
-      "desc_page": "Lightcutoff. Retrieve statistics related to data recorded during blackouts",
+      "desc_page": "NJUKA. Retrieve statistics related to data recorded during blackouts",
       "card_reports_all_title": "Total reports",
       "card_reports_current_year_title": "Annual reports",
       "card_reports_current_month_title": "Monthly reports",
@@ -396,16 +377,6 @@
     }
   },
   "shared": {
-    "download-app": {
-      "title": "Do you use a mobile?",
-      "body": "Download {{lightcutoff}} for easier navigation and access.",
-      "faq": "If the installation does not work, go to the <a href='/faq'>FAQ</a> for more detailed instructions.",
-      "button_download": "Download",
-      "button_close": "Close",
-      "thanks": "Thank you",
-      "thanks_message": "Do you want to know how to use {{appTitle}}?",
-      "thanks_link": "Follow this tutorial"
-    },
     "loading": {
       "loading": "Uploading..."
     },

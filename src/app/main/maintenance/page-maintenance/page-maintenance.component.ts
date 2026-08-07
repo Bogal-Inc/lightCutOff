@@ -19,7 +19,7 @@ export class PageMaintenanceComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
     this.analytics.logEvent('page_view', {
-      page_location: 'https://lightcutoff.com/',
+      page_location: 'https://njuka-prod.web.app/',
       page_path: '/',
       page_title: 'Maintenance'
     });

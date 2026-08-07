@@ -1,23 +1,31 @@
 <div class="pb-5 home">
     <section class="home__section position-relative home__section-header">
-        <div class="home__section-header__body">
-            <div class="d-flex align-items-center justify-content-center home__section-header__body__logo section_1">
-                <div class="text-center">
-                    <img src="../../../../assets/static/images/logo.png"
-                         [alt]="'core.home.alt_logo' | translate: { projectTitle: projectTitle }"
-                         class="mb-5 home__section-header__body__logo__img"><br>
-                    <a class="mb-3 btn btn-warning me-2" [class.btn-lg]="!isMobil" href="/map"
+        <div class="home__hero d-flex align-items-center justify-content-center text-center">
+            <div>
+                <img src="../../../../assets/static/images/njuka/njuka_foreground.png"
+                     class="home__hero__bulb"
+                     [alt]="'core.home.alt_logo' | translate: { projectTitle: projectTitle }">
+                <h1 class="home__hero__title">{{projectTitle}}</h1>
+                <div class="home__hero__underline mx-auto"></div>
+                <p class="home__hero__tagline">{{'core.home.hero.tagline' | translate}}</p>
+                <p class="home__hero__services">
+                    <span>⚡ {{'core.home.hero.sub_electricity' | translate}}</span>
+                    <span class="home__hero__services__dot">·</span>
+                    <span>💧 {{'core.home.hero.sub_water' | translate}}</span>
+                </p>
+                <div class="mt-4">
+                    <a class="mb-3 btn btn-njuka btn-lg me-2" [href]="playStoreUrl" target="_blank" rel="noopener"
+                       [title]="'core.home.hero.btn_playstore_title' | translate">
+                        <i class="fab fa-google-play"></i>
+                        {{'core.home.hero.btn_playstore' | translate}}
+                    </a>
+                    <a class="mb-3 btn btn-outline-light btn-lg" routerLink="/map"
                        [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }">
                         <fa-icon [icon]="faBullhorn"></fa-icon>
                         {{"core.home.btn_map" | translate}}
                     </a>
-                    <!--<a class="mb-3 btn btn-success me-2" [class.btn-lg]="!isMobil" href="/own-report" *ngIf="isMarkerAdded"
-             [title]="'core.home.btn_report_title' | translate: { projectTitle: projectTitle }"
-          >
-            <fa-icon [icon]="faCheckCircle"></fa-icon>
-            {{"core.home.btn_report" | translate}}
-          </a>-->
                 </div>
+                <p class="home__hero__appstore">{{'core.home.hero.appstore_soon' | translate}}</p>
             </div>
         </div>
     </section>
@@ -90,32 +98,58 @@
         </div>
     </section>
 
-    <!--  Applications example -->
-    <section class="home__section home__section-example">
-        <div class="home__section-whatwedo__body w-100 h-100">
-            <h2 class="mb-5 text-center">{{'core.home.app_example.title' | translate}}</h2>
+    <!--  NJUKA app section -->
+    <section class="home__section home__section-app">
+        <div class="w-100 h-100">
+            <h2 class="mb-2 text-center">{{'core.home.app.title' | translate}}</h2>
+            <p class="text-center text-muted mb-5">{{'core.home.app.subtitle' | translate}}</p>
             <div class="container">
-                <div class="row">
-                    <div class="col-md-4 text-center">
-                        <div class=" pb-4">
-                            <img src="../../../../assets/static/images/home/research.svg" class="rounded w-100"
-                                 alt="{{'core.home.app_example.alt_research' | translate}} logo">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="../../../../assets/static/images/njuka/screenshots/03-liste-elec-eau.png"
+                                     class="w-100 rounded shadow-sm"
+                                     [alt]="'core.home.app.alt_screenshot_list' | translate">
+                            </div>
+                            <div class="col-4 pt-4">
+                                <img src="../../../../assets/static/images/njuka/screenshots/04-carte.png"
+                                     class="w-100 rounded shadow-sm"
+                                     [alt]="'core.home.app.alt_screenshot_map' | translate">
+                            </div>
+                            <div class="col-4">
+                                <img src="../../../../assets/static/images/njuka/screenshots/05-detail.png"
+                                     class="w-100 rounded shadow-sm"
+                                     [alt]="'core.home.app.alt_screenshot_detail' | translate">
+                            </div>
                         </div>
-                        <h4>{{'core.home.app_example.research' | translate}}</h4>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/home/work.svg" class="rounded w-100"
-                                 alt="{{'core.home.app_example.alt_move' | translate}}">
+                    <div class="col-md-6 mt-4 mt-md-0">
+                        <ul class="list-unstyled home__section-app__features">
+                            <li class="mb-4">
+                                <h4>{{'core.home.app.feature_report_title' | translate}}</h4>
+                                <p>{{'core.home.app.feature_report' | translate}}</p>
+                            </li>
+                            <li class="mb-4">
+                                <h4>{{'core.home.app.feature_confirm_title' | translate}}</h4>
+                                <p>{{'core.home.app.feature_confirm' | translate}}</p>
+                            </li>
+                            <li class="mb-4">
+                                <h4>{{'core.home.app.feature_alert_title' | translate}}</h4>
+                                <p>{{'core.home.app.feature_alert' | translate}}</p>
+                            </li>
+                            <li>
+                                <h4>{{'core.home.app.feature_official_title' | translate}}</h4>
+                                <p>{{'core.home.app.feature_official' | translate}}</p>
+                            </li>
+                        </ul>
+                        <div class="text-center text-md-start">
+                            <a class="btn btn-njuka btn-lg" [href]="playStoreUrl" target="_blank" rel="noopener"
+                               [title]="'core.home.hero.btn_playstore_title' | translate">
+                                <i class="fab fa-google-play"></i>
+                                {{'core.home.hero.btn_playstore' | translate}}
+                            </a>
                         </div>
-                        <h4>{{'core.home.app_example.move' | translate}}</h4>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/home/demenage.svg" class="rounded w-100"
-                                 alt="{{'core.home.app_example.alt_to_move_out' | translate}}">
-                        </div>
-                        <h4>{{'core.home.app_example.to_move_out' | translate}}</h4>
                     </div>
                 </div>
             </div>
@@ -151,27 +185,7 @@
     </div>
   </section>-->
 
-    <!--  actuality-->
-    <section class="home__section home__section-actuality">
-        <div class="home__section-actuality__body w-100 h-100">
-            <h2 class="mb-5 text-center">{{'core.home.actuality.title' | translate}}</h2>
 
-            <div class="container">
-                <div class="d-flex justify-content-center">
-                    <div class="card" style="width: 18rem;">
-                        <img src="../../../../assets/static/images/home/logo_opleda.jpg" class="card-img-top"
-                             alt="logo opleda">
-                        <div class="card-body">
-                            <h5 class="card-title" [innerHTML]="'core.home.actuality.opleda.title' | translate"></h5>
-                            <p class="card-text" [innerHTML]="'core.home.actuality.opleda.content' | translate"></p>
-                            <a href="https://eventornado.com/event/electricite-pour-tous-en-afrique#Blog%20du%20hackathon"
-                               class="btn btn-link">En savoir plus</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!--  team section-->
     <section class="home__section home__section-team">
@@ -185,10 +199,10 @@
                         <div class=" pb-4">
                             <img src="../../../../assets/static/images/partners/kouagnia_willy_c.png"
                                  [class.d-block]="!impPartnerWilly" class="rounded-circle w-100 d-none"
-                                 alt="kouagnia willy lightcutoff CEO">
+                                 alt="kouagnia willy NJUKA CEO">
                             <img src="../../../../assets/static/images/partners/kouagnia_willy_b.png"
                                  [class.d-block]="impPartnerWilly" class="rounded-circle w-100 d-none"
-                                 alt="kouagnia willy lightcutoff CEO">
+                                 alt="kouagnia willy NJUKA CEO">
                         </div>
                         <div>
                             <h4>Willy Kouagnia</h4>
@@ -200,10 +214,10 @@
                         <div class="text-center pb-4">
                             <img src="../../../../assets/static/images/partners/lco_yvan_tchounga_c.jpg"
                                  [class.d-block]="!impPartnerYvan" class="rounded-circle w-100 d-none"
-                                 alt="yvan_tchounga lightcutoff CTO">
+                                 alt="yvan_tchounga NJUKA CTO">
                             <img src="../../../../assets/static/images/partners/lco_yvan_tchounga_b.jpg"
                                  [class.d-block]="impPartnerYvan" class="rounded-circle w-100 d-none"
-                                 alt="yvan_tchounga lightcutoff CTO">
+                                 alt="yvan_tchounga NJUKA CTO">
                         </div>
                         <div>
                             <h4>Yvan Tchounga</h4>
@@ -215,10 +229,10 @@
                         <div class="text-center pb-4">
                             <img src="../../../../assets/static/images/partners/nandjeu_euclide_c.png"
                                  [class.d-block]="!impPartnerEuclide" class="rounded-circle w-100 d-none"
-                                 alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
+                                 alt="Nandjeu Euclide Quentin NJUKA responsable communication">
                             <img src="../../../../assets/static/images/partners/nandjeu_euclide_b.png"
                                  [class.d-block]="impPartnerEuclide" class="rounded-circle w-100 d-none"
-                                 alt="Nandjeu Euclide Quentin lightcutoff reponsable communication">
+                                 alt="Nandjeu Euclide Quentin NJUKA responsable communication">
                         </div>
                         <div>
                             <h4>Nandjeu Quentin</h4>
@@ -230,10 +244,10 @@
                     <div class="text-center pb-4">
                       <img src="../../../../assets/static/images/partners/lco_alex_nana_c.jpeg"
                            [class.d-block]="!impPartnerAlex" class="rounded-circle w-100 d-none"
-                           alt="Alex Nana lightcutoff reponsable communication">
+                           alt="Alex Nana NJUKA responsable communication">
                       <img src="../../../../assets/static/images/partners/lco_alex_nana_b.jpg"
                            [class.d-block]="impPartnerAlex" class="rounded-circle w-100 d-none"
-                           alt="Alex Nana lightcutoff reponsable communication">
+                           alt="Alex Nana NJUKA responsable communication">
                     </div>
                     <div>
                       <h4>Alex Nana</h4>
@@ -252,7 +266,7 @@
                 <h1 class="mb-5 text-center">{{'core.home.partners.title' | translate}}</h1>
                 <div class="row">
                     <img src="../../../../assets/static/images/partners/AG-LOGO.png"
-                         class="rounded-circle mx-auto d-block w-25" alt="AG-LOGO lightcutoff partner">
+                         class="rounded-circle mx-auto d-block w-25" alt="AG-LOGO NJUKA partner">
                 </div>
             </div>
         </div>

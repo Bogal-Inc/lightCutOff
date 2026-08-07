@@ -77,3 +77,35 @@
 ### Vérifications
 - `ng build` + `build:prod` OK · `npm test` **52/52** · `lint` 0 erreur · smoke test navigateur
   (accueil épuré, carte sans UI d'écriture).
+
+## [2.2.0] - 2026-08-07 — Lot 2b : vitrine + rebranding NJUKA
+
+### Identité
+- **LightCutOff → NJUKA** partout : `const.ts` (titre, clés localStorage, email support
+  `support@bogal.ca`, URLs stores), i18n fr/en, `index.html` (SEO, Open Graph, favicon,
+  `lang=fr`, theme-color charbon), alt/keywords des composants, copyright footer
+  (« NJUKA · Bogal Consulting »).
+- **Palette NJUKA** (`_site.scss`) : ambre `#F88E01`, charbon `#1A1A1A`, sky `#0EA5E9` +
+  ré-définition des variables CSS héritées de Bootstrap 4 (`--white`, `--dark`, `--gray`,
+  `--warning`) supprimées par Bootstrap 5 ; bouton de marque `.btn-njuka` ; navbar charbon.
+- Assets copiés depuis l'app : icône/bulbe NJUKA (header, favicon, hero) + 3 captures d'écran.
+
+### Contenu
+- **Accueil** : nouveau hero (halo ambre, NJUKA, devise « Ensemble, on y voit plus clair. »,
+  ⚡ Électricité · 💧 Eau, bouton **Google Play** + bouton carte) ; nouvelle section
+  « L'application NJUKA » (captures + 4 features : signaler, confirmer/démentir, alertes,
+  coupures planifiées Eneo) ; texte « à propos » réécrit (électricité **et eau**) ;
+  section actualité Opleda (2020, périmée) supprimée.
+- **Tutoriel** réécrit : guide de l'app en 4 étapes + note « site = consultation seule »
+  (l'ancien tuto décrivait le signalement sur la carte web, supprimé au lot 2a).
+- **FAQ** réécrite : disponibilité (élec Eneo + eau Camwater), signaler = via l'app,
+  installer = Google Play (iOS bientôt) — remplace le guide « raccourci PWA » obsolète.
+
+### Vérifications
+- `ng build` + `build:prod` OK · `npm test` **52/52** · `lint` 0 erreur · vérification
+  navigateur (hero, i18n, images, /tuto, /faq, /aboutus).
+
+### Reste à décider (Willy)
+- Liens sociaux du footer : pointent encore vers les comptes LightCutOff
+  (facebook.com/lightcutoff.lco, twitter LightCutOff1, instagram lightcutoff).
+- Sitemaps XML encore au nom lightcutoff (dépend du domaine final — lot 2f).

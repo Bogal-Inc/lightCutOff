@@ -1,15 +1,22 @@
 export const Const = {
   app: {
-    title: 'LightCutOff',
+    title: 'NJUKA',
+    tagline: {
+      fr: 'Ensemble, on y voit plus clair.',
+      en: 'Together, we see clearly.'
+    },
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.njuka.app',
+    // À renseigner quand l'app iOS sera publiée sur l'App Store
+    appStoreUrl: null,
     lang: {
-      localstorage_title: 'lightCutOffXLanguage',
+      localstorage_title: 'njukaXLanguage',
       defaultLanguage: 'fr',
       fr: 'fr',
       en: 'en'
     }
   },
   user: {
-    localstorage: 'LCO_userLogged'
+    localstorage: 'NJUKA_userLogged'
   },
   sendMail: 'https://us-central1-lightcutoff.cloudfunctions.net/sendMail',
   collections: {
@@ -28,7 +35,7 @@ export const Const = {
     lat: 3.843249609352396
   },
   emailService: {
-    support: 'lightcutoff@gmail.com'
+    support: 'support@bogal.ca'
   },
   markerColor: {
     user: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',

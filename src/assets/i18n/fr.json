@@ -14,22 +14,20 @@
     "october": "Octobre",
     "november": "Novembre",
     "december": "Decembre",
-    "meta_description": "Lightcutoff est un projet qui a pour but de collecter des données sur la fourniture d'énergie électrique au Cameroun, ces données sont essentiellement fournies par des personnes directement concernées par ces coupures (la population)."
+    "meta_description": "NJUKA est un projet qui a pour but de collecter des données sur la fourniture d'énergie électrique au Cameroun, ces données sont essentiellement fournies par des personnes directement concernées par ces coupures (la population)."
   },
   "core": {
     "home": {
       "title_page": "Site officiel",
-      "desc_page": "LightCutOff est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
-      "btn_tuto_lightcutoff": "Tutoriel {{projectTitle}}",
-      "btn_tuto_lightcutoff_title": "Comment utiliser {{projectTitle}}?",
-      "btn_map": "Signalez une coupure",
-      "btn_map_title": "Allez sur notre carte interactive de {{projectTitle}} faire vos signalements de coupures de lumière",
+      "desc_page": "NJUKA est l'application mobile de signalement des coupures d'électricité et d'eau au Cameroun. Signalez, confirmez et suivez les coupures autour de vous, et consultez les coupures planifiées officielles.",
+      "btn_map": "Voir la carte des coupures",
+      "btn_map_title": "Consultez la carte interactive des coupures signalées sur NJUKA",
       "btn_report": "Mes signalements",
-      "btn_report_title": "Retrouver la liste de vos signalements de courant sur {{projectTitle}}",
-      "alt_logo": "{{projectTitle}} logo, signalez coupure de courant, marquez vos coupure d'energie électrique",
+      "btn_report_title": "Retrouver la liste de vos signalements de courant sur NJUKA",
+      "alt_logo": "Logo NJUKA — signalement des coupures d'électricité et d'eau",
       "about": {
-        "title": "À propos de {{projectTitle}}",
-        "content": "L'accès à des ressources publiques dans les pays en voie de développement tel que l'électricité ou l'eau n'est pas chose aisée. Certaines régions/villes/quartiers peuvent même en être privée pendant plusieurs jours voir plusieurs semaines. <b>{{projectTitle}}</b> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
+        "title": "À propos de NJUKA",
+        "content": "L'accès aux services essentiels comme l'électricité ou l'eau n'est pas toujours garanti : certaines régions, villes ou quartiers peuvent en être privés pendant des heures, voire des jours. <b>NJUKA</b> est une plateforme collaborative qui permet à ses utilisateurs de signaler les coupures d'électricité et d'eau autour d'eux, de les confirmer, de suivre le retour du service et de consulter les coupures planifiées officielles — pour mieux organiser leur quotidien.",
         "btn_next": "En savoir plus",
         "alt_img": "illustration de section à propos. Rapportez coupure lumiere"
       },
@@ -53,7 +51,7 @@
         "communication": "Responsable communication"
       },
       "statistics": {
-        "title": "{{projectTitle}} statistiques",
+        "title": "NJUKA statistiques",
         "reports_total": "Total des signalements",
         "reports_yearly": "Signalements annuel",
         "reports_monthly": "Signalements mensuel",
@@ -63,8 +61,8 @@
         "title": "Que faisons nous",
         "alt_collect_data": "Illustration compiler et collecter des données sur les coupures de courant",
         "collect_data": "Compiler et collecter des données",
-        "alt_local_cut_off": "Illustration localiser les coupures d'électricité",
-        "local_cut_off": "Localiser les coupures d'électricité",
+        "alt_local_cut_off": "Illustration localiser les coupures d'électricité et d'eau",
+        "local_cut_off": "Localiser les coupures d'électricité et d'eau",
         "alt_charts_data": "Illustration analyse des données sur les coupures d'énergie électrique",
         "charts_data": "Analyse des données",
         "alt_users_notifications": "Illustration Notifier les utilisateurs sur les coupure de courrant electrique",
@@ -74,83 +72,66 @@
         "alt_img": "Contactez-nous pour les coupures de lumiere pres dou vous etes",
         "title": "Contactez-nous"
       },
-      "actuality": {
-        "title": "Actualité",
-        "opleda": {
-          "title": "4<sup>e</sup> place du hackathon organisé par l'ONG OPLEDA",
-          "content": "Nous avons eu l'honneur de participer au hackthon organisé par l'ONG <b>OPLEDA</b> dont le thème portait sur <b>Electricité pour tous en Afrique</b>. Sur 62 projets en liste, nous avons eu la 4<sup>e</sup> place."
-        }
-      },
       "partners": {
         "title": "Partenaires"
+      },
+      "hero": {
+        "tagline": "Ensemble, on y voit plus clair.",
+        "sub_electricity": "Électricité",
+        "sub_water": "Eau",
+        "btn_playstore": "Disponible sur Google Play",
+        "btn_playstore_title": "Télécharger l'application NJUKA sur Google Play",
+        "appstore_soon": "Bientôt sur l'App Store"
+      },
+      "app": {
+        "title": "L'application NJUKA",
+        "subtitle": "Signalez et suivez les coupures d'électricité et d'eau, directement depuis votre téléphone.",
+        "feature_report_title": "Signalez en quelques secondes",
+        "feature_report": "Une coupure chez vous ? Signalez-la, géolocalisée, même sans créer de compte.",
+        "feature_confirm_title": "Confirmez, ou démentez",
+        "feature_confirm": "Les voisins confirment les coupures en cours : plus il y a de confirmations, plus l'information est fiable.",
+        "feature_alert_title": "Soyez alerté",
+        "feature_alert": "Recevez une notification quand une coupure est signalée près de chez vous, et quand le service revient.",
+        "feature_official_title": "Coupures planifiées officielles",
+        "feature_official": "Consultez chaque jour les coupures programmées annoncées par Eneo et suivez vos quartiers.",
+        "alt_screenshot_list": "Capture d'écran NJUKA : liste des coupures électricité et eau",
+        "alt_screenshot_map": "Capture d'écran NJUKA : carte des coupures",
+        "alt_screenshot_detail": "Capture d'écran NJUKA : détail d'un signalement"
       }
     },
     "aboutus": {
       "title_page": "À propos",
-      "desc_page": "LightCutOff est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
-      "text_history_1": "La fourniture d'énergie électrique en Afrique est un besoin fondamental, c'est à dire qu'elle est précieuse pour tout habitant. Cependant, dans des pays en voie de développement comme le Cameroun, l'effectivité de cette disponibilité n'est pas tout le temps avérée. Afin de permettre aux habitants et consommateurs d'énergie électrique de mieux maitriser cette disponibilité au quotidien, nous avons pensé à créer l'outil <b>{{projectTitle}}</b>.",
+      "desc_page": "NJUKA est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
+      "text_history_1": "La fourniture d'énergie électrique en Afrique est un besoin fondamental, c'est à dire qu'elle est précieuse pour tout habitant. Cependant, dans des pays en voie de développement comme le Cameroun, l'effectivité de cette disponibilité n'est pas tout le temps avérée. Afin de permettre aux habitants et consommateurs d'énergie électrique de mieux maitriser cette disponibilité au quotidien, nous avons pensé à créer l'outil <b>NJUKA</b>.",
       "title_obj_1": "Notre objectif",
-      "text_obj_1": "<strong>{{projectTitle}}</strong> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
+      "text_obj_1": "<strong>NJUKA</strong> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
       "title_obj_2": "Notre vision",
-      "text_obj_2": "Notre vision à long terme chez <strong>{{projectTitle}}</strong> est d'utiliser des technologies tel que <strong>l'intelligence artificielle et le machin learning</strong> pour offrir des services plus précis et mieux évalués afin d'améliorer l'expérience des utilisateurs face aux coupures de courant."
+      "text_obj_2": "Notre vision à long terme chez <strong>NJUKA</strong> est d'utiliser des technologies tel que <strong>l'intelligence artificielle et le machin learning</strong> pour offrir des services plus précis et mieux évalués afin d'améliorer l'expérience des utilisateurs face aux coupures de courant."
     },
     "tuto": {
-      "title_page": "Lightcutoff. Tutoriel, comment utiliser?",
-      "desc_page": "Tutoriel, apprendre à utiliser lightcutoff. Comment utiliser faire des signalements de coupure de lumière.",
-      "prin_title": "Apprenez à utiliser {{projectTitle}}",
-      "report_alert_2": "Dans ce tutoriel, nous considérons qu'<b>un rapport</b> est aussi <b>un signalement</b>, <b>une alerte</b> et vice versa.",
-      "report_alert_1": "Pour l'instant, {{projectTitle}} n'est disponible qu'au Cameroun. Ce qui veut dire qu'aucun signalement ne sera accepté s'il est fait en dehors du Cameroun.",
-      "title_presentation": "Présentation",
-      "text_presentation": "{{projectTitle}} a pour objectif d’aider les utilisaturs d'énergie électrique à s’adapter aux contraintes liées aux coupures de courant électrique. Ceci au moyen d'une carte interactive qui leur permettrait de signaler toute coupure ou remise d'énergie électrique à l'endroit où ils se trouvent.",
-      "title_legend": "Légende",
-      "title_begin": "Commençons",
-      "title_report_signal": "Signaler une coupure d'électricité",
-      "title_add_report": "Ajouter un rapport",
-      "legend_intro": "Pour commencer, voici la légende de notre map.",
-      "legend_text_1": "Comme vous pouvez le voir, il existe un signalement particulier pour chaque situation. Nous avons:",
-      "legend_text_2": "<span class=\"text-primary\"><b>Marqueur bleu:</b></span> Pour signaler votre position sur la carte.",
-      "legend_text_3": "<span class=\"text-danger\"><b>Marqueur rouge:</b></span> Représente une coupure de lumiére signalée par un autre utilisateur.",
-      "legend_text_4": "<span class=\"text-warning\"><b>Marqueur orange:</b></span>Représente une coupure de lumiére signalée par vous même.",
-      "legend_text_5": "<span class=\"text-success\"><b>Marqueur vert:</b></span>Représente la fin d'une coupure signalée par vous même ou par un autre utilisateur.",
-      "title_cluster": "Clusters",
-      "title_after_signal": "Après votre signalement",
-      "cluster_text_1": "un cluster est une zone avec un nombre important de marqueurs. En fonction du nombre de marqueurs, nous avons plusieurs types de clusters.",
-      "cluster_text_2": "Les  clusters sont classés en fonction de la quantité de marqueurs se trouvant dans la zone. Ainsi, l'ordre des couleurs va du bleu pour un nombre relativement petit à la couleur violette pour un nombre de marqueurs très important.",
-      "begin_text_1": "Lorsque vous arrivez sur notre map, vous serez geolocalisé et votre position sera représentée par un marqueur bleu.",
-      "begin_text_2": "Il est possible que votre position ne soit pas exactement précise alors, pour l'améliorer nous avons prévu un module de recherche de place qui vous permettra de mieux vous situer sur la carte.",
-      "begin_text_3": "S'il s'avère que vous devez déplacer votre marqueur bleu sur une très longue distance, vous n'avez pas forcément besoin de le glisser sur tout le long. Un double click sur un endroit de la map suffira.",
-      "begin_text_4": "Pour pouvoir ajouter un rapport, il vous suffit de cliquer une fois sur le votre marqueur bleu et un formulaire apparait. Il vous suffira de choisir une date et une heure correspondante à la coupure.",
-      "add_report_1": "Signalez une coupure",
-      "report_signal_text_1": "Après avoir créé un rapport, il y a 2 possibilités:",
-      "report_signal_text_2": "Vous signalez une coupure en cours: après avoir enregistré le rapport précédent, un nouveau formulaire vous est présenté mais, vous n'êtes pas dans l'obligation de le remplir. Vous remarquerez un marqueur orange qui signale une coupure en cours que vous avez signalé et que vous seul pouvez signaler fini.",
-      "report_signal_text_3": "Pour fermer un rapport de coupure émis, il vous suffit de cliquer sur le marqueur orange correspondant et remplir le formulaire.",
-      "report_signal_text_4": "Un autre formulaire vous est proposé pour terminer votre rapport: Juste après que vous ayez crée un rapport, il vous est proposé un nouveau formulaire. En remplissant et en envoyant ce formulaire, vous fermez le rapport de coupure initié plus tôt.",
-      "after_signal_text_1": "Après la fermeture d'un rapport émis (section: Signaler une coupure), vous verrez un marqueur vert. Pour signifier aux utilisateurs que votre signalement de coupure précédant n'est plus. La situation est revenue à la normale (électricité remise).",
-      "menu_intro": "Introduction",
-      "menu_begin": "Commençons",
-      "menu_add_report": "Ajouter un rapport",
-      "menu_add_signal": "Signaler une coupure d'électricité",
-      "menu_after_signal": "Après votre signalement"
+      "title_page": "Tutoriel — comment utiliser NJUKA",
+      "desc_page": "Apprendre à utiliser NJUKA : installer l'application, signaler une coupure d'électricité ou d'eau, confirmer les coupures en cours et recevoir des alertes.",
+      "prin_title": "Apprenez à utiliser NJUKA",
+      "alert_country": "Pour l'instant, NJUKA n'est disponible qu'au <b>Cameroun</b> : les signalements faits en dehors du Cameroun ne sont pas acceptés.",
+      "step_install_title": "1. Installez l'application",
+      "step_install_text": "Téléchargez NJUKA sur <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Aucune création de compte n'est nécessaire pour commencer : vous pouvez signaler et consulter en restant anonyme. La version iPhone arrive bientôt sur l'App Store.",
+      "step_report_title": "2. Signalez une coupure",
+      "step_report_text": "Une coupure d'électricité ⚡ ou d'eau 💧 chez vous ? Appuyez sur le bouton « Signaler », choisissez le service concerné : votre signalement est géolocalisé et visible par les voisins en quelques secondes.",
+      "step_confirm_title": "3. Confirmez… ou démentez",
+      "step_confirm_text": "Quand une coupure est signalée près de chez vous, l'app vous demande « Chez toi aussi ? ». Confirmez si vous êtes touché, ou démentez si tout fonctionne chez vous : plus il y a de confirmations, plus l'information est fiable. Quand le service revient, déclarez « le courant est revenu » — l'auteur et les confirmeurs sont prévenus.",
+      "step_alert_title": "4. Suivez les coupures planifiées",
+      "step_alert_text": "Consultez chaque jour les coupures programmées officielles annoncées par Eneo, suivez vos quartiers et recevez une alerte la veille quand une coupure y est prévue.",
+      "web_map_title": "Et le site web ?",
+      "web_map_text": "Le site vous permet de <a href='/map'>consulter la carte des coupures signalées</a> en lecture seule. Pour signaler, confirmer ou être alerté, c'est dans l'application."
     },
     "faq": {
-      "title": "Foire aux questions sur {{projectTitle}}",
-      "question_1": "D'où est ce que je peux utiliser {{projectTitle}}?",
-      "response_1": "{{projectTitle}} est pour l'instant disponible uniquement au Cameroun. Notre objectif dans l'immédiat est de cibler le marché camerounais. Bien sûr, nous n'excluons pas un jour de pouvoir l'exporter vers d'autres régions d'Afrique.",
-      "question_2": "Comment signaler une coupure de lumière sur {{projectTitle}}?",
-      "response_2": "Il existe deux façons de signaler une coupure de lumière avec {{projectTitle}}. Vous pouvez trouvez comment faire dans au moins 2 tutoriels se trouvant sur notre plateforme:<ol><li>Dans la page d'accueil, vous trouverez un bouton pour une vidéo tutoriel.</li><li>Dans le pied de page, vous trouverez aussi un <a href=\"/tuto\">lien vers un tutoriel</a>.</li></ol>",
-      "question_3": "Comment installer {{projectTitle}} sur mon mobile?",
-      "question_intro": "Suivez les instructions ci-dessous pour ajouter un raccourci vers un site Web sur l'écran d'accueil de otre iPad, iPhone ou appareils Android.",
-      "question_title_1": "iPad ou iPhone",
-      "question_title_1_li_1": "Lancez l'application «Safari». Cela ne fonctionne pas à partir de l'application <i>«Chrome»</i>.",
-      "question_title_1_li_2": "Entrez dans le champ d'adresse l'URL du site Web vers lequel vous souhaitez créer un raccourci. Appuyez sur “Aller”",
-      "question_title_1_li_3": "Appuyez sur l'icône avec une flèche pointant vers la droite sortant d'une boîte en haut de la fenêtre Safari pour ouvrir un menu déroulant",
-      "question_title_1_li_4": "Appuyez sur “Ajouter à l'écran d'accueil”. La boîte de dialogue Ajouter à l'accueil apparaîtra, avec l'icône qui sera utilisée pour ce site Web sur le côté gauche de la boîte de dialogue.",
-      "question_title_1_li_5": "Saisissez le nom du raccourci à l'aide du clavier à l'écran et appuyez sur “Ajouter”. Safari se fermera automatiquement et vous serez redirigé vers l'emplacement de l'icône sur le bureau de votre iPad.",
-      "question_title_2": "Android",
-      "question_title_2_li_1": "Lancez l'application «Chrome».",
-      "question_title_2_li_2": "Ouvrez le site Web ou la page Web que vous souhaitez épingler sur votre écran d'accueil.",
-      "question_title_2_li_3": "Appuyez sur l'icône de menu (3 points dans le coin supérieur droit) et appuyez sur Ajouter à l'écran d'accueil.",
-      "question_title_2_li_4": "Vous pourrez saisir un nom pour le raccourci, puis Chrome l'ajoutera à votre écran d'accueil."
+      "title": "Foire aux questions sur NJUKA",
+      "question_1": "Où est-ce que je peux utiliser NJUKA ?",
+      "response_1": "NJUKA est pour l'instant disponible uniquement au Cameroun, pour les coupures d'électricité (Eneo) et d'eau (Camwater). Nous n'excluons pas de l'étendre à d'autres pays d'Afrique.",
+      "question_2": "Comment signaler une coupure d'électricité ou d'eau ?",
+      "response_2": "Les signalements se font depuis l'application mobile <b>NJUKA</b>, disponible sur <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Ouvrez l'app, appuyez sur « Signaler », et c'est fait — même sans créer de compte. Le site web vous permet quant à lui de <a href='/map'>consulter la carte des coupures</a>.",
+      "question_3": "Comment installer NJUKA sur mon téléphone ?",
+      "response_3": "Sur Android, téléchargez l'application depuis <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. La version iOS (iPhone) arrive bientôt sur l'App Store."
     }
   },
   "main": {
@@ -159,7 +140,7 @@
     },
     "map-view": {
       "title_page": "Carte collaborative",
-      "desc_page": "Lightcutoff carte collaborative. Signaler les coupures de lumière. Aidez nos équipe à geolocalisé des coupures de courant. Informer les membres de la communauté des coupures d'energie électrique.",
+      "desc_page": "NJUKA carte collaborative. Signaler les coupures de lumière. Aidez nos équipe à geolocalisé des coupures de courant. Informer les membres de la communauté des coupures d'energie électrique.",
       "error_geolocalize_not_work": "Le service de geolocalisation ne fonctionne pas",
       "error_geolocalize_no_browser": "Votre navigateur ne supporte Geolocation",
       "error_no_cameroon": "Vous ne pouvez pas creer de rapport hors du territoire Camerounais",
@@ -224,7 +205,7 @@
       "error_message_send": "Votre message n'a pas été envoyé"
     },
     "tuto-modal": {
-      "step_1_text_1": "Découvrer quelques astuces pour utiliser {{lightcutoff}}",
+      "step_1_text_1": "Découvrer quelques astuces pour utiliser NJUKA",
       "step_1_text_2": "Vous pouvez cliquer sur <b>suivant</b> pour passer les étapes.",
       "step_1_header": "Bienvenue sur notre tutoriel",
       "step_2_title": "1ere méthode: Cliquer sur le marqueur bleu.",
@@ -291,7 +272,7 @@
     },
     "dashboard": {
       "title_page": "Tableau de bord",
-      "desc_page": "Lightcutoff. Retrouver des statistiques liées aux données enregistrées pendant des coupure de lumière",
+      "desc_page": "NJUKA. Retrouver des statistiques liées aux données enregistrées pendant des coupure de lumière",
       "card_reports_all_title": "Total rapports",
       "card_reports_current_year_title": "Rapports annuel",
       "card_reports_current_month_title": "Rapports mensuel",
@@ -372,7 +353,7 @@
       "signin_verified_email_message_2": "Cliquer ici"
     },
     "signup": {
-      "reason_signup": "Lightcutoff est une plateforme collaborative qui permet à ses utilisateurs de partager de l'information concernant les coupures de lumière. Pour se faire, nous avons besoin de connaitre nos utilisateurs. <br>Alors crée vous un compte. Gardons le contact."
+      "reason_signup": "NJUKA est une plateforme collaborative qui permet à ses utilisateurs de partager de l'information concernant les coupures de lumière. Pour se faire, nous avons besoin de connaitre nos utilisateurs. <br>Alors crée vous un compte. Gardons le contact."
     },
     "forgot-password": {
       "title": "Mot de passe oublié",
@@ -425,16 +406,6 @@
     }
   },
   "shared": {
-    "download-app": {
-      "title": "Vous utilisez un mobile?",
-      "body": "Télécharger {{lightcutoff}} pour une navigation et un accès plus facile.",
-      "faq": "Si l'installation ne fonctionne pas, allez à la <a href='/faq'>FAQ</a> pour suivre des instructions plus détailllées.",
-      "button_download": "Télécharger",
-      "button_close": "Fermé",
-      "thanks": "Merci",
-      "thanks_message": "Voulez-vous savoir comment utiliser {{appTitle}}?",
-      "thanks_link": "Suivez ce tutoriel"
-    },
     "loading": {
       "loading": "Chargement..."
     },

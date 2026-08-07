@@ -73,7 +73,7 @@ Le site devient **vitrine Njuka + carte publique en LECTURE SEULE + section admi
 Lots dans l'ordre :
 - [x] 2a. **Purge** (✅ 2026-08-07, commit sur feat/upgrade-angular20) : PWA (ngsw, manifests, FCM/messaging, device.service), création/clôture de
        signalements côté public, signup/signin publics, own-report, modals messaging/geolocation.
-- [ ] 2b. **Rebranding + vitrine Njuka** : const.ts, i18n fr/en, index.html (SEO), sitemap,
+- [x] 2b. **Rebranding + vitrine Njuka** (✅ 2026-08-07 ; reste : liens sociaux footer à trancher, sitemap au domaine final) : const.ts, i18n fr/en, index.html (SEO), sitemap,
        palette/styles, accueil (devise, features app, boutons Play Store/App Store), à propos,
        FAQ, tuto orienté app, contact (CF contactus conservée).
 - [ ] 2c. **Carte lecture seule** : Google Maps → Leaflet + Stadia (+ markercluster),

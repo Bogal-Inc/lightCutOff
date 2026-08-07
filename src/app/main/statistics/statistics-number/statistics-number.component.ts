@@ -38,7 +38,7 @@ export class StatisticsNumberComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
     this.analytics.logEvent('page_view', {
-      page_location: 'https://lightcutoff.com/statistics_numbers',
+      page_location: 'https://njuka-prod.web.app/statistics_numbers',
       page_path: '/statistics_numbers',
       page_title: 'statistics numbers'
     });

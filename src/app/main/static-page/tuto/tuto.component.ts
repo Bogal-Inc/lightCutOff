@@ -28,7 +28,7 @@ export class TutoComponent implements OnInit {
   ngOnInit(): void {
     log.debug('init');
     this.analytics.logEvent('page_view', {
-      page_location: 'https://lightcutoff.com/tuto',
+      page_location: 'https://njuka-prod.web.app/tuto',
       page_path: '/tuto',
       page_title: 'Tutorial'
     });
@@ -36,7 +36,7 @@ export class TutoComponent implements OnInit {
     this.metaService.setTagsGeneral(
       this.translateService.instant('core.tuto.title_page'),
       [
-        new MetaTag(METATAG.KEYWORDS, 'lightcutoff, service information light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, Logo lightcutoff, délestages, coupures, signaler coupure, signalez coupure de lumiere, rapport de coupure de lumiere, rapport, panne de courant, panne de electrique, panne, report light cut off, que faire pendant une coupure de lumiere, comment utiliser lightcutoff, tutoriel, apprendre, learning'),
+        new MetaTag(METATAG.KEYWORDS, 'njuka, coupure electricité, coupure eau, délestage, Eneo, Camwater, Cameroun, Cameroon, signaler coupure, panne de courant, coupures programmées, power outage, water outage, carte des coupures'),
         new MetaTag(METATAG.DESCRIPTION, this.translateService.instant('core.tuto.desc_page'))
       ]);
   }

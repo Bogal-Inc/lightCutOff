@@ -7,19 +7,44 @@
         margin-bottom: 120px !important;
     }
     &__section-header {
-        background: center/contain no-repeat url("../../../../assets/static/images/home/background_home_section.jpg");
-        background-size: cover;
-        &__body {
-            position: relative;
-            display: block;
-            box-sizing: border-box;
-            &__logo {
-                background-color: rgba(0, 0, 0, 0.5);
-                color: var(--white);
-                &__img {
-                    width: 50%;
-                }
+        background-color: var(--njuka-charcoal);
+    }
+    &__hero {
+        min-height: 100vh;
+        color: var(--white);
+        background: radial-gradient(circle at 50% 38%, rgba(248, 142, 1, 0.28) 0%, rgba(26, 26, 26, 0) 55%),
+                    var(--njuka-charcoal);
+        &__bulb {
+            width: 140px;
+            max-width: 40vw;
+        }
+        &__title {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: 0.35em;
+            margin-right: -0.35em; // compense le letter-spacing du dernier caractère
+        }
+        &__underline {
+            width: 180px;
+            height: 6px;
+            background-color: var(--njuka-amber);
+            margin-bottom: 1.2rem;
+        }
+        &__tagline {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        &__services {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.75);
+            &__dot {
+                margin: 0 0.6rem;
+                color: var(--njuka-amber);
             }
+        }
+        &__appstore {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
         }
     }
     &__section-contactus {

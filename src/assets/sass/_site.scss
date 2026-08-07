@@ -3,6 +3,39 @@ Please use this file to style all basic item like link (a),
 paragraph (p) or list (ul, ol)
 *****/
 
+// --- Palette NJUKA + alias hérités de Bootstrap 4 (les vars --white/--dark/--gray/--warning
+// n'existent plus en Bootstrap 5, elles sont redéfinies ici) ---
+:root {
+  --njuka-amber: #F88E01;
+  --njuka-charcoal: #1A1A1A;
+  --njuka-sky: #0EA5E9;
+  --white: #fff;
+  --dark: var(--njuka-charcoal);
+  --gray: #6c757d;
+  --warning: var(--njuka-amber);
+}
+
+// Bouton principal de la marque (ambre sur charbon)
+.btn-njuka {
+  background-color: var(--njuka-amber);
+  border-color: var(--njuka-amber);
+  color: var(--njuka-charcoal);
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    background-color: #d97c00;
+    border-color: #d97c00;
+    color: var(--njuka-charcoal);
+  }
+}
+
+// Navbar et footer sur le charbon de la marque
+.navbar.bg-dark,
+footer.bg-dark {
+  background-color: var(--njuka-charcoal) !important;
+}
+
 html,
 body {
   height: 100%;

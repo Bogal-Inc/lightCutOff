@@ -1,120 +1,48 @@
-<div class="tuto" *ngIf="projectTitle !== null">
+<div class="tuto">
     <div class="container">
       <div class="p-5 mb-4 bg-light" id="start">
         <div class="container">
-          <h1 class="display-3">{{'core.tuto.prin_title' | translate: {projectTitle:projectTitle} }}</h1>
+          <h1 class="display-3">{{'core.tuto.prin_title' | translate}}</h1>
         </div>
       </div>
 
-      <div class="row pr-lg-5 pl-lg-5">
+      <div class="row pe-lg-5 ps-lg-5">
         <div class="mb-5">
           <div class="alert alert-info tuto__alert" role="alert">
             <fa-icon [icon]="faInfoCircle"></fa-icon> &nbsp;&nbsp;
-            <span [innerHTML]="'core.tuto.report_alert_1' | translate: {projectTitle:projectTitle}"></span>
-          </div>
-          <div class="alert alert-info tuto__alert" role="alert">
-            <fa-icon [icon]="faInfoCircle"></fa-icon> &nbsp;&nbsp;
-            <span [innerHTML]="'core.tuto.report_alert_2' | translate: {projectTitle:projectTitle}"></span>
+            <span [innerHTML]="'core.tuto.alert_country' | translate"></span>
           </div>
         </div>
 
-        <div class="col-md-9">
-          <div data-spy="scroll" data-bs-target="#navbar-example3" data-offset="0">
-            <div class="mb-5">
-              <div>
-                <h4 class="display-4">{{'core.tuto.title_presentation' | translate}}</h4>
-
-                <p>
-                  {{'core.tuto.text_presentation' | translate: {projectTitle:projectTitle} }}
-                  <img src="./assets/static/images/tuto/presentation.png" alt="exemple de carte" class="w-100">
-                </p>
-              </div>
-              <div>
-                <h4 class="display-5">{{'core.tuto.title_legend' | translate}}</h4>
-                <p class="lead">{{'core.tuto.legend_intro' | translate}}</p>
-                <app-map-legend></app-map-legend>
-<!--                <p class="lead"> {{'core.tuto.legend_text_1' | translate}}</p>-->
-                <ul>
-                  <li [innerHTML]="'core.tuto.legend_text_2' | translate"></li>
-                  <li [innerHTML]="'core.tuto.legend_text_3' | translate"></li>
-                  <li [innerHTML]="'core.tuto.legend_text_4' | translate"></li>
-                  <li [innerHTML]="'core.tuto.legend_text_5' | translate"></li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 class="display-5">{{'core.tuto.title_cluster' | translate}}</h4>
-                <p class="lead">{{'core.tuto.cluster_text_1' | translate}}</p>
-                <p class="lead">{{'core.tuto.cluster_text_2' | translate}}</p>
-                <img src="./../../../../assets/static/images/clusters.png"
-                     class="rounded mx-auto d-block" width="50%" alt="marker bleu">
-              </div>
-            </div>
-
-            <div class="mb-5">
-              <h3 class="display-4" id="start_1">{{'core.tuto.title_begin' | translate}}</h3>
-
-              <p class="lead">
-                {{'core.tuto.begin_text_1' | translate}}
-                <img src="./../../../../assets/static/images/marker_blue.png"
-                     class="rounded mx-auto d-block" alt="marker bleu">
-                {{'core.tuto.begin_text_2' | translate}}
-                <img src="./../../../../assets/static/images/place_reseach.png" width="100%"
-                     class="rounded mx-auto d-block" alt="place research">
-                {{'core.tuto.begin_text_3' | translate}}
-              </p>
-            </div>
-
-            <div class="mb-5">
-              <h3 class="display-4" id="add-report">{{ 'core.tuto.title_report_signal' | translate }}</h3>
-              <p class="lead">
-                {{ 'core.tuto.begin_text_4' | translate: {projectTitle:projectTitle} }}
-                <img src="./../../../../assets/static/images/form_add.png" width="30%"
-                     class="rounded mx-auto d-block" alt="place research">
-              </p>
-            </div>
-
-            <div class="mb-5">
-<!--              <h3 class="display-4" id="signal-report">{{ 'core.tuto.title_report_signal' | translate }}</h3>-->
-              <p class="lead">
-                {{ 'core.tuto.report_signal_text_1' | translate }}
-                <br>
-                - {{ 'core.tuto.report_signal_text_2' | translate }}
-                <br><img src="./../../../../assets/static/images/marker_orange.png"
-                         class="rounded mx-auto d-block" alt="place research">
-                <br>
-                {{ 'core.tuto.report_signal_text_3' | translate }}
-                <br>
-                - {{ 'core.tuto.report_signal_text_4' | translate }}
-              </p>
-            </div>
-
-            <h3 class="display-4" id="after-signal">{{ 'core.tuto.title_after_signal' | translate }} </h3>
-            <p class="lead">
-              {{ 'core.tuto.after_signal_text_1' | translate }}
-              <img src="./../../../../assets/static/images/marker_green.png" width="30%"
-                   class="rounded mx-auto d-block" alt="place research">
-            </p>
+        <div class="col-md-7">
+          <div class="mb-5">
+            <h4 class="display-5">{{'core.tuto.step_install_title' | translate}}</h4>
+            <p class="lead" [innerHTML]="'core.tuto.step_install_text' | translate"></p>
+          </div>
+          <div class="mb-5">
+            <h4 class="display-5">{{'core.tuto.step_report_title' | translate}}</h4>
+            <p class="lead" [innerHTML]="'core.tuto.step_report_text' | translate"></p>
+          </div>
+          <div class="mb-5">
+            <h4 class="display-5">{{'core.tuto.step_confirm_title' | translate}}</h4>
+            <p class="lead" [innerHTML]="'core.tuto.step_confirm_text' | translate"></p>
+          </div>
+          <div class="mb-5">
+            <h4 class="display-5">{{'core.tuto.step_alert_title' | translate}}</h4>
+            <p class="lead" [innerHTML]="'core.tuto.step_alert_text' | translate"></p>
+          </div>
+          <div class="mb-5">
+            <h4 class="display-5">{{'core.tuto.web_map_title' | translate}}</h4>
+            <p class="lead" [innerHTML]="'core.tuto.web_map_text' | translate"></p>
           </div>
         </div>
-        <div class="col-md-3">
-          <ul class="nav flex-column tuto__menu">
-            <li class="nav-item">
-              <a class="nav-link active" href="/tuto#start">{{ 'core.tuto.menu_intro' | translate }}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/tuto#start_1">{{ 'core.tuto.menu_begin' | translate }}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/tuto#add-report">{{ 'core.tuto.menu_add_report' | translate }}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/tuto#signal-report">{{ 'core.tuto.menu_add_signal' | translate }}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/tuto#after-signal">{{ 'core.tuto.menu_after_signal' | translate }}</a>
-            </li>
-          </ul>
+        <div class="col-md-5">
+          <img src="./assets/static/images/njuka/screenshots/03-liste-elec-eau.png"
+               class="rounded shadow-sm w-75 mx-auto d-block mb-4"
+               [alt]="'core.home.app.alt_screenshot_list' | translate">
+          <img src="./assets/static/images/njuka/screenshots/05-detail.png"
+               class="rounded shadow-sm w-75 mx-auto d-block"
+               [alt]="'core.home.app.alt_screenshot_detail' | translate">
         </div>
       </div>
     </div>

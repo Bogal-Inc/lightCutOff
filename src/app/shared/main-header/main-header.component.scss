@@ -26,3 +26,14 @@ nav {
     color: var(--white) !important;
   }
 }
+
+.navbar-brand {
+  &__bulb {
+    margin-right: 0.4rem;
+  }
+  &__name {
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: var(--white);
+  }
+}
