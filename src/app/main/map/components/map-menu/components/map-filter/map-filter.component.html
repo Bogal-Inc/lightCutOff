@@ -3,11 +3,6 @@
   <div class="filter__form">
     <ul class="list-inline filter__form__btn">
       <li class="list-inline-item"
-          [class.clicked]="isClicked(reportSatus.cut_owner) >= 0"
-          (click)="mapFilter(reportSatus.cut_owner)">
-        <img [src]="markerCutUser" alt="{{'main.map-filter.alt_marker_cut_owner' | translate}}">
-      </li>
-      <li class="list-inline-item"
           [class.clicked]="isClicked(reportSatus.cut) >= 0"
           (click)="mapFilter(reportSatus.cut)">
         <img [src]="markerCut" alt="{{'main.map-filter.alt_marker_cut' | translate}}">

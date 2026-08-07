@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
   environment: 'prod',
-  domain: 'undefined',
-  googleMapsApiKey: 'GOOGLE_MAPS_API_KEY',
+  domain: 'https://njuka.app',
+  stadiaApiKey: '',
   app: {
   modules: {
   mapMenu: true,

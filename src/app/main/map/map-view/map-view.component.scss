@@ -10,7 +10,8 @@
     }
   }
   &__map {
-    min-height: inherit;
+    height: 85vh;
+    z-index: 0; // sous la navbar et les overlays du site
   }
 }
 

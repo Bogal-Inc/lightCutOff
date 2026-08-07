@@ -2,7 +2,7 @@ export const environment = {
   production: false,
   environment: 'dev',
   domain: 'localhost',
-  googleMapsApiKey: 'GOOGLE_MAPS_API_KEY',
+  stadiaApiKey: '',
   app: {
   modules: {
   mapMenu: true,

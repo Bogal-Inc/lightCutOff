@@ -11,21 +11,18 @@ import {
   ViewChild,
   ViewContainerRef, ViewEncapsulation
 } from '@angular/core';
-import {GoogleMapsLoaderService} from '@Services/google-maps-loader.service';
+import * as L from 'leaflet';
+import 'leaflet.markercluster';
 import {ToastrService} from 'ngx-toastr';
 import {Const} from 'src/environments/const';
-import {MapLegendComponent} from '../components/map-legend/map-legend.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Logger} from '@Services/logger.service';
 import {MetaService} from '@Services/meta.service';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ComponentService} from '@Services/component.service';
+import {NominatimService} from '@Services/nominatim.service';
 import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
-import {MapFilterComponent} from '../components/map-menu/components/map-filter/map-filter.component';
-import {MapMenuComponent} from '../components/map-menu/map-menu.component';
-import {MapModel} from '@Models/map.model';
-import { MapService } from '@Services/map.service';
 import {ActivatedRoute} from '@angular/router';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
 import {environment} from '../../../../environments/environment';
@@ -33,10 +30,14 @@ import {GeolocationComponent} from '../../../modals/geolocation/geolocation.comp
 
 const log = new Logger('map-view.component');
 
+const ZOOM = 13;
+const ZOOM_MARKER = 14;
+
 /**
- * Carte publique en LECTURE SEULE : affiche les signalements (coupure / rétabli),
- * la recherche de lieu et les filtres. La création/clôture de signalements se fait
- * exclusivement dans l'application mobile Njuka.
+ * Carte publique en LECTURE SEULE (Leaflet + tuiles Stadia Maps, repli OpenStreetMap —
+ * même stack cartographique que l'application mobile Njuka). Affiche les signalements
+ * (coupure / rétabli), la recherche de lieu (Nominatim) et les filtres.
+ * La création/clôture de signalements se fait exclusivement dans l'application.
  */
 @Component({
   standalone: false,
@@ -47,40 +48,44 @@ const log = new Logger('map-view.component');
 })
 export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('mapContainer', {static: false})
-  private gmap: ElementRef;
-  @ViewChild(MapLegendComponent, {read: ElementRef})
-  private legends: ElementRef;
-  @ViewChild(MapFilterComponent, {read: ElementRef})
-  public mapFilter: ElementRef;
-  @ViewChild(MapMenuComponent, {read: ElementRef})
-  public MapMenuComponent: ElementRef;
+  private mapContainer: ElementRef;
   @ViewChild('infosReport', { read: ViewContainerRef })
   private infosReport: ViewContainerRef;
-  private map: google.maps.Map;
-  private mapM: MapModel;
+  private map: L.Map;
+  private markersClusters: L.MarkerClusterGroup;
+  private markerCurrentPosition: L.Marker;
+  private readonly icons = {
+    user: MapViewComponent.pinIcon(Const.markerColor.user),
+    cut: MapViewComponent.pinIcon(Const.markerColor.cut),
+    recovred: MapViewComponent.pinIcon(Const.markerColor.recovred)
+  };
   readonly projectTitle = Const.app.title;
   isErrorMapActive = false;
-  markerCurrentPosition: google.maps.Marker;
   isMapReady = false;
   reports: Report[];
   isLoader = true;
   unsubsscribe$ = new Subject<void>();
-  reportsMarkers: any;
-  markersClusters;
-  activeInfoWindow: any;
 
   constructor(
-    private mapsApiLoader: GoogleMapsLoaderService,
     private reportService: ReportService,
     private toastrService: ToastrService,
     private translateService: TranslateService,
     private metaService: MetaService,
     private componentService: ComponentService,
-    private mapService: MapService,
+    private nominatimService: NominatimService,
     private analytics: AngularFireAnalytics,
     private modalService: NgbModal,
     private activatedRoute: ActivatedRoute
   ) {}
+
+  private static pinIcon(url: string): L.Icon {
+    return L.icon({
+      iconUrl: url,
+      iconSize: [32, 44],
+      iconAnchor: [16, 44],
+      popupAnchor: [0, -40]
+    });
+  }
 
   ngOnInit(): void {
     log.debug('init');
@@ -113,75 +118,62 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubsscribe$.next();
     this.unsubsscribe$.complete();
+    this.map?.remove();
   }
 
   mapInitializer() {
-    this.mapsApiLoader.load().then(
-      () => {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition( position => {
-            log.debug('position user founded');
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition( position => {
+        log.debug('position user founded');
 
-            this.initMap({
-              lng: +position.coords.longitude,
-              lat: +position.coords.latitude
-            });
+        this.initMap({
+          lng: +position.coords.longitude,
+          lat: +position.coords.latitude
+        });
 
-            // if param in url map
-            this.goToMarkerWithUrl();
-          },
-          (err) => {
-            log.error('geolocalization no actived or no application not connected', err);
-            this.initMap(Const.coordsDefault);
-          });
-        } else {
-          log.error('Your browser does not support Geolocation');
-          this.toastrService.info(this.translateService.instant('main.map-view.error_geolocalize_no_browser'));
-          this.initMap(Const.coordsDefault);
-        }
+        // if param in url map
+        this.goToMarkerWithUrl();
       },
-      () => {
-        log.error('Map not load');
-        this.isErrorMapActive = true;
-        this.isLoader = false;
-    });
+      (err) => {
+        log.error('geolocalization no actived or no application not connected', err);
+        this.initMap(Const.coordsDefault);
+      });
+    } else {
+      log.error('Your browser does not support Geolocation');
+      this.toastrService.info(this.translateService.instant('main.map-view.error_geolocalize_no_browser'));
+      this.initMap(Const.coordsDefault);
+    }
   }
 
   /**
-   * @description search place, locality to find position exactly
+   * @description search place, locality to find position exactly (Nominatim)
    * @param event key word
    */
   onSearchPlace(event: { query: any; }) {
     log.debug('map search');
     this.analytics.logEvent('map_search');
 
-    const service = new google.maps.places.PlacesService(this.map);
-    const request = {
-      query: event.query,
-      fields: ['name', 'geometry'],
-    };
-
-    service.findPlaceFromQuery(request, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        log.debug(results[0].geometry.location, 'place found');
-        this.map.setCenter(results[0].geometry.location);
-        this.map.setZoom(14);
-      }else {
-        log.error(event.query, 'not found');
-        this.toastrService.error(this.translateService.instant('main.map-view.no_place'));
-      }
-    });
+    this.nominatimService.search(event.query).subscribe(
+      results => {
+        if (results.length > 0) {
+          log.debug(results[0], 'place found');
+          this.map.setView([+results[0].lat, +results[0].lon], ZOOM_MARKER);
+        } else {
+          log.error(event.query, 'not found');
+          this.toastrService.error(this.translateService.instant('main.map-view.no_place'));
+        }
+      },
+      () => this.toastrService.error(this.translateService.instant('main.map-view.no_place'))
+    );
   }
 
   goToMarker(report: Report) {
-    this.map.setCenter(report.position);
-    this.map.setZoom(14);
+    this.map.setView([+report.position.lat, +report.position.lng], ZOOM_MARKER);
     const marker = this.markerFactory(report);
-    google.maps.event.trigger(marker, 'click');
+    marker.addTo(this.map).openPopup();
   }
 
   mapFiltered(reportStatus: ReportSatus[]) {
-    this.mapClear();
     const reportsResults = (reportStatus.length > 0) ? this.getReportsByStatus(reportStatus) : this.reports;
     this.addClusters(reportsResults);
   }
@@ -202,42 +194,69 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     return reportsResults;
   }
 
-  private mapClear() {
-    this.markersClusters.setMap(null);
-    this.reportsMarkers.forEach(marker => marker.setMap(null));
-  }
-
   private initMap(position: Position){
     this.isLoader = false;
     this.isMapReady = true;
 
-    this.mapM = new MapModel(
-      position,
-      this.gmap.nativeElement,
-      [
-        this.legends?.nativeElement,
-        this.mapFilter?.nativeElement
-      ]
-    );
-    this.map = this.mapM.map;
+    this.map = L.map(this.mapContainer.nativeElement, {
+      center: [position.lat, position.lng],
+      zoom: ZOOM,
+      maxBounds: [
+        [Const.coordsCameroon.south, Const.coordsCameroon.west],
+        [Const.coordsCameroon.north, Const.coordsCameroon.east]
+      ],
+      doubleClickZoom: false
+    });
 
-    this.initMarkerUser(this.mapM.markerUserOption(this.translateService.instant('main.map-view.your_position')));
+    this.addTiles();
+
+    // le conteneur vient d'être affiché : recalcule la taille réelle de la carte
+    setTimeout(() => this.map.invalidateSize());
+
+    // marqueur informatif de la position de l'utilisateur (lecture seule)
+    this.markerCurrentPosition = L.marker([position.lat, position.lng], {
+      icon: this.icons.user,
+      title: this.translateService.instant('main.map-view.your_position'),
+      zIndexOffset: 2000
+    }).addTo(this.map);
+
     this.LoadReports();
   }
 
-  private initMarkerUser(markerOption: google.maps.MarkerOptions) {
-    log.debug('init current marker');
-    if (this.markerCurrentPosition) {
-      this.markerCurrentPosition.setMap(null);
-      this.markerCurrentPosition = null;
-    }
+  /**
+   * Tuiles Stadia Maps si une clé est fournie, sinon repli OpenStreetMap
+   * (même logique que l'app mobile).
+   */
+  private addTiles() {
+    const stadiaKey = environment.stadiaApiKey;
+    const osm = {
+      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    };
+    const stadia = {
+      url: `https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${stadiaKey}`,
+      attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
+        + ' &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>'
+        + ' &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    };
+    const tiles = (stadiaKey) ? stadia : osm;
 
-    // marqueur informatif de la position de l'utilisateur (non déplaçable, lecture seule)
-    this.markerCurrentPosition = new google.maps.Marker({
-      ...markerOption,
-      draggable: false
-    });
-    this.markerCurrentPosition.setMap(this.map);
+    const layer = L.tileLayer(tiles.url, {
+      attribution: tiles.attribution,
+      maxZoom: 19
+    }).addTo(this.map);
+
+    if (stadiaKey) {
+      // repli OSM si les tuiles Stadia ne chargent pas (clé invalide, quota...)
+      let fellBack = false;
+      layer.on('tileerror', () => {
+        if (fellBack) { return; }
+        fellBack = true;
+        log.error('Stadia tiles failed, falling back to OpenStreetMap');
+        layer.remove();
+        L.tileLayer(osm.url, { attribution: osm.attribution, maxZoom: 19 }).addTo(this.map);
+      });
+    }
   }
 
   private LoadReports() {
@@ -275,58 +294,29 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       err => log.error('report not load', err));
   }
 
-  private addClusters(reports) {
-    this.reportsMarkers = reports.map(report => {
-      return this.markerFactory(report);
-    });
-    this.markersClusters = this.mapM.addMarkersToCluster(this.reportsMarkers);
+  private addClusters(reports: Report[]) {
+    if (this.markersClusters) {
+      this.markersClusters.remove();
+    }
+    this.markersClusters = L.markerClusterGroup();
+    reports.forEach(report => this.markersClusters.addLayer(this.markerFactory(report)));
+    this.map.addLayer(this.markersClusters);
   }
 
   /**
-   * @description create the marker, add in map and add read-only detail infowindow
+   * @description create the marker with its read-only detail popup
    * @param report: all report
    */
-  private markerFactory(report: Report): google.maps.Marker {
-    log.debug('Marker factory', report);
-
-    const currentMareker = new google.maps.Marker({
-        position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
-        icon: {
-          url: (report.recovredAt === null) ? Const.markerColor.cut : Const.markerColor.recovred
-        },
-        map: this.map
+  private markerFactory(report: Report): L.Marker {
+    const marker = L.marker([+report.position.lat, +report.position.lng], {
+      icon: (report.recovredAt === null) ? this.icons.cut : this.icons.recovred
     });
 
-    const content = this.componentService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
-    this.addInfoWindow(currentMareker, content);
+    marker.bindPopup(() =>
+      this.componentService.createComponent({report}, MarkerDetailsComponent, this.infosReport)
+    );
 
-    return currentMareker;
-  }
-
-  private addInfoWindow(marker: google.maps.Marker, content = null, event= 'click'): google.maps.InfoWindow {
-    log.debug('init infowindow on marker');
-
-    const infoWindow = new google.maps.InfoWindow({
-      content
-    });
-    const markerMap = marker.getMap();
-
-    if (event === 'click') {
-      google.maps.event.addListener(marker, event, () => {
-        if (this.activeInfoWindow) {
-          this.activeInfoWindow.close();
-        }
-
-        infoWindow.open(markerMap, marker);
-        this.activeInfoWindow = infoWindow;
-      });
-
-    } else if (event === 'hover') {
-      google.maps.event.addListener(marker, 'mouseover', () => infoWindow.open(markerMap, marker));
-      google.maps.event.addListener(marker, 'mouseout', () => infoWindow.close());
-    }
-
-    return infoWindow;
+    return marker;
   }
 
   private goToMarkerWithUrl() {

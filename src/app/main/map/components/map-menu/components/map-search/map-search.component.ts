@@ -33,24 +33,6 @@ export class MapSearchComponent implements OnInit {
     });
   }
 
-  autocompletePlace() {
-    const autocomplete = new google.maps.places.Autocomplete (
-      this.inputSearch.nativeElement,
-      { componentRestrictions: {country: 'cmr'}}
-    );
-
-    this.autocompletEvent(autocomplete);
-  }
-
-  private autocompletEvent(autocomplete) {
-    google.maps.event.addListener(autocomplete, 'place_changed', () => {
-      const places = autocomplete.getPlace();
-      this.searchPlaceSubmit.emit({
-        query: places.name
-      });
-    });
-  }
-
   get f() { return this.searchPlaceForm.controls; }
 
   onSubmit() {

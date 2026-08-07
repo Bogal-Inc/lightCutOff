@@ -112,3 +112,26 @@
   nouveau `sitemap.xml` + `robots.txt` (routes vitrine, /admin exclu), Open Graph et
   `page_location` analytics sur https://njuka.app, `DOMAIN_PROD` corrigé dans set-env/CI
   (bug historique : set-env lisait `DOMAIN`, variable jamais définie).
+
+## [2.3.0] - 2026-08-07 — Lot 2c : carte Leaflet + Stadia Maps (fin de Google Maps)
+
+### Carte
+- **Google Maps → Leaflet 1.9 + leaflet.markercluster**, tuiles **Stadia Maps**
+  (`alidade_smooth`, clé `STADIA_API_KEY` via env) avec **repli OpenStreetMap** automatique
+  (clé absente ou tuiles en erreur) — même stack cartographique que l'app mobile.
+- Recherche de lieu : Google Places → **Nominatim** (`NominatimService.search`, restreint
+  au Cameroun) ; autocomplete Google supprimé (recherche au submit).
+- Marqueurs : pins **SVG locaux** (bleu position, rouge coupure, vert rétabli) au lieu des
+  icônes Google hébergées ; popup de détails inchangée (composant Angular).
+- Filtre « ma coupure » (orange) retiré — plus de notion de propriétaire sur le site.
+- Fix affichage : hauteur explicite du conteneur + `invalidateSize()` après init.
+
+### Supprimé
+- `GoogleMapsLoaderService`, `map.model.ts` (Google), mock `google-api.js` (karma),
+  script CDN MarkerClustererPlus, `@types/google.maps`, clé `GOOGLE_MAPS_API_KEY`
+  (env, workflows CI → remplacée par `STADIA_API_KEY`).
+
+### Vérifications
+- `ng build` + `build:prod` OK · `npm test` 52/52 · `lint` 0 erreur · vérif navigateur :
+  carte plein écran (repli OSM sans clé), marqueur position, filtres, recherche
+  « Douala » → carte recentrée.

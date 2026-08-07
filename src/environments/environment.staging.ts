@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   environment: 'staging',
-  googleMapsApiKey: 'googleMapsApiKey',
+  stadiaApiKey: '',
   domain: 'localhost',
   app: {
     modules: {

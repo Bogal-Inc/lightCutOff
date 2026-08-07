@@ -76,7 +76,7 @@ Lots dans l'ordre :
 - [x] 2b. **Rebranding + vitrine Njuka** (✅ 2026-08-07 ; reste : liens sociaux footer à trancher, sitemap au domaine final) : const.ts, i18n fr/en, index.html (SEO), sitemap,
        palette/styles, accueil (devise, features app, boutons Play Store/App Store), à propos,
        FAQ, tuto orienté app, contact (CF contactus conservée).
-- [ ] 2c. **Carte lecture seule** : Google Maps → Leaflet + Stadia (+ markercluster),
+- [x] 2c. **Carte lecture seule** (✅ 2026-08-07 — Leaflet/Stadia + repli OSM, Nominatim, pins SVG locaux) : Google Maps → Leaflet + Stadia (+ markercluster),
        lecture des reports Njuka (élec ⚡ / eau 💧, statuts), Nominatim pour la recherche,
        suppression GoogleMapsLoaderService/@types/google.maps/clé GMaps.
 - [ ] 2d. **Admin** : auth email/Google, garde role=='admin', sélecteur lightcutoff-dev/njuka-prod,

@@ -1,6 +1,6 @@
 # Tests manuels — upgrade Angular 20 / Firebase 11 / Node 22
 
-> Pré-requis : renseigner `.env` avec les **vraies** clés (Firebase + Google Maps),
+> Pré-requis : renseigner `.env` avec les **vraies** clés Firebase (+ STADIA_API_KEY optionnelle),
 > puis `npm install` et `npm run start:dev` (http://localhost:4200).
 > Sans vraies clés : erreurs console `installations/request-failed` normales, carte grise.
 
@@ -15,11 +15,12 @@
 - [ ] Menus : Accueil / Carte / Statistiques (uniquement)
 - [ ] Navbar responsive (burger) — collapse Bootstrap 5 fonctionne (data-bs-toggle)
 
-## Carte (nécessite clé Google Maps valide)
-- [ ] La carte Google se charge (loader maison remplace @agm/core)
-- [ ] Géolocalisation demandée ; marqueurs de signalements visibles + clustering
-- [ ] Recherche de lieu (autocomplete Google Places)
-- [ ] Filtres de marqueurs
+## Carte (Leaflet — fonctionne SANS clé grâce au repli OpenStreetMap)
+- [ ] La carte Leaflet se charge plein écran (tuiles Stadia si STADIA_API_KEY, sinon OSM)
+- [ ] Géolocalisation demandée ; marqueur bleu de position
+- [ ] Marqueurs signalements (rouge = coupure, vert = rétabli) + clusters, popup de détails
+- [ ] Recherche de lieu (Nominatim) : « Douala » recentre la carte
+- [ ] Filtres rouge/vert (plus de filtre orange « ma coupure »)
 
 ## Après lot 2a (purge vitrine) — comportements ATTENDUS
 - [ ] Plus de modal « Activer les notifications » à l'arrivée sur le site

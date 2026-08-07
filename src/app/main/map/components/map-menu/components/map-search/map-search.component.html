@@ -3,7 +3,7 @@
     <div class="search-place__bloc">
       <form class="d-flex align-items-center search-place__bloc__form" [formGroup]="searchPlaceForm" (ngSubmit)="onSubmit()">
         <div class="input-group">
-          <input type="text" formControlName="query" class="form-control" (keyup)="autocompletePlace()"
+          <input type="text" formControlName="query" class="form-control"
                  attr.placeholder="{{'main.search-place-form.placeholder' | translate}}"
                  #inputSearch>
           <div class="input-group-text-wrapper d-flex">
