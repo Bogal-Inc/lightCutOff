@@ -7,7 +7,6 @@ import {environment} from '../../../../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {TranslateModule} from '@ngx-translate/core';
 import {ToastrModule} from 'ngx-toastr';
-import {OwlDateTimeModule, OwlNativeDateTimeModule} from '@danielmoncada/angular-datetime-picker';
 
 describe('MapNotFoundComponent', () => {
   let component: MapNotFoundComponent;

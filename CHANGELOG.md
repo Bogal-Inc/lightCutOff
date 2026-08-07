@@ -50,3 +50,30 @@
 - `npm run lint` : 0 erreur (53 warnings hérités non bloquants).
 - Smoke test `ng serve` : accueil, carte (modals, tuto, i18n FR) rendus ; seules erreurs
   console = clés Firebase factices du `.env` local (attendu sans secrets réels).
+
+## [2.1.0] - 2026-08-07 — Lot 2a : purge (site vitrine, carte lecture seule)
+
+### Supprimé
+- **Couche PWA complète** : service worker ngsw, `manifest.webmanifest`/`manifest.json`,
+  `firebase-messaging-sw.js`, notifications push web (FCM), modal « activer les notifications »,
+  `MessagingService`, `DeviceService`, `AngularFireMessagingModule`, `AngularFireDatabaseModule`,
+  génération `swenv.js`/manifest dans `set-env.ts`, clés VAPID (`.env.example` nettoyé).
+- **Comptes publics** : module `user` entier (signup, signin, forgot-password, profile,
+  own-report), guards `AuthGuard`/`ModuleUserGuard`, liens header (S'inscrire / Se connecter /
+  Mes signalements), flags d'env `user`/`ownerReport`/`messaging`.
+- **Création/clôture de signalements sur la carte** : composants marker-create-report,
+  marker-recovred-report, map-tuto-modal, bouton « + », formulaire « courant revenu ? » —
+  la carte est désormais **lecture seule** (détails de signalement uniquement).
+- Bandeau « télécharger l'app » (download-app), modal tutoriel de l'accueil,
+  script Google Sign-In (`platform.js`) et meta associée dans `index.html`.
+- Dépendances retirées : `@angular/service-worker`, `@danielmoncada/angular-datetime-picker`.
+
+### Modifié
+- `ComponentService.createComponent` : `ViewContainerRef.createComponent` (l'API
+  `ComponentFactoryResolver` était dépréciée) et typage générique.
+- `map-view` réécrit lecture seule (marqueurs coupure/rétabli + popup détails, filtres,
+  recherche, légende, historique conservés).
+
+### Vérifications
+- `ng build` + `build:prod` OK · `npm test` **52/52** · `lint` 0 erreur · smoke test navigateur
+  (accueil épuré, carte sans UI d'écriture).

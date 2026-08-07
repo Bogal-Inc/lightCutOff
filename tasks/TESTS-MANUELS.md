@@ -6,7 +6,7 @@
 
 ## Smoke test global
 - [ ] `npm run build:prod` passe sans erreur
-- [ ] `npm test` : 67/67 verts
+- [ ] `npm test` : 52/52 verts
 - [ ] `npm run lint` : 0 erreur
 
 ## Accueil & navigation
@@ -17,25 +17,20 @@
 
 ## Carte (nécessite clé Google Maps valide)
 - [ ] La carte Google se charge (loader maison remplace @agm/core)
-- [ ] Modal tutoriel s'affiche, étapes Suivant/Fermer OK
 - [ ] Géolocalisation demandée ; marqueurs de signalements visibles + clustering
-- [ ] Création d'un signalement (formulaire marqueur), tooltip du bouton « + »
 - [ ] Recherche de lieu (autocomplete Google Places)
 - [ ] Filtres de marqueurs
 
-## Signalements / comptes (nécessite Firebase valide)
+## Après lot 2a (purge vitrine) — comportements ATTENDUS
+- [ ] Plus de modal « Activer les notifications » à l'arrivée sur le site
+- [ ] Header sans « Mes signalements / S'inscrire / Se connecter »
+- [ ] Carte : plus de bouton « + », plus de formulaire de signalement — popups de détail seulement
+- [ ] /signin, /signup, /own-report, /profile → redirigent vers page-not-found
 - [ ] Connexion anonyme au premier chargement (console : « signIn anonymously »)
-- [ ] Inscription / connexion email
-- [ ] « Mes signalements » : tableau ag-grid v34 correctement stylé (thème alpine legacy)
-- [ ] Détail signalement : sélecteur date/heure (nouveau composant datetime-picker)
 - [ ] Formulaire contact (footer) → Cloud Function `contactus`
-  (⚠️ nécessite `GMAIL_EMAIL`/`GMAIL_PASSWORD` dans l'env des functions — plus
-  `functions.config()`)
+  (⚠️ nécessite `GMAIL_EMAIL`/`GMAIL_PASSWORD` dans l'env des functions)
 
 ## Admin (/admin, nécessite compte admin + env dev)
 - [ ] Dashboard statistiques : graphiques bar + line (nouveau wrapper chart.js 4)
 - [ ] Liste des rapports ag-grid, sélection de lignes
 
-## PWA / notifications
-- [ ] Build prod : service worker `ngsw` actif, manifest OK
-- [ ] Notifications push (FCM) : `firebase-messaging-sw.js` (scripts compat v11)

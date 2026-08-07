@@ -5,15 +5,11 @@ export const environment = {
   domain: 'localhost',
   app: {
     modules: {
-      ownerReport: true,
       mapMenu: true,
       mapFilter: false,
       mapSearch: true,
-      user: true,
-      messaging: true,
       admin: true
     },
-    vapidPublicKey: 'vapidPublicKey',
   },
   firebase: {
     apiKey: 'apiKey',

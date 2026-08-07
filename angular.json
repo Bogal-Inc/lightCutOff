@@ -35,17 +35,13 @@
             ],
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest",
-              "src/manifest.json",
-              "src/firebase-messaging-sw.js"
+              "src/assets"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/ag-grid-community/styles/ag-grid.css",
               "node_modules/ag-grid-community/styles/ag-theme-alpine.css",
-              "node_modules/@danielmoncada/angular-datetime-picker/assets/style/picker.min.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -80,8 +76,7 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ],
-              "serviceWorker": "ngsw-config.json"
+              ]
             },
             "staging": {
               "fileReplacements": [
@@ -145,15 +140,13 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
+              "src/assets"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/ag-grid-community/styles/ag-grid.css",
               "node_modules/ag-grid-community/styles/ag-theme-alpine.css",
-              "node_modules/@danielmoncada/angular-datetime-picker/assets/style/picker.min.css",
               "src/styles.scss"
             ],
             "scripts": [],

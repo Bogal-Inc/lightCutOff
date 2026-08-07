@@ -40,40 +40,5 @@
         </div>
       </li>
     </ul>
-    <ul class="navbar-nav mt-2 mt-lg-0" *ngIf="isModuleOwnerReport">
-      <li *ngIf="!user?.email"><a class="nav-link" routerLink="/own-report">
-        {{"core.home.btn_report" | translate}}
-      </a></li>
-      <li *ngIf="!user?.email && isModuleUser"><a class="nav-link" routerLink="/signup">
-        {{"shared.main-header.signup" | translate}}
-      </a></li>
-      <li *ngIf="!user?.email && isModuleUser"><a class="nav-link" routerLink="/signin">
-        {{"shared.main-header.signin" | translate}}
-      </a></li>
-      <li *ngIf="user?.email && isModuleUser">
-        <div class="btn-group">
-          <a class="dropdown-user dropdown-toggle dropdown-toggle-split nav-link" data-bs-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false">
-            <fa-icon style="color: var(--warning)" [icon]="faUserCircle"></fa-icon>
-            <span *ngIf="!user?.firstName">&nbsp; {{user.email}} &nbsp;</span>
-            <span *ngIf="user?.firstName">&nbsp; {{user.firstName}} &nbsp;</span>
-          </a>
-          <div class="dropdown-menu bg-dark dropdown-menu-right">
-            <a class="dropdown-item" routerLink="/own-report">
-              {{"core.home.btn_report" | translate}}
-            </a>
-            <a class="dropdown-item" routerLink="/profile">
-              {{"shared.main-header.profile" | translate}}
-            </a>
-            <a class="dropdown-item" routerLink="/admin/dashboard" *ngIf="user?.role?.admin">
-              {{"shared.main-header.admin" | translate}}
-            </a>
-            <a class="dropdown-item" (click)="logout()">
-              {{"shared.main-header.logout" | translate}}
-            </a>
-          </div>
-        </div>
-      </li>
-    </ul>
   </div>
 </nav>

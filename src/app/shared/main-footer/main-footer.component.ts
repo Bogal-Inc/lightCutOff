@@ -18,7 +18,6 @@ export class MainFooterComponent implements OnInit {
   appTitle = Const.app.title;
   currentLang: string;
   now: Date;
-  isAppDownload = isMobile();
 
   constructor(
     private i18nService: I18nService,

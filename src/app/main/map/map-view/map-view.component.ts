@@ -1,13 +1,10 @@
 import {TranslateService} from '@ngx-translate/core';
 import {MarkerDetailsComponent} from '../components/marker-details/marker-details.component';
-import {AuthService} from '../../../core/services-firebase';
 import {Position, Report, ReportSatus} from '@Models/report.model';
-import {LoadingComponent} from '../../../shared/loading/loading.component';
 import {ReportService} from '../../../core/services-firebase';
 import {
   AfterViewInit,
   Component,
-  ComponentFactoryResolver,
   ElementRef,
   OnDestroy,
   OnInit,
@@ -18,99 +15,77 @@ import {GoogleMapsLoaderService} from '@Services/google-maps-loader.service';
 import {ToastrService} from 'ngx-toastr';
 import {Const} from 'src/environments/const';
 import {MapLegendComponent} from '../components/map-legend/map-legend.component';
-import {NgbModal, NgbTooltip, NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Logger} from '@Services/logger.service';
-import {MarkerCreateReportComponent} from '../components/marker-create-report/marker-create-report.component';
-import {MarkerRecovredReportComponent} from '../components/marker-recovred-report/marker-recovred-report.component';
 import {MetaService} from '@Services/meta.service';
-import {Notification, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ComponentService} from '@Services/component.service';
 import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
-import {MapTutoModalComponent} from '../components/map-tuto-modal/map-tuto-modal.component';
 import {MapFilterComponent} from '../components/map-menu/components/map-filter/map-filter.component';
 import {MapMenuComponent} from '../components/map-menu/map-menu.component';
 import {MapModel} from '@Models/map.model';
-import {LocationModel} from '@Models/location.model';
 import { MapService } from '@Services/map.service';
 import {ActivatedRoute} from '@angular/router';
-import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
 import {environment} from '../../../../environments/environment';
 import {GeolocationComponent} from '../../../modals/geolocation/geolocation.component';
 
 const log = new Logger('map-view.component');
 
+/**
+ * Carte publique en LECTURE SEULE : affiche les signalements (coupure / rétabli),
+ * la recherche de lieu et les filtres. La création/clôture de signalements se fait
+ * exclusivement dans l'application mobile Njuka.
+ */
 @Component({
   standalone: false,
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./map-view.component.scss'],
-  providers: [NgbTooltipConfig],
 })
 export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('mapContainer', {static: false})
   private gmap: ElementRef;
-  @ViewChild(MarkerCreateReportComponent, {read: ElementRef})
-  private createReportFormElt: ElementRef;
-  @ViewChild(LoadingComponent, {read: ElementRef})
-  private loadingElt: ElementRef;
-  @ViewChild('btnSwitchForm', {static: false})
-  private btnSwitchForm: ElementRef;
   @ViewChild(MapLegendComponent, {read: ElementRef})
   private legends: ElementRef;
   @ViewChild(MapFilterComponent, {read: ElementRef})
   public mapFilter: ElementRef;
   @ViewChild(MapMenuComponent, {read: ElementRef})
   public MapMenuComponent: ElementRef;
-  @ViewChild('btnAddReport', {static: false})
-  private btnAddReport: ElementRef;
-  @ViewChild('recovredFormReport', { read: ViewContainerRef })
-  private recovredFormReport: ViewContainerRef;
   @ViewChild('infosReport', { read: ViewContainerRef })
   private infosReport: ViewContainerRef;
-  @ViewChild('tleft') public tooltip: NgbTooltip;
   private map: google.maps.Map;
   private mapM: MapModel;
-  private markerCurrentInfoWindow: google.maps.InfoWindow;
   readonly projectTitle = Const.app.title;
   isErrorMapActive = false;
   markerCurrentPosition: google.maps.Marker;
-  isFormLightCutOf = false;
+  isMapReady = false;
   reports: Report[];
-  formLoader: boolean;
   isLoader = true;
   unsubsscribe$ = new Subject<void>();
   reportsMarkers: any;
   markersClusters;
-  reportAdd: Report;
   activeInfoWindow: any;
 
   constructor(
     private mapsApiLoader: GoogleMapsLoaderService,
     private reportService: ReportService,
     private toastrService: ToastrService,
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private authService: AuthService,
     private translateService: TranslateService,
     private metaService: MetaService,
     private componentService: ComponentService,
     private mapService: MapService,
     private analytics: AngularFireAnalytics,
     private modalService: NgbModal,
-    private activatedRoute: ActivatedRoute,
-    private angularFirestore: AngularFirestore,
-    config: NgbTooltipConfig
-  ) {
-    config.placement = 'left';
-    config.closeDelay = 3000;
-   }
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     log.debug('init');
     this.analytics.logEvent('page_view', {
-      page_location: 'https://lightcutoff.com/map',
+      page_location: `${environment.domain}/map`,
       page_path: '/map',
       page_title: 'Map'
     });
@@ -118,27 +93,21 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     navigator.permissions.query({
       name: 'geolocation'
     }).then((result) => {
-      if (result.state == 'granted') {
-        console.log('geolocation granted');
-      } else if (result.state == 'prompt') {
-        console.log('geolocation prompt');
+      if (result.state === 'prompt') {
         this.modalService.open(GeolocationComponent);
-      } else if (result.state == 'denied') {
-        console.log('geolocation denied');
       }
-    })
+    });
 
     this.metaService.setTagsGeneral(
       this.translateService.instant('main.map-view.title_page'),
       [
-        new MetaTag(METATAG.KEYWORDS, 'lightcutoff, service information, light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, Logo lightcutoff, délestages, coupures, signaler coupure, signalez coupure de lumiere, rapport de coupure de lumiere, rapport, panne de courant, panne de electrique, panne, report light cut off, que faire pendant une coupure de lumiere, carte interactive, map, marker, marqueur, heure de coupure de la lumiere, date de coupure de la lumiere, signaler la fin d\'une coupure de courant'),
+        new MetaTag(METATAG.KEYWORDS, 'lightcutoff, service information, light cut off, coupure lumiere, electricity services, service d\'electricité, no electricity, pas d\'electricité, lumiere, light, electricity, electricité, Eneo, cameroun, cameroon, energy, energie, fournisseur d’électricité, Electricité cameroun, Particuliers, entreprises, professionnels, industriels, Electricity Cameroon, ménages, actualité, Economie d\'énergie, courant, courant electrique, délestages, coupures, carte interactive, map, marker, marqueur'),
         new MetaTag(METATAG.DESCRIPTION, this.translateService.instant('main.map-view.desc_page'))
       ]);
   }
 
   ngAfterViewInit() {
     this.mapInitializer();
-    this.openTutoModal();
   }
 
   ngOnDestroy(): void {
@@ -178,41 +147,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  onCreateReport(event: any) {
-    log.debug('create report');
-    this.analytics.logEvent('added_report');
-
-    const geocoder = new google.maps.Geocoder();
-    const errorMessage = this.translateService.instant('main.map-view.error_no_cameroon');
-    let googleLocation = null;
-
-    geocoder.geocode(
-      {location: this.mapM.position},
-      (googleLocations, status) => {
-        if (status === 'OK') {
-        googleLocation = googleLocations[1];
-
-        if (googleLocation) {
-          const locality = this.mapM.getCountryCity(googleLocation);
-          const country = locality[1];
-
-          if (country === 'Cameroun' || country === 'Cameroon') {
-            this.createReport(
-              event,
-              new LocationModel(googleLocations, locality)
-            );
-          } else {
-            log.error('current user no found in Camoeroon', googleLocation);
-            this.toastrService.error(errorMessage, 'Error');
-          }
-        } else {
-          log.error('No result found', googleLocation);
-          this.toastrService.error(errorMessage, 'Error');
-        }
-      }
-    });
-  }
-
   /**
    * @description search place, locality to find position exactly
    * @param event key word
@@ -239,44 +173,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  openInfoWindowCreateReport() {
-    this.analytics.logEvent('plus_button_add_report');
-    google.maps.event.trigger(this.markerCurrentPosition, 'click');
-  }
-
   goToMarker(report: Report) {
     this.map.setCenter(report.position);
     this.map.setZoom(14);
     const marker = this.markerFactory(report);
     google.maps.event.trigger(marker, 'click');
-  }
-
-  /**
-   * @description determine if after add report to update report
-   * @param elt yes or no show recovered form
-   */
-  switchForm(elt: boolean) {
-    log.debug('choice form', elt);
-    this.analytics.logEvent('go_to_recovredForm', {
-      accept: elt
-    });
-
-    if (elt) {
-      const data = {
-        report: this.reportAdd,
-        markerCurrentInfoWindow: this.markerCurrentInfoWindow
-      };
-
-      const recovredFromElement = this.componentService.createComponent(
-        data,
-        MarkerRecovredReportComponent,
-        this.recovredFormReport
-      );
-
-      this.markerCurrentInfoWindow.setContent(recovredFromElement);
-    } else {
-      this.markerCurrentInfoWindow.close();
-    }
   }
 
   mapFiltered(reportStatus: ReportSatus[]) {
@@ -285,28 +186,16 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.addClusters(reportsResults);
   }
 
-  private initTooltip() {
-    this.tooltip.open();
-    setTimeout(() => {
-      log.debug('tooltip close after 3 seconds');
-      this.tooltip.close();
-    }, 5000);
-  }
-
   private getReportsByStatus(reportsStatus: ReportSatus[]) {
     let reportsResults = [];
     reportsStatus.forEach(
       ev => {
         const reportsFilter = this.reports.filter(
           (report: Report) => {
-            if (ev === ReportSatus.CUT_OWNER) {
-              // the owner report status is not saved in database. it is saved in the cutoff status
-              return (this.authService.getUserToLocalStorage().id === report._createdBy.id) && (report.status === ReportSatus.CUT);
-            } else if (ev === ReportSatus.CUT) {
-              return (this.authService.getUserToLocalStorage().id !== report._createdBy.id) && (report.status === ReportSatus.CUT);
-            } else {
-              return report.status === ev;
+            if (ev === ReportSatus.CUT || ev === ReportSatus.CUT_OWNER) {
+              return report.status === ReportSatus.CUT;
             }
+            return report.status === ev;
           });
         reportsResults = reportsResults.concat(reportsFilter);
       });
@@ -318,57 +207,15 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.reportsMarkers.forEach(marker => marker.setMap(null));
   }
 
-  private createReport(query, location) {
-    if (location.country === null && location.city === null) {
-      log.error('report not create. Location is null');
-      return null;
-    }
-
-    this.isLoader = true;
-    this.formLoader = true;
-
-    const report = {
-      id: this.angularFirestore.createId(),
-      location: Object.assign({}, location),
-      position: this.mapM.position,
-      reportedAt: new Date(query),
-    } as Report;
-
-    this.markerCurrentInfoWindow.setContent(this.loadingElt.nativeElement);
-    this.reportService.addReport(report).then(
-      resp => {
-        log.debug('report create', resp.path.valueOf());
-        const id = resp.path.valueOf().split('/')[1];
-        this.formLoader = false;
-        this.reportAdd = report;
-        this.reportAdd.id = id;
-        this.updateMarkerConfig();
-      },
-      err => {
-        log.error('Error: report not create');
-        this.markerCurrentInfoWindow.close();
-        this.initMarkerUser(this.mapM.markerUserOption(this.translateService.instant('main.map-view.your_position')));
-      }
-    );
-  }
-
-  private updateMarkerConfig() {
-    this.markerCurrentInfoWindow.setContent(this.btnSwitchForm.nativeElement);
-    this.markerCurrentPosition.setDraggable(false);
-    this.markerCurrentPosition.setOpacity(0);
-    this.toastrService.success(this.translateService.instant('main.map-view.signalement_add'));
-  }
-
   private initMap(position: Position){
     this.isLoader = false;
-    this.isFormLightCutOf = true;
+    this.isMapReady = true;
 
     this.mapM = new MapModel(
       position,
       this.gmap.nativeElement,
       [
         this.legends?.nativeElement,
-        this.btnAddReport?.nativeElement,
         this.mapFilter?.nativeElement
       ]
     );
@@ -376,9 +223,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.initMarkerUser(this.mapM.markerUserOption(this.translateService.instant('main.map-view.your_position')));
     this.LoadReports();
-    this.addEventsUserMarker();
-    this.initTooltip();
-    // this.initPolygon('../../../../assets/static/geo-json/yaounde.geojson.json');
   }
 
   private initMarkerUser(markerOption: google.maps.MarkerOptions) {
@@ -388,45 +232,23 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       this.markerCurrentPosition = null;
     }
 
-    this.markerCurrentPosition = new google.maps.Marker(markerOption);
+    // marqueur informatif de la position de l'utilisateur (non déplaçable, lecture seule)
+    this.markerCurrentPosition = new google.maps.Marker({
+      ...markerOption,
+      draggable: false
+    });
     this.markerCurrentPosition.setMap(this.map);
-
-    if (this.authService.getUserToLocalStorage()){
-      log.debug('add to current marker reported form in infos window');
-      this.markerCurrentInfoWindow = this.addInfoWindow(this.markerCurrentPosition, this.createReportFormElt.nativeElement);
-    } else {
-      log.debug('current user are not identifier');
-      const content = this.translateService.instant('main.map-view.error_no_user');
-      this.markerCurrentInfoWindow = this.addInfoWindow(this.markerCurrentPosition, content);
-    }
   }
 
-  private getReportStatusForSystem(reportStatus: ReportSatus): ReportSatus {
-    if (
-      reportStatus === ReportSatus.CUT_OWNER ||
-      reportStatus === ReportSatus.CUT
-    ) {
-      return ReportSatus.CUT;
-    } else if (reportStatus === ReportSatus.CUT_COMPLETED) {
-      return ReportSatus.CUT_COMPLETED;
-    }
-  }
-
-  private LoadReports(reportStatus?: ReportSatus) {
+  private LoadReports() {
     log.debug('load reports');
 
     const now = new Date();
-    let currentReportStatus = null;
-
-    if (reportStatus) {
-      currentReportStatus = this.getReportStatusForSystem(reportStatus);
-    }
 
     this.reportService.getReports({
       isDeleted: false,
-      reportStatus: (reportStatus) ? currentReportStatus : null,
+      reportStatus: null,
       datestart: new Date(2020, 1, 1)
-      // datestart: new Date(now.getFullYear(), 1, 1)
     })
       .pipe(
         takeUntil(this.unsubsscribe$)
@@ -445,20 +267,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
                 if (tomorrow > now) {
                   return report;
                 }
-              } else if (report.status === ReportSatus.CUT) {
-                const reportedAt = report.reportedAt.toDate();
-                const monthDiff = now.getMonth() - reportedAt.getMonth();
-                if (monthDiff === 0 || monthDiff === 1) {
-                  if (now.getDay() <= reportedAt.getDay()) {
-                    return report;
-                  }
-                }
-              } else {
-                return report;
               }
               return report;
             });
-          // this.getDistanceBylocality();
           this.addClusters(this.reports);
         },
       err => log.error('report not load', err));
@@ -472,51 +283,22 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /**
-   * @description create the marker, add in map and add infowindow with event for everyone
+   * @description create the marker, add in map and add read-only detail infowindow
    * @param report: all report
    */
   private markerFactory(report: Report): google.maps.Marker {
     log.debug('Marker factory', report);
 
-    let content = null;
     const currentMareker = new google.maps.Marker({
         position: new google.maps.LatLng(+report.position.lat, +report.position.lng),
         icon: {
-          url: (report.recovredAt === null) ?
-            (this.authService.getUserToLocalStorage().id === report._createdBy.id) ?
-              Const.markerColor.cutUser :
-              Const.markerColor.cut :
-            Const.markerColor.recovred
+          url: (report.recovredAt === null) ? Const.markerColor.cut : Const.markerColor.recovred
         },
         map: this.map
     });
 
-    if (report.recovredAt) {
-      // add detail component to recovred marker
-      content = this.componentService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
-      this.addInfoWindow(currentMareker, content);
-    } else {
-      if (this.authService.getUserToLocalStorage().id === report._createdBy.id){
-        const infoWindow = this.addInfoWindow(currentMareker, content);
-        const data = {
-          report,
-          markerCurrentInfoWindow: (infoWindow) ? infoWindow : this.markerCurrentInfoWindow
-        };
-
-        // component to update report marker for marker not recovred with owner same
-        content = this.componentService.createComponent(data, MarkerRecovredReportComponent, this.recovredFormReport);
-        infoWindow.setContent(content);
-        infoWindow.setZIndex(1000);
-
-        // component to see report informations for marker not recovred with owner same
-        content = this.componentService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
-        this.addInfoWindow(currentMareker, content, 'hover');
-      } else {
-        // marker recovred not owner same
-        content = this.componentService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
-        this.addInfoWindow(currentMareker, content);
-      }
-    }
+    const content = this.componentService.createComponent({report}, MarkerDetailsComponent, this.infosReport);
+    this.addInfoWindow(currentMareker, content);
 
     return currentMareker;
   }
@@ -545,80 +327,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     return infoWindow;
-  }
-
-  /**
-   * @description add events drag and drop and double click in map to user marker position
-   */
-  private addEventsUserMarker() {
-    this.addEventToMap(this.markerCurrentPosition, 'dragend');
-    this.addEventToMap(this.map, 'dblclick');
-  }
-
-  private addEventToMap(eltOnEvent, event) {
-    google.maps.event.addListener(eltOnEvent, event, (e) => {
-      this.mapM.position = {
-        lng: e.latLng.lng(),
-        lat: e.latLng.lat()
-      };
-
-      if (event === 'dblclick') {
-        this.initMarkerUser(this.mapM.markerUserOption(this.translateService.instant('main.map-view.your_position')));
-      }
-    });
-  }
-
-  private openTutoModal() {
-    log.debug('open tutorial modal');
-    this.analytics.logEvent('tutorial_begin');
-
-    const tutoPassed = localStorage.getItem('tutoPassed');
-    if (tutoPassed !== null) {
-      return;
-    }
-
-    this.modalService.open(MapTutoModalComponent, {
-      centered: true,
-      size: 'lg',
-      backdrop: 'static'
-    });
-  }
-
-  private initPolygon(coordsPolygon){
-    const polygon = new google.maps.Polygon({
-      paths: coordsPolygon,
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.5,
-      strokeWeight: 3,
-      fillColor: '#ff0000',
-      fillOpacity: 0.35
-    });
-    // this.addEventUserMarker(polygon, 'dblclick');
-
-    polygon.setMap(this.map);
-
-    // this.mapM.map.data.add({
-    //   geometry: new google.maps.Data.Polygon(polygon)
-    // });
-    this.mapM.map.data.loadGeoJson(coordsPolygon, { idPropertyName: 'STATE' });
-
-    // this.map.data.addListener('dblclick', (event) => {
-    //   this.mapM.position = {
-    //     lng: event.latLng.lng(),
-    //     lat: event.latLng.lat()
-    //   };
-    //   // this.initMarkerUser(this.mapM.markerUserOption());
-    // });
-  }
-
-  private isWithinPoly(polygon, marker) {
-    return google.maps.geometry.poly.containsLocation(marker.getPosition(), polygon);
-  }
-
-  /* eslint-disable-next-line , , , , , , , , , , , , , , , , ,  */
-
-  private reportsFilterByCity(city: string): Report[] {
-    return this.reports.filter(report => report.location.city === city);
   }
 
   private goToMarkerWithUrl() {

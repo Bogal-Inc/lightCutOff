@@ -1,20 +1,14 @@
-import {ComponentFactoryResolver, Injectable, ViewContainerRef} from '@angular/core';
-import {MarkerRecovredReportComponent} from '../../main/map/components/marker-recovred-report/marker-recovred-report.component';
+import {Injectable, Type, ViewContainerRef} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComponentService {
 
-  constructor(
-    private componentFactoryResolver: ComponentFactoryResolver
-    ) {}
+  createComponent<T extends { data: unknown }>(data, component: Type<T>, container: ViewContainerRef): HTMLElement {
+    const componentRef = container.createComponent(component);
 
-  createComponent(data, component, container: ViewContainerRef): any {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-    const componentRef = container.createComponent(componentFactory);
-
-    (componentRef.instance as MarkerRecovredReportComponent).data = data;
+    componentRef.instance.data = data;
     componentRef.hostView.detectChanges();
     const { nativeElement } = componentRef.location;
 

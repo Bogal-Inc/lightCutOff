@@ -71,7 +71,7 @@ Le site devient **vitrine Njuka + carte publique en LECTURE SEULE + section admi
 ## PLAN — Phase 2 : vitrine Njuka + carte lecture seule + admin (À VALIDER puis exécuter)
 
 Lots dans l'ordre :
-- [ ] 2a. **Purge** : PWA (ngsw, manifests, FCM/messaging, device.service), création/clôture de
+- [x] 2a. **Purge** (✅ 2026-08-07, commit sur feat/upgrade-angular20) : PWA (ngsw, manifests, FCM/messaging, device.service), création/clôture de
        signalements côté public, signup/signin publics, own-report, modals messaging/geolocation.
 - [ ] 2b. **Rebranding + vitrine Njuka** : const.ts, i18n fr/en, index.html (SEO), sitemap,
        palette/styles, accueil (devise, features app, boutons Play Store/App Store), à propos,

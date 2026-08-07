@@ -32,14 +32,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: '',
-    component: MainLayoutComponent,
-    loadChildren: () =>
-      import('./main/user/user.module').then(
-        m => m.UserModule
-      ),
-  },
-  {
     path: 'admin',
     component: AdminLayoutComponent,
     loadChildren: () =>

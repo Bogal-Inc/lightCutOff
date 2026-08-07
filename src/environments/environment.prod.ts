@@ -3,16 +3,12 @@ export const environment = {
   environment: 'prod',
   domain: 'undefined',
   googleMapsApiKey: 'GOOGLE_MAPS_API_KEY',
-  vapidPublicKey: 'VAPID_PUBLIC_KEY',
   app: {
   modules: {
-  ownerReport: true,
   mapMenu: true,
   mapFilter: true,
   mapSearch: true,
-  user: false,
-  messaging: true,
-  admin: false
+  admin: true
   }
   },
   firebase: {

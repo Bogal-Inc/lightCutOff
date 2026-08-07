@@ -6,11 +6,6 @@
                     <img src="../../../../assets/static/images/logo.png"
                          [alt]="'core.home.alt_logo' | translate: { projectTitle: projectTitle }"
                          class="mb-5 home__section-header__body__logo__img"><br>
-                    <a class="mb-3 btn btn-light me-2" (click)="openModal()" [class.btn-lg]="!isMobil"
-                       [title]="'core.home.btn_tuto_lightcutoff_title' | translate: { projectTitle: projectTitle }">
-                        <fa-icon [icon]="faPlayCircle"></fa-icon>
-                        {{'core.home.btn_tuto_lightcutoff' | translate: { projectTitle: projectTitle } }}
-                    </a>
                     <a class="mb-3 btn btn-warning me-2" [class.btn-lg]="!isMobil" href="/map"
                        [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }">
                         <fa-icon [icon]="faBullhorn"></fa-icon>

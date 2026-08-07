@@ -2,11 +2,9 @@ import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { MessagingComponent } from './modals/messaging/messaging.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
-import {OWL_DATE_TIME_LOCALE, OwlDateTimeModule, OwlNativeDateTimeModule} from '@danielmoncada/angular-datetime-picker';
 import {ToastrModule} from 'ngx-toastr';
 import {Const} from '../environments/const';
 import {provideHttpClient} from '@angular/common/http';
@@ -23,8 +21,6 @@ describe('AppComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
-        OwlDateTimeModule,
-        OwlNativeDateTimeModule,
         // NgcCookieConsentModule.forRoot(cookieConfig),
         TranslateModule.forRoot({
           defaultLanguage: 'fr',
@@ -40,7 +36,6 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        MessagingComponent
       ],
       providers: [
         I18nService,
