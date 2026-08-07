@@ -1,3 +1,10 @@
+# Déploiement PROD : à chaque push sur master, build + deploy live sur njuka-prod.
+# Secrets requis (Settings → Secrets and variables → Actions) :
+#   - FIREBASE_SERVICE_ACCOUNT_NJUKA_PROD : JSON du compte de service njuka-prod
+#   - STADIA_API_KEY : clé Stadia Maps (tuiles de la carte)
+# La config web Firebase n'est pas secrète (elle est embarquée dans le bundle),
+# elle est donc renseignée en clair ci-dessous.
+
 name: Deploy to Firebase Hosting on merge
 'on':
   push:
@@ -26,25 +33,21 @@ jobs:
       - name: Run build
         run: npm run build:prod
         env:
-          ENVIRONMENT: prod
-          PRODUCTION: true
           DOMAIN_DEV: localhost
           DOMAIN_PROD: https://njuka.app
-          MAILCHIMP_ENDPOINT: '${{ secrets.MAILCHIMP_ENDPOINT }}'
-          FIREBASE_API_KEY: '${{ secrets.FIREBASE_API_KEY }}'
-          FIREBASE_AUTH_DOMAIN: '${{ secrets.FIREBASE_AUTH_DOMAIN }}'
-          FIREBASE_DATABASE_URL: '${{ secrets.FIREBASE_DATABASE_URL }}'
-          FIREBASE_PROJECT_ID: '${{ secrets.FIREBASE_PROJECT_ID }}'
-          FIREBASE_STORAGE_BUCKET: '${{ secrets.FIREBASE_STORAGE_BUCKET }}'
-          FIREBASE_MESSAGING_SENDER_ID: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}'
-          FIREBASE_APP_ID: '${{ secrets.FIREBASE_APP_ID }}'
-          FIREBASE_MEASUREMENT_ID: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
-          VALID_PUBLIC_KEY: '${{ secrets.VALID_PUBLIC_KEY }}'
           STADIA_API_KEY: '${{ secrets.STADIA_API_KEY }}'
+          FIREBASE_API_KEY: AIzaSyBwUk795hUiWyR4nbwaMEeaqCNsNCZy-6U
+          FIREBASE_AUTH_DOMAIN: njuka-prod.firebaseapp.com
+          FIREBASE_DATABASE_URL: ''
+          FIREBASE_PROJECT_ID: njuka-prod
+          FIREBASE_STORAGE_BUCKET: njuka-prod.firebasestorage.app
+          FIREBASE_MESSAGING_SENDER_ID: '574419625568'
+          FIREBASE_APP_ID: 1:574419625568:web:73ac6dadefa07ac4854505
+          FIREBASE_MEASUREMENT_ID: G-CZK07TCPYP
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LIGHTCUTOFF }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NJUKA_PROD }}'
           channelId: live
-          projectId: lightcutoff
+          projectId: njuka-prod

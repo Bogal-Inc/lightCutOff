@@ -1,7 +1,15 @@
+# Preview PR : build avec la config STAGING (lightcutoff-dev) et déploiement sur un
+# canal de prévisualisation Firebase Hosting (URL temporaire commentée sur la PR).
+# Secrets requis :
+#   - FIREBASE_SERVICE_ACCOUNT_LIGHTCUTOFF_DEV : JSON du compte de service lightcutoff-dev
+#   - STADIA_API_KEY : clé Stadia Maps
+
 name: Deploy to Firebase Hosting on PR
 'on': pull_request
 jobs:
   build_and_preview:
+    # pas de preview depuis un fork (les secrets n'y sont pas disponibles)
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,27 +28,23 @@ jobs:
       - name: Run Test
         run: npm run test:ci
 
-      - name: Run build dev
+      - name: Run build (staging config)
         run: npm run build:prod
         env:
-          ENVIRONMENT: dev
-          PRODUCTION: false
           DOMAIN_DEV: localhost
           DOMAIN_PROD: https://njuka.app
-          MAILCHIMP_ENDPOINT: '${{ secrets.DEV_MAILCHIMP_ENDPOINT }}'
-          FIREBASE_API_KEY: '${{ secrets.DEV_FIREBASE_API_KEY }}'
-          FIREBASE_AUTH_DOMAIN: '${{ secrets.DEV_FIREBASE_AUTH_DOMAIN }}'
-          FIREBASE_DATABASE_URL: '${{ secrets.DEV_FIREBASE_DATABASE_URL }}'
-          FIREBASE_PROJECT_ID: '${{ secrets.DEV_FIREBASE_PROJECT_ID }}'
-          FIREBASE_STORAGE_BUCKET: '${{ secrets.DEV_FIREBASE_STORAGE_BUCKET }}'
-          FIREBASE_MESSAGING_SENDER_ID: '${{ secrets.DEV_FIREBASE_MESSAGING_SENDER_ID }}'
-          FIREBASE_APP_ID: '${{ secrets.DEV_FIREBASE_APP_ID }}'
-          FIREBASE_MEASUREMENT_ID: '${{ secrets.DEV_FIREBASE_MEASUREMENT_ID }}'
-          VALID_PUBLIC_KEY: '${{ secrets.DEV_VAPID_PUBLIC_KEY }}'
           STADIA_API_KEY: '${{ secrets.STADIA_API_KEY }}'
+          FIREBASE_API_KEY: AIzaSyDgxARuTPtogkJCFyCOK3kcgkfXmdgbkgA
+          FIREBASE_AUTH_DOMAIN: lightcutoff-dev.firebaseapp.com
+          FIREBASE_DATABASE_URL: https://lightcutoff-dev.firebaseio.com
+          FIREBASE_PROJECT_ID: lightcutoff-dev
+          FIREBASE_STORAGE_BUCKET: lightcutoff-dev.appspot.com
+          FIREBASE_MESSAGING_SENDER_ID: '708077956449'
+          FIREBASE_APP_ID: 1:708077956449:web:8307c1ccd10dd895726920
+          FIREBASE_MEASUREMENT_ID: G-5MMMZRR7G0
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LIGHTCUTOFF }}'
-          projectId: lightcutoff
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LIGHTCUTOFF_DEV }}'
+          projectId: lightcutoff-dev

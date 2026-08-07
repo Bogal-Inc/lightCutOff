@@ -318,3 +318,13 @@ sections, CTA, absence équipe/partenaires).
 - Vérifié en ligne : accueil NJUKA, routes SPA (/map, /faq) via rewrite, pages légales.
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
+
+## [2.11.1] - 2026-08-07 — CI de déploiement vers l'écosystème Njuka
+
+- **Workflow merge (master)** : lint + tests + build prod (config njuka-prod en clair,
+  DOMAIN_PROD=njuka.app) → déploiement **live sur njuka-prod**.
+- **Workflow PR** : build avec la config lightcutoff-dev → **canal de prévisualisation**
+  Firebase (URL temporaire commentée sur la PR) ; désactivé pour les PR de forks.
+- Secrets requis réduits à 3 (`FIREBASE_SERVICE_ACCOUNT_NJUKA_PROD`,
+  `FIREBASE_SERVICE_ACCOUNT_LIGHTCUTOFF_DEV`, `STADIA_API_KEY`) — la config web Firebase
+  n'est pas secrète et vit en clair dans les workflows. Guide : `docs/DEPLOY.md`.
