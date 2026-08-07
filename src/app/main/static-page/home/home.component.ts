@@ -13,13 +13,6 @@ import {MetaTag, METATAG} from '@Models/metaTag.model';
 
 const log = new Logger('home.component');
 
-export enum PARTNERS {
-  WILLY,
-  EUCLIDE,
-  YVAN,
-  ALEX
-}
-
 @Component({
   standalone: false,
   selector: 'app-home',
@@ -30,21 +23,12 @@ export enum PARTNERS {
 export class HomeComponent implements OnInit {
   readonly projectTitle = Const.app.title;
   readonly playStoreUrl = Const.app.playStoreUrl;
+  readonly appStoreUrl = Const.app.appStoreUrl;
   readonly faBullhorn = faBullhorn;
   closeResult = '';
   reports: any;
   reportsCurrentYear: any;
   reportsCurrentMonth: any;
-  partners = [
-    PARTNERS.WILLY,
-    PARTNERS.EUCLIDE,
-    PARTNERS.YVAN,
-    PARTNERS.ALEX
-  ];
-  impPartnerWilly = true;
-  impPartnerEuclide = true;
-  impPartnerYvan = true;
-  impPartnerAlex = true;
   reportsCurrentDay: Report[];
   nbrReportsDay: number;
   nbrReportsMonthly: number;
@@ -94,29 +78,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  mouseEnter(partner: PARTNERS) {
-    if (partner === PARTNERS.WILLY) {
-      this.impPartnerWilly = false;
-    } else if (partner === PARTNERS.EUCLIDE) {
-      this.impPartnerEuclide = false;
-    } else if (partner === PARTNERS.YVAN) {
-      this.impPartnerYvan = false;
-    } else if (partner === PARTNERS.ALEX) {
-      this.impPartnerAlex = false;
-    }
-  }
 
-  mouseLeave(partner: PARTNERS) {
-    if (partner === PARTNERS.WILLY) {
-      this.impPartnerWilly = true;
-    } else if (partner === PARTNERS.EUCLIDE) {
-      this.impPartnerEuclide = true;
-    } else if (partner === PARTNERS.YVAN) {
-      this.impPartnerYvan= true;
-    } else if (partner === PARTNERS.ALEX) {
-      this.impPartnerAlex = true;
-    }
-  }
 
   private isCurrentUSerHaveMarkers() {
     return this.reports.find(

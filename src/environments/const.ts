@@ -6,8 +6,7 @@ export const Const = {
       en: 'Together, we see clearly.'
     },
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.njuka.app',
-    // À renseigner quand l'app iOS sera publiée sur l'App Store
-    appStoreUrl: null,
+    appStoreUrl: 'https://apps.apple.com/app/njuka/id6794127922',
     lang: {
       localstorage_title: 'njukaXLanguage',
       defaultLanguage: 'fr',

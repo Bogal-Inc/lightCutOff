@@ -72,6 +72,30 @@
     }
 }
 
+
+.home__hero__badges {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__badge {
+        height: 56px;
+    }
+}
+
+.home__section-cta {
+    background-color: var(--njuka-charcoal);
+    color: var(--white);
+    margin-bottom: 0 !important;
+
+    &__text {
+        max-width: 620px;
+        color: rgba(255, 255, 255, 0.75);
+    }
+}
+
 .section_1 {
     min-height: 100vh;
 }

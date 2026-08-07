@@ -165,3 +165,19 @@
 - Build + prod OK · 52/52 tests · lint 0 erreur · navigateur : carte Stadia + données réelles
   lightcutoff-dev (6 signalements Yaoundé/Douala, popup eau Biyem-Assi avec description
   et 2 confirmations, historique daté correctement).
+
+## [2.5.0] - 2026-08-07 — Accueil : badges stores, iOS disponible, contenu projet
+
+- **App iOS publiée** : lien App Store réel (`apps.apple.com/app/njuka/id6794127922`,
+  retrouvé via l'API iTunes Search) dans const, tutoriel et FAQ ; mention
+  « Bientôt sur l'App Store » supprimée.
+- **Badges stores officiels** (Google Play PNG + App Store SVG, FR/EN via i18n) à la place
+  des boutons texte — hero, section app et nouveau bandeau CTA.
+- **Sections équipe et partenaires supprimées** de l'accueil (+ nettoyage du code composant).
+- **Nouveau contenu projet** :
+  - section « Pourquoi NJUKA ? » (remplace les tuiles 2022) : coupures imprévisibles →
+    information communautaire → données pour s'organiser ;
+  - bandeau CTA final charbon (devise + badges de téléchargement).
+
+Vérifié : build prod OK · 52/52 tests · lint 0 erreur · navigateur (badges FR et EN,
+sections, CTA, absence équipe/partenaires).

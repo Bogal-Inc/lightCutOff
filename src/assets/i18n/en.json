@@ -40,15 +40,6 @@
         "alt_to_move_out": "illustration: Living in a low cut-off frequency area",
         "to_move_out": "Living in a low cut-off frequency area"
       },
-      "team": {
-        "title": "Our team",
-        "developer": "Developer",
-        "data_analysis": "Data analytics manager",
-        "cto": "CTO",
-        "ceo": "CEO",
-        "design": "Design manager",
-        "communication": "Communication, manager"
-      },
       "statistics": {
         "title": "NJUKA statistics",
         "reports_total": "Total reports",
@@ -80,7 +71,10 @@
         "sub_water": "Water",
         "btn_playstore": "Get it on Google Play",
         "btn_playstore_title": "Download the NJUKA app on Google Play",
-        "appstore_soon": "Coming soon to the App Store"
+        "badge_playstore_src": "assets/static/images/stores/google-play-badge-en.png",
+        "badge_appstore_src": "assets/static/images/stores/app-store-badge-en.svg",
+        "badge_playstore_alt": "Get it on Google Play",
+        "badge_appstore_alt": "Download on the App Store"
       },
       "app": {
         "title": "The NJUKA app",
@@ -96,6 +90,19 @@
         "alt_screenshot_list": "NJUKA screenshot: electricity and water outage list",
         "alt_screenshot_map": "NJUKA screenshot: outage map",
         "alt_screenshot_detail": "NJUKA screenshot: report details"
+      },
+      "why": {
+        "title": "Why NJUKA?",
+        "problem_title": "Unpredictable outages",
+        "problem_text": "In Cameroon, electricity and water can go out without warning — sometimes for hours, sometimes for days. Everyone endures it, without knowing whether the outage affects their street, their neighbourhood or the whole city.",
+        "community_title": "Information from the people living it",
+        "community_text": "NJUKA relies on the community: every reported outage is confirmed by neighbours. The more confirmations, the more reliable the information — and everyone knows right away whether the problem is local or general.",
+        "data_title": "Data to get organised",
+        "data_text": "Reported outages, durations, service restorations, official planned outages from Eneo: NJUKA turns the experience of thousands of users into useful information to plan your day, your business or your travel."
+      },
+      "cta": {
+        "title": "Together, we see clearly.",
+        "text": "Download NJUKA for free and join the community that stays informed and helps each other through electricity and water outages."
       }
     },
     "aboutus": {
@@ -113,7 +120,7 @@
       "prin_title": "Learn how to use NJUKA",
       "alert_country": "For now, NJUKA is only available in <b>Cameroon</b>: reports made outside Cameroon are not accepted.",
       "step_install_title": "1. Install the app",
-      "step_install_text": "Download NJUKA on <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. No account needed to get started: you can report and browse anonymously. The iPhone version is coming soon to the App Store.",
+      "step_install_text": "Download NJUKA on <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a> (Android) or on the <a href='https://apps.apple.com/app/njuka/id6794127922' target='_blank' rel='noopener'>App Store</a> (iPhone). No account needed to get started: you can report and browse anonymously.",
       "step_report_title": "2. Report an outage",
       "step_report_text": "Electricity ⚡ or water 💧 outage at your place? Tap the “Report” button, pick the affected service: your report is geolocated and visible to your neighbours within seconds.",
       "step_confirm_title": "3. Confirm… or deny",
@@ -130,7 +137,7 @@
       "question_2": "How do I report an electricity or water outage?",
       "response_2": "Reports are made from the <b>NJUKA</b> mobile app, available on <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Open the app, tap “Report”, and you're done — even without creating an account. The website lets you <a href='/map'>browse the outage map</a>.",
       "question_3": "How do I install NJUKA on my phone?",
-      "response_3": "On Android, download the app from <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. The iOS (iPhone) version is coming soon to the App Store."
+      "response_3": "On Android, download the app from <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. On iPhone, from the <a href='https://apps.apple.com/app/njuka/id6794127922' target='_blank' rel='noopener'>App Store</a>."
     }
   },
   "main": {

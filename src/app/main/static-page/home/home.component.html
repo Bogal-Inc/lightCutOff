@@ -13,19 +13,26 @@
                     <span class="home__hero__services__dot">·</span>
                     <span>💧 {{'core.home.hero.sub_water' | translate}}</span>
                 </p>
-                <div class="mt-4">
-                    <a class="mb-3 btn btn-njuka btn-lg me-2" [href]="playStoreUrl" target="_blank" rel="noopener"
+                <div class="mt-4 home__hero__badges">
+                    <a [href]="playStoreUrl" target="_blank" rel="noopener"
                        [title]="'core.home.hero.btn_playstore_title' | translate">
-                        <i class="fab fa-google-play"></i>
-                        {{'core.home.hero.btn_playstore' | translate}}
+                        <img [src]="'core.home.hero.badge_playstore_src' | translate"
+                             [alt]="'core.home.hero.badge_playstore_alt' | translate"
+                             class="home__hero__badges__badge">
                     </a>
-                    <a class="mb-3 btn btn-outline-light btn-lg" routerLink="/map"
+                    <a [href]="appStoreUrl" target="_blank" rel="noopener">
+                        <img [src]="'core.home.hero.badge_appstore_src' | translate"
+                             [alt]="'core.home.hero.badge_appstore_alt' | translate"
+                             class="home__hero__badges__badge">
+                    </a>
+                </div>
+                <div class="mt-3">
+                    <a class="btn btn-outline-light" routerLink="/map"
                        [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }">
                         <fa-icon [icon]="faBullhorn"></fa-icon>
                         {{"core.home.btn_map" | translate}}
                     </a>
                 </div>
-                <p class="home__hero__appstore">{{'core.home.hero.appstore_soon' | translate}}</p>
             </div>
         </div>
     </section>
@@ -57,41 +64,23 @@
         </div>
     </section>
 
-    <!--  what we do section-->
-    <section class="home__section home__section-whatwedo">
-        <div class="home__section-whatwedo__body w-100 h-100">
-            <h2 class="mb-5 text-center">{{'core.home.whatwedo.title' | translate}}</h2>
+    <!--  why njuka section-->
+    <section class="home__section home__section-why">
+        <div class="w-100 h-100">
+            <h2 class="mb-5 text-center">{{'core.home.why.title' | translate}}</h2>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 text-center">
-                        <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/home/map.svg" class="rounded w-100"
-                                 alt="{{'core.home.whatwedo.alt_local_cut_off' | translate}} logo">
-                        </div>
-                        <h4>{{'core.home.whatwedo.local_cut_off' | translate}}</h4>
+                    <div class="col-md-4 mb-4">
+                        <h4 class="home__section-why__title">⚡ {{'core.home.why.problem_title' | translate}}</h4>
+                        <p class="text-muted">{{'core.home.why.problem_text' | translate}}</p>
                     </div>
-
-                    <div class="col-md-3 text-center">
-                        <div class=" pb-4">
-                            <img src="../../../../assets/static/images/home/data_collect.svg" class="rounded w-100"
-                                 alt="{{'core.home.whatwedo.alt_collect_data' | translate}} logo">
-                        </div>
-                        <h4>{{'core.home.whatwedo.collect_data' | translate }}</h4>
+                    <div class="col-md-4 mb-4">
+                        <h4 class="home__section-why__title">🤝 {{'core.home.why.community_title' | translate}}</h4>
+                        <p class="text-muted">{{'core.home.why.community_text' | translate}}</p>
                     </div>
-
-                    <div class="col-md-3 text-center">
-                        <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/home/grahic_chart.svg" class="rounded w-100"
-                                 alt="{{'core.home.whatwedo.charts_data' | translate}} logo">
-                        </div>
-                        <h4>{{'core.home.whatwedo.charts_data' | translate}}</h4>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/home/user_data.svg" class="rounded w-100"
-                                 alt="{{'core.home.whatwedo.users_notifications' | translate}}">
-                        </div>
-                        <h4>{{'core.home.whatwedo.users_informations' | translate}}</h4>
+                    <div class="col-md-4 mb-4">
+                        <h4 class="home__section-why__title">📊 {{'core.home.why.data_title' | translate}}</h4>
+                        <p class="text-muted">{{'core.home.why.data_text' | translate}}</p>
                     </div>
                 </div>
             </div>
@@ -143,11 +132,16 @@
                                 <p>{{'core.home.app.feature_official' | translate}}</p>
                             </li>
                         </ul>
-                        <div class="text-center text-md-start">
-                            <a class="btn btn-njuka btn-lg" [href]="playStoreUrl" target="_blank" rel="noopener"
-                               [title]="'core.home.hero.btn_playstore_title' | translate">
-                                <i class="fab fa-google-play"></i>
-                                {{'core.home.hero.btn_playstore' | translate}}
+                        <div class="text-center text-md-start home__hero__badges">
+                            <a [href]="playStoreUrl" target="_blank" rel="noopener">
+                                <img [src]="'core.home.hero.badge_playstore_src' | translate"
+                                     [alt]="'core.home.hero.badge_playstore_alt' | translate"
+                                     class="home__hero__badges__badge">
+                            </a>
+                            <a [href]="appStoreUrl" target="_blank" rel="noopener">
+                                <img [src]="'core.home.hero.badge_appstore_src' | translate"
+                                     [alt]="'core.home.hero.badge_appstore_alt' | translate"
+                                     class="home__hero__badges__badge">
                             </a>
                         </div>
                     </div>
@@ -187,86 +181,24 @@
 
 
 
-    <!--  team section-->
-    <section class="home__section home__section-team">
-        <div class="home__section-team__body w-100 h-100">
-            <h2 class="mb-5 text-center">{{'core.home.team.title' | translate}}</h2>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[0])"
-                         (mouseleave)="mouseLeave(partners[0])">
-                        <div class=" pb-4">
-                            <img src="../../../../assets/static/images/partners/kouagnia_willy_c.png"
-                                 [class.d-block]="!impPartnerWilly" class="rounded-circle w-100 d-none"
-                                 alt="kouagnia willy NJUKA CEO">
-                            <img src="../../../../assets/static/images/partners/kouagnia_willy_b.png"
-                                 [class.d-block]="impPartnerWilly" class="rounded-circle w-100 d-none"
-                                 alt="kouagnia willy NJUKA CEO">
-                        </div>
-                        <div>
-                            <h4>Willy Kouagnia</h4>
-                            <i>{{'core.home.team.founder' | translate}}, {{'core.home.team.developer' | translate}}</i>
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[2])"
-                         (mouseleave)="mouseLeave(partners[2])">
-                        <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/partners/lco_yvan_tchounga_c.jpg"
-                                 [class.d-block]="!impPartnerYvan" class="rounded-circle w-100 d-none"
-                                 alt="yvan_tchounga NJUKA CTO">
-                            <img src="../../../../assets/static/images/partners/lco_yvan_tchounga_b.jpg"
-                                 [class.d-block]="impPartnerYvan" class="rounded-circle w-100 d-none"
-                                 alt="yvan_tchounga NJUKA CTO">
-                        </div>
-                        <div>
-                            <h4>Yvan Tchounga</h4>
-                            <i>{{'core.home.team.data_analysis' | translate}}</i>
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[1])"
-                         (mouseleave)="mouseLeave(partners[1])">
-                        <div class="text-center pb-4">
-                            <img src="../../../../assets/static/images/partners/nandjeu_euclide_c.png"
-                                 [class.d-block]="!impPartnerEuclide" class="rounded-circle w-100 d-none"
-                                 alt="Nandjeu Euclide Quentin NJUKA responsable communication">
-                            <img src="../../../../assets/static/images/partners/nandjeu_euclide_b.png"
-                                 [class.d-block]="impPartnerEuclide" class="rounded-circle w-100 d-none"
-                                 alt="Nandjeu Euclide Quentin NJUKA responsable communication">
-                        </div>
-                        <div>
-                            <h4>Nandjeu Quentin</h4>
-                            <i>{{'core.home.team.design' | translate}}</i>
-                        </div>
-                    </div>
-                  <!--<div class="col-md-3 text-center home__section-team__item" (mouseenter)="mouseEnter(partners[3])"
-                       (mouseleave)="mouseLeave(partners[3])">
-                    <div class="text-center pb-4">
-                      <img src="../../../../assets/static/images/partners/lco_alex_nana_c.jpeg"
-                           [class.d-block]="!impPartnerAlex" class="rounded-circle w-100 d-none"
-                           alt="Alex Nana NJUKA responsable communication">
-                      <img src="../../../../assets/static/images/partners/lco_alex_nana_b.jpg"
-                           [class.d-block]="impPartnerAlex" class="rounded-circle w-100 d-none"
-                           alt="Alex Nana NJUKA responsable communication">
-                    </div>
-                    <div>
-                      <h4>Alex Nana</h4>
-                      <i>{{'core.home.team.communication' | translate}}</i>
-                    </div>
-                  </div>-->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- partners -->
-    <section class="home__section home__section-partner">
-        <div class="home__section-partner__body w-100 h-100">
-            <div class="container">
-                <h1 class="mb-5 text-center">{{'core.home.partners.title' | translate}}</h1>
-                <div class="row">
-                    <img src="../../../../assets/static/images/partners/AG-LOGO.png"
-                         class="rounded-circle mx-auto d-block w-25" alt="AG-LOGO NJUKA partner">
+    <!--  download CTA band -->
+    <section class="home__section home__section-cta">
+        <div class="home__section-cta__body text-center">
+            <div class="container py-5">
+                <img src="../../../../assets/static/images/njuka/njuka_foreground.png" alt="NJUKA" width="72">
+                <h2 class="mt-3">{{'core.home.cta.title' | translate}}</h2>
+                <p class="home__section-cta__text mx-auto">{{'core.home.cta.text' | translate}}</p>
+                <div class="mt-4 home__hero__badges">
+                    <a [href]="playStoreUrl" target="_blank" rel="noopener">
+                        <img [src]="'core.home.hero.badge_playstore_src' | translate"
+                             [alt]="'core.home.hero.badge_playstore_alt' | translate"
+                             class="home__hero__badges__badge">
+                    </a>
+                    <a [href]="appStoreUrl" target="_blank" rel="noopener">
+                        <img [src]="'core.home.hero.badge_appstore_src' | translate"
+                             [alt]="'core.home.hero.badge_appstore_alt' | translate"
+                             class="home__hero__badges__badge">
+                    </a>
                 </div>
             </div>
         </div>

@@ -40,16 +40,6 @@
         "alt_to_move_out": "Illustration: Habiter une zone à faible fréquence de coupure d'électricité",
         "to_move_out": "Habiter une zone à faible fréquence de coupure d'électricité"
       },
-      "team": {
-        "title": "Notre équipe",
-        "developer": "Développeur",
-        "data_analysis": "Responsable analyse de données",
-        "cto": "CTO",
-        "ceo": "CEO",
-        "founder": "Fondateur",
-        "design": "Responsable design",
-        "communication": "Responsable communication"
-      },
       "statistics": {
         "title": "NJUKA statistiques",
         "reports_total": "Total des signalements",
@@ -81,7 +71,10 @@
         "sub_water": "Eau",
         "btn_playstore": "Disponible sur Google Play",
         "btn_playstore_title": "Télécharger l'application NJUKA sur Google Play",
-        "appstore_soon": "Bientôt sur l'App Store"
+        "badge_playstore_src": "assets/static/images/stores/google-play-badge-fr.png",
+        "badge_appstore_src": "assets/static/images/stores/app-store-badge-fr.svg",
+        "badge_playstore_alt": "Disponible sur Google Play",
+        "badge_appstore_alt": "Télécharger dans l'App Store"
       },
       "app": {
         "title": "L'application NJUKA",
@@ -97,6 +90,19 @@
         "alt_screenshot_list": "Capture d'écran NJUKA : liste des coupures électricité et eau",
         "alt_screenshot_map": "Capture d'écran NJUKA : carte des coupures",
         "alt_screenshot_detail": "Capture d'écran NJUKA : détail d'un signalement"
+      },
+      "why": {
+        "title": "Pourquoi NJUKA ?",
+        "problem_title": "Des coupures imprévisibles",
+        "problem_text": "Au Cameroun, l'électricité et l'eau peuvent partir sans prévenir — parfois pour des heures, parfois pour des jours. Chacun subit, sans savoir si la panne touche sa rue, son quartier ou toute la ville.",
+        "community_title": "L'information par ceux qui la vivent",
+        "community_text": "NJUKA s'appuie sur la communauté : chaque coupure signalée est confirmée par les voisins. Plus il y a de confirmations, plus l'information est fiable — et chacun sait immédiatement si le problème est local ou général.",
+        "data_title": "Des données pour mieux s'organiser",
+        "data_text": "Coupures signalées, durées, retours du service, coupures planifiées officielles d'Eneo : NJUKA transforme l'expérience de milliers d'utilisateurs en information utile pour organiser sa journée, son commerce ou ses déplacements."
+      },
+      "cta": {
+        "title": "Ensemble, on y voit plus clair.",
+        "text": "Téléchargez NJUKA gratuitement et rejoignez la communauté qui s'informe et s'entraide face aux coupures d'électricité et d'eau."
       }
     },
     "aboutus": {
@@ -114,7 +120,7 @@
       "prin_title": "Apprenez à utiliser NJUKA",
       "alert_country": "Pour l'instant, NJUKA n'est disponible qu'au <b>Cameroun</b> : les signalements faits en dehors du Cameroun ne sont pas acceptés.",
       "step_install_title": "1. Installez l'application",
-      "step_install_text": "Téléchargez NJUKA sur <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Aucune création de compte n'est nécessaire pour commencer : vous pouvez signaler et consulter en restant anonyme. La version iPhone arrive bientôt sur l'App Store.",
+      "step_install_text": "Téléchargez NJUKA sur <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a> (Android) ou sur l'<a href='https://apps.apple.com/app/njuka/id6794127922' target='_blank' rel='noopener'>App Store</a> (iPhone). Aucune création de compte n'est nécessaire pour commencer : vous pouvez signaler et consulter en restant anonyme.",
       "step_report_title": "2. Signalez une coupure",
       "step_report_text": "Une coupure d'électricité ⚡ ou d'eau 💧 chez vous ? Appuyez sur le bouton « Signaler », choisissez le service concerné : votre signalement est géolocalisé et visible par les voisins en quelques secondes.",
       "step_confirm_title": "3. Confirmez… ou démentez",
@@ -131,7 +137,7 @@
       "question_2": "Comment signaler une coupure d'électricité ou d'eau ?",
       "response_2": "Les signalements se font depuis l'application mobile <b>NJUKA</b>, disponible sur <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Ouvrez l'app, appuyez sur « Signaler », et c'est fait — même sans créer de compte. Le site web vous permet quant à lui de <a href='/map'>consulter la carte des coupures</a>.",
       "question_3": "Comment installer NJUKA sur mon téléphone ?",
-      "response_3": "Sur Android, téléchargez l'application depuis <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. La version iOS (iPhone) arrive bientôt sur l'App Store."
+      "response_3": "Sur Android, téléchargez l'application depuis <a href='https://play.google.com/store/apps/details?id=com.njuka.app' target='_blank' rel='noopener'>Google Play</a>. Sur iPhone, depuis l'<a href='https://apps.apple.com/app/njuka/id6794127922' target='_blank' rel='noopener'>App Store</a>."
     }
   },
   "main": {
