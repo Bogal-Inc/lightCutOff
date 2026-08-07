@@ -5,8 +5,10 @@ export const Const = {
       fr: 'Ensemble, on y voit plus clair.',
       en: 'Together, we see clearly.'
     },
-    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.njuka.app',
-    appStoreUrl: 'https://apps.apple.com/app/njuka/id6794127922',
+    // referrer Play (Install Referrer API) : attribution « website » dans la Play Console
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.njuka.app&referrer=utm_source%3Dwebsite%26utm_medium%3Dreferral%26utm_campaign%3Dnjuka_site',
+    // ct = campaign token App Store Connect (nécessite le provider token pt pour l'analytics Apple)
+    appStoreUrl: 'https://apps.apple.com/app/njuka/id6794127922?ct=website&mt=8',
     lang: {
       localstorage_title: 'njukaXLanguage',
       defaultLanguage: 'fr',
