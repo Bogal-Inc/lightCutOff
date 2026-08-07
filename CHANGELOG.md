@@ -181,3 +181,12 @@
 
 Vérifié : build prod OK · 52/52 tests · lint 0 erreur · navigateur (badges FR et EN,
 sections, CTA, absence équipe/partenaires).
+
+## [2.5.1] - 2026-08-07 — Badges uniformisés + contenu « à propos » réécrit
+
+- Badges Google Play rognés de leurs marges transparentes intégrées → **même taille
+  visuelle** que le badge App Store (FR et EN).
+- Contenu « à propos » entièrement réécrit (accueil + page /aboutus, FR/EN) :
+  histoire (2020, LightCutOff → NJUKA, Bogal Consulting), mission (signaler/confirmer/
+  alertes/coupures planifiées, Eneo + Camwater, devise), vision (des données aux
+  prévisions de délestage, extension Afrique).

@@ -27,7 +27,7 @@
       "alt_logo": "NJUKA logo — electricity and water outage reporting",
       "about": {
         "title": "About us NJUKA",
-        "content": "Access to essential services such as electricity or water is not always guaranteed: some regions, cities or neighbourhoods can be deprived of them for hours or even days. <b>NJUKA</b> is a collaborative platform that lets its users report electricity and water outages around them, confirm them, track service restoration and check official planned outages — to better organise their daily life.",
+        "content": "NJUKA was born from a daily reality every Cameroonian knows: electricity and water outages that come without warning. The app turns the community's experience into useful information — everyone reports the outages around them, neighbours confirm, and everybody gets alerted when the service is back and about official planned outages. An initiative by Bogal Consulting, designed in Cameroon, for Cameroon.",
         "btn_next": "Find out more",
         "alt_img": "about section illustration. Report light cut"
       },
@@ -106,13 +106,13 @@
       }
     },
     "aboutus": {
-      "title_page": "About us",
-      "desc_page": "NJUKA is a collaborative platform that allows its users to help each other on the issue of the availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
-      "text_history_1": "In <b>Cameroon</b>, access to public resources such as electricity or water is not easy. Some regions/cities/districts may even be deprived of it for several days or even several weeks. The <b>NJUKA</b> platform aims to help make a real-time inventory of access to electric energy in <b>Cameroon</b>. This in order to allow third parties to adapt their daily life and to be informed.",
-      "title_obj_1": "Our objective",
-      "text_obj_1": "<b>NJUKA</b> is a collaborative platform which allows its users to help each other on the question of availability of electrical energy in order to be able to readjust their lifestyle and possibly optimize the management of their resources and their activities.",
+      "title_page": "About",
+      "desc_page": "NJUKA is the Cameroonian mobile app for reporting electricity and water outages: a community that stays informed, confirms and helps each other, built by Bogal Consulting.",
+      "text_history_1": "In Cameroon, an electricity or water outage is part of daily life: it comes without warning, sometimes lasts hours or days, and everyone endures it without knowing whether it affects their street, their neighbourhood or the whole city. The project was born in 2020 from a simple observation: this information exists — the residents themselves hold it. First launched as <b>LightCutOff</b>, focused on electricity, the project grew and became <b>NJUKA</b>: a mobile app covering electricity <b>and</b> water, developed and published by <b>Bogal Consulting</b>.",
+      "title_obj_1": "Our mission",
+      "text_obj_1": "Give everyone reliable, real-time information about the outages around them. With <strong>NJUKA</strong>, you report an electricity (Eneo) or water (Camwater) outage in seconds, your neighbours confirm it — or deny it —, you get alerted when an outage is reported near you and when the service is back, and you check the official planned outages every day. The bigger the community, the more accurate the information: that is the meaning of our motto, <strong>“Together, we see clearly.”</strong>",
       "title_obj_2": "Our vision",
-      "text_obj_2": "Our long-term vision at <strong> NJUKA </strong> is to use technologies such as <strong> artificial intelligence and machin learning </strong> to offer more precise and better evaluated services in order to '' improve the user experience in the face of power cuts."
+      "text_obj_2": "Every report, every confirmation and every service restoration feeds a unique collective knowledge of the real availability of electricity and water. Our long-term ambition: turn this data into <strong>forecasts</strong> — knowing when the power is likely to go out, and when it should come back — to move from enduring the information to anticipating it. Designed for Cameroon, NJUKA is built from day one to expand to other African countries."
     },
     "tuto": {
       "title_page": "Tutorial — how to use NJUKA",

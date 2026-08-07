@@ -27,7 +27,7 @@
       "alt_logo": "Logo NJUKA — signalement des coupures d'électricité et d'eau",
       "about": {
         "title": "À propos de NJUKA",
-        "content": "L'accès aux services essentiels comme l'électricité ou l'eau n'est pas toujours garanti : certaines régions, villes ou quartiers peuvent en être privés pendant des heures, voire des jours. <b>NJUKA</b> est une plateforme collaborative qui permet à ses utilisateurs de signaler les coupures d'électricité et d'eau autour d'eux, de les confirmer, de suivre le retour du service et de consulter les coupures planifiées officielles — pour mieux organiser leur quotidien.",
+        "content": "NJUKA est né d'un quotidien que connaissent tous les Camerounais : des coupures d'électricité et d'eau qui arrivent sans prévenir. L'application transforme l'expérience de la communauté en information utile — chacun signale les coupures autour de lui, les voisins confirment, tout le monde est alerté du retour du service et des coupures planifiées officielles. Une initiative de Bogal Consulting, pensée au Cameroun, pour le Cameroun.",
         "btn_next": "En savoir plus",
         "alt_img": "illustration de section à propos. Rapportez coupure lumiere"
       },
@@ -107,12 +107,12 @@
     },
     "aboutus": {
       "title_page": "À propos",
-      "desc_page": "NJUKA est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de la disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
-      "text_history_1": "La fourniture d'énergie électrique en Afrique est un besoin fondamental, c'est à dire qu'elle est précieuse pour tout habitant. Cependant, dans des pays en voie de développement comme le Cameroun, l'effectivité de cette disponibilité n'est pas tout le temps avérée. Afin de permettre aux habitants et consommateurs d'énergie électrique de mieux maitriser cette disponibilité au quotidien, nous avons pensé à créer l'outil <b>NJUKA</b>.",
-      "title_obj_1": "Notre objectif",
-      "text_obj_1": "<strong>NJUKA</strong> est une plateforme collaborative qui permet à ses utilisateurs de s'entraider sur la question de disponibilité de l'énergie électrique afin de pouvoir réajuster leur mode de vie et éventuellement optimiser la gestion de leurs ressources et de leurs activités.",
+      "desc_page": "NJUKA est l'application mobile camerounaise de signalement des coupures d'électricité et d'eau : une communauté qui s'informe, se confirme et s'entraide, portée par Bogal Consulting.",
+      "text_history_1": "Au Cameroun, une coupure d'électricité ou d'eau fait partie du quotidien : elle arrive sans prévenir, dure parfois des heures ou des jours, et chacun la subit sans savoir si elle touche sa rue, son quartier ou toute la ville. Le projet est né en 2020 d'un constat simple : cette information existe — ce sont les habitants eux-mêmes qui la détiennent. D'abord lancé sous le nom <b>LightCutOff</b>, centré sur l'électricité, le projet a grandi et est devenu <b>NJUKA</b> : une application mobile qui couvre l'électricité <b>et</b> l'eau, développée et éditée par <b>Bogal Consulting</b>.",
+      "title_obj_1": "Notre mission",
+      "text_obj_1": "Donner à chacun une information fiable et en temps réel sur les coupures autour de lui. Avec <strong>NJUKA</strong>, vous signalez une coupure d'électricité (Eneo) ou d'eau (Camwater) en quelques secondes, vos voisins la confirment — ou la démentent —, vous êtes alerté quand une coupure est signalée près de chez vous et quand le service revient, et vous consultez chaque jour les coupures planifiées officielles. Plus la communauté grandit, plus l'information est précise : c'est le sens de notre devise, <strong>« Ensemble, on y voit plus clair. »</strong>",
       "title_obj_2": "Notre vision",
-      "text_obj_2": "Notre vision à long terme chez <strong>NJUKA</strong> est d'utiliser des technologies tel que <strong>l'intelligence artificielle et le machin learning</strong> pour offrir des services plus précis et mieux évalués afin d'améliorer l'expérience des utilisateurs face aux coupures de courant."
+      "text_obj_2": "Chaque signalement, chaque confirmation et chaque retour du service enrichit une connaissance collective unique sur la disponibilité réelle de l'électricité et de l'eau. Notre ambition à long terme : transformer ces données en <strong>prévisions</strong> — savoir quand le courant risque de partir, et quand il devrait revenir — pour passer de l'information subie à l'anticipation. Pensé pour le Cameroun, NJUKA est conçu dès le départ pour s'étendre à d'autres pays d'Afrique."
     },
     "tuto": {
       "title_page": "Tutoriel — comment utiliser NJUKA",
