@@ -1,22 +1,20 @@
 <div class="filter" *ngIf="moduleEnable">
-  <h2 class="filter__title text-center"><fa-icon [icon]="faFilter"></fa-icon> {{'main.map-filter.title' | translate}}</h2>
-  <div class="filter__form">
-    <ul class="list-inline filter__form__btn">
-      <li class="list-inline-item"
-          [class.clicked]="isClicked('electricity') >= 0"
-          (click)="mapFilter('electricity')">
-        <img [src]="markerElectricity" alt="{{'main.map-filter.alt_marker_electricity' | translate}}">
-      </li>
-      <li class="list-inline-item"
-          [class.clicked]="isClicked('water') >= 0"
-          (click)="mapFilter('water')">
-        <img [src]="markerWater" alt="{{'main.map-filter.alt_marker_water' | translate}}">
-      </li>
-      <li class="list-inline-item"
-          [class.clicked]="isClicked('resolved') >= 0"
-          (click)="mapFilter('resolved')">
-        <img [src]="markerRecovred" alt="{{'main.map-filter.alt_marker_cut_closed' | translate}}">
-      </li>
-    </ul>
+  <div class="filter__title"><fa-icon [icon]="faFilter"></fa-icon> {{'main.map-filter.title' | translate}}</div>
+  <div class="filter__chips">
+    <button type="button" class="filter__chips__chip filter__chips__chip--electricity"
+            [class.filter__chips__chip--active]="isClicked('electricity') >= 0"
+            (click)="mapFilter('electricity')">
+      {{'main.map-filter.electricity' | translate}}
+    </button>
+    <button type="button" class="filter__chips__chip filter__chips__chip--water"
+            [class.filter__chips__chip--active]="isClicked('water') >= 0"
+            (click)="mapFilter('water')">
+      {{'main.map-filter.water' | translate}}
+    </button>
+    <button type="button" class="filter__chips__chip filter__chips__chip--resolved"
+            [class.filter__chips__chip--active]="isClicked('resolved') >= 0"
+            (click)="mapFilter('resolved')">
+      {{'main.map-filter.resolved' | translate}}
+    </button>
   </div>
 </div>

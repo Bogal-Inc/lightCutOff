@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {Report, ReportSatus} from '@Models/report.model';
+import {Report, ReportSatus, reportServiceType} from '@Models/report.model';
 import {durationToString, getDuration} from '@Helpers/date.helper';
 import {AuthService} from '../../../../../../core/services-firebase';
 import {Logger} from '@Services/logger.service';
+import {TranslateService} from '@ngx-translate/core';
 import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {faAngleRight, faCircle, faUser} from '@fortawesome/free-solid-svg-icons';
 
@@ -24,7 +25,12 @@ export class MapMenuHistoryComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private analytics: AngularFireAnalytics,
+    private translateService: TranslateService,
   ) { }
+
+  serviceType(report: Report): string {
+    return reportServiceType(report);
+  }
 
   ngOnInit(): void {
   }
@@ -48,9 +54,10 @@ export class MapMenuHistoryComponent implements OnInit {
     const duration = (report.resolvedAt) ?
       getDuration(report.reportedAt.toDate(), report.resolvedAt.toDate()) :
       getDuration(report.reportedAt.toDate(), new Date());
-    let result = (report.resolvedAt) ? 'Coupé pendant ' : 'Coupé depuis ';
+    const result = this.translateService.instant(
+      (report.resolvedAt) ? 'main.map-history-marker.cut_during' : 'main.map-history-marker.cut_since');
 
-    return result += durationToString(duration);
+    return result + durationToString(duration);
   }
 
   isOwner(report: Report) {

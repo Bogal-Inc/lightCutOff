@@ -213,10 +213,10 @@
       "switch_btn_no": "Non"
     },
     "map-filter": {
-      "title": "Filtres",
-      "alt_marker_electricity": "Coupures d'électricité en cours",
-      "alt_marker_water": "Coupures d'eau en cours",
-      "alt_marker_cut_closed": "Signalements résolus"
+      "title": "Filtrer",
+      "electricity": "⚡ Électricité",
+      "water": "💧 Eau",
+      "resolved": "✓ Rétablies"
     },
     "create-form-report": {
       "title": "Signalez une coupure",
@@ -317,7 +317,11 @@
       "total": "Total",
       "current_report": "Signalement coupure en cours",
       "end_report": "Signalements coupure terminée",
-      "title_stats": "Statistiques"
+      "title_stats": "Statistiques",
+      "status_ongoing": "En cours",
+      "status_resolved": "Rétablie",
+      "cut_since": "Coupé depuis ",
+      "cut_during": "Coupé pendant "
     },
     "map-not-found": {
       "text_1": "VOTRE PLANETE N'EST PLUS ACCESSIBLE",

@@ -2,32 +2,89 @@
   height: 62.5vh;
 
   &__history {
-    overflow: scroll;
+    overflow-y: auto;
     height: 97%;
+    padding: 8px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
 
     &__item {
-      border-left: 5px solid var(--danger);
+      border: 1px solid rgba(26, 26, 26, 0.08);
+      border-left: 4px solid var(--gray);
+      border-radius: 8px !important;
       cursor: pointer;
-      background: none;
+      background: var(--white);
+      padding: 10px 12px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
 
-      &__header {
-        &__title {
-          word-wrap: break-word;
-          margin: auto;
-          font-size: 1.3em;
-        }
+      &--electricity {
+        border-left-color: var(--njuka-amber);
+      }
+
+      &--water {
+        border-left-color: var(--njuka-sky);
       }
 
       &-close {
-        border-left: 5px solid var(--success) !important;
+        border-left-color: #2aad27 !important;
+        opacity: 0.85;
       }
+
       &-selected {
-        background-color: #eaeaea ;
-        border-left: none !important;
+        background-color: #f2efe9;
+      }
+
+      &__title {
+        font-size: 1em;
+        font-weight: 700;
+        margin: 0;
+        word-wrap: break-word;
+
+        &__service {
+          margin-right: 2px;
+        }
+      }
+
+      &__status {
+        flex-shrink: 0;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding: 2px 8px;
+        border-radius: 10px;
+        color: var(--white);
+        background-color: var(--gray);
+
+        &--electricity {
+          background-color: var(--njuka-amber);
+          color: var(--njuka-charcoal);
+        }
+
+        &--water {
+          background-color: var(--njuka-sky);
+        }
+
+        &--resolved {
+          background-color: #2aad27;
+        }
+      }
+
+      &__duration {
+        margin-top: 6px;
+        font-weight: 600;
+      }
+
+      &__meta {
+        font-size: 0.8em;
+        color: var(--gray);
       }
     }
+
     &__item:hover {
-      background-color: #eaeaea;
+      box-shadow: 0 4px 12px rgba(26, 26, 26, 0.12);
+      transform: translateY(-1px);
     }
   }
 }
@@ -37,4 +94,3 @@
     height: 52vh;
   }
 }
-

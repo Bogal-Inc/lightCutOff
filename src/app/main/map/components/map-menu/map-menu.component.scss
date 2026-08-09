@@ -3,9 +3,19 @@
   z-index: 999;
   width: 400px;
   font-size: 0.85em;
+  padding: 12px 0 0 12px;
 
   &__group1 {
     background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(26, 26, 26, 0.18);
+    overflow: hidden;
+
+    &__header {
+      background-color: #f7f7f5;
+      border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+    }
+
     &__footer {
       background-image: linear-gradient(white, rgba(255, 255, 255, 0.5));
     }
@@ -16,8 +26,10 @@
       cursor: pointer;
       color: var(--dark);
       background-color: var(--white);
-      padding: 20px;
+      padding: 14px 12px;
       display: inline-block;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 6px 18px rgba(26, 26, 26, 0.18);
     }
   }
 }

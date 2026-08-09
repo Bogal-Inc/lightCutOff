@@ -54,6 +54,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   private infosReport: ViewContainerRef;
   private map: L.Map;
   private markersClusters: L.MarkerClusterGroup;
+  private impactCircles: L.LayerGroup;
   private markerCurrentPosition: L.Marker;
   private readonly icons = {
     user: MapViewComponent.pinIcon(Const.markerColor.user),
@@ -294,9 +295,36 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.markersClusters) {
       this.markersClusters.remove();
     }
+    if (this.impactCircles) {
+      this.impactCircles.remove();
+    }
     this.markersClusters = L.markerClusterGroup();
-    reports.forEach(report => this.markersClusters.addLayer(this.markerFactory(report)));
+    this.impactCircles = L.layerGroup();
+    reports.forEach(report => {
+      this.markersClusters.addLayer(this.markerFactory(report));
+      // « tache » d'impact des coupures en cours (comme dans l'app) :
+      // rayon posé par la CF onConfirmationCreated, plancher 150 m à l'affichage
+      if (report.status === ReportSatus.ONGOING) {
+        this.impactCircles.addLayer(this.impactCircle(report));
+      }
+    });
+    this.map.addLayer(this.impactCircles);
     this.map.addLayer(this.markersClusters);
+  }
+
+  private impactCircle(report: Report): L.Circle {
+    const color = (reportServiceType(report) === ServiceType.WATER) ? '#0EA5E9' : '#F88E01';
+    const radius = Math.max(report.impactRadiusM || 0, 150);
+
+    return L.circle([+report.position.lat, +report.position.lng], {
+      radius,
+      color,
+      weight: 1,
+      opacity: 0.45,
+      fillColor: color,
+      fillOpacity: 0.15,
+      interactive: false
+    });
   }
 
   /**

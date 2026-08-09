@@ -212,10 +212,10 @@
       "switch_btn_no": "No"
     },
     "map-filter": {
-      "title": "Filters",
-      "alt_marker_electricity": "Ongoing electricity outages",
-      "alt_marker_water": "Ongoing water outages",
-      "alt_marker_cut_closed": "Resolved reports"
+      "title": "Filter",
+      "electricity": "⚡ Electricity",
+      "water": "💧 Water",
+      "resolved": "✓ Restored"
     },
     "create-form-report": {
       "title": "Report a power outage",
@@ -316,7 +316,11 @@
       "total": "Total",
       "current_report": "Report cut in progress",
       "end_report": "Reports completed",
-      "title_stats": "Statistics"
+      "title_stats": "Statistics",
+      "status_ongoing": "Ongoing",
+      "status_resolved": "Restored",
+      "cut_since": "Down for ",
+      "cut_during": "Was down for "
     },
     "map-not-found": {
       "text_1": "YOUR PLANET IS NO LONGER ACCESSIBLE",
