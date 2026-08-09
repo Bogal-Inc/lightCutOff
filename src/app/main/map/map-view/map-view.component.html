@@ -2,7 +2,7 @@
   <app-map-not-found *ngIf="isErrorMapActive"></app-map-not-found>
 
   <div class="map-container">
-    <app-map-menu [reports]="filteredReports" (goToMarkerEnd)="goToMarker($event)" (researchPlace)="onSearchPlace($event)"
+    <app-map-menu [reports]="visibleReports" (goToMarkerEnd)="goToMarker($event)" (researchPlace)="onSearchPlace($event)"
                   [class.d-none]="!isMapReady" (filterMarker)="mapFiltered($event);"></app-map-menu>
     <div #mapContainer id="map" class="map-container__map">
 <!--loading init map page-->

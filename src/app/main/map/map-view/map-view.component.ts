@@ -33,8 +33,6 @@ const log = new Logger('map-view.component');
 
 const ZOOM = 13;
 const ZOOM_MARKER = 14;
-// zoom minimal : le Cameroun entier tient à l'écran, impossible de dézoomer au-delà
-const ZOOM_MIN = 6;
 
 /**
  * Carte publique en LECTURE SEULE (Leaflet + tuiles Stadia Maps, repli OpenStreetMap —
@@ -68,8 +66,10 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   isErrorMapActive = false;
   isMapReady = false;
   reports: Report[];
-  /** Signalements après filtre/tri — alimentent la carte, les cercles et la liste. */
+  /** Signalements après filtre/tri — alimentent la carte et les cercles. */
   filteredReports: Report[];
+  /** Sous-ensemble visible dans le cadre actuel de la carte — alimente la liste. */
+  visibleReports: Report[];
   private currentFilter: MapFilter = { service: null, statuses: [], sort: 'recent' };
   isLoader = true;
   unsubsscribe$ = new Subject<void>();
@@ -201,6 +201,18 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.filteredReports = this.sortReports(results, filter.sort);
     this.addClusters(this.filteredReports);
+    this.updateVisibleReports();
+  }
+
+  /** Liste synchronisée avec la carte : seules les coupures du cadre visible apparaissent. */
+  private updateVisibleReports() {
+    if (!this.map || !this.filteredReports) {
+      return;
+    }
+    const bounds = this.map.getBounds();
+    this.visibleReports = this.filteredReports.filter(
+      report => bounds.contains([+report.position.lat, +report.position.lng])
+    );
   }
 
   /** Tri de l'app : Récentes (date), Actives (en cours d'abord), Confirmées (nb de confirmations). */
@@ -227,27 +239,24 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isLoader = false;
     this.isMapReady = true;
 
-    // carte verrouillée sur le Cameroun : bords rigides + plancher de zoom ;
-    // si l'utilisateur est géolocalisé hors du pays (diaspora), on centre sur Yaoundé
-    const center = this.isInCameroon(position) ? position : Const.coordsDefault;
     const cameroonBounds: L.LatLngBoundsExpression = [
       [Const.coordsCameroon.south, Const.coordsCameroon.west],
       [Const.coordsCameroon.north, Const.coordsCameroon.east]
     ];
 
     this.map = L.map(this.mapContainer.nativeElement, {
-      center: [center.lat, center.lng],
+      center: [position.lat, position.lng],
       zoom: ZOOM,
-      minZoom: ZOOM_MIN,
-      maxBounds: cameroonBounds,
-      maxBoundsViscosity: 1.0,
       doubleClickZoom: false
     });
 
     this.addTiles();
 
+    // la liste n'affiche que les coupures dans le cadre actuel de la carte
+    this.map.on('moveend zoomend', () => this.updateVisibleReports());
+
     // le conteneur vient d'être affiché : recalcule la taille réelle puis
-    // cadre le pays entier (vue initiale dézoomée sur tout le Cameroun)
+    // ouvre la vue sur le Cameroun entier (navigation ensuite libre)
     setTimeout(() => {
       this.map.invalidateSize();
       this.map.fitBounds(cameroonBounds);
@@ -352,11 +361,6 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     this.map.addLayer(this.impactCircles);
     this.map.addLayer(this.markersClusters);
-  }
-
-  private isInCameroon(position: Position): boolean {
-    return position.lat >= Const.coordsCameroon.south && position.lat <= Const.coordsCameroon.north
-      && position.lng >= Const.coordsCameroon.west && position.lng <= Const.coordsCameroon.east;
   }
 
   private impactCircle(report: Report): L.Circle {
