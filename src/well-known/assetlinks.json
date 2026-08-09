@@ -1,10 +1,13 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.njuka.app",
       "sha256_cert_fingerprints": [
+        "7F:2F:63:33:EA:E2:C4:1A:BB:28:59:70:27:14:AA:DD:F8:8D:E5:7F:98:A3:98:E9:9F:FB:94:91:E6:2A:9C:46",
         "48:F3:2F:23:5B:20:99:AE:9D:35:EA:65:C4:93:ED:AE:81:D1:BD:48:FE:45:DB:5B:70:6A:E6:4D:BF:37:67:0A",
         "5A:F9:64:94:74:69:1C:CC:06:1C:F1:F2:EB:87:F8:17:D9:0A:F2:8F:E7:05:3A:7A:91:63:89:94:F5:CB:8B:10"
       ]
