@@ -230,23 +230,28 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     // carte verrouillée sur le Cameroun : bords rigides + plancher de zoom ;
     // si l'utilisateur est géolocalisé hors du pays (diaspora), on centre sur Yaoundé
     const center = this.isInCameroon(position) ? position : Const.coordsDefault;
+    const cameroonBounds: L.LatLngBoundsExpression = [
+      [Const.coordsCameroon.south, Const.coordsCameroon.west],
+      [Const.coordsCameroon.north, Const.coordsCameroon.east]
+    ];
 
     this.map = L.map(this.mapContainer.nativeElement, {
       center: [center.lat, center.lng],
       zoom: ZOOM,
       minZoom: ZOOM_MIN,
-      maxBounds: [
-        [Const.coordsCameroon.south, Const.coordsCameroon.west],
-        [Const.coordsCameroon.north, Const.coordsCameroon.east]
-      ],
+      maxBounds: cameroonBounds,
       maxBoundsViscosity: 1.0,
       doubleClickZoom: false
     });
 
     this.addTiles();
 
-    // le conteneur vient d'être affiché : recalcule la taille réelle de la carte
-    setTimeout(() => this.map.invalidateSize());
+    // le conteneur vient d'être affiché : recalcule la taille réelle puis
+    // cadre le pays entier (vue initiale dézoomée sur tout le Cameroun)
+    setTimeout(() => {
+      this.map.invalidateSize();
+      this.map.fitBounds(cameroonBounds);
+    });
 
     // marqueur informatif de la position de l'utilisateur (lecture seule)
     this.markerCurrentPosition = L.marker([position.lat, position.lng], {
