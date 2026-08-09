@@ -36,5 +36,12 @@
         </div>
       </li>
     </ul>
+    <div class="navbar-lang">
+      <a class="navbar-lang__option" [class.navbar-lang__option--active]="currentLang === 'fr'"
+         (click)="setLang('fr')" role="button" aria-label="Français">FR</a>
+      <span class="navbar-lang__sep">|</span>
+      <a class="navbar-lang__option" [class.navbar-lang__option--active]="currentLang === 'en'"
+         (click)="setLang('en')" role="button" aria-label="English">EN</a>
+    </div>
   </div>
 </nav>

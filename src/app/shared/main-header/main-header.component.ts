@@ -3,6 +3,7 @@ import { Const } from 'src/environments/const';
 import { Logger } from '@Services/logger.service';
 import {Router} from '@angular/router';
 import {SectionSpyService} from '@Services/section-spy.service';
+import {I18nService} from '@Services/i18n.service';
 import {environment} from '../../../environments/environment';
 
 const log = new Logger('main-header.component');
@@ -31,16 +32,26 @@ export class MainHeaderComponent implements OnInit {
   mapActive = false;
   adminActive = false;
   activeSection: string | null = null;
+  currentLang: string;
 
   constructor(
     private router: Router,
     private sectionSpy: SectionSpyService,
+    private i18nService: I18nService,
   ) {}
 
   ngOnInit(): void {
     log.debug('init');
     this.activeMenuDashboard();
     this.sectionSpy.activeSection$.subscribe(section => this.activeSection = section);
+    this.currentLang = this.i18nService.language;
+  }
+
+  setLang(lang: string) {
+    if (this.i18nService.language !== lang) {
+      this.i18nService.language = lang;
+    }
+    this.currentLang = lang;
   }
 
   private activeMenuDashboard() {

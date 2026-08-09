@@ -37,3 +37,31 @@ nav {
     color: var(--white);
   }
 }
+
+.navbar-lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 0 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  &__option {
+    color: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &--active {
+      color: var(--njuka-amber);
+    }
+  }
+
+  &__sep {
+    color: rgba(255, 255, 255, 0.3);
+  }
+}
