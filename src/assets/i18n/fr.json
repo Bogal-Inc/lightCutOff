@@ -213,10 +213,11 @@
       "switch_btn_no": "Non"
     },
     "map-filter": {
-      "title": "Filtrer",
-      "electricity": "⚡ Électricité",
-      "water": "💧 Eau",
-      "resolved": "✓ Rétablies"
+      "service_all": "Tout",
+      "service_electricity": "⚡ Élec.",
+      "service_water": "💧 Eau",
+      "status_ongoing": "En cours",
+      "status_resolved": "Rétablies"
     },
     "create-form-report": {
       "title": "Signalez une coupure",

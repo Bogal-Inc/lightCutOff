@@ -22,7 +22,7 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ComponentService} from '@Services/component.service';
 import {NominatimService} from '@Services/nominatim.service';
-import {MapFilterKey} from '../components/map-menu/components/map-filter/map-filter.component';
+import {MapFilter} from '../components/map-menu/components/map-filter/map-filter.component';
 import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {ActivatedRoute} from '@angular/router';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
@@ -176,20 +176,21 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     marker.addTo(this.map).openPopup();
   }
 
-  mapFiltered(filters: MapFilterKey[]) {
-    const reportsResults = (filters.length > 0) ? this.getReportsByFilters(filters) : this.reports;
-    this.addClusters(reportsResults);
+  mapFiltered(filter: MapFilter) {
+    this.addClusters(this.getReportsByFilter(filter));
   }
 
-  private getReportsByFilters(filters: MapFilterKey[]) {
-    return this.reports.filter((report: Report) =>
-      filters.some(key => {
-        if (key === 'resolved') {
-          return report.status === ReportSatus.RESOLVED;
-        }
-        return report.status === ReportSatus.ONGOING && reportServiceType(report) === key;
-      })
-    );
+  /** Mêmes règles que l'app : service (Tout/Élec/Eau) ET statut (aucun coché = tous). */
+  private getReportsByFilter(filter: MapFilter) {
+    return this.reports.filter((report: Report) => {
+      if (filter.service && reportServiceType(report) !== filter.service) {
+        return false;
+      }
+      if (filter.statuses.length > 0 && !filter.statuses.includes(report.status)) {
+        return false;
+      }
+      return true;
+    });
   }
 
   private initMap(position: Position){

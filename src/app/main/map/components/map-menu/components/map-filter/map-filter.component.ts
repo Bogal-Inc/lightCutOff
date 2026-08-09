@@ -1,13 +1,19 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
-import { Const } from '../../../../../../../environments/const';
 import {Logger} from '@Services/logger.service';
+import {ReportSatus, ServiceType} from '@Models/report.model';
 import {environment} from '../../../../../../../environments/environment';
 
 const log = new Logger('map-filter.component');
 
-/** Filtres de la carte : coupure d'électricité / coupure d'eau en cours, ou service rétabli. */
-export type MapFilterKey = 'electricity' | 'water' | 'resolved';
+/**
+ * Mêmes filtres que l'application mobile :
+ * - sélecteur segmenté de service (Tout / ⚡ Élec. / 💧 Eau, choix unique) ;
+ * - statut (En cours / Rétablies, bascule — aucun coché = tous).
+ */
+export interface MapFilter {
+  service: ServiceType | null;
+  statuses: ReportSatus[];
+}
 
 @Component({
   standalone: false,
@@ -16,13 +22,13 @@ export type MapFilterKey = 'electricity' | 'water' | 'resolved';
   styleUrls: ['./map-filter.component.scss']
 })
 export class MapFilterComponent implements OnInit {
-  @Output() filtered: EventEmitter<MapFilterKey[]> = new EventEmitter<MapFilterKey[]>();
+  @Output() filtered: EventEmitter<MapFilter> = new EventEmitter<MapFilter>();
   readonly moduleEnable = environment.app.modules.mapFilter;
-  readonly faFilter = faFilter;
-  readonly markerElectricity = Const.markerColor.electricity;
-  readonly markerWater = Const.markerColor.water;
-  readonly markerRecovred = Const.markerColor.recovred;
-  clickedFilters: MapFilterKey[] = [];
+  readonly serviceType = ServiceType;
+  readonly reportStatus = ReportSatus;
+
+  service: ServiceType | null = null;
+  statuses: ReportSatus[] = [];
 
   constructor() { }
 
@@ -30,18 +36,26 @@ export class MapFilterComponent implements OnInit {
     log.debug('init');
   }
 
-  mapFilter(filterKey: MapFilterKey) {
-    const index = this.isClicked(filterKey);
-
-    if (index >= 0) {
-      this.clickedFilters.splice(index, 1);
-    } else {
-      this.clickedFilters.push(filterKey);
-    }
-    this.filtered.emit(this.clickedFilters);
+  setService(service: ServiceType | null) {
+    this.service = service;
+    this.emit();
   }
 
-  isClicked(filterKey: MapFilterKey) {
-    return this.clickedFilters.findIndex(x => filterKey === x);
+  toggleStatus(status: ReportSatus) {
+    const index = this.statuses.indexOf(status);
+    if (index >= 0) {
+      this.statuses.splice(index, 1);
+    } else {
+      this.statuses.push(status);
+    }
+    this.emit();
+  }
+
+  isStatusActive(status: ReportSatus) {
+    return this.statuses.includes(status);
+  }
+
+  private emit() {
+    this.filtered.emit({ service: this.service, statuses: [...this.statuses] });
   }
 }

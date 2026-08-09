@@ -212,10 +212,11 @@
       "switch_btn_no": "No"
     },
     "map-filter": {
-      "title": "Filter",
-      "electricity": "⚡ Electricity",
-      "water": "💧 Water",
-      "resolved": "✓ Restored"
+      "service_all": "All",
+      "service_electricity": "⚡ Power",
+      "service_water": "💧 Water",
+      "status_ongoing": "Ongoing",
+      "status_resolved": "Restored"
     },
     "create-form-report": {
       "title": "Report a power outage",

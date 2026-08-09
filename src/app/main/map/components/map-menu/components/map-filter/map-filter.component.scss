@@ -1,61 +1,74 @@
 .filter {
-  padding: 4px 12px 10px;
+  padding: 0 12px 10px;
   text-align: center;
 
-  &__title {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 6px;
+  // sélecteur segmenté Tout / Élec. / Eau (aligné sur le SegmentedButton de l'app)
+  &__segments {
+    display: flex;
+    width: 100%;
+    border: 1.5px solid rgba(26, 26, 26, 0.25);
+    border-radius: 22px;
+    overflow: hidden;
+
+    &__segment {
+      flex: 1;
+      padding: 6px 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: var(--white);
+      border: none;
+      border-right: 1.5px solid rgba(26, 26, 26, 0.15);
+      cursor: pointer;
+      color: var(--njuka-charcoal);
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &--active {
+        background-color: var(--njuka-charcoal);
+        color: var(--white);
+      }
+
+      &--electricity.filter__segments__segment--active {
+        background-color: var(--njuka-amber);
+        color: var(--njuka-charcoal);
+      }
+
+      &--water.filter__segments__segment--active {
+        background-color: var(--njuka-sky);
+        color: var(--white);
+      }
+    }
   }
 
-  &__chips {
+  // statut : En cours / Rétablies (bascules, aucun = tous)
+  &__statuses {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    flex-wrap: wrap;
+    margin-top: 8px;
 
     &__chip {
-      padding: 5px 12px;
+      padding: 4px 14px;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       background: var(--white);
-      border: 1.5px solid transparent;
+      border: 1.5px solid rgba(26, 26, 26, 0.3);
+      color: var(--njuka-charcoal);
       cursor: pointer;
-      transition: background-color 0.15s ease, color 0.15s ease;
 
-      &--electricity {
-        border-color: var(--njuka-amber);
-        color: var(--njuka-amber-dark);
-
-        &.filter__chips__chip--active {
-          background-color: var(--njuka-amber);
-          color: var(--njuka-charcoal);
-        }
+      &--active {
+        background-color: var(--njuka-charcoal);
+        color: var(--white);
+        border-color: var(--njuka-charcoal);
       }
 
-      &--water {
-        border-color: var(--njuka-sky);
-        color: #0b7fb3;
-
-        &.filter__chips__chip--active {
-          background-color: var(--njuka-sky);
-          color: var(--white);
-        }
-      }
-
-      &--resolved {
+      &--resolved.filter__statuses__chip--active {
+        background-color: #2aad27;
         border-color: #2aad27;
-        color: #1e7d1c;
-
-        &.filter__chips__chip--active {
-          background-color: #2aad27;
-          color: var(--white);
-        }
       }
     }
   }

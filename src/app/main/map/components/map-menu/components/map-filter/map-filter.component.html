@@ -1,20 +1,31 @@
 <div class="filter" *ngIf="moduleEnable">
-  <div class="filter__title"><fa-icon [icon]="faFilter"></fa-icon> {{'main.map-filter.title' | translate}}</div>
-  <div class="filter__chips">
-    <button type="button" class="filter__chips__chip filter__chips__chip--electricity"
-            [class.filter__chips__chip--active]="isClicked('electricity') >= 0"
-            (click)="mapFilter('electricity')">
-      {{'main.map-filter.electricity' | translate}}
+  <div class="filter__segments" role="group">
+    <button type="button" class="filter__segments__segment"
+            [class.filter__segments__segment--active]="service === null"
+            (click)="setService(null)">
+      {{'main.map-filter.service_all' | translate}}
     </button>
-    <button type="button" class="filter__chips__chip filter__chips__chip--water"
-            [class.filter__chips__chip--active]="isClicked('water') >= 0"
-            (click)="mapFilter('water')">
-      {{'main.map-filter.water' | translate}}
+    <button type="button" class="filter__segments__segment filter__segments__segment--electricity"
+            [class.filter__segments__segment--active]="service === serviceType.ELECTRICITY"
+            (click)="setService(serviceType.ELECTRICITY)">
+      {{'main.map-filter.service_electricity' | translate}}
     </button>
-    <button type="button" class="filter__chips__chip filter__chips__chip--resolved"
-            [class.filter__chips__chip--active]="isClicked('resolved') >= 0"
-            (click)="mapFilter('resolved')">
-      {{'main.map-filter.resolved' | translate}}
+    <button type="button" class="filter__segments__segment filter__segments__segment--water"
+            [class.filter__segments__segment--active]="service === serviceType.WATER"
+            (click)="setService(serviceType.WATER)">
+      {{'main.map-filter.service_water' | translate}}
+    </button>
+  </div>
+  <div class="filter__statuses">
+    <button type="button" class="filter__statuses__chip"
+            [class.filter__statuses__chip--active]="isStatusActive(reportStatus.ONGOING)"
+            (click)="toggleStatus(reportStatus.ONGOING)">
+      {{'main.map-filter.status_ongoing' | translate}}
+    </button>
+    <button type="button" class="filter__statuses__chip filter__statuses__chip--resolved"
+            [class.filter__statuses__chip--active]="isStatusActive(reportStatus.RESOLVED)"
+            (click)="toggleStatus(reportStatus.RESOLVED)">
+      {{'main.map-filter.status_resolved' | translate}}
     </button>
   </div>
 </div>
