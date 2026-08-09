@@ -32,12 +32,4 @@ export class MainFooterComponent implements OnInit {
     this.now = new Date();
   }
 
-  toggleLang() {
-    const lang = (this.i18nService.language === Const.app.lang.fr) ? Const.app.lang.en : Const.app.lang.fr;
-    log.debug('switch lang', lang);
-
-    this.analytics.setUserProperties({favorite_lang: lang});
-    this.i18nService.language = lang;
-    this.currentLang = lang;
-  }
 }
