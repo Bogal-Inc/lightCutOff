@@ -46,6 +46,36 @@
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.5);
         }
+
+        &__community {
+            max-width: 520px;
+            margin-top: 1.2rem;
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        &__steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 0.8rem;
+
+            &__chip {
+                padding: 6px 14px;
+                border: 1px solid rgba(248, 142, 1, 0.6);
+                border-radius: 20px;
+                font-size: 0.9rem;
+                color: rgba(255, 255, 255, 0.85);
+                background: rgba(248, 142, 1, 0.08);
+            }
+
+            &__arrow {
+                color: var(--njuka-amber);
+                font-weight: 700;
+            }
+        }
     }
     &__section-contactus {
         background: right center no-repeat url("../../../../assets/static/images/home/bg2.svg");

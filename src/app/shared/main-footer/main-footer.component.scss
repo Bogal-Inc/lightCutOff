@@ -16,9 +16,14 @@
   }
 }
 
-a {
-  color:  rgba(255,255,255,.5);
-}
-.nav-item a:hover {
-  color: var(--white);
+// liens du pied de page : gris clair sur charbon, ambre au survol (jamais le bleu Bootstrap)
+a,
+.nav-link {
+  color: rgba(255, 255, 255, 0.6);
+
+  &:hover,
+  &:focus,
+  &.active {
+    color: var(--njuka-amber);
+  }
 }

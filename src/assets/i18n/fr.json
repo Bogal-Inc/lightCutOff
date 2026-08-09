@@ -75,7 +75,11 @@
         "badge_playstore_src": "assets/static/images/stores/google-play-badge-fr.png",
         "badge_appstore_src": "assets/static/images/stores/app-store-badge-fr.svg",
         "badge_playstore_alt": "Disponible sur Google Play",
-        "badge_appstore_alt": "Télécharger dans l'App Store"
+        "badge_appstore_alt": "Télécharger dans l'App Store",
+        "community": "Une communauté de voisins qui s'informent et s'entraident face aux coupures.",
+        "step_report": "📍 Vous signalez",
+        "step_confirm": "🤝 Vos voisins confirment",
+        "step_alert": "🔔 Tout le quartier est alerté"
       },
       "app": {
         "title": "L'application NJUKA",
