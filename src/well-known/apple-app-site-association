@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["M7ZPLSL3JN.com.njuka.app"],
+        "components": [{ "/": "/s/*", "comment": "Pages publiques de signalement" }]
+      }
+    ]
+  }
+}
