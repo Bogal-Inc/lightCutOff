@@ -215,8 +215,14 @@
       "service_all": "All",
       "service_electricity": "⚡ Power",
       "service_water": "💧 Water",
+      "filters_btn": "Filters",
+      "status_label": "Status",
       "status_ongoing": "Ongoing",
-      "status_resolved": "Restored"
+      "status_resolved": "Restored",
+      "sort_label": "Sort by",
+      "sort_recent": "Recent",
+      "sort_active": "Active",
+      "sort_confirmed": "Confirmed"
     },
     "create-form-report": {
       "title": "Report a power outage",

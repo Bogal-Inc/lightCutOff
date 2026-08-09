@@ -216,8 +216,14 @@
       "service_all": "Tout",
       "service_electricity": "⚡ Élec.",
       "service_water": "💧 Eau",
+      "filters_btn": "Filtres",
+      "status_label": "Statut",
       "status_ongoing": "En cours",
-      "status_resolved": "Rétablies"
+      "status_resolved": "Rétabli",
+      "sort_label": "Trier par",
+      "sort_recent": "Récentes",
+      "sort_active": "Actives",
+      "sort_confirmed": "Confirmées"
     },
     "create-form-report": {
       "title": "Signalez une coupure",

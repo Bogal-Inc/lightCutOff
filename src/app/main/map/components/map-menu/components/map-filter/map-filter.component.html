@@ -16,16 +16,46 @@
       {{'main.map-filter.service_water' | translate}}
     </button>
   </div>
-  <div class="filter__statuses">
-    <button type="button" class="filter__statuses__chip"
-            [class.filter__statuses__chip--active]="isStatusActive(reportStatus.ONGOING)"
-            (click)="toggleStatus(reportStatus.ONGOING)">
-      {{'main.map-filter.status_ongoing' | translate}}
-    </button>
-    <button type="button" class="filter__statuses__chip filter__statuses__chip--resolved"
-            [class.filter__statuses__chip--active]="isStatusActive(reportStatus.RESOLVED)"
-            (click)="toggleStatus(reportStatus.RESOLVED)">
-      {{'main.map-filter.status_resolved' | translate}}
-    </button>
+
+  <button type="button" class="filter__toggle" (click)="toggleExpanded()"
+          [attr.aria-expanded]="expanded">
+    <fa-icon [icon]="faSlidersH"></fa-icon>
+    {{'main.map-filter.filters_btn' | translate}}
+    <span class="filter__toggle__count" *ngIf="activeCount > 0">{{activeCount}}</span>
+  </button>
+
+  <div class="filter__sheet" [class.filter__sheet--open]="expanded">
+    <div class="filter__sheet__label">{{'main.map-filter.status_label' | translate}}</div>
+    <div class="filter__sheet__chips">
+      <button type="button" class="filter__sheet__chips__chip"
+              [class.filter__sheet__chips__chip--active]="isStatusActive(reportStatus.ONGOING)"
+              (click)="toggleStatus(reportStatus.ONGOING)">
+        <span *ngIf="isStatusActive(reportStatus.ONGOING)">✓ </span>{{'main.map-filter.status_ongoing' | translate}}
+      </button>
+      <button type="button" class="filter__sheet__chips__chip"
+              [class.filter__sheet__chips__chip--active]="isStatusActive(reportStatus.RESOLVED)"
+              (click)="toggleStatus(reportStatus.RESOLVED)">
+        <span *ngIf="isStatusActive(reportStatus.RESOLVED)">✓ </span>{{'main.map-filter.status_resolved' | translate}}
+      </button>
+    </div>
+
+    <div class="filter__sheet__label">{{'main.map-filter.sort_label' | translate}}</div>
+    <div class="filter__sheet__chips">
+      <button type="button" class="filter__sheet__chips__chip"
+              [class.filter__sheet__chips__chip--active]="sort === 'recent'"
+              (click)="setSort('recent')">
+        {{'main.map-filter.sort_recent' | translate}}
+      </button>
+      <button type="button" class="filter__sheet__chips__chip"
+              [class.filter__sheet__chips__chip--active]="sort === 'active'"
+              (click)="setSort('active')">
+        {{'main.map-filter.sort_active' | translate}}
+      </button>
+      <button type="button" class="filter__sheet__chips__chip"
+              [class.filter__sheet__chips__chip--active]="sort === 'confirmed'"
+              (click)="setSort('confirmed')">
+        {{'main.map-filter.sort_confirmed' | translate}}
+      </button>
+    </div>
   </div>
 </div>

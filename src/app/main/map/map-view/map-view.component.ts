@@ -22,7 +22,7 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ComponentService} from '@Services/component.service';
 import {NominatimService} from '@Services/nominatim.service';
-import {MapFilter} from '../components/map-menu/components/map-filter/map-filter.component';
+import {MapFilter, ReportSort} from '../components/map-menu/components/map-filter/map-filter.component';
 import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {ActivatedRoute} from '@angular/router';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
@@ -66,6 +66,9 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   isErrorMapActive = false;
   isMapReady = false;
   reports: Report[];
+  /** Signalements après filtre/tri — alimentent la carte, les cercles et la liste. */
+  filteredReports: Report[];
+  private currentFilter: MapFilter = { service: null, statuses: [], sort: 'recent' };
   isLoader = true;
   unsubsscribe$ = new Subject<void>();
 
@@ -177,12 +180,14 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   mapFiltered(filter: MapFilter) {
-    this.addClusters(this.getReportsByFilter(filter));
+    this.currentFilter = filter;
+    this.applyFilter();
   }
 
-  /** Mêmes règles que l'app : service (Tout/Élec/Eau) ET statut (aucun coché = tous). */
-  private getReportsByFilter(filter: MapFilter) {
-    return this.reports.filter((report: Report) => {
+  /** Mêmes règles que l'app : service (Tout/Élec/Eau) ET statut (aucun coché = tous), puis tri. */
+  private applyFilter() {
+    const filter = this.currentFilter;
+    const results = (this.reports || []).filter((report: Report) => {
       if (filter.service && reportServiceType(report) !== filter.service) {
         return false;
       }
@@ -191,6 +196,29 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       }
       return true;
     });
+
+    this.filteredReports = this.sortReports(results, filter.sort);
+    this.addClusters(this.filteredReports);
+  }
+
+  /** Tri de l'app : Récentes (date), Actives (en cours d'abord), Confirmées (nb de confirmations). */
+  private sortReports(reports: Report[], sort: ReportSort): Report[] {
+    const byDate = (a: Report, b: Report) =>
+      (b.reportedAt?.toMillis?.() || 0) - (a.reportedAt?.toMillis?.() || 0);
+
+    const sorted = [...reports];
+    if (sort === 'active') {
+      sorted.sort((a, b) => {
+        const activeDelta = Number(b.status === ReportSatus.ONGOING) - Number(a.status === ReportSatus.ONGOING);
+        return activeDelta !== 0 ? activeDelta : byDate(a, b);
+      });
+    } else if (sort === 'confirmed') {
+      sorted.sort((a, b) =>
+        ((b.confirmationCount || 0) - (a.confirmationCount || 0)) || byDate(a, b));
+    } else {
+      sorted.sort(byDate);
+    }
+    return sorted;
   }
 
   private initMap(position: Position){
@@ -287,7 +315,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
               }
               return report;
             });
-          this.addClusters(this.reports);
+          this.applyFilter();
         },
       err => log.error('report not load', err));
   }

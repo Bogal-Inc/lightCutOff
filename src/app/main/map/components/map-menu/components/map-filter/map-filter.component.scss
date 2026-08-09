@@ -2,7 +2,7 @@
   padding: 0 12px 10px;
   text-align: center;
 
-  // sélecteur segmenté Tout / Élec. / Eau (aligné sur le SegmentedButton de l'app)
+  // barre segmentée Tout / Élec. / Eau (SegmentedButton de l'app)
   &__segments {
     display: flex;
     width: 100%;
@@ -42,33 +42,72 @@
     }
   }
 
-  // statut : En cours / Rétablies (bascules, aucun = tous)
-  &__statuses {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+  // bouton d'ouverture des filtres (équivalent de la bottom-sheet de l'app)
+  &__toggle {
     margin-top: 8px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1.5px solid rgba(26, 26, 26, 0.3);
+    background: var(--white);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--njuka-charcoal);
+    cursor: pointer;
 
-    &__chip {
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      background: var(--white);
-      border: 1.5px solid rgba(26, 26, 26, 0.3);
+    &__count {
+      display: inline-block;
+      min-width: 18px;
+      margin-left: 4px;
+      border-radius: 9px;
+      background-color: var(--njuka-amber);
       color: var(--njuka-charcoal);
-      cursor: pointer;
+      font-size: 0.75rem;
+    }
+  }
 
-      &--active {
-        background-color: var(--njuka-charcoal);
-        color: var(--white);
-        border-color: var(--njuka-charcoal);
-      }
+  // panneau repliable statut + tri
+  &__sheet {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
 
-      &--resolved.filter__statuses__chip--active {
-        background-color: #2aad27;
-        border-color: #2aad27;
+    &--open {
+      max-height: 220px;
+    }
+
+    &__label {
+      margin-top: 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-align: left;
+    }
+
+    &__chips {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+
+      // chips ambre à l'état actif, comme la sheet de l'app
+      &__chip {
+        padding: 4px 14px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        background: #faf6f1;
+        border: 1.5px solid rgba(26, 26, 26, 0.15);
+        color: var(--njuka-charcoal);
+        cursor: pointer;
+
+        &--active {
+          background-color: var(--njuka-amber);
+          border-color: var(--njuka-amber);
+          color: var(--white);
+        }
       }
     }
   }
