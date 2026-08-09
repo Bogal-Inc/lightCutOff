@@ -180,6 +180,10 @@
       "a7": "Enable the app's notifications: you'll be alerted when an outage is reported <b>near you</b>, when the service is back, and the day before an official <b>planned outage</b> (Eneo schedule) in the neighbourhoods you follow.",
       "q8": "What do you do with my location and data?",
       "a8": "Your location is only used to geolocate your reports and alert you about nearby outages. Your data is never sold or shared for advertising. Details in our <a href='https://njuka-prod.web.app/privacy' target='_blank' rel='noopener'>privacy policy</a>; you can also <a href='https://njuka-prod.web.app/account-deletion' target='_blank' rel='noopener'>delete your account</a> at any time."
+    },
+    "contact": {
+      "social_title": "Follow us",
+      "email_hint": "You can also write to us directly at"
     }
   },
   "main": {

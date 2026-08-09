@@ -25,8 +25,7 @@ export class MainHeaderComponent implements OnInit {
     { fragment: 'why', label: 'why' },
     { fragment: 'app', label: 'app' },
     { fragment: 'map', label: 'map' },
-    { fragment: 'awards', label: 'awards' },
-    { fragment: 'contactus', label: 'contact' }
+    { fragment: 'awards', label: 'awards' }
   ];
 
   mapActive = false;

@@ -9,10 +9,11 @@ import { HomeComponent } from './home/home.component';
 import { FaqComponent } from './faq/faq.component';
 import {MapModule} from '../map/map.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
-  declarations: [AboutUsComponent, TutoComponent, HomeComponent, FaqComponent, NotFoundComponent],
+  declarations: [AboutUsComponent, TutoComponent, HomeComponent, FaqComponent, NotFoundComponent, ContactComponent],
   imports: [
     CommonModule,
     StaticPageRoutingModule,

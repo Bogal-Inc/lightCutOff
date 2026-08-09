@@ -33,8 +33,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     { id: 'why', label: 'why' },
     { id: 'app', label: 'app' },
     { id: 'map', label: 'map' },
-    { id: 'awards', label: 'awards' },
-    { id: 'contactus', label: 'contact' }
+    { id: 'awards', label: 'awards' }
   ];
   activeSection = 'hero';
   /** Tuiles « le problème en chiffres » : compteurs animés à l'apparition de la section. */

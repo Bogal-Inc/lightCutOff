@@ -180,6 +180,10 @@
       "a7": "Activez les notifications de l'application : vous serez alerté quand une coupure est signalée <b>près de chez vous</b>, quand le service revient, et la veille d'une <b>coupure planifiée officielle</b> (programme Eneo) dans les quartiers que vous suivez.",
       "q8": "Que faites-vous de ma position et de mes données ?",
       "a8": "Votre position sert uniquement à géolocaliser vos signalements et à vous alerter des coupures proches. Vos données ne sont ni vendues ni partagées à des fins publicitaires. Détails dans notre <a href='https://njuka-prod.web.app/privacy' target='_blank' rel='noopener'>politique de confidentialité</a> ; vous pouvez aussi <a href='https://njuka-prod.web.app/account-deletion' target='_blank' rel='noopener'>supprimer votre compte</a> à tout moment."
+    },
+    "contact": {
+      "social_title": "Suivez-nous",
+      "email_hint": "Vous pouvez aussi nous écrire directement à"
     }
   },
   "main": {
