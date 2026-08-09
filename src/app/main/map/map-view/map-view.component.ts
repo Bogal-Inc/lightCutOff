@@ -33,6 +33,8 @@ const log = new Logger('map-view.component');
 
 const ZOOM = 13;
 const ZOOM_MARKER = 14;
+// zoom minimal : le Cameroun entier tient à l'écran, impossible de dézoomer au-delà
+const ZOOM_MIN = 6;
 
 /**
  * Carte publique en LECTURE SEULE (Leaflet + tuiles Stadia Maps, repli OpenStreetMap —
@@ -225,13 +227,19 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isLoader = false;
     this.isMapReady = true;
 
+    // carte verrouillée sur le Cameroun : bords rigides + plancher de zoom ;
+    // si l'utilisateur est géolocalisé hors du pays (diaspora), on centre sur Yaoundé
+    const center = this.isInCameroon(position) ? position : Const.coordsDefault;
+
     this.map = L.map(this.mapContainer.nativeElement, {
-      center: [position.lat, position.lng],
+      center: [center.lat, center.lng],
       zoom: ZOOM,
+      minZoom: ZOOM_MIN,
       maxBounds: [
         [Const.coordsCameroon.south, Const.coordsCameroon.west],
         [Const.coordsCameroon.north, Const.coordsCameroon.east]
       ],
+      maxBoundsViscosity: 1.0,
       doubleClickZoom: false
     });
 
@@ -339,6 +347,11 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     this.map.addLayer(this.impactCircles);
     this.map.addLayer(this.markersClusters);
+  }
+
+  private isInCameroon(position: Position): boolean {
+    return position.lat >= Const.coordsCameroon.south && position.lat <= Const.coordsCameroon.north
+      && position.lng >= Const.coordsCameroon.west && position.lng <= Const.coordsCameroon.east;
   }
 
   private impactCircle(report: Report): L.Circle {
