@@ -19,8 +19,8 @@
             url('../../../../assets/static/images/njuka/hero-community.jpg') center 28% / cover no-repeat,
             var(--njuka-charcoal);
         &__bulb {
-            width: 140px;
-            max-width: 40vw;
+            width: 190px;
+            max-width: 50vw;
         }
         &__title {
             font-size: 4rem;
@@ -49,6 +49,12 @@
         &__appstore {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.5);
+        }
+
+        &__map-btn {
+            padding: 0.75rem 2.2rem;
+            font-size: 1.15rem;
+            box-shadow: 0 8px 24px rgba(248, 142, 1, 0.35);
         }
 
         &__community {

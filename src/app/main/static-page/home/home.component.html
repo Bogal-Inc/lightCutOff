@@ -8,11 +8,6 @@
                 <h1 class="home__hero__title">{{projectTitle}}</h1>
                 <div class="home__hero__underline mx-auto"></div>
                 <p class="home__hero__tagline">{{'core.home.hero.tagline' | translate}}</p>
-                <p class="home__hero__services">
-                    <span>⚡ {{'core.home.hero.sub_electricity' | translate}}</span>
-                    <span class="home__hero__services__dot">·</span>
-                    <span>💧 {{'core.home.hero.sub_water' | translate}}</span>
-                </p>
                 <p class="home__hero__community mx-auto">{{'core.home.hero.community' | translate}}</p>
                 <div class="home__hero__steps">
                     <span class="home__hero__steps__chip">{{'core.home.hero.step_report' | translate}}</span>
@@ -20,6 +15,13 @@
                     <span class="home__hero__steps__chip">{{'core.home.hero.step_confirm' | translate}}</span>
                     <span class="home__hero__steps__arrow">→</span>
                     <span class="home__hero__steps__chip">{{'core.home.hero.step_alert' | translate}}</span>
+                </div>
+                <div class="mt-4">
+                    <a class="btn btn-njuka btn-lg home__hero__map-btn" routerLink="/map"
+                       [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }">
+                        <fa-icon [icon]="faMapMarkedAlt"></fa-icon>
+                        {{"core.home.btn_map" | translate}}
+                    </a>
                 </div>
                 <div class="mt-4 home__hero__badges">
                     <a [href]="playStoreUrl" target="_blank" rel="noopener"
@@ -32,13 +34,6 @@
                         <img [src]="'core.home.hero.badge_appstore_src' | translate"
                              [alt]="'core.home.hero.badge_appstore_alt' | translate"
                              class="home__hero__badges__badge">
-                    </a>
-                </div>
-                <div class="mt-3">
-                    <a class="btn btn-outline-light" routerLink="/map"
-                       [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }">
-                        <fa-icon [icon]="faBullhorn"></fa-icon>
-                        {{"core.home.btn_map" | translate}}
                     </a>
                 </div>
             </div>
@@ -221,7 +216,7 @@
                 <p class="home__section-map__text mx-auto">{{'core.home.map.text' | translate}}</p>
                 <div class="mt-4">
                     <a class="btn btn-njuka btn-lg" routerLink="/map">
-                        <fa-icon [icon]="faBullhorn"></fa-icon>
+                        <fa-icon [icon]="faMapMarkedAlt"></fa-icon>
                         {{'core.home.map.btn' | translate}}
                     </a>
                 </div>

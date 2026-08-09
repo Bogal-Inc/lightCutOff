@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, HostListener, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {Logger} from '@Services/logger.service';
-import {faBullhorn} from '@fortawesome/free-solid-svg-icons';
+import {faMapMarkedAlt} from '@fortawesome/free-solid-svg-icons';
 import {NgbModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 import { Const } from 'src/environments/const';
 import {TranslateService} from '@ngx-translate/core';
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
   figuresAnimated = false;
   private figuresObserver?: IntersectionObserver;
-  readonly faBullhorn = faBullhorn;
+  readonly faMapMarkedAlt = faMapMarkedAlt;
   closeResult = '';
   reports: any;
   reportsCurrentYear: any;
