@@ -1,42 +1,36 @@
-
-<footer class="footer">
-  <div class="d-flex justify-content-between">
-    <div class="footer__line">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/tuto" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-            {{ 'shared.main-footer.tutorial' | translate}}
+<footer class="footer text-center">
+  <div class="footer__line d-flex justify-content-center">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/tuto" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          {{ 'shared.main-footer.tutorial' | translate}}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/faq" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          FAQ
+        </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active">
+            {{ 'shared.main-footer.contactus' | translate}}
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/faq" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-            FAQ
-          </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/contact" routerLinkActive="active">
-              {{ 'shared.main-footer.contactus' | translate}}
-            </a>
-        </li>
-      </ul>
-    </div>
-    <div>
-      <ul class="list-inline">
-        <li class="p-1 list-inline-item">
-          <a target="_blank" href="https://www.facebook.com/lightcutoff.lco"><i class="fab fa-facebook-f"></i></a>
-        </li>
-        <li class="p-1 list-inline-item">
-          <a target="_blank" href="https://twitter.com/LightCutOff1"><i class="fab fa-twitter"></i></a>
-        </li>
-        <li class="p-1 list-inline-item">
-          <a  target="_blank" href="https://www.instagram.com/lightcutoff/"><i class="fab fa-instagram"></i></a>
-        </li>
-<!--        <li class="p-1 list-inline-item">-->
-<!--          <a><i class="fab fa-pinterest"></i></a>-->
-<!--        </li>-->
-      </ul>
-    </div>
+      </li>
+    </ul>
+  </div>
 
+  <div class="d-flex justify-content-center">
+    <ul class="list-inline mb-2">
+      <li class="p-1 list-inline-item">
+        <a target="_blank" href="https://www.facebook.com/lightcutoff.lco" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </li>
+      <li class="p-1 list-inline-item">
+        <a target="_blank" href="https://twitter.com/LightCutOff1" aria-label="Twitter / X"><i class="fab fa-twitter"></i></a>
+      </li>
+      <li class="p-1 list-inline-item">
+        <a target="_blank" href="https://www.instagram.com/lightcutoff/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </li>
+    </ul>
   </div>
 
   <div class="text-center">
@@ -46,4 +40,3 @@
     </a>
   </div>
 </footer>
-
