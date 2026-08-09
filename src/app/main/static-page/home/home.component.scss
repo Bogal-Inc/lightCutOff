@@ -156,12 +156,25 @@
 }
 
 .home__section-map {
-    background-color: var(--njuka-charcoal);
+    position: relative;
     color: var(--white);
+    // vraie carte sombre de Yaoundé (tuiles Stadia) sous un voile charbon
+    background:
+        linear-gradient(rgba(26, 26, 26, 0.55), rgba(26, 26, 26, 0.7)),
+        url('../../../../assets/static/images/njuka/map-yaounde-dark.jpg') center / cover no-repeat,
+        var(--njuka-charcoal);
 
     &__text {
         max-width: 620px;
-        color: rgba(255, 255, 255, 0.75);
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    &__attribution {
+        position: absolute;
+        right: 10px;
+        bottom: 6px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.35);
     }
 }
 
