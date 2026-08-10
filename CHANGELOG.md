@@ -319,6 +319,12 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.12.2] - 2026-08-10 — Retrait de la phrase-choc
+
+- La phrase en italique « Et aucune donnée publique ne mesure… » est **retirée** (demande
+  Willy) : la section se termine désormais sur les 3 compteurs. Clé i18n `figures.punch`
+  supprimée (FR/EN).
+
 ## [2.12.1] - 2026-08-10 — Retrait de la ligne de sources visible
 
 - La ligne « Sources : … » sous les compteurs est **retirée de la page** (demande Willy —
