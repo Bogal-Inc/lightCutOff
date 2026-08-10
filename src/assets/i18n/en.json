@@ -119,10 +119,11 @@
       },
       "figures": {
         "title": "The problem, in numbers",
-        "outages_label": "power outages per month on average in sub-Saharan Africa — 5.7 hours each",
-        "losses_label": "of annual sales lost by sub-Saharan African businesses because of outages",
-        "water_label": "of tap water per day, on average, on sub-Saharan African networks — cut off the rest of the time",
-        "punch": "And no public data measures what these outages put people through every day. NJUKA is building that data, one report at a time."
+        "reliability_label": "of Cameroonians have electricity that works most of the time — yet 84% are connected to the grid",
+        "outages_label": "power outages per month endured by the average Cameroonian business — 93% of businesses are affected",
+        "water_label": "of Cameroonians went without enough clean water at least once in the past year — 40% face frequent shortages",
+        "punch": "And no public data measures what these outages put people through every day. NJUKA is building that data, one report at a time.",
+        "sources": "Sources: <a href=\"https://www.afrobarometer.org/wp-content/uploads/2024/04/AD793-PAP13-Slight-and-uneven-progress-still-leaves-many-Africans-without-electricity-Afrobarometer-9april24-1.pdf\" target=\"_blank\" rel=\"noopener\">Afrobarometer 2024 (electricity)</a> · <a href=\"https://www.enterprisesurveys.org/content/dam/enterprisesurveys/documents/country/Cameroon-2024.pdf\" target=\"_blank\" rel=\"noopener\">World Bank, Cameroon Enterprise Survey 2024</a> · <a href=\"https://www.afrobarometer.org/wp-content/uploads/2024/03/AD784-PAP11-Water-and-sanitation-still-major-challenges-across-Africa-Afrobarometer-19march24.pdf\" target=\"_blank\" rel=\"noopener\">Afrobarometer 2024 (water)</a>"
       },
       "nav": {
         "hero": "Home",

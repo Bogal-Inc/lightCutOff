@@ -319,6 +319,23 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.12.0] - 2026-08-10 — Chiffres camerounais sourcés (section « Le problème »)
+
+- Les 3 compteurs passent des moyennes subsahariennes à des **chiffres camerounais récents** :
+  **34 %** des Camerounais ont une électricité qui fonctionne la plupart du temps
+  (Afrobarometer R9 2021/2023, dispatch AD793 avril 2024 — 84 % raccordés, −15 pts depuis
+  2014) · **10,4** coupures/mois subies par une entreprise camerounaise, 93 % touchées
+  (Banque mondiale, Enterprise Survey Cameroun 2024, 615 entreprises) · **82 %** ont manqué
+  d'eau potable au moins une fois dans l'année, 40 % régulièrement (Afrobarometer AD784
+  mars 2024 — 4ᵉ pire score sur 39 pays).
+- **Ligne de sources discrète** sous les compteurs (liens cliquables vers les 3 rapports,
+  ouverts dans un nouvel onglet) — cohérente avec le positionnement « NJUKA construit la
+  donnée ».
+- Compteurs : support des **décimales** (10,4 animé correctement, séparateur `,`/`.` selon
+  la langue courante).
+- Écarté (honnêteté des données) : « 5 % du CA perdu » — le chiffre officiel camerounais
+  2024 est 2 % (peu parlant) ; l'estimation GICAM de 23 % circule sans source solide.
+
 ## [2.11.1] - 2026-08-07 — CI de déploiement vers l'écosystème Njuka
 
 - **Workflow merge (master)** : lint + tests + build prod (config njuka-prod en clair,

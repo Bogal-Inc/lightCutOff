@@ -38,12 +38,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   activeSection = 'hero';
   /** Tuiles « le problème en chiffres » : compteurs animés à l'apparition de la section. */
   readonly figures: {
-    target: number; display: string; prefix: string; suffix: string;
+    target: number; decimals: number; display: string; prefix: string; suffix: string;
     color: 'amber' | 'sky'; labelKey: string;
   }[] = [
-    { target: 9, display: '0', prefix: '', suffix: '', color: 'amber', labelKey: 'outages_label' },
-    { target: 5, display: '0', prefix: '', suffix: ' %', color: 'amber', labelKey: 'losses_label' },
-    { target: 13, display: '0', prefix: '≈ ', suffix: ' h', color: 'sky', labelKey: 'water_label' }
+    { target: 34, decimals: 0, display: '0', prefix: '', suffix: ' %', color: 'amber', labelKey: 'reliability_label' },
+    { target: 10.4, decimals: 1, display: '0', prefix: '', suffix: '', color: 'amber', labelKey: 'outages_label' },
+    { target: 82, decimals: 0, display: '0', prefix: '', suffix: ' %', color: 'sky', labelKey: 'water_label' }
   ];
   figuresAnimated = false;
   private figuresObserver?: IntersectionObserver;
@@ -192,8 +192,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       const eased = 1 - Math.pow(1 - progress, 3);
 
       this.ngZone.run(() => {
+        const decimalSeparator = this.translateService.currentLang?.startsWith('fr') ? ',' : '.';
         for (const figure of this.figures) {
-          figure.display = String(Math.round(figure.target * eased));
+          figure.display = (figure.target * eased).toFixed(figure.decimals).replace('.', decimalSeparator);
         }
       });
 

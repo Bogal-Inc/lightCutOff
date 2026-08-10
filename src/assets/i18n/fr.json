@@ -119,10 +119,11 @@
       },
       "figures": {
         "title": "Le problème, en chiffres",
-        "outages_label": "coupures de courant par mois en moyenne en Afrique subsaharienne — 5,7 heures chacune",
-        "losses_label": "du chiffre d'affaires perdu par les entreprises d'Afrique subsaharienne à cause des coupures",
-        "water_label": "d'eau au robinet par jour, en moyenne, sur les réseaux d'Afrique subsaharienne — coupée le reste du temps",
-        "punch": "Et aucune donnée publique ne mesure ce que ces coupures font vivre au quotidien. NJUKA construit cette donnée, signalement après signalement."
+        "reliability_label": "des Camerounais seulement ont une électricité qui fonctionne la plupart du temps — 84 % sont pourtant raccordés au réseau",
+        "outages_label": "coupures de courant par mois subies en moyenne par une entreprise camerounaise — 93 % des entreprises en subissent",
+        "water_label": "des Camerounais ont manqué d'eau potable au moins une fois dans l'année — 40 % en manquent régulièrement",
+        "punch": "Et aucune donnée publique ne mesure ce que ces coupures font vivre au quotidien. NJUKA construit cette donnée, signalement après signalement.",
+        "sources": "Sources : <a href=\"https://www.afrobarometer.org/wp-content/uploads/2024/04/AD793-PAP13-Slight-and-uneven-progress-still-leaves-many-Africans-without-electricity-Afrobarometer-9april24-1.pdf\" target=\"_blank\" rel=\"noopener\">Afrobarometer 2024 (électricité)</a> · <a href=\"https://www.enterprisesurveys.org/content/dam/enterprisesurveys/documents/country/Cameroon-2024.pdf\" target=\"_blank\" rel=\"noopener\">Banque mondiale, Enterprise Survey Cameroun 2024</a> · <a href=\"https://www.afrobarometer.org/wp-content/uploads/2024/03/AD784-PAP11-Water-and-sanitation-still-major-challenges-across-Africa-Afrobarometer-19march24.pdf\" target=\"_blank\" rel=\"noopener\">Afrobarometer 2024 (eau)</a>"
       },
       "nav": {
         "hero": "Accueil",
