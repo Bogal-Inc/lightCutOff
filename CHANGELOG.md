@@ -319,6 +319,12 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.12.1] - 2026-08-10 — Retrait de la ligne de sources visible
+
+- La ligne « Sources : … » sous les compteurs est **retirée de la page** (demande Willy —
+  allègement visuel). Les sources restent documentées dans l'entrée 2.12.0 ci-dessous,
+  à ressortir si un média/partenaire les demande.
+
 ## [2.12.0] - 2026-08-10 — Chiffres camerounais sourcés (section « Le problème »)
 
 - Les 3 compteurs passent des moyennes subsahariennes à des **chiffres camerounais récents** :

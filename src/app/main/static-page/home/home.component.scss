@@ -233,23 +233,6 @@
         font-style: italic;
         color: rgba(255, 255, 255, 0.85);
     }
-
-    &__sources {
-        max-width: 640px;
-        margin-top: 1rem;
-        margin-bottom: 0;
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.45);
-
-        ::ng-deep a {
-            color: rgba(255, 255, 255, 0.55);
-            text-decoration: underline dotted;
-
-            &:hover {
-                color: var(--njuka-amber);
-            }
-        }
-    }
 }
 
 .section_1 {

@@ -15,8 +15,7 @@
 - [ ] Ordre des sections : hero → à propos → chiffres → pourquoi → app → distinctions → CTA → contact
 - [ ] Section « Le problème, en chiffres » (v2.12) : compteurs **34 % / 10,4 / 82 %**
       animés au scroll ; « 10,4 » s'affiche avec virgule en FR et « 10.4 » avec point en EN
-- [ ] Ligne « Sources : … » discrète sous la phrase-choc : 3 liens (Afrobarometer élec.,
-      Banque mondiale ES 2024, Afrobarometer eau) s'ouvrent dans un nouvel onglet
+      (pas de ligne de sources — retirée en v2.12.1, sources gardées dans le CHANGELOG)
 - [ ] Espacement vertical identique entre toutes les sections
 - [ ] Formulaire de contact : le message arrive sur support@njuka.app
       (⚠️ nécessite le redéploiement de la Cloud Function `contactus`)
