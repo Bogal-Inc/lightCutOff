@@ -319,6 +319,12 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.12.3] - 2026-08-10 — « Le problème » → « La réalité »
+
+- Menu header/points : « Le problème » → **« La réalité »** ; titre de section :
+  « Le problème, en chiffres » → **« La réalité, en chiffres »** (EN : "The reality" /
+  "The reality, in numbers"). Choix validé par Willy parmi 4 propositions.
+
 ## [2.12.2] - 2026-08-10 — Retrait de la phrase-choc
 
 - La phrase en italique « Et aucune donnée publique ne mesure… » est **retirée** (demande
