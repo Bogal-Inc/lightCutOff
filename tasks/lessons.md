@@ -35,3 +35,9 @@
   Firestore gatée par `authState.pipe(first(u => !!u))` quand les règles exigent isSignedIn().
 - [2026-08-07] | NG5002 « Unclosed block » : un `@` littéral dans un template Angular 17+
   (ex. `@{{pseudo}}`) est parsé comme un bloc de contrôle | Échapper avec `&#64;`.
+- [2026-08-11] | ag-grid (~978 Ko) était dans le bundle initial alors que le module qui
+  l'utilise est lazy : `ModuleRegistry.registerModules` posé dans `main.ts` lors de
+  l'upgrade v34 (+ CSS du thème dans les styles globaux d'angular.json) | L'init d'une
+  grosse lib va dans le module lazy qui l'utilise, jamais dans main.ts ; vérifier le
+  résultat dans le build réel (chercher la lib dans les chunks statiquement importés par
+  main-*.js), pas seulement dans les imports du code source.
