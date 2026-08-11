@@ -79,9 +79,17 @@ Lots dans l'ordre :
 - [x] 2c. **Carte lecture seule** (✅ 2026-08-07 — Leaflet/Stadia + repli OSM, Nominatim, pins SVG locaux) : Google Maps → Leaflet + Stadia (+ markercluster),
        lecture des reports Njuka (élec ⚡ / eau 💧, statuts), Nominatim pour la recherche,
        suppression GoogleMapsLoaderService/@types/google.maps/clé GMaps.
-- [ ] 2d. **Admin** : auth email/Google, garde role=='admin', sélecteur lightcutoff-dev/njuka-prod,
-       vues reports (modération), users, official_outages, stats (vérifier droits d'écriture
-       admin dans les règles de l'app ; sinon passer par des callables).
+- [ ] 2d. **Admin** : auth Google (pas d'email/mdp), garde canActivate + rôle admin en
+       **custom claims** (vérifiable dans les règles sans lecture croisée), sélecteur
+       lightcutoff-dev/njuka-prod, vues reports (modération), users, official_outages,
+       stats (vérifier droits d'écriture admin dans les règles de l'app ; sinon callables).
+       Pré-travail fait (audit 2026-08-11, v2.13.0) : routes /admin débranchées
+       (app-routing, commentées), ag-grid sorti du bundle initial (init dans ReportModule,
+       CSS retiré d'angular.json — à recâbler). À corriger pendant la refonte :
+       bug datestart epoch-1970 (report-list), requêtes plein-collection sans limit
+       (dashboard, statistics-number), colonnes vieux schéma (department/neighborhood,
+       manque serviceType/autoExpiredAt/impactRadiusM), page_view Analytics aux chemins
+       faux, purge AuthService.login/createUser + rôle localStorage + writes UserService.
 - [x] 2e. Hosting DÉPLOYÉ sur njuka-prod (2026-08-07) : site + pages légales fusionnées
        (src/legal/, cleanUrls), firebase.json réduit au hosting, .firebaserc staging/prod.
        RESTE : secrets GitHub CI (deploy auto), redéploiement functions (contactus →

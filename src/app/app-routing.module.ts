@@ -1,7 +1,7 @@
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
+// import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component'; // lot 2d
 import {EmptyLayoutComponent} from './layouts/empty-layout/empty-layout.component';
 import {NotFoundComponent} from './main/static-page/not-found/not-found.component';
 
@@ -31,22 +31,25 @@ const routes: Routes = [
         m => m.MapModule
       ),
   },
-  {
-    path: 'admin',
-    component: AdminLayoutComponent,
-    loadChildren: () =>
-      import('./main/statistics/statistics.module').then(
-        m => m.StatisticsModule
-      ),
-  },
-  {
-    path: 'admin',
-    component: AdminLayoutComponent,
-    loadChildren: () =>
-      import('./main/report/report.module').then(
-        m => m.ReportModule
-      ),
-  },
+  // Routes /admin DÉBRANCHÉES en attendant le lot 2d (audit 2026-08-11) : les vieilles
+  // pages 2022 étaient accessibles sans aucune garde. À réactiver DERRIÈRE un canActivate
+  // + rôle admin (custom claims) lors de la refonte — ne rien rebrancher sans garde.
+  // {
+  //   path: 'admin',
+  //   component: AdminLayoutComponent,
+  //   loadChildren: () =>
+  //     import('./main/statistics/statistics.module').then(
+  //       m => m.StatisticsModule
+  //     ),
+  // },
+  // {
+  //   path: 'admin',
+  //   component: AdminLayoutComponent,
+  //   loadChildren: () =>
+  //     import('./main/report/report.module').then(
+  //       m => m.ReportModule
+  //     ),
+  // },
   {
     path: 'page-not-found',
     component: NotFoundComponent

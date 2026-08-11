@@ -319,6 +319,36 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.13.0] - 2026-08-11 — Audit admin : −1,2 Mo sur le payload public, routes /admin débranchées
+
+Suite de l'audit de la section admin (2026-08-11).
+
+### Performance (site public)
+- **ag-grid sorti du bundle initial** : `ModuleRegistry.registerModules` +
+  `provideGlobalGridOptions` vivaient dans `main.ts` → le cœur ag-grid (chunk de ~978 Ko)
+  était téléchargé par TOUS les visiteurs. Enregistrement déplacé dans le module lazy
+  `ReportModule` (seul utilisateur de la grille).
+- **CSS ag-grid retiré des styles globaux** (`angular.json`) : styles.css passe de
+  **466 Ko à 251 Ko** (−215 Ko). À recâbler proprement au lot 2d (commentaire posé dans
+  report.module.ts).
+- Résultat build : ag-grid **absent de tous les chunks** ; initial total 1,56 Mo brut /
+  363 Ko transférés.
+
+### Sécurité (surface)
+- **Routes `/admin/*` débranchées** (commentées dans `app-routing.module.ts`) : les vieilles
+  pages 2022 (dashboard, reports ag-grid, statistics_numbers) étaient accessibles
+  publiquement sans aucune garde. Pas de fuite (lecture seule des `reports` déjà publics
+  via la carte), mais surface inutile. `/admin/*` → page-not-found. **À réactiver au
+  lot 2d uniquement derrière `canActivate` + rôle admin (custom claims).**
+
+### Constats d'audit restants (à traiter au lot 2d — voir tasks/todo.md)
+- Bug `datestart: new Date(now.getFullYear())` (= epoch 1970, filtre inopérant) dans
+  report-list ; requêtes plein-collection sans `limit` (dashboard, statistics-number) ;
+  colonnes vieux schéma (location.department/neighborhood, pas de serviceType ni
+  autoExpiredAt) ; page_view Analytics avec chemins codés en dur faux ; restes d'auth
+  email/mdp sans UI (AuthService.login/createUser, rôle en localStorage) et écritures
+  `users` mortes (UserService).
+
 ## [2.12.3] - 2026-08-10 — « Le problème » → « La réalité »
 
 - Menu header/points : « Le problème » → **« La réalité »** ; titre de section :

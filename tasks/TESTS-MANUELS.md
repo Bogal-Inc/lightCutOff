@@ -32,6 +32,11 @@
 - [ ] Recherche de lieu (Nominatim) : « Douala » recentre la carte
 - [ ] Filtres rouge/vert (plus de filtre orange « ma coupure »)
 
+## Après v2.13.0 (audit admin) — comportements ATTENDUS
+- [ ] /admin, /admin/dashboard, /admin/reports, /admin/statistics_numbers → page-not-found
+- [ ] Accueil : plus AUCUN chunk ag-grid téléchargé (onglet Réseau — avant : ~1 Mo),
+      styles.css ≈ 251 Ko (avant 466 Ko)
+
 ## Après lot 2a (purge vitrine) — comportements ATTENDUS
 - [ ] Plus de modal « Activer les notifications » à l'arrivée sur le site
 - [ ] Header sans « Mes signalements / S'inscrire / Se connecter »
