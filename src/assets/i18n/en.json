@@ -479,10 +479,9 @@
       "energy_recovred": "Service restored"
     },
     "admin-nav": {
-      "dashboard": "Chart",
-      "reports": "Reports",
       "menu": "Menu",
-      "figures": "Chiffres"
+      "reports": "Reports",
+      "logout": "Sign out"
     },
     "main-footer": {
       "contactus": "Contact us",
@@ -526,6 +525,39 @@
       "reason_2": "Make our notifications more efficient to warn you of possible outages.",
       "btn_close": "Close",
       "btn_ok": "OK"
+    }
+  },
+  "admin": {
+    "login": {
+      "title": "Admin area",
+      "subtitle": "Restricted to the NJUKA team. Sign in with an authorised Google account.",
+      "google_btn": "Continue with Google",
+      "denied": "This account has no admin rights. You have been signed out."
+    },
+    "reports": {
+      "title": "Report moderation",
+      "filter_all_states": "All states",
+      "filter_all_services": "All services",
+      "service_electricity": "Electricity",
+      "service_water": "Water",
+      "state_ongoing": "Ongoing",
+      "state_resolved": "Resolved",
+      "state_expired": "Expired",
+      "state_archived": "Archived",
+      "col_date": "Reported on",
+      "col_place": "Place",
+      "col_state": "State",
+      "col_confirmations": "Conf.",
+      "col_radius": "Radius",
+      "col_author": "Author",
+      "count_suffix": "report(s)",
+      "action_archive": "Archive",
+      "action_restore": "Restore",
+      "archived_ok": "Report archived (hidden from the public).",
+      "restored_ok": "Report restored (visible again).",
+      "action_error": "Action refused — check your admin rights.",
+      "empty": "No report for these filters.",
+      "show_more": "Show more"
     }
   }
 }

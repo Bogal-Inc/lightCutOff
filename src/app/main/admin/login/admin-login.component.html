@@ -1,0 +1,20 @@
+<div class="admin-login d-flex align-items-center justify-content-center">
+  <div class="card admin-login__card text-center">
+    <div class="card-body">
+      <fa-icon [icon]="faShieldHalved" size="2x" class="admin-login__card__icon"></fa-icon>
+      <h1 class="h4 mt-3">{{'admin.login.title' | translate}}</h1>
+      <p class="text-muted">{{'admin.login.subtitle' | translate}}</p>
+
+      <button type="button" class="btn admin-login__card__btn w-100"
+              [disabled]="busy" (click)="signInWithGoogle()">
+        <img src="assets/static/images/icons/google.svg" alt="" width="18" height="18"
+             onerror="this.style.display='none'">
+        {{'admin.login.google_btn' | translate}}
+      </button>
+
+      <p class="alert alert-warning mt-3 mb-0" *ngIf="denied">
+        {{'admin.login.denied' | translate}}
+      </p>
+    </div>
+  </div>
+</div>

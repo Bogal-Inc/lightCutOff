@@ -32,6 +32,20 @@
 - [ ] Recherche de lieu (Nominatim) : « Douala » recentre la carte
 - [ ] Filtres rouge/vert (plus de filtre orange « ma coupure »)
 
+## Après v2.15.0 (admin v1) — comportements ATTENDUS
+> Pré-requis UNIQUE (2 mains) : se connecter UNE fois en Google sur
+> https://njuka.app/admin/login (le refus « pas de droits » est NORMAL), puis exécuter
+> depuis ../lightcutoff_app : `PROJECT_ID=njuka-prod node functions/scripts/setAdmin.cjs willkoua willkoua@gmail.com`
+- [ ] /admin (déconnecté) → redirigé vers /admin/login (carte « Espace d'administration »)
+- [ ] Connexion Google avec un compte NON admin → message « pas les droits », retour anonyme
+      (la carte publique /map fonctionne toujours après ce refus)
+- [ ] Connexion Google admin → /admin/reports : table avec TOUS les signalements CM
+      (y compris expirés/archivés, lignes grisées), filtres état + service
+- [ ] Archiver un signalement → il disparaît de la carte publique /map (autre onglet)
+- [ ] Restaurer un signalement EXPIRÉ → il réapparaît sur /map (autoExpiredAt aussi effacé)
+- [ ] Sidebar : Se déconnecter → retour à l'accueil, session anonyme restaurée (carte OK)
+- [ ] Sur mobile : pas de sidebar (assumé v1), la table reste scrollable
+
 ## Après v2.14.0 (P1 : Programmées + smart banner) — comportements ATTENDUS
 - [ ] /map : onglet « Programmées » avec badge compteur À CÔTÉ de Historique/Statistiques
       (visible seulement s'il y a des coupures Eneo à venir dans njuka-prod)

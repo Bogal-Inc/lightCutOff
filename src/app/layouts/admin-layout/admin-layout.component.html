@@ -1,9 +1,9 @@
 <div class="app-container admin">
   <app-main-header [fixedTop]="true"></app-main-header>
 
-  <div class="admin__body">
-    <app-admin-nav *ngIf="!isMobile"></app-admin-nav>
-    <div [class.admin__body__main]="!isMobile">
+  <div class="admin__body d-flex">
+    <app-admin-nav *ngIf="!isMobile && (isAdmin$ | async)"></app-admin-nav>
+    <div class="admin__body__main flex-grow-1">
       <router-outlet></router-outlet>
       <app-main-footer></app-main-footer>
     </div>

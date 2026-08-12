@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {isMobile} from '@Helpers/mobile-confirm.helper';
+import { Observable } from 'rxjs';
+import { isMobile } from '@Helpers/mobile-confirm.helper';
+import { AuthService } from '../../core/services-firebase';
 
 @Component({
   standalone: false,
@@ -9,11 +11,13 @@ import {isMobile} from '@Helpers/mobile-confirm.helper';
 })
 export class AdminLayoutComponent implements OnInit {
   isMobile: boolean;
+  /** la sidebar n'apparaît que connecté-admin (pas sur /admin/login) */
+  isAdmin$: Observable<boolean>;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.isMobile = isMobile();
+    this.isAdmin$ = this.authService.isAdmin$();
   }
-
 }

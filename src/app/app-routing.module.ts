@@ -1,7 +1,7 @@
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component'; // lot 2d
+import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
 import {EmptyLayoutComponent} from './layouts/empty-layout/empty-layout.component';
 import {NotFoundComponent} from './main/static-page/not-found/not-found.component';
 
@@ -31,25 +31,18 @@ const routes: Routes = [
         m => m.MapModule
       ),
   },
-  // Routes /admin DÉBRANCHÉES en attendant le lot 2d (audit 2026-08-11) : les vieilles
-  // pages 2022 étaient accessibles sans aucune garde. À réactiver DERRIÈRE un canActivate
-  // + rôle admin (custom claims) lors de la refonte — ne rien rebrancher sans garde.
-  // {
-  //   path: 'admin',
-  //   component: AdminLayoutComponent,
-  //   loadChildren: () =>
-  //     import('./main/statistics/statistics.module').then(
-  //       m => m.StatisticsModule
-  //     ),
-  // },
-  // {
-  //   path: 'admin',
-  //   component: AdminLayoutComponent,
-  //   loadChildren: () =>
-  //     import('./main/report/report.module').then(
-  //       m => m.ReportModule
-  //     ),
-  // },
+  // Section admin NEUVE (lot 2d v1, 2026-08-11) : /admin/login (Google) +
+  // /admin/reports (modération), gardée par adminGuard (users/{uid}.role == 'admin').
+  // Les VIEILLES pages 2022 (statistics.module, report.module) restent débranchées —
+  // à reconstruire ou supprimer, ne pas les rebrancher sans garde.
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    loadChildren: () =>
+      import('./main/admin/admin.module').then(
+        m => m.AdminModule
+      ),
+  },
   {
     path: 'page-not-found',
     component: NotFoundComponent

@@ -1,0 +1,30 @@
+.admin-login {
+  min-height: 70vh;
+  background-color: #f7f7f5;
+
+  &__card {
+    max-width: 380px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(26, 26, 26, 0.12);
+
+    &__icon {
+      color: var(--njuka-amber);
+    }
+
+    &__btn {
+      background-color: var(--njuka-charcoal);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      &:hover {
+        background-color: var(--njuka-amber);
+        color: var(--njuka-charcoal);
+      }
+    }
+  }
+}

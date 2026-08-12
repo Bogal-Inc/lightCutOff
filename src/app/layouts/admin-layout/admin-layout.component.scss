@@ -1,8 +1,11 @@
 .admin {
   &__body {
+    // compense le header collant (fixed-top)
+    padding-top: 56px;
+    min-height: 100vh;
+
     &__main {
-      margin-left: 15%;
-      width: 85%;
+      min-width: 0;
     }
   }
 }

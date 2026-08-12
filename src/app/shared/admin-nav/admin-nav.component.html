@@ -1,51 +1,17 @@
-<nav style="width: 15%" class="float-left bg-dark sidebar">
-  <div class="sidebar-sticky">
-    <ul class="nav flex-column">
-      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+<nav class="admin-nav">
+  <div class="sidebar-sticky d-flex flex-column">
+    <ul class="nav flex-column flex-grow-1">
+      <h6 class="sidebar-heading px-3 mt-4 mb-1 text-muted">
         <span>{{'shared.admin-nav.menu' | translate}}</span>
-<!--        <a class="d-flex align-items-center text-muted" href="#">-->
-<!--          <span class="fas fa-plus"></span>-->
-<!--        </a>-->
       </h6>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-          <i class="fa fa-home"></i> {{'shared.admin-nav.dashboard' | translate}}
-        </a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" routerLink="/admin/reports" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-          <i class="fa fa-file"></i> {{'shared.admin-nav.reports' | translate}}
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/admin/statistics_numbers" routerLinkActive="active"
-           [routerLinkActiveOptions]="{exact:true}">
-          <i class="fa fa-file"></i> {{'shared.admin-nav.figures' | translate}}
+          <fa-icon [icon]="faFileLines"></fa-icon> {{'shared.admin-nav.reports' | translate}}
         </a>
       </li>
     </ul>
-
-<!--    <ul class="nav flex-column mb-2">-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" href="#">-->
-<!--          <span data-feather="file-text"></span> Current month-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" href="#">-->
-<!--          <span data-feather="file-text"></span> Last quarter-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" href="#">-->
-<!--          <span data-feather="file-text"></span> Social engagement-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link" href="#">-->
-<!--          <span data-feather="file-text"></span> Year-end sale-->
-<!--        </a>-->
-<!--      </li>-->
-<!--    </ul>-->
+    <button type="button" class="btn btn-link nav-link text-start px-3 mb-3 admin-nav__logout" (click)="logout()">
+      <fa-icon [icon]="faRightFromBracket"></fa-icon> {{'shared.admin-nav.logout' | translate}}
+    </button>
   </div>
 </nav>

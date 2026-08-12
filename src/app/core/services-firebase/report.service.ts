@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {first, map, switchMap} from 'rxjs/operators';
 import {Const} from 'src/environments/const';
 import { CollectionReference, Query } from '@firebase/firestore-types';
+import firebase from 'firebase/compat/app';
 
 /**
  * Lecture des signalements Njuka (`reports/{id}`, schéma de l'app — SCHEMA.md).
@@ -41,7 +42,9 @@ export class ReportService extends BaseService {
     params: {
       datestart?: Date,
       limit?: number,
-      reportStatus?: ReportSatus
+      reportStatus?: ReportSatus,
+      /** admin uniquement : inclut archivés + expirés (modération) */
+      includeHidden?: boolean
     } = {}
   ): Observable<Report[]> {
     // attend la session (anonyme comprise) : les règles Firestore exigent isSignedIn()
@@ -62,7 +65,7 @@ export class ReportService extends BaseService {
       }
     )),
       map(reports => reports.filter(report => {
-        if (!isPubliclyVisible(report)) {
+        if (!params.includeHidden && !isPubliclyVisible(report)) {
           return false;
         }
         if (params.reportStatus && report.status !== params.reportStatus) {
@@ -83,5 +86,22 @@ export class ReportService extends BaseService {
         `${Const.collections.reports}/${reportId}`
       ))
     );
+  }
+
+  /**
+   * Modération (admin uniquement, garanti par les règles) : archive ou restaure
+   * un signalement. Les règles n'autorisent l'admin qu'à toucher EXACTEMENT
+   * `archivedAt` / `autoExpiredAt` / `updatedAt` — update direct, sans les
+   * champs d'audit `_updatedBy` de BaseService.update() (ils violeraient le
+   * hasOnly des règles). Restaurer efface AUSSI `autoExpiredAt`, sinon le
+   * signalement resterait masqué du public (isPubliclyVisible).
+   */
+  setArchivedByAdmin(reportId: string, archived: boolean): Promise<void> {
+    const serverNow = firebase.firestore.FieldValue.serverTimestamp();
+    return this.doc(`${Const.collections.reports}/${reportId}`).update({
+      archivedAt: archived ? serverNow : null,
+      ...(archived ? {} : { autoExpiredAt: null }),
+      updatedAt: serverNow
+    });
   }
 }

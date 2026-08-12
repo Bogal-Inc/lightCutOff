@@ -79,17 +79,13 @@ Lots dans l'ordre :
 - [x] 2c. **Carte lecture seule** (✅ 2026-08-07 — Leaflet/Stadia + repli OSM, Nominatim, pins SVG locaux) : Google Maps → Leaflet + Stadia (+ markercluster),
        lecture des reports Njuka (élec ⚡ / eau 💧, statuts), Nominatim pour la recherche,
        suppression GoogleMapsLoaderService/@types/google.maps/clé GMaps.
-- [ ] 2d. **Admin** : auth Google (pas d'email/mdp), garde canActivate + rôle admin en
-       **custom claims** (vérifiable dans les règles sans lecture croisée), sélecteur
-       lightcutoff-dev/njuka-prod, vues reports (modération), users, official_outages,
-       stats (vérifier droits d'écriture admin dans les règles de l'app ; sinon callables).
-       Pré-travail fait (audit 2026-08-11, v2.13.0) : routes /admin débranchées
-       (app-routing, commentées), ag-grid sorti du bundle initial (init dans ReportModule,
-       CSS retiré d'angular.json — à recâbler). À corriger pendant la refonte :
-       bug datestart epoch-1970 (report-list), requêtes plein-collection sans limit
-       (dashboard, statistics-number), colonnes vieux schéma (department/neighborhood,
-       manque serviceType/autoExpiredAt/impactRadiusM), page_view Analytics aux chemins
-       faux, purge AuthService.login/createUser + rôle localStorage + writes UserService.
+- [~] 2d. **Admin** — **v1 LIVRÉE (v2.15.0, 2026-08-12 — voir le plan « Lot 2d v1 »
+       ci-dessous)** : auth Google + garde (rôle = users/{uid}.role, décision finale :
+       PAS de custom claims, on réutilise l'isAdmin() des règles), modération reports
+       (archiver/restaurer). RESTE pour une v2 : vues users / official_outages / stats,
+       sélecteur lightcutoff-dev/njuka-prod, et purge des restes 2022 (vieilles pages
+       débranchées, AuthService.login/createUser email/mdp, rôle localStorage, writes
+       UserService, bug datestart epoch-1970, requêtes sans limit).
 - [x] 2e. Hosting DÉPLOYÉ sur njuka-prod (2026-08-07) : site + pages légales fusionnées
        (src/legal/, cleanUrls), firebase.json réduit au hosting, .firebaserc staging/prod.
        RESTE : secrets GitHub CI (deploy auto), redéploiement functions (contactus →
@@ -99,6 +95,34 @@ Lots dans l'ordre :
        RESTE : secrets GitHub CI, .firebaserc/firebase.json (projet + hosting),
        cohabitation avec les pages légales de l'app (multi-sites vs fusion).
 - [ ] 2f. Domaine **njuka.app** (décidé 2026-08-07 ; sitemap/robots/OG déjà alignés) : config DNS + hosting Firebase, puis suppression du projet `lightcutoff`.
+
+## PLAN — Lot 2d v1 : accès admin RÉEL en prod (2026-08-11, décidé par Willy)
+
+Décisions de conception :
+- **Rôle = `users/{uid}.role == 'admin'`** (PAS de custom claims) : c'est la définition
+  d'`isAdmin()` DÉJÀ déployée dans les règles njuka-prod (app repo) — réutiliser avant
+  d'ajouter ; les lectures admin (users, confirmations, devices) marchent sans toucher
+  aux règles.
+- **Auth Google uniquement** (signInWithPopup) — pas d'email/mdp.
+- **Pas d'ag-grid** dans les nouvelles vues (il vient d'être sorti du bundle) : table
+  Bootstrap simple + pagination.
+- **Pas de sélecteur staging/prod v1** : le site déployé pointe njuka-prod ; pour
+  staging, lancer en local avec le .env dev (simplification assumée).
+- Modération v1 = **archiver/désarchiver un signalement** → nécessite un ajout SCOPÉ
+  aux règles de l'app (update admin limité à archivedAt/updatedAt) + rules_tests.
+
+Étapes — ✅ LIVRÉ (v2.15.0, 2026-08-12) :
+- [x] 1-3. Site : AuthService (googleSignIn, isAdmin$, signOutToAnonymous), adminGuard,
+      AdminModule neuf (/admin/login + /admin/reports, table sans ag-grid, filtres,
+      archiver/restaurer). 66 specs vertes.
+- [x] 4. App repo : règles admin hasOnly([archivedAt, autoExpiredAt, updatedAt]) +
+      2 rules tests (49 verts) — déployées njuka-prod ET lightcutoff-dev (commit 111be88, dev).
+- [x] 5. setAdmin.cjs paramétré PROJECT_ID. ⚠️ EN ATTENTE : Willy n'a PAS encore de
+      compte Google dans njuka-prod (Auth = 11 anonymes seulement) → il doit se
+      connecter UNE fois sur https://njuka.app/admin/login, PUIS exécuter :
+      PROJECT_ID=njuka-prod node functions/scripts/setAdmin.cjs willkoua willkoua@gmail.com
+- [x] 6. njuka.app ajouté aux domaines autorisés Auth (API identitytoolkit, vérifié).
+- [x] 7. i18n FR/EN, CHANGELOG 2.15.0, deploy njuka.app fait.
 
 ## PLAN — P1 roadmap : smart banner iOS + coupures programmées Eneo (2026-08-11)
 

@@ -1,0 +1,75 @@
+<div class="container-fluid admin-reports">
+  <div class="d-flex flex-wrap justify-content-between align-items-center admin-reports__toolbar">
+    <h1 class="h4 mb-0">{{'admin.reports.title' | translate}}</h1>
+    <div class="d-flex gap-2">
+      <select class="form-select form-select-sm" [(ngModel)]="stateFilter" (ngModelChange)="resetPaging()">
+        <option value="all">{{'admin.reports.filter_all_states' | translate}}</option>
+        <option value="ongoing">{{'admin.reports.state_ongoing' | translate}}</option>
+        <option value="resolved">{{'admin.reports.state_resolved' | translate}}</option>
+        <option value="expired">{{'admin.reports.state_expired' | translate}}</option>
+        <option value="archived">{{'admin.reports.state_archived' | translate}}</option>
+      </select>
+      <select class="form-select form-select-sm" [(ngModel)]="serviceFilter" (ngModelChange)="resetPaging()">
+        <option value="all">{{'admin.reports.filter_all_services' | translate}}</option>
+        <option value="electricity">⚡ {{'admin.reports.service_electricity' | translate}}</option>
+        <option value="water">💧 {{'admin.reports.service_water' | translate}}</option>
+      </select>
+    </div>
+  </div>
+
+  <p class="text-muted admin-reports__count">
+    {{filteredReports.length}} {{'admin.reports.count_suffix' | translate}}
+  </p>
+
+  <app-loading [show]="loading"></app-loading>
+
+  <div class="table-responsive" *ngIf="!loading">
+    <table class="table table-hover align-middle admin-reports__table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>{{'admin.reports.col_date' | translate}}</th>
+          <th>{{'admin.reports.col_place' | translate}}</th>
+          <th>{{'admin.reports.col_state' | translate}}</th>
+          <th class="text-end">{{'admin.reports.col_confirmations' | translate}}</th>
+          <th class="text-end">{{'admin.reports.col_radius' | translate}}</th>
+          <th>{{'admin.reports.col_author' | translate}}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of visibleReports" [class.admin-reports__table__row--hidden]="isHidden(report)">
+          <td>{{serviceEmoji(report)}}</td>
+          <td class="text-nowrap">{{report.reportedAt?.toDate() | timestamp}}</td>
+          <td>{{report.location?.city}} <span class="text-muted">›</span> {{report.location?.neighborhood}}</td>
+          <td>
+            <span class="badge admin-reports__badge admin-reports__badge--{{state(report)}}">
+              {{'admin.reports.state_' + state(report) | translate}}
+            </span>
+          </td>
+          <td class="text-end">{{report.confirmationCount || 0}}</td>
+          <td class="text-end">{{report.impactRadiusM ? (report.impactRadiusM + ' m') : '—'}}</td>
+          <td>{{report.authorUsername ? '&#64;' + report.authorUsername : '—'}}</td>
+          <td class="text-end">
+            <button type="button" class="btn btn-sm"
+                    [class.btn-outline-danger]="!isHidden(report)"
+                    [class.btn-outline-success]="isHidden(report)"
+                    [disabled]="report.id && busyIds.has(report.id)"
+                    (click)="toggleArchived(report)">
+              {{(isHidden(report) ? 'admin.reports.action_restore' : 'admin.reports.action_archive') | translate}}
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="filteredReports.length === 0">
+          <td colspan="8" class="text-center text-muted py-4">{{'admin.reports.empty' | translate}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-center mb-4" *ngIf="!loading && filteredReports.length > visibleReports.length">
+    <button type="button" class="btn btn-outline-secondary btn-sm" (click)="showMore()">
+      {{'admin.reports.show_more' | translate}}
+    </button>
+  </div>
+</div>

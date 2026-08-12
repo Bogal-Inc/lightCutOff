@@ -1,7 +1,11 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AdminNavComponent } from './admin-nav.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {AngularFireModule} from '@angular/fire/compat';
+import {environment} from 'src/environments/environment';
 
 describe('AdminNavComponent', () => {
   let component: AdminNavComponent;
@@ -11,8 +15,11 @@ describe('AdminNavComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         TranslateModule.forRoot(),
+        RouterModule.forRoot([]),
+        AngularFireModule.initializeApp(environment.firebase),
       ],
-      declarations: [ AdminNavComponent ]
+      declarations: [ AdminNavComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));

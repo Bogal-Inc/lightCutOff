@@ -1,0 +1,41 @@
+.admin-reports {
+  padding: 24px 16px;
+
+  &__toolbar {
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  &__count {
+    font-size: 0.85em;
+  }
+
+  &__table {
+    font-size: 0.9em;
+
+    &__row--hidden {
+      opacity: 0.55;
+    }
+  }
+
+  &__badge {
+    font-weight: 700;
+
+    &--ongoing {
+      background-color: var(--njuka-amber);
+      color: var(--njuka-charcoal);
+    }
+
+    &--resolved {
+      background-color: #2aad27;
+    }
+
+    &--expired {
+      background-color: var(--gray);
+    }
+
+    &--archived {
+      background-color: var(--njuka-charcoal);
+    }
+  }
+}

@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../core/services-firebase';
+import { Logger } from '@Services/logger.service';
+import { faFileLines, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+
+const log = new Logger('admin-nav.component');
 
 @Component({
   standalone: false,
@@ -6,11 +12,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './admin-nav.component.html',
   styleUrls: ['./admin-nav.component.scss']
 })
-export class AdminNavComponent implements OnInit {
+export class AdminNavComponent {
+  readonly faFileLines = faFileLines;
+  readonly faRightFromBracket = faRightFromBracket;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) { }
 
-  ngOnInit(): void {
+  async logout(): Promise<void> {
+    log.debug('admin logout');
+    await this.authService.signOutToAnonymous();
+    await this.router.navigate(['/']);
   }
-
 }

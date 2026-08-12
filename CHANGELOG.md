@@ -319,6 +319,38 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.15.0] - 2026-08-12 — Lot 2d v1 : section admin réelle en prod
+
+### Accès
+- **/admin/login** : connexion **Google uniquement** (signInWithPopup, remplace la
+  session anonyme — pas de link) ; un compte sans droits est refusé proprement et la
+  session anonyme du site est restaurée. **/admin** → redirige vers /admin/reports.
+- **adminGuard** (CanActivateFn) : non-anonyme + `users/{uid}.role == 'admin'` — MÊME
+  définition qu'`isAdmin()` dans les règles de l'app (pas de custom claims : réutilise
+  le contrat déjà déployé). La garde n'est que de l'UX, la protection est serveur.
+- `njuka.app` ajouté aux **domaines autorisés** Firebase Auth (le popup Google échouait
+  sinon en auth/unauthorized-domain).
+
+### Modération (/admin/reports)
+- **Table Njuka neuve SANS ag-grid** : service ⚡💧, date, ville › quartier, état
+  (En cours / Rétabli / **Expiré** / **Archivé** — l'expiration prime), confirmations,
+  rayon d'impact, auteur ; filtres état + service ; pagination client (25 par tranche,
+  requête plafonnée à 500).
+- **Archiver / Restaurer** : `setArchivedByAdmin` (update direct limité aux champs
+  autorisés par les règles ; restaurer efface AUSSI autoExpiredAt sinon le signalement
+  resterait masqué). Toasts de confirmation. `getReports({includeHidden})` pour voir
+  archivés + expirés (admin seulement — les règles côté serveur font foi).
+- Layout admin rafraîchi : sidebar charbon (Signalements + Se déconnecter), visible
+  seulement connecté-admin ; vieilles pages 2022 toujours débranchées.
+
+### Côté app (repo lightcutoff_app, commit 111be88 sur dev)
+- **Règles Firestore** : l'admin peut updater EXACTEMENT `archivedAt`/`autoExpiredAt`/
+  `updatedAt` sur tout report (hasOnly) — 49 rules tests verts, **déployées sur
+  njuka-prod ET lightcutoff-dev**.
+- `setAdmin.cjs` paramétré par `PROJECT_ID`. ⚠️ Reste une étape à 2 mains : Willy se
+  connecte une fois en Google sur /admin/login (crée le compte Auth), puis
+  `PROJECT_ID=njuka-prod node functions/scripts/setAdmin.cjs willkoua willkoua@gmail.com`.
+
 ## [2.14.0] - 2026-08-11 — P1 roadmap : coupures programmées Eneo + smart banner iOS
 
 ### Coupures programmées officielles (P1.2)

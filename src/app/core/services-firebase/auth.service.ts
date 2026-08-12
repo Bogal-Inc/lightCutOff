@@ -4,8 +4,9 @@ import { BaseService } from './base.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import {Observable} from 'rxjs';
-import {filter, switchMap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {catchError, filter, map, switchMap} from 'rxjs/operators';
+import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,40 @@ export class AuthService extends BaseService{
 
   anonymousAuth() {
     return this.angularFireAuth.signInAnonymously();
+  }
+
+  /**
+   * Connexion Google (section admin uniquement). Remplace la session anonyme
+   * courante — PAS de linkWithCredential : le site ne porte aucun historique
+   * utilisateur, contrairement à l'app.
+   */
+  googleSignIn() {
+    return this.angularFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+
+  /**
+   * true si l'utilisateur courant (non anonyme) a `users/{uid}.role == 'admin'`
+   * — MÊME définition qu'`isAdmin()` dans les règles Firestore de l'app :
+   * la garde côté client n'est que de l'UX, la vraie protection est serveur.
+   */
+  isAdmin$(): Observable<boolean> {
+    return this.angularFireAuth.authState.pipe(
+      switchMap(user => {
+        if (!user || user.isAnonymous) {
+          return of(false);
+        }
+        return this.doc$<{ role?: string }>(`${Const.collections.users}/${user.uid}`).pipe(
+          map(profile => profile?.role === 'admin'),
+          catchError(() => of(false))
+        );
+      })
+    );
+  }
+
+  /** Déconnexion admin : retour au modèle anonyme-first du site (lecture Firestore). */
+  async signOutToAnonymous(): Promise<void> {
+    await this.angularFireAuth.signOut();
+    await this.anonymousAuth();
   }
 
   get isUserAnonymousLoggedIn(): boolean {

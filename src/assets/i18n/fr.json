@@ -507,10 +507,9 @@
       "energy_recovred": "Service rétabli"
     },
     "admin-nav": {
-      "dashboard": "Tableau",
-      "reports": "Rapports",
       "menu": "Menu",
-      "figures": "Chiffres"
+      "reports": "Signalements",
+      "logout": "Se déconnecter"
     },
     "main-footer": {
       "contactus": "Contactez-nous",
@@ -554,6 +553,39 @@
       "reason_2": "Rendre nos notifications plus efficaces pour vous prévenir d'éventuelle coupure.",
       "btn_close": "Fermé",
       "btn_ok": "Compris"
+    }
+  },
+  "admin": {
+    "login": {
+      "title": "Espace d'administration",
+      "subtitle": "Réservé à l'équipe NJUKA. Connexion avec un compte Google autorisé.",
+      "google_btn": "Continuer avec Google",
+      "denied": "Ce compte n'a pas les droits d'administration. Tu as été déconnecté."
+    },
+    "reports": {
+      "title": "Modération des signalements",
+      "filter_all_states": "Tous les états",
+      "filter_all_services": "Tous les services",
+      "service_electricity": "Électricité",
+      "service_water": "Eau",
+      "state_ongoing": "En cours",
+      "state_resolved": "Rétabli",
+      "state_expired": "Expiré",
+      "state_archived": "Archivé",
+      "col_date": "Signalé le",
+      "col_place": "Lieu",
+      "col_state": "État",
+      "col_confirmations": "Conf.",
+      "col_radius": "Rayon",
+      "col_author": "Auteur",
+      "count_suffix": "signalement(s)",
+      "action_archive": "Archiver",
+      "action_restore": "Restaurer",
+      "archived_ok": "Signalement archivé (masqué du public).",
+      "restored_ok": "Signalement restauré (de nouveau visible).",
+      "action_error": "Action refusée — vérifie tes droits admin.",
+      "empty": "Aucun signalement pour ces filtres.",
+      "show_more": "Afficher plus"
     }
   }
 }
