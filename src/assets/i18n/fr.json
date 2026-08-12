@@ -92,6 +92,9 @@
         "feature_alert": "Recevez une notification quand une coupure est signalée près de chez vous, et quand le service revient.",
         "feature_official_title": "Coupures planifiées officielles",
         "feature_official": "Consultez chaque jour les coupures programmées annoncées par Eneo et suivez vos quartiers.",
+        "feature_soon_badge": "Bientôt",
+        "feature_soon_title": "L'horaire du délestage",
+        "feature_soon": "L'heure probable de coupure et de retour du courant, dans ta zone — construite à partir des signalements de la communauté.",
         "alt_screenshot_list": "Capture d'écran NJUKA : liste des coupures électricité et eau",
         "alt_screenshot_map": "Capture d'écran NJUKA : carte des coupures",
         "alt_screenshot_detail": "Capture d'écran NJUKA : détail d'un signalement"
@@ -525,7 +528,8 @@
         "message_required": "Message requis",
         "close": "Fermer",
         "send": "Envoyer"
-      }
+      },
+      "eneo_program": "Programme Eneo"
     },
     "cookie": {
       "header": "Cookies utilisés sur le site!",

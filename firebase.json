@@ -22,6 +22,10 @@
         "function": "renderReportShare"
       },
       {
+        "source": "/programme-coupures-eneo",
+        "function": "renderEneoProgram"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

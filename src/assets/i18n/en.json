@@ -92,6 +92,9 @@
         "feature_alert": "Get notified when an outage is reported near you, and when the service is back.",
         "feature_official_title": "Official planned outages",
         "feature_official": "Check the planned outages announced by Eneo every day and follow your neighbourhoods.",
+        "feature_soon_badge": "Soon",
+        "feature_soon_title": "Load-shedding schedule",
+        "feature_soon": "The likely outage and restoration times in your area — built from the community's reports.",
         "alt_screenshot_list": "NJUKA screenshot: electricity and water outage list",
         "alt_screenshot_map": "NJUKA screenshot: outage map",
         "alt_screenshot_detail": "NJUKA screenshot: report details"
@@ -497,7 +500,8 @@
         "message_required": "Message required",
         "close": "Close",
         "send": "Sent"
-      }
+      },
+      "eneo_program": "Eneo schedule"
     },
     "cookie": {
       "header": "Cookies used on the website!",
