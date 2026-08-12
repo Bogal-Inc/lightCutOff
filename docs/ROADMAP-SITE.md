@@ -51,10 +51,17 @@ Meta `apple-itunes-app` (app-id 6794127922) posée dans index.html — Safari iO
 la bannière native sur toutes les pages. Équivalent Android : couvert par App Links
 + badges (pas de bannière native Chrome sans PWA — assumé, la PWA a été retirée).
 
-### 4. Pages de partage `/s/{id}` : conversion
-La page (rendue par la CF côté app) est sobre. S'assurer qu'elle pousse l'installation :
-badges stores avec tracking dédié (`utm_source=share` — distinct de `website`) pour mesurer
-le canal viral WhatsApp. Effort : faible (coordonné avec le repo app, la CF y vit).
+### 4. Pages de partage `/s/{id}` : conversion — ✅ FAIT (2026-08-12)
+Constat : la page poussait DÉJÀ l'installation (CTA Play en premier, lien App Store),
+et le lien Android portait déjà `utm_source=share`. Complété : **`ct=share&mt=8`** sur
+le lien App Store (distinct du `ct=website` du site ; l'agrégation Apple attend toujours
+le provider token `pt` — cf. Divers). Déployé sur njuka-prod, vérifié en ligne
+(repo app, commit 60eb2fe).
+
+### 4bis. Stats publiques de zone — REPORTÉ volontairement (2026-08-12)
+La collection `reports` de prod est vide (app publiée depuis quelques jours) : une page
+« Ta ville : 0 h de coupure » ferait plus de mal que de bien à la crédibilité. À
+construire dès les premiers signalements réels (cf. P2.7).
 
 ---
 
