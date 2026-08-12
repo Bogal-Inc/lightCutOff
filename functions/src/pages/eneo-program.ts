@@ -2,11 +2,15 @@ import { onRequest } from 'firebase-functions/v2/https';
 import * as admin from 'firebase-admin';
 
 /**
- * Page SEO server-rendered : « Programme des coupures Eneo » (/programme-coupures-eneo).
- * Cible la recherche Google quotidienne « programme coupure Eneo <ville> » — la SPA ne
- * peut pas la capter (contenu client). Même donnée que l'onglet Programmées du site et
- * le segment de l'app : `official_outages` (ingestion quotidienne par la CF de l'app).
+ * Page SEO server-rendered : « Programme des coupures SOCADEL (ex-Eneo) »
+ * (/programme-coupures-socadel ; l'ancienne URL /programme-coupures-eneo redirige en 301).
+ * Cible la recherche Google quotidienne « programme coupure SOCADEL/Eneo <ville> » — la
+ * SPA ne peut pas la capter (contenu client). Même donnée que l'onglet Programmées du
+ * site et le segment de l'app : `official_outages` (ingestion quotidienne par la CF de
+ * l'app — noms techniques `eneo`/ingestEneoOutages inchangés : contrat de données).
  * Servie via un rewrite hosting (firebase.json), cache CDN 30 min.
+ * L'opérateur électricité s'appelle SOCADEL depuis la reprise d'Eneo — la mention
+ * « ex-Eneo » reste volontairement (les recherches Google utilisent encore l'ancien nom).
  */
 
 interface OutageRow {
@@ -87,9 +91,9 @@ export const renderEneoProgram = onRequest(async (req, res) => {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Programme des coupures Eneo — délestages annoncés au Cameroun | NJUKA</title>
-<meta name="description" content="Le programme officiel des coupures d'électricité Eneo des prochains jours, par ville et quartier (Yaoundé, Douala…), mis à jour chaque jour. Suivez aussi les coupures en temps réel avec l'application NJUKA.">
-<link rel="canonical" href="https://njuka.app/programme-coupures-eneo">
+<title>Programme des coupures SOCADEL (ex-Eneo) — délestages annoncés au Cameroun | NJUKA</title>
+<meta name="description" content="Le programme officiel des coupures d'électricité SOCADEL (ex-Eneo) des prochains jours, par ville et quartier (Yaoundé, Douala…), mis à jour chaque jour. Suivez aussi les coupures en temps réel avec l'application NJUKA.">
+<link rel="canonical" href="https://njuka.app/programme-coupures-socadel">
 <link rel="icon" type="image/png" href="/assets/static/images/njuka/njuka_icon.png">
 <meta name="apple-itunes-app" content="app-id=6794127922">
 <style>
@@ -113,9 +117,10 @@ export const renderEneoProgram = onRequest(async (req, res) => {
 <body>
 <header><a href="/">NJUKA</a></header>
 <main>
-  <h1>Programme des coupures Eneo — délestages annoncés</h1>
-  <p>Les coupures d'électricité <b>programmées par Eneo</b> pour les prochains jours au Cameroun,
-  par ville et quartier. Données publiées par l'opérateur, réactualisées chaque jour.
+  <h1>Programme des coupures SOCADEL (ex-Eneo) — délestages annoncés</h1>
+  <p>Les coupures d'électricité <b>programmées par SOCADEL</b> (l'opérateur national, ex-Eneo)
+  pour les prochains jours au Cameroun, par ville et quartier. Données publiées par
+  l'opérateur, réactualisées chaque jour.
   <span class="updated">Dernière mise à jour : ${escapeHtml(updated)}.</span></p>
   ${renderRows(outages)}
   <div class="cta">
@@ -123,7 +128,7 @@ export const renderEneoProgram = onRequest(async (req, res) => {
     La plupart des coupures ne sont jamais annoncées. Avec l'application NJUKA, vous voyez les
     coupures d'électricité et d'eau signalées en temps réel autour de vous — et vous êtes
     alerté quand le courant revient.
-    <br><a class="btn" href="https://njuka.app/map?utm_source=seo_eneo">Voir la carte des coupures</a>
+    <br><a class="btn" href="https://njuka.app/map?utm_source=seo_socadel">Voir la carte des coupures</a>
   </div>
   <p class="links"><a href="/">njuka.app</a> · <a href="/map">Carte en temps réel</a> · <a href="/faq">FAQ</a></p>
 </main>

@@ -9,7 +9,7 @@ const log = new Logger('map-menu-scheduled.component');
 
 /**
  * Onglet « Programmées » du menu de la carte : coupures planifiées officielles
- * (programme Eneo) en lecture seule — filtre région + recherche quartier/ville,
+ * (programme SOCADEL, ex-Eneo) en lecture seule — filtre région + recherche quartier/ville,
  * comme le segment équivalent de l'app. Pas de coordonnées dans la donnée :
  * un clic recentre la carte via la recherche Nominatim « quartier, ville ».
  */

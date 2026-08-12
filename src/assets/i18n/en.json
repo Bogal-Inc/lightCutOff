@@ -91,7 +91,7 @@
         "feature_alert_title": "Get alerted",
         "feature_alert": "Get notified when an outage is reported near you, and when the service is back.",
         "feature_official_title": "Official planned outages",
-        "feature_official": "Check the planned outages announced by Eneo every day and follow your neighbourhoods.",
+        "feature_official": "Check the planned outages announced by SOCADEL every day and follow your neighbourhoods.",
         "feature_soon_badge": "Soon",
         "feature_soon_title": "Load-shedding schedule",
         "feature_soon": "The likely outage and restoration times in your area — built from the community's reports.",
@@ -106,7 +106,7 @@
         "community_title": "Information from the people living it",
         "community_text": "NJUKA relies on the community: every reported outage is confirmed by neighbours. The more confirmations, the more reliable the information — and everyone knows right away whether the problem is local or general.",
         "data_title": "Data to get organised",
-        "data_text": "Reported outages, durations, service restorations, official planned outages from Eneo: NJUKA turns the experience of thousands of users into useful information to plan your day, your business or your travel."
+        "data_text": "Reported outages, durations, service restorations, official planned outages from SOCADEL: NJUKA turns the experience of thousands of users into useful information to plan your day, your business or your travel."
       },
       "cta": {
         "title": "Together, we see clearly.",
@@ -164,14 +164,14 @@
       "step_confirm_title": "3. Confirm… or deny",
       "step_confirm_text": "When an outage is reported near you, the app asks “At your place too?”. Confirm if you are affected, or deny if everything works at home: the more confirmations, the more reliable the information. When the service is back, declare it — the reporter and confirmers are notified.",
       "step_alert_title": "4. Follow planned outages",
-      "step_alert_text": "Check the official planned outages announced by Eneo every day, follow your neighbourhoods and get alerted the day before an outage is scheduled there.",
+      "step_alert_text": "Check the official planned outages announced by SOCADEL every day, follow your neighbourhoods and get alerted the day before an outage is scheduled there.",
       "web_map_title": "What about the website?",
       "web_map_text": "The website lets you <a href='/map'>browse the reported outage map</a> in read-only mode. To report, confirm or get alerted, use the app."
     },
     "faq": {
       "title": "Frequently asked questions",
       "q1": "Where can I use NJUKA?",
-      "a1": "NJUKA is currently available in <b>Cameroon</b> only, for electricity (Eneo) and water (Camwater) outages. The app is designed to expand to other African countries.",
+      "a1": "NJUKA is currently available in <b>Cameroon</b> only, for electricity (SOCADEL, ex-Eneo) and water (Camwater) outages. The app is designed to expand to other African countries.",
       "q2": "Is NJUKA free?",
       "a2": "Yes, the app is <b>completely free</b>, with no in-app purchases.",
       "q3": "How do I install NJUKA on my phone?",
@@ -183,7 +183,7 @@
       "q6": "How do I know a reported outage is reliable?",
       "a6": "Every outage can be <b>confirmed</b> — or <b>denied</b> — by neighbours. The confirmation count is shown on each report: the more confirmations, the more reliable the information. When the service is back, the report becomes “resolved” and the reporter and confirmers are notified.",
       "q7": "How do I get alerted about outages?",
-      "a7": "Enable the app's notifications: you'll be alerted when an outage is reported <b>near you</b>, when the service is back, and the day before an official <b>planned outage</b> (Eneo schedule) in the neighbourhoods you follow.",
+      "a7": "Enable the app's notifications: you'll be alerted when an outage is reported <b>near you</b>, when the service is back, and the day before an official <b>planned outage</b> (SOCADEL schedule) in the neighbourhoods you follow.",
       "q8": "What do you do with my location and data?",
       "a8": "Your location is only used to geolocate your reports and alert you about nearby outages. Your data is never sold or shared for advertising. Details in our <a href='https://njuka-prod.web.app/privacy' target='_blank' rel='noopener'>privacy policy</a>; you can also <a href='https://njuka-prod.web.app/account-deletion' target='_blank' rel='noopener'>delete your account</a> at any time."
     },
@@ -337,7 +337,7 @@
       "all_regions": "All regions",
       "search_hint": "Search a neighbourhood or city…",
       "empty": "No upcoming scheduled outage.",
-      "source": "Official Eneo programme"
+      "source": "Official SOCADEL programme"
     },
     "map-not-found": {
       "text_1": "YOUR PLANET IS NO LONGER ACCESSIBLE",
@@ -502,7 +502,7 @@
         "close": "Close",
         "send": "Sent"
       },
-      "eneo_program": "Eneo schedule"
+      "eneo_program": "SOCADEL schedule"
     },
     "cookie": {
       "header": "Cookies used on the website!",

@@ -2,7 +2,7 @@ import { Timestamp } from '@firebase/firestore-types';
 import { ServiceType } from '@Models/report.model';
 
 /**
- * Coupure officielle planifiée (programme Eneo), collection `official_outages`
+ * Coupure officielle planifiée (programme SOCADEL, ex-Eneo), collection `official_outages`
  * — miroir du modèle Dart de l'app (`lib/models/official_outage.dart`).
  * Alimentée par la CF `ingestEneoOutages` (cron quotidien) ; écriture client
  * interdite, lecture si connecté (anonyme compris). Pas de coordonnées GPS :
@@ -24,7 +24,7 @@ export interface OfficialOutage {
   endTime: string;
   startsAt?: Date | Timestamp | any;
   endsAt?: Date | Timestamp | any;
-  /** absent = electricity (seul Eneo est ingéré pour l'instant) */
+  /** absent = electricity (seul l'opérateur élec — SOCADEL, flux technique « eneo » — est ingéré) */
   serviceType?: ServiceType;
 }
 

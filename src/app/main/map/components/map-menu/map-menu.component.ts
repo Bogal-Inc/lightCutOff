@@ -60,7 +60,7 @@ export class MapMenuComponent implements OnInit, OnChanges, OnDestroy {
   reportsNotClosed: Report[];
   reportsDayNotClosed: Report[];
   reportsDay: Report[];
-  /** Coupures planifiées officielles (Eneo) — alimente l'onglet « Programmées ». */
+  /** Coupures planifiées officielles (SOCADEL, ex-Eneo) — alimente l'onglet « Programmées ». */
   scheduledOutages: OfficialOutage[] = [];
   now: Date;
   active = 1;

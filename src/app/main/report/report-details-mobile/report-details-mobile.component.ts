@@ -47,7 +47,7 @@ export class ReportDetailsMobileComponent implements OnInit {
     this.metaService.setTagsGeneral(
       this.translateService.instant('report.report-details-mobile.title_page'),
       [
-        new MetaTag(METATAG.KEYWORDS, 'njuka, coupure electricité, coupure eau, délestage, Eneo, Camwater, Cameroun, Cameroon, signaler coupure, panne de courant, coupures programmées, power outage, water outage, carte des coupures'),
+        new MetaTag(METATAG.KEYWORDS, 'njuka, coupure electricité, coupure eau, délestage, SOCADEL, Eneo, Camwater, Cameroun, Cameroon, signaler coupure, panne de courant, coupures programmées, power outage, water outage, carte des coupures'),
         new MetaTag(METATAG.DESCRIPTION, this.translateService.instant('report.report-details-mobile.title_page'))
       ]);
 

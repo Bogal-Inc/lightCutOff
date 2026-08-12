@@ -91,7 +91,7 @@
         "feature_alert_title": "Soyez alerté",
         "feature_alert": "Recevez une notification quand une coupure est signalée près de chez vous, et quand le service revient.",
         "feature_official_title": "Coupures planifiées officielles",
-        "feature_official": "Consultez chaque jour les coupures programmées annoncées par Eneo et suivez vos quartiers.",
+        "feature_official": "Consultez chaque jour les coupures programmées annoncées par SOCADEL et suivez vos quartiers.",
         "feature_soon_badge": "Bientôt",
         "feature_soon_title": "L'horaire du délestage",
         "feature_soon": "L'heure probable de coupure et de retour du courant, dans ta zone — construite à partir des signalements de la communauté.",
@@ -106,7 +106,7 @@
         "community_title": "L'information par ceux qui la vivent",
         "community_text": "NJUKA s'appuie sur la communauté : chaque coupure signalée est confirmée par les voisins. Plus il y a de confirmations, plus l'information est fiable — et chacun sait immédiatement si le problème est local ou général.",
         "data_title": "Des données pour mieux s'organiser",
-        "data_text": "Coupures signalées, durées, retours du service, coupures planifiées officielles d'Eneo : NJUKA transforme l'expérience de milliers d'utilisateurs en information utile pour organiser sa journée, son commerce ou ses déplacements."
+        "data_text": "Coupures signalées, durées, retours du service, coupures planifiées officielles de SOCADEL : NJUKA transforme l'expérience de milliers d'utilisateurs en information utile pour organiser sa journée, son commerce ou ses déplacements."
       },
       "cta": {
         "title": "Ensemble, on y voit plus clair.",
@@ -164,14 +164,14 @@
       "step_confirm_title": "3. Confirmez… ou démentez",
       "step_confirm_text": "Quand une coupure est signalée près de chez vous, l'app vous demande « Chez toi aussi ? ». Confirmez si vous êtes touché, ou démentez si tout fonctionne chez vous : plus il y a de confirmations, plus l'information est fiable. Quand le service revient, déclarez « le courant est revenu » — l'auteur et les confirmeurs sont prévenus.",
       "step_alert_title": "4. Suivez les coupures planifiées",
-      "step_alert_text": "Consultez chaque jour les coupures programmées officielles annoncées par Eneo, suivez vos quartiers et recevez une alerte la veille quand une coupure y est prévue.",
+      "step_alert_text": "Consultez chaque jour les coupures programmées officielles annoncées par SOCADEL, suivez vos quartiers et recevez une alerte la veille quand une coupure y est prévue.",
       "web_map_title": "Et le site web ?",
       "web_map_text": "Le site vous permet de <a href='/map'>consulter la carte des coupures signalées</a> en lecture seule. Pour signaler, confirmer ou être alerté, c'est dans l'application."
     },
     "faq": {
       "title": "Foire aux questions",
       "q1": "Où est-ce que je peux utiliser NJUKA ?",
-      "a1": "NJUKA est pour l'instant disponible uniquement au <b>Cameroun</b>, pour les coupures d'électricité (Eneo) et d'eau (Camwater). L'application est conçue pour s'étendre à d'autres pays d'Afrique.",
+      "a1": "NJUKA est pour l'instant disponible uniquement au <b>Cameroun</b>, pour les coupures d'électricité (SOCADEL, ex-Eneo) et d'eau (Camwater). L'application est conçue pour s'étendre à d'autres pays d'Afrique.",
       "q2": "NJUKA est-elle gratuite ?",
       "a2": "Oui, l'application est <b>entièrement gratuite</b>, sans achat intégré.",
       "q3": "Comment installer NJUKA sur mon téléphone ?",
@@ -183,7 +183,7 @@
       "q6": "Comment savoir si une coupure signalée est fiable ?",
       "a6": "Chaque coupure peut être <b>confirmée</b> — ou <b>démentie</b> — par les voisins. Le nombre de confirmations est affiché sur chaque signalement : plus il y a de confirmations, plus l'information est fiable. Quand le service revient, le signalement passe en « résolu » et l'auteur comme les confirmeurs sont prévenus.",
       "q7": "Comment être alerté des coupures ?",
-      "a7": "Activez les notifications de l'application : vous serez alerté quand une coupure est signalée <b>près de chez vous</b>, quand le service revient, et la veille d'une <b>coupure planifiée officielle</b> (programme Eneo) dans les quartiers que vous suivez.",
+      "a7": "Activez les notifications de l'application : vous serez alerté quand une coupure est signalée <b>près de chez vous</b>, quand le service revient, et la veille d'une <b>coupure planifiée officielle</b> (programme SOCADEL) dans les quartiers que vous suivez.",
       "q8": "Que faites-vous de ma position et de mes données ?",
       "a8": "Votre position sert uniquement à géolocaliser vos signalements et à vous alerter des coupures proches. Vos données ne sont ni vendues ni partagées à des fins publicitaires. Détails dans notre <a href='https://njuka-prod.web.app/privacy' target='_blank' rel='noopener'>politique de confidentialité</a> ; vous pouvez aussi <a href='https://njuka-prod.web.app/account-deletion' target='_blank' rel='noopener'>supprimer votre compte</a> à tout moment."
     },
@@ -338,7 +338,7 @@
       "all_regions": "Toutes les régions",
       "search_hint": "Rechercher un quartier ou une ville…",
       "empty": "Aucune coupure programmée à venir.",
-      "source": "Programme officiel Eneo"
+      "source": "Programme officiel SOCADEL"
     },
     "map-not-found": {
       "text_1": "VOTRE PLANETE N'EST PLUS ACCESSIBLE",
@@ -530,7 +530,7 @@
         "close": "Fermer",
         "send": "Envoyer"
       },
-      "eneo_program": "Programme Eneo"
+      "eneo_program": "Programme SOCADEL"
     },
     "cookie": {
       "header": "Cookies utilisés sur le site!",

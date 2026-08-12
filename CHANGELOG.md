@@ -319,6 +319,24 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.19.0] - 2026-08-12 — Rebranding opérateur : Eneo → SOCADEL
+
+- **Tous les textes visibles passent à SOCADEL** (i18n FR/EN : feature accueil, section
+  Pourquoi, tuto, FAQ, source de l'onglet Programmées, lien footer « Programme SOCADEL »).
+  La FAQ garde une mention « (SOCADEL, ex-Eneo) » et la page SEO aussi — les recherches
+  Google utilisent encore l'ancien nom pendant la transition.
+- **Page SEO déplacée** : `/programme-coupures-socadel` (titre/description/H1/CTA
+  rebrandés, `utm_source=seo_socadel`) ; l'ancienne URL `/programme-coupures-eneo`
+  **redirige en 301** (hosting redirects) ; sitemap et canonical mis à jour. Vérifié en
+  ligne (301 + nouveau titre + i18n servie).
+- Mots-clés SEO : « SOCADEL » ajouté, « Eneo » CONSERVÉ volontairement (transition).
+- **Identifiants techniques INCHANGÉS** (contrat de données avec l'app) : champ Firestore
+  `provider: 'eneo'`, CF `ingestEneoOutages`/`renderEneoProgram`, clé i18n
+  `eneo_program`, fichier `eneo-program.ts`.
+- ⚠️ **Restes côté APP (repo lightcutoff_app, release à prévoir)** : libellés « Eneo »
+  dans utilities.dart (kSupportedUtilities), l10n ARB fr/en, onboarding — et les fiches
+  stores (descriptions Play/ASC mentionnent Eneo).
+
 ## [2.18.1] - 2026-08-12 — FIX MAJEUR : l'UI ne se rafraîchissait jamais à l'arrivée des données
 
 - **Symptôme** : pages admin et carte « vides » (spinner infini, onglet Programmées

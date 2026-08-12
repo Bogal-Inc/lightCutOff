@@ -8,7 +8,7 @@ import { OfficialOutage, upcomingOfficialOutages } from '@Models/official-outage
 import { BaseService } from './base.service';
 
 /**
- * Lecture des coupures planifiées officielles (`official_outages`, programme Eneo
+ * Lecture des coupures planifiées officielles (`official_outages`, programme SOCADEL ex-Eneo
  * ingéré quotidiennement par la CF de l'app). Même stratégie que l'app : requête
  * MONO-CHAMP (`country ==`) — aucun index composite à déployer — puis filtre date
  * (≥ aujourd'hui) et tri côté client (volume modeste par pays).

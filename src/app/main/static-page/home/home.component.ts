@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.metaService.setTagsGeneral(
       this.translateService.instant('core.home.title_page'),
       [
-      new MetaTag(METATAG.KEYWORDS, 'njuka, coupure electricité, coupure eau, délestage, Eneo, Camwater, Cameroun, Cameroon, signaler coupure, panne de courant, coupures programmées, power outage, water outage, carte des coupures'),
+      new MetaTag(METATAG.KEYWORDS, 'njuka, coupure electricité, coupure eau, délestage, SOCADEL, Eneo, Camwater, Cameroun, Cameroon, signaler coupure, panne de courant, coupures programmées, power outage, water outage, carte des coupures'),
       new MetaTag(METATAG.DESCRIPTION, this.translateService.instant('core.home.desc_page'))
     ]);
   }

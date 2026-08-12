@@ -16,13 +16,20 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects": [
+      {
+        "source": "/programme-coupures-eneo",
+        "destination": "/programme-coupures-socadel",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "/s/**",
         "function": "renderReportShare"
       },
       {
-        "source": "/programme-coupures-eneo",
+        "source": "/programme-coupures-socadel",
         "function": "renderEneoProgram"
       },
       {
