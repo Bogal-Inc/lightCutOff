@@ -41,3 +41,8 @@
   grosse lib va dans le module lazy qui l'utilise, jamais dans main.ts ; vérifier le
   résultat dans le build réel (chercher la lib dans les chunks statiquement importés par
   main-*.js), pas seulement dans les imports du code source.
+- [2026-08-12] | Layout admin cassé : padding-top de 56 px ajouté pour compenser un
+  header « fixe »… alors que l'input `[fixedTop]` de main-header est un héritage MORT
+  (aucune classe appliquée, header en flux normal) | Avant de compenser le positionnement
+  d'un composant, vérifier ce que son input/prop fait RÉELLEMENT (grep dans le template/
+  scss) — un nom d'input n'est pas un comportement.
