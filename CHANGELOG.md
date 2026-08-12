@@ -319,6 +319,29 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.16.0] - 2026-08-12 — Formulaire de contact RÉPARÉ (Brevo) + admin layout fix
+
+### Contact (le formulaire partait dans le vide depuis la migration)
+- La CF `contactus` appelait Gmail avec des identifiants absents ET vivait encore sur
+  l'ancien projet `lightcutoff` (URL codée en dur dans mail.service.ts). Réécrite :
+  **envoi via Brevo** (secret `BREVO_API_KEY` du Secret Manager, déjà posé par le repo
+  app) — expéditeur `noreply@njuka.app` (DMARC strict p=reject : jamais l'email du
+  visiteur, qui passe en **reply-to**), destinataire support@njuka.app, HTML échappé
+  (l'ancien code injectait le message brut), validation basique des entrées.
+- **Déployée sur njuka-prod ET lightcutoff-dev** en codebase Functions séparée
+  (`website` — ne peut pas marcher sur les 8 CFs de l'app, codebase default).
+  `firebase.json` du site porte à nouveau une section functions (codebase only).
+- `mail.service.ts` construit l'URL depuis `environment.firebase.projectId` (plus de
+  hardcode vers l'ancien projet). **Testée bout en bout** : POST réel → « Sended » →
+  email Brevo parti vers support@njuka.app.
+- Purge : fonction `messaging` 2022 (web-push, vieux schéma `recovredAt`) supprimée,
+  nodemailer retiré des dépendances, `databaseURL` de l'ancien projet retirée de l'init.
+
+### Admin
+- Fix layout (v2.15.1 de fait) : le padding compensait un header « fixe » qui ne l'est
+  pas (input fixedTop mort) — bande fantôme supprimée, fond gris clair, table en carte
+  blanche, footer épinglé. Rôle admin posé sur willkoua@gmail.com (prod ET staging).
+
 ## [2.15.0] - 2026-08-12 — Lot 2d v1 : section admin réelle en prod
 
 ### Accès

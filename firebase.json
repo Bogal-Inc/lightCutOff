@@ -1,4 +1,13 @@
 {
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "website",
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ],
   "hosting": {
     "public": "dist/lightcutoff/browser",
     "cleanUrls": true,
