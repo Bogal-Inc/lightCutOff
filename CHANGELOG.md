@@ -319,6 +319,16 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.18.0] - 2026-08-12 — Admin : page Statistiques (schéma Njuka)
+
+- **/admin/stats** (gardée, entrée « Statistiques » dans la sidebar) : cartes d'état
+  (total / en cours / rétablis / expirés — l'expiration prime sur l'archivage manuel),
+  répartition ⚡/💧, compteurs mois/jour, **durée moyenne des seules coupures résolues**
+  (règle d'hygiène P0 : jamais les expirées), top 5 des villes. Agrégation par helpers
+  purs testés (`report-stats.ts`, 4 specs — 70 au total). Sans chart.js ni ag-grid.
+- Repo app : `ct=share&mt=8` sur le lien App Store des pages de partage `/s/{id}`
+  (P1.4 — commit 60eb2fe, déployé et vérifié en ligne).
+
 ## [2.17.0] - 2026-08-12 — Page SEO « Programme Eneo » + teaser horaire du délestage
 
 - **`/programme-coupures-eneo`** : page **server-rendered** par la nouvelle CF
