@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminLoginComponent } from './login/admin-login.component';
 import { AdminReportsComponent } from './reports/admin-reports.component';
+import { AdminStatsComponent } from './stats/admin-stats.component';
 
 /**
  * Lot 2d v1 — section admin NEUVE (schéma Njuka) : /admin/login (Google) +
@@ -15,6 +16,7 @@ import { AdminReportsComponent } from './reports/admin-reports.component';
   declarations: [
     AdminLoginComponent,
     AdminReportsComponent,
+    AdminStatsComponent,
   ],
   imports: [
     CommonModule,

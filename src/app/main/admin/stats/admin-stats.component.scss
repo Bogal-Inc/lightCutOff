@@ -1,0 +1,66 @@
+.admin-stats {
+  padding: 24px;
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 10px rgba(26, 26, 26, 0.06);
+    border-left: 4px solid var(--njuka-charcoal);
+    height: 100%;
+
+    &--amber {
+      border-left-color: var(--njuka-amber);
+    }
+
+    &--green {
+      border-left-color: #2aad27;
+    }
+
+    &--gray {
+      border-left-color: var(--gray);
+    }
+
+    &__value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+
+      &--sep {
+        color: var(--gray);
+        font-weight: 400;
+      }
+    }
+
+    &__label {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+  }
+
+  &__cities {
+    max-width: 420px;
+    margin-top: 24px;
+
+    &__table {
+      background-color: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(26, 26, 26, 0.06);
+      margin-bottom: 0;
+
+      td {
+        padding: 8px 14px;
+      }
+    }
+  }
+
+  &__note {
+    margin-top: 20px;
+    font-size: 0.8rem;
+  }
+}

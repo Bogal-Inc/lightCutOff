@@ -484,7 +484,8 @@
     "admin-nav": {
       "menu": "Menu",
       "reports": "Reports",
-      "logout": "Sign out"
+      "logout": "Sign out",
+      "stats": "Statistics"
     },
     "main-footer": {
       "contactus": "Contact us",
@@ -562,6 +563,19 @@
       "action_error": "Action refused — check your admin rights.",
       "empty": "No report for these filters.",
       "show_more": "Show more"
+    },
+    "stats": {
+      "title": "Report statistics",
+      "total": "Total (all states)",
+      "ongoing": "Ongoing",
+      "resolved": "Resolved",
+      "expired": "Expired (48h without activity)",
+      "by_service": "Electricity · Water",
+      "this_month": "This month",
+      "today": "Today",
+      "avg_resolution": "Average duration (resolved outages)",
+      "top_cities": "Most reported cities",
+      "note": "Client-side aggregation over the last 1,000 CM reports (archived and expired included in state counters). Durations only count resolved outages — never expired ones."
     }
   }
 }

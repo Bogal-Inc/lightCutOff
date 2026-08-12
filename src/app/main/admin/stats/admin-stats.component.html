@@ -1,0 +1,62 @@
+<div class="container-fluid admin-stats">
+  <h1 class="h4 admin-stats__title">{{'admin.stats.title' | translate}}</h1>
+
+  <app-loading [show]="loading"></app-loading>
+
+  <ng-container *ngIf="!loading && stats">
+    <div class="row g-3">
+      <div class="col-6 col-md-3" *ngFor="let card of [
+        { value: stats.total, label: 'admin.stats.total', accent: 'charcoal' },
+        { value: stats.ongoing, label: 'admin.stats.ongoing', accent: 'amber' },
+        { value: stats.resolved, label: 'admin.stats.resolved', accent: 'green' },
+        { value: stats.expired, label: 'admin.stats.expired', accent: 'gray' }
+      ]">
+        <div class="admin-stats__card admin-stats__card--{{card.accent}}">
+          <div class="admin-stats__card__value">{{card.value}}</div>
+          <div class="admin-stats__card__label">{{card.label | translate}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3 mt-0">
+      <div class="col-6 col-md-3">
+        <div class="admin-stats__card">
+          <div class="admin-stats__card__value">⚡ {{stats.electricity}} <span class="admin-stats__card__value--sep">·</span> 💧 {{stats.water}}</div>
+          <div class="admin-stats__card__label">{{'admin.stats.by_service' | translate}}</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="admin-stats__card">
+          <div class="admin-stats__card__value">{{stats.thisMonth}}</div>
+          <div class="admin-stats__card__label">{{'admin.stats.this_month' | translate}}</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="admin-stats__card">
+          <div class="admin-stats__card__value">{{stats.today}}</div>
+          <div class="admin-stats__card__label">{{'admin.stats.today' | translate}}</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="admin-stats__card">
+          <div class="admin-stats__card__value">{{avgResolution || '—'}}</div>
+          <div class="admin-stats__card__label">{{'admin.stats.avg_resolution' | translate}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-stats__cities" *ngIf="stats.topCities.length > 0">
+      <h2 class="h6">{{'admin.stats.top_cities' | translate}}</h2>
+      <table class="table table-sm admin-stats__cities__table">
+        <tbody>
+          <tr *ngFor="let row of stats.topCities">
+            <td>{{row.city}}</td>
+            <td class="text-end">{{row.count}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-muted admin-stats__note">{{'admin.stats.note' | translate}}</p>
+  </ng-container>
+</div>

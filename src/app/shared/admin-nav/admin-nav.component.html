@@ -9,6 +9,11 @@
           <fa-icon [icon]="faFileLines"></fa-icon> {{'shared.admin-nav.reports' | translate}}
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/stats" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <fa-icon [icon]="faChartColumn"></fa-icon> {{'shared.admin-nav.stats' | translate}}
+        </a>
+      </li>
     </ul>
     <button type="button" class="btn btn-link nav-link text-start px-3 mb-3 admin-nav__logout" (click)="logout()">
       <fa-icon [icon]="faRightFromBracket"></fa-icon> {{'shared.admin-nav.logout' | translate}}

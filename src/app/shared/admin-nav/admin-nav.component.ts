@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services-firebase';
 import { Logger } from '@Services/logger.service';
-import { faFileLines, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faChartColumn, faFileLines, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 const log = new Logger('admin-nav.component');
 
@@ -13,6 +13,7 @@ const log = new Logger('admin-nav.component');
   styleUrls: ['./admin-nav.component.scss']
 })
 export class AdminNavComponent {
+  readonly faChartColumn = faChartColumn;
   readonly faFileLines = faFileLines;
   readonly faRightFromBracket = faRightFromBracket;
 

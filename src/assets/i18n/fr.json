@@ -512,7 +512,8 @@
     "admin-nav": {
       "menu": "Menu",
       "reports": "Signalements",
-      "logout": "Se déconnecter"
+      "logout": "Se déconnecter",
+      "stats": "Statistiques"
     },
     "main-footer": {
       "contactus": "Contactez-nous",
@@ -590,6 +591,19 @@
       "action_error": "Action refusée — vérifie tes droits admin.",
       "empty": "Aucun signalement pour ces filtres.",
       "show_more": "Afficher plus"
+    },
+    "stats": {
+      "title": "Statistiques des signalements",
+      "total": "Total (tous états)",
+      "ongoing": "En cours",
+      "resolved": "Rétablis",
+      "expired": "Expirés (48 h sans activité)",
+      "by_service": "Électricité · Eau",
+      "this_month": "Ce mois-ci",
+      "today": "Aujourd'hui",
+      "avg_resolution": "Durée moyenne (coupures résolues)",
+      "top_cities": "Villes les plus signalées",
+      "note": "Calculs côté client sur les 1 000 derniers signalements CM (archivés et expirés inclus dans les compteurs d'états). Les durées ne comptent que les coupures résolues — jamais les expirées."
     }
   }
 }
