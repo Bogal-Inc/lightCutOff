@@ -319,6 +319,19 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.17.0] - 2026-08-12 — Page SEO « Programme Eneo » + teaser horaire du délestage
+
+- **`/programme-coupures-eneo`** : page **server-rendered** par la nouvelle CF
+  `renderEneoProgram` (codebase website, rewrite hosting, cache CDN 30 min) — programme
+  officiel des prochains jours groupé par jour (ville, quartier, fenêtre, motif) + CTA
+  app/carte (`utm_source=seo_eneo`). Cible la recherche Google quotidienne « programme
+  coupure Eneo <ville> », que l'onglet SPA ne peut pas capter. **Vérifiée en ligne**
+  (contenu réel : 12–15 août). Lien dur dans le footer (« Programme Eneo »), entrée
+  sitemap `daily` priorité 0.8.
+- **Teaser P2.5** sur l'accueil (section L'application) : 5ᵉ feature « Bientôt —
+  L'horaire du délestage » (badge ambre, liseré) : l'heure probable de coupure et de
+  retour, construite à partir des signalements. FR/EN.
+
 ## [2.16.0] - 2026-08-12 — Formulaire de contact RÉPARÉ (Brevo) + admin layout fix
 
 ### Contact (le formulaire partait dans le vide depuis la migration)

@@ -43,8 +43,8 @@ Onglet **« Programmées »** (badge compteur) dans le menu de la carte : lectur
 filtre région + recherche quartier/ville, cartes datées (fenêtre HH:MM, motif, source) ;
 clic → recentrage Nominatim « quartier, ville » (pas de coordonnées dans la donnée).
 L'onglet n'apparaît que s'il y a des coupures à venir.
-- Reste (SEO, itération suivante) : page/ancre indexable dédiée « programme coupures
-  Eneo » pour capter la recherche Google quotidienne — l'onglet actuel vit dans la SPA.
+- ✅ SEO fait aussi (v2.17.0) : **/programme-coupures-eneo**, page server-rendered
+  (CF renderEneoProgram + rewrite, cache CDN), lien footer + sitemap daily.
 
 ### 3. Smart app banner iOS — ✅ FAIT (2026-08-11, v2.14.0)
 Meta `apple-itunes-app` (app-id 6794127922) posée dans index.html — Safari iOS affiche
@@ -60,10 +60,9 @@ le canal viral WhatsApp. Effort : faible (coordonné avec le repo app, la CF y v
 
 ## 🥈 P2 — Préparer la feature héroïne (horaire du délestage)
 
-### 5. Teaser « Bientôt » sur l'accueil
-Une ligne/carte sur l'accueil : « Bientôt : l'heure probable de coupure et de retour, dans
-ta zone. » Différencie NJUKA de l'app Eneo (qui n'annonce que les travaux planifiés) et
-donne une raison d'installer avant même la feature. Effort : très faible (i18n + section).
+### 5. Teaser « Bientôt » sur l'accueil — ✅ FAIT (2026-08-12, v2.17.0)
+5ᵉ feature « Bientôt — L'horaire du délestage » dans la section L'application (badge
+ambre, liseré, FR/EN).
 
 ### 6. Pages SEO « Délestage à <ville> » (quand `schedules/` existera)
 Quand l'app livrera l'horaire agrégé (collection `schedules/{geohash}` ou équivalent),
