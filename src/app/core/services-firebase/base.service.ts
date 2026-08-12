@@ -1,5 +1,5 @@
 import { SimpleUser } from '@Models/user.model';
-import { EnvironmentInjector, Injectable, inject, runInInjectionContext } from '@angular/core';
+import { EnvironmentInjector, Injectable, NgZone, inject, runInInjectionContext } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
@@ -16,12 +16,30 @@ import firebase from 'firebase/compat/app';
 type CollectionPredicate<T> = string | AngularFirestoreCollection<T>;
 type DocPredicate<T> = string | AngularFirestoreDocument<T>;
 
+/**
+ * Ramène les émissions d'un observable DANS la zone Angular.
+ * Les wrappers compat de @angular/fire v20 livrent les snapshots Firestore
+ * HORS zone : les données arrivent, l'état change, mais la détection de
+ * changements ne tourne jamais — l'UI reste figée jusqu'au prochain clic
+ * (bug constaté en prod le 2026-08-12, reproduit puis vérifié corrigé via
+ * navigateur piloté). Appliqué au point unique col$/doc$.
+ */
+function emitInZone<T>(zone: NgZone) {
+  return (source: Observable<T>): Observable<T> =>
+    new Observable<T>(observer => source.subscribe({
+      next: value => zone.run(() => observer.next(value)),
+      error: err => zone.run(() => observer.error(err)),
+      complete: () => zone.run(() => observer.complete()),
+    }));
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService {
   protected user: SimpleUser;
   protected readonly injector = inject(EnvironmentInjector);
+  protected readonly ngZone = inject(NgZone);
 
   constructor(
     protected angularFireAuth: AngularFireAuth,
@@ -73,13 +91,15 @@ export class BaseService {
           } else {
             return null;
           }
-        })
+        }),
+        emitInZone<T>(this.ngZone)
       );
   }
 
   protected col$<T>(ref: CollectionPredicate<T>, queryFn?: QueryFn): Observable<any[]> {
     return this.col(ref, queryFn)
-      .valueChanges({ idField: 'id' });
+      .valueChanges({ idField: 'id' })
+      .pipe(emitInZone(this.ngZone));
   }
 
   protected set<T extends Doc>(ref: any, data: any) {

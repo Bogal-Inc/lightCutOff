@@ -46,3 +46,13 @@
   (aucune classe appliquée, header en flux normal) | Avant de compenser le positionnement
   d'un composant, vérifier ce que son input/prop fait RÉELLEMENT (grep dans le template/
   scss) — un nom d'input n'est pas un comportement.
+- [2026-08-12] | Pages admin/carte figées en prod : les émissions Firestore des wrappers
+  compat @angular/fire v20 arrivent HORS zone Angular → la donnée est là, l'état change,
+  mais la détection de changements ne tourne jamais (écran gelé jusqu'au prochain clic).
+  AUCUNE erreur console, canaux réseau ouverts — invisible en Karma (les probes console
+  ne dépendent pas de la CD) et masqué en prod par une base vide | ① Ramener les
+  émissions dans la zone au point unique (opérateur emitInZone dans BaseService
+  col$/doc$) ; ② pour diagnostiquer un « rien ne s'affiche » sans erreur : tester si un
+  clic/resize fait apparaître le contenu — si oui, c'est un problème de zone/CD, pas de
+  données ; ③ un test navigateur piloté (puppeteer-core + Chrome local) donne la vérité
+  du build de prod, Karma/TestBed ne suffit pas.

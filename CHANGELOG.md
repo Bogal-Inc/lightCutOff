@@ -319,6 +319,21 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.18.1] - 2026-08-12 — FIX MAJEUR : l'UI ne se rafraîchissait jamais à l'arrivée des données
+
+- **Symptôme** : pages admin et carte « vides » (spinner infini, onglet Programmées
+  absent) alors que les données arrivaient — l'écran ne se mettait à jour qu'au clic
+  suivant. Aucune erreur console, canaux Firestore ouverts.
+- **Cause racine (prouvée par navigateur piloté)** : les wrappers compat de
+  @angular/fire v20 livrent les émissions Firestore **hors zone Angular** → la
+  détection de changements ne tourne jamais. Diagnostic décisif : un clic/resize
+  faisait apparaître le contenu instantanément.
+- **Fix** : opérateur `emitInZone` (NgZone.run) appliqué au point unique
+  `BaseService.col$/doc$` — toutes les lectures (carte, Programmées, admin) sont
+  couvertes. **Vérifié en ligne** : le contenu apparaît désormais sans interaction.
+- Leçon consignée (lessons.md) : « rien ne s'affiche » sans erreur + contenu qui
+  apparaît au clic = problème de zone/CD, pas de données.
+
 ## [2.18.0] - 2026-08-12 — Admin : page Statistiques (schéma Njuka)
 
 - **/admin/stats** (gardée, entrée « Statistiques » dans la sidebar) : cartes d'état
