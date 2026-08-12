@@ -1,6 +1,6 @@
 .admin-login {
-  min-height: 70vh;
-  background-color: #f7f7f5;
+  min-height: calc(100vh - 220px); // header + footer en flux
+  padding: 32px 16px;
 
   &__card {
     max-width: 380px;

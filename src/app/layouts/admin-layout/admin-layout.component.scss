@@ -1,11 +1,19 @@
+// Le header (app-main-header) est un navbar EN FLUX (l'input fixedTop est un
+// héritage mort — il n'applique aucune classe) : aucun padding de compensation.
 .admin {
   &__body {
-    // compense le header collant (fixed-top)
-    padding-top: 56px;
-    min-height: 100vh;
+    min-height: calc(100vh - 62px);
+    background-color: #f7f7f5;
 
     &__main {
       min-width: 0;
+      display: flex;
+      flex-direction: column;
+
+      // le footer reste collé en bas même quand le contenu est court
+      app-main-footer {
+        margin-top: auto;
+      }
     }
   }
 }

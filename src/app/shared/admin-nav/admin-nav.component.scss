@@ -2,13 +2,12 @@
 .admin-nav {
   width: 220px;
   flex-shrink: 0;
-  min-height: calc(100vh - 56px);
   background-color: var(--njuka-charcoal);
 
   .sidebar-sticky {
     position: sticky;
-    top: 56px;
-    height: calc(100vh - 56px);
+    top: 0;
+    height: 100vh;
     padding-top: 0.5rem;
     overflow-y: auto;
   }
