@@ -32,6 +32,16 @@
 - [ ] Recherche de lieu (Nominatim) : « Douala » recentre la carte
 - [ ] Filtres rouge/vert (plus de filtre orange « ma coupure »)
 
+## Après v2.14.0 (P1 : Programmées + smart banner) — comportements ATTENDUS
+- [ ] /map : onglet « Programmées » avec badge compteur À CÔTÉ de Historique/Statistiques
+      (visible seulement s'il y a des coupures Eneo à venir dans njuka-prod)
+- [ ] Onglet Programmées : dropdown région + recherche quartier filtrent la liste ;
+      cartes avec date (ex. « jeu. 14 août »), fenêtre 08:00–17:00, motif, région
+- [ ] Clic sur une coupure programmée → la carte se recentre sur le quartier (Nominatim)
+- [ ] Safari iOS (iPhone réel) : bannière native « NJUKA — Ouvrir dans l'App Store »
+      en haut des pages du site
+- [ ] Bascule EN : onglet « Scheduled », dates en anglais (ex. « Thu, August 14 »)
+
 ## Après v2.13.0 (audit admin) — comportements ATTENDUS
 - [ ] /admin, /admin/dashboard, /admin/reports, /admin/statistics_numbers → page-not-found
 - [ ] Accueil : plus AUCUN chunk ag-grid téléchargé (onglet Réseau — avant : ~1 Mo),

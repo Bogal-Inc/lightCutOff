@@ -328,6 +328,14 @@
       "cut_since": "Down for ",
       "cut_during": "Was down for "
     },
+    "map-scheduled": {
+      "tab": "Scheduled",
+      "badge": "Scheduled",
+      "all_regions": "All regions",
+      "search_hint": "Search a neighbourhood or city…",
+      "empty": "No upcoming scheduled outage.",
+      "source": "Official Eneo programme"
+    },
     "map-not-found": {
       "text_1": "YOUR PLANET IS NO LONGER ACCESSIBLE",
       "text_2": "Can you verify that you are connected to the internet?",

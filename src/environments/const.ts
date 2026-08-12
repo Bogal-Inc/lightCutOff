@@ -24,7 +24,8 @@ export const Const = {
   collections: {
     users: 'users',
     devices: 'devices',
-    reports: 'reports'
+    reports: 'reports',
+    officialOutages: 'official_outages'
   },
   coordsCameroon: {
     east: 16.1944081,

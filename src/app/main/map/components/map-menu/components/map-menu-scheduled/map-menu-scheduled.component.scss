@@ -1,0 +1,90 @@
+// Aligné sur les cartes de l'onglet Historique (map-menu-history) — liseré ambre
+// (électricité, seul service ingéré), badge « Programmée », hover identique.
+.scheduled {
+  height: 62.5vh;
+  display: flex;
+  flex-direction: column;
+
+  &__filters {
+    display: flex;
+    gap: 8px;
+    padding: 8px 8px 0;
+
+    &__region {
+      max-width: 45%;
+    }
+  }
+
+  &__list {
+    overflow-y: auto;
+    flex: 1;
+    padding: 8px;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+      border: 1px solid rgba(26, 26, 26, 0.08);
+      border-left: 4px solid var(--njuka-amber);
+      border-radius: 8px !important;
+      cursor: pointer;
+      background: var(--white);
+      padding: 10px 12px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+
+      &:hover {
+        box-shadow: 0 4px 12px rgba(26, 26, 26, 0.12);
+        transform: translateY(-1px);
+      }
+
+      &__title {
+        font-size: 1em;
+        font-weight: 700;
+        margin: 0;
+        word-wrap: break-word;
+
+        &__service {
+          margin-right: 2px;
+        }
+      }
+
+      &__status {
+        flex-shrink: 0;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding: 2px 8px;
+        border-radius: 10px;
+        color: var(--njuka-charcoal);
+        background-color: var(--njuka-amber);
+      }
+
+      &__window {
+        margin-top: 6px;
+        font-weight: 600;
+      }
+
+      &__meta {
+        font-size: 0.8em;
+        color: var(--gray);
+
+        &--source {
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+
+  &__empty {
+    padding: 16px;
+    color: var(--gray);
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .scheduled {
+    height: 52vh;
+  }
+}

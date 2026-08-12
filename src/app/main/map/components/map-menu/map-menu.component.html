@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="menu__group1__body" *ngIf="reports?.length > 0">
+    <div class="menu__group1__body" *ngIf="reports?.length > 0 || scheduledOutages.length > 0">
       <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs report__nav">
         <li [ngbNavItem]="1" class="report__nav__item">
           <a ngbNavLink>{{'main.map-history-marker.menu_history' | translate}}</a>
@@ -27,6 +27,15 @@
               [nbreReportsDay]="reportsDay?.length"
               [nbreReportsDayNotClosed]="reportsDayNotClosed?.length"
             ></app-map-menu-stats>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="3" *ngIf="scheduledOutages.length > 0">
+          <a ngbNavLink>
+            {{'main.map-scheduled.tab' | translate}}
+            <span class="badge rounded-pill report__nav__badge">{{scheduledOutages.length}}</span>
+          </a>
+          <ng-template ngbNavContent>
+            <app-map-menu-scheduled [outages]="scheduledOutages" (goToPlace)="onSearchPlace($event)"></app-map-menu-scheduled>
           </ng-template>
         </li>
       </ul>

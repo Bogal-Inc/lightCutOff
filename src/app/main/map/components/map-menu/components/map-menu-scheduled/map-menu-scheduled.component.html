@@ -1,0 +1,43 @@
+<div class="scheduled">
+  <div class="scheduled__filters">
+    <select class="form-select form-select-sm scheduled__filters__region"
+            [value]="region || ''"
+            (change)="onRegionChange($any($event.target).value)"
+            [attr.aria-label]="'main.map-scheduled.all_regions' | translate">
+      <option value="">{{'main.map-scheduled.all_regions' | translate}}</option>
+      <option *ngFor="let regionOption of regions" [value]="regionOption">{{regionOption}}</option>
+    </select>
+    <input type="search" class="form-control form-control-sm scheduled__filters__search"
+           [(ngModel)]="query"
+           [placeholder]="'main.map-scheduled.search_hint' | translate">
+  </div>
+
+  <div class="list-group scheduled__list" *ngIf="filteredOutages.length > 0; else emptyScheduled">
+    <a class="list-group-item list-group-item-action scheduled__list__item"
+       *ngFor="let outage of filteredOutages"
+       (click)="onSelect(outage)">
+      <div class="d-flex justify-content-between align-items-start">
+        <h5 class="scheduled__list__item__title">
+          <span class="scheduled__list__item__title__service">⚡</span>
+          {{outage.ville}}
+          <fa-icon [icon]="faAngleRight"></fa-icon>
+          {{outage.quartier}}
+        </h5>
+        <span class="scheduled__list__item__status">
+          {{'main.map-scheduled.badge' | translate}}
+        </span>
+      </div>
+      <div class="scheduled__list__item__window">
+        {{formatDate(outage.progDate)}} · {{outage.startTime}}–{{outage.endTime}}
+      </div>
+      <div class="scheduled__list__item__meta" *ngIf="outage.reason">{{outage.reason}}</div>
+      <div class="scheduled__list__item__meta scheduled__list__item__meta--source">
+        {{'main.map-scheduled.source' | translate}} · {{outage.region}}
+      </div>
+    </a>
+  </div>
+
+  <ng-template #emptyScheduled>
+    <p class="scheduled__empty">{{'main.map-scheduled.empty' | translate}}</p>
+  </ng-template>
+</div>

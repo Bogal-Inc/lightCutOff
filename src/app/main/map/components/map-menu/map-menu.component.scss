@@ -21,6 +21,13 @@
     }
   }
 
+  .report__nav__badge {
+    background-color: var(--njuka-amber);
+    color: var(--njuka-charcoal);
+    font-size: 0.7em;
+    vertical-align: middle;
+  }
+
   &__group2 {
     &__btn {
       cursor: pointer;

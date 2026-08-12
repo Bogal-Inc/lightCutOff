@@ -37,19 +37,18 @@ ce couplage, et le modèle documente le champ.
 
 ## 🥇 P1 — Acquisition (le cœur de la valeur du site)
 
-### 2. Coupures programmées officielles (Eneo) sur la carte
-Reproduire l'onglet **Signalements / Programmées** de l'app : lire `official_outages`
-(ingérées quotidiennement par la CF `ingestEneoOutages`, lisibles par tout utilisateur
-connecté — l'anonyme suffit) et les afficher sur la carte/liste (badge « Programmée »,
-date + fenêtre horaire + quartier).
-- Pourquoi : « programme coupure Eneo <ville> » est une recherche Google quotidienne —
-  le site peut capter ce trafic organique et le convertir vers l'app.
-- Effort : moyen (nouveau service + segment Signalements/Programmées + rendu par quartier
-  — les entrées n'ont pas toujours de coordonnées : afficher en liste + zone si géocodable).
+### 2. Coupures programmées officielles (Eneo) sur la carte — ✅ FAIT (2026-08-11, v2.14.0)
+Onglet **« Programmées »** (badge compteur) dans le menu de la carte : lecture
+`official_outages` (requête mono-champ `country == CM`, comme l'app — aucun index),
+filtre région + recherche quartier/ville, cartes datées (fenêtre HH:MM, motif, source) ;
+clic → recentrage Nominatim « quartier, ville » (pas de coordonnées dans la donnée).
+L'onglet n'apparaît que s'il y a des coupures à venir.
+- Reste (SEO, itération suivante) : page/ancre indexable dédiée « programme coupures
+  Eneo » pour capter la recherche Google quotidienne — l'onglet actuel vit dans la SPA.
 
-### 3. Smart app banner iOS
-Meta `apple-itunes-app` (app-id 6794127922) : Safari iOS affiche une bannière d'installation
-native sur toutes les pages. Effort : une ligne. Équivalent Android : couvert par App Links
+### 3. Smart app banner iOS — ✅ FAIT (2026-08-11, v2.14.0)
+Meta `apple-itunes-app` (app-id 6794127922) posée dans index.html — Safari iOS affiche
+la bannière native sur toutes les pages. Équivalent Android : couvert par App Links
 + badges (pas de bannière native Chrome sans PWA — assumé, la PWA a été retirée).
 
 ### 4. Pages de partage `/s/{id}` : conversion

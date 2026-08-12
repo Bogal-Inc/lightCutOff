@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MapMenuComponent } from './map-menu.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {AngularFireModule} from '@angular/fire/compat';
+import {environment} from 'src/environments/environment';
 
 describe('MapMenuComponent', () => {
   let component: MapMenuComponent;
@@ -9,7 +11,10 @@ describe('MapMenuComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MapMenuComponent ],
-      imports: [NoopAnimationsModule]
+      imports: [
+        NoopAnimationsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+      ]
     })
     .compileComponents();
   }));

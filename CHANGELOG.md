@@ -319,6 +319,24 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.14.0] - 2026-08-11 — P1 roadmap : coupures programmées Eneo + smart banner iOS
+
+### Coupures programmées officielles (P1.2)
+- **Nouvel onglet « Programmées »** (badge compteur ambre) dans le menu de la carte :
+  lecture de `official_outages` (programme Eneo ingéré quotidiennement par la CF de
+  l'app) — même stratégie que l'app : requête mono-champ `country == CM` (aucun index),
+  filtre date (≥ aujourd'hui) et tri côté client.
+- Filtre **région** + **recherche quartier/ville**, cartes (badge « Programmée », date
+  localisée FR/EN, fenêtre HH:MM–HH:MM, motif, source) alignées sur l'onglet Historique.
+- Pas de coordonnées dans la donnée : **clic = recentrage Nominatim** « quartier, ville ».
+- L'onglet n'apparaît que s'il y a des coupures à venir (masqué si la collection est vide).
+- Nouveaux : `official-outage.model.ts` (helpers purs testés), `OfficialOutageService`,
+  `MapMenuScheduledComponent`. 63 specs (8 nouvelles).
+
+### Smart app banner iOS (P1.3)
+- Meta `apple-itunes-app` (app-id 6794127922) dans index.html : Safari iOS propose
+  l'installation de l'app sur toutes les pages du site.
+
 ## [2.13.1] - 2026-08-11 — P0 roadmap : filtre `autoExpiredAt` (expiration silencieuse v1.3.0)
 
 - **Prédicat `isPubliclyVisible`** (report.service.ts, exporté et testé) : écarte

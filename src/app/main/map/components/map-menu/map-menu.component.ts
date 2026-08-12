@@ -1,10 +1,13 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {Report, ReportSatus} from '@Models/report.model';
+import {OfficialOutage} from '@Models/official-outage.model';
+import {OfficialOutageService} from '../../../../core/services-firebase';
 import {Logger} from '@Services/logger.service';
 import {environment} from '../../../../../environments/environment';
 import {faAngleRight, faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {isMobile} from '@Helpers/mobile-confirm.helper';
+import {Subscription} from 'rxjs';
 
 const log = new Logger('map-menu.component');
 
@@ -44,7 +47,7 @@ const log = new Logger('map-menu.component');
     ])
   ]
 })
-export class MapMenuComponent implements OnInit, OnChanges {
+export class MapMenuComponent implements OnInit, OnChanges, OnDestroy {
   @Output() goToMarkerEnd: EventEmitter<any> = new EventEmitter<any>();
   @Output() researchPlace: EventEmitter<any> = new EventEmitter<any>();
   @Output() filterMarker: EventEmitter<any> = new EventEmitter<any>();
@@ -57,17 +60,28 @@ export class MapMenuComponent implements OnInit, OnChanges {
   reportsNotClosed: Report[];
   reportsDayNotClosed: Report[];
   reportsDay: Report[];
+  /** Coupures planifiées officielles (Eneo) — alimente l'onglet « Programmées ». */
+  scheduledOutages: OfficialOutage[] = [];
   now: Date;
   active = 1;
   btnActive = false;
   menuDownUp = isMobile();
   btnSearchBarUpDown = false;
+  private scheduledSub?: Subscription;
 
-  constructor() { }
+  constructor(private officialOutageService: OfficialOutageService) { }
 
   ngOnInit(): void {
     log.debug('init');
     this.now = new Date();
+    this.scheduledSub = this.officialOutageService.getUpcoming().subscribe(
+      outages => this.scheduledOutages = outages,
+      () => log.error('official outages unavailable')
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.scheduledSub?.unsubscribe();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

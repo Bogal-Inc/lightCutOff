@@ -329,6 +329,14 @@
       "cut_since": "Coupé depuis ",
       "cut_during": "Coupé pendant "
     },
+    "map-scheduled": {
+      "tab": "Programmées",
+      "badge": "Programmée",
+      "all_regions": "Toutes les régions",
+      "search_hint": "Rechercher un quartier ou une ville…",
+      "empty": "Aucune coupure programmée à venir.",
+      "source": "Programme officiel Eneo"
+    },
     "map-not-found": {
       "text_1": "VOTRE PLANETE N'EST PLUS ACCESSIBLE",
       "text_2": "Est ce que vous pouvez vérifier que vous êtes connecté à internet?",

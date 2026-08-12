@@ -99,3 +99,25 @@ Lots dans l'ordre :
        RESTE : secrets GitHub CI, .firebaserc/firebase.json (projet + hosting),
        cohabitation avec les pages légales de l'app (multi-sites vs fusion).
 - [ ] 2f. Domaine **njuka.app** (décidé 2026-08-07 ; sitemap/robots/OG déjà alignés) : config DNS + hosting Firebase, puis suppression du projet `lightcutoff`.
+
+## PLAN — P1 roadmap : smart banner iOS + coupures programmées Eneo (2026-08-11)
+
+Réf. docs/ROADMAP-SITE.md (P1.3 + P1.2). P0 autoExpiredAt livré (v2.13.1).
+
+- [x] P1.3 Smart banner iOS : meta `apple-itunes-app` (app-id 6794127922) dans index.html.
+- [x] P1.2 Coupures programmées officielles (Eneo) sur la page carte (✅ v2.14.0, 2026-08-11) :
+  - [x] const.ts : collection `official_outages`.
+  - [x] Modèle `OfficialOutage` (miroir du modèle Dart de l'app : provider, region, ville,
+        quartier, reason, progDate/startTime/endTime, startsAt/endsAt, serviceType) +
+        helpers PURS exportés/testés : `upcomingOfficialOutages` (progDate >= aujourd'hui,
+        tri asc — même logique que l'app), `officialOutageRegions`.
+  - [x] `OfficialOutageService.getUpcoming()` : authState d'abord (règles isSignedIn),
+        requête MONO-CHAMP `country == CM` (aucun index à déployer, comme l'app),
+        filtre date + tri côté client.
+  - [x] UI : 3ᵉ onglet « Programmées » (badge compteur) dans le menu de la carte —
+        composant `map-menu-scheduled` : dropdown région + recherche quartier + cartes
+        (badge Programmée, date, fenêtre HH:MM–HH:MM, ville › quartier, motif) ;
+        clic carte → recentrage Nominatim « quartier, ville » (réutilise researchPlace).
+        Fetch dans map-menu (parent) pour alimenter badge + onglet.
+  - [x] i18n FR/EN, tests helpers + specs composants, lint/build (63 specs vertes).
+  - [x] Deploy njuka.app, CHANGELOG 2.14.0, ROADMAP P1.2/P1.3 ✅, CONTEXT, TESTS-MANUELS.

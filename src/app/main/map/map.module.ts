@@ -1,6 +1,7 @@
 import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { MapRoutingModule } from './map-routing.module';
 import { MapViewComponent } from './map-view/map-view.component';
@@ -11,6 +12,7 @@ import { MapMenuStatsComponent } from './components/map-menu/components/map-menu
 import {MapLegendComponent} from './components/map-legend/map-legend.component';
 import {MapMenuComponent} from './components/map-menu/map-menu.component';
 import { MapMenuHistoryComponent } from './components/map-menu/components/map-menu-history/map-menu-history.component';
+import { MapMenuScheduledComponent } from './components/map-menu/components/map-menu-scheduled/map-menu-scheduled.component';
 import { MapNotFoundComponent } from './components/map-not-found/map-not-found.component';
 
 
@@ -24,10 +26,12 @@ import { MapNotFoundComponent } from './components/map-not-found/map-not-found.c
     MapMenuStatsComponent,
     MapLegendComponent,
     MapMenuHistoryComponent,
+    MapMenuScheduledComponent,
     MapNotFoundComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MapRoutingModule,
     SharedModule
   ],
