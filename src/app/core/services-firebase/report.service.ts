@@ -12,8 +12,18 @@ import { CollectionReference, Query } from '@firebase/firestore-types';
  * Lecture des signalements Njuka (`reports/{id}`, schéma de l'app — SCHEMA.md).
  * Le site est en LECTURE SEULE : requête cloisonnée au pays (index composite
  * `location.countryCode ASC, reportedAt DESC` déployé côté app), les signalements
- * archivés (soft-delete) sont écartés côté client.
+ * archivés (soft-delete) et expirés (autoExpiredAt) sont écartés côté client.
  */
+
+/**
+ * Prédicat d'affichage public : écarte le soft-delete (`archivedAt`) ET l'expiration
+ * silencieuse 48 h (`autoExpiredAt`, cron `reportLifecycle` v1.3.0). Le cron pose les
+ * deux champs ensemble aujourd'hui, mais le site filtre chacun explicitement pour ne
+ * pas dépendre de ce couplage (P0 roadmap : pas de coupures fantômes « en cours »).
+ */
+export function isPubliclyVisible(report: Report): boolean {
+  return !report.archivedAt && !report.autoExpiredAt;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -52,7 +62,7 @@ export class ReportService extends BaseService {
       }
     )),
       map(reports => reports.filter(report => {
-        if (report.archivedAt) {
+        if (!isPubliclyVisible(report)) {
           return false;
         }
         if (params.reportStatus && report.status !== params.reportStatus) {

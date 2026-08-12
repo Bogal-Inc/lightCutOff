@@ -52,6 +52,13 @@ export interface Report {
   reportedAt: Date | Timestamp | any;
   resolvedAt?: Date | Timestamp | any;
   archivedAt?: Date | Timestamp | any;
+  /**
+   * Expiration silencieuse (cycle de vie v1.3.0 de l'app) : 48 h sans activité →
+   * le cron `reportLifecycle` pose `autoExpiredAt` (+ `archivedAt`). Un signalement
+   * expiré n'est JAMAIS « résolu » : il disparaît de l'affichage et ne compte dans
+   * aucune stat de durée (une durée ne se calcule que sur `resolvedAt`).
+   */
+  autoExpiredAt?: Date | Timestamp | any;
   createdAt?: Date | Timestamp | any;
   updatedAt?: Date | Timestamp | any;
 }

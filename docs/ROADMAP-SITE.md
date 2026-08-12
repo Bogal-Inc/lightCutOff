@@ -23,15 +23,15 @@
 
 ## 🔴 P0 — Correctif requis avant la v1.3.0 de l'app
 
-### 1. Filtrer `autoExpiredAt` (expiration silencieuse)
+### 1. Filtrer `autoExpiredAt` (expiration silencieuse) — ✅ FAIT (2026-08-11, v2.13.1)
 La v1.3.0 introduit le cycle de vie des signalements : expiration silencieuse à 48 h
-d'inactivité (champ `autoExpiredAt`, cron `reportLifecycle` — déployé staging, prod à venir
-avec la release app). **Le site doit exclure ces signalements de l'affichage « en cours »**
-(carte, cercles, liste), sinon des coupures fantômes resteront visibles indéfiniment.
-- Règle d'hygiène à graver pour toute stat future : **une durée ne se calcule QUE sur
-  `resolvedAt`** — jamais sur `autoExpiredAt` (qui mesure le silence, pas la coupure).
-- Effort : faible (un filtre dans `report.service.ts` + modèle). À livrer **avant** le
-  déploiement prod du cron.
+d'inactivité (champ `autoExpiredAt`, cron `reportLifecycle`). Constat en implémentant :
+le cron pose `archivedAt` EN MÊME TEMPS qu'`autoExpiredAt`, donc le filtre archivedAt
+existant couvrait déjà l'affichage. Le site filtre désormais **explicitement les deux**
+(prédicat `isPubliclyVisible` dans `report.service.ts`, testé) pour ne pas dépendre de
+ce couplage, et le modèle documente le champ.
+- Règle d'hygiène gravée (modèle + prédicat commentés) : **une durée ne se calcule QUE
+  sur `resolvedAt`** — jamais sur `autoExpiredAt` (qui mesure le silence, pas la coupure).
 
 ---
 

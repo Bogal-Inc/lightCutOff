@@ -319,6 +319,19 @@ sections, CTA, absence équipe/partenaires).
 - ⚠️ Le repo de l'app (lightcutoff_app) ne doit **plus déployer le hosting** : sa section
   hosting servirait l'ancien public/ et écraserait le site.
 
+## [2.13.1] - 2026-08-11 — P0 roadmap : filtre `autoExpiredAt` (expiration silencieuse v1.3.0)
+
+- **Prédicat `isPubliclyVisible`** (report.service.ts, exporté et testé) : écarte
+  `archivedAt` (soft-delete) ET `autoExpiredAt` (expiration silencieuse 48 h du cron
+  `reportLifecycle` v1.3.0 de l'app) de la carte, des cercles et de la liste.
+- Constat : le cron pose `archivedAt` en même temps qu'`autoExpiredAt` — le site était
+  donc déjà couvert de facto. Le filtre explicite protège contre un découplage futur
+  du contrat.
+- `autoExpiredAt` ajouté au modèle `Report` avec la règle d'hygiène en commentaire :
+  une durée ne se calcule QUE sur `resolvedAt`, jamais sur `autoExpiredAt`.
+- 3 tests unitaires ajoutés (55 specs au total). **Le déploiement prod du cron v1.3.0
+  côté app est débloqué** pour ce qui concerne le site.
+
 ## [2.13.0] - 2026-08-11 — Audit admin : −1,2 Mo sur le payload public, routes /admin débranchées
 
 Suite de l'audit de la section admin (2026-08-11).
