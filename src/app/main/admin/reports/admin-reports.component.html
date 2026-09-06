@@ -9,6 +9,10 @@
         <option value="expired">{{'admin.reports.state_expired' | translate}}</option>
         <option value="archived">{{'admin.reports.state_archived' | translate}}</option>
       </select>
+      <select class="form-select form-select-sm" [(ngModel)]="countryFilter" (ngModelChange)="resetPaging()">
+        <option value="all">{{'admin.reports.filter_all_countries' | translate}}</option>
+        <option *ngFor="let cc of availableCountries" [value]="cc">{{cc}}</option>
+      </select>
       <select class="form-select form-select-sm" [(ngModel)]="serviceFilter" (ngModelChange)="resetPaging()">
         <option value="all">{{'admin.reports.filter_all_services' | translate}}</option>
         <option value="electricity">⚡ {{'admin.reports.service_electricity' | translate}}</option>

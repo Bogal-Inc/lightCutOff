@@ -20,7 +20,7 @@ export class ContactComponent implements OnInit {
   readonly supportEmail = Const.emailService.support;
   /** Réseaux sociaux du projet (comptes historiques — à mettre à jour si comptes Njuka). */
   readonly socialLinks = [
-    { icon: 'fab fa-facebook-f', label: 'Facebook', url: 'https://www.facebook.com/lightcutoff.lco' },
+    { icon: 'fab fa-facebook-f', label: 'Facebook', url: 'https://www.facebook.com/people/Njuka/61594118312822/' },
     { icon: 'fab fa-twitter', label: 'Twitter / X', url: 'https://twitter.com/LightCutOff1' },
     { icon: 'fab fa-instagram', label: 'Instagram', url: 'https://www.instagram.com/lightcutoff/' }
   ];

@@ -44,7 +44,9 @@ export class ReportService extends BaseService {
       limit?: number,
       reportStatus?: ReportSatus,
       /** admin uniquement : inclut archivés + expirés (modération) */
-      includeHidden?: boolean
+      includeHidden?: boolean,
+      /** admin uniquement : tous pays (sinon cloisonné sur Const.countryCode) */
+      allCountries?: boolean
     } = {}
   ): Observable<Report[]> {
     // attend la session (anonyme comprise) : les règles Firestore exigent isSignedIn()
@@ -54,9 +56,13 @@ export class ReportService extends BaseService {
       `${Const.collections.reports}`,
       ref => {
         let query: CollectionReference | Query = ref;
-        query = query
-          .where('location.countryCode', '==', Const.countryCode)
-          .orderBy('reportedAt', 'desc');
+        // Admin « tous pays » : requête simple triée par date (pas d'index
+        // composite requis, contrairement au cloisonnement par pays).
+        query = params.allCountries
+          ? query.orderBy('reportedAt', 'desc')
+          : query
+              .where('location.countryCode', '==', Const.countryCode)
+              .orderBy('reportedAt', 'desc');
 
         if (params.limit) {
           query = query.limit(params.limit);

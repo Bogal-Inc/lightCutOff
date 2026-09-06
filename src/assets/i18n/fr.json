@@ -569,6 +569,7 @@
     },
     "reports": {
       "title": "Modération des signalements",
+      "filter_all_countries": "Tous les pays",
       "filter_all_states": "Tous les états",
       "filter_all_services": "Tous les services",
       "service_electricity": "Électricité",

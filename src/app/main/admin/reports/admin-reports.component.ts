@@ -36,6 +36,8 @@ export class AdminReportsComponent implements OnInit, OnDestroy {
   reports: Report[] = [];
   stateFilter: 'all' | ModerationState = 'all';
   serviceFilter: 'all' | ServiceType = 'all';
+  /** filtre pays : 'all' (tous) ou un code ISO présent dans les données */
+  countryFilter: 'all' | string = 'all';
   /** pagination client simple : on affiche par tranches de 25 */
   displayCount = 25;
   loading = true;
@@ -49,7 +51,7 @@ export class AdminReportsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.reportService.getReports({ includeHidden: true, limit: 500 }).subscribe(
+    this.sub = this.reportService.getReports({ includeHidden: true, allCountries: true, limit: 500 }).subscribe(
       reports => {
         this.reports = reports;
         this.loading = false;
@@ -73,12 +75,27 @@ export class AdminReportsComponent implements OnInit, OnDestroy {
       if (this.serviceFilter !== 'all' && reportServiceType(report) !== this.serviceFilter) {
         return false;
       }
+      if (this.countryFilter !== 'all' && (report.location?.countryCode || '') !== this.countryFilter) {
+        return false;
+      }
       return true;
     });
   }
 
   get visibleReports(): Report[] {
     return this.filteredReports.slice(0, this.displayCount);
+  }
+
+  /** Codes pays distincts présents dans les données (pour le filtre). */
+  get availableCountries(): string[] {
+    const set = new Set<string>();
+    for (const r of this.reports) {
+      const cc = r.location?.countryCode;
+      if (cc) {
+        set.add(cc);
+      }
+    }
+    return Array.from(set).sort();
   }
 
   state(report: Report): ModerationState {

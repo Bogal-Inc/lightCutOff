@@ -541,6 +541,7 @@
     },
     "reports": {
       "title": "Report moderation",
+      "filter_all_countries": "All countries",
       "filter_all_states": "All states",
       "filter_all_services": "All services",
       "service_electricity": "Electricity",

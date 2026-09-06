@@ -17,19 +17,7 @@
             <app-map-menu-history (goToMarker)="goToMarker($event)" [reports]="reports"></app-map-menu-history>
           </ng-template>
         </li>
-        <li [ngbNavItem]="2">
-          <a ngbNavLink>{{'main.map-history-marker.title_stats' | translate}}</a>
-          <ng-template ngbNavContent>
-            <app-map-menu-stats
-              [nbreReportsYear]="reports?.length"
-              [nbreReportsMonthly]="reportsMonthly?.length"
-              [nbreReportsNotClosed]="reportsNotClosed?.length"
-              [nbreReportsDay]="reportsDay?.length"
-              [nbreReportsDayNotClosed]="reportsDayNotClosed?.length"
-            ></app-map-menu-stats>
-          </ng-template>
-        </li>
-        <li [ngbNavItem]="3" *ngIf="scheduledOutages.length > 0">
+        <li [ngbNavItem]="2" *ngIf="scheduledOutages.length > 0">
           <a ngbNavLink>
             {{'main.map-scheduled.tab' | translate}}
             <span class="badge rounded-pill report__nav__badge">{{scheduledOutages.length}}</span>
