@@ -535,8 +535,17 @@
   "admin": {
     "login": {
       "title": "Admin area",
-      "subtitle": "Restricted to the NJUKA team. Sign in with an authorised Google account.",
+      "subtitle": "NJUKA team only. Sign in with an authorized account.",
       "google_btn": "Continue with Google",
+      "or": "or",
+      "email": "Email address",
+      "password": "Password",
+      "email_btn": "Sign in",
+      "forgot": "Forgot password? Get a link",
+      "reset_sent": "If an account exists, a reset email has been sent.",
+      "err_email_required": "Enter your email first.",
+      "err_reset": "Could not send the email. Please try again.",
+      "err_auth": "Wrong email or password.",
       "denied": "This account has no admin rights. You have been signed out."
     },
     "reports": {

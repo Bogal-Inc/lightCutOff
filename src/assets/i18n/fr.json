@@ -563,8 +563,17 @@
   "admin": {
     "login": {
       "title": "Espace d'administration",
-      "subtitle": "Réservé à l'équipe NJUKA. Connexion avec un compte Google autorisé.",
+      "subtitle": "Réservé à l'équipe NJUKA. Connexion avec un compte autorisé.",
       "google_btn": "Continuer avec Google",
+      "or": "ou",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "email_btn": "Se connecter",
+      "forgot": "Mot de passe oublié ? Recevoir un lien",
+      "reset_sent": "Si un compte existe, un e-mail de réinitialisation a été envoyé.",
+      "err_email_required": "Saisis ton adresse e-mail d'abord.",
+      "err_reset": "Impossible d'envoyer l'e-mail. Réessaie.",
+      "err_auth": "E-mail ou mot de passe incorrect.",
       "denied": "Ce compte n'a pas les droits d'administration. Tu as été déconnecté."
     },
     "reports": {

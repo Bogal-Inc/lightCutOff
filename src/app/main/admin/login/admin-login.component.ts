@@ -9,9 +9,10 @@ import { faShieldHalved } from '@fortawesome/free-solid-svg-icons';
 const log = new Logger('admin-login.component');
 
 /**
- * Porte d'entrée de la section admin : Google uniquement. Un compte connecté
- * sans `role == 'admin'` est refusé proprement et la session anonyme du site
- * est restaurée (les règles serveur protègent les données de toute façon).
+ * Porte d'entrée de la section admin : Google OU email/mot de passe (porte de
+ * secours indépendante des domaines OAuth). Un compte connecté sans
+ * `role == 'admin'` est refusé proprement et la session anonyme du site est
+ * restaurée (les règles serveur protègent les données de toute façon).
  */
 @Component({
   standalone: false,
@@ -23,6 +24,10 @@ export class AdminLoginComponent implements OnInit {
   readonly faShieldHalved = faShieldHalved;
   busy = false;
   denied = false;
+  email = '';
+  password = '';
+  authError = '';
+  resetSent = false;
 
   constructor(
     private authService: AuthService,
@@ -39,10 +44,48 @@ export class AdminLoginComponent implements OnInit {
   }
 
   async signInWithGoogle(): Promise<void> {
+    await this.attempt(() => this.authService.googleSignIn(), 'google');
+  }
+
+  async signInWithEmail(): Promise<void> {
+    if (!this.email.trim() || !this.password) {
+      return;
+    }
+    await this.attempt(
+      () => this.authService.login(this.email.trim(), this.password),
+      'email',
+    );
+  }
+
+  /** Envoie un lien de réinitialisation (sert aussi à DÉFINIR un mot de passe
+   * sur un compte admin qui n'en a pas encore — ex. compte créé via Google). */
+  async sendReset(): Promise<void> {
+    this.authError = '';
+    this.resetSent = false;
+    if (!this.email.trim()) {
+      this.authError = 'admin.login.err_email_required';
+      return;
+    }
+    this.busy = true;
+    try {
+      await this.authService.sendPasswordResetEmail(this.email.trim());
+      this.resetSent = true;
+    } catch (error) {
+      log.error('password reset failed', error);
+      this.authError = 'admin.login.err_reset';
+    } finally {
+      this.busy = false;
+    }
+  }
+
+  /** Facteur commun : lance la connexion, vérifie le rôle admin, route ou refuse. */
+  private async attempt(signIn: () => Promise<unknown>, method: string): Promise<void> {
     this.busy = true;
     this.denied = false;
+    this.authError = '';
+    this.resetSent = false;
     try {
-      await this.authService.googleSignIn();
+      await signIn();
       const isAdmin = await firstValueFrom(this.authService.isAdmin$());
       if (isAdmin) {
         await this.router.navigate(['/admin/reports']);
@@ -52,7 +95,8 @@ export class AdminLoginComponent implements OnInit {
       this.denied = true;
       await this.authService.signOutToAnonymous();
     } catch (error) {
-      log.error('google sign-in failed', error);
+      log.error(method + ' sign-in failed', error);
+      this.authError = 'admin.login.err_auth';
     } finally {
       this.busy = false;
     }

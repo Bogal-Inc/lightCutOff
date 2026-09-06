@@ -12,6 +12,32 @@
         {{'admin.login.google_btn' | translate}}
       </button>
 
+      <div class="admin-login__sep my-3"><span>{{'admin.login.or' | translate}}</span></div>
+
+      <form (ngSubmit)="signInWithEmail()">
+        <input type="email" class="form-control mb-2" name="email"
+               [(ngModel)]="email" [disabled]="busy" autocomplete="username"
+               [placeholder]="'admin.login.email' | translate">
+        <input type="password" class="form-control mb-2" name="password"
+               [(ngModel)]="password" [disabled]="busy" autocomplete="current-password"
+               [placeholder]="'admin.login.password' | translate">
+        <button type="submit" class="btn btn-dark w-100"
+                [disabled]="busy || !email || !password">
+          {{'admin.login.email_btn' | translate}}
+        </button>
+      </form>
+
+      <button type="button" class="btn btn-link btn-sm mt-2 p-0"
+              [disabled]="busy" (click)="sendReset()">
+        {{'admin.login.forgot' | translate}}
+      </button>
+
+      <p class="alert alert-success mt-3 mb-0" *ngIf="resetSent">
+        {{'admin.login.reset_sent' | translate}}
+      </p>
+      <p class="alert alert-danger mt-3 mb-0" *ngIf="authError">
+        {{authError | translate}}
+      </p>
       <p class="alert alert-warning mt-3 mb-0" *ngIf="denied">
         {{'admin.login.denied' | translate}}
       </p>
