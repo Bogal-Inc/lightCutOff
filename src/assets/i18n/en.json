@@ -545,6 +545,8 @@
       "reset_sent": "If an account exists, a reset email has been sent.",
       "err_email_required": "Enter your email first.",
       "err_reset": "Could not send the email. Please try again.",
+      "err_google": "Google sign-in isn't working right now. Try again, or use email and password.",
+      "err_domain": "This domain was just authorized: wait 2-3 min, hard-refresh (Cmd+Shift+R), then try again.",
       "err_auth": "Wrong email or password.",
       "denied": "This account has no admin rights. You have been signed out."
     },

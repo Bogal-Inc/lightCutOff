@@ -96,7 +96,14 @@ export class AdminLoginComponent implements OnInit {
       await this.authService.signOutToAnonymous();
     } catch (error) {
       log.error(method + ' sign-in failed', error);
-      this.authError = 'admin.login.err_auth';
+      const code = (error as { code?: string })?.code || '';
+      if (code === 'auth/unauthorized-domain') {
+        this.authError = 'admin.login.err_domain';
+      } else if (method === 'google') {
+        this.authError = 'admin.login.err_google';
+      } else {
+        this.authError = 'admin.login.err_auth';
+      }
     } finally {
       this.busy = false;
     }

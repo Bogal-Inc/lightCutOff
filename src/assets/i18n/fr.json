@@ -573,6 +573,8 @@
       "reset_sent": "Si un compte existe, un e-mail de réinitialisation a été envoyé.",
       "err_email_required": "Saisis ton adresse e-mail d'abord.",
       "err_reset": "Impossible d'envoyer l'e-mail. Réessaie.",
+      "err_google": "Connexion Google impossible pour l'instant. Réessaie, ou utilise l'e-mail et le mot de passe.",
+      "err_domain": "Ce domaine vient d'être autorisé : patiente 2-3 min, recharge la page (Cmd+Maj+R), puis réessaie.",
       "err_auth": "E-mail ou mot de passe incorrect.",
       "denied": "Ce compte n'a pas les droits d'administration. Tu as été déconnecté."
     },
