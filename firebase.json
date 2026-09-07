@@ -47,6 +47,9 @@
           }
         ]
       }
+    ],
+    "predeploy": [
+      "npm run build:prod"
     ]
   }
 }
