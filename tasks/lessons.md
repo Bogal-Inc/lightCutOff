@@ -56,3 +56,4 @@
   clic/resize fait apparaître le contenu — si oui, c'est un problème de zone/CD, pas de
   données ; ③ un test navigateur piloté (puppeteer-core + Chrome local) donne la vérité
   du build de prod, Karma/TestBed ne suffit pas.
+- [2026-08-18] | Le site live njuka.app pointait sur lightcutoff-dev (staging) : un build DEV (`npm run build`, fichiers sans hash, config dev embarquée) avait été déployé sur le hosting njuka-prod → la carte affichait les données staging (reports de test à Nairobi) | Toujours `npm run build:prod` avant `firebase deploy --project njuka-prod`, puis vérifier le bundle livré : `curl -s https://njuka.app/ | grep main-` (hash présent) et grep `njuka-prod` (et absence de `lightcutoff-dev`) dans les chunks.
