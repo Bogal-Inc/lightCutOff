@@ -61,12 +61,13 @@ export class I18nService {
       this.translateService.getBrowserCultureLang();
     let isSupportedLanguage = this.supportedLanguages.includes(language);
 
-    // If no exact match is found, search without the region
+    // Pas de correspondance exacte : retomber sur la langue de base, sans la
+    // région (le navigateur renvoie « en-US »/« fr-CA », on supporte « en »/« fr »)
     if (language && !isSupportedLanguage) {
-      // language = language.split('-')[0];
+      const baseLanguage = language.split('-')[0].toLowerCase();
       language =
         this.supportedLanguages.find(supportedLanguage =>
-          supportedLanguage.startsWith(language)
+          supportedLanguage === baseLanguage
         ) || '';
       isSupportedLanguage = Boolean(language);
     }
