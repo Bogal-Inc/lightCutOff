@@ -529,8 +529,7 @@
         "message_required": "Message requis",
         "close": "Fermer",
         "send": "Envoyer"
-      },
-      "eneo_program": "Programme SOCADEL"
+      }
     },
     "cookie": {
       "header": "Cookies utilisés sur le site!",

@@ -501,8 +501,7 @@
         "message_required": "Message required",
         "close": "Close",
         "send": "Sent"
-      },
-      "eneo_program": "SOCADEL schedule"
+      }
     },
     "cookie": {
       "header": "Cookies used on the website!",
