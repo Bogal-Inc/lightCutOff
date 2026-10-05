@@ -22,16 +22,20 @@ export class NominatimService extends CoreService {
   }
 
   /**
-   * Recherche de lieu (géocodage) via Nominatim/OpenStreetMap, restreinte au Cameroun.
+   * Recherche de lieu (géocodage) via Nominatim/OpenStreetMap, mondiale.
+   * `viewbox` (optionnel) : cadre courant de la carte — les résultats à
+   * l'intérieur sont préférés sans exclure le reste du monde (bounded=0),
+   * pour qu'un quartier homonyme proche gagne sur un lointain plus connu.
    */
-  public search(query: string): Observable<NominatimResult[]> {
+  public search(query: string, viewbox?: string): Observable<NominatimResult[]> {
     return this.httpClient.get<NominatimResult[]>(
       'https://nominatim.openstreetmap.org/search',
       {
         params: {
           q: query,
           format: 'jsonv2',
-          limit: 1
+          limit: 1,
+          ...(viewbox ? { viewbox, bounded: 0 } : {})
         }
       }
     );

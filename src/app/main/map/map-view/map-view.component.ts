@@ -161,7 +161,13 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     log.debug('map search');
     this.analytics.logEvent('map_search');
 
-    this.nominatimService.search(event.query).subscribe(
+    // biais de proximité : préférer les résultats dans le cadre affiché
+    const b = this.map?.getBounds();
+    const viewbox = b
+      ? [b.getWest(), b.getNorth(), b.getEast(), b.getSouth()].join(',')
+      : undefined;
+
+    this.nominatimService.search(event.query, viewbox).subscribe(
       results => {
         if (results.length > 0) {
           log.debug(results[0], 'place found');
