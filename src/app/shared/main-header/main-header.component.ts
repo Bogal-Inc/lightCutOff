@@ -22,9 +22,9 @@ export class MainHeaderComponent implements OnInit {
   /** Ancres des sections de l'accueil (clés i18n core.home.nav). */
   readonly sectionLinks = [
     { fragment: 'about', label: 'about' },
+    { fragment: 'why', label: 'why' },
     { fragment: 'figures', label: 'figures' },
     { fragment: 'how', label: 'how' },
-    { fragment: 'why', label: 'why' },
     { fragment: 'app', label: 'app' },
     { fragment: 'map', label: 'map' },
     { fragment: 'awards', label: 'awards' }

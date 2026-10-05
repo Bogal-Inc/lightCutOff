@@ -156,8 +156,9 @@
 }
 
 // frise « Comment ça marche » : 5 étapes reliées, révélées au scroll
+// (gris doux : garde l'alternance blanc/gris/charbon après le déplacement de « Pourquoi »)
 .home__section-how {
-    background-color: var(--white);
+    background-color: #f7f7f5;
 
     &__timeline {
         max-width: 720px;

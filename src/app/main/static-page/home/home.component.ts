@@ -29,9 +29,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly sections = [
     { id: 'hero', label: 'hero' },
     { id: 'about', label: 'about' },
+    { id: 'why', label: 'why' },
     { id: 'figures', label: 'figures' },
     { id: 'how', label: 'how' },
-    { id: 'why', label: 'why' },
     { id: 'app', label: 'app' },
     { id: 'map', label: 'map' },
     { id: 'awards', label: 'awards' }
