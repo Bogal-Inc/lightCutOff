@@ -171,7 +171,7 @@
     "faq": {
       "title": "Foire aux questions",
       "q1": "Où est-ce que je peux utiliser NJUKA ?",
-      "a1": "NJUKA est pour l'instant disponible uniquement au <b>Cameroun</b>, pour les coupures d'électricité (SOCADEL, ex-Eneo) et d'eau (Camwater). L'application est conçue pour s'étendre à d'autres pays d'Afrique.",
+      "a1": "NJUKA est désormais disponible <b>partout dans le monde</b> : où que vous soyez, vous pouvez signaler, confirmer et suivre les coupures d'électricité et d'eau autour de vous. Seules les <b>coupures planifiées officielles</b> (programme SOCADEL) sont pour l'instant disponibles uniquement au <b>Cameroun</b>.",
       "q2": "NJUKA est-elle gratuite ?",
       "a2": "Oui, l'application est <b>entièrement gratuite</b>, sans achat intégré.",
       "q3": "Comment installer NJUKA sur mon téléphone ?",
@@ -183,7 +183,7 @@
       "q6": "Comment savoir si une coupure signalée est fiable ?",
       "a6": "Chaque coupure peut être <b>confirmée</b> — ou <b>démentie</b> — par les voisins. Le nombre de confirmations est affiché sur chaque signalement : plus il y a de confirmations, plus l'information est fiable. Quand le service revient, le signalement passe en « résolu » et l'auteur comme les confirmeurs sont prévenus.",
       "q7": "Comment être alerté des coupures ?",
-      "a7": "Activez les notifications de l'application : vous serez alerté quand une coupure est signalée <b>près de chez vous</b>, quand le service revient, et la veille d'une <b>coupure planifiée officielle</b> (programme SOCADEL) dans les quartiers que vous suivez.",
+      "a7": "Activez les notifications de l'application : vous serez alerté quand une coupure est signalée <b>près de chez vous</b>, quand le service revient, et la veille d'une <b>coupure planifiée officielle</b> dans les quartiers que vous suivez (programme SOCADEL — disponible uniquement au Cameroun).",
       "q8": "Que faites-vous de ma position et de mes données ?",
       "a8": "Votre position sert uniquement à géolocaliser vos signalements et à vous alerter des coupures proches. Vos données ne sont ni vendues ni partagées à des fins publicitaires. Détails dans notre <a href='https://njuka-prod.web.app/privacy' target='_blank' rel='noopener'>politique de confidentialité</a> ; vous pouvez aussi <a href='https://njuka-prod.web.app/account-deletion' target='_blank' rel='noopener'>supprimer votre compte</a> à tout moment."
     },

@@ -171,7 +171,7 @@
     "faq": {
       "title": "Frequently asked questions",
       "q1": "Where can I use NJUKA?",
-      "a1": "NJUKA is currently available in <b>Cameroon</b> only, for electricity (SOCADEL, ex-Eneo) and water (Camwater) outages. The app is designed to expand to other African countries.",
+      "a1": "NJUKA is now available <b>worldwide</b>: wherever you are, you can report, confirm and track electricity and water outages around you. Only the official <b>planned outages</b> (SOCADEL schedule) are currently available in <b>Cameroon</b> only.",
       "q2": "Is NJUKA free?",
       "a2": "Yes, the app is <b>completely free</b>, with no in-app purchases.",
       "q3": "How do I install NJUKA on my phone?",
@@ -183,7 +183,7 @@
       "q6": "How do I know a reported outage is reliable?",
       "a6": "Every outage can be <b>confirmed</b> — or <b>denied</b> — by neighbours. The confirmation count is shown on each report: the more confirmations, the more reliable the information. When the service is back, the report becomes “resolved” and the reporter and confirmers are notified.",
       "q7": "How do I get alerted about outages?",
-      "a7": "Enable the app's notifications: you'll be alerted when an outage is reported <b>near you</b>, when the service is back, and the day before an official <b>planned outage</b> (SOCADEL schedule) in the neighbourhoods you follow.",
+      "a7": "Enable the app's notifications: you'll be alerted when an outage is reported <b>near you</b>, when the service is back, and the day before an official <b>planned outage</b> in the neighbourhoods you follow (SOCADEL schedule — available in Cameroon only).",
       "q8": "What do you do with my location and data?",
       "a8": "Your location is only used to geolocate your reports and alert you about nearby outages. Your data is never sold or shared for advertising. Details in our <a href='https://njuka-prod.web.app/privacy' target='_blank' rel='noopener'>privacy policy</a>; you can also <a href='https://njuka-prod.web.app/account-deletion' target='_blank' rel='noopener'>delete your account</a> at any time."
     },
