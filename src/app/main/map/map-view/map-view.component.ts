@@ -139,7 +139,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         this.initMap({
           lng: +position.coords.longitude,
           lat: +position.coords.latitude
-        });
+        }, true);
 
         // if param in url map
         this.goToMarkerWithUrl();
@@ -251,7 +251,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
       : undefined;
   }
 
-  private initMap(position: Position){
+  /** @param centerOnUser true = `position` est la vraie localisation de l'utilisateur */
+  private initMap(position: Position, centerOnUser = false){
     this.isLoader = false;
     this.isMapReady = true;
 
@@ -276,19 +277,27 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     this.mapViewport.viewbox = this.currentViewbox() ?? null;
 
-    // le conteneur vient d'être affiché : recalcule la taille réelle puis
-    // ouvre la vue sur le Cameroun entier (navigation ensuite libre)
+    // le conteneur vient d'être affiché : recalcule la taille réelle, puis
+    // ouvre la vue sur la position de l'utilisateur s'il est géolocalisé,
+    // sinon sur le Cameroun entier (navigation ensuite libre)
     setTimeout(() => {
       this.map.invalidateSize();
-      this.map.fitBounds(cameroonBounds);
+      if (centerOnUser) {
+        this.map.setView([position.lat, position.lng], ZOOM);
+      } else {
+        this.map.fitBounds(cameroonBounds);
+      }
     });
 
-    // marqueur informatif de la position de l'utilisateur (lecture seule)
-    this.markerCurrentPosition = L.marker([position.lat, position.lng], {
-      icon: this.icons.user,
-      title: this.translateService.instant('main.map-view.your_position'),
-      zIndexOffset: 2000
-    }).addTo(this.map);
+    // marqueur informatif de la position de l'utilisateur — uniquement quand
+    // c'est sa vraie localisation (pas la position par défaut)
+    if (centerOnUser) {
+      this.markerCurrentPosition = L.marker([position.lat, position.lng], {
+        icon: this.icons.user,
+        title: this.translateService.instant('main.map-view.your_position'),
+        zIndexOffset: 2000
+      }).addTo(this.map);
+    }
 
     this.LoadReports();
   }
