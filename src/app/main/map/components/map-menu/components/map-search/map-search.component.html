@@ -5,6 +5,9 @@
         <div class="input-group">
           <input type="text" formControlName="query" class="form-control"
                  attr.placeholder="{{'main.search-place-form.placeholder' | translate}}"
+                 autocomplete="off"
+                 (blur)="onBlur()"
+                 (keydown.escape)="onEscape()"
                  #inputSearch>
           <div class="input-group-text-wrapper d-flex">
             <button type="submit" class="btn btn-njuka"
@@ -14,6 +17,17 @@
           </div>
         </div>
       </form>
+
+      <!-- suggestions pendant la frappe : clic = recentrage direct (coordonnées connues) -->
+      <ul class="list-unstyled search-place__suggestions" *ngIf="suggestions.length > 0"
+          (mousedown)="onListPointerDown()">
+        <li *ngFor="let suggestion of suggestions">
+          <button type="button" class="search-place__suggestions__item"
+                  (click)="selectSuggestion(suggestion)">
+            {{suggestion.display_name}}
+          </button>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

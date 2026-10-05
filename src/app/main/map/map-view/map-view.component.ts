@@ -22,6 +22,7 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ComponentService} from '@Services/component.service';
 import {NominatimService} from '@Services/nominatim.service';
+import {MapViewportService} from '@Services/map-viewport.service';
 import {MapFilter, ReportSort} from '../components/map-menu/components/map-filter/map-filter.component';
 import {AngularFireAnalytics} from '@angular/fire/compat/analytics';
 import {ActivatedRoute} from '@angular/router';
@@ -81,6 +82,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private metaService: MetaService,
     private componentService: ComponentService,
     private nominatimService: NominatimService,
+    private mapViewport: MapViewportService,
     private analytics: AngularFireAnalytics,
     private modalService: NgbModal,
     private activatedRoute: ActivatedRoute
@@ -157,17 +159,17 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
    * @description search place, locality to find position exactly (Nominatim)
    * @param event key word
    */
-  onSearchPlace(event: { query: any; }) {
+  onSearchPlace(event: { query: any; lat?: string; lon?: string }) {
     log.debug('map search');
     this.analytics.logEvent('map_search');
 
-    // biais de proximité : préférer les résultats dans le cadre affiché
-    const b = this.map?.getBounds();
-    const viewbox = b
-      ? [b.getWest(), b.getNorth(), b.getEast(), b.getSouth()].join(',')
-      : undefined;
+    // suggestion choisie dans la liste : coordonnées déjà connues, pas de re-géocodage
+    if (event.lat && event.lon) {
+      this.map.setView([+event.lat, +event.lon], ZOOM_MARKER);
+      return;
+    }
 
-    this.nominatimService.search(event.query, viewbox).subscribe(
+    this.nominatimService.search(event.query, this.currentViewbox()).subscribe(
       results => {
         if (results.length > 0) {
           log.debug(results[0], 'place found');
@@ -241,6 +243,14 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     return sorted;
   }
 
+  /** Viewbox Nominatim « ouest,nord,est,sud » du cadre affiché. */
+  private currentViewbox(): string | undefined {
+    const b = this.map?.getBounds();
+    return b
+      ? [b.getWest(), b.getNorth(), b.getEast(), b.getSouth()].join(',')
+      : undefined;
+  }
+
   private initMap(position: Position){
     this.isLoader = false;
     this.isMapReady = true;
@@ -258,8 +268,13 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.addTiles();
 
-    // la liste n'affiche que les coupures dans le cadre actuel de la carte
-    this.map.on('moveend zoomend', () => this.updateVisibleReports());
+    // la liste n'affiche que les coupures dans le cadre actuel de la carte ;
+    // le cadre est aussi publié pour biaiser les suggestions de recherche
+    this.map.on('moveend zoomend', () => {
+      this.updateVisibleReports();
+      this.mapViewport.viewbox = this.currentViewbox() ?? null;
+    });
+    this.mapViewport.viewbox = this.currentViewbox() ?? null;
 
     // le conteneur vient d'être affiché : recalcule la taille réelle puis
     // ouvre la vue sur le Cameroun entier (navigation ensuite libre)

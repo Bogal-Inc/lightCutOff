@@ -28,13 +28,22 @@ export class NominatimService extends CoreService {
    * pour qu'un quartier homonyme proche gagne sur un lointain plus connu.
    */
   public search(query: string, viewbox?: string): Observable<NominatimResult[]> {
+    return this.request(query, 1, viewbox);
+  }
+
+  /** Suggestions de lieux pendant la frappe (mêmes biais que search, 5 résultats). */
+  public suggest(query: string, viewbox?: string): Observable<NominatimResult[]> {
+    return this.request(query, 5, viewbox);
+  }
+
+  private request(query: string, limit: number, viewbox?: string): Observable<NominatimResult[]> {
     return this.httpClient.get<NominatimResult[]>(
       'https://nominatim.openstreetmap.org/search',
       {
         params: {
           q: query,
           format: 'jsonv2',
-          limit: 1,
+          limit,
           ...(viewbox ? { viewbox, bounded: 0 } : {})
         }
       }

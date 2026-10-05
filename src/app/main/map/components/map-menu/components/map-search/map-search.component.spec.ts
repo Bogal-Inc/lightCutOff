@@ -7,6 +7,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from '../../../../../../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('mapSearchComponent', () => {
   let component: MapSearchComponent;
@@ -21,7 +22,8 @@ describe('mapSearchComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+        HttpClientTestingModule
       ]
     })
     .compileComponents();
