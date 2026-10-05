@@ -223,6 +223,36 @@
         color: var(--gray);
         max-width: 560px;
     }
+
+    // desktop : les 5 étapes sur une seule ligne, trait horizontal entre pastilles
+    @media (min-width: 992px) {
+        &__timeline {
+            max-width: none;
+            display: flex;
+            align-items: stretch;
+        }
+
+        &__step {
+            flex: 1 1 0;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 0.75rem;
+
+            &::before {
+                left: calc(50% + 30px);
+                right: calc(-50% + 30px);
+                top: 21px;
+                bottom: auto;
+                width: auto;
+                height: 2px;
+            }
+        }
+
+        &__text {
+            max-width: none;
+        }
+    }
 }
 
 // teaser de la feature héroïne (P2.5 roadmap) : liseré + badge ambre « Bientôt »
