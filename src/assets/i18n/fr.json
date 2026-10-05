@@ -126,10 +126,24 @@
         "outages_label": "coupures de courant par mois subies en moyenne par une entreprise camerounaise — 93 % des entreprises en subissent",
         "water_label": "des Camerounais ont manqué d'eau potable au moins une fois dans l'année — 40 % en manquent régulièrement"
       },
+      "how": {
+        "title": "Comment ça marche",
+        "report_title": "Vous signalez une coupure",
+        "report_text": "En deux gestes dans l'application, votre signalement est créé et géolocalisé.",
+        "notify_title": "Le voisinage est alerté",
+        "notify_text": "Les utilisateurs dans un rayon de 500 m reçoivent une notification immédiatement.",
+        "confirm_title": "Chacun confirme — ou non",
+        "confirm_text": "Chaque voisin indique s'il subit lui aussi la coupure. Plus les confirmations s'accumulent, plus l'information est fiable — et plus la zone impactée s'étend sur la carte.",
+        "back_title": "Le service revient ? Signalez-le",
+        "back_text": "Dès que le service est rétabli chez vous, indiquez-le dans l'app : les utilisateurs dans les 500 m reçoivent à leur tour une notification.",
+        "resolved_title": "Le retour se confirme",
+        "resolved_text": "Chaque voisin confirme que le service est revenu chez lui, et le signalement passe en « résolu » pour tout le monde."
+      },
       "nav": {
         "hero": "Accueil",
         "about": "À propos",
         "figures": "La réalité",
+        "how": "Comment ça marche",
         "why": "Pourquoi NJUKA",
         "app": "L'application",
         "awards": "Distinctions",

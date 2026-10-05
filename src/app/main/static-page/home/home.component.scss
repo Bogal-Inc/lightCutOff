@@ -155,6 +155,128 @@
     background-color: #f7f7f5;
 }
 
+// frise « Comment ça marche » : 5 étapes reliées, révélées au scroll
+.home__section-how {
+    background-color: var(--white);
+
+    &__timeline {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    &__step {
+        position: relative;
+        display: flex;
+        gap: 1.25rem;
+        padding-bottom: 2.25rem;
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+
+        // trait vertical reliant les pastilles (sauf après la dernière)
+        &::before {
+            content: '';
+            position: absolute;
+            left: 21px;
+            top: 44px;
+            bottom: 0;
+            width: 2px;
+            background: rgba(248, 142, 1, 0.3);
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &--visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &__badge {
+        flex: 0 0 auto;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--njuka-amber);
+        color: var(--white);
+        font-weight: 800;
+        font-size: 1.1rem;
+    }
+
+    &__steptitle {
+        margin-bottom: 0.35rem;
+        font-weight: 700;
+        color: var(--njuka-charcoal);
+    }
+
+    &__text {
+        margin-bottom: 0;
+        color: var(--gray);
+        max-width: 560px;
+    }
+
+    // cercles concentriques : la zone impactée grandit avec les confirmations
+    // (même langage visuel que les cercles d'impact de la carte /map)
+    &__ripple {
+        position: relative;
+        width: 120px;
+        height: 72px;
+        margin-top: 1rem;
+    }
+
+    &__ripple-dot,
+    &__ripple-wave {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+    }
+
+    &__ripple-dot {
+        width: 12px;
+        height: 12px;
+        background-color: var(--njuka-amber);
+    }
+
+    &__ripple-wave {
+        width: 12px;
+        height: 12px;
+        border: 2px solid rgba(248, 142, 1, 0.55);
+        animation: how-ripple 3.6s ease-out infinite;
+
+        &--2 {
+            animation-delay: 1.2s;
+        }
+
+        &--3 {
+            animation-delay: 2.4s;
+        }
+    }
+}
+
+@keyframes how-ripple {
+    0% {
+        width: 12px;
+        height: 12px;
+        opacity: 1;
+    }
+    100% {
+        width: 110px;
+        height: 64px;
+        opacity: 0;
+    }
+}
+
 // teaser de la feature héroïne (P2.5 roadmap) : liseré + badge ambre « Bientôt »
 .home__section-app__features__soon {
     border-left: 3px solid var(--njuka-amber);

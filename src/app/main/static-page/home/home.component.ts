@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     { id: 'hero', label: 'hero' },
     { id: 'about', label: 'about' },
     { id: 'figures', label: 'figures' },
+    { id: 'how', label: 'how' },
     { id: 'why', label: 'why' },
     { id: 'app', label: 'app' },
     { id: 'map', label: 'map' },
@@ -47,6 +48,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
   figuresAnimated = false;
   private figuresObserver?: IntersectionObserver;
+  /** Étapes « Comment ça marche » (clés i18n core.home.how.<key>_title/_text). */
+  readonly howSteps = [
+    { key: 'report', emoji: '📍' },
+    { key: 'notify', emoji: '🔔' },
+    { key: 'confirm', emoji: '🤝' },
+    { key: 'back', emoji: '💡' },
+    { key: 'resolved', emoji: '✅' }
+  ];
+  howAnimated = false;
+  private howObserver?: IntersectionObserver;
   readonly faMapMarkedAlt = faMapMarkedAlt;
   closeResult = '';
   reports: any;
@@ -175,6 +186,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }, { threshold: 0.35 });
     this.figuresObserver.observe(section);
+
+    const howSection = document.getElementById('how');
+    if (!howSection) {
+      this.howAnimated = true;
+      return;
+    }
+    this.howObserver = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        this.howObserver.disconnect();
+        this.ngZone.run(() => this.howAnimated = true);
+      }
+    }, { threshold: 0.2 });
+    this.howObserver.observe(howSection);
   }
 
   /** Compte de 0 à la valeur cible avec une décélération douce (easeOutCubic). */
@@ -207,6 +231,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.figuresObserver?.disconnect();
+    this.howObserver?.disconnect();
     this.sectionSpy.setActiveSection(null);
   }
 }

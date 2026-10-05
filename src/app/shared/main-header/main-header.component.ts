@@ -23,6 +23,7 @@ export class MainHeaderComponent implements OnInit {
   readonly sectionLinks = [
     { fragment: 'about', label: 'about' },
     { fragment: 'figures', label: 'figures' },
+    { fragment: 'how', label: 'how' },
     { fragment: 'why', label: 'why' },
     { fragment: 'app', label: 'app' },
     { fragment: 'map', label: 'map' },

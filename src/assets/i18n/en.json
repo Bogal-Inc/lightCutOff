@@ -126,10 +126,24 @@
         "outages_label": "power outages per month endured by the average Cameroonian business — 93% of businesses are affected",
         "water_label": "of Cameroonians went without enough clean water at least once in the past year — 40% face frequent shortages"
       },
+      "how": {
+        "title": "How it works",
+        "report_title": "You report an outage",
+        "report_text": "Two taps in the app and your report is created and geolocated.",
+        "notify_title": "The neighbourhood is alerted",
+        "notify_text": "Users within a 500 m radius get a notification right away.",
+        "confirm_title": "Everyone confirms — or not",
+        "confirm_text": "Each neighbour says whether they are affected too. The more confirmations come in, the more reliable the information — and the wider the impacted area grows on the map.",
+        "back_title": "Service is back? Say so",
+        "back_text": "As soon as the service is restored at your place, flag it in the app: users within 500 m get a notification in turn.",
+        "resolved_title": "The recovery is confirmed",
+        "resolved_text": "Each neighbour confirms the service is back for them, and the report switches to “resolved” for everyone."
+      },
       "nav": {
         "hero": "Home",
         "about": "About",
         "figures": "The reality",
+        "how": "How it works",
         "why": "Why NJUKA",
         "app": "The app",
         "awards": "Awards",

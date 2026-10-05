@@ -89,6 +89,44 @@
         </div>
     </section>
 
+    <!--  comment ça marche : frise 5 étapes, révélée au scroll -->
+    <section class="home__section home__section-how" id="how">
+        <div class="w-100 h-100">
+            <h2 class="mb-5 home__kicker">{{'core.home.how.title' | translate}}</h2>
+            <div class="container">
+                <ol class="list-unstyled home__section-how__timeline">
+                    <li class="home__section-how__step"
+                        [class.home__section-how__step--visible]="howAnimated"
+                        *ngFor="let step of howSteps; index as i"
+                        [style.transition-delay.ms]="i * 160">
+                        <div class="home__section-how__badge" aria-hidden="true">{{i + 1}}</div>
+                        <div class="home__section-how__content">
+                            <h4 class="home__section-how__steptitle">
+                                {{step.emoji}} {{'core.home.how.' + step.key + '_title' | translate}}
+                            </h4>
+                            <p class="home__section-how__text">
+                                {{'core.home.how.' + step.key + '_text' | translate}}
+                            </p>
+                            <!-- étape confirmations : écho visuel des cercles d'impact de la carte -->
+                            <div *ngIf="step.key === 'confirm'" class="home__section-how__ripple" aria-hidden="true">
+                                <span class="home__section-how__ripple-dot"></span>
+                                <span class="home__section-how__ripple-wave"></span>
+                                <span class="home__section-how__ripple-wave home__section-how__ripple-wave--2"></span>
+                                <span class="home__section-how__ripple-wave home__section-how__ripple-wave--3"></span>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+                <div class="mt-4 text-center">
+                    <a routerLink="/map" class="btn btn-njuka btn-lg">
+                        <fa-icon [icon]="faMapMarkedAlt"></fa-icon>&nbsp;
+                        {{'core.home.map.btn' | translate}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!--  why njuka section-->
     <section class="home__section home__section-why" id="why">
         <div class="w-100 h-100">
