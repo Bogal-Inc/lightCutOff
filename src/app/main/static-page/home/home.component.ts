@@ -50,11 +50,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private figuresObserver?: IntersectionObserver;
   /** Étapes « Comment ça marche » (clés i18n core.home.how.<key>_title/_text). */
   readonly howSteps = [
-    { key: 'report', emoji: '📍' },
-    { key: 'notify', emoji: '🔔' },
-    { key: 'confirm', emoji: '🤝' },
-    { key: 'back', emoji: '💡' },
-    { key: 'resolved', emoji: '✅' }
+    { key: 'report' },
+    { key: 'notify' },
+    { key: 'confirm' },
+    { key: 'back' },
+    { key: 'resolved' }
   ];
   howAnimated = false;
   private howObserver?: IntersectionObserver;

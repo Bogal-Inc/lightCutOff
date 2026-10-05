@@ -223,58 +223,6 @@
         color: var(--gray);
         max-width: 560px;
     }
-
-    // cercles concentriques : la zone impactée grandit avec les confirmations
-    // (même langage visuel que les cercles d'impact de la carte /map)
-    &__ripple {
-        position: relative;
-        width: 120px;
-        height: 72px;
-        margin-top: 1rem;
-    }
-
-    &__ripple-dot,
-    &__ripple-wave {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-    }
-
-    &__ripple-dot {
-        width: 12px;
-        height: 12px;
-        background-color: var(--njuka-amber);
-    }
-
-    &__ripple-wave {
-        width: 12px;
-        height: 12px;
-        border: 2px solid rgba(248, 142, 1, 0.55);
-        animation: how-ripple 3.6s ease-out infinite;
-
-        &--2 {
-            animation-delay: 1.2s;
-        }
-
-        &--3 {
-            animation-delay: 2.4s;
-        }
-    }
-}
-
-@keyframes how-ripple {
-    0% {
-        width: 12px;
-        height: 12px;
-        opacity: 1;
-    }
-    100% {
-        width: 110px;
-        height: 64px;
-        opacity: 0;
-    }
 }
 
 // teaser de la feature héroïne (P2.5 roadmap) : liseré + badge ambre « Bientôt »

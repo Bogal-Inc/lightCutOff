@@ -102,18 +102,11 @@
                         <div class="home__section-how__badge" aria-hidden="true">{{i + 1}}</div>
                         <div class="home__section-how__content">
                             <h4 class="home__section-how__steptitle">
-                                {{step.emoji}} {{'core.home.how.' + step.key + '_title' | translate}}
+                                {{'core.home.how.' + step.key + '_title' | translate}}
                             </h4>
                             <p class="home__section-how__text">
                                 {{'core.home.how.' + step.key + '_text' | translate}}
                             </p>
-                            <!-- étape confirmations : écho visuel des cercles d'impact de la carte -->
-                            <div *ngIf="step.key === 'confirm'" class="home__section-how__ripple" aria-hidden="true">
-                                <span class="home__section-how__ripple-dot"></span>
-                                <span class="home__section-how__ripple-wave"></span>
-                                <span class="home__section-how__ripple-wave home__section-how__ripple-wave--2"></span>
-                                <span class="home__section-how__ripple-wave home__section-how__ripple-wave--3"></span>
-                            </div>
                         </div>
                     </li>
                 </ol>
