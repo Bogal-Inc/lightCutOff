@@ -27,6 +27,15 @@ nav {
   }
 }
 
+@media (max-width: 991.98px) {
+  nav .navbar-toggler {
+    order: 2;
+  }
+  nav .navbar-collapse {
+    order: 3;
+  }
+}
+
 .navbar-brand {
   &__bulb {
     margin-right: 0.4rem;
@@ -46,6 +55,13 @@ nav {
   padding: 0 8px;
   font-size: 0.9rem;
   font-weight: 600;
+
+  // mobile (burger visible) : FR|EN reste dans la barre, entre la marque et le
+  // burger ; le menu replié passe dessous (flex-basis 100% de Bootstrap)
+  @media (max-width: 991.98px) {
+    order: 1;
+    margin-right: 8px;
+  }
 
   &__option {
     color: rgba(255, 255, 255, 0.55);
