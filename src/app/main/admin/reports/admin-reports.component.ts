@@ -51,7 +51,7 @@ export class AdminReportsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.reportService.getReports({ includeHidden: true, allCountries: true, limit: 500 }).subscribe(
+    this.sub = this.reportService.getReports({ includeHidden: true, limit: 500 }).subscribe(
       reports => {
         this.reports = reports;
         this.loading = false;

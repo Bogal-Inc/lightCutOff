@@ -11,9 +11,9 @@ import firebase from 'firebase/compat/app';
 
 /**
  * Lecture des signalements Njuka (`reports/{id}`, schéma de l'app — SCHEMA.md).
- * Le site est en LECTURE SEULE : requête cloisonnée au pays (index composite
- * `location.countryCode ASC, reportedAt DESC` déployé côté app), les signalements
- * archivés (soft-delete) et expirés (autoExpiredAt) sont écartés côté client.
+ * Le site est en LECTURE SEULE : requête mondiale triée par date (NJUKA est
+ * disponible partout — cloisonnement pays retiré), les signalements archivés
+ * (soft-delete) et expirés (autoExpiredAt) sont écartés côté client.
  */
 
 /**
@@ -44,9 +44,7 @@ export class ReportService extends BaseService {
       limit?: number,
       reportStatus?: ReportSatus,
       /** admin uniquement : inclut archivés + expirés (modération) */
-      includeHidden?: boolean,
-      /** admin uniquement : tous pays (sinon cloisonné sur Const.countryCode) */
-      allCountries?: boolean
+      includeHidden?: boolean
     } = {}
   ): Observable<Report[]> {
     // attend la session (anonyme comprise) : les règles Firestore exigent isSignedIn()
@@ -56,13 +54,7 @@ export class ReportService extends BaseService {
       `${Const.collections.reports}`,
       ref => {
         let query: CollectionReference | Query = ref;
-        // Admin « tous pays » : requête simple triée par date (pas d'index
-        // composite requis, contrairement au cloisonnement par pays).
-        query = params.allCountries
-          ? query.orderBy('reportedAt', 'desc')
-          : query
-              .where('location.countryCode', '==', Const.countryCode)
-              .orderBy('reportedAt', 'desc');
+        query = query.orderBy('reportedAt', 'desc');
 
         if (params.limit) {
           query = query.limit(params.limit);

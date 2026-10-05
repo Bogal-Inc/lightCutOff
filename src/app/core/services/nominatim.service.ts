@@ -30,7 +30,6 @@ export class NominatimService extends CoreService {
       {
         params: {
           q: query,
-          countrycodes: 'cm',
           format: 'jsonv2',
           limit: 1
         }
