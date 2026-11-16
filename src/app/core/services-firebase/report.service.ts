@@ -99,6 +99,10 @@ export class ReportService extends BaseService {
     description: string | null;
     position: Position;
     location: GeoArea;
+    /** gps (défaut) | described — même sémantique que l'app (SCHEMA.md). */
+    positionSource?: 'gps' | 'described';
+    /** Date/heure de constatation (app) ; absent = « maintenant » (serveur). */
+    reportedAt?: Date | null;
   }): Promise<string> {
     const user = await this.angularFireAuth.authState.pipe(first(u => !!u)).toPromise();
     const serverNow = firebase.firestore.FieldValue.serverTimestamp();
@@ -114,11 +118,11 @@ export class ReportService extends BaseService {
       description: input.description,
       mediaUrl: null,
       geohash: encodeGeohash(input.position.lat, input.position.lng),
-      positionSource: 'gps',
+      positionSource: input.positionSource || 'gps',
       confirmationCount: 0,
       restorationCount: 0,
       notifiedUserIds: [],
-      reportedAt: serverNow,
+      reportedAt: input.reportedAt ? firebase.firestore.Timestamp.fromDate(input.reportedAt) : serverNow,
       resolvedAt: null,
       archivedAt: null,
       createdAt: serverNow,

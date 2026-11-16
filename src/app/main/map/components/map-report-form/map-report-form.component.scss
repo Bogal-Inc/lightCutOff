@@ -42,6 +42,108 @@
         color: var(--gray);
     }
 
+    // date + heure de constatation côte à côte
+    &__observed {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    // ligne position : icône + libellé + action décrire / revenir au GPS
+    &__position {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        color: var(--gray);
+
+        &__label {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &__icon--described {
+            color: var(--njuka-amber);
+        }
+    }
+
+    &__link {
+        font-size: 0.85rem;
+        color: var(--njuka-amber-dark);
+        text-decoration: none;
+        padding: 0;
+    }
+
+    &__clear {
+        color: var(--gray);
+        text-decoration: none;
+        padding: 0 0.3rem;
+    }
+
+    &__describe {
+        margin-top: 0.75rem;
+        padding: 0.75rem;
+        border: 1px solid rgba(248, 142, 1, 0.4);
+        border-radius: 10px;
+        background: rgba(248, 142, 1, 0.05);
+
+        &__suggestions {
+            margin: 0.25rem 0 0;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        &__item {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 0;
+            background: none;
+            text-align: left;
+            font-size: 0.85rem;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:hover {
+                background-color: rgba(248, 142, 1, 0.12);
+            }
+        }
+    }
+
+    &__promise {
+        display: flex;
+        gap: 0.4rem;
+        margin: 1rem 0 0.5rem;
+        font-size: 0.85rem;
+        color: var(--gray);
+    }
+
+    &__attestation {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+        font-size: 0.85rem;
+        color: var(--gray);
+        cursor: pointer;
+
+        input {
+            margin-top: 0.2rem;
+        }
+    }
+
+    &__error {
+        margin: 0.5rem 0 0;
+        font-size: 0.85rem;
+        color: #c0392b;
+    }
+
     &__notice {
         text-align: center;
         padding: 0.5rem 0;

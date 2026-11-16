@@ -192,14 +192,17 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     const modalRef = this.modalService.open(MapReportFormComponent, { centered: true });
     modalRef.componentInstance.reports = this.reports;
     modalRef.result.then(
-      (result: { type: 'created' | 'confirmed'; position?: Position; report?: Report }) => {
+      (result: { type: 'created' | 'confirmed' | 'viewMine'; position?: Position; report?: Report }) => {
         if (result?.type === 'created' && result.position) {
           // le flux temps réel (col$) ajoutera le marqueur de lui-même
           this.map.setView([result.position.lat, result.position.lng], ZOOM_MARKER);
-          this.toastrService.success(this.translateService.instant('main.report-form.success_created'));
+          this.toastrService.success(this.translateService.instant('main.report-form.created_success'));
         } else if (result?.type === 'confirmed' && result.report) {
           this.map.setView([+result.report.position.lat, +result.report.position.lng], ZOOM_MARKER);
-          this.toastrService.success(this.translateService.instant('main.report-form.success_confirmed'));
+          this.toastrService.success(this.translateService.instant('main.report-form.confirmed_success'));
+        } else if (result?.type === 'viewMine' && result.report) {
+          // « Voir mon signalement » : recentre et ouvre sa fiche
+          this.goToMarker(result.report);
         }
       },
       () => { /* fermeture sans envoi : rien à faire */ }

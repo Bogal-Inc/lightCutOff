@@ -6,17 +6,115 @@
   </div>
 
   <div class="modal-body">
-    <!-- garde-fou anti-spam -->
-    <div *ngIf="state === 'cooldown'" class="report-form__notice">
+    <!-- ===== écrans superposés (équivalents des dialogues de l'app) ===== -->
+
+    <!-- garde-fou anti-spam (site) -->
+    <div *ngIf="overlay === 'cooldown'" class="report-form__notice">
       <p>{{'main.report-form.cooldown' | translate: {minutes: cooldownMinutesLeft} }}</p>
       <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
         {{'main.report-form.close' | translate}}
       </button>
     </div>
 
-    <!-- formulaire -->
-    <form *ngIf="state === 'form' || state === 'locating' || state === 'sending'"
-          [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+    <!-- anti-doublon : report d'un TIERS -->
+    <div *ngIf="overlay === 'duplicate' && !duplicateIsOwn" class="report-form__notice">
+      <p class="report-form__notice__title">{{'main.report-form.duplicate_other_title' | translate}}</p>
+      <p>
+        {{duplicateZone || ('main.report-form.duplicate_zone_fallback' | translate)}}
+        · {{'main.report-form.duplicate_confirmations' | translate: {count: duplicate?.confirmationCount || 0} }}
+      </p>
+      <p>{{'main.report-form.duplicate_other_question' | translate}}</p>
+      <button type="button" class="btn btn-njuka w-100 mb-2" (click)="onConfirmDuplicate()">
+        {{'main.report-form.confirm' | translate}}
+      </button>
+      <button type="button" class="btn btn-outline-njuka w-100 mb-2" (click)="onCreateAnyway()">
+        {{'main.report-form.duplicate_report_anyway' | translate}}
+      </button>
+      <button type="button" class="btn btn-link report-form__link" (click)="closeOverlay()">
+        {{'main.report-form.cancel' | translate}}
+      </button>
+    </div>
+
+    <!-- anti-doublon : SON propre report → pas de doublon possible -->
+    <div *ngIf="overlay === 'duplicate' && duplicateIsOwn" class="report-form__notice">
+      <p class="report-form__notice__title">{{'main.report-form.duplicate_own_title' | translate}}</p>
+      <p>
+        {{duplicateZone || ('main.report-form.duplicate_zone_fallback' | translate)}}
+        · {{'main.report-form.duplicate_confirmations' | translate: {count: duplicate?.confirmationCount || 0} }}
+      </p>
+      <p>{{'main.report-form.duplicate_own_text' | translate}}</p>
+      <button type="button" class="btn btn-njuka w-100 mb-2" (click)="onViewMine()">
+        {{'main.report-form.duplicate_view_mine' | translate}}
+      </button>
+      <button type="button" class="btn btn-link report-form__link" (click)="closeOverlay()">
+        {{'main.report-form.cancel' | translate}}
+      </button>
+    </div>
+
+    <!-- position indisponible : autoriser OU décrire (dialogue app) -->
+    <div *ngIf="overlay === 'locationUnavailable'" class="report-form__notice">
+      <p class="report-form__notice__title">{{'main.report-form.location_unavailable_title' | translate}}</p>
+      <p>{{'main.report-form.location_unavailable_body' | translate}}</p>
+      <button type="button" class="btn btn-njuka w-100 mb-2" (click)="fallbackRetryGps()">
+        {{'main.report-form.allow_location' | translate}}
+      </button>
+      <button type="button" class="btn btn-outline-njuka w-100" (click)="fallbackDescribe()">
+        {{'main.report-form.describe_action' | translate}}
+      </button>
+    </div>
+
+    <!-- lieu décrit loin du GPS : accord explicite (dialogue app) -->
+    <div *ngIf="overlay === 'mismatch'" class="report-form__notice">
+      <p class="report-form__notice__title">{{'main.report-form.mismatch_title' | translate}}</p>
+      <p>{{'main.report-form.mismatch_body' | translate: {
+        described: pendingMismatch?.query,
+        km: pendingMismatch?.km
+      } }}</p>
+      <button type="button" class="btn btn-njuka w-100 mb-2" (click)="confirmMismatch()">
+        {{'main.report-form.mismatch_confirm' | translate}}
+      </button>
+      <button type="button" class="btn btn-link report-form__link" (click)="cancelMismatch()">
+        {{'main.report-form.cancel' | translate}}
+      </button>
+    </div>
+
+    <!-- gardes site : position imprécise / VPN -->
+    <div *ngIf="overlay === 'lowAccuracy'" class="report-form__notice">
+      <p>{{'main.report-form.low_accuracy' | translate}}</p>
+      <button type="button" class="btn btn-outline-njuka" (click)="closeOverlay()">
+        {{'main.report-form.close' | translate}}
+      </button>
+    </div>
+    <div *ngIf="overlay === 'vpnSuspected'" class="report-form__notice">
+      <p>{{'main.report-form.vpn_suspected' | translate}}</p>
+      <button type="button" class="btn btn-outline-njuka" (click)="closeOverlay()">
+        {{'main.report-form.close' | translate}}
+      </button>
+    </div>
+
+    <!-- erreur d'envoi -->
+    <div *ngIf="overlay === 'error'" class="report-form__notice">
+      <p>{{'main.report-form.error' | translate}}</p>
+      <button type="button" class="btn btn-outline-njuka" (click)="closeOverlay()">
+        {{'main.report-form.close' | translate}}
+      </button>
+    </div>
+
+    <!-- ===== le formulaire, miroir de l'app ===== -->
+    <form *ngIf="!overlay" [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+
+      <!-- date/heure de constatation (facultatif) — en tête, comme l'app -->
+      <label class="report-form__label">{{'main.report-form.observed_label' | translate}}</label>
+      <div class="report-form__observed">
+        <input type="date" class="form-control" formControlName="observedDate"
+               [max]="todayIso" attr.aria-label="{{'main.report-form.observed_date' | translate}}">
+        <input type="time" class="form-control" formControlName="observedTime"
+               attr.aria-label="{{'main.report-form.observed_time' | translate}}">
+        <button type="button" class="btn btn-link report-form__clear" *ngIf="hasObserved"
+                (click)="clearObserved()" attr.aria-label="{{'main.report-form.cancel' | translate}}">✕</button>
+      </div>
+
+      <!-- service -->
       <label class="report-form__label">{{'main.report-form.service_label' | translate}}</label>
       <div class="report-form__services" role="group">
         <button type="button" class="report-form__service"
@@ -31,76 +129,69 @@
         </button>
       </div>
 
+      <!-- position : GPS détecté, ou lieu décrit (qui prime) -->
+      <div class="report-form__position">
+        <i class="fas" [ngClass]="described ? 'fa-map-marker-alt report-form__position__icon--described' : 'fa-location-arrow'"></i>
+        <span class="report-form__position__label">
+          <ng-container *ngIf="described; else gpsLabel">{{positionLabel}}</ng-container>
+          <ng-template #gpsLabel>
+            <ng-container *ngIf="locating">{{'main.report-form.position_locating' | translate}}</ng-container>
+            <ng-container *ngIf="!locating && !current">{{'main.report-form.position_unavailable' | translate}}</ng-container>
+            <ng-container *ngIf="!locating && current">{{positionLabel || ('main.report-form.position_hint' | translate)}}</ng-container>
+          </ng-template>
+        </span>
+        <button type="button" class="btn btn-link report-form__clear" *ngIf="described"
+                (click)="clearDescribed()" attr.title="{{'main.report-form.back_to_gps' | translate}}">✕</button>
+        <button type="button" class="btn btn-link report-form__link" *ngIf="!described"
+                (click)="openDescribe()">{{'main.report-form.describe_action' | translate}}</button>
+      </div>
+
+      <!-- panneau « Décrire ma position » (dialogue app, en inline) -->
+      <div *ngIf="describeOpen" class="report-form__describe">
+        <p class="report-form__hint mb-2">{{'main.report-form.describe_body' | translate}}</p>
+        <input type="text" class="form-control" formControlName="describeQuery" autocomplete="off"
+               attr.placeholder="{{'main.report-form.describe_hint' | translate}}">
+        <ul class="list-unstyled report-form__describe__suggestions" *ngIf="describeSuggestions.length > 0">
+          <li *ngFor="let suggestion of describeSuggestions">
+            <button type="button" class="report-form__describe__item" (click)="pickDescribeSuggestion(suggestion)">
+              {{suggestion.display_name}}
+            </button>
+          </li>
+        </ul>
+        <p *ngIf="describeNotFound" class="report-form__error">{{'main.report-form.address_not_found' | translate}}</p>
+        <div class="d-flex gap-2 mt-2">
+          <button type="button" class="btn btn-njuka" (click)="locateDescription()">
+            {{'main.report-form.describe_confirm' | translate}}
+          </button>
+          <button type="button" class="btn btn-link report-form__link" (click)="closeDescribe()">
+            {{'main.report-form.cancel' | translate}}
+          </button>
+        </div>
+      </div>
+
+      <!-- description -->
       <label class="report-form__label" for="report-description">
         {{'main.report-form.description_label' | translate}}
       </label>
       <textarea id="report-description" class="form-control report-form__description" rows="3"
-                formControlName="description" maxlength="500"
-                attr.placeholder="{{'main.report-form.description_placeholder' | translate}}"></textarea>
+                formControlName="description" [maxlength]="maxDescriptionLength"
+                attr.placeholder="{{'main.report-form.description_hint' | translate}}"></textarea>
 
-      <p class="report-form__hint">{{'main.report-form.geoloc_hint' | translate}}</p>
+      <!-- promesse de retour (app : « la promesse du retour, dite avant le geste ») -->
+      <p class="report-form__promise">
+        🔔 {{'main.report-form.return_promise' | translate}}
+      </p>
 
-      <button type="submit" class="btn btn-njuka w-100" [disabled]="state !== 'form'">
-        <span *ngIf="state === 'form'">{{'main.report-form.submit' | translate}}</span>
-        <span *ngIf="state === 'locating'">{{'main.report-form.locating' | translate}}</span>
-        <span *ngIf="state === 'sending'">{{'main.report-form.sending' | translate}}</span>
+      <!-- attestation anti-faux signalement, obligatoire -->
+      <label class="report-form__attestation">
+        <input type="checkbox" formControlName="attested">
+        <span>{{'main.report-form.attestation' | translate}}</span>
+      </label>
+
+      <button type="submit" class="btn btn-njuka w-100 mt-3" [disabled]="!attested || sending">
+        <span *ngIf="!sending">{{'main.report-form.submit' | translate}}</span>
+        <span *ngIf="sending">{{'main.report-form.submitting' | translate}}</span>
       </button>
     </form>
-
-    <!-- anti-doublon : une coupure est déjà signalée à proximité -->
-    <div *ngIf="state === 'duplicate'" class="report-form__notice">
-      <p class="report-form__notice__title">{{'main.report-form.duplicate_title' | translate}}</p>
-      <p *ngIf="duplicate">
-        {{duplicate.location?.neighborhood || duplicate.location?.city}}
-        · {{'main.report-form.duplicate_confirmations' | translate: {count: duplicate.confirmationCount || 0} }}
-      </p>
-      <p>{{'main.report-form.duplicate_text' | translate}}</p>
-      <button type="button" class="btn btn-njuka w-100 mb-2" (click)="onConfirmDuplicate()">
-        {{'main.report-form.duplicate_confirm' | translate}}
-      </button>
-      <button type="button" class="btn btn-outline-njuka w-100" (click)="onCreateAnyway()">
-        {{'main.report-form.duplicate_create_anyway' | translate}}
-      </button>
-    </div>
-
-    <!-- l'utilisateur a déjà signalé cette coupure -->
-    <div *ngIf="state === 'ownNearby'" class="report-form__notice">
-      <p>{{'main.report-form.own_nearby' | translate}}</p>
-      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
-        {{'main.report-form.close' | translate}}
-      </button>
-    </div>
-
-    <!-- géolocalisation refusée : signalement impossible -->
-    <div *ngIf="state === 'geolocDenied'" class="report-form__notice">
-      <p>{{'main.report-form.geoloc_denied' | translate}}</p>
-      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
-        {{'main.report-form.close' | translate}}
-      </button>
-    </div>
-
-    <!-- position trop imprécise (dérivée de l'IP) -->
-    <div *ngIf="state === 'lowAccuracy'" class="report-form__notice">
-      <p>{{'main.report-form.low_accuracy' | translate}}</p>
-      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
-        {{'main.report-form.close' | translate}}
-      </button>
-    </div>
-
-    <!-- incohérence IP/GPS : VPN ou proxy suspecté -->
-    <div *ngIf="state === 'vpnSuspected'" class="report-form__notice">
-      <p>{{'main.report-form.vpn_suspected' | translate}}</p>
-      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
-        {{'main.report-form.close' | translate}}
-      </button>
-    </div>
-
-    <!-- erreur d'envoi -->
-    <div *ngIf="state === 'error'" class="report-form__notice">
-      <p>{{'main.report-form.error' | translate}}</p>
-      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
-        {{'main.report-form.close' | translate}}
-      </button>
-    </div>
   </div>
 </div>
