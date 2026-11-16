@@ -66,6 +66,8 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
   };
   readonly projectTitle = Const.app.title;
   isErrorMapActive = false;
+  /** ?signaler=1 (CTA de l'accueil) : ouvre le formulaire dès les reports chargés. */
+  private openFormOnLoad = false;
   isMapReady = false;
   reports: Report[];
   /** Signalements après filtre/tri — alimentent la carte et les cercles. */
@@ -100,6 +102,7 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     log.debug('init');
+    this.openFormOnLoad = this.activatedRoute.snapshot.queryParams.signaler === '1';
     this.analytics.logEvent('page_view', {
       page_location: `${environment.domain}/map`,
       page_path: '/map',
@@ -388,6 +391,14 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
               return report;
             });
           this.applyFilter();
+
+          // arrivée depuis le CTA « Signaler » de l'accueil (?signaler=1) :
+          // ouvrir le formulaire une fois les signalements chargés, pour que
+          // l'anti-doublon ait sa base de comparaison
+          if (this.openFormOnLoad) {
+            this.openFormOnLoad = false;
+            this.openReportForm();
+          }
         },
       err => log.error('report not load', err));
   }

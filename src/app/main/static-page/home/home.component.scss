@@ -57,6 +57,21 @@
             box-shadow: 0 8px 24px rgba(248, 142, 1, 0.35);
         }
 
+        &__actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        // variante lisible sur fond charbon du hero (amber-dark illisible ici)
+        &__report-btn {
+            padding: 0.75rem 2.2rem;
+            font-size: 1.15rem;
+            color: var(--njuka-amber);
+            border-color: var(--njuka-amber);
+        }
+
         &__community {
             max-width: 520px;
             margin-top: 1.2rem;

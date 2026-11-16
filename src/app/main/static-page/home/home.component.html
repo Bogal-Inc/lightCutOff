@@ -16,11 +16,16 @@
                     <span class="home__hero__steps__arrow">→</span>
                     <span class="home__hero__steps__chip">{{'core.home.hero.step_alert' | translate}}</span>
                 </div>
-                <div class="mt-4">
+                <div class="mt-4 home__hero__actions">
                     <a class="btn btn-njuka btn-lg home__hero__map-btn" routerLink="/map"
                        [title]="'core.home.btn_map_title' | translate: { projectTitle: projectTitle }">
                         <fa-icon [icon]="faMapMarkedAlt"></fa-icon>
                         {{"core.home.btn_map" | translate}}
+                    </a>
+                    <!-- lot 3 : ouvre directement le formulaire de signalement sur /map -->
+                    <a class="btn btn-outline-njuka btn-lg home__hero__report-btn" routerLink="/map"
+                       [queryParams]="{signaler: 1}">
+                        ⚡ {{'main.report-form.open_btn' | translate}}
                     </a>
                 </div>
                 <div class="mt-4 home__hero__badges">
