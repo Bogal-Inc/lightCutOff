@@ -90,3 +90,7 @@
 - [ ] VPN ACTIVÉ (pays ≠ position GPS) → message « VPN ou proxy détecté », pas de création
 - [ ] Desktop sans WiFi (position estimée par IP, précision > 10 km) → message « position trop imprécise »
 - [ ] ipwho.is bloqué/en panne (adblock) → le signalement passe quand même (fail-open)
+- [ ] Parité app (2026-11-16) : date/heure de constatation facultatives (jamais futur), attestation OBLIGATOIRE (bouton grisé sinon), promesse de retour affichée
+- [ ] Ligne position : « Recherche de ta position… » puis « quartier, ville » ; « Décrire ma position » → suggestions + Localiser ; lieu décrit > 2 km du GPS → dialogue « Utiliser ce lieu »
+- [ ] Lieu décrit : positionSource='described' dans Firestore ; ✕ revient au GPS
+- [ ] Doublon de MON report → « Tu as déjà signalé ici » + « Voir mon signalement » (recentre + fiche) ; pas de création possible
