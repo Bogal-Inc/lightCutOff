@@ -29,6 +29,7 @@ import {ActivatedRoute} from '@angular/router';
 import {METATAG, MetaTag} from '@Models/metaTag.model';
 import {environment} from '../../../../environments/environment';
 import {GeolocationComponent} from '../../../modals/geolocation/geolocation.component';
+import {MapReportFormComponent} from '../components/map-report-form/map-report-form.component';
 
 const log = new Logger('map-view.component');
 
@@ -180,6 +181,25 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       },
       () => this.toastrService.error(this.translateService.instant('main.map-view.no_place'))
+    );
+  }
+
+  /** Ouvre le formulaire de signalement (lot 3) et réagit à son issue. */
+  openReportForm() {
+    const modalRef = this.modalService.open(MapReportFormComponent, { centered: true });
+    modalRef.componentInstance.reports = this.reports;
+    modalRef.result.then(
+      (result: { type: 'created' | 'confirmed'; position?: Position; report?: Report }) => {
+        if (result?.type === 'created' && result.position) {
+          // le flux temps réel (col$) ajoutera le marqueur de lui-même
+          this.map.setView([result.position.lat, result.position.lng], ZOOM_MARKER);
+          this.toastrService.success(this.translateService.instant('main.report-form.success_created'));
+        } else if (result?.type === 'confirmed' && result.report) {
+          this.map.setView([+result.report.position.lat, +result.report.position.lng], ZOOM_MARKER);
+          this.toastrService.success(this.translateService.instant('main.report-form.success_confirmed'));
+        }
+      },
+      () => { /* fermeture sans envoi : rien à faire */ }
     );
   }
 

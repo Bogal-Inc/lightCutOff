@@ -74,3 +74,16 @@
 - [ ] Dashboard statistiques : graphiques bar + line (nouveau wrapper chart.js 4)
 - [ ] Liste des rapports ag-grid, sélection de lignes
 
+
+## Lot 3 — Signalement depuis le site (2026-11-16)
+- [ ] /map : bouton flottant ambre « Signaler une coupure » visible en bas à droite
+- [ ] Clic → modal : segmenté ⚡|💧, description optionnelle, mention géolocalisation
+- [ ] Envoyer SANS autoriser la géoloc → message « géolocalisation requise », pas de création
+- [ ] Envoyer AVEC géoloc, aucune coupure à < 500 m → toast succès + carte recentrée + marqueur apparaît (temps réel)
+- [ ] Firestore : doc complet au schéma (userId anonyme, authorUsername null, type unplanned, geohash 6, positionSource gps, compteurs 0, location GeoArea)
+- [ ] Deuxième envoi < 10 min → message cooldown
+- [ ] Coupure EN COURS même service à < 500 m (autre uid) → proposition « Confirmer » ; Confirmer → confirmationCount +1 + doc confirmations/{uid} ; re-confirmer → erreur propre
+- [ ] Coupure à < 500 m créée par SOI → message « vous avez déjà signalé ici »
+- [ ] « C'est une autre coupure, signaler quand même » → création malgré le doublon
+- [ ] EN : tous les textes du formulaire traduits
+- [ ] Vérifier côté app : notification de proximité reçue pour un report créé depuis le site

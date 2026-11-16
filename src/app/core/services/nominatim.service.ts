@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {CoreService} from '@Services/core.service';
+import {GeoArea} from '@Models/report.model';
 
 export interface NominatimResult {
   lat: string;
@@ -48,6 +50,29 @@ export class NominatimService extends CoreService {
         }
       }
     );
+  }
+
+  /**
+   * Reverse-géocodage : position → zone lisible (GeoArea du schéma app).
+   * Les champs absents de la réponse Nominatim restent vides — la création
+   * d'un signalement ne doit pas échouer sur un trou de géocodage.
+   */
+  public reverse(lat: number, lng: number): Observable<GeoArea> {
+    return this.httpClient.get<{ address?: Record<string, string> }>(
+      'https://nominatim.openstreetmap.org/reverse',
+      {
+        params: { lat, lon: lng, format: 'jsonv2', zoom: 16, addressdetails: 1 }
+      }
+    ).pipe(map(result => {
+      const address = result?.address || {};
+      return {
+        country: address.country || '',
+        countryCode: (address.country_code || '').toUpperCase(),
+        region: address.state || address.region || address.county || '',
+        city: address.city || address.town || address.village || '',
+        neighborhood: address.suburb || address.neighbourhood || address.quarter || ''
+      };
+    }));
   }
 
   public getDataByNeighborhood(params = null): Observable<any> {

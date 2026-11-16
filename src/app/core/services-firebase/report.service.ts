@@ -1,13 +1,14 @@
 import {BaseService} from './base.service';
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/compat/firestore';
-import {Report, ReportSatus} from '@Models/report.model';
+import {GeoArea, Position, Report, ReportSatus, ServiceType} from '@Models/report.model';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {Observable} from 'rxjs';
 import {first, map, switchMap} from 'rxjs/operators';
 import {Const} from 'src/environments/const';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 import firebase from 'firebase/compat/app';
+import {encodeGeohash} from '@Helpers/geo.helper';
 
 /**
  * Lecture des signalements Njuka (`reports/{id}`, schéma de l'app — SCHEMA.md).
@@ -84,6 +85,75 @@ export class ReportService extends BaseService {
         `${Const.collections.reports}/${reportId}`
       ))
     );
+  }
+
+  /**
+   * Création d'un signalement citoyen depuis le site (session anonyme comprise,
+   * comme l'app depuis le pivot 2026-06-24). Document écrit AU SCHÉMA EXACT de
+   * l'app (SCHEMA.md) — pas de champs d'audit `_createdBy` du site. Les règles
+   * exigent uniquement `userId == auth.uid` ; les CF app (notifs 500 m, cycle
+   * de vie) prennent le relais côté serveur.
+   */
+  async createReport(input: {
+    serviceType: ServiceType;
+    description: string | null;
+    position: Position;
+    location: GeoArea;
+  }): Promise<string> {
+    const user = await this.angularFireAuth.authState.pipe(first(u => !!u)).toPromise();
+    const serverNow = firebase.firestore.FieldValue.serverTimestamp();
+
+    const docRef = await this.col(Const.collections.reports).add({
+      userId: user.uid,
+      authorUsername: null,
+      status: ReportSatus.ONGOING,
+      type: 'unplanned',
+      serviceType: input.serviceType,
+      position: { lat: input.position.lat, lng: input.position.lng },
+      location: input.location,
+      description: input.description,
+      mediaUrl: null,
+      geohash: encodeGeohash(input.position.lat, input.position.lng),
+      positionSource: 'gps',
+      confirmationCount: 0,
+      restorationCount: 0,
+      notifiedUserIds: [],
+      reportedAt: serverNow,
+      resolvedAt: null,
+      archivedAt: null,
+      createdAt: serverNow,
+      updatedAt: serverNow
+    });
+    return docRef.id;
+  }
+
+  /**
+   * Confirme une coupure existante (anti-doublon) : batch ATOMIQUE exigé par
+   * les règles — `confirmationCount` +1 (bumpsCounterByOne) et dépôt simultané
+   * du vote `confirmations/{uid}` (castsVote). Interdit sur son propre report.
+   */
+  async confirmReport(reportId: string, position: Position): Promise<void> {
+    const user = await this.angularFireAuth.authState.pipe(first(u => !!u)).toPromise();
+    const serverNow = firebase.firestore.FieldValue.serverTimestamp();
+
+    const reportRef = this.doc(`${Const.collections.reports}/${reportId}`).ref;
+    const batch = reportRef.firestore.batch();
+    batch.update(
+      reportRef as any,
+      {
+        confirmationCount: firebase.firestore.FieldValue.increment(1),
+        updatedAt: serverNow
+      }
+    );
+    batch.set(
+      this.col(`${Const.collections.reports}/${reportId}/confirmations`).doc(user.uid).ref as any,
+      {
+        createdAt: serverNow,
+        geohash: encodeGeohash(position.lat, position.lng),
+        position: { lat: position.lat, lng: position.lng }
+      }
+    );
+    return batch.commit();
   }
 
   /**

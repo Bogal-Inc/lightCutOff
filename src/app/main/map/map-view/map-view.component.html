@@ -10,6 +10,12 @@
 
       <app-map-legend [class.d-none]="!isMapReady"></app-map-legend>
 
+      <!-- lot 3 : signalement citoyen depuis le site -->
+      <button type="button" class="btn btn-njuka map-container__report-btn" *ngIf="isMapReady"
+              (click)="openReportForm()">
+        <i class="fas fa-bolt"></i>&nbsp; {{'main.report-form.open_btn' | translate}}
+      </button>
+
       <ng-template #infosReport></ng-template>
     </div>
   </div>

@@ -13,6 +13,7 @@ import {MapMenuComponent} from './components/map-menu/map-menu.component';
 import { MapMenuHistoryComponent } from './components/map-menu/components/map-menu-history/map-menu-history.component';
 import { MapMenuScheduledComponent } from './components/map-menu/components/map-menu-scheduled/map-menu-scheduled.component';
 import { MapNotFoundComponent } from './components/map-not-found/map-not-found.component';
+import { MapReportFormComponent } from './components/map-report-form/map-report-form.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MapNotFoundComponent } from './components/map-not-found/map-not-found.c
     MapLegendComponent,
     MapMenuHistoryComponent,
     MapMenuScheduledComponent,
-    MapNotFoundComponent
+    MapNotFoundComponent,
+    MapReportFormComponent
   ],
   imports: [
     CommonModule,

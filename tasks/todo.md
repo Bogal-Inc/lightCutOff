@@ -145,3 +145,27 @@ Réf. docs/ROADMAP-SITE.md (P1.3 + P1.2). P0 autoExpiredAt livré (v2.13.1).
         Fetch dans map-menu (parent) pour alimenter badge + onglet.
   - [x] i18n FR/EN, tests helpers + specs composants, lint/build (63 specs vertes).
   - [x] Deploy njuka.app, CHANGELOG 2.14.0, ROADMAP P1.2/P1.3 ✅, CONTEXT, TESTS-MANUELS.
+
+## Lot 3 — Signalement depuis le site (EN ATTENTE DE VALIDATION, 2026-11-16)
+
+Constat de faisabilité (règles app vérifiées) :
+- `reports` : `allow create: isSignedIn() && userId == auth.uid` → la session ANONYME
+  du site peut créer un signalement, comme l'app (pivot 2026-06-24).
+- Confirmation d'un report existant : batch atomique `confirmationCount +1` +
+  doc `confirmations/{uid}` (règles bumpsCounterByOne + castsVote), interdit sur
+  son propre report. Géohash précision 6 (app_constants).
+- Les CF app (notifs 500 m, cycle de vie) se déclenchent côté serveur → gratuites
+  pour le site.
+
+Plan proposé (v1) :
+1. Bouton « Signaler une coupure » sur /map (bouton flottant ambre) → modal.
+2. Modal : service (⚡|💧 segmenté) + description optionnelle + géolocalisation
+   navigateur OBLIGATOIRE (positionSource=gps, pas de fallback « décrire le lieu » en v1).
+3. Reverse-géocodage Nominatim → GeoArea ; geohash précision 6 (petit util local).
+4. Anti-doublon : avant création, chercher un report `ongoing` même service à
+   < 500 m → proposer « Confirmer » (batch compteur+vote) au lieu de créer.
+5. Création du doc complet au schéma (authorUsername null, type unplanned,
+   compteurs 0, notifiedUserIds [], reportedAt=now, timestamps serveur).
+6. Après envoi : toast succès + recentrage sur le nouveau marqueur ; garde-fou
+   local anti-spam (cooldown localStorage 10 min).
+7. i18n FR/EN complet, tests, maj TESTS-MANUELS.md + ROADMAP + CONTEXT.

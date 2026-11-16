@@ -1,0 +1,54 @@
+.report-form {
+    &__header {
+        border-bottom: 3px solid var(--njuka-amber);
+    }
+
+    &__label {
+        display: block;
+        margin: 0.75rem 0 0.4rem;
+        font-weight: 600;
+        color: var(--njuka-charcoal);
+    }
+
+    // barre segmentée ⚡|💧, même langage que les filtres de la carte
+    &__services {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    &__service {
+        flex: 1;
+        padding: 0.55rem 0.5rem;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        background: var(--white);
+        font-weight: 600;
+        cursor: pointer;
+
+        &--active {
+            border-color: var(--njuka-amber);
+            background: rgba(248, 142, 1, 0.12);
+            color: var(--njuka-amber-dark);
+        }
+    }
+
+    &__description {
+        resize: vertical;
+    }
+
+    &__hint {
+        margin: 0.75rem 0;
+        font-size: 0.85rem;
+        color: var(--gray);
+    }
+
+    &__notice {
+        text-align: center;
+        padding: 0.5rem 0;
+
+        &__title {
+            font-weight: 700;
+            color: var(--njuka-charcoal);
+        }
+    }
+}

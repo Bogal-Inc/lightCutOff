@@ -1,0 +1,90 @@
+<div class="report-form">
+  <div class="modal-header report-form__header">
+    <h5 class="modal-title">{{'main.report-form.title' | translate}}</h5>
+    <button type="button" class="btn-close" attr.aria-label="{{'main.report-form.close' | translate}}"
+            (click)="activeModal.dismiss()"></button>
+  </div>
+
+  <div class="modal-body">
+    <!-- garde-fou anti-spam -->
+    <div *ngIf="state === 'cooldown'" class="report-form__notice">
+      <p>{{'main.report-form.cooldown' | translate: {minutes: cooldownMinutesLeft} }}</p>
+      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
+        {{'main.report-form.close' | translate}}
+      </button>
+    </div>
+
+    <!-- formulaire -->
+    <form *ngIf="state === 'form' || state === 'locating' || state === 'sending'"
+          [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+      <label class="report-form__label">{{'main.report-form.service_label' | translate}}</label>
+      <div class="report-form__services" role="group">
+        <button type="button" class="report-form__service"
+                [class.report-form__service--active]="selectedService === serviceTypes.ELECTRICITY"
+                (click)="setService(serviceTypes.ELECTRICITY)">
+          ⚡ {{'main.report-form.service_electricity' | translate}}
+        </button>
+        <button type="button" class="report-form__service"
+                [class.report-form__service--active]="selectedService === serviceTypes.WATER"
+                (click)="setService(serviceTypes.WATER)">
+          💧 {{'main.report-form.service_water' | translate}}
+        </button>
+      </div>
+
+      <label class="report-form__label" for="report-description">
+        {{'main.report-form.description_label' | translate}}
+      </label>
+      <textarea id="report-description" class="form-control report-form__description" rows="3"
+                formControlName="description" maxlength="500"
+                attr.placeholder="{{'main.report-form.description_placeholder' | translate}}"></textarea>
+
+      <p class="report-form__hint">{{'main.report-form.geoloc_hint' | translate}}</p>
+
+      <button type="submit" class="btn btn-njuka w-100" [disabled]="state !== 'form'">
+        <span *ngIf="state === 'form'">{{'main.report-form.submit' | translate}}</span>
+        <span *ngIf="state === 'locating'">{{'main.report-form.locating' | translate}}</span>
+        <span *ngIf="state === 'sending'">{{'main.report-form.sending' | translate}}</span>
+      </button>
+    </form>
+
+    <!-- anti-doublon : une coupure est déjà signalée à proximité -->
+    <div *ngIf="state === 'duplicate'" class="report-form__notice">
+      <p class="report-form__notice__title">{{'main.report-form.duplicate_title' | translate}}</p>
+      <p *ngIf="duplicate">
+        {{duplicate.location?.neighborhood || duplicate.location?.city}}
+        · {{'main.report-form.duplicate_confirmations' | translate: {count: duplicate.confirmationCount || 0} }}
+      </p>
+      <p>{{'main.report-form.duplicate_text' | translate}}</p>
+      <button type="button" class="btn btn-njuka w-100 mb-2" (click)="onConfirmDuplicate()">
+        {{'main.report-form.duplicate_confirm' | translate}}
+      </button>
+      <button type="button" class="btn btn-outline-njuka w-100" (click)="onCreateAnyway()">
+        {{'main.report-form.duplicate_create_anyway' | translate}}
+      </button>
+    </div>
+
+    <!-- l'utilisateur a déjà signalé cette coupure -->
+    <div *ngIf="state === 'ownNearby'" class="report-form__notice">
+      <p>{{'main.report-form.own_nearby' | translate}}</p>
+      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
+        {{'main.report-form.close' | translate}}
+      </button>
+    </div>
+
+    <!-- géolocalisation refusée : signalement impossible -->
+    <div *ngIf="state === 'geolocDenied'" class="report-form__notice">
+      <p>{{'main.report-form.geoloc_denied' | translate}}</p>
+      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
+        {{'main.report-form.close' | translate}}
+      </button>
+    </div>
+
+    <!-- erreur d'envoi -->
+    <div *ngIf="state === 'error'" class="report-form__notice">
+      <p>{{'main.report-form.error' | translate}}</p>
+      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
+        {{'main.report-form.close' | translate}}
+      </button>
+    </div>
+  </div>
+</div>

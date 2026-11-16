@@ -12,6 +12,19 @@
   &__map {
     height: 85vh;
     z-index: 0; // sous la navbar et les overlays du site
+    position: relative;
+  }
+
+  // bouton flottant « Signaler une coupure » (lot 3)
+  &__report-btn {
+    position: absolute;
+    z-index: 1000; // au-dessus des tuiles Leaflet
+    bottom: 24px;
+    right: 16px;
+    border-radius: 50px;
+    padding: 0.7rem 1.3rem;
+    font-weight: 700;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   }
 }
 
