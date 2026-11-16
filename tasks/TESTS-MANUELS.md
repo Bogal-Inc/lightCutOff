@@ -87,3 +87,6 @@
 - [ ] « C'est une autre coupure, signaler quand même » → création malgré le doublon
 - [ ] EN : tous les textes du formulaire traduits
 - [ ] Vérifier côté app : notification de proximité reçue pour un report créé depuis le site
+- [ ] VPN ACTIVÉ (pays ≠ position GPS) → message « VPN ou proxy détecté », pas de création
+- [ ] Desktop sans WiFi (position estimée par IP, précision > 10 km) → message « position trop imprécise »
+- [ ] ipwho.is bloqué/en panne (adblock) → le signalement passe quand même (fail-open)

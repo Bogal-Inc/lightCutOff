@@ -79,6 +79,22 @@
       </button>
     </div>
 
+    <!-- position trop imprécise (dérivée de l'IP) -->
+    <div *ngIf="state === 'lowAccuracy'" class="report-form__notice">
+      <p>{{'main.report-form.low_accuracy' | translate}}</p>
+      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
+        {{'main.report-form.close' | translate}}
+      </button>
+    </div>
+
+    <!-- incohérence IP/GPS : VPN ou proxy suspecté -->
+    <div *ngIf="state === 'vpnSuspected'" class="report-form__notice">
+      <p>{{'main.report-form.vpn_suspected' | translate}}</p>
+      <button type="button" class="btn btn-outline-njuka" (click)="activeModal.dismiss()">
+        {{'main.report-form.close' | translate}}
+      </button>
+    </div>
+
     <!-- erreur d'envoi -->
     <div *ngIf="state === 'error'" class="report-form__notice">
       <p>{{'main.report-form.error' | translate}}</p>

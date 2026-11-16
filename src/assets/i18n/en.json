@@ -283,6 +283,8 @@
       "duplicate_create_anyway": "It's a different outage, report anyway",
       "own_nearby": "You already reported an outage here. It is still live on the map.",
       "geoloc_denied": "We couldn't locate you: reporting requires geolocation. Allow it in your browser and try again.",
+      "low_accuracy": "Your position is too imprecise for a reliable report (it looks estimated from your connection, not from GPS). Try again from a phone or with WiFi enabled.",
+      "vpn_suspected": "Your GPS position doesn't match your internet connection (VPN or proxy detected). Turn off your VPN and try again: a report must reflect where you really are.",
       "cooldown": "You already sent a report a few minutes ago. Try again in {{minutes}} min.",
       "error": "Sending failed (you may have already confirmed this outage). Try again later.",
       "success_created": "Report sent — thank you! Neighbours will be alerted.",

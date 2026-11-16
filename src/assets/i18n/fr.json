@@ -284,6 +284,8 @@
       "duplicate_create_anyway": "C'est une autre coupure, signaler quand même",
       "own_nearby": "Vous avez déjà signalé une coupure à cet endroit. Elle est toujours en cours sur la carte.",
       "geoloc_denied": "Impossible de vous localiser : le signalement nécessite la géolocalisation. Autorisez-la dans votre navigateur puis réessayez.",
+      "low_accuracy": "Votre position est trop imprécise pour un signalement fiable (elle semble estimée depuis votre connexion, pas depuis un GPS). Réessayez depuis un téléphone ou avec le WiFi activé.",
+      "vpn_suspected": "Votre position GPS ne correspond pas à votre connexion internet (VPN ou proxy détecté). Désactivez votre VPN puis réessayez : le signalement doit refléter l'endroit où vous êtes vraiment.",
       "cooldown": "Vous avez déjà envoyé un signalement il y a quelques minutes. Réessayez dans {{minutes}} min.",
       "error": "L'envoi a échoué (peut-être avez-vous déjà confirmé cette coupure). Réessayez plus tard.",
       "success_created": "Signalement envoyé — merci ! Les voisins vont être alertés.",
