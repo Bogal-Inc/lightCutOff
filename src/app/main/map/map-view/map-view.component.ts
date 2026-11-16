@@ -413,7 +413,10 @@ export class MapViewComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.impactCircles) {
       this.impactCircles.remove();
     }
-    this.markersClusters = L.markerClusterGroup();
+    // leaflet.markercluster s'accroche au L GLOBAL (window.L), pas au namespace
+    // ESM : en dev (esbuild), le namespace est figé avant l'exécution du plugin
+    // → markerClusterGroup absent. On passe par le global, identique en prod.
+    this.markersClusters = ((window as any).L || L).markerClusterGroup();
     this.impactCircles = L.layerGroup();
     reports.forEach(report => {
       this.markersClusters.addLayer(this.markerFactory(report));
